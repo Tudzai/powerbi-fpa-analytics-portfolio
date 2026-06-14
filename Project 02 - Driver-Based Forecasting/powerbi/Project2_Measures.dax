@@ -1,0 +1,48 @@
+-- Project 02 - Driver-Based Forecasting & Scenario Planning
+-- Create a blank measure table named KPI_Measures, then add these measures.
+
+Revenue = SUM(FactRevenueDriver[RevenueUSD])
+
+Direct Cost = SUM(FactCostDriver[DirectCostUSD])
+
+Gross Profit = [Revenue] - [Direct Cost]
+
+Gross Margin % = DIVIDE([Gross Profit], [Revenue])
+
+Payroll Cost = SUM(FactHeadcountPlan[PayrollCostUSD])
+
+Non Payroll OPEX = SUM(FactOpexDriver[NonPayrollOpexUSD])
+
+EBITDA = [Gross Profit] - [Payroll Cost] - [Non Payroll OPEX]
+
+EBITDA Margin % = DIVIDE([EBITDA], [Revenue])
+
+Jobs = SUM(FactRevenueDriver[VolumeJobs])
+
+Revenue per Job = DIVIDE([Revenue], [Jobs])
+
+Variable Cost per Job = DIVIDE([Direct Cost], [Jobs])
+
+Average FTE = AVERAGEX(VALUES(DimDate[YearMonth]), SUM(FactHeadcountPlan[FTE]))
+
+Jobs per FTE = DIVIDE([Jobs], [Average FTE])
+
+Operating Cash Flow = SUM(FactCashImpact[OperatingCashFlowUSD])
+
+Ending Cash Latest Month = CALCULATE(SUM(FactCashImpact[EndingCashUSD]), LASTNONBLANK(DimDate[Date], [Operating Cash Flow]))
+
+Working Capital = SUM(FactCashImpact[WorkingCapitalUSD])
+
+DSO Days = AVERAGE(FactCashImpact[DSODays])
+
+DPO Days = AVERAGE(FactCashImpact[DPODays])
+
+MAPE = AVERAGE(FactForecastAccuracy[AbsolutePctError])
+
+Forecast Bias % = AVERAGE(FactForecastAccuracy[ForecastBiasPct])
+
+Base Revenue = CALCULATE([Revenue], DimScenario[Scenario] = "Base")
+
+Scenario Revenue Variance vs Base = [Revenue] - [Base Revenue]
+
+Scenario Revenue Variance % vs Base = DIVIDE([Scenario Revenue Variance vs Base], [Base Revenue])

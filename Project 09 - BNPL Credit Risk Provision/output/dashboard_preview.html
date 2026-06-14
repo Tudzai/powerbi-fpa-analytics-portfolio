@@ -1,0 +1,83 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BNPL Credit Risk Dashboard</title>
+  <style>
+    :root { --navy:#10223F; --ink:#172033; --muted:#687385; --bg:#F5F7FB; --panel:#fff; --border:#D8DEE9; --red:#B42318; --amber:#E6A23C; --blue:#2F66B3; --teal:#11887F; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Segoe UI, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+    header { padding: 18px 26px 14px; background:#eef3fa; border-bottom:1px solid var(--border); }
+    h1 { margin:0; font-size:24px; letter-spacing:0; }
+    .sub { color:var(--muted); margin-top:4px; font-size:13px; }
+    nav { display:flex; gap:8px; padding:12px 26px; background:#fff; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:2; }
+    nav button { border:1px solid var(--border); background:#fff; padding:9px 13px; border-radius:6px; cursor:pointer; color:var(--ink); font-weight:600; }
+    nav button.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+    main { padding:18px 26px 36px; }
+    .tab { display:none; }
+    .tab.active { display:block; }
+    .kpis { display:grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap:12px; margin-bottom:16px; }
+    .card, .panel { background:var(--panel); border:1px solid var(--border); border-radius:8px; box-shadow:0 1px 2px rgba(16,34,63,.05); }
+    .card { padding:13px 14px; min-height:78px; }
+    .label { color:var(--muted); font-size:12px; }
+    .value { font-size:22px; font-weight:700; margin-top:5px; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+    .panel { padding:12px; overflow:hidden; }
+    .panel h2 { margin:0 0 8px; font-size:15px; }
+    img { width:100%; display:block; border-radius:4px; }
+    table { width:100%; border-collapse:collapse; font-size:13px; background:#fff; }
+    th, td { padding:9px 10px; border-bottom:1px solid var(--border); text-align:left; }
+    th { color:var(--muted); font-weight:700; }
+    @media(max-width:900px) { .kpis { grid-template-columns: repeat(2,1fr); } .grid { grid-template-columns:1fr; } nav { flex-wrap:wrap; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BNPL / Digital Lending Credit Risk Dashboard</h1>
+    <div class="sub">Synthetic portfolio, seed 90209 | latest snapshot May 2026 | designed for credit risk, collections, finance leadership</div>
+  </header>
+  <nav>
+    <button class="active" data-tab="overview">Credit Risk Overview</button>
+    <button data-tab="vintage">Delinquency & Vintage Analysis</button>
+    <button data-tab="collections">Collections & Provision Forecast</button>
+  </nav>
+  <main>
+    <section id="overview" class="tab active">
+      <div class="kpis"><div class="card"><div class="label">Loan book</div><div class="value">$1.6M</div></div><div class="card"><div class="label">Disbursement</div><div class="value">$14.2M</div></div><div class="card"><div class="label">Approval rate</div><div class="value">65.9%</div></div><div class="card"><div class="label">30+ DPD</div><div class="value">25.0%</div></div><div class="card"><div class="label">NPL</div><div class="value">3.0%</div></div><div class="card"><div class="label">Expected loss</div><div class="value">$18.4K</div></div></div>
+      <div class="grid">
+        <div class="panel"><h2>Loan book and delinquency trend</h2><img src="screenshots/overview_loan_book_trend.png" alt="Loan book trend"></div>
+        <div class="panel"><h2>Risk concentration</h2><table><thead><tr><th>Risk band</th><th>Balance</th><th>30+ DPD</th><th>Expected loss</th></tr></thead><tbody><tr><td>A Prime</td><td>$302.4K</td><td>22.7%</td><td>$745</td></tr>
+<tr><td>B Near Prime</td><td>$339.4K</td><td>24.1%</td><td>$1.6K</td></tr>
+<tr><td>C Mid</td><td>$443.9K</td><td>28.9%</td><td>$4.4K</td></tr>
+<tr><td>D Subprime</td><td>$361.6K</td><td>28.5%</td><td>$7.2K</td></tr>
+<tr><td>E Deep Subprime</td><td>$163.6K</td><td>12.9%</td><td>$4.4K</td></tr></tbody></table></div>
+      </div>
+    </section>
+    <section id="vintage" class="tab">
+      <div class="kpis"><div class="card"><div class="label">30+ DPD</div><div class="value">25.0%</div></div><div class="card"><div class="label">NPL</div><div class="value">3.0%</div></div><div class="card"><div class="label">Expected loss</div><div class="value">$18.4K</div></div><div class="card"><div class="label">Autopay failures</div><div class="value">4,318</div></div></div>
+      <div class="grid">
+        <div class="panel"><h2>DPD bucket exposure mix</h2><img src="screenshots/vintage_dpd_bucket_mix.png" alt="DPD bucket mix"></div>
+        <div class="panel"><h2>Vintage heatmap</h2><img src="screenshots/vintage_heatmap.png" alt="Vintage heatmap"></div>
+        <div class="panel"><h2>Roll-rate matrix</h2><img src="screenshots/roll_rate_matrix.png" alt="Roll-rate matrix"></div>
+      </div>
+    </section>
+    <section id="collections" class="tab">
+      <div class="kpis"><div class="card"><div class="label">Recovery rate</div><div class="value">21.4%</div></div><div class="card"><div class="label">SLA</div><div class="value">0.8%</div></div><div class="card"><div class="label">Provision</div><div class="value">$20.2K</div></div><div class="card"><div class="label">Forecast provision</div><div class="value">$700.0K</div></div></div>
+      <div class="grid">
+        <div class="panel"><h2>Recovery and SLA by queue</h2><img src="screenshots/collections_recovery_sla.png" alt="Recovery and SLA"></div>
+        <div class="panel"><h2>Provision forecast scenarios</h2><img src="screenshots/provision_forecast.png" alt="Provision forecast"></div>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.querySelectorAll('nav button').forEach(btn => btn.addEventListener('click', () => {
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    }));
+  </script>
+</body>
+</html>

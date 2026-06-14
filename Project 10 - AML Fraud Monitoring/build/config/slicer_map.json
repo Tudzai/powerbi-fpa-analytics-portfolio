@@ -1,0 +1,16 @@
+{
+  "global": [
+    "Month",
+    "Corridor risk tier",
+    "Severity"
+  ],
+  "deep_dive": [
+    "Rule typology",
+    "Channel",
+    "Customer risk tier"
+  ],
+  "sla_governance": [
+    "Case priority",
+    "Analyst queue"
+  ]
+}

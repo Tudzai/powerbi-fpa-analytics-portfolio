@@ -1,0 +1,27 @@
+GovernanceKey,RuleKey,ChangeDateKey,ChangeType,ChangeReason,ApprovalStatus,ApprovedBy,PrecisionBefore,PrecisionAfter,AlertVolumeDeltaPct
+G0001,R001,20250914,Sandbox validation,Tune threshold after backtest,Pending,Rule Governance Board,0.3109,0.4535,-0.1849
+G0002,R001,20260423,Precision backtest,Reduce false positives,Approved,Rule Governance Board,0.6149,0.6619,-0.2274
+G0003,R001,20250830,Sandbox validation,Add control for emerging typology,Approved,MLRO,0.4777,0.5634,-0.1401
+G0004,R002,20251208,Sandbox validation,Add control for emerging typology,Approved,Head of Compliance,0.3574,0.3973,-0.1798
+G0005,R002,20250912,Owner review,Reduce false positives,Approved,Head of Compliance,0.1712,0.277,0.0877
+G0006,R002,20250905,Precision backtest,Tune threshold after backtest,Approved,Head of Compliance,0.8507,0.9142,-0.1234
+G0007,R003,20251229,Owner review,Reduce false positives,Approved,Head of Compliance,0.1794,0.2486,-0.126
+G0008,R003,20260426,Threshold tuning,Address audit finding,Approved,Fraud Ops Lead,0.3361,0.4208,-0.1986
+G0009,R004,20250802,Owner review,Add control for emerging typology,Approved,Head of Compliance,0.275,0.2689,-0.0129
+G0010,R004,20260513,Rule enablement,Address audit finding,Rejected,Rule Governance Board,0.3675,0.432,0.2008
+G0011,R004,20260224,Threshold tuning,Reduce false positives,Pending,Head of Compliance,0.3827,0.4463,-0.1673
+G0012,R005,20260518,Sandbox validation,Reduce false positives,Approved,Head of Compliance,0.5377,0.5495,0.009
+G0013,R005,20260124,Rule enablement,Address audit finding,Approved,Head of Compliance,0.4949,0.513,0.0259
+G0014,R006,20260325,Owner review,Tune threshold after backtest,Approved,Rule Governance Board,0.2973,0.4044,0.1
+G0015,R006,20250805,Rule enablement,Add control for emerging typology,Pending,Head of Compliance,0.5397,0.6861,-0.0735
+G0016,R007,20260223,Sandbox validation,Address audit finding,Approved,Fraud Ops Lead,0.7261,0.8183,0.2063
+G0017,R007,20260426,Owner review,Tune threshold after backtest,Approved,Head of Compliance,0.5447,0.6033,0.0653
+G0018,R008,20260429,Precision backtest,Add control for emerging typology,Approved,Head of Compliance,0.4861,0.609,-0.0027
+G0019,R008,20260214,Rule enablement,Address audit finding,Approved,MLRO,0.1815,0.232,-0.0381
+G0020,R008,20250926,Precision backtest,Tune threshold after backtest,Approved,Head of Compliance,0.4744,0.4905,-0.0012
+G0021,R008,20260405,Sandbox validation,Expand high-risk corridor coverage,Pending,Head of Compliance,0.4507,0.4804,0.2302
+G0022,R009,20250807,Owner review,Address audit finding,Approved,Rule Governance Board,0.4575,0.4948,-0.0453
+G0023,R009,20251221,Threshold tuning,Add control for emerging typology,Approved,Head of Compliance,0.5176,0.5159,-0.1111
+G0024,R010,20250907,Sandbox validation,Address audit finding,Approved,MLRO,0.119,0.2171,0.0771
+G0025,R010,20250829,Precision backtest,Reduce false positives,Approved,Fraud Ops Lead,0.5235,0.6859,-0.2973
+G0026,R010,20251013,Precision backtest,Reduce false positives,Approved,Head of Compliance,0.4993,0.4803,0.0027

@@ -1,0 +1,18 @@
+# Relationship Map
+
+- FactGrowthMonthly[MonthStart] -> DimMonth[MonthStart]
+- FactGrowthMonthly[ChannelKey] -> DimChannel[ChannelKey]
+- FactGrowthMonthly[SegmentKey] -> DimSegment[SegmentKey]
+- FunnelMonthly[MonthStart] -> DimMonth[MonthStart]
+- FunnelMonthly[ChannelKey] -> DimChannel[ChannelKey]
+- CohortRetention[ActivityMonth] -> DimMonth[MonthStart]
+- CohortRetention[ChannelKey] -> DimChannel[ChannelKey]
+- CohortRetention[SegmentKey] -> DimSegment[SegmentKey]
+- CampaignMonthly[MonthStart] -> DimMonth[MonthStart]
+- CampaignMonthly[ChannelKey] -> DimChannel[ChannelKey]
+- CampaignMonthly[CampaignKey] -> DimCampaign[CampaignKey]
+- ChurnRiskSnapshot[ChannelKey] -> DimChannel[ChannelKey]
+- ChurnRiskSnapshot[SegmentKey] -> DimSegment[SegmentKey]
+- MonthlyKPIs[MonthStart] -> DimMonth[MonthStart]
+- ChannelMonthly[MonthStart] -> DimMonth[MonthStart]
+- ChannelMonthly[ChannelKey] -> DimChannel[ChannelKey]

@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-06-11",
+  "status": "layout_json_generated",
+  "layout_json": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 03 - Ecommerce Executive Performance\\bi_ecommerce_executive_performance_dashboard\\build\\native_report_layout_ecommerce.json",
+  "pages": [
+    "Executive Overview",
+    "Revenue & Category",
+    "Traffic & Conversion",
+    "Refunds & Operations"
+  ],
+  "visual_containers": 57,
+  "measure_table": "KPI Measures",
+  "target_model_pbix": "output/dashboard_model.pbix",
+  "target_final_pbix": "output/dashboard_final.pbix",
+  "note": "This creates native Power BI report layout JSON. Packaging into PBIX is handled by 10_apply_native_pbix_report.ps1 only when a valid model PBIX exists."
+}

@@ -1,0 +1,11 @@
+check,raw_total,prepared_total,variance,status
+spend raw vs prepared,4033810.46,4033810.46,0.0,Pass
+revenue raw vs prepared,18125882.92,18125882.92,0.0,Pass
+gross_profit raw vs prepared,11054326.760000002,11054326.760000002,0.0,Pass
+clicks raw vs prepared,3627980.0,3627980.0,0.0,Pass
+leads raw vs prepared,432982.0,432982.0,0.0,Pass
+conversions raw vs prepared,88504.0,88504.0,0.0,Pass
+new_customers raw vs prepared,44233.0,44233.0,0.0,Pass
+row count raw vs prepared,11868.0,11868.0,0.0,Pass
+dim_channel unique channel_key,10.0,10.0,0.0,Pass
+fact duplicate date-campaign-channel,0.0,0.0,0.0,Pass

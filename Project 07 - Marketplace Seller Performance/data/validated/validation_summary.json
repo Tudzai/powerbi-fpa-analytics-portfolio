@@ -1,0 +1,54 @@
+{
+  "generated_on": "2026-06-11",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "Order item primary key unique",
+      "expected_or_raw": 90000,
+      "actual_or_prepared": 90000,
+      "status": "PASS"
+    },
+    {
+      "check": "Inventory seller-SKU-day key unique",
+      "expected_or_raw": 667704,
+      "actual_or_prepared": 667704,
+      "status": "PASS"
+    },
+    {
+      "check": "Seller GMV reconciles",
+      "expected_or_raw": 3300792.7,
+      "actual_or_prepared": 3300792.7,
+      "status": "PASS"
+    },
+    {
+      "check": "Gross GMV >= Net GMV",
+      "expected_or_raw": 3801191.8,
+      "actual_or_prepared": 3300792.7,
+      "status": "PASS"
+    },
+    {
+      "check": "Order status count reconciles",
+      "expected_or_raw": 90000,
+      "actual_or_prepared": 90000,
+      "status": "PASS"
+    },
+    {
+      "check": "Rates within 0 and 1",
+      "expected_or_raw": "fulfillment/cancellation/stock",
+      "actual_or_prepared": "0..1",
+      "status": "PASS"
+    },
+    {
+      "check": "Ratings within 1 and 5",
+      "expected_or_raw": "fact_reviews.rating",
+      "actual_or_prepared": "1..5",
+      "status": "PASS"
+    },
+    {
+      "check": "No orphan sellers in order fact",
+      "expected_or_raw": 0,
+      "actual_or_prepared": 0,
+      "status": "PASS"
+    }
+  ]
+}

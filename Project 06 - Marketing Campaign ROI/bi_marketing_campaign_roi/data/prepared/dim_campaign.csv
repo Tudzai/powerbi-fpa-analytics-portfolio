@@ -1,0 +1,24 @@
+campaign_key,campaign_name,channel_key,channel,paid_organic,launch_date,funnel_stage,budget_tier
+CP001,Google Search - Brand Capture,CH01,Google Search,Paid,2024-10-01,Consideration,High
+CP002,Google Search - Nonbrand Intent,CH01,Google Search,Paid,2025-01-01,Awareness,High
+CP003,Google Search - Competitor Defense,CH01,Google Search,Paid,2025-01-01,Conversion,High
+CP004,Meta - Prospecting Video,CH02,Meta,Paid,2024-10-01,Consideration,High
+CP005,Meta - Retargeting Carousel,CH02,Meta,Paid,2025-01-01,Awareness,High
+CP006,Meta - Lookalike Launch,CH02,Meta,Paid,2025-01-01,Conversion,High
+CP007,TikTok - Creator Spark,CH03,TikTok,Paid,2024-10-01,Consideration,Medium
+CP008,TikTok - Trend Trial,CH03,TikTok,Paid,2025-01-01,Awareness,Medium
+CP009,LinkedIn - Enterprise Lead Gen,CH04,LinkedIn,Paid,2024-10-01,Consideration,Medium
+CP010,LinkedIn - ABM Retargeting,CH04,LinkedIn,Paid,2025-01-01,Awareness,Medium
+CP011,Programmatic Display - Awareness Display,CH05,Programmatic Display,Paid,2024-10-01,Consideration,Medium
+CP012,Programmatic Display - Contextual Display,CH05,Programmatic Display,Paid,2025-01-01,Awareness,Medium
+CP013,Affiliates - Coupon Partners,CH06,Affiliates,Paid,2024-10-01,Consideration,Low
+CP014,Affiliates - Review Partners,CH06,Affiliates,Paid,2025-01-01,Awareness,Low
+CP015,Organic Search - SEO Content Hub,CH07,Organic Search,Organic,2024-10-01,Consideration,Low
+CP016,Organic Search - Product Landing SEO,CH07,Organic Search,Organic,2025-01-01,Awareness,Low
+CP017,Email - Lifecycle Nurture,CH08,Email,Organic,2024-10-01,Consideration,Low
+CP018,Email - Winback Offers,CH08,Email,Organic,2025-01-01,Awareness,Low
+CP019,Direct - Brand Demand,CH09,Direct,Organic,2024-10-01,Consideration,Low
+CP020,Direct - Returning Visitors,CH09,Direct,Organic,2025-01-01,Awareness,Low
+CP021,Referral Partners - Partner Co-Marketing,CH10,Referral Partners,Organic,2024-10-01,Consideration,Low
+CP022,Referral Partners - Strategic Referrals,CH10,Referral Partners,Organic,2025-01-01,Awareness,Low
+CP023,Referral Partners - Webinar Referrals,CH10,Referral Partners,Organic,2025-01-01,Conversion,Low

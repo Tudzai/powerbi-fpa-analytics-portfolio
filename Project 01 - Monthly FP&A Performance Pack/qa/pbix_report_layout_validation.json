@@ -1,0 +1,26 @@
+{
+    "generated_at":  "2026-06-08 13:26:12",
+    "project":  "Monthly FP\u0026A Performance Pack",
+    "source_model_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 01 - Monthly FP&A Performance Pack\\output\\dashboard_model.pbix",
+    "output_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 01 - Monthly FP&A Performance Pack\\output\\dashboard_v01.pbix",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 01 - Monthly FP&A Performance Pack\\output\\dashboard_final.pbix",
+    "latest_actual_month":  "May 2026",
+    "pages":  [
+                  "Executive Overview",
+                  "Variance Bridge",
+                  "Customer / Product Drilldown",
+                  "Opex \u0026 Cash Control"
+              ],
+    "visual_containers":  366,
+    "metrics":  {
+                    "revenue":  333134817.64,
+                    "budget_revenue":  355558271.53,
+                    "forecast_revenue":  343835455.35,
+                    "gross_margin_pct":  0.2892,
+                    "ebitda":  37590723.9,
+                    "opex":  58752392.9,
+                    "cash":  114644404.23,
+                    "weighted_dso":  45.12
+                },
+    "validation":  "PowerBIPackager.Validate passed for output and final PBIX"
+}

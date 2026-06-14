@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marketing Campaign ROI Dashboard Preview</title>
+<style>
+:root {
+  --ink:#14213D;
+  --muted:#6C7280;
+  --paper:#F4F7FB;
+  --panel:#FFFFFF;
+  --line:#D7DEE8;
+  --teal:#0E7C7B;
+  --coral:#E3645A;
+  --green:#2E8B57;
+  --amber:#F0B429;
+}
+* { box-sizing:border-box; }
+body { margin:0; font-family:"Segoe UI", Arial, sans-serif; background:var(--paper); color:var(--ink); }
+.shell { display:grid; grid-template-columns:156px 1fr; min-height:100vh; }
+aside { background:var(--ink); color:white; padding:28px 22px; position:sticky; top:0; height:100vh; }
+.logo { font-size:24px; font-weight:800; letter-spacing:.02em; }
+.kicker { margin-top:4px; color:#AFC3D9; font-size:11px; font-weight:700; }
+nav { margin-top:56px; display:grid; gap:10px; }
+nav span { color:#9FB4CC; font-size:13px; padding:10px 12px; border-radius:8px; }
+nav span:first-child { background:#31445F; color:white; }
+.side-note { position:absolute; left:22px; bottom:28px; right:22px; color:#B8C7D8; font-size:12px; line-height:1.45; }
+main { padding:32px 38px 48px; }
+.hero { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:18px; }
+h1 { margin:0; font-size:32px; line-height:1.1; }
+.hero p { margin:8px 0 0; color:var(--muted); max-width:760px; }
+.badge { border:1px solid var(--line); background:white; padding:10px 14px; border-radius:8px; color:var(--teal); font-weight:700; white-space:nowrap; }
+.cards { display:grid; grid-template-columns:repeat(6,minmax(120px,1fr)); gap:12px; margin:18px 0 26px; }
+article { background:white; border:1px solid var(--line); border-left:6px solid var(--teal); border-radius:8px; padding:14px 16px; min-height:84px; }
+article:nth-child(2) { border-left-color:var(--green); }
+article:nth-child(4) { border-left-color:var(--amber); }
+article:nth-child(5), article:nth-child(6) { border-left-color:var(--coral); }
+article span { display:block; color:var(--muted); font-size:11px; font-weight:800; text-transform:uppercase; }
+article strong { display:block; margin-top:9px; font-size:25px; }
+.research { background:white; border:1px solid var(--line); border-radius:8px; padding:16px 18px; margin-bottom:24px; display:grid; grid-template-columns:1.2fr 1fr; gap:16px; }
+.research h2 { font-size:16px; margin:0 0 8px; }
+.research p, .research li { color:var(--muted); font-size:13px; line-height:1.45; }
+.research ul { margin:0; padding-left:18px; }
+.page { margin:26px 0 36px; }
+.page-head { display:flex; align-items:baseline; gap:12px; margin-bottom:10px; }
+.page-head span { color:var(--teal); font-size:12px; font-weight:800; text-transform:uppercase; }
+.page h2 { margin:0; font-size:20px; }
+img { width:100%; display:block; background:white; border:1px solid var(--line); border-radius:8px; box-shadow:0 16px 38px rgba(20,33,61,.10); }
+@media (max-width:980px) {
+  .shell { grid-template-columns:1fr; }
+  aside { height:auto; position:relative; }
+  nav { grid-template-columns:repeat(4,1fr); margin-top:20px; }
+  .side-note { display:none; }
+  main { padding:24px 18px; }
+  .hero { display:block; }
+  .badge { display:inline-block; margin-top:14px; }
+  .cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .research { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside>
+  <div class="logo">MROI</div>
+  <div class="kicker">PROJECT 6</div>
+  <nav><span>Overview</span><span>Channel</span><span>Ranking</span><span>Actions</span></nav>
+  <div class="side-note">Marketing ROI command center<br>Power BI template preview</div>
+</aside>
+<main>
+  <section class="hero">
+    <div>
+      <h1>Marketing Campaign ROI Dashboard</h1>
+      <p>Spend, CAC, ROAS, conversion, revenue by channel, paid vs organic, and campaign ranking redesigned as an executive-ready Power BI canvas.</p>
+    </div>
+    <div class="badge">Template: Executive ROI Command Center</div>
+  </section>
+  <section class="cards">
+    <article><span>Spend</span><strong>$4.0M</strong></article>
+<article><span>Revenue</span><strong>$18.1M</strong></article>
+<article><span>ROAS</span><strong>4.49x</strong></article>
+<article><span>CAC</span><strong>$91</strong></article>
+<article><span>Mktg ROI</span><strong>174.0%</strong></article>
+<article><span>CVR</span><strong>2.4%</strong></article>
+  </section>
+  <section class="research">
+    <div>
+      <h2>Applied design research</h2>
+      <p>Inspired by current Power BI and marketing dashboard examples: one-screen executive hierarchy, top KPI strip, paid-vs-organic comparison, cost spike detection, and action-first budget movement.</p>
+    </div>
+    <ul>
+      <li>Top-left/top-row portfolio KPIs.</li>
+      <li>Simple charts: trend, target bars, quadrant, ranking, table.</li>
+      <li>Action states: Scale, Optimize, Review/Cut.</li>
+    </ul>
+  </section>
+  
+        <section class="page">
+          <div class="page-head"><span>Page 1</span><h2>Executive Overview</h2></div>
+          <img src="screenshots/page_01.png" alt="Executive Overview">
+        </section>
+        
+
+        <section class="page">
+          <div class="page-head"><span>Page 2</span><h2>Channel ROI</h2></div>
+          <img src="screenshots/page_02.png" alt="Channel ROI">
+        </section>
+        
+
+        <section class="page">
+          <div class="page-head"><span>Page 3</span><h2>Campaign Ranking</h2></div>
+          <img src="screenshots/page_03.png" alt="Campaign Ranking">
+        </section>
+        
+
+        <section class="page">
+          <div class="page-head"><span>Page 4</span><h2>Exceptions and Actions</h2></div>
+          <img src="screenshots/page_04.png" alt="Exceptions and Actions">
+        </section>
+        
+</main>
+</div>
+</body>
+</html>

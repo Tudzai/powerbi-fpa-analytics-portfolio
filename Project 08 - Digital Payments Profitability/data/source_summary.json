@@ -1,0 +1,118 @@
+{
+  "source_type": "synthetic_demo",
+  "seed": 802608,
+  "generated_on": "2026-06-11",
+  "tables": {
+    "dim_date": {
+      "rows": 29,
+      "columns": [
+        "date_key",
+        "month_start_date",
+        "year_month",
+        "year",
+        "quarter",
+        "month_no",
+        "month_name",
+        "month_index",
+        "is_latest_complete_month"
+      ]
+    },
+    "dim_merchant": {
+      "rows": 200,
+      "columns": [
+        "merchant_id",
+        "merchant_name",
+        "merchant_segment",
+        "vertical",
+        "country",
+        "region",
+        "risk_tier",
+        "account_manager",
+        "acquisition_channel",
+        "onboarding_date",
+        "base_monthly_gmv",
+        "avg_ticket_usd",
+        "contracted_take_rate",
+        "fixed_fee_usd",
+        "active_flag"
+      ]
+    },
+    "dim_payment_method": {
+      "rows": 5,
+      "columns": [
+        "payment_method_id",
+        "payment_method",
+        "rail_type",
+        "variable_cost_rate",
+        "fixed_cost_per_txn",
+        "fraud_cost_rate",
+        "default_mix_weight"
+      ]
+    },
+    "dim_channel": {
+      "rows": 5,
+      "columns": [
+        "channel_id",
+        "channel",
+        "channel_group",
+        "default_mix_weight",
+        "support_cost_rate"
+      ]
+    },
+    "dim_scenario": {
+      "rows": 6,
+      "columns": [
+        "scenario_id",
+        "scenario_name",
+        "take_rate_delta_bps",
+        "cost_delta_pct",
+        "volume_elasticity",
+        "description"
+      ]
+    },
+    "fact_payment_month": {
+      "rows": 69600,
+      "columns": [
+        "date_key",
+        "month_start_date",
+        "year_month",
+        "month_index",
+        "merchant_id",
+        "payment_method_id",
+        "channel_id",
+        "gmv",
+        "transaction_count",
+        "successful_txn",
+        "failed_txn",
+        "revenue_fee",
+        "fixed_fee_revenue",
+        "refund_amount",
+        "refund_count",
+        "chargeback_amount",
+        "chargeback_count",
+        "interchange_cost",
+        "network_cost",
+        "processor_cost",
+        "fraud_loss",
+        "incentives_cost",
+        "total_cost",
+        "contribution_margin",
+        "auth_success_rate",
+        "average_ticket",
+        "take_rate",
+        "cost_per_txn",
+        "margin_rate"
+      ]
+    },
+    "fact_fee_bridge": {
+      "rows": 6,
+      "columns": [
+        "year_month",
+        "bridge_order",
+        "bridge_step",
+        "bridge_amount",
+        "bridge_type"
+      ]
+    }
+  }
+}

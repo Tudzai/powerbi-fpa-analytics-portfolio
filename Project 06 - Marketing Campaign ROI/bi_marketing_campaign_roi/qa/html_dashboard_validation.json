@@ -1,0 +1,20 @@
+{
+  "status": "Pass",
+  "artifact": "output/dashboard_final.html",
+  "generated_at": "2026-06-11 12:59:50",
+  "source_rows": 11868,
+  "channel_count": 10,
+  "campaign_count": 23,
+  "features": [
+    "date/channel/paid-organic/action filters",
+    "six KPI cards",
+    "monthly spend and revenue trend",
+    "paid vs organic comparison",
+    "spend vs ROAS action map",
+    "ROAS and CAC target charts",
+    "campaign ranking",
+    "budget action matrix",
+    "operating tables"
+  ],
+  "external_dependencies": []
+}

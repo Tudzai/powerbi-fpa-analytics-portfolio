@@ -1,0 +1,9 @@
+{
+  "title": "Digital Payments Profitability Dashboard",
+  "latest_complete_month": "2026-05",
+  "prompt_version": "BI_A2Z_Master_Prompt_v3",
+  "data_source": "synthetic_demo",
+  "seed": 802608,
+  "audience": "Payments GM, Finance, Merchant Ops, and Product Strategy",
+  "business_goal": "Monitor payments profitability and identify merchant, channel, payment-method, and pricing levers that improve contribution margin."
+}

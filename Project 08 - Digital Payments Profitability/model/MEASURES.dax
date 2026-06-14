@@ -1,0 +1,80 @@
+Payment GMV = SUM ( fact_payment_month[gmv] )
+Transactions = SUM ( fact_payment_month[transaction_count] )
+Successful Transactions = SUM ( fact_payment_month[successful_txn] )
+Failed Transactions = SUM ( fact_payment_month[failed_txn] )
+Revenue = SUM ( fact_payment_month[revenue_fee] )
+Fixed Fee Revenue = SUM ( fact_payment_month[fixed_fee_revenue] )
+Refund Amount = SUM ( fact_payment_month[refund_amount] )
+Refund Count = SUM ( fact_payment_month[refund_count] )
+Chargeback Amount = SUM ( fact_payment_month[chargeback_amount] )
+Chargeback Count = SUM ( fact_payment_month[chargeback_count] )
+Interchange Cost = SUM ( fact_payment_month[interchange_cost] )
+Network Cost = SUM ( fact_payment_month[network_cost] )
+Processor Cost = SUM ( fact_payment_month[processor_cost] )
+Fraud Loss = SUM ( fact_payment_month[fraud_loss] )
+Incentives Cost = SUM ( fact_payment_month[incentives_cost] )
+Variable Cost = SUM ( fact_payment_month[total_cost] )
+Contribution Margin = SUM ( fact_payment_month[contribution_margin] )
+Take Rate = DIVIDE ( [Revenue], [Payment GMV] )
+Contribution Margin % = DIVIDE ( [Contribution Margin], [Revenue] )
+Cost per Transaction = DIVIDE ( [Variable Cost], [Transactions] )
+Refund Rate = DIVIDE ( [Refund Amount], [Payment GMV] )
+Chargeback Bps = DIVIDE ( [Chargeback Amount], [Payment GMV] ) * 10000
+Chargeback Rate = DIVIDE ( [Chargeback Count], [Transactions] )
+Auth Success Rate = DIVIDE ( [Successful Transactions], [Successful Transactions] + [Failed Transactions] )
+Revenue per Transaction = DIVIDE ( [Revenue], [Transactions] )
+
+Current Month Index =
+COALESCE (
+    SELECTEDVALUE ( dim_date[month_index] ),
+    MAXX ( ALL ( dim_date ), dim_date[month_index] )
+)
+
+Current GMV =
+VAR CurrentMonth = [Current Month Index]
+RETURN CALCULATE ( [Payment GMV], FILTER ( ALL ( dim_date ), dim_date[month_index] = CurrentMonth ) )
+
+Current Transactions =
+VAR CurrentMonth = [Current Month Index]
+RETURN CALCULATE ( [Transactions], FILTER ( ALL ( dim_date ), dim_date[month_index] = CurrentMonth ) )
+
+Current Revenue =
+VAR CurrentMonth = [Current Month Index]
+RETURN CALCULATE ( [Revenue], FILTER ( ALL ( dim_date ), dim_date[month_index] = CurrentMonth ) )
+
+Current Variable Cost =
+VAR CurrentMonth = [Current Month Index]
+RETURN CALCULATE ( [Variable Cost], FILTER ( ALL ( dim_date ), dim_date[month_index] = CurrentMonth ) )
+
+Current Contribution Margin =
+VAR CurrentMonth = [Current Month Index]
+RETURN CALCULATE ( [Contribution Margin], FILTER ( ALL ( dim_date ), dim_date[month_index] = CurrentMonth ) )
+
+Current Take Rate = DIVIDE ( [Current Revenue], [Current GMV] )
+Current CM % = DIVIDE ( [Current Contribution Margin], [Current Revenue] )
+Current Cost per Transaction = DIVIDE ( [Current Variable Cost], [Current Transactions] )
+
+Previous GMV =
+VAR CurrentMonth = [Current Month Index]
+RETURN CALCULATE ( [Payment GMV], FILTER ( ALL ( dim_date ), dim_date[month_index] = CurrentMonth - 1 ) )
+
+Previous Revenue =
+VAR CurrentMonth = [Current Month Index]
+RETURN CALCULATE ( [Revenue], FILTER ( ALL ( dim_date ), dim_date[month_index] = CurrentMonth - 1 ) )
+
+MoM GMV Growth = DIVIDE ( [Current GMV] - [Previous GMV], [Previous GMV] )
+MoM Revenue Growth = DIVIDE ( [Current Revenue] - [Previous Revenue], [Previous Revenue] )
+
+Bridge Amount = SUM ( fact_fee_bridge[bridge_amount] )
+Scenario Take Rate Delta Bps = SELECTEDVALUE ( dim_scenario[take_rate_delta_bps], 0 )
+Scenario Cost Delta % = SELECTEDVALUE ( dim_scenario[cost_delta_pct], 0 )
+Scenario Volume Elasticity = SELECTEDVALUE ( dim_scenario[volume_elasticity], 0 )
+Scenario GMV = [Current GMV] * ( 1 + [Scenario Volume Elasticity] )
+Scenario Revenue = [Current Revenue] + [Current GMV] * DIVIDE ( [Scenario Take Rate Delta Bps], 10000 )
+Scenario Variable Cost = [Current Variable Cost] * ( 1 + [Scenario Cost Delta %] )
+Scenario Contribution Margin = [Scenario Revenue] - [Scenario Variable Cost]
+Scenario CM % = DIVIDE ( [Scenario Contribution Margin], [Scenario Revenue] )
+Scenario Margin Uplift = [Scenario Contribution Margin] - [Current Contribution Margin]
+
+Merchant Rank by CM =
+RANKX ( ALLSELECTED ( dim_merchant[merchant_id] ), [Current Contribution Margin], , DESC, Dense )

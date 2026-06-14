@@ -1,0 +1,21 @@
+{
+  "project_root": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 05 - Retention Cohort LTV\\bi_retention_cohort_dashboard",
+  "data_qa": "pass",
+  "prepared_tables": {
+    "DimUser": 6113,
+    "DimMonth": 29,
+    "FactOrders": 22552,
+    "FactUserMonth": 87258,
+    "CohortRetention": 435,
+    "MonthlyKPIs": 29,
+    "MonthlyLifecycleMix": 87,
+    "ChurnRiskSnapshot": 6113,
+    "SegmentMonthly": 522
+  },
+  "pbip_source": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 05 - Retention Cohort LTV\\bi_retention_cohort_dashboard\\powerbi\\pbip\\Project5_Retention_Cohort\\Project5_Retention_Cohort.pbip",
+  "final_pbix_exists": true,
+  "final_pbix_size_bytes": 1881639,
+  "native_powerbi_render_qa": "pass_zero_visual_fetch_errors",
+  "final_pbix_status": "complete_saved_from_power_bi_desktop",
+  "build_package": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 05 - Retention Cohort LTV\\bi_retention_cohort_dashboard\\output\\Project5_Retention_Cohort_BuildPackage.zip"
+}

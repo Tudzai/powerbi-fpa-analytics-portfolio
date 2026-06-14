@@ -1,0 +1,5 @@
+﻿SegmentKey,CustomerSegment,SegmentWeight,DiscountPct,DSODays
+ENT,Enterprise,1.22,0.035,48
+MM,Mid Market,1.0,0.022,42
+SME,SME,0.76,0.01,34
+SKA,Strategic Key Account,1.36,0.048,55

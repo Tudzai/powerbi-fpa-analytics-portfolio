@@ -1,0 +1,271 @@
+{
+  "objects": {
+    "grid": [
+      {
+        "properties": {
+          "gridHorizontal": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "outlineColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#D9DEE7'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "columnHeaders": [
+      {
+        "properties": {
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI Semibold'"
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.5D"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#2454A6'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "values": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.5D"
+              }
+            }
+          },
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Values": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Service",
+        "Name": "DimService.ServiceLine",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Revenue",
+        "Name": "KPI_Measures.Revenue",
+        "Type": 1,
+        "Format": "$#,0;($#,0);$0"
+      },
+      {
+        "Restatement": "Direct Cost",
+        "Name": "KPI_Measures.Direct Cost",
+        "Type": 1,
+        "Format": "$#,0;($#,0);$0"
+      },
+      {
+        "Restatement": "GM %",
+        "Name": "KPI_Measures.Gross Margin %",
+        "Type": 1,
+        "Format": "0.0%"
+      },
+      {
+        "Restatement": "Rev / Job",
+        "Name": "KPI_Measures.Revenue per Job",
+        "Type": 1,
+        "Format": "$#,0.0"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 2,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 3,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 4,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Service",
+      "queryName": "DimService.ServiceLine",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "f0"
+            }
+          },
+          "Property": "ServiceLine"
+        }
+      }
+    },
+    {
+      "displayName": "Revenue",
+      "queryName": "KPI_Measures.Revenue",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "Revenue"
+        }
+      },
+      "format": "$#,0;($#,0);$0",
+      "sort": 2,
+      "sortOrder": 0
+    },
+    {
+      "displayName": "Direct Cost",
+      "queryName": "KPI_Measures.Direct Cost",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "Direct Cost"
+        }
+      },
+      "format": "$#,0;($#,0);$0",
+      "sort": 2,
+      "sortOrder": 0
+    },
+    {
+      "displayName": "GM %",
+      "queryName": "KPI_Measures.Gross Margin %",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "Gross Margin %"
+        }
+      },
+      "format": "0.0%",
+      "sort": 2,
+      "sortOrder": 0
+    },
+    {
+      "displayName": "Rev / Job",
+      "queryName": "KPI_Measures.Revenue per Job",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "Revenue per Job"
+        }
+      },
+      "format": "$#,0.0",
+      "sort": 2,
+      "sortOrder": 0
+    }
+  ]
+}

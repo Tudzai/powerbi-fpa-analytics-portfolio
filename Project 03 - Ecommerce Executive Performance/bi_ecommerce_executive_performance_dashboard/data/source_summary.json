@@ -1,0 +1,892 @@
+{
+  "project": "bi_ecommerce_executive_performance_dashboard",
+  "data_status": "synthetic demo data with fixed seed",
+  "seed": 20260611,
+  "generated_at": "2026-06-11",
+  "date_range": {
+    "start": "2025-01-01",
+    "end": "2026-05-31"
+  },
+  "raw_sources": {
+    "data/raw/ecommerce_products_raw.csv": {
+      "row_count": 256,
+      "column_count": 9,
+      "columns": [
+        {
+          "name": "product_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 256
+        },
+        {
+          "name": "product_name",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 256
+        },
+        {
+          "name": "category",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "subcategory",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 35
+        },
+        {
+          "name": "brand",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 10
+        },
+        {
+          "name": "base_price",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 256
+        },
+        {
+          "name": "unit_cost",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 253
+        },
+        {
+          "name": "launch_date",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 214
+        },
+        {
+          "name": "active_flag",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 1
+        }
+      ]
+    },
+    "data/raw/ecommerce_customers_raw.csv": {
+      "row_count": 18000,
+      "column_count": 6,
+      "columns": [
+        {
+          "name": "customer_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 18000
+        },
+        {
+          "name": "signup_date",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 1416
+        },
+        {
+          "name": "customer_segment",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 5
+        },
+        {
+          "name": "region",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        },
+        {
+          "name": "country",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        },
+        {
+          "name": "marketing_opt_in",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 2
+        }
+      ]
+    },
+    "data/raw/ecommerce_sessions_raw.csv": {
+      "row_count": 65016,
+      "column_count": 8,
+      "columns": [
+        {
+          "name": "session_date",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 516
+        },
+        {
+          "name": "channel",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "device",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 3
+        },
+        {
+          "name": "region",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        },
+        {
+          "name": "sessions",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 713
+        },
+        {
+          "name": "visitors",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 553
+        },
+        {
+          "name": "add_to_cart",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 108
+        },
+        {
+          "name": "checkout_starts",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 57
+        }
+      ]
+    },
+    "data/raw/ecommerce_orders_raw.csv": {
+      "row_count": 128271,
+      "column_count": 23,
+      "columns": [
+        {
+          "name": "order_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 128271
+        },
+        {
+          "name": "order_date",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 516
+        },
+        {
+          "name": "customer_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 17989
+        },
+        {
+          "name": "product_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 256
+        },
+        {
+          "name": "category",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "subcategory",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 35
+        },
+        {
+          "name": "region",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        },
+        {
+          "name": "channel",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "device",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 3
+        },
+        {
+          "name": "customer_segment",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 5
+        },
+        {
+          "name": "customer_home_region",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        },
+        {
+          "name": "status",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 3
+        },
+        {
+          "name": "quantity",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 4
+        },
+        {
+          "name": "unit_price",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 63833
+        },
+        {
+          "name": "discount_amount",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 15492
+        },
+        {
+          "name": "shipping_fee",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 1002
+        },
+        {
+          "name": "tax_amount",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 11634
+        },
+        {
+          "name": "gmv",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 67820
+        },
+        {
+          "name": "net_revenue",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 62974
+        },
+        {
+          "name": "refund_amount",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 5357
+        },
+        {
+          "name": "contribution_margin",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 35934
+        },
+        {
+          "name": "payment_method",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 5
+        },
+        {
+          "name": "is_first_order",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 2
+        }
+      ]
+    },
+    "data/raw/ecommerce_returns_raw.csv": {
+      "row_count": 5614,
+      "column_count": 5,
+      "columns": [
+        {
+          "name": "return_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 5614
+        },
+        {
+          "name": "order_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 5614
+        },
+        {
+          "name": "return_date",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 533
+        },
+        {
+          "name": "reason",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 5
+        },
+        {
+          "name": "refund_amount",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 5356
+        }
+      ]
+    },
+    "data/raw/ecommerce_campaigns_raw.csv": {
+      "row_count": 119,
+      "column_count": 5,
+      "columns": [
+        {
+          "name": "month",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 17
+        },
+        {
+          "name": "channel",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "spend",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 86
+        },
+        {
+          "name": "impressions",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 119
+        },
+        {
+          "name": "clicks",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 119
+        }
+      ]
+    }
+  },
+  "prepared_tables": {
+    "data/prepared/dim_date.csv": {
+      "row_count": 516,
+      "column_count": 9,
+      "columns": [
+        {
+          "name": "date",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 516
+        },
+        {
+          "name": "year",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 2
+        },
+        {
+          "name": "quarter",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 4
+        },
+        {
+          "name": "month_number",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 12
+        },
+        {
+          "name": "month_name",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 12
+        },
+        {
+          "name": "year_month",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 17
+        },
+        {
+          "name": "week_start",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 74
+        },
+        {
+          "name": "day_of_week",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "is_weekend",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 2
+        }
+      ]
+    },
+    "data/prepared/dim_product.csv": {
+      "row_count": 256,
+      "column_count": 9,
+      "columns": [
+        {
+          "name": "product_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 256
+        },
+        {
+          "name": "product_name",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 256
+        },
+        {
+          "name": "category",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "subcategory",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 35
+        },
+        {
+          "name": "brand",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 10
+        },
+        {
+          "name": "base_price",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 256
+        },
+        {
+          "name": "unit_cost",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 253
+        },
+        {
+          "name": "launch_date",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 214
+        },
+        {
+          "name": "active_flag",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 1
+        }
+      ]
+    },
+    "data/prepared/dim_customer.csv": {
+      "row_count": 18000,
+      "column_count": 6,
+      "columns": [
+        {
+          "name": "customer_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 18000
+        },
+        {
+          "name": "signup_date",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 1416
+        },
+        {
+          "name": "customer_segment",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 5
+        },
+        {
+          "name": "region",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        },
+        {
+          "name": "country",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        },
+        {
+          "name": "marketing_opt_in",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 2
+        }
+      ]
+    },
+    "data/prepared/dim_region.csv": {
+      "row_count": 6,
+      "column_count": 2,
+      "columns": [
+        {
+          "name": "region",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        },
+        {
+          "name": "country",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        }
+      ]
+    },
+    "data/prepared/dim_channel.csv": {
+      "row_count": 7,
+      "column_count": 3,
+      "columns": [
+        {
+          "name": "channel",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "channel_type",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 2
+        },
+        {
+          "name": "default_conversion_rate",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 7
+        }
+      ]
+    },
+    "data/prepared/dim_device.csv": {
+      "row_count": 3,
+      "column_count": 1,
+      "columns": [
+        {
+          "name": "device",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 3
+        }
+      ]
+    },
+    "data/prepared/fact_orders.csv": {
+      "row_count": 128271,
+      "column_count": 28,
+      "columns": [
+        {
+          "name": "order_key",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 128271
+        },
+        {
+          "name": "order_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 128271
+        },
+        {
+          "name": "order_date",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 516
+        },
+        {
+          "name": "customer_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 17989
+        },
+        {
+          "name": "product_id",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 256
+        },
+        {
+          "name": "category",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "subcategory",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 35
+        },
+        {
+          "name": "region",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        },
+        {
+          "name": "channel",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "device",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 3
+        },
+        {
+          "name": "customer_segment",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 5
+        },
+        {
+          "name": "customer_home_region",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        },
+        {
+          "name": "status",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 3
+        },
+        {
+          "name": "quantity",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 4
+        },
+        {
+          "name": "unit_price",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 63833
+        },
+        {
+          "name": "discount_amount",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 15492
+        },
+        {
+          "name": "shipping_fee",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 1002
+        },
+        {
+          "name": "tax_amount",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 11634
+        },
+        {
+          "name": "gmv",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 67820
+        },
+        {
+          "name": "net_revenue",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 62974
+        },
+        {
+          "name": "refund_amount",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 5357
+        },
+        {
+          "name": "contribution_margin",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 35934
+        },
+        {
+          "name": "payment_method",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 5
+        },
+        {
+          "name": "is_first_order",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 2
+        },
+        {
+          "name": "order_month",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 17
+        },
+        {
+          "name": "completed_order_flag",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 2
+        },
+        {
+          "name": "refund_order_flag",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 2
+        },
+        {
+          "name": "cancel_order_flag",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 2
+        }
+      ]
+    },
+    "data/prepared/fact_sessions.csv": {
+      "row_count": 65016,
+      "column_count": 10,
+      "columns": [
+        {
+          "name": "session_key",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 65016
+        },
+        {
+          "name": "session_date",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 516
+        },
+        {
+          "name": "channel",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "device",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 3
+        },
+        {
+          "name": "region",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 6
+        },
+        {
+          "name": "sessions",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 713
+        },
+        {
+          "name": "visitors",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 553
+        },
+        {
+          "name": "add_to_cart",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 108
+        },
+        {
+          "name": "checkout_starts",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 57
+        },
+        {
+          "name": "session_month",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 17
+        }
+      ]
+    },
+    "data/prepared/fact_marketing_spend.csv": {
+      "row_count": 119,
+      "column_count": 5,
+      "columns": [
+        {
+          "name": "month",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 17
+        },
+        {
+          "name": "channel",
+          "dtype": "str",
+          "null_count": 0,
+          "unique_count": 7
+        },
+        {
+          "name": "spend",
+          "dtype": "float64",
+          "null_count": 0,
+          "unique_count": 86
+        },
+        {
+          "name": "impressions",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 119
+        },
+        {
+          "name": "clicks",
+          "dtype": "int64",
+          "null_count": 0,
+          "unique_count": 119
+        }
+      ]
+    }
+  },
+  "key_kpis": {
+    "gmv": 52427076.96,
+    "net_revenue": 45636439.72,
+    "orders": 128271,
+    "completed_orders": 118148,
+    "aov": 408.72,
+    "conversion_rate": 0.033,
+    "refund_cancel_rate": 0.0789,
+    "top_category": "Electronics",
+    "top_channel": "Organic Search",
+    "sessions": 3883799,
+    "marketing_spend": 807481.13,
+    "roas": 56.52
+  }
+}

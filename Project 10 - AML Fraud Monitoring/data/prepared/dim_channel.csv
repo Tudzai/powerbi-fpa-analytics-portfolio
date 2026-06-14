@@ -1,0 +1,9 @@
+ChannelKey,Channel,ChannelMode,ChannelRiskScore
+CH001,ACH,Batch,34
+CH002,Wire,Real-time,58
+CH003,Card,Real-time,43
+CH004,RTP,Real-time,66
+CH005,Cash Deposit,Branch,72
+CH006,International Transfer,Real-time,68
+CH007,Digital Wallet,Real-time,51
+CH008,Crypto Off-ramp,Real-time,83

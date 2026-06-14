@@ -1,0 +1,257 @@
+product_id,product_name,category,subcategory,brand,base_price,unit_cost,launch_date,active_flag
+P10000,Zenith Gaming 001,Electronics,Gaming,PlainGood,1038.62,712.56,2024-04-15,Y
+P10001,Northline Laptop 002,Electronics,Laptop,Northline,1556.17,984.66,2023-08-23,Y
+P10002,Zenith Mobile 003,Electronics,Mobile,CorePlus,1721.88,1176.81,2023-12-22,Y
+P10003,Northline Gaming 004,Electronics,Gaming,Zenith,1548.14,1077.08,2024-07-13,Y
+P10004,UrbanCo Audio 005,Electronics,Audio,Everly,324.62,228.11,2024-07-08,Y
+P10005,CorePlus Audio 006,Electronics,Audio,Vivid,966.2,619.76,2023-06-24,Y
+P10006,UrbanCo Laptop 007,Electronics,Laptop,Vivid,1389.25,872.73,2024-06-12,Y
+P10007,Vivid Mobile 008,Electronics,Mobile,CorePlus,650.68,476.19,2023-10-18,Y
+P10008,Modo Gaming 009,Electronics,Gaming,Everly,486.57,363.76,2023-10-08,Y
+P10009,Everly Mobile 010,Electronics,Mobile,Modo,894.74,642.69,2023-06-12,Y
+P10010,NovaHaus Laptop 011,Electronics,Laptop,UrbanCo,753.86,539.68,2024-08-18,Y
+P10011,Modo Gaming 012,Electronics,Gaming,Northline,236.74,170.32,2024-07-18,Y
+P10012,Zenith Wearables 013,Electronics,Wearables,Vivid,441.02,327.94,2024-08-13,Y
+P10013,Northline Wearables 014,Electronics,Wearables,PlainGood,1086.7,770.24,2023-02-22,Y
+P10014,Vivid Mobile 015,Electronics,Mobile,Zenith,1106.94,837.12,2023-03-06,Y
+P10015,Zenith Mobile 016,Electronics,Mobile,Aster,213.4,136.39,2023-09-23,Y
+P10016,Northline Audio 017,Electronics,Audio,Zenith,346.69,254.47,2024-03-29,Y
+P10017,Aster Wearables 018,Electronics,Wearables,Vivid,1285.8,786.51,2023-12-10,Y
+P10018,Vivid Laptop 019,Electronics,Laptop,Aster,1013.41,680.55,2023-02-25,Y
+P10019,NovaHaus Wearables 020,Electronics,Wearables,Aster,884.92,665.32,2024-04-02,Y
+P10020,PlainGood Audio 021,Electronics,Audio,Modo,1372.72,933.05,2024-09-01,Y
+P10021,Vivid Laptop 022,Electronics,Laptop,UrbanCo,752.57,485.98,2023-06-07,Y
+P10022,UrbanCo Laptop 023,Electronics,Laptop,Modo,1142.07,784.44,2024-01-25,Y
+P10023,Everly Laptop 024,Electronics,Laptop,NovaHaus,276.18,171.11,2024-11-26,Y
+P10024,Vivid Gaming 025,Electronics,Gaming,UrbanCo,1053.19,673.7,2023-06-08,Y
+P10025,Everly Wearables 026,Electronics,Wearables,Everly,1132.57,712.15,2023-10-01,Y
+P10026,Modo Laptop 027,Electronics,Laptop,CorePlus,1182.58,836.42,2023-11-15,Y
+P10027,Everly Gaming 028,Electronics,Gaming,Modo,307.03,212.0,2024-08-07,Y
+P10028,NovaHaus Mobile 029,Electronics,Mobile,CorePlus,704.62,466.65,2023-03-10,Y
+P10029,PlainGood Gaming 030,Electronics,Gaming,Vivid,622.52,399.96,2023-03-18,Y
+P10030,Modo Mobile 031,Electronics,Mobile,Northline,507.82,362.03,2024-10-29,Y
+P10031,UrbanCo Laptop 032,Electronics,Laptop,Aster,598.21,369.17,2024-10-22,Y
+P10032,Northline Wearables 033,Electronics,Wearables,Zenith,1286.8,933.0,2023-04-27,Y
+P10033,Zenith Mobile 034,Electronics,Mobile,Modo,1178.59,798.93,2024-09-25,Y
+P10034,Northline Gaming 035,Electronics,Gaming,UrbanCo,1346.41,877.58,2024-05-12,Y
+P10035,Vivid Wearables 036,Electronics,Wearables,PlainGood,930.55,649.58,2024-07-12,Y
+P10036,NovaHaus Gaming 037,Electronics,Gaming,Vivid,415.35,283.65,2023-11-14,Y
+P10037,CorePlus Mobile 038,Electronics,Mobile,PlainGood,169.77,125.67,2023-02-18,Y
+P10038,Zenith Gaming 039,Electronics,Gaming,CorePlus,308.02,229.85,2024-10-16,Y
+P10039,PlainGood Audio 040,Electronics,Audio,Vivid,365.62,247.5,2023-10-05,Y
+P10040,Northline Mobile 041,Electronics,Mobile,Northline,724.83,445.11,2023-10-24,Y
+P10041,PlainGood Audio 042,Electronics,Audio,CorePlus,973.25,690.7,2024-09-19,Y
+P10042,Zenith Gaming 043,Electronics,Gaming,Aster,421.92,317.06,2024-03-26,Y
+P10043,Everly Wearables 044,Electronics,Wearables,Northline,1502.05,1065.07,2023-01-28,Y
+P10044,CorePlus Mobile 045,Electronics,Mobile,NovaHaus,1667.25,1214.26,2024-06-26,Y
+P10045,Vivid Audio 046,Electronics,Audio,PlainGood,197.65,133.99,2024-04-18,Y
+P10046,UrbanCo Gaming 047,Electronics,Gaming,Zenith,356.23,218.85,2023-12-26,Y
+P10047,Aster Wearables 048,Electronics,Wearables,Vivid,1042.53,671.48,2024-05-10,Y
+P10048,Northline Gaming 049,Electronics,Gaming,Aster,991.46,616.4,2023-10-24,Y
+P10049,Northline Mobile 050,Electronics,Mobile,Northline,320.06,209.0,2023-07-19,Y
+P10050,UrbanCo Audio 051,Electronics,Audio,PlainGood,1095.29,792.3,2023-08-30,Y
+P10051,PlainGood Laptop 052,Electronics,Laptop,PlainGood,660.14,420.72,2023-09-06,Y
+P10052,Zenith Audio 053,Electronics,Audio,Vivid,450.57,331.36,2023-07-07,Y
+P10053,Aster Gaming 054,Electronics,Gaming,CorePlus,493.57,367.07,2023-09-21,Y
+P10054,Northline Wearables 055,Electronics,Wearables,Modo,531.35,402.08,2024-09-25,Y
+P10055,UrbanCo Mobile 056,Electronics,Mobile,Zenith,1099.18,809.07,2023-06-09,Y
+P10056,Everly Mobile 057,Electronics,Mobile,Everly,607.38,408.79,2024-11-30,Y
+P10057,Vivid Gaming 058,Electronics,Gaming,CorePlus,382.8,252.83,2024-01-10,Y
+P10058,CorePlus Gaming 059,Electronics,Gaming,Modo,738.15,473.81,2024-02-19,Y
+P10059,Everly Audio 060,Electronics,Audio,NovaHaus,1798.94,1118.47,2023-05-05,Y
+P10060,PlainGood Gaming 061,Electronics,Gaming,NovaHaus,499.67,335.87,2024-10-22,Y
+P10061,Everly Audio 062,Electronics,Audio,Northline,377.99,255.16,2024-07-08,Y
+P10062,Everly Wearables 063,Electronics,Wearables,Aster,749.65,557.37,2023-09-23,Y
+P10063,Vivid Mobile 064,Electronics,Mobile,Vivid,1151.56,839.8,2023-03-21,Y
+P10064,PlainGood Laptop 065,Electronics,Laptop,Everly,312.61,234.52,2023-12-09,Y
+P10065,PlainGood Laptop 066,Electronics,Laptop,PlainGood,1147.61,746.92,2023-11-26,Y
+P10066,Northline Gaming 067,Electronics,Gaming,Aster,647.89,467.32,2024-06-27,Y
+P10067,Modo Wearables 068,Electronics,Wearables,UrbanCo,811.07,589.7,2023-12-13,Y
+P10068,PlainGood Gaming 069,Electronics,Gaming,Zenith,402.23,291.86,2023-03-02,Y
+P10069,UrbanCo Audio 070,Electronics,Audio,Modo,1145.27,750.64,2024-09-10,Y
+P10070,Everly Gaming 071,Electronics,Gaming,UrbanCo,1307.54,951.37,2023-01-05,Y
+P10071,CorePlus Mobile 072,Electronics,Mobile,Aster,1282.22,817.76,2023-01-11,Y
+P10072,Everly Lighting 001,Home & Living,Lighting,Zenith,775.28,466.58,2023-01-08,Y
+P10073,Modo Kitchen 002,Home & Living,Kitchen,NovaHaus,325.77,216.22,2024-03-22,Y
+P10074,NovaHaus Furniture 003,Home & Living,Furniture,Northline,61.96,31.28,2023-02-17,Y
+P10075,PlainGood Storage 004,Home & Living,Storage,Everly,360.05,215.49,2024-11-25,Y
+P10076,NovaHaus Decor 005,Home & Living,Decor,NovaHaus,713.16,377.34,2023-08-28,Y
+P10077,Northline Lighting 006,Home & Living,Lighting,Zenith,352.77,226.41,2024-03-03,Y
+P10078,CorePlus Furniture 007,Home & Living,Furniture,Modo,605.69,363.65,2023-11-17,Y
+P10079,Zenith Kitchen 008,Home & Living,Kitchen,NovaHaus,424.41,233.29,2024-05-27,Y
+P10080,Modo Decor 009,Home & Living,Decor,Vivid,715.23,400.16,2023-12-25,Y
+P10081,UrbanCo Lighting 010,Home & Living,Lighting,CorePlus,527.63,240.63,2023-03-23,Y
+P10082,CorePlus Storage 011,Home & Living,Storage,Vivid,419.2,253.85,2024-10-23,Y
+P10083,Northline Lighting 012,Home & Living,Lighting,Everly,105.29,56.55,2023-05-23,Y
+P10084,Zenith Lighting 013,Home & Living,Lighting,Aster,384.36,241.53,2023-01-27,Y
+P10085,Northline Lighting 014,Home & Living,Lighting,Everly,174.81,102.31,2023-07-24,Y
+P10086,Zenith Decor 015,Home & Living,Decor,NovaHaus,606.67,278.93,2024-10-07,Y
+P10087,PlainGood Decor 016,Home & Living,Decor,PlainGood,502.98,286.72,2024-02-17,Y
+P10088,Zenith Furniture 017,Home & Living,Furniture,NovaHaus,469.65,250.43,2024-02-17,Y
+P10089,Northline Kitchen 018,Home & Living,Kitchen,Modo,587.54,396.5,2023-09-05,Y
+P10090,CorePlus Decor 019,Home & Living,Decor,PlainGood,349.65,208.16,2024-03-24,Y
+P10091,NovaHaus Lighting 020,Home & Living,Lighting,Northline,306.89,193.27,2023-01-18,Y
+P10092,NovaHaus Furniture 021,Home & Living,Furniture,UrbanCo,31.81,19.36,2023-03-12,Y
+P10093,UrbanCo Decor 022,Home & Living,Decor,PlainGood,604.83,384.26,2023-02-19,Y
+P10094,CorePlus Lighting 023,Home & Living,Lighting,Vivid,472.47,220.89,2024-02-29,Y
+P10095,CorePlus Furniture 024,Home & Living,Furniture,PlainGood,299.47,138.02,2023-07-30,Y
+P10096,UrbanCo Kitchen 025,Home & Living,Kitchen,Modo,584.28,386.68,2024-10-09,Y
+P10097,Everly Kitchen 026,Home & Living,Kitchen,Northline,446.17,293.69,2023-07-03,Y
+P10098,Aster Lighting 027,Home & Living,Lighting,Zenith,21.97,13.39,2023-09-11,Y
+P10099,Everly Storage 028,Home & Living,Storage,PlainGood,596.84,334.58,2024-11-18,Y
+P10100,UrbanCo Lighting 029,Home & Living,Lighting,Aster,427.27,209.5,2023-11-21,Y
+P10101,Modo Storage 030,Home & Living,Storage,Northline,339.65,176.09,2024-02-28,Y
+P10102,PlainGood Storage 031,Home & Living,Storage,Aster,513.92,320.33,2023-12-07,Y
+P10103,CorePlus Decor 032,Home & Living,Decor,PlainGood,188.89,118.61,2023-04-09,Y
+P10104,NovaHaus Storage 033,Home & Living,Storage,NovaHaus,690.71,371.45,2024-02-07,Y
+P10105,Everly Decor 034,Home & Living,Decor,Vivid,225.17,150.66,2023-11-21,Y
+P10106,Vivid Furniture 035,Home & Living,Furniture,Everly,750.57,403.55,2023-03-20,Y
+P10107,Vivid Furniture 036,Home & Living,Furniture,Northline,48.08,31.4,2024-04-03,Y
+P10108,Everly Storage 037,Home & Living,Storage,Aster,668.69,395.79,2023-03-22,Y
+P10109,Aster Storage 038,Home & Living,Storage,Everly,282.4,127.1,2023-01-22,Y
+P10110,UrbanCo Furniture 039,Home & Living,Furniture,NovaHaus,63.65,41.1,2024-07-16,Y
+P10111,Modo Furniture 040,Home & Living,Furniture,NovaHaus,203.48,109.2,2024-02-18,Y
+P10112,PlainGood Decor 041,Home & Living,Decor,Zenith,699.71,421.5,2024-06-07,Y
+P10113,UrbanCo Lighting 042,Home & Living,Lighting,UrbanCo,367.31,181.79,2023-04-20,Y
+P10114,PlainGood Lighting 043,Home & Living,Lighting,Everly,209.2,137.69,2024-08-30,Y
+P10115,Vivid Storage 044,Home & Living,Storage,Aster,322.14,192.05,2023-09-15,Y
+P10116,UrbanCo Accessories 001,Fashion,Accessories,NovaHaus,70.37,37.59,2023-09-05,Y
+P10117,Vivid Accessories 002,Fashion,Accessories,CorePlus,61.86,23.97,2023-01-26,Y
+P10118,Zenith Bags 003,Fashion,Bags,Zenith,10.93,4.85,2023-06-13,Y
+P10119,Zenith Activewear 004,Fashion,Activewear,Zenith,220.6,95.58,2023-09-03,Y
+P10120,UrbanCo Shoes 005,Fashion,Shoes,PlainGood,81.17,32.0,2023-02-23,Y
+P10121,Northline Accessories 006,Fashion,Accessories,Everly,96.58,38.01,2023-11-01,Y
+P10122,Northline Bags 007,Fashion,Bags,Zenith,238.77,124.52,2024-10-20,Y
+P10123,Everly Shoes 008,Fashion,Shoes,Aster,91.29,49.98,2024-06-13,Y
+P10124,Zenith Shoes 009,Fashion,Shoes,Zenith,168.66,86.93,2023-08-22,Y
+P10125,UrbanCo Apparel 010,Fashion,Apparel,Aster,180.56,82.43,2023-10-19,Y
+P10126,Aster Apparel 011,Fashion,Apparel,Vivid,199.89,83.57,2024-04-18,Y
+P10127,CorePlus Apparel 012,Fashion,Apparel,Vivid,30.52,17.25,2024-03-07,Y
+P10128,Aster Activewear 013,Fashion,Activewear,PlainGood,16.54,9.28,2024-02-19,Y
+P10129,Aster Accessories 014,Fashion,Accessories,PlainGood,193.51,78.02,2023-03-31,Y
+P10130,CorePlus Accessories 015,Fashion,Accessories,Vivid,115.15,46.69,2024-03-19,Y
+P10131,UrbanCo Shoes 016,Fashion,Shoes,UrbanCo,214.9,93.88,2023-09-13,Y
+P10132,CorePlus Bags 017,Fashion,Bags,UrbanCo,54.55,20.3,2023-03-19,Y
+P10133,Everly Shoes 018,Fashion,Shoes,Everly,26.25,11.26,2024-02-14,Y
+P10134,Everly Bags 019,Fashion,Bags,PlainGood,32.0,17.46,2023-05-05,Y
+P10135,UrbanCo Accessories 020,Fashion,Accessories,Modo,60.79,31.16,2023-05-11,Y
+P10136,Vivid Bags 021,Fashion,Bags,Modo,62.82,27.08,2024-10-28,Y
+P10137,Zenith Shoes 022,Fashion,Shoes,CorePlus,77.87,31.25,2024-09-03,Y
+P10138,Aster Accessories 023,Fashion,Accessories,Zenith,38.12,16.41,2024-02-06,Y
+P10139,Northline Activewear 024,Fashion,Activewear,Everly,96.44,39.22,2024-05-12,Y
+P10140,NovaHaus Shoes 025,Fashion,Shoes,CorePlus,36.63,15.1,2023-12-29,Y
+P10141,Modo Bags 026,Fashion,Bags,NovaHaus,172.94,79.97,2023-02-08,Y
+P10142,Northline Shoes 027,Fashion,Shoes,Aster,23.41,11.05,2023-12-26,Y
+P10143,PlainGood Accessories 028,Fashion,Accessories,Zenith,130.61,51.27,2023-08-24,Y
+P10144,UrbanCo Bags 029,Fashion,Bags,UrbanCo,88.91,43.82,2024-11-06,Y
+P10145,PlainGood Accessories 030,Fashion,Accessories,Zenith,177.04,91.88,2023-12-17,Y
+P10146,Zenith Accessories 031,Fashion,Accessories,Vivid,101.41,42.65,2023-02-25,Y
+P10147,CorePlus Apparel 032,Fashion,Apparel,UrbanCo,92.91,39.54,2024-10-26,Y
+P10148,CorePlus Bags 033,Fashion,Bags,Northline,95.22,48.33,2023-04-27,Y
+P10149,Aster Apparel 034,Fashion,Apparel,PlainGood,187.1,93.97,2023-03-16,Y
+P10150,Aster Apparel 035,Fashion,Apparel,Everly,97.94,50.54,2023-10-14,Y
+P10151,Everly Activewear 036,Fashion,Activewear,Northline,27.86,15.5,2023-06-22,Y
+P10152,NovaHaus Accessories 037,Fashion,Accessories,NovaHaus,61.45,24.38,2023-07-23,Y
+P10153,PlainGood Activewear 038,Fashion,Activewear,Modo,185.55,98.12,2024-05-26,Y
+P10154,Everly Activewear 039,Fashion,Activewear,Zenith,139.73,76.56,2024-10-26,Y
+P10155,UrbanCo Bags 040,Fashion,Bags,UrbanCo,64.87,32.79,2024-06-05,Y
+P10156,Northline Accessories 041,Fashion,Accessories,Aster,69.68,34.7,2024-01-12,Y
+P10157,PlainGood Activewear 042,Fashion,Activewear,PlainGood,75.02,36.21,2023-04-19,Y
+P10158,PlainGood Activewear 043,Fashion,Activewear,PlainGood,84.1,37.7,2023-08-15,Y
+P10159,Modo Activewear 044,Fashion,Activewear,Everly,237.28,118.37,2024-02-10,Y
+P10160,Everly Bags 045,Fashion,Bags,Northline,168.56,91.3,2024-02-18,Y
+P10161,UrbanCo Accessories 046,Fashion,Accessories,CorePlus,16.45,8.44,2024-09-21,Y
+P10162,CorePlus Haircare 001,Beauty,Haircare,NovaHaus,52.45,22.61,2024-03-04,Y
+P10163,CorePlus Tools 002,Beauty,Tools,UrbanCo,108.26,44.65,2023-12-03,Y
+P10164,Northline Fragrance 003,Beauty,Fragrance,Vivid,205.78,102.12,2023-07-22,Y
+P10165,UrbanCo Fragrance 004,Beauty,Fragrance,Northline,156.06,79.97,2024-07-20,Y
+P10166,Modo Tools 005,Beauty,Tools,CorePlus,126.48,61.54,2024-05-14,Y
+P10167,Northline Tools 006,Beauty,Tools,Vivid,147.74,66.0,2023-02-06,Y
+P10168,UrbanCo Fragrance 007,Beauty,Fragrance,Aster,24.05,11.37,2024-02-08,Y
+P10169,Vivid Haircare 008,Beauty,Haircare,Everly,96.26,36.4,2023-02-03,Y
+P10170,Everly Tools 009,Beauty,Tools,Modo,145.78,80.01,2023-04-09,Y
+P10171,PlainGood Fragrance 010,Beauty,Fragrance,Zenith,26.74,14.12,2023-12-03,Y
+P10172,Aster Skincare 011,Beauty,Skincare,Aster,89.99,37.9,2023-07-03,Y
+P10173,Everly Skincare 012,Beauty,Skincare,Vivid,23.18,9.24,2024-09-03,Y
+P10174,PlainGood Tools 013,Beauty,Tools,Vivid,143.43,68.79,2023-02-05,Y
+P10175,Everly Skincare 014,Beauty,Skincare,Northline,42.88,16.48,2023-04-09,Y
+P10176,Vivid Makeup 015,Beauty,Makeup,PlainGood,116.68,63.41,2024-07-13,Y
+P10177,UrbanCo Haircare 016,Beauty,Haircare,PlainGood,52.87,27.23,2024-04-27,Y
+P10178,Zenith Haircare 017,Beauty,Haircare,Zenith,89.79,47.51,2024-09-07,Y
+P10179,Aster Tools 018,Beauty,Tools,Everly,159.19,89.59,2023-05-13,Y
+P10180,Northline Makeup 019,Beauty,Makeup,CorePlus,80.21,31.63,2023-04-10,Y
+P10181,CorePlus Makeup 020,Beauty,Makeup,NovaHaus,198.32,84.5,2023-08-11,Y
+P10182,Vivid Tools 021,Beauty,Tools,Zenith,89.3,40.0,2023-10-30,Y
+P10183,Everly Tools 022,Beauty,Tools,PlainGood,21.84,9.96,2023-10-22,Y
+P10184,Northline Haircare 023,Beauty,Haircare,Aster,21.15,11.45,2024-05-19,Y
+P10185,Everly Tools 024,Beauty,Tools,Modo,133.56,52.25,2023-12-17,Y
+P10186,CorePlus Haircare 025,Beauty,Haircare,CorePlus,94.84,53.85,2023-01-05,Y
+P10187,UrbanCo Makeup 026,Beauty,Makeup,Everly,56.06,31.65,2023-07-01,Y
+P10188,Modo Makeup 027,Beauty,Makeup,Northline,13.42,6.71,2024-03-04,Y
+P10189,Everly Skincare 028,Beauty,Skincare,NovaHaus,112.33,60.28,2024-07-15,Y
+P10190,Northline Fragrance 029,Beauty,Fragrance,Vivid,164.18,69.33,2023-10-29,Y
+P10191,Aster Makeup 030,Beauty,Makeup,Everly,21.8,11.23,2024-04-14,Y
+P10192,Zenith Fragrance 031,Beauty,Fragrance,NovaHaus,118.38,65.38,2023-11-05,Y
+P10193,Vivid Makeup 032,Beauty,Makeup,Modo,192.61,107.71,2024-01-29,Y
+P10194,Modo Tools 033,Beauty,Tools,Vivid,195.65,89.63,2024-09-01,Y
+P10195,NovaHaus Snacks 001,Grocery,Snacks,PlainGood,4.06,2.75,2023-07-03,Y
+P10196,Vivid Beverages 002,Grocery,Beverages,PlainGood,69.16,43.11,2024-04-07,Y
+P10197,UrbanCo Fresh 003,Grocery,Fresh,PlainGood,45.25,34.39,2023-08-17,Y
+P10198,Aster Fresh 004,Grocery,Fresh,CorePlus,54.65,34.64,2024-06-09,Y
+P10199,UrbanCo Beverages 005,Grocery,Beverages,Northline,75.13,53.86,2023-12-13,Y
+P10200,Northline Beverages 006,Grocery,Beverages,Modo,17.26,11.61,2024-01-04,Y
+P10201,UrbanCo Fresh 007,Grocery,Fresh,Vivid,48.95,32.28,2024-10-26,Y
+P10202,Aster Fresh 008,Grocery,Fresh,Zenith,30.39,20.26,2024-07-20,Y
+P10203,UrbanCo Pantry 009,Grocery,Pantry,UrbanCo,66.92,44.45,2024-01-04,Y
+P10204,Vivid Fresh 010,Grocery,Fresh,Northline,48.89,32.58,2024-08-04,Y
+P10205,CorePlus Pantry 011,Grocery,Pantry,Modo,49.12,30.65,2024-11-01,Y
+P10206,Zenith Snacks 012,Grocery,Snacks,Vivid,36.31,25.89,2023-01-07,Y
+P10207,NovaHaus Household 013,Grocery,Household,Everly,7.57,5.65,2024-05-24,Y
+P10208,Vivid Beverages 014,Grocery,Beverages,CorePlus,77.83,57.96,2023-11-04,Y
+P10209,Vivid Snacks 015,Grocery,Snacks,Northline,8.65,5.81,2024-08-13,Y
+P10210,Zenith Pantry 016,Grocery,Pantry,Modo,59.22,42.24,2024-06-21,Y
+P10211,CorePlus Fresh 017,Grocery,Fresh,UrbanCo,73.19,52.0,2023-04-15,Y
+P10212,Aster Fresh 018,Grocery,Fresh,Zenith,15.5,11.56,2023-11-06,Y
+P10213,Vivid Fresh 019,Grocery,Fresh,NovaHaus,26.07,16.93,2024-03-04,Y
+P10214,Everly Fresh 020,Grocery,Fresh,Vivid,22.28,17.38,2024-05-08,Y
+P10215,Modo Household 021,Grocery,Household,UrbanCo,59.74,39.87,2023-02-01,Y
+P10216,Modo Household 022,Grocery,Household,Modo,36.98,28.4,2023-11-23,Y
+P10217,UrbanCo Snacks 023,Grocery,Snacks,Northline,13.69,10.22,2023-01-31,Y
+P10218,Zenith Snacks 024,Grocery,Snacks,NovaHaus,58.96,39.87,2023-03-03,Y
+P10219,Vivid Snacks 025,Grocery,Snacks,NovaHaus,27.25,19.59,2024-11-16,Y
+P10220,NovaHaus Beverages 026,Grocery,Beverages,NovaHaus,39.88,27.26,2023-02-15,Y
+P10221,Vivid Beverages 027,Grocery,Beverages,Modo,57.65,44.7,2024-06-23,Y
+P10222,Vivid Pantry 028,Grocery,Pantry,Northline,21.48,16.3,2023-06-28,Y
+P10223,PlainGood Outdoor 001,Sports,Outdoor,Modo,539.91,307.46,2023-05-05,Y
+P10224,Everly Yoga 002,Sports,Yoga,Everly,97.66,51.74,2024-04-10,Y
+P10225,NovaHaus Cycling 003,Sports,Cycling,Zenith,443.03,221.48,2024-01-13,Y
+P10226,CorePlus Cycling 004,Sports,Cycling,Vivid,555.08,319.94,2023-09-22,Y
+P10227,CorePlus Cycling 005,Sports,Cycling,Everly,252.2,142.15,2023-04-05,Y
+P10228,UrbanCo Outdoor 006,Sports,Outdoor,Zenith,310.94,169.59,2023-01-19,Y
+P10229,Everly Team Sports 007,Sports,Team Sports,UrbanCo,417.71,204.87,2023-08-21,Y
+P10230,Zenith Yoga 008,Sports,Yoga,Modo,311.55,143.21,2024-01-20,Y
+P10231,Modo Team Sports 009,Sports,Team Sports,PlainGood,285.57,161.63,2023-12-29,Y
+P10232,Northline Yoga 010,Sports,Yoga,Everly,46.59,21.58,2023-01-19,Y
+P10233,UrbanCo Cycling 011,Sports,Cycling,CorePlus,303.08,158.37,2024-09-18,Y
+P10234,Aster Cycling 012,Sports,Cycling,Aster,308.79,159.41,2023-01-10,Y
+P10235,PlainGood Fitness 013,Sports,Fitness,Zenith,271.62,146.03,2024-05-06,Y
+P10236,Northline Cycling 014,Sports,Cycling,Modo,462.52,262.16,2023-09-04,Y
+P10237,UrbanCo Yoga 015,Sports,Yoga,Everly,253.55,141.57,2024-05-15,Y
+P10238,UrbanCo Yoga 016,Sports,Yoga,Zenith,357.9,178.17,2024-01-22,Y
+P10239,PlainGood Cycling 017,Sports,Cycling,Modo,74.03,40.4,2024-06-27,Y
+P10240,Northline Fitness 018,Sports,Fitness,Vivid,135.55,81.73,2023-12-31,Y
+P10241,Northline Team Sports 019,Sports,Team Sports,Vivid,144.78,88.08,2023-12-15,Y
+P10242,Aster Outdoor 020,Sports,Outdoor,Vivid,233.64,158.24,2024-07-21,Y
+P10243,Everly Stationery 001,Books & Media,Stationery,UrbanCo,36.71,24.85,2024-12-01,Y
+P10244,CorePlus Games 002,Books & Media,Games,PlainGood,16.12,8.96,2024-06-23,Y
+P10245,Northline Stationery 003,Books & Media,Stationery,Northline,32.08,15.56,2023-03-20,Y
+P10246,CorePlus Music 004,Books & Media,Music,Zenith,47.35,30.84,2023-12-09,Y
+P10247,Northline Learning 005,Books & Media,Learning,Aster,39.36,20.84,2023-01-06,Y
+P10248,Everly Books 006,Books & Media,Books,CorePlus,22.99,11.07,2023-07-20,Y
+P10249,CorePlus Games 007,Books & Media,Games,Northline,109.67,59.14,2024-10-18,Y
+P10250,Everly Music 008,Books & Media,Music,UrbanCo,86.72,53.85,2023-05-31,Y
+P10251,Everly Music 009,Books & Media,Music,UrbanCo,18.91,11.4,2023-07-17,Y
+P10252,Everly Music 010,Books & Media,Music,Modo,90.37,48.0,2024-09-05,Y
+P10253,Aster Stationery 011,Books & Media,Stationery,Everly,112.75,59.06,2024-07-10,Y
+P10254,Everly Games 012,Books & Media,Games,Aster,15.63,8.04,2023-11-03,Y
+P10255,Vivid Music 013,Books & Media,Music,Vivid,17.88,10.76,2023-08-28,Y

@@ -1,0 +1,128 @@
+[
+  {
+    "name": "Latest Month",
+    "expression": "MAX ( DimMonth[MonthStart] )",
+    "formatString": "yyyy-mm-dd",
+    "displayFolder": "Time"
+  },
+  {
+    "name": "New Users",
+    "expression": "SUM ( MonthlyKPIs[NewUsers] )",
+    "formatString": "#,0",
+    "displayFolder": "Lifecycle"
+  },
+  {
+    "name": "Active Users",
+    "expression": "SUM ( MonthlyKPIs[ActiveUsers] )",
+    "formatString": "#,0",
+    "displayFolder": "Lifecycle"
+  },
+  {
+    "name": "Returning Users",
+    "expression": "SUM ( MonthlyKPIs[ReturningUsers] )",
+    "formatString": "#,0",
+    "displayFolder": "Lifecycle"
+  },
+  {
+    "name": "New Customers",
+    "expression": "SUM ( MonthlyKPIs[NewCustomers] )",
+    "formatString": "#,0",
+    "displayFolder": "Lifecycle"
+  },
+  {
+    "name": "Active Customers",
+    "expression": "SUM ( MonthlyKPIs[ActiveCustomers] )",
+    "formatString": "#,0",
+    "displayFolder": "Lifecycle"
+  },
+  {
+    "name": "Returning Customers",
+    "expression": "SUM ( MonthlyKPIs[ReturningCustomers] )",
+    "formatString": "#,0",
+    "displayFolder": "Lifecycle"
+  },
+  {
+    "name": "Repeat Purchasers",
+    "expression": "SUM ( MonthlyKPIs[RepeatPurchasers] )",
+    "formatString": "#,0",
+    "displayFolder": "Lifecycle"
+  },
+  {
+    "name": "Repeat Purchase Rate",
+    "expression": "DIVIDE ( [Repeat Purchasers], [Active Customers] )",
+    "formatString": "0.0%",
+    "displayFolder": "Lifecycle"
+  },
+  {
+    "name": "Churn Signal Customers",
+    "expression": "SUM ( MonthlyKPIs[ChurnSignalCustomers] )",
+    "formatString": "#,0",
+    "displayFolder": "Risk"
+  },
+  {
+    "name": "Churn Risk Revenue",
+    "expression": "SUM ( MonthlyKPIs[ChurnRiskRevenue] )",
+    "formatString": "$#,0,.0K",
+    "displayFolder": "Risk"
+  },
+  {
+    "name": "Net Revenue",
+    "expression": "SUM ( MonthlyKPIs[NetRevenue] )",
+    "formatString": "$#,0,.0K",
+    "displayFolder": "Revenue"
+  },
+  {
+    "name": "LTV To Date",
+    "expression": "AVERAGE ( MonthlyKPIs[LTVToDate] )",
+    "formatString": "$#,0",
+    "displayFolder": "Revenue"
+  },
+  {
+    "name": "Cohort Retention %",
+    "expression": "DIVIDE ( SUM ( CohortRetention[RetainedCustomers] ), SUM ( CohortRetention[CohortSize] ) )",
+    "formatString": "0.0%",
+    "displayFolder": "Cohort"
+  },
+  {
+    "name": "Cohort Repeat Purchase %",
+    "expression": "DIVIDE ( SUM ( CohortRetention[RepeatCustomers] ), SUM ( CohortRetention[CohortSize] ) )",
+    "formatString": "0.0%",
+    "displayFolder": "Cohort"
+  },
+  {
+    "name": "Cumulative LTV",
+    "expression": "DIVIDE ( SUM ( CohortRetention[CumulativeRevenue] ), SUM ( CohortRetention[CohortSize] ) )",
+    "formatString": "$#,0",
+    "displayFolder": "Cohort"
+  },
+  {
+    "name": "Latest Active Users",
+    "expression": "VAR m = [Latest Month] RETURN CALCULATE ( [Active Users], DimMonth[MonthStart] = m )",
+    "formatString": "#,0",
+    "displayFolder": "Latest"
+  },
+  {
+    "name": "Latest Returning Users",
+    "expression": "VAR m = [Latest Month] RETURN CALCULATE ( [Returning Users], DimMonth[MonthStart] = m )",
+    "formatString": "#,0",
+    "displayFolder": "Latest"
+  },
+  {
+    "name": "Latest Repeat Purchase Rate",
+    "expression": "VAR m = [Latest Month] RETURN CALCULATE ( [Repeat Purchase Rate], DimMonth[MonthStart] = m )",
+    "formatString": "0.0%",
+    "displayFolder": "Latest"
+  },
+  {
+    "name": "Latest Churn Signals",
+    "expression": "VAR m = [Latest Month] RETURN CALCULATE ( [Churn Signal Customers], DimMonth[MonthStart] = m )",
+    "formatString": "#,0",
+    "displayFolder": "Latest"
+  },
+  {
+    "name": "Latest Net Revenue",
+    "expression": "VAR m = [Latest Month] RETURN CALCULATE ( [Net Revenue], DimMonth[MonthStart] = m )",
+    "formatString": "$#,0,.0K",
+    "displayFolder": "Latest"
+  }
+]

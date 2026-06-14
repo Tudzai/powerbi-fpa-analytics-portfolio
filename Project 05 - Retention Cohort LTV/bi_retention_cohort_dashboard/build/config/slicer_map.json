@@ -1,0 +1,7 @@
+{
+  "Date": "DimMonth[MonthYear]",
+  "Channel": "DimUser[AcquisitionChannel]",
+  "Region": "DimUser[Region]",
+  "Plan": "DimUser[PlanTier]",
+  "Segment": "DimUser[CustomerSegment]"
+}

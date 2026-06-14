@@ -1,0 +1,88 @@
+MonthStart,MonthYear,LifecycleType,Users
+2024-01-01,Jan 2024,New Users,161
+2024-01-01,Jan 2024,Returning Users,0
+2024-01-01,Jan 2024,Inactive Existing Users,5854
+2024-02-01,Feb 2024,New Users,169
+2024-02-01,Feb 2024,Returning Users,95
+2024-02-01,Feb 2024,Inactive Existing Users,5749
+2024-03-01,Mar 2024,New Users,201
+2024-03-01,Mar 2024,Returning Users,194
+2024-03-01,Mar 2024,Inactive Existing Users,5599
+2024-04-01,Apr 2024,New Users,208
+2024-04-01,Apr 2024,Returning Users,307
+2024-04-01,Apr 2024,Inactive Existing Users,5472
+2024-05-01,May 2024,New Users,227
+2024-05-01,May 2024,Returning Users,399
+2024-05-01,May 2024,Inactive Existing Users,5342
+2024-06-01,Jun 2024,New Users,211
+2024-06-01,Jun 2024,Returning Users,501
+2024-06-01,Jun 2024,Inactive Existing Users,5282
+2024-07-01,Jul 2024,New Users,208
+2024-07-01,Jul 2024,Returning Users,634
+2024-07-01,Jul 2024,Inactive Existing Users,5143
+2024-08-01,Aug 2024,New Users,203
+2024-08-01,Aug 2024,Returning Users,675
+2024-08-01,Aug 2024,Inactive Existing Users,5124
+2024-09-01,Sep 2024,New Users,191
+2024-09-01,Sep 2024,Returning Users,785
+2024-09-01,Sep 2024,Inactive Existing Users,5031
+2024-10-01,Oct 2024,New Users,203
+2024-10-01,Oct 2024,Returning Users,858
+2024-10-01,Oct 2024,Inactive Existing Users,4932
+2024-11-01,Nov 2024,New Users,194
+2024-11-01,Nov 2024,Returning Users,949
+2024-11-01,Nov 2024,Inactive Existing Users,4859
+2024-12-01,Dec 2024,New Users,155
+2024-12-01,Dec 2024,Returning Users,1044
+2024-12-01,Dec 2024,Inactive Existing Users,4836
+2025-01-01,Jan 2025,New Users,169
+2025-01-01,Jan 2025,Returning Users,1082
+2025-01-01,Jan 2025,Inactive Existing Users,4764
+2025-02-01,Feb 2025,New Users,179
+2025-02-01,Feb 2025,Returning Users,1203
+2025-02-01,Feb 2025,Inactive Existing Users,4624
+2025-03-01,Mar 2025,New Users,170
+2025-03-01,Mar 2025,Returning Users,1287
+2025-03-01,Mar 2025,Inactive Existing Users,4558
+2025-04-01,Apr 2025,New Users,205
+2025-04-01,Apr 2025,Returning Users,1335
+2025-04-01,Apr 2025,Inactive Existing Users,4458
+2025-05-01,May 2025,New Users,166
+2025-05-01,May 2025,Returning Users,1427
+2025-05-01,May 2025,Inactive Existing Users,4418
+2025-06-01,Jun 2025,New Users,207
+2025-06-01,Jun 2025,Returning Users,1405
+2025-06-01,Jun 2025,Inactive Existing Users,4377
+2025-07-01,Jul 2025,New Users,217
+2025-07-01,Jul 2025,Returning Users,1517
+2025-07-01,Jul 2025,Inactive Existing Users,4257
+2025-08-01,Aug 2025,New Users,275
+2025-08-01,Aug 2025,Returning Users,1536
+2025-08-01,Aug 2025,Inactive Existing Users,4144
+2025-09-01,Sep 2025,New Users,255
+2025-09-01,Sep 2025,Returning Users,1635
+2025-09-01,Sep 2025,Inactive Existing Users,4068
+2025-10-01,Oct 2025,New Users,262
+2025-10-01,Oct 2025,Returning Users,1765
+2025-10-01,Oct 2025,Inactive Existing Users,3928
+2025-11-01,Nov 2025,New Users,264
+2025-11-01,Nov 2025,Returning Users,1870
+2025-11-01,Nov 2025,Inactive Existing Users,3836
+2025-12-01,Dec 2025,New Users,295
+2025-12-01,Dec 2025,Returning Users,1991
+2025-12-01,Dec 2025,Inactive Existing Users,3654
+2026-01-01,Jan 2026,New Users,254
+2026-01-01,Jan 2026,Returning Users,2075
+2026-01-01,Jan 2026,Inactive Existing Users,3631
+2026-02-01,Feb 2026,New Users,262
+2026-02-01,Feb 2026,Returning Users,2172
+2026-02-01,Feb 2026,Inactive Existing Users,3546
+2026-03-01,Mar 2026,New Users,204
+2026-03-01,Mar 2026,Returning Users,2332
+2026-03-01,Mar 2026,Inactive Existing Users,3466
+2026-04-01,Apr 2026,New Users,213
+2026-04-01,Apr 2026,Returning Users,2395
+2026-04-01,Apr 2026,Inactive Existing Users,3381
+2026-05-01,May 2026,New Users,185
+2026-05-01,May 2026,Returning Users,2457
+2026-05-01,May 2026,Inactive Existing Users,3357

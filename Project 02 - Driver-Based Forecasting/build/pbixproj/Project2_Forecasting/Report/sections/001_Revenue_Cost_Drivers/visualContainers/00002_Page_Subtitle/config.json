@@ -1,0 +1,42 @@
+{
+  "name": "e704a6a9eac14a3a9a7b",
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Volume, rate, mix, discount and direct-cost levers.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "8pt",
+                      "color": "#E8F0F7"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 24,
+        "y": 42,
+        "z": 101,
+        "width": 680,
+        "height": 18,
+        "tabOrder": 101
+      }
+    }
+  ]
+}

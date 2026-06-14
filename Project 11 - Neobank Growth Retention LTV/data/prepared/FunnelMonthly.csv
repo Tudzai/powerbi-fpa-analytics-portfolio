@@ -1,0 +1,871 @@
+﻿MonthStart,ChannelKey,StageName,StageOrder,UserCount
+2024-01-01,lifecycle,Signup Started,1,601
+2024-01-01,lifecycle,KYC Submitted,2,454
+2024-01-01,lifecycle,KYC Approved,3,372
+2024-01-01,lifecycle,Activated,4,228
+2024-01-01,lifecycle,Funded Account,5,115
+2024-01-01,organic,Signup Started,1,681
+2024-01-01,organic,KYC Submitted,2,534
+2024-01-01,organic,KYC Approved,3,451
+2024-01-01,organic,Activated,4,273
+2024-01-01,organic,Funded Account,5,144
+2024-01-01,paid_search,Signup Started,1,901
+2024-01-01,paid_search,KYC Submitted,2,681
+2024-01-01,paid_search,KYC Approved,3,545
+2024-01-01,paid_search,Activated,4,323
+2024-01-01,paid_search,Funded Account,5,155
+2024-01-01,paid_social,Signup Started,1,1069
+2024-01-01,paid_social,KYC Submitted,2,784
+2024-01-01,paid_social,KYC Approved,3,613
+2024-01-01,paid_social,Activated,4,359
+2024-01-01,paid_social,Funded Account,5,169
+2024-01-01,partner,Signup Started,1,862
+2024-01-01,partner,KYC Submitted,2,656
+2024-01-01,partner,KYC Approved,3,529
+2024-01-01,partner,Activated,4,320
+2024-01-01,partner,Funded Account,5,160
+2024-01-01,referral,Signup Started,1,698
+2024-01-01,referral,KYC Submitted,2,547
+2024-01-01,referral,KYC Approved,3,451
+2024-01-01,referral,Activated,4,280
+2024-01-01,referral,Funded Account,5,148
+2024-02-01,lifecycle,Signup Started,1,661
+2024-02-01,lifecycle,KYC Submitted,2,515
+2024-02-01,lifecycle,KYC Approved,3,418
+2024-02-01,lifecycle,Activated,4,252
+2024-02-01,lifecycle,Funded Account,5,121
+2024-02-01,organic,Signup Started,1,814
+2024-02-01,organic,KYC Submitted,2,633
+2024-02-01,organic,KYC Approved,3,529
+2024-02-01,organic,Activated,4,333
+2024-02-01,organic,Funded Account,5,173
+2024-02-01,paid_search,Signup Started,1,944
+2024-02-01,paid_search,KYC Submitted,2,723
+2024-02-01,paid_search,KYC Approved,3,574
+2024-02-01,paid_search,Activated,4,347
+2024-02-01,paid_search,Funded Account,5,165
+2024-02-01,paid_social,Signup Started,1,1145
+2024-02-01,paid_social,KYC Submitted,2,838
+2024-02-01,paid_social,KYC Approved,3,651
+2024-02-01,paid_social,Activated,4,373
+2024-02-01,paid_social,Funded Account,5,173
+2024-02-01,partner,Signup Started,1,988
+2024-02-01,partner,KYC Submitted,2,778
+2024-02-01,partner,KYC Approved,3,634
+2024-02-01,partner,Activated,4,397
+2024-02-01,partner,Funded Account,5,204
+2024-02-01,referral,Signup Started,1,817
+2024-02-01,referral,KYC Submitted,2,642
+2024-02-01,referral,KYC Approved,3,532
+2024-02-01,referral,Activated,4,344
+2024-02-01,referral,Funded Account,5,180
+2024-03-01,lifecycle,Signup Started,1,654
+2024-03-01,lifecycle,KYC Submitted,2,510
+2024-03-01,lifecycle,KYC Approved,3,413
+2024-03-01,lifecycle,Activated,4,260
+2024-03-01,lifecycle,Funded Account,5,131
+2024-03-01,organic,Signup Started,1,927
+2024-03-01,organic,KYC Submitted,2,696
+2024-03-01,organic,KYC Approved,3,561
+2024-03-01,organic,Activated,4,345
+2024-03-01,organic,Funded Account,5,171
+2024-03-01,paid_search,Signup Started,1,1029
+2024-03-01,paid_search,KYC Submitted,2,791
+2024-03-01,paid_search,KYC Approved,3,634
+2024-03-01,paid_search,Activated,4,383
+2024-03-01,paid_search,Funded Account,5,187
+2024-03-01,paid_social,Signup Started,1,1146
+2024-03-01,paid_social,KYC Submitted,2,865
+2024-03-01,paid_social,KYC Approved,3,696
+2024-03-01,paid_social,Activated,4,389
+2024-03-01,paid_social,Funded Account,5,193
+2024-03-01,partner,Signup Started,1,1001
+2024-03-01,partner,KYC Submitted,2,756
+2024-03-01,partner,KYC Approved,3,622
+2024-03-01,partner,Activated,4,390
+2024-03-01,partner,Funded Account,5,198
+2024-03-01,referral,Signup Started,1,753
+2024-03-01,referral,KYC Submitted,2,595
+2024-03-01,referral,KYC Approved,3,491
+2024-03-01,referral,Activated,4,315
+2024-03-01,referral,Funded Account,5,171
+2024-04-01,lifecycle,Signup Started,1,723
+2024-04-01,lifecycle,KYC Submitted,2,561
+2024-04-01,lifecycle,KYC Approved,3,452
+2024-04-01,lifecycle,Activated,4,281
+2024-04-01,lifecycle,Funded Account,5,142
+2024-04-01,organic,Signup Started,1,899
+2024-04-01,organic,KYC Submitted,2,710
+2024-04-01,organic,KYC Approved,3,586
+2024-04-01,organic,Activated,4,367
+2024-04-01,organic,Funded Account,5,192
+2024-04-01,paid_search,Signup Started,1,1097
+2024-04-01,paid_search,KYC Submitted,2,822
+2024-04-01,paid_search,KYC Approved,3,650
+2024-04-01,paid_search,Activated,4,386
+2024-04-01,paid_search,Funded Account,5,188
+2024-04-01,paid_social,Signup Started,1,1231
+2024-04-01,paid_social,KYC Submitted,2,919
+2024-04-01,paid_social,KYC Approved,3,739
+2024-04-01,paid_social,Activated,4,435
+2024-04-01,paid_social,Funded Account,5,199
+2024-04-01,partner,Signup Started,1,1020
+2024-04-01,partner,KYC Submitted,2,787
+2024-04-01,partner,KYC Approved,3,655
+2024-04-01,partner,Activated,4,410
+2024-04-01,partner,Funded Account,5,211
+2024-04-01,referral,Signup Started,1,816
+2024-04-01,referral,KYC Submitted,2,663
+2024-04-01,referral,KYC Approved,3,551
+2024-04-01,referral,Activated,4,356
+2024-04-01,referral,Funded Account,5,188
+2024-05-01,lifecycle,Signup Started,1,808
+2024-05-01,lifecycle,KYC Submitted,2,635
+2024-05-01,lifecycle,KYC Approved,3,519
+2024-05-01,lifecycle,Activated,4,321
+2024-05-01,lifecycle,Funded Account,5,156
+2024-05-01,organic,Signup Started,1,904
+2024-05-01,organic,KYC Submitted,2,694
+2024-05-01,organic,KYC Approved,3,559
+2024-05-01,organic,Activated,4,340
+2024-05-01,organic,Funded Account,5,173
+2024-05-01,paid_search,Signup Started,1,1148
+2024-05-01,paid_search,KYC Submitted,2,869
+2024-05-01,paid_search,KYC Approved,3,716
+2024-05-01,paid_search,Activated,4,431
+2024-05-01,paid_search,Funded Account,5,203
+2024-05-01,paid_social,Signup Started,1,1219
+2024-05-01,paid_social,KYC Submitted,2,902
+2024-05-01,paid_social,KYC Approved,3,705
+2024-05-01,paid_social,Activated,4,410
+2024-05-01,paid_social,Funded Account,5,193
+2024-05-01,partner,Signup Started,1,991
+2024-05-01,partner,KYC Submitted,2,759
+2024-05-01,partner,KYC Approved,3,626
+2024-05-01,partner,Activated,4,410
+2024-05-01,partner,Funded Account,5,212
+2024-05-01,referral,Signup Started,1,834
+2024-05-01,referral,KYC Submitted,2,625
+2024-05-01,referral,KYC Approved,3,508
+2024-05-01,referral,Activated,4,322
+2024-05-01,referral,Funded Account,5,166
+2024-06-01,lifecycle,Signup Started,1,734
+2024-06-01,lifecycle,KYC Submitted,2,555
+2024-06-01,lifecycle,KYC Approved,3,441
+2024-06-01,lifecycle,Activated,4,268
+2024-06-01,lifecycle,Funded Account,5,136
+2024-06-01,organic,Signup Started,1,856
+2024-06-01,organic,KYC Submitted,2,670
+2024-06-01,organic,KYC Approved,3,546
+2024-06-01,organic,Activated,4,345
+2024-06-01,organic,Funded Account,5,183
+2024-06-01,paid_search,Signup Started,1,1054
+2024-06-01,paid_search,KYC Submitted,2,815
+2024-06-01,paid_search,KYC Approved,3,665
+2024-06-01,paid_search,Activated,4,401
+2024-06-01,paid_search,Funded Account,5,200
+2024-06-01,paid_social,Signup Started,1,1212
+2024-06-01,paid_social,KYC Submitted,2,890
+2024-06-01,paid_social,KYC Approved,3,709
+2024-06-01,paid_social,Activated,4,407
+2024-06-01,paid_social,Funded Account,5,199
+2024-06-01,partner,Signup Started,1,1008
+2024-06-01,partner,KYC Submitted,2,793
+2024-06-01,partner,KYC Approved,3,652
+2024-06-01,partner,Activated,4,414
+2024-06-01,partner,Funded Account,5,216
+2024-06-01,referral,Signup Started,1,846
+2024-06-01,referral,KYC Submitted,2,689
+2024-06-01,referral,KYC Approved,3,576
+2024-06-01,referral,Activated,4,368
+2024-06-01,referral,Funded Account,5,189
+2024-07-01,lifecycle,Signup Started,1,720
+2024-07-01,lifecycle,KYC Submitted,2,541
+2024-07-01,lifecycle,KYC Approved,3,435
+2024-07-01,lifecycle,Activated,4,266
+2024-07-01,lifecycle,Funded Account,5,138
+2024-07-01,organic,Signup Started,1,899
+2024-07-01,organic,KYC Submitted,2,719
+2024-07-01,organic,KYC Approved,3,606
+2024-07-01,organic,Activated,4,387
+2024-07-01,organic,Funded Account,5,196
+2024-07-01,paid_search,Signup Started,1,1070
+2024-07-01,paid_search,KYC Submitted,2,809
+2024-07-01,paid_search,KYC Approved,3,647
+2024-07-01,paid_search,Activated,4,400
+2024-07-01,paid_search,Funded Account,5,194
+2024-07-01,paid_social,Signup Started,1,1275
+2024-07-01,paid_social,KYC Submitted,2,930
+2024-07-01,paid_social,KYC Approved,3,735
+2024-07-01,paid_social,Activated,4,420
+2024-07-01,paid_social,Funded Account,5,202
+2024-07-01,partner,Signup Started,1,929
+2024-07-01,partner,KYC Submitted,2,717
+2024-07-01,partner,KYC Approved,3,587
+2024-07-01,partner,Activated,4,355
+2024-07-01,partner,Funded Account,5,187
+2024-07-01,referral,Signup Started,1,758
+2024-07-01,referral,KYC Submitted,2,616
+2024-07-01,referral,KYC Approved,3,525
+2024-07-01,referral,Activated,4,338
+2024-07-01,referral,Funded Account,5,173
+2024-08-01,lifecycle,Signup Started,1,608
+2024-08-01,lifecycle,KYC Submitted,2,475
+2024-08-01,lifecycle,KYC Approved,3,377
+2024-08-01,lifecycle,Activated,4,232
+2024-08-01,lifecycle,Funded Account,5,114
+2024-08-01,organic,Signup Started,1,846
+2024-08-01,organic,KYC Submitted,2,675
+2024-08-01,organic,KYC Approved,3,553
+2024-08-01,organic,Activated,4,351
+2024-08-01,organic,Funded Account,5,186
+2024-08-01,paid_search,Signup Started,1,950
+2024-08-01,paid_search,KYC Submitted,2,717
+2024-08-01,paid_search,KYC Approved,3,579
+2024-08-01,paid_search,Activated,4,357
+2024-08-01,paid_search,Funded Account,5,168
+2024-08-01,paid_social,Signup Started,1,1165
+2024-08-01,paid_social,KYC Submitted,2,874
+2024-08-01,paid_social,KYC Approved,3,694
+2024-08-01,paid_social,Activated,4,393
+2024-08-01,paid_social,Funded Account,5,181
+2024-08-01,partner,Signup Started,1,897
+2024-08-01,partner,KYC Submitted,2,711
+2024-08-01,partner,KYC Approved,3,586
+2024-08-01,partner,Activated,4,376
+2024-08-01,partner,Funded Account,5,195
+2024-08-01,referral,Signup Started,1,795
+2024-08-01,referral,KYC Submitted,2,622
+2024-08-01,referral,KYC Approved,3,525
+2024-08-01,referral,Activated,4,337
+2024-08-01,referral,Funded Account,5,178
+2024-09-01,lifecycle,Signup Started,1,694
+2024-09-01,lifecycle,KYC Submitted,2,548
+2024-09-01,lifecycle,KYC Approved,3,450
+2024-09-01,lifecycle,Activated,4,271
+2024-09-01,lifecycle,Funded Account,5,139
+2024-09-01,organic,Signup Started,1,764
+2024-09-01,organic,KYC Submitted,2,622
+2024-09-01,organic,KYC Approved,3,516
+2024-09-01,organic,Activated,4,323
+2024-09-01,organic,Funded Account,5,167
+2024-09-01,paid_search,Signup Started,1,985
+2024-09-01,paid_search,KYC Submitted,2,732
+2024-09-01,paid_search,KYC Approved,3,602
+2024-09-01,paid_search,Activated,4,364
+2024-09-01,paid_search,Funded Account,5,177
+2024-09-01,paid_social,Signup Started,1,1174
+2024-09-01,paid_social,KYC Submitted,2,836
+2024-09-01,paid_social,KYC Approved,3,662
+2024-09-01,paid_social,Activated,4,383
+2024-09-01,paid_social,Funded Account,5,176
+2024-09-01,partner,Signup Started,1,890
+2024-09-01,partner,KYC Submitted,2,676
+2024-09-01,partner,KYC Approved,3,550
+2024-09-01,partner,Activated,4,346
+2024-09-01,partner,Funded Account,5,172
+2024-09-01,referral,Signup Started,1,807
+2024-09-01,referral,KYC Submitted,2,638
+2024-09-01,referral,KYC Approved,3,524
+2024-09-01,referral,Activated,4,324
+2024-09-01,referral,Funded Account,5,171
+2024-10-01,lifecycle,Signup Started,1,672
+2024-10-01,lifecycle,KYC Submitted,2,516
+2024-10-01,lifecycle,KYC Approved,3,417
+2024-10-01,lifecycle,Activated,4,267
+2024-10-01,lifecycle,Funded Account,5,133
+2024-10-01,organic,Signup Started,1,840
+2024-10-01,organic,KYC Submitted,2,654
+2024-10-01,organic,KYC Approved,3,538
+2024-10-01,organic,Activated,4,329
+2024-10-01,organic,Funded Account,5,169
+2024-10-01,paid_search,Signup Started,1,1005
+2024-10-01,paid_search,KYC Submitted,2,750
+2024-10-01,paid_search,KYC Approved,3,604
+2024-10-01,paid_search,Activated,4,365
+2024-10-01,paid_search,Funded Account,5,185
+2024-10-01,paid_social,Signup Started,1,1214
+2024-10-01,paid_social,KYC Submitted,2,866
+2024-10-01,paid_social,KYC Approved,3,689
+2024-10-01,paid_social,Activated,4,392
+2024-10-01,paid_social,Funded Account,5,180
+2024-10-01,partner,Signup Started,1,915
+2024-10-01,partner,KYC Submitted,2,712
+2024-10-01,partner,KYC Approved,3,595
+2024-10-01,partner,Activated,4,362
+2024-10-01,partner,Funded Account,5,184
+2024-10-01,referral,Signup Started,1,762
+2024-10-01,referral,KYC Submitted,2,602
+2024-10-01,referral,KYC Approved,3,493
+2024-10-01,referral,Activated,4,310
+2024-10-01,referral,Funded Account,5,165
+2024-11-01,lifecycle,Signup Started,1,727
+2024-11-01,lifecycle,KYC Submitted,2,567
+2024-11-01,lifecycle,KYC Approved,3,465
+2024-11-01,lifecycle,Activated,4,287
+2024-11-01,lifecycle,Funded Account,5,145
+2024-11-01,organic,Signup Started,1,878
+2024-11-01,organic,KYC Submitted,2,710
+2024-11-01,organic,KYC Approved,3,591
+2024-11-01,organic,Activated,4,360
+2024-11-01,organic,Funded Account,5,180
+2024-11-01,paid_search,Signup Started,1,1049
+2024-11-01,paid_search,KYC Submitted,2,791
+2024-11-01,paid_search,KYC Approved,3,639
+2024-11-01,paid_search,Activated,4,386
+2024-11-01,paid_search,Funded Account,5,190
+2024-11-01,paid_social,Signup Started,1,984
+2024-11-01,paid_social,KYC Submitted,2,734
+2024-11-01,paid_social,KYC Approved,3,586
+2024-11-01,paid_social,Activated,4,345
+2024-11-01,paid_social,Funded Account,5,162
+2024-11-01,partner,Signup Started,1,931
+2024-11-01,partner,KYC Submitted,2,754
+2024-11-01,partner,KYC Approved,3,623
+2024-11-01,partner,Activated,4,379
+2024-11-01,partner,Funded Account,5,196
+2024-11-01,referral,Signup Started,1,769
+2024-11-01,referral,KYC Submitted,2,612
+2024-11-01,referral,KYC Approved,3,517
+2024-11-01,referral,Activated,4,329
+2024-11-01,referral,Funded Account,5,170
+2024-12-01,lifecycle,Signup Started,1,757
+2024-12-01,lifecycle,KYC Submitted,2,587
+2024-12-01,lifecycle,KYC Approved,3,470
+2024-12-01,lifecycle,Activated,4,286
+2024-12-01,lifecycle,Funded Account,5,143
+2024-12-01,organic,Signup Started,1,922
+2024-12-01,organic,KYC Submitted,2,704
+2024-12-01,organic,KYC Approved,3,577
+2024-12-01,organic,Activated,4,356
+2024-12-01,organic,Funded Account,5,181
+2024-12-01,paid_search,Signup Started,1,1062
+2024-12-01,paid_search,KYC Submitted,2,799
+2024-12-01,paid_search,KYC Approved,3,632
+2024-12-01,paid_search,Activated,4,367
+2024-12-01,paid_search,Funded Account,5,184
+2024-12-01,paid_social,Signup Started,1,1230
+2024-12-01,paid_social,KYC Submitted,2,943
+2024-12-01,paid_social,KYC Approved,3,765
+2024-12-01,paid_social,Activated,4,440
+2024-12-01,paid_social,Funded Account,5,212
+2024-12-01,partner,Signup Started,1,1004
+2024-12-01,partner,KYC Submitted,2,807
+2024-12-01,partner,KYC Approved,3,658
+2024-12-01,partner,Activated,4,417
+2024-12-01,partner,Funded Account,5,212
+2024-12-01,referral,Signup Started,1,815
+2024-12-01,referral,KYC Submitted,2,648
+2024-12-01,referral,KYC Approved,3,536
+2024-12-01,referral,Activated,4,335
+2024-12-01,referral,Funded Account,5,176
+2025-01-01,lifecycle,Signup Started,1,813
+2025-01-01,lifecycle,KYC Submitted,2,626
+2025-01-01,lifecycle,KYC Approved,3,497
+2025-01-01,lifecycle,Activated,4,304
+2025-01-01,lifecycle,Funded Account,5,150
+2025-01-01,organic,Signup Started,1,1021
+2025-01-01,organic,KYC Submitted,2,810
+2025-01-01,organic,KYC Approved,3,671
+2025-01-01,organic,Activated,4,421
+2025-01-01,organic,Funded Account,5,218
+2025-01-01,paid_search,Signup Started,1,1242
+2025-01-01,paid_search,KYC Submitted,2,944
+2025-01-01,paid_search,KYC Approved,3,781
+2025-01-01,paid_search,Activated,4,467
+2025-01-01,paid_search,Funded Account,5,227
+2025-01-01,paid_social,Signup Started,1,1338
+2025-01-01,paid_social,KYC Submitted,2,1030
+2025-01-01,paid_social,KYC Approved,3,820
+2025-01-01,paid_social,Activated,4,490
+2025-01-01,paid_social,Funded Account,5,234
+2025-01-01,partner,Signup Started,1,1111
+2025-01-01,partner,KYC Submitted,2,847
+2025-01-01,partner,KYC Approved,3,689
+2025-01-01,partner,Activated,4,422
+2025-01-01,partner,Funded Account,5,221
+2025-01-01,referral,Signup Started,1,942
+2025-01-01,referral,KYC Submitted,2,731
+2025-01-01,referral,KYC Approved,3,608
+2025-01-01,referral,Activated,4,382
+2025-01-01,referral,Funded Account,5,207
+2025-02-01,lifecycle,Signup Started,1,838
+2025-02-01,lifecycle,KYC Submitted,2,627
+2025-02-01,lifecycle,KYC Approved,3,509
+2025-02-01,lifecycle,Activated,4,311
+2025-02-01,lifecycle,Funded Account,5,158
+2025-02-01,organic,Signup Started,1,1059
+2025-02-01,organic,KYC Submitted,2,819
+2025-02-01,organic,KYC Approved,3,670
+2025-02-01,organic,Activated,4,422
+2025-02-01,organic,Funded Account,5,219
+2025-02-01,paid_search,Signup Started,1,1351
+2025-02-01,paid_search,KYC Submitted,2,1029
+2025-02-01,paid_search,KYC Approved,3,846
+2025-02-01,paid_search,Activated,4,494
+2025-02-01,paid_search,Funded Account,5,246
+2025-02-01,paid_social,Signup Started,1,1468
+2025-02-01,paid_social,KYC Submitted,2,1076
+2025-02-01,paid_social,KYC Approved,3,857
+2025-02-01,paid_social,Activated,4,496
+2025-02-01,paid_social,Funded Account,5,232
+2025-02-01,partner,Signup Started,1,1173
+2025-02-01,partner,KYC Submitted,2,891
+2025-02-01,partner,KYC Approved,3,726
+2025-02-01,partner,Activated,4,449
+2025-02-01,partner,Funded Account,5,234
+2025-02-01,referral,Signup Started,1,1022
+2025-02-01,referral,KYC Submitted,2,828
+2025-02-01,referral,KYC Approved,3,691
+2025-02-01,referral,Activated,4,442
+2025-02-01,referral,Funded Account,5,227
+2025-03-01,lifecycle,Signup Started,1,953
+2025-03-01,lifecycle,KYC Submitted,2,722
+2025-03-01,lifecycle,KYC Approved,3,581
+2025-03-01,lifecycle,Activated,4,350
+2025-03-01,lifecycle,Funded Account,5,183
+2025-03-01,organic,Signup Started,1,1296
+2025-03-01,organic,KYC Submitted,2,1018
+2025-03-01,organic,KYC Approved,3,832
+2025-03-01,organic,Activated,4,517
+2025-03-01,organic,Funded Account,5,269
+2025-03-01,paid_search,Signup Started,1,1340
+2025-03-01,paid_search,KYC Submitted,2,1006
+2025-03-01,paid_search,KYC Approved,3,828
+2025-03-01,paid_search,Activated,4,501
+2025-03-01,paid_search,Funded Account,5,244
+2025-03-01,paid_social,Signup Started,1,1535
+2025-03-01,paid_social,KYC Submitted,2,1132
+2025-03-01,paid_social,KYC Approved,3,868
+2025-03-01,paid_social,Activated,4,517
+2025-03-01,paid_social,Funded Account,5,245
+2025-03-01,partner,Signup Started,1,1321
+2025-03-01,partner,KYC Submitted,2,1009
+2025-03-01,partner,KYC Approved,3,857
+2025-03-01,partner,Activated,4,519
+2025-03-01,partner,Funded Account,5,266
+2025-03-01,referral,Signup Started,1,1041
+2025-03-01,referral,KYC Submitted,2,844
+2025-03-01,referral,KYC Approved,3,711
+2025-03-01,referral,Activated,4,450
+2025-03-01,referral,Funded Account,5,241
+2025-04-01,lifecycle,Signup Started,1,1049
+2025-04-01,lifecycle,KYC Submitted,2,821
+2025-04-01,lifecycle,KYC Approved,3,681
+2025-04-01,lifecycle,Activated,4,420
+2025-04-01,lifecycle,Funded Account,5,211
+2025-04-01,organic,Signup Started,1,1120
+2025-04-01,organic,KYC Submitted,2,891
+2025-04-01,organic,KYC Approved,3,724
+2025-04-01,organic,Activated,4,453
+2025-04-01,organic,Funded Account,5,235
+2025-04-01,paid_search,Signup Started,1,1588
+2025-04-01,paid_search,KYC Submitted,2,1192
+2025-04-01,paid_search,KYC Approved,3,997
+2025-04-01,paid_search,Activated,4,608
+2025-04-01,paid_search,Funded Account,5,300
+2025-04-01,paid_social,Signup Started,1,1742
+2025-04-01,paid_social,KYC Submitted,2,1286
+2025-04-01,paid_social,KYC Approved,3,1020
+2025-04-01,paid_social,Activated,4,591
+2025-04-01,paid_social,Funded Account,5,288
+2025-04-01,partner,Signup Started,1,1289
+2025-04-01,partner,KYC Submitted,2,1019
+2025-04-01,partner,KYC Approved,3,848
+2025-04-01,partner,Activated,4,533
+2025-04-01,partner,Funded Account,5,277
+2025-04-01,referral,Signup Started,1,1136
+2025-04-01,referral,KYC Submitted,2,923
+2025-04-01,referral,KYC Approved,3,755
+2025-04-01,referral,Activated,4,477
+2025-04-01,referral,Funded Account,5,253
+2025-05-01,lifecycle,Signup Started,1,902
+2025-05-01,lifecycle,KYC Submitted,2,696
+2025-05-01,lifecycle,KYC Approved,3,550
+2025-05-01,lifecycle,Activated,4,341
+2025-05-01,lifecycle,Funded Account,5,163
+2025-05-01,organic,Signup Started,1,1193
+2025-05-01,organic,KYC Submitted,2,896
+2025-05-01,organic,KYC Approved,3,747
+2025-05-01,organic,Activated,4,468
+2025-05-01,organic,Funded Account,5,243
+2025-05-01,paid_search,Signup Started,1,1447
+2025-05-01,paid_search,KYC Submitted,2,1106
+2025-05-01,paid_search,KYC Approved,3,899
+2025-05-01,paid_search,Activated,4,533
+2025-05-01,paid_search,Funded Account,5,262
+2025-05-01,paid_social,Signup Started,1,1559
+2025-05-01,paid_social,KYC Submitted,2,1148
+2025-05-01,paid_social,KYC Approved,3,934
+2025-05-01,paid_social,Activated,4,540
+2025-05-01,paid_social,Funded Account,5,254
+2025-05-01,partner,Signup Started,1,1347
+2025-05-01,partner,KYC Submitted,2,1063
+2025-05-01,partner,KYC Approved,3,868
+2025-05-01,partner,Activated,4,539
+2025-05-01,partner,Funded Account,5,283
+2025-05-01,referral,Signup Started,1,1079
+2025-05-01,referral,KYC Submitted,2,863
+2025-05-01,referral,KYC Approved,3,709
+2025-05-01,referral,Activated,4,445
+2025-05-01,referral,Funded Account,5,253
+2025-06-01,lifecycle,Signup Started,1,933
+2025-06-01,lifecycle,KYC Submitted,2,720
+2025-06-01,lifecycle,KYC Approved,3,593
+2025-06-01,lifecycle,Activated,4,358
+2025-06-01,lifecycle,Funded Account,5,182
+2025-06-01,organic,Signup Started,1,1150
+2025-06-01,organic,KYC Submitted,2,904
+2025-06-01,organic,KYC Approved,3,757
+2025-06-01,organic,Activated,4,472
+2025-06-01,organic,Funded Account,5,243
+2025-06-01,paid_search,Signup Started,1,1512
+2025-06-01,paid_search,KYC Submitted,2,1181
+2025-06-01,paid_search,KYC Approved,3,946
+2025-06-01,paid_search,Activated,4,566
+2025-06-01,paid_search,Funded Account,5,283
+2025-06-01,paid_social,Signup Started,1,1659
+2025-06-01,paid_social,KYC Submitted,2,1257
+2025-06-01,paid_social,KYC Approved,3,1008
+2025-06-01,paid_social,Activated,4,567
+2025-06-01,paid_social,Funded Account,5,257
+2025-06-01,partner,Signup Started,1,1317
+2025-06-01,partner,KYC Submitted,2,1010
+2025-06-01,partner,KYC Approved,3,831
+2025-06-01,partner,Activated,4,523
+2025-06-01,partner,Funded Account,5,263
+2025-06-01,referral,Signup Started,1,1132
+2025-06-01,referral,KYC Submitted,2,901
+2025-06-01,referral,KYC Approved,3,752
+2025-06-01,referral,Activated,4,482
+2025-06-01,referral,Funded Account,5,257
+2025-07-01,lifecycle,Signup Started,1,935
+2025-07-01,lifecycle,KYC Submitted,2,705
+2025-07-01,lifecycle,KYC Approved,3,578
+2025-07-01,lifecycle,Activated,4,356
+2025-07-01,lifecycle,Funded Account,5,180
+2025-07-01,organic,Signup Started,1,1215
+2025-07-01,organic,KYC Submitted,2,962
+2025-07-01,organic,KYC Approved,3,794
+2025-07-01,organic,Activated,4,509
+2025-07-01,organic,Funded Account,5,267
+2025-07-01,paid_search,Signup Started,1,1584
+2025-07-01,paid_search,KYC Submitted,2,1221
+2025-07-01,paid_search,KYC Approved,3,986
+2025-07-01,paid_search,Activated,4,603
+2025-07-01,paid_search,Funded Account,5,297
+2025-07-01,paid_social,Signup Started,1,1662
+2025-07-01,paid_social,KYC Submitted,2,1222
+2025-07-01,paid_social,KYC Approved,3,976
+2025-07-01,paid_social,Activated,4,588
+2025-07-01,paid_social,Funded Account,5,279
+2025-07-01,partner,Signup Started,1,1348
+2025-07-01,partner,KYC Submitted,2,1066
+2025-07-01,partner,KYC Approved,3,860
+2025-07-01,partner,Activated,4,543
+2025-07-01,partner,Funded Account,5,276
+2025-07-01,referral,Signup Started,1,1079
+2025-07-01,referral,KYC Submitted,2,828
+2025-07-01,referral,KYC Approved,3,707
+2025-07-01,referral,Activated,4,443
+2025-07-01,referral,Funded Account,5,242
+2025-08-01,lifecycle,Signup Started,1,965
+2025-08-01,lifecycle,KYC Submitted,2,726
+2025-08-01,lifecycle,KYC Approved,3,579
+2025-08-01,lifecycle,Activated,4,358
+2025-08-01,lifecycle,Funded Account,5,179
+2025-08-01,organic,Signup Started,1,1084
+2025-08-01,organic,KYC Submitted,2,882
+2025-08-01,organic,KYC Approved,3,731
+2025-08-01,organic,Activated,4,455
+2025-08-01,organic,Funded Account,5,235
+2025-08-01,paid_search,Signup Started,1,1423
+2025-08-01,paid_search,KYC Submitted,2,1049
+2025-08-01,paid_search,KYC Approved,3,855
+2025-08-01,paid_search,Activated,4,505
+2025-08-01,paid_search,Funded Account,5,247
+2025-08-01,paid_social,Signup Started,1,1687
+2025-08-01,paid_social,KYC Submitted,2,1261
+2025-08-01,paid_social,KYC Approved,3,1005
+2025-08-01,paid_social,Activated,4,585
+2025-08-01,paid_social,Funded Account,5,277
+2025-08-01,partner,Signup Started,1,1216
+2025-08-01,partner,KYC Submitted,2,935
+2025-08-01,partner,KYC Approved,3,769
+2025-08-01,partner,Activated,4,474
+2025-08-01,partner,Funded Account,5,243
+2025-08-01,referral,Signup Started,1,1191
+2025-08-01,referral,KYC Submitted,2,899
+2025-08-01,referral,KYC Approved,3,736
+2025-08-01,referral,Activated,4,468
+2025-08-01,referral,Funded Account,5,247
+2025-09-01,lifecycle,Signup Started,1,892
+2025-09-01,lifecycle,KYC Submitted,2,692
+2025-09-01,lifecycle,KYC Approved,3,578
+2025-09-01,lifecycle,Activated,4,354
+2025-09-01,lifecycle,Funded Account,5,181
+2025-09-01,organic,Signup Started,1,1254
+2025-09-01,organic,KYC Submitted,2,988
+2025-09-01,organic,KYC Approved,3,814
+2025-09-01,organic,Activated,4,517
+2025-09-01,organic,Funded Account,5,264
+2025-09-01,paid_search,Signup Started,1,1433
+2025-09-01,paid_search,KYC Submitted,2,1076
+2025-09-01,paid_search,KYC Approved,3,864
+2025-09-01,paid_search,Activated,4,528
+2025-09-01,paid_search,Funded Account,5,260
+2025-09-01,paid_social,Signup Started,1,1606
+2025-09-01,paid_social,KYC Submitted,2,1237
+2025-09-01,paid_social,KYC Approved,3,992
+2025-09-01,paid_social,Activated,4,560
+2025-09-01,paid_social,Funded Account,5,265
+2025-09-01,partner,Signup Started,1,1267
+2025-09-01,partner,KYC Submitted,2,967
+2025-09-01,partner,KYC Approved,3,795
+2025-09-01,partner,Activated,4,507
+2025-09-01,partner,Funded Account,5,264
+2025-09-01,referral,Signup Started,1,1041
+2025-09-01,referral,KYC Submitted,2,827
+2025-09-01,referral,KYC Approved,3,682
+2025-09-01,referral,Activated,4,421
+2025-09-01,referral,Funded Account,5,220
+2025-10-01,lifecycle,Signup Started,1,946
+2025-10-01,lifecycle,KYC Submitted,2,764
+2025-10-01,lifecycle,KYC Approved,3,623
+2025-10-01,lifecycle,Activated,4,387
+2025-10-01,lifecycle,Funded Account,5,196
+2025-10-01,organic,Signup Started,1,1217
+2025-10-01,organic,KYC Submitted,2,951
+2025-10-01,organic,KYC Approved,3,781
+2025-10-01,organic,Activated,4,492
+2025-10-01,organic,Funded Account,5,261
+2025-10-01,paid_search,Signup Started,1,1378
+2025-10-01,paid_search,KYC Submitted,2,1049
+2025-10-01,paid_search,KYC Approved,3,840
+2025-10-01,paid_search,Activated,4,502
+2025-10-01,paid_search,Funded Account,5,236
+2025-10-01,paid_social,Signup Started,1,1719
+2025-10-01,paid_social,KYC Submitted,2,1292
+2025-10-01,paid_social,KYC Approved,3,1014
+2025-10-01,paid_social,Activated,4,602
+2025-10-01,paid_social,Funded Account,5,283
+2025-10-01,partner,Signup Started,1,1258
+2025-10-01,partner,KYC Submitted,2,1003
+2025-10-01,partner,KYC Approved,3,829
+2025-10-01,partner,Activated,4,517
+2025-10-01,partner,Funded Account,5,265
+2025-10-01,referral,Signup Started,1,1107
+2025-10-01,referral,KYC Submitted,2,877
+2025-10-01,referral,KYC Approved,3,714
+2025-10-01,referral,Activated,4,453
+2025-10-01,referral,Funded Account,5,233
+2025-11-01,lifecycle,Signup Started,1,1007
+2025-11-01,lifecycle,KYC Submitted,2,777
+2025-11-01,lifecycle,KYC Approved,3,637
+2025-11-01,lifecycle,Activated,4,395
+2025-11-01,lifecycle,Funded Account,5,204
+2025-11-01,organic,Signup Started,1,1211
+2025-11-01,organic,KYC Submitted,2,916
+2025-11-01,organic,KYC Approved,3,766
+2025-11-01,organic,Activated,4,485
+2025-11-01,organic,Funded Account,5,254
+2025-11-01,paid_search,Signup Started,1,1538
+2025-11-01,paid_search,KYC Submitted,2,1187
+2025-11-01,paid_search,KYC Approved,3,958
+2025-11-01,paid_search,Activated,4,591
+2025-11-01,paid_search,Funded Account,5,291
+2025-11-01,paid_social,Signup Started,1,1694
+2025-11-01,paid_social,KYC Submitted,2,1265
+2025-11-01,paid_social,KYC Approved,3,1027
+2025-11-01,paid_social,Activated,4,594
+2025-11-01,paid_social,Funded Account,5,274
+2025-11-01,partner,Signup Started,1,1290
+2025-11-01,partner,KYC Submitted,2,1008
+2025-11-01,partner,KYC Approved,3,824
+2025-11-01,partner,Activated,4,530
+2025-11-01,partner,Funded Account,5,278
+2025-11-01,referral,Signup Started,1,1147
+2025-11-01,referral,KYC Submitted,2,919
+2025-11-01,referral,KYC Approved,3,788
+2025-11-01,referral,Activated,4,507
+2025-11-01,referral,Funded Account,5,268
+2025-12-01,lifecycle,Signup Started,1,996
+2025-12-01,lifecycle,KYC Submitted,2,776
+2025-12-01,lifecycle,KYC Approved,3,630
+2025-12-01,lifecycle,Activated,4,396
+2025-12-01,lifecycle,Funded Account,5,208
+2025-12-01,organic,Signup Started,1,1288
+2025-12-01,organic,KYC Submitted,2,979
+2025-12-01,organic,KYC Approved,3,808
+2025-12-01,organic,Activated,4,502
+2025-12-01,organic,Funded Account,5,259
+2025-12-01,paid_search,Signup Started,1,1629
+2025-12-01,paid_search,KYC Submitted,2,1256
+2025-12-01,paid_search,KYC Approved,3,1037
+2025-12-01,paid_search,Activated,4,610
+2025-12-01,paid_search,Funded Account,5,302
+2025-12-01,paid_social,Signup Started,1,1817
+2025-12-01,paid_social,KYC Submitted,2,1333
+2025-12-01,paid_social,KYC Approved,3,1072
+2025-12-01,paid_social,Activated,4,624
+2025-12-01,paid_social,Funded Account,5,308
+2025-12-01,partner,Signup Started,1,1348
+2025-12-01,partner,KYC Submitted,2,1057
+2025-12-01,partner,KYC Approved,3,863
+2025-12-01,partner,Activated,4,548
+2025-12-01,partner,Funded Account,5,285
+2025-12-01,referral,Signup Started,1,1200
+2025-12-01,referral,KYC Submitted,2,933
+2025-12-01,referral,KYC Approved,3,776
+2025-12-01,referral,Activated,4,479
+2025-12-01,referral,Funded Account,5,253
+2026-01-01,lifecycle,Signup Started,1,1076
+2026-01-01,lifecycle,KYC Submitted,2,851
+2026-01-01,lifecycle,KYC Approved,3,689
+2026-01-01,lifecycle,Activated,4,432
+2026-01-01,lifecycle,Funded Account,5,222
+2026-01-01,organic,Signup Started,1,1314
+2026-01-01,organic,KYC Submitted,2,1020
+2026-01-01,organic,KYC Approved,3,860
+2026-01-01,organic,Activated,4,521
+2026-01-01,organic,Funded Account,5,270
+2026-01-01,paid_search,Signup Started,1,1739
+2026-01-01,paid_search,KYC Submitted,2,1303
+2026-01-01,paid_search,KYC Approved,3,1068
+2026-01-01,paid_search,Activated,4,644
+2026-01-01,paid_search,Funded Account,5,323
+2026-01-01,paid_social,Signup Started,1,2115
+2026-01-01,paid_social,KYC Submitted,2,1589
+2026-01-01,paid_social,KYC Approved,3,1245
+2026-01-01,paid_social,Activated,4,716
+2026-01-01,paid_social,Funded Account,5,347
+2026-01-01,partner,Signup Started,1,1530
+2026-01-01,partner,KYC Submitted,2,1209
+2026-01-01,partner,KYC Approved,3,1007
+2026-01-01,partner,Activated,4,620
+2026-01-01,partner,Funded Account,5,322
+2026-01-01,referral,Signup Started,1,1312
+2026-01-01,referral,KYC Submitted,2,1032
+2026-01-01,referral,KYC Approved,3,860
+2026-01-01,referral,Activated,4,535
+2026-01-01,referral,Funded Account,5,286
+2026-02-01,lifecycle,Signup Started,1,1223
+2026-02-01,lifecycle,KYC Submitted,2,938
+2026-02-01,lifecycle,KYC Approved,3,773
+2026-02-01,lifecycle,Activated,4,472
+2026-02-01,lifecycle,Funded Account,5,254
+2026-02-01,organic,Signup Started,1,1491
+2026-02-01,organic,KYC Submitted,2,1201
+2026-02-01,organic,KYC Approved,3,1010
+2026-02-01,organic,Activated,4,628
+2026-02-01,organic,Funded Account,5,337
+2026-02-01,paid_search,Signup Started,1,1904
+2026-02-01,paid_search,KYC Submitted,2,1463
+2026-02-01,paid_search,KYC Approved,3,1195
+2026-02-01,paid_search,Activated,4,705
+2026-02-01,paid_search,Funded Account,5,363
+2026-02-01,paid_social,Signup Started,1,2043
+2026-02-01,paid_social,KYC Submitted,2,1555
+2026-02-01,paid_social,KYC Approved,3,1237
+2026-02-01,paid_social,Activated,4,710
+2026-02-01,paid_social,Funded Account,5,344
+2026-02-01,partner,Signup Started,1,1779
+2026-02-01,partner,KYC Submitted,2,1370
+2026-02-01,partner,KYC Approved,3,1149
+2026-02-01,partner,Activated,4,706
+2026-02-01,partner,Funded Account,5,380
+2026-02-01,referral,Signup Started,1,1338
+2026-02-01,referral,KYC Submitted,2,1075
+2026-02-01,referral,KYC Approved,3,873
+2026-02-01,referral,Activated,4,558
+2026-02-01,referral,Funded Account,5,298
+2026-03-01,lifecycle,Signup Started,1,1286
+2026-03-01,lifecycle,KYC Submitted,2,945
+2026-03-01,lifecycle,KYC Approved,3,771
+2026-03-01,lifecycle,Activated,4,473
+2026-03-01,lifecycle,Funded Account,5,239
+2026-03-01,organic,Signup Started,1,1534
+2026-03-01,organic,KYC Submitted,2,1216
+2026-03-01,organic,KYC Approved,3,1031
+2026-03-01,organic,Activated,4,646
+2026-03-01,organic,Funded Account,5,338
+2026-03-01,paid_search,Signup Started,1,2009
+2026-03-01,paid_search,KYC Submitted,2,1585
+2026-03-01,paid_search,KYC Approved,3,1264
+2026-03-01,paid_search,Activated,4,759
+2026-03-01,paid_search,Funded Account,5,362
+2026-03-01,paid_social,Signup Started,1,2086
+2026-03-01,paid_social,KYC Submitted,2,1504
+2026-03-01,paid_social,KYC Approved,3,1217
+2026-03-01,paid_social,Activated,4,715
+2026-03-01,paid_social,Funded Account,5,336
+2026-03-01,partner,Signup Started,1,1827
+2026-03-01,partner,KYC Submitted,2,1392
+2026-03-01,partner,KYC Approved,3,1120
+2026-03-01,partner,Activated,4,711
+2026-03-01,partner,Funded Account,5,370
+2026-03-01,referral,Signup Started,1,1501
+2026-03-01,referral,KYC Submitted,2,1193
+2026-03-01,referral,KYC Approved,3,1013
+2026-03-01,referral,Activated,4,650
+2026-03-01,referral,Funded Account,5,344
+2026-04-01,lifecycle,Signup Started,1,1201
+2026-04-01,lifecycle,KYC Submitted,2,943
+2026-04-01,lifecycle,KYC Approved,3,772
+2026-04-01,lifecycle,Activated,4,478
+2026-04-01,lifecycle,Funded Account,5,235
+2026-04-01,organic,Signup Started,1,1617
+2026-04-01,organic,KYC Submitted,2,1313
+2026-04-01,organic,KYC Approved,3,1102
+2026-04-01,organic,Activated,4,705
+2026-04-01,organic,Funded Account,5,359
+2026-04-01,paid_search,Signup Started,1,1941
+2026-04-01,paid_search,KYC Submitted,2,1473
+2026-04-01,paid_search,KYC Approved,3,1181
+2026-04-01,paid_search,Activated,4,691
+2026-04-01,paid_search,Funded Account,5,342
+2026-04-01,paid_social,Signup Started,1,2127
+2026-04-01,paid_social,KYC Submitted,2,1614
+2026-04-01,paid_social,KYC Approved,3,1256
+2026-04-01,paid_social,Activated,4,734
+2026-04-01,paid_social,Funded Account,5,357
+2026-04-01,partner,Signup Started,1,1650
+2026-04-01,partner,KYC Submitted,2,1277
+2026-04-01,partner,KYC Approved,3,1072
+2026-04-01,partner,Activated,4,662
+2026-04-01,partner,Funded Account,5,342
+2026-04-01,referral,Signup Started,1,1401
+2026-04-01,referral,KYC Submitted,2,1120
+2026-04-01,referral,KYC Approved,3,935
+2026-04-01,referral,Activated,4,596
+2026-04-01,referral,Funded Account,5,321
+2026-05-01,lifecycle,Signup Started,1,1240
+2026-05-01,lifecycle,KYC Submitted,2,943
+2026-05-01,lifecycle,KYC Approved,3,771
+2026-05-01,lifecycle,Activated,4,468
+2026-05-01,lifecycle,Funded Account,5,244
+2026-05-01,organic,Signup Started,1,1541
+2026-05-01,organic,KYC Submitted,2,1196
+2026-05-01,organic,KYC Approved,3,973
+2026-05-01,organic,Activated,4,595
+2026-05-01,organic,Funded Account,5,308
+2026-05-01,paid_search,Signup Started,1,2099
+2026-05-01,paid_search,KYC Submitted,2,1602
+2026-05-01,paid_search,KYC Approved,3,1324
+2026-05-01,paid_search,Activated,4,793
+2026-05-01,paid_search,Funded Account,5,398
+2026-05-01,paid_social,Signup Started,1,2256
+2026-05-01,paid_social,KYC Submitted,2,1728
+2026-05-01,paid_social,KYC Approved,3,1383
+2026-05-01,paid_social,Activated,4,827
+2026-05-01,paid_social,Funded Account,5,377
+2026-05-01,partner,Signup Started,1,1780
+2026-05-01,partner,KYC Submitted,2,1362
+2026-05-01,partner,KYC Approved,3,1107
+2026-05-01,partner,Activated,4,685
+2026-05-01,partner,Funded Account,5,354
+2026-05-01,referral,Signup Started,1,1527
+2026-05-01,referral,KYC Submitted,2,1249
+2026-05-01,referral,KYC Approved,3,1035
+2026-05-01,referral,Activated,4,669
+2026-05-01,referral,Funded Account,5,343

@@ -1,0 +1,163 @@
+{
+  "visual_style_rules": {
+    "accent_color": "#F97316",
+    "positive_variance": "#2A9D8F",
+    "negative_variance": "#D62828",
+    "neutral_text": "#64748B",
+    "card_radius": 6,
+    "avoid": [
+      "3D charts",
+      "pie charts with more than 4 categories",
+      "raw numeric fields on KPI cards",
+      "cash balance summed across months"
+    ]
+  },
+  "visuals": [
+    {
+      "page": "Executive Overview",
+      "id": "kpi_revenue",
+      "type": "card",
+      "title": "Revenue",
+      "measure": "KPI Measures[Actual Revenue Current Month]",
+      "secondary": "KPI Measures[Revenue Var vs Budget]",
+      "position": {"x": 40, "y": 100, "w": 280, "h": 120}
+    },
+    {
+      "page": "Executive Overview",
+      "id": "kpi_gm_pct",
+      "type": "card",
+      "title": "Gross Margin %",
+      "measure": "KPI Measures[Gross Margin %]",
+      "position": {"x": 340, "y": 100, "w": 240, "h": 120}
+    },
+    {
+      "page": "Executive Overview",
+      "id": "kpi_ebitda",
+      "type": "card",
+      "title": "EBITDA",
+      "measure": "KPI Measures[Actual EBITDA Current Month]",
+      "secondary": "KPI Measures[EBITDA Var vs Budget]",
+      "position": {"x": 600, "y": 100, "w": 280, "h": 120}
+    },
+    {
+      "page": "Executive Overview",
+      "id": "trend_revenue_ebitda",
+      "type": "line chart",
+      "title": "12M Revenue and EBITDA Trend",
+      "axis": "DimDate[MonthYear]",
+      "legend": "DimScenario[Scenario]",
+      "values": ["KPI Measures[Revenue]", "KPI Measures[EBITDA]"],
+      "position": {"x": 40, "y": 250, "w": 760, "h": 300}
+    },
+    {
+      "page": "Executive Overview",
+      "id": "var_by_bu",
+      "type": "clustered bar chart",
+      "title": "EBITDA Variance by Business Unit",
+      "axis": "DimBusinessUnit[BusinessUnit]",
+      "values": ["KPI Measures[EBITDA Var vs Budget]"],
+      "conditional_format": "Variance Color",
+      "position": {"x": 830, "y": 250, "w": 420, "h": 300}
+    },
+    {
+      "page": "Executive Overview",
+      "id": "commentary",
+      "type": "multi-row card",
+      "title": "What happened? Why? What next?",
+      "values": [
+        "KPI Measures[Selected Commentary - What Happened]",
+        "KPI Measures[Selected Commentary - Why]",
+        "KPI Measures[Selected Commentary - What Next]"
+      ],
+      "position": {"x": 40, "y": 585, "w": 1210, "h": 230}
+    },
+    {
+      "page": "Variance Bridge",
+      "id": "budget_actual_waterfall",
+      "type": "waterfall chart",
+      "title": "Budget to Actual EBITDA Bridge",
+      "category": "FactBridge[BridgeStep]",
+      "y": "KPI Measures[Bridge Amount]",
+      "sort": "FactBridge[BridgeOrder]",
+      "position": {"x": 40, "y": 170, "w": 900, "h": 430}
+    },
+    {
+      "page": "Variance Bridge",
+      "id": "variance_matrix",
+      "type": "matrix",
+      "title": "Variance by BU and Region",
+      "rows": ["DimBusinessUnit[BusinessUnit]", "DimRegion[Region]"],
+      "values": [
+        "KPI Measures[Actual Revenue]",
+        "KPI Measures[Budget Revenue]",
+        "KPI Measures[Revenue Var vs Budget]",
+        "KPI Measures[Actual EBITDA]",
+        "KPI Measures[Budget EBITDA]",
+        "KPI Measures[EBITDA Var vs Budget]"
+      ],
+      "position": {"x": 970, "y": 170, "w": 560, "h": 430}
+    },
+    {
+      "page": "Business Unit Deep Dive",
+      "id": "product_profitability",
+      "type": "matrix",
+      "title": "Product Profitability",
+      "rows": ["DimBusinessUnit[BusinessUnit]", "DimProduct[Product]"],
+      "values": [
+        "KPI Measures[Actual Revenue]",
+        "KPI Measures[Gross Margin %]",
+        "KPI Measures[Actual EBITDA]",
+        "KPI Measures[EBITDA Var vs Budget]"
+      ],
+      "position": {"x": 40, "y": 210, "w": 720, "h": 480}
+    },
+    {
+      "page": "Customer & Product Drilldown",
+      "id": "customer_scatter",
+      "type": "scatter chart",
+      "title": "Customer Revenue vs Margin",
+      "x": "KPI Measures[Actual Revenue]",
+      "y": "KPI Measures[Gross Margin %]",
+      "size": "KPI Measures[Orders]",
+      "details": "DimCustomer[Customer]",
+      "legend": "DimCustomer[CustomerSegment]",
+      "position": {"x": 40, "y": 180, "w": 700, "h": 420}
+    },
+    {
+      "page": "Customer & Product Drilldown",
+      "id": "exception_table",
+      "type": "table",
+      "title": "Negative EBITDA Variance Exceptions",
+      "columns": [
+        "DimCustomer[Customer]",
+        "DimProduct[Product]",
+        "DimRegion[Region]",
+        "KPI Measures[Actual Revenue]",
+        "KPI Measures[Actual EBITDA]",
+        "KPI Measures[EBITDA Var vs Budget]"
+      ],
+      "filter": "KPI Measures[EBITDA Var vs Budget] < 0",
+      "position": {"x": 770, "y": 180, "w": 760, "h": 420}
+    },
+    {
+      "page": "Opex & Cash Control",
+      "id": "opex_department",
+      "type": "clustered column chart",
+      "title": "Opex by Department",
+      "axis": "DimDepartment[Department]",
+      "legend": "DimScenario[Scenario]",
+      "values": ["KPI Measures[Department Opex]"],
+      "position": {"x": 40, "y": 210, "w": 700, "h": 360}
+    },
+    {
+      "page": "Opex & Cash Control",
+      "id": "cash_trend",
+      "type": "line chart",
+      "title": "Cash Balance Trend",
+      "axis": "DimDate[MonthYear]",
+      "legend": "DimScenario[Scenario]",
+      "values": ["KPI Measures[Cash Balance Latest Month]"],
+      "position": {"x": 770, "y": 210, "w": 760, "h": 360}
+    }
+  ]
+}

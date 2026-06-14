@@ -1,0 +1,7 @@
+scenario_id,scenario_name,take_rate_delta_bps,cost_delta_pct,volume_elasticity,description
+S00,Base,0,0.0,0.0,Current contracted economics.
+S01,Raise take rate +10 bps,10,0.0,-0.004,Modest price lift with light volume elasticity.
+S02,Raise take rate +25 bps,25,0.0,-0.014,Aggressive price lift for less-sensitive segments.
+S03,Processor renegotiation -8%,0,-0.08,0.0,Reduce processor/interchange pass-through cost.
+S04,Fraud controls -15%,0,-0.035,-0.002,Reduce fraud/chargeback losses with minor friction.
+S05,Enterprise discount -12 bps,-12,0.0,0.018,Volume protection through enterprise repricing.

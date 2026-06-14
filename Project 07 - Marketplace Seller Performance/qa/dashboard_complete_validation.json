@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "artifact": "C:\\Users\\Win\\OneDrive - BEE LOGISTICS CORPORATION\\Documentss\\Portfolio\\Project 07 - Marketplace Seller Performance\\output\\dashboard_complete.html",
+  "generated_at": "2026-06-11 13:01:27",
+  "latest_month": "2026-05",
+  "data_rows": {
+    "seller_month": 2037,
+    "category_month_platform": 408,
+    "cancel_reason_month_platform": 255,
+    "ads_month_platform": 51
+  },
+  "dashboard_features": [
+    "4 dashboard tabs",
+    "global month/platform/tier/seller filters",
+    "6 KPI cards",
+    "GMV trend",
+    "GMV by platform",
+    "top/bottom seller tables",
+    "seller portfolio scatter",
+    "Pareto concentration curve",
+    "category growth quadrant",
+    "GMV vs ads/voucher trend",
+    "ops risk trend",
+    "cancellation reason bars",
+    "risk action queue"
+  ]
+}

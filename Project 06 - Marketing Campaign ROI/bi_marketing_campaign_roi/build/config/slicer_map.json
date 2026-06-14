@@ -1,0 +1,30 @@
+{
+  "slicers": [
+    {
+      "name": "Date",
+      "field": "DimDate[date]",
+      "type": "Between",
+      "sync_pages": "all"
+    },
+    {
+      "name": "Paid/Organic",
+      "field": "DimChannel[paid_organic]",
+      "type": "Dropdown",
+      "sync_pages": "all"
+    },
+    {
+      "name": "Channel",
+      "field": "DimChannel[channel]",
+      "type": "Dropdown search",
+      "sync_pages": "all"
+    },
+    {
+      "name": "Funnel Stage",
+      "field": "DimCampaign[funnel_stage]",
+      "type": "Dropdown",
+      "sync_pages": [
+        "Campaign Ranking"
+      ]
+    }
+  ]
+}

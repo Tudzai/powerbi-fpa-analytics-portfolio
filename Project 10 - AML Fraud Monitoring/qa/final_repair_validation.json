@@ -1,0 +1,55 @@
+{
+  "json_files_valid": true,
+  "final_html_exists": true,
+  "final_html_bytes": 29993,
+  "final_html_tabs_ok": true,
+  "model_tables": 13,
+  "model_measures": 26,
+  "model_relationships": 18,
+  "key_tables_present": true,
+  "files": {
+    "output/dashboard_final.pbip": {
+      "exists": true,
+      "bytes": 521
+    },
+    "output/dashboard_final_project/AML_Fraud_Monitoring_Command_Center.pbip": {
+      "exists": true,
+      "bytes": 497
+    },
+    "output/dashboard_final_project/AML_Fraud_Monitoring_Command_Center.Report/definition.pbir": {
+      "exists": true,
+      "bytes": 269
+    },
+    "output/dashboard_final_project/AML_Fraud_Monitoring_Command_Center.SemanticModel/definition.pbism": {
+      "exists": true,
+      "bytes": 111
+    },
+    "output/dashboard_final_project/AML_Fraud_Monitoring_Command_Center.SemanticModel/.platform": {
+      "exists": true,
+      "bytes": 441
+    },
+    "output/dashboard_final_project/AML_Fraud_Monitoring_Command_Center.SemanticModel/model.bim": {
+      "exists": true,
+      "bytes": 52053
+    },
+    "qa/pbix_validation.json": {
+      "exists": true,
+      "bytes": 1068
+    },
+    "qa/pbix_final_validation.json": {
+      "exists": true,
+      "bytes": 3203
+    },
+    "output/pbix_build_status.json": {
+      "exists": true,
+      "bytes": 2432
+    },
+    "output/dashboard_final_pbip_manifest.json": {
+      "exists": true,
+      "bytes": 1093
+    }
+  },
+  "html_smoke_screenshot": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\qa\\screenshots\\dashboard_final_html_smoke.png",
+  "html_smoke_screenshot_bytes": 119670,
+  "html_smoke_status": "passed"
+}

@@ -1,0 +1,8 @@
+channel,channel_type,default_conversion_rate
+Organic Search,Owned/Earned,0.032
+Paid Search,Paid,0.034
+Direct,Owned/Earned,0.038
+Email,Owned/Earned,0.047
+Social,Paid,0.022
+Affiliate,Paid,0.029
+Display,Paid,0.014

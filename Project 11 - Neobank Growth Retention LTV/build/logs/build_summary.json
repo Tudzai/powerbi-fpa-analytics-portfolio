@@ -1,0 +1,19 @@
+{
+  "status": "source_build_complete",
+  "project_root": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 11 - Neobank Growth Retention LTV",
+  "data_qa": "pass",
+  "tables": {
+    "DimMonth": 29,
+    "DimChannel": 6,
+    "DimSegment": 4,
+    "DimCampaign": 12,
+    "FactGrowthMonthly": 696,
+    "FunnelMonthly": 870,
+    "CohortRetention": 10440,
+    "CampaignMonthly": 348,
+    "ChurnRiskSnapshot": 244,
+    "MonthlyKPIs": 29,
+    "ChannelMonthly": 174
+  },
+  "pbix_exists": false
+}

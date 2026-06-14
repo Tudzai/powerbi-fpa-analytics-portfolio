@@ -1,0 +1,126 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t0",
+              "Entity": "FactProvisionForecast",
+              "Type": 0
+            },
+            {
+              "Name": "m",
+              "Entity": "KPI Measures",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t0"
+                  }
+                },
+                "Property": "scenario"
+              },
+              "Name": "FactProvisionForecast.scenario",
+              "NativeReferenceName": "Scenario"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t0"
+                  }
+                },
+                "Property": "forecast_month"
+              },
+              "Name": "FactProvisionForecast.forecast_month",
+              "NativeReferenceName": "Month"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Forecast Expected Loss"
+              },
+              "Name": "KPI Measures.Forecast Expected Loss",
+              "NativeReferenceName": "Expected loss"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Forecast Provision"
+              },
+              "Name": "KPI Measures.Forecast Provision",
+              "NativeReferenceName": "Provision"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Incremental Provision"
+              },
+              "Name": "KPI Measures.Incremental Provision",
+              "NativeReferenceName": "Incremental"
+            }
+          ],
+          "OrderBy": [
+            {
+              "Direction": 2,
+              "Expression": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "Forecast Provision"
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "Subtotal": 1
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 4,
+            "Primary": {
+              "Window": {
+                "Count": 500
+              }
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

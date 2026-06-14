@@ -1,0 +1,233 @@
+<!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>E-commerce Executive Performance Dashboard</title>
+      <style>
+        :root {
+          --bg: #f8fafc;
+          --ink: #111827;
+          --muted: #64748b;
+          --teal: #0f766e;
+          --blue: #2563eb;
+          --amber: #f59e0b;
+          --red: #dc2626;
+          --line: #dbe4ef;
+          --panel: #ffffff;
+        }
+        * { box-sizing: border-box; }
+        body {
+          margin: 0;
+          background: var(--bg);
+          color: var(--ink);
+          font-family: Segoe UI, Arial, sans-serif;
+        }
+        .dashboard {
+          max-width: 1440px;
+          margin: 0 auto;
+          padding: 24px;
+        }
+        header {
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+          align-items: flex-end;
+          margin-bottom: 18px;
+        }
+        h1 {
+          margin: 0;
+          font-size: 30px;
+          letter-spacing: 0;
+        }
+        .subtitle {
+          color: var(--muted);
+          margin-top: 6px;
+          font-size: 14px;
+        }
+        .filters {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+        }
+        .filter {
+          border: 1px solid var(--line);
+          background: #fff;
+          padding: 8px 10px;
+          border-radius: 6px;
+          color: #334155;
+          font-size: 12px;
+        }
+        .kpis {
+          display: grid;
+          grid-template-columns: repeat(6, minmax(0, 1fr));
+          gap: 12px;
+          margin-bottom: 16px;
+        }
+        .card, .panel {
+          background: var(--panel);
+          border: 1px solid var(--line);
+          border-radius: 8px;
+          box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+        }
+        .card {
+          padding: 14px;
+          min-height: 92px;
+        }
+        .label {
+          color: var(--muted);
+          font-size: 12px;
+          text-transform: uppercase;
+        }
+        .value {
+          margin-top: 10px;
+          font-size: 25px;
+          font-weight: 700;
+          white-space: nowrap;
+        }
+        .trend {
+          margin-top: 6px;
+          color: var(--teal);
+          font-size: 12px;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: 1.5fr 1fr 1fr;
+          gap: 14px;
+        }
+        .panel {
+          padding: 16px;
+          min-height: 280px;
+        }
+        .wide {
+          grid-column: span 1;
+        }
+        h2 {
+          font-size: 16px;
+          margin: 0 0 12px;
+        }
+        .spark {
+          display: flex;
+          align-items: end;
+          gap: 5px;
+          height: 180px;
+          border-bottom: 1px solid var(--line);
+          padding-top: 12px;
+        }
+        .bar {
+          flex: 1;
+          min-width: 8px;
+          background: linear-gradient(180deg, var(--teal), #14b8a6);
+          border-radius: 4px 4px 0 0;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 13px;
+        }
+        td, th {
+          padding: 8px 0;
+          border-bottom: 1px solid #e5edf6;
+          text-align: left;
+        }
+        th {
+          color: var(--muted);
+          font-weight: 600;
+        }
+        .note {
+          color: var(--muted);
+          font-size: 12px;
+          margin-top: 10px;
+        }
+        @media (max-width: 980px) {
+          .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .grid { grid-template-columns: 1fr; }
+          header { align-items: flex-start; flex-direction: column; }
+        }
+      </style>
+    </head>
+    <body>
+      <main class="dashboard">
+        <header>
+          <div>
+            <h1>E-commerce Executive Performance Dashboard</h1>
+            <div class="subtitle">Synthetic portfolio demo. Reporting period 2025-01-01 to 2026-05-31.</div>
+          </div>
+          <div class="filters">
+            <div class="filter">All Regions</div>
+            <div class="filter">All Channels</div>
+            <div class="filter">All Devices</div>
+          </div>
+        </header>
+
+        <section class="kpis">
+          <div class="card"><div class="label">GMV</div><div class="value">$52.4M</div><div class="trend">Demand scale</div></div>
+          <div class="card"><div class="label">Net Revenue</div><div class="value">$45.6M</div><div class="trend">Recognized sales</div></div>
+          <div class="card"><div class="label">Orders</div><div class="value">128,271</div><div class="trend">Order volume</div></div>
+          <div class="card"><div class="label">AOV</div><div class="value">$409</div><div class="trend">Basket value</div></div>
+          <div class="card"><div class="label">Conversion</div><div class="value">3.30%</div><div class="trend">Orders / sessions</div></div>
+          <div class="card"><div class="label">Refund/Cancel</div><div class="value">7.89%</div><div class="trend">Risk rate</div></div>
+        </section>
+
+        <section class="grid">
+          <div class="panel">
+            <h2>GMV Trend - Last 12 Months</h2>
+            <div class="spark" data-values="3.01,3.32,3.06,2.97,2.99,3.92,4.22,2.87,2.6,3.11,3.13,3.48">
+              <div class="bar" style="height:71%"></div><div class="bar" style="height:79%"></div><div class="bar" style="height:73%"></div><div class="bar" style="height:70%"></div><div class="bar" style="height:71%"></div><div class="bar" style="height:93%"></div><div class="bar" style="height:100%"></div><div class="bar" style="height:68%"></div><div class="bar" style="height:62%"></div><div class="bar" style="height:74%"></div><div class="bar" style="height:74%"></div><div class="bar" style="height:82%"></div>
+            </div>
+            <div class="note">Monthly bars show seasonality and growth trend.</div>
+          </div>
+          <div class="panel">
+            <h2>Top Categories by GMV</h2>
+            <table><tbody><tr><td>Electronics</td><td>$32.7M</td></tr>
+<tr><td>Home & Living</td><td>$9.7M</td></tr>
+<tr><td>Sports</td><td>$3.3M</td></tr>
+<tr><td>Beauty</td><td>$2.7M</td></tr>
+<tr><td>Fashion</td><td>$2.6M</td></tr>
+<tr><td>Grocery</td><td>$931.8K</td></tr>
+<tr><td>Books & Media</td><td>$502.9K</td></tr></tbody></table>
+          </div>
+          <div class="panel">
+            <h2>Traffic Channel Performance</h2>
+            <table><thead><tr><th>Channel</th><th>GMV</th><th>CVR</th></tr></thead><tbody><tr><td>Organic Search</td><td>$16.0M</td><td>3.22%</td></tr>
+<tr><td>Paid Search</td><td>$9.8M</td><td>3.43%</td></tr>
+<tr><td>Direct</td><td>$9.7M</td><td>3.82%</td></tr>
+<tr><td>Email</td><td>$8.3M</td><td>4.74%</td></tr>
+<tr><td>Social</td><td>$4.5M</td><td>2.23%</td></tr>
+<tr><td>Affiliate</td><td>$3.3M</td><td>2.94%</td></tr>
+<tr><td>Display</td><td>$840.9K</td><td>1.39%</td></tr></tbody></table>
+          </div>
+          <div class="panel">
+            <h2>Order Status</h2>
+            <table><tbody><tr><td>Cancelled</td><td>4,509</td></tr>
+<tr><td>Completed</td><td>118,148</td></tr>
+<tr><td>Refunded</td><td>5,614</td></tr></tbody></table>
+            <div class="note">Refund and cancellation rates require monitoring by category and reason.</div>
+          </div>
+          <div class="panel">
+            <h2>Executive Signals</h2>
+            <table>
+              <tbody>
+                <tr><td>Top Category</td><td>Electronics</td></tr>
+                <tr><td>Top Channel</td><td>Organic Search</td></tr>
+                <tr><td>ROAS</td><td>56.52x</td></tr>
+                <tr><td>Sessions</td><td>3,883,799</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="panel">
+            <h2>Build Status</h2>
+            <table>
+              <tbody>
+                <tr><td>Data QA</td><td>Pass</td></tr>
+                <tr><td>Metric QA</td><td>Pass</td></tr>
+                <tr><td>Preview QA</td><td>Pass</td></tr>
+                <tr><td>PBIX File QA</td><td>Blocked pending manual Power BI build</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </body>
+    </html>

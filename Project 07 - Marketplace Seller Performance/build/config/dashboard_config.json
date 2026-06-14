@@ -1,0 +1,8 @@
+{
+  "title": "Marketplace / Seller Performance Dashboard",
+  "latest_complete_month": "2026-05",
+  "prompt_version": "BI_A2Z_Master_Prompt_v2",
+  "default_data": "synthetic_demo",
+  "visual_refresh": "Marketplace Command Center v3",
+  "design_pattern": "executive KPI strip + diagnostic charts + seller action queue"
+}

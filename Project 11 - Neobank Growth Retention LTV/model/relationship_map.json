@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Rel_FactGrowthMonthly_MonthStart_DimMonth_MonthStart",
+    "fromTable": "FactGrowthMonthly",
+    "fromColumn": "MonthStart",
+    "toTable": "DimMonth",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactGrowthMonthly_ChannelKey_DimChannel_ChannelKey",
+    "fromTable": "FactGrowthMonthly",
+    "fromColumn": "ChannelKey",
+    "toTable": "DimChannel",
+    "toColumn": "ChannelKey"
+  },
+  {
+    "name": "Rel_FactGrowthMonthly_SegmentKey_DimSegment_SegmentKey",
+    "fromTable": "FactGrowthMonthly",
+    "fromColumn": "SegmentKey",
+    "toTable": "DimSegment",
+    "toColumn": "SegmentKey"
+  },
+  {
+    "name": "Rel_FunnelMonthly_MonthStart_DimMonth_MonthStart",
+    "fromTable": "FunnelMonthly",
+    "fromColumn": "MonthStart",
+    "toTable": "DimMonth",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FunnelMonthly_ChannelKey_DimChannel_ChannelKey",
+    "fromTable": "FunnelMonthly",
+    "fromColumn": "ChannelKey",
+    "toTable": "DimChannel",
+    "toColumn": "ChannelKey"
+  },
+  {
+    "name": "Rel_CohortRetention_ActivityMonth_DimMonth_MonthStart",
+    "fromTable": "CohortRetention",
+    "fromColumn": "ActivityMonth",
+    "toTable": "DimMonth",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_CohortRetention_ChannelKey_DimChannel_ChannelKey",
+    "fromTable": "CohortRetention",
+    "fromColumn": "ChannelKey",
+    "toTable": "DimChannel",
+    "toColumn": "ChannelKey"
+  },
+  {
+    "name": "Rel_CohortRetention_SegmentKey_DimSegment_SegmentKey",
+    "fromTable": "CohortRetention",
+    "fromColumn": "SegmentKey",
+    "toTable": "DimSegment",
+    "toColumn": "SegmentKey"
+  },
+  {
+    "name": "Rel_CampaignMonthly_MonthStart_DimMonth_MonthStart",
+    "fromTable": "CampaignMonthly",
+    "fromColumn": "MonthStart",
+    "toTable": "DimMonth",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_CampaignMonthly_ChannelKey_DimChannel_ChannelKey",
+    "fromTable": "CampaignMonthly",
+    "fromColumn": "ChannelKey",
+    "toTable": "DimChannel",
+    "toColumn": "ChannelKey"
+  },
+  {
+    "name": "Rel_CampaignMonthly_CampaignKey_DimCampaign_CampaignKey",
+    "fromTable": "CampaignMonthly",
+    "fromColumn": "CampaignKey",
+    "toTable": "DimCampaign",
+    "toColumn": "CampaignKey"
+  },
+  {
+    "name": "Rel_ChurnRiskSnapshot_ChannelKey_DimChannel_ChannelKey",
+    "fromTable": "ChurnRiskSnapshot",
+    "fromColumn": "ChannelKey",
+    "toTable": "DimChannel",
+    "toColumn": "ChannelKey"
+  },
+  {
+    "name": "Rel_ChurnRiskSnapshot_SegmentKey_DimSegment_SegmentKey",
+    "fromTable": "ChurnRiskSnapshot",
+    "fromColumn": "SegmentKey",
+    "toTable": "DimSegment",
+    "toColumn": "SegmentKey"
+  },
+  {
+    "name": "Rel_MonthlyKPIs_MonthStart_DimMonth_MonthStart",
+    "fromTable": "MonthlyKPIs",
+    "fromColumn": "MonthStart",
+    "toTable": "DimMonth",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_ChannelMonthly_MonthStart_DimMonth_MonthStart",
+    "fromTable": "ChannelMonthly",
+    "fromColumn": "MonthStart",
+    "toTable": "DimMonth",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_ChannelMonthly_ChannelKey_DimChannel_ChannelKey",
+    "fromTable": "ChannelMonthly",
+    "fromColumn": "ChannelKey",
+    "toTable": "DimChannel",
+    "toColumn": "ChannelKey"
+  }
+]

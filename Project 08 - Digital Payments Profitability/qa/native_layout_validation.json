@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "input_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 08 - Digital Payments Profitability\\output\\dashboard_final.pbix",
+  "output_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 08 - Digital Payments Profitability\\output\\dashboard_native.pbix",
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 08 - Digital Payments Profitability\\output\\dashboard_final.pbix",
+  "backup": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 08 - Digital Payments Profitability\\archive\\old_versions\\dashboard_final_before_native_layout_20260611_165716.pbix",
+  "layout_json": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 08 - Digital Payments Profitability\\build\\native_report_layout_project8.json",
+  "page_count": 3,
+  "pages": [
+    "01 Executive Overview",
+    "02 Merchant & Transaction Drivers",
+    "03 Margin & Scenario Planning"
+  ],
+  "visual_count": 45,
+  "visual_types": {
+    "textbox": 3,
+    "slicer": 12,
+    "cardVisual": 18,
+    "lineChart": 3,
+    "barChart": 5,
+    "tableEx": 3,
+    "waterfallChart": 1
+  },
+  "security_bindings_removed": true,
+  "theme_path": "Report/StaticResources/SharedResources/BaseThemes/CY26SU05.json"
+}

@@ -1,0 +1,46 @@
+{
+  "generated_on": "2026-06-11",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "fact rows > 0",
+      "status": "PASS",
+      "value": 69600
+    },
+    {
+      "check": "date range",
+      "status": "PASS",
+      "value": "2024-01 to 2026-05"
+    },
+    {
+      "check": "gmv non-negative",
+      "status": "PASS",
+      "value": 80.53
+    },
+    {
+      "check": "transaction_count non-negative",
+      "status": "PASS",
+      "value": 1.0
+    },
+    {
+      "check": "revenue_fee non-negative",
+      "status": "PASS",
+      "value": 1.53
+    },
+    {
+      "check": "merchant_id relationship",
+      "status": "PASS",
+      "missing_count": 0
+    },
+    {
+      "check": "payment_method_id relationship",
+      "status": "PASS",
+      "missing_count": 0
+    },
+    {
+      "check": "channel_id relationship",
+      "status": "PASS",
+      "missing_count": 0
+    }
+  ]
+}

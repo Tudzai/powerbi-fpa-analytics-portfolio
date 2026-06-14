@@ -1,0 +1,111 @@
+{
+  "pages": [
+    {
+      "page": "01 Executive Planning Overview",
+      "purpose": "Show scenario-level forecast P&L status and the main revenue, margin, EBITDA and cash implications.",
+      "filters": [
+        "Scenario",
+        "Year",
+        "Month",
+        "Region"
+      ],
+      "key_questions": [
+        "Which scenario is on plan?",
+        "How much revenue and EBITDA are at stake?",
+        "What cash pressure appears by month?"
+      ],
+      "visuals": [
+        "KPI cards",
+        "Revenue and EBITDA trend",
+        "Scenario variance waterfall",
+        "Cash bridge"
+      ]
+    },
+    {
+      "page": "02 Revenue & Cost Drivers",
+      "purpose": "Explain revenue movement through jobs, rate, mix, surcharge, discount and direct cost drivers.",
+      "filters": [
+        "Scenario",
+        "Year",
+        "Region",
+        "Service Line",
+        "Customer Segment"
+      ],
+      "key_questions": [
+        "Which service lines drive revenue?",
+        "Where is margin quality improving or deteriorating?",
+        "What variable-cost levers matter most?"
+      ],
+      "visuals": [
+        "Service revenue ranking",
+        "Jobs vs revenue per job scatter",
+        "Gross margin by segment",
+        "Direct cost component stacked bar"
+      ]
+    },
+    {
+      "page": "03 Headcount & Capacity Plan",
+      "purpose": "Connect volume growth to capacity, hiring, payroll cost and productivity.",
+      "filters": [
+        "Scenario",
+        "Year",
+        "Region",
+        "Department"
+      ],
+      "key_questions": [
+        "Does headcount match forecast volume?",
+        "Which teams drive payroll growth?",
+        "Where does productivity risk show up?"
+      ],
+      "visuals": [
+        "FTE trend",
+        "Payroll by department",
+        "Jobs per FTE",
+        "Hiring and attrition table"
+      ]
+    },
+    {
+      "page": "04 Cash & Forecast Accuracy",
+      "purpose": "Show the cash impact of scenarios and whether forecast quality is good enough for planning decisions.",
+      "filters": [
+        "Scenario",
+        "Year",
+        "Service Line",
+        "Region",
+        "Forecast Horizon"
+      ],
+      "key_questions": [
+        "What happens to operating cash flow?",
+        "How sensitive is cash to DSO/DPO?",
+        "Where has forecast error been highest?"
+      ],
+      "visuals": [
+        "Operating cash flow trend",
+        "Ending cash by scenario",
+        "DSO/DPO cards",
+        "MAPE and bias by horizon/service"
+      ]
+    },
+    {
+      "page": "05 Detail & Exceptions",
+      "purpose": "Provide lookup rows for low-margin services, high working-capital exposure, forecast-error outliers and headcount exceptions.",
+      "filters": [
+        "Scenario",
+        "Year",
+        "Region",
+        "Service Line",
+        "Department"
+      ],
+      "key_questions": [
+        "Which records need review before finalizing plan?",
+        "Where should FP&A challenge assumptions?"
+      ],
+      "visuals": [
+        "Exception table",
+        "Low margin table",
+        "High MAPE table",
+        "Headcount variance table"
+      ]
+    }
+  ]
+}

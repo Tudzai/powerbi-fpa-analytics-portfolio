@@ -1,0 +1,19 @@
+{
+  "status": "PATCHED",
+  "backup": "C:\\Users\\Win\\OneDrive - BEE LOGISTICS CORPORATION\\Documentss\\Portfolio\\Project 07 - Marketplace Seller Performance\\archive\\old_versions\\dashboard_final_before_visual_refresh_20260611_124129.pbix",
+  "pbix": "C:\\Users\\Win\\OneDrive - BEE LOGISTICS CORPORATION\\Documentss\\Portfolio\\Project 07 - Marketplace Seller Performance\\output\\dashboard_final.pbix",
+  "native_visual_count": 11,
+  "native_visual_types": [
+    "textbox",
+    "textbox",
+    "cardVisual",
+    "cardVisual",
+    "cardVisual",
+    "cardVisual",
+    "cardVisual",
+    "cardVisual",
+    "lineChart",
+    "barChart",
+    "tableEx"
+  ]
+}

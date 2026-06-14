@@ -1,0 +1,17 @@
+[
+  {
+    "page": "Credit Risk Overview",
+    "ordinal": 0,
+    "visual_count": 15
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "ordinal": 1,
+    "visual_count": 15
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "ordinal": 2,
+    "visual_count": 15
+  }
+]

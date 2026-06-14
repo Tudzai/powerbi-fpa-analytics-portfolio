@@ -1,0 +1,24 @@
+{
+    "generated_at":  "2026-06-11 18:18:55",
+    "project_root":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring",
+    "powerbi_bin":  "C:\\Program Files\\Microsoft Power BI Desktop\\bin",
+    "port":  56065,
+    "tables":  [
+                   "DimDate",
+                   "DimCountry",
+                   "DimCorridor",
+                   "DimChannel",
+                   "DimProduct",
+                   "DimRule",
+                   "DimAnalyst",
+                   "DimCustomer",
+                   "FactTransactions",
+                   "FactAlerts",
+                   "FactCases",
+                   "FactRuleGovernance"
+               ],
+    "table_count":  13,
+    "relationship_count":  18,
+    "measure_count":  26,
+    "status":  "model pushed to running Power BI Desktop session"
+}

@@ -1,0 +1,32 @@
+{
+    "status":  "complete",
+    "project":  "AML / Fraud Monitoring Command Center",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\output\\dashboard_final.pbix",
+    "final_pbix_bytes":  1426891,
+    "final_pbix_last_write":  "2026-06-11 21:19:20",
+    "final_html":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\output\\dashboard_final.html",
+    "validation":  "PowerBIPackager.Validate passed; Power BI Desktop open check passed; pbi-tools offline export-data passed; pbi-tools extract passed.",
+    "screenshot":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\qa\\screenshots\\dashboard_final_pbix_dark_aesthetic_final.png",
+    "design_refresh":  "Dark command-center aesthetic pass completed with Spawn Agents",
+    "pages":  [
+                  "Fraud \u0026 Compliance Overview",
+                  "Alert \u0026 Customer Risk Deep Dive",
+                  "Case SLA \u0026 Rule Governance"
+              ],
+    "visual_containers":  52,
+    "model_row_counts":  {
+                             "DimDate":  516,
+                             "DimCountry":  12,
+                             "DimCorridor":  12,
+                             "DimChannel":  8,
+                             "DimProduct":  8,
+                             "DimRule":  10,
+                             "DimAnalyst":  8,
+                             "DimCustomer":  180,
+                             "FactTransactions":  36000,
+                             "FactAlerts":  6611,
+                             "FactCases":  3556,
+                             "FactRuleGovernance":  26,
+                             "KPI Measures":  1
+                         }
+}

@@ -1,0 +1,58 @@
+{
+  "global_slicers": [
+    "Month range",
+    "Acquisition channel",
+    "Region",
+    "Plan tier",
+    "Customer segment",
+    "Include incomplete cohorts"
+  ],
+  "pages": [
+    {
+      "page": "Lifecycle Overview",
+      "purpose": "Monitor acquisition, returning users, repeat purchase rate, revenue, and churn signal at a glance.",
+      "visuals": [
+        "KPI strip",
+        "New vs returning users trend",
+        "Repeat purchase rate trend",
+        "Lifecycle mix",
+        "Churn signal cards"
+      ]
+    },
+    {
+      "page": "Monthly Cohort Retention",
+      "purpose": "Inspect first-purchase cohort retention by month since cohort.",
+      "visuals": [
+        "Cohort retention heatmap",
+        "Cohort size trend",
+        "M1/M3/M6 retention cards",
+        "Cohort retention table"
+      ]
+    },
+    {
+      "page": "LTV & Revenue Cohorts",
+      "purpose": "Compare cumulative LTV and revenue by cohort, channel, plan, and segment.",
+      "visuals": [
+        "Cumulative LTV curves",
+        "LTV by acquisition channel",
+        "Revenue by cohort age",
+        "Segment comparison"
+      ]
+    },
+    {
+      "page": "Churn Signal & Winback",
+      "purpose": "Prioritize customers likely to churn and estimate revenue at risk.",
+      "visuals": [
+        "Risk band distribution",
+        "Recency vs lifetime value",
+        "At-risk customers table",
+        "Recommended actions"
+      ]
+    }
+  ],
+  "notes": [
+    "Use first-purchase cohorts for purchase retention.",
+    "Rates are measures and must not be summed.",
+    "Recent incomplete cohort ages should be filtered or grayed out."
+  ]
+}

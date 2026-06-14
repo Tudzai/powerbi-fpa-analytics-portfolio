@@ -1,0 +1,5 @@
+﻿ModelPortfolio,RiskProfile,Benchmark,TargetEquityPct,TargetFixedIncomePct,TargetAlternativesPct,TargetCashPct,TargetCryptoPct
+Income Shield,Conservative,40/60 Global Blend,0.35,0.5,0.07,0.07,0.01
+Balanced Core,Balanced,60/40 Global Blend,0.58,0.3,0.07,0.04,0.01
+Growth Builder,Growth,80/20 Global Blend,0.76,0.15,0.06,0.02,0.01
+Equity Edge,Aggressive,Global Equity 90,0.88,0.04,0.04,0.01,0.03

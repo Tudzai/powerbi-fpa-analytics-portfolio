@@ -1,0 +1,42 @@
+{
+  "template_direction": "Executive ROI command center",
+  "canvas": {
+    "size": "16:9",
+    "background": "#F4F7FB",
+    "left_rail": "#14213D",
+    "panel_radius": 8
+  },
+  "layout_rules": [
+    "Left rail navigation across all pages.",
+    "Top KPI strip on executive page.",
+    "White chart panels on cool neutral canvas.",
+    "Green/amber/coral action states for scale, optimize, and review/cut.",
+    "Charts above detail tables; action tables at the bottom."
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "name": "Executive Overview",
+      "hero": "Portfolio ROI, paid vs organic value, and spend-vs-ROAS action map.",
+      "primary_question": "Which channels are worth scaling and which are burning budget?"
+    },
+    {
+      "page": 2,
+      "name": "Channel ROI",
+      "hero": "ROAS/CAC target gaps and channel scorecard.",
+      "primary_question": "Which channels beat target efficiency and which need intervention?"
+    },
+    {
+      "page": 3,
+      "name": "Campaign Ranking",
+      "hero": "Scale candidates and review/cut candidates.",
+      "primary_question": "Which campaigns should get more or less budget next month?"
+    },
+    {
+      "page": 4,
+      "name": "Exceptions and Actions",
+      "hero": "Budget action matrix and operating table.",
+      "primary_question": "What should the growth team do after reading the dashboard?"
+    }
+  ]
+}

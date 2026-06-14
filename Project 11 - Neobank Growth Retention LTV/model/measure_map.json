@@ -1,0 +1,212 @@
+[
+  {
+    "measure": "New Users",
+    "expression": "SUM ( FactGrowthMonthly[NewUsers] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "KYC Submitted",
+    "expression": "SUM ( FactGrowthMonthly[KycSubmitted] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "KYC Approved",
+    "expression": "SUM ( FactGrowthMonthly[KycApproved] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Activated Users",
+    "expression": "SUM ( FactGrowthMonthly[ActivatedUsers] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Funded Accounts",
+    "expression": "SUM ( FactGrowthMonthly[FundedAccounts] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Active Users",
+    "expression": "SUM ( FactGrowthMonthly[ActiveUsers] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Deposit Volume",
+    "expression": "SUM ( FactGrowthMonthly[DepositVolume] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Revenue",
+    "expression": "SUM ( FactGrowthMonthly[TotalRevenue] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Gross Profit",
+    "expression": "SUM ( FactGrowthMonthly[GrossProfit] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Marketing Spend",
+    "expression": "SUM ( FactGrowthMonthly[MarketingSpend] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Churned Users",
+    "expression": "SUM ( FactGrowthMonthly[ChurnedUsers] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Dormant Customers",
+    "expression": "SUM ( FactGrowthMonthly[DormantCustomers] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Churn Risk Users",
+    "expression": "SUM ( FactGrowthMonthly[ChurnRiskUsers] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "KYC Completion Rate",
+    "expression": "DIVIDE ( [KYC Approved], [New Users] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Activation Rate",
+    "expression": "DIVIDE ( [Activated Users], [New Users] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Funded Rate",
+    "expression": "DIVIDE ( [Funded Accounts], [New Users] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "CAC",
+    "expression": "DIVIDE ( [Marketing Spend], [Funded Accounts] )",
+    "format": "$#,0"
+  },
+  {
+    "measure": "Monthly ARPU",
+    "expression": "DIVIDE ( [Revenue], [Active Users] )",
+    "format": "$#,0.00"
+  },
+  {
+    "measure": "Churn Rate",
+    "expression": "DIVIDE ( [Churned Users], [Active Users] + [Churned Users] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "LTV",
+    "expression": "DIVIDE ( [Monthly ARPU] * 0.68, [Churn Rate] )",
+    "format": "$#,0"
+  },
+  {
+    "measure": "LTV CAC Ratio",
+    "expression": "DIVIDE ( [LTV], [CAC] )",
+    "format": "0.0x"
+  },
+  {
+    "measure": "Payback Months",
+    "expression": "DIVIDE ( [CAC], DIVIDE ( [Gross Profit], [Active Users] ) )",
+    "format": "0.0"
+  },
+  {
+    "measure": "Marketing ROI",
+    "expression": "DIVIDE ( [Gross Profit] - [Marketing Spend], [Marketing Spend] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Contribution Profit",
+    "expression": "[Gross Profit] - [Marketing Spend]",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Funnel Users",
+    "expression": "SUM ( FunnelMonthly[UserCount] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Cohort Retention Rate",
+    "expression": "DIVIDE ( SUM ( CohortRetention[RetainedUsers] ), SUM ( CohortRetention[CohortSize] ) )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Cohort LTV",
+    "expression": "DIVIDE ( SUM ( CohortRetention[CumulativeRevenue] ), SUM ( CohortRetention[CohortSize] ) )",
+    "format": "$#,0"
+  },
+  {
+    "measure": "Campaign Spend",
+    "expression": "SUM ( CampaignMonthly[Spend] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Campaign Revenue",
+    "expression": "SUM ( CampaignMonthly[Revenue] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Campaign Gross Profit",
+    "expression": "SUM ( CampaignMonthly[GrossProfit] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Campaign Funded Accounts",
+    "expression": "SUM ( CampaignMonthly[FundedAccounts] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Campaign CAC",
+    "expression": "DIVIDE ( [Campaign Spend], [Campaign Funded Accounts] )",
+    "format": "$#,0"
+  },
+  {
+    "measure": "Campaign ROI",
+    "expression": "DIVIDE ( [Campaign Gross Profit] - [Campaign Spend], [Campaign Spend] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Campaign Payback Months",
+    "expression": "DIVIDE ( [Campaign CAC], DIVIDE ( [Campaign Gross Profit], [Campaign Funded Accounts] ) )",
+    "format": "0.0"
+  },
+  {
+    "measure": "Latest New Users",
+    "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [New Users], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Latest Active Users",
+    "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Active Users], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Latest Funded Accounts",
+    "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Funded Accounts], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Latest Deposits",
+    "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Deposit Volume], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Latest Revenue",
+    "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Revenue], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Latest CAC",
+    "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [CAC], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+    "format": "$#,0"
+  },
+  {
+    "measure": "Latest LTV",
+    "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [LTV], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+    "format": "$#,0"
+  },
+  {
+    "measure": "Latest LTV CAC Ratio",
+    "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [LTV CAC Ratio], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+    "format": "0.0x"
+  }
+]

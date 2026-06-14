@@ -1,0 +1,371 @@
+{
+  "objects": {
+    "grid": [
+      {
+        "properties": {
+          "gridHorizontal": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "outlineColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#D9DEE7'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "columnHeaders": [
+      {
+        "properties": {
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI Semibold'"
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.5D"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#2454A6'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "values": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.5D"
+              }
+            }
+          },
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Values": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Action",
+        "Name": "DimChannel.recommended_action",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Channel",
+        "Name": "DimChannel.channel",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Type",
+        "Name": "DimChannel.paid_organic",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Spend",
+        "Name": "KPI_Measures.Spend",
+        "Type": 1,
+        "Format": "$#,0,,.0M"
+      },
+      {
+        "Restatement": "Revenue",
+        "Name": "KPI_Measures.Revenue",
+        "Type": 1,
+        "Format": "$#,0,,.0M"
+      },
+      {
+        "Restatement": "ROAS",
+        "Name": "KPI_Measures.ROAS",
+        "Type": 1,
+        "Format": "0.00x"
+      },
+      {
+        "Restatement": "CAC",
+        "Name": "KPI_Measures.CAC",
+        "Type": 1,
+        "Format": "$#,0"
+      },
+      {
+        "Restatement": "Mktg ROI",
+        "Name": "KPI_Measures.Marketing ROI",
+        "Type": 1,
+        "Format": "0.0%"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 2,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 3,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 4,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 5,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 6,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 7,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Action",
+      "queryName": "DimChannel.recommended_action",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "f0"
+            }
+          },
+          "Property": "recommended_action"
+        }
+      }
+    },
+    {
+      "displayName": "Channel",
+      "queryName": "DimChannel.channel",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "f0"
+            }
+          },
+          "Property": "channel"
+        }
+      }
+    },
+    {
+      "displayName": "Type",
+      "queryName": "DimChannel.paid_organic",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "f0"
+            }
+          },
+          "Property": "paid_organic"
+        }
+      }
+    },
+    {
+      "displayName": "Spend",
+      "queryName": "KPI_Measures.Spend",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "Spend"
+        }
+      },
+      "format": "$#,0,,.0M",
+      "sort": 2,
+      "sortOrder": 0
+    },
+    {
+      "displayName": "Revenue",
+      "queryName": "KPI_Measures.Revenue",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "Revenue"
+        }
+      },
+      "format": "$#,0,,.0M",
+      "sort": 2,
+      "sortOrder": 0
+    },
+    {
+      "displayName": "ROAS",
+      "queryName": "KPI_Measures.ROAS",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "ROAS"
+        }
+      },
+      "format": "0.00x",
+      "sort": 2,
+      "sortOrder": 0
+    },
+    {
+      "displayName": "CAC",
+      "queryName": "KPI_Measures.CAC",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "CAC"
+        }
+      },
+      "format": "$#,0",
+      "sort": 2,
+      "sortOrder": 0
+    },
+    {
+      "displayName": "Mktg ROI",
+      "queryName": "KPI_Measures.Marketing ROI",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "Marketing ROI"
+        }
+      },
+      "format": "0.0%",
+      "sort": 2,
+      "sortOrder": 0
+    }
+  ]
+}

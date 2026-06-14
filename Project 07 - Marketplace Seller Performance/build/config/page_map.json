@@ -1,0 +1,24 @@
+{
+  "pages": [
+    {
+      "page": 1,
+      "name": "Executive Cockpit",
+      "purpose": "Marketplace health across GMV, orders, fulfillment, cancellation, rating, stock."
+    },
+    {
+      "page": 2,
+      "name": "Seller Portfolio & Segmentation",
+      "purpose": "Seller comparison, concentration risk, top/bottom performers."
+    },
+    {
+      "page": 3,
+      "name": "Commercial Growth Drivers",
+      "purpose": "Explain GMV movement and commercial opportunity."
+    },
+    {
+      "page": 4,
+      "name": "Ops Health & Risk Monitor",
+      "purpose": "Prioritize sellers with cancellation, SLA, rating, and stock risk."
+    }
+  ]
+}

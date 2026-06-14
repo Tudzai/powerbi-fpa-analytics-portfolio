@@ -1,0 +1,12 @@
+{
+    "status":  "passed",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 11 - Neobank Growth Retention LTV\\output\\dashboard_final.pbix",
+    "final_pbix_created":  true,
+    "final_pbix_size":  656839,
+    "pages":  [
+                  "Growth Overview",
+                  "Funnel \u0026 Cohort Retention",
+                  "LTV, Churn \u0026 Marketing ROI"
+              ],
+    "visual_containers":  48
+}

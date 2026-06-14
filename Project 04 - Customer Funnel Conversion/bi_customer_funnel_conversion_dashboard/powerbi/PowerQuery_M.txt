@@ -1,0 +1,95 @@
+// Power Query M import snippets for Project 04 - Customer Funnel Conversion prepared CSVs.
+// Replace ProjectRoot if the folder is moved.
+
+ProjectRoot = "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\data\\prepared";
+
+// Query: dim_date
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\dim_date.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: dim_device
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\dim_device.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: dim_channel
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\dim_channel.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: dim_campaign
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\dim_campaign.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: dim_category
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\dim_category.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: dim_product
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\dim_product.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: dim_funnel_stage
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\dim_funnel_stage.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: fact_sessions
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\fact_sessions.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: fact_orders
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\fact_orders.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: fact_stage_sessions
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\fact_stage_sessions.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: fact_stage_transition
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\fact_stage_transition.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: fact_monthly_funnel
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\fact_monthly_funnel.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: fact_marketing_spend
+let
+    Source = Csv.Document(File.Contents(ProjectRoot & "\\fact_marketing_spend.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders

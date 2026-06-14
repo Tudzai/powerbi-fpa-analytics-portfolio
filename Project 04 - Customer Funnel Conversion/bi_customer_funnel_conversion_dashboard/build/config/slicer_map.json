@@ -1,0 +1,9 @@
+{
+  "slicers": [
+    "Date",
+    "Device",
+    "Channel",
+    "Campaign",
+    "Category"
+  ]
+}

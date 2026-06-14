@@ -1,0 +1,17 @@
+{
+  "financial": [
+    "Seller GMV",
+    "Gross GMV",
+    "Commission Revenue"
+  ],
+  "operations": [
+    "Fulfillment Rate",
+    "Cancellation Rate",
+    "Stock Availability"
+  ],
+  "seller": [
+    "Average Rating",
+    "Seller Rank by GMV",
+    "Seller Performance Score"
+  ]
+}

@@ -1,0 +1,64 @@
+﻿Table,Column,DataType,Grain,Nullable,Example
+DimDate,MonthStart,str,one row per reporting month,False,2024-01-01
+DimDate,MonthKey,int64,one row per reporting month,False,202401
+DimDate,MonthLabel,str,one row per reporting month,False,Jan 2024
+DimDate,MonthIndex,int64,one row per reporting month,False,1
+DimDate,Year,int64,one row per reporting month,False,2024
+DimDate,Quarter,str,one row per reporting month,False,Q1
+DimDate,YearQuarter,str,one row per reporting month,False,2024 Q1
+DimClient,ClientID,str,one row per client,False,CL00001
+DimClient,ClientName,str,one row per client,False,Nico Lee
+DimClient,ClientSegment,str,one row per client,False,UHNW
+DimClient,RiskProfile,str,one row per client,False,Conservative
+DimClient,Region,str,one row per client,False,APAC
+DimClient,AdvisorName,str,one row per client,False,Mina Patel
+DimClient,OnboardingChannel,str,one row per client,False,Partner API
+DimClient,JoinMonth,str,one row per client,False,2024-03-01
+DimClient,SuitabilityScore,int64,one row per client,False,82
+DimClient,ModelPortfolio,str,one row per client,False,Income Shield
+DimClient,TargetRiskScore,int64,one row per client,False,25
+DimClient,FeeBps,int64,one row per client,False,74
+DimPortfolio,ModelPortfolio,str,one row per robo-advisor model portfolio,False,Income Shield
+DimPortfolio,RiskProfile,str,one row per robo-advisor model portfolio,False,Conservative
+DimPortfolio,Benchmark,str,one row per robo-advisor model portfolio,False,40/60 Global Blend
+DimPortfolio,TargetEquityPct,float64,one row per robo-advisor model portfolio,False,0.35
+DimPortfolio,TargetFixedIncomePct,float64,one row per robo-advisor model portfolio,False,0.5
+DimPortfolio,TargetAlternativesPct,float64,one row per robo-advisor model portfolio,False,0.07
+DimPortfolio,TargetCashPct,float64,one row per robo-advisor model portfolio,False,0.07
+DimPortfolio,TargetCryptoPct,float64,one row per robo-advisor model portfolio,False,0.01
+FactAUMMonthly,MonthStart,str,one row per active client and model portfolio per reporting month,False,2024-01-01
+FactAUMMonthly,ClientID,str,one row per active client and model portfolio per reporting month,False,CL00027
+FactAUMMonthly,ModelPortfolio,str,one row per active client and model portfolio per reporting month,False,Growth Builder
+FactAUMMonthly,BeginningAUM,float64,one row per active client and model portfolio per reporting month,False,446755.46
+FactAUMMonthly,Inflows,float64,one row per active client and model portfolio per reporting month,False,100598.98
+FactAUMMonthly,Outflows,float64,one row per active client and model portfolio per reporting month,False,4554.08
+FactAUMMonthly,NetNewMoney,float64,one row per active client and model portfolio per reporting month,False,96044.9
+FactAUMMonthly,MarketEffect,float64,one row per active client and model portfolio per reporting month,False,-2128.31
+FactAUMMonthly,EndingAUM,float64,one row per active client and model portfolio per reporting month,False,540672.05
+FactAUMMonthly,AdvisoryRevenue,float64,one row per active client and model portfolio per reporting month,False,189.24
+FactAUMMonthly,PortfolioReturnPct,float64,one row per active client and model portfolio per reporting month,False,-0.004302
+FactAUMMonthly,BenchmarkReturnPct,float64,one row per active client and model portfolio per reporting month,False,0.005964
+FactAUMMonthly,RiskScore,float64,one row per active client and model portfolio per reporting month,False,60.07
+FactAUMMonthly,TargetRiskScore,int64,one row per active client and model portfolio per reporting month,False,68
+FactAUMMonthly,RiskMismatchFlag,int64,one row per active client and model portfolio per reporting month,False,0
+FactAUMMonthly,RebalanceNeededFlag,int64,one row per active client and model portfolio per reporting month,False,0
+FactAUMMonthly,ChurnRiskScore,float64,one row per active client and model portfolio per reporting month,False,0.1561
+FactAUMMonthly,OutflowRiskScore,float64,one row per active client and model portfolio per reporting month,False,0.2385
+FactAUMMonthly,ActiveClientFlag,int64,one row per active client and model portfolio per reporting month,False,1
+FactAUMMonthly,ClientStatus,str,one row per active client and model portfolio per reporting month,False,Active
+FactAllocationMonthly,MonthStart,str,"one row per active client, model portfolio, month, and asset class",False,2024-01-01
+FactAllocationMonthly,ClientID,str,"one row per active client, model portfolio, month, and asset class",False,CL00027
+FactAllocationMonthly,ModelPortfolio,str,"one row per active client, model portfolio, month, and asset class",False,Growth Builder
+FactAllocationMonthly,AssetClass,str,"one row per active client, model portfolio, month, and asset class",False,Equity
+FactAllocationMonthly,AllocationPct,float64,"one row per active client, model portfolio, month, and asset class",False,0.798005
+FactAllocationMonthly,BenchmarkPct,float64,"one row per active client, model portfolio, month, and asset class",False,0.76
+FactAllocationMonthly,DriftPct,float64,"one row per active client, model portfolio, month, and asset class",False,0.038005
+FactAllocationMonthly,AllocationAmount,float64,"one row per active client, model portfolio, month, and asset class",False,431458.93
+FactRetentionActions,ActionID,str,one row per recommended retention action in the latest month,False,ACT-00001
+FactRetentionActions,MonthStart,str,one row per recommended retention action in the latest month,False,2026-05-01
+FactRetentionActions,ClientID,str,one row per recommended retention action in the latest month,False,CL00001
+FactRetentionActions,ActionType,str,one row per recommended retention action in the latest month,False,Rebalance proposal
+FactRetentionActions,Priority,str,one row per recommended retention action in the latest month,False,Medium
+FactRetentionActions,RiskReason,str,one row per recommended retention action in the latest month,False,Allocation drift
+FactRetentionActions,Status,str,one row per recommended retention action in the latest month,False,Open
+FactRetentionActions,ExpectedRetainedAUM,float64,one row per recommended retention action in the latest month,False,792213.78

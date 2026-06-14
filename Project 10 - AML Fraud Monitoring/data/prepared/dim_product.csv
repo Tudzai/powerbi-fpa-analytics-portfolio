@@ -1,0 +1,9 @@
+ProductKey,Product,ProductFamily,ProductRiskScore
+PR001,Retail Checking,Consumer Banking,36
+PR002,SME Payments,Business Banking,49
+PR003,Cross-border Remittance,Payments,62
+PR004,Merchant Acquiring,Payments,55
+PR005,Digital Wallet,Digital Assets,58
+PR006,Private Banking,Wealth,67
+PR007,Trade Finance,Commercial Banking,71
+PR008,Crypto Off-ramp,Digital Assets,84

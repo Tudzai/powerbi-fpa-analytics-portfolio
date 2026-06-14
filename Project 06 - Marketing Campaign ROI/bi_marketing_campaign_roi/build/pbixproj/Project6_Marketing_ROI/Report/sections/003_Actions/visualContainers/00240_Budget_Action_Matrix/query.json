@@ -1,0 +1,164 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f0",
+              "Entity": "DimChannel",
+              "Type": 0
+            },
+            {
+              "Name": "m",
+              "Entity": "KPI_Measures",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f0"
+                  }
+                },
+                "Property": "recommended_action"
+              },
+              "Name": "DimChannel.recommended_action",
+              "NativeReferenceName": "Action"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f0"
+                  }
+                },
+                "Property": "channel"
+              },
+              "Name": "DimChannel.channel",
+              "NativeReferenceName": "Channel"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f0"
+                  }
+                },
+                "Property": "paid_organic"
+              },
+              "Name": "DimChannel.paid_organic",
+              "NativeReferenceName": "Type"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Spend"
+              },
+              "Name": "KPI_Measures.Spend",
+              "NativeReferenceName": "Spend"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Revenue"
+              },
+              "Name": "KPI_Measures.Revenue",
+              "NativeReferenceName": "Revenue"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "ROAS"
+              },
+              "Name": "KPI_Measures.ROAS",
+              "NativeReferenceName": "ROAS"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "CAC"
+              },
+              "Name": "KPI_Measures.CAC",
+              "NativeReferenceName": "CAC"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Marketing ROI"
+              },
+              "Name": "KPI_Measures.Marketing ROI",
+              "NativeReferenceName": "Mktg ROI"
+            }
+          ],
+          "OrderBy": [
+            {
+              "Direction": 2,
+              "Expression": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "Spend"
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 4,
+            "Primary": {
+              "Window": {
+                "Count": 1000
+              }
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

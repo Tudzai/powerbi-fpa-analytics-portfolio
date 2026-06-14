@@ -1,0 +1,8 @@
+﻿ParameterKey,Parameter,Unit,BaseValue,UpsideValue,DownsideValue,AppliesTo,Description
+VOL_GROWTH,Volume Growth %,%,0.06,0.14,-0.08,Revenue volume,Multiplier applied to planned job volume.
+RATE_CHANGE,Average Rate Change %,%,0.0,0.035,-0.035,Revenue pricing,Average selling rate change versus management case.
+COST_INFLATION,Direct Cost Inflation %,%,0.045,0.03,0.075,Direct cost,"Carrier, fuel, handling and customs cost inflation."
+HC_GROWTH,Headcount Growth %,%,0.06,0.085,0.015,Headcount,FTE expansion versus current capacity.
+SALARY_INFLATION,Salary Inflation %,%,0.055,0.06,0.045,Payroll cost,Average salary increase in forecast period.
+DSO,DSO Days Adjustment,days,0.0,-3.0,6.0,Cash conversion,Customer payment speed adjustment.
+DPO,DPO Days Adjustment,days,0.0,2.0,-2.0,Cash conversion,Supplier payment timing adjustment.

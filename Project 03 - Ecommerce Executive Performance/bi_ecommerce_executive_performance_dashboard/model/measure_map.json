@@ -1,0 +1,54 @@
+{
+  "measures": [
+    {
+      "name": "GMV",
+      "format": "$#,0",
+      "table": "fact_orders"
+    },
+    {
+      "name": "Net Revenue",
+      "format": "$#,0",
+      "table": "fact_orders"
+    },
+    {
+      "name": "Orders",
+      "format": "#,0",
+      "table": "fact_orders"
+    },
+    {
+      "name": "AOV",
+      "format": "$#,0.00",
+      "table": "fact_orders"
+    },
+    {
+      "name": "Conversion Rate",
+      "format": "0.00%",
+      "table": "fact_sessions"
+    },
+    {
+      "name": "Refund/Cancel Rate",
+      "format": "0.00%",
+      "table": "fact_orders"
+    },
+    {
+      "name": "Top Category",
+      "format": "Text",
+      "table": "dim_product"
+    },
+    {
+      "name": "Top Traffic Channel",
+      "format": "Text",
+      "table": "dim_channel"
+    },
+    {
+      "name": "Marketing Spend",
+      "format": "$#,0",
+      "table": "fact_marketing_spend"
+    },
+    {
+      "name": "ROAS",
+      "format": "0.00x",
+      "table": "fact_marketing_spend"
+    }
+  ]
+}

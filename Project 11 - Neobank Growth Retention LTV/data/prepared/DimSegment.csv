@@ -1,0 +1,5 @@
+﻿SegmentKey,SegmentName,RiskTier,IncomeBand
+mass,Mass Retail,Medium,25-55k
+affluent,Mass Affluent,Low,55-140k
+freelancer,Freelancer,Medium,35-120k
+smb,SMB Owner,High,80-250k

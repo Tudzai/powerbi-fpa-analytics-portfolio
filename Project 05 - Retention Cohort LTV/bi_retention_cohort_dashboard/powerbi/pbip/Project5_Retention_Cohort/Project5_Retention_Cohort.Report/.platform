@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Project5_Retention_Cohort"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8d4351f8-f278-4999-92a7-25b7c545c7f9"
+  }
+}

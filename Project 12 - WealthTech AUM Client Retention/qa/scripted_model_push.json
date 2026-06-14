@@ -1,0 +1,11 @@
+{
+    "timestamp":  "2026-06-11 16:50:57 +07:00",
+    "status":  "model_pushed_to_powerbi_desktop_local_session",
+    "power_bi_port":  61580,
+    "process_id":  13240,
+    "tables":  7,
+    "relationships":  8,
+    "measures":  25,
+    "output_model_pbix":  "not_created_requires_desktop_save",
+    "expected_save_path":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 12 - WealthTech AUM Client Retention\\output\\dashboard_model.pbix"
+}

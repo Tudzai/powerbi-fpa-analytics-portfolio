@@ -1,0 +1,16 @@
+{
+  "project": "Project 02 - Driver-Based Forecasting & Scenario Planning",
+  "audience": [
+    "CFO",
+    "FP&A Manager",
+    "Commercial Director",
+    "Operations Director"
+  ],
+  "business_goal": "Support planning and decision making with driver-based forecast scenarios, what-if levers, forecast P&L, cash impact, and forecast accuracy tracking.",
+  "currency": "USD",
+  "latest_actual_month": "2026-05-01",
+  "forecast_horizon": "2026-06 to 2027-12",
+  "prepared_data_path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 02 - Driver-Based Forecasting\\data\\prepared",
+  "power_bi_desktop_path_found": true,
+  "pbix_status": "Complete. output/dashboard_final.pbix was saved in Power BI Desktop on 2026-06-08 and extract-verified with 5 pages, 23 measures, and 32 relationships."
+}

@@ -1,0 +1,232 @@
+{
+  "objects": {
+    "layout": [
+      {
+        "properties": {
+          "rectangleRoundedCurve": {
+            "expr": {
+              "Literal": {
+                "Value": "6L"
+              }
+            }
+          },
+          "cellPadding": {
+            "expr": {
+              "Literal": {
+                "Value": "6.0D"
+              }
+            }
+          },
+          "paddingUniform": {
+            "expr": {
+              "Literal": {
+                "Value": "6.0D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "default"
+        }
+      },
+      {
+        "properties": {}
+      }
+    ],
+    "fillCustom": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outline": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "default"
+        }
+      }
+    ],
+    "value": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "21.0D"
+              }
+            }
+          },
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI Semibold'"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#2454A6'"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "KPI_Measures.Target CAC"
+        }
+      }
+    ],
+    "label": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          },
+          "position": {
+            "expr": {
+              "Literal": {
+                "Value": "'belowValue'"
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "8.0D"
+              }
+            }
+          },
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI'"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#5C6B73'"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "KPI_Measures.Target CAC"
+        }
+      }
+    ],
+    "divider": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "KPI_Measures.Target CAC"
+        }
+      }
+    ],
+    "referenceLabelDetail": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "KPI_Measures.Target CAC"
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Data": [
+      0
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Target CAC",
+        "Name": "KPI_Measures.Target CAC",
+        "Type": 1,
+        "Format": "$#,0"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Data",
+          "Projection": 0,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Target CAC",
+      "queryName": "KPI_Measures.Target CAC",
+      "roles": {
+        "Data": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "Target CAC"
+        }
+      },
+      "format": "$#,0",
+      "sort": 2,
+      "sortOrder": 0
+    }
+  ]
+}

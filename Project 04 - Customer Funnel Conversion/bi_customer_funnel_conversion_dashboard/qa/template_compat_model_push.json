@@ -1,0 +1,10 @@
+{
+    "timestamp":  "2026-06-11 13:50:35 +07:00",
+    "status":  "template_compat_model_pushed",
+    "target_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\Project4_Customer_Funnel_Conversion_Dashboard.pbix",
+    "power_bi_port":  62691,
+    "process_id":  27840,
+    "tables":  10,
+    "relationships":  11,
+    "measures":  17
+}

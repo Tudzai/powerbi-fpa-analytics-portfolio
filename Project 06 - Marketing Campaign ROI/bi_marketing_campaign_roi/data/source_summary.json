@@ -1,0 +1,46 @@
+{
+  "synthetic_data": true,
+  "seed": 6262026,
+  "grain": "one row per date, campaign, and channel",
+  "date_range": {
+    "min": "2025-01-01",
+    "max": "2026-05-31"
+  },
+  "row_counts": {
+    "raw": 11868,
+    "fact_campaign_daily": 11868,
+    "dim_date": 516,
+    "dim_month": 17,
+    "dim_channel": 10,
+    "dim_campaign": 23
+  },
+  "totals": {
+    "spend": 4033810.46,
+    "revenue": 18125882.92,
+    "gross_profit": 11054326.76,
+    "clicks": 3627980.0,
+    "leads": 432982.0,
+    "conversions": 88504.0,
+    "new_customers": 44233.0
+  },
+  "scale_channels": [
+    "Direct",
+    "Email",
+    "Referral Partners",
+    "Organic Search"
+  ],
+  "review_cut_channels": [
+    "Google Search",
+    "Meta",
+    "TikTok",
+    "LinkedIn",
+    "Programmatic Display",
+    "Affiliates"
+  ],
+  "assumptions": [
+    "No source data was provided; this is fixed-seed synthetic portfolio data.",
+    "Spend for organic channels represents content, lifecycle, SEO, and partner operating cost.",
+    "ROAS and CAC targets are channel-level targets stored in DimChannel.",
+    "Revenue is campaign-touch attributed for portfolio storytelling."
+  ]
+}

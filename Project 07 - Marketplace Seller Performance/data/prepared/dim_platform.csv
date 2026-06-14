@@ -1,0 +1,4 @@
+platform_id,platform_name,brand_color,default_commission_rate
+P01,Shopee,#EE4D2D,0.078
+P02,Lazada,#1A56DB,0.083
+P03,Tiki,#00A3FF,0.068

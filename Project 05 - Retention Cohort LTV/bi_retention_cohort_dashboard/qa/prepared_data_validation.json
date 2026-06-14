@@ -1,0 +1,37 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "check": "DimUser user grain unique",
+      "status": "pass"
+    },
+    {
+      "check": "FactOrders order grain unique",
+      "status": "pass"
+    },
+    {
+      "check": "Completed order row count reconciles",
+      "status": "pass",
+      "raw": 22552,
+      "prepared": 22552
+    },
+    {
+      "check": "Completed net revenue reconciles",
+      "status": "pass",
+      "raw": 1590126.5,
+      "prepared": 1590126.5
+    },
+    {
+      "check": "FactUserMonth grain unique",
+      "status": "pass"
+    },
+    {
+      "check": "Retention rate bounded",
+      "status": "pass"
+    },
+    {
+      "check": "Repeat purchase rate bounded",
+      "status": "pass"
+    }
+  ]
+}

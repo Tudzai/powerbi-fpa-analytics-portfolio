@@ -1,0 +1,85 @@
+{
+  "name": "Project 02 - Driver-Based Forecasting Planning Executive",
+  "dataColors": [
+    "#2454A6",
+    "#2A9D8F",
+    "#D99A2B",
+    "#C43E3E",
+    "#7C3AED",
+    "#5C6B73",
+    "#00838F",
+    "#9C6644"
+  ],
+  "background": "#F7F8FA",
+  "foreground": "#1C2530",
+  "tableAccent": "#2454A6",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#1C2530"
+              }
+            },
+            "fontSize": 11
+          }
+        ],
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#3B4652"
+              }
+            }
+          }
+        ],
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#D9DEE7"
+              }
+            },
+            "radius": 4
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "categoryLabels": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#5C6B73"
+              }
+            }
+          }
+        ],
+        "labels": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#1C2530"
+              }
+            },
+            "fontSize": 18
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "status": "PASS_COMPLETE_OPENABLE_AESTHETIC",
+  "authoring_mode": "COMPUTER_USE",
+  "required_final_path": "output/dashboard_final.pbix",
+  "complete_pbix_path": "output/dashboard_complete.pbix",
+  "pbix_exists": true,
+  "pbix_size_bytes": 411092,
+  "powerbi_desktop_open_test": "PASS",
+  "powerbi_window_title": "dashboard_final",
+  "powerbi_error_dialog": "none after complete chart rebuild",
+  "pbi_tools_extract": "PASS",
+  "pbi_tools_export_data": "PASS",
+  "model_tables": 8,
+  "model_relationships": 8,
+  "model_measures": 29,
+  "page_count": 4,
+  "native_visual_count": 47,
+  "native_visual_types": {
+    "textbox": 8,
+    "cardVisual": 24,
+    "lineChart": 5,
+    "barChart": 6,
+    "tableEx": 4
+  },
+  "pages": [
+    "01 Executive Cockpit",
+    "02 Seller Portfolio",
+    "03 Growth Drivers",
+    "04 Ops Risk"
+  ],
+  "restored_from": "archive/old_versions/dashboard_final_before_visual_refresh_20260611_123505.pbix",
+  "theme_name": "Marketplace Command Center",
+  "theme_path": "build/config/marketplace_command_center_theme.json",
+  "archived_corrupted_files": [
+    "archive/old_versions/dashboard_complete_corrupted_*.pbix",
+    "archive/old_versions/dashboard_final_corrupted_*.pbix"
+  ],
+  "notes": "The complete PBIX now opens in Power BI Desktop after layout rebuild. The fix is to omit stale SecurityBindings after Report/Layout changes, then save the opened file in Power BI Desktop so valid bindings are regenerated."
+}

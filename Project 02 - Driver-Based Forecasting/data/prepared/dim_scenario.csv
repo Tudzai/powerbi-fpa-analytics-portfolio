@@ -1,0 +1,5 @@
+﻿ScenarioKey,Scenario,SortOrder,VolumeMultiplier,RateMultiplier,CostInflationPct,HeadcountGrowthPct,SalaryInflationPct,DSODaysAdjustment,DPODaysAdjustment,Description
+ACTUAL,Actual,0,1.0,1.0,0.0,0.0,0.0,0,0,Actual historical performance through May 2026.
+BASE,Base,1,1.0,1.0,0.045,0.06,0.055,0,0,Management case: moderate market growth and controlled cost inflation.
+UPSIDE,Upside,2,1.14,1.035,0.03,0.085,0.06,-3,2,"Upside case: stronger volumes, modest pricing lift, improved collections."
+DOWNSIDE,Downside,3,0.86,0.965,0.075,0.015,0.045,6,-2,"Downside case: demand softens, pricing pressure rises, customers pay slower."

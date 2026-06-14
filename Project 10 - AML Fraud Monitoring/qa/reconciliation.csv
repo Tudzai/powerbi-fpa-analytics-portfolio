@@ -1,0 +1,9 @@
+Metric,Value
+Total Transactions,36000.0
+Transaction Amount,1908512527.82
+Flagged Amount,420084720.79
+Alert Count,6611.0
+Suspicious Cases,2894.0
+False Positive Rate,0.3542
+Overdue Cases,1207.0
+SLA Compliance,0.6606

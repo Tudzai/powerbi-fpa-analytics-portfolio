@@ -1,0 +1,44 @@
+{
+  "name": "Executive Commerce Polished",
+  "dataColors": [
+    "#14B8A6",
+    "#3B82F6",
+    "#6366F1",
+    "#F59E0B",
+    "#EF4444",
+    "#22C55E",
+    "#06B6D4",
+    "#F97316"
+  ],
+  "background": "#EEF3F8",
+  "foreground": "#101828",
+  "tableAccent": "#14B8A6",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontFamily": "Segoe UI",
+            "fontSize": 11,
+            "color": {
+              "solid": {
+              "color": "#101828"
+              }
+            }
+          }
+        ],
+        "labels": [
+          {
+            "fontFamily": "Segoe UI",
+            "fontSize": 9,
+            "color": {
+              "solid": {
+              "color": "#475467"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

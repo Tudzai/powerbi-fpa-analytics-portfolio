@@ -1,0 +1,18 @@
+{
+    "visual_containers":  59,
+    "source_model_pbix":  "C:\\Users\\Win\\OneDrive - BEE LOGISTICS CORPORATION\\Documentss\\Portfolio\\Project 06 - Marketing Campaign ROI\\bi_marketing_campaign_roi\\output\\dashboard_model_seed.pbix",
+    "timestamp":  "2026-06-11 14:40:07 +07:00",
+    "validation":  "PowerBIPackager.Validate passed for output and final PBIX after Project 06 - Marketing Campaign ROI native report layout patch.",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive - BEE LOGISTICS CORPORATION\\Documentss\\Portfolio\\Project 06 - Marketing Campaign ROI\\bi_marketing_campaign_roi\\output\\dashboard_final.pbix",
+    "layout_json":  "C:\\Users\\Win\\OneDrive - BEE LOGISTICS CORPORATION\\Documentss\\Portfolio\\Project 06 - Marketing Campaign ROI\\bi_marketing_campaign_roi\\build\\native_report_layout_project6.json",
+    "output_pbix":  "C:\\Users\\Win\\OneDrive - BEE LOGISTICS CORPORATION\\Documentss\\Portfolio\\Project 06 - Marketing Campaign ROI\\bi_marketing_campaign_roi\\output\\dashboard_v01.pbix",
+    "final_pbix_size":  642260,
+    "status":  "passed",
+    "final_pbix_created":  true,
+    "pages":  [
+                  "01 Executive Overview",
+                  "02 Channel ROI",
+                  "03 Campaign Ranking",
+                  "04 Actions"
+              ]
+}

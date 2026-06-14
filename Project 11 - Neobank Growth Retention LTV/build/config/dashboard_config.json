@@ -1,0 +1,8 @@
+{
+  "name": "Neobank Growth, Retention & LTV Dashboard",
+  "tabs": [
+    "Growth Overview",
+    "Funnel & Cohort Retention",
+    "LTV, Churn & Marketing ROI"
+  ]
+}

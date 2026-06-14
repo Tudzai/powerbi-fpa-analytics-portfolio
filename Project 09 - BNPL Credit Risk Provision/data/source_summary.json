@@ -1,0 +1,29 @@
+{
+  "is_synthetic": true,
+  "seed": 90209,
+  "domain": "BNPL / Digital Lending Credit Risk",
+  "latest_snapshot_month": "2026-05-01",
+  "raw_file": "data/raw/bnpl_applications_raw.csv",
+  "prepared_tables": {
+    "dim_date": 882,
+    "dim_month": 29,
+    "dim_product": 4,
+    "dim_channel": 5,
+    "dim_risk_band": 5,
+    "dim_merchant": 60,
+    "dim_customer_segment": 4,
+    "fact_applications": 52000,
+    "fact_loans": 33051,
+    "fact_loan_monthly": 218547,
+    "fact_collections": 40586,
+    "fact_vintage": 344,
+    "fact_roll_rate": 1775,
+    "fact_provision_forecast": 21
+  },
+  "date_range": {
+    "applications_min": "2024-01-01",
+    "applications_max": "2026-05-31",
+    "snapshot_min": "2024-01-01",
+    "snapshot_max": "2026-05-01"
+  }
+}

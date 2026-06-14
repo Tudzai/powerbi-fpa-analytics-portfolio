@@ -1,0 +1,113 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t0",
+              "Entity": "FactRollRate",
+              "Type": 0
+            },
+            {
+              "Name": "m",
+              "Entity": "KPI Measures",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t0"
+                  }
+                },
+                "Property": "prior_dpd_bucket"
+              },
+              "Name": "FactRollRate.prior_dpd_bucket",
+              "NativeReferenceName": "From bucket"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t0"
+                  }
+                },
+                "Property": "dpd_bucket"
+              },
+              "Name": "FactRollRate.dpd_bucket",
+              "NativeReferenceName": "To bucket"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Roll Rate"
+              },
+              "Name": "KPI Measures.Roll Rate",
+              "NativeReferenceName": "Roll rate"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Loan Book Balance"
+              },
+              "Name": "KPI Measures.Loan Book Balance",
+              "NativeReferenceName": "Balance"
+            }
+          ],
+          "OrderBy": [
+            {
+              "Direction": 2,
+              "Expression": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "Roll Rate"
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "Subtotal": 1
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 4,
+            "Primary": {
+              "Window": {
+                "Count": 500
+              }
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

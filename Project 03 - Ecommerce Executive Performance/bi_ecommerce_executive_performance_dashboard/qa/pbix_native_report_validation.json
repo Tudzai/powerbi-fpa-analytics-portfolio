@@ -1,0 +1,17 @@
+{
+    "source_model_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 03 - Ecommerce Executive Performance\\bi_ecommerce_executive_performance_dashboard\\output\\dashboard_model.pbix",
+    "timestamp":  "2026-06-11 12:40:17 +07:00",
+    "validation":  "PowerBIPackager.Validate passed for output and final PBIX.",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 03 - Ecommerce Executive Performance\\bi_ecommerce_executive_performance_dashboard\\output\\dashboard_final.pbix",
+    "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 03 - Ecommerce Executive Performance\\bi_ecommerce_executive_performance_dashboard\\build\\native_report_layout_ecommerce.json",
+    "output_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 03 - Ecommerce Executive Performance\\bi_ecommerce_executive_performance_dashboard\\output\\dashboard_v01.pbix",
+    "visual_containers":  57,
+    "status":  "passed",
+    "final_pbix_created":  true,
+    "pages":  [
+                  "Executive Overview",
+                  "Revenue \u0026 Category",
+                  "Traffic \u0026 Conversion",
+                  "Refunds \u0026 Operations"
+              ]
+}

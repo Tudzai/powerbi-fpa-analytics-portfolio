@@ -1,0 +1,17 @@
+{
+    "timestamp":  "2026-06-11 14:38:16 +07:00",
+    "status":  "project6_model_pushed_via_tom",
+    "target_pbix":  "C:\\Users\\Win\\OneDrive - BEE LOGISTICS CORPORATION\\Documentss\\Portfolio\\Project 06 - Marketing Campaign ROI\\bi_marketing_campaign_roi\\output\\dashboard_model_seed.pbix",
+    "power_bi_port":  56671,
+    "process_id":  7876,
+    "tables":  [
+                   "DimDate",
+                   "DimMonth",
+                   "DimChannel",
+                   "DimCampaign",
+                   "FactCampaignDaily",
+                   "KPI_Measures"
+               ],
+    "relationship_count":  4,
+    "measure_count":  16
+}

@@ -1,0 +1,12 @@
+{
+  "layout": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 08 - Digital Payments Profitability\\build\\native_report_layout_project8.json",
+  "pages": 3,
+  "visual_containers": 45,
+  "commentary_removed": true,
+  "visual_strategy": "native Power BI visual containers with slicers, cards, charts, waterfall, and tables",
+  "page_names": [
+    "01 Executive Overview",
+    "02 Merchant & Transaction Drivers",
+    "03 Margin & Scenario Planning"
+  ]
+}

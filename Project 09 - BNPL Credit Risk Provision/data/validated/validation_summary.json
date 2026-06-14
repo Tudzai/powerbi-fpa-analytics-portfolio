@@ -1,0 +1,103 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "table": "dim_date",
+      "rows": 882,
+      "columns": 5,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "dim_month",
+      "rows": 29,
+      "columns": 4,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "dim_product",
+      "rows": 4,
+      "columns": 4,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "dim_channel",
+      "rows": 5,
+      "columns": 2,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "dim_risk_band",
+      "rows": 5,
+      "columns": 4,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "dim_merchant",
+      "rows": 60,
+      "columns": 4,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "dim_customer_segment",
+      "rows": 4,
+      "columns": 2,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "fact_applications",
+      "rows": 52000,
+      "columns": 19,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "fact_loans",
+      "rows": 33051,
+      "columns": 19,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "fact_loan_monthly",
+      "rows": 218547,
+      "columns": 27,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "fact_collections",
+      "rows": 40586,
+      "columns": 17,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "fact_vintage",
+      "rows": 344,
+      "columns": 13,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "fact_roll_rate",
+      "rows": 1775,
+      "columns": 6,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    },
+    {
+      "table": "fact_provision_forecast",
+      "rows": 21,
+      "columns": 7,
+      "missing_cells": 0,
+      "duplicate_key_count": 0
+    }
+  ]
+}

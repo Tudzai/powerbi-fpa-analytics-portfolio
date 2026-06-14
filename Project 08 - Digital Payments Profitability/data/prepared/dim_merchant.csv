@@ -1,0 +1,201 @@
+merchant_id,merchant_name,merchant_segment,vertical,country,region,risk_tier,account_manager,acquisition_channel,onboarding_date,base_monthly_gmv,avg_ticket_usd,contracted_take_rate,fixed_fee_usd,active_flag
+M0001,EducationPay Merchant 0001,SMB,Education,Thailand,Bangkok,Low,Nadia Santos,Partner,2023-11-05,21915.4,73.18,0.01739,0.026,1
+M0002,ServicesPay Merchant 0002,Mid-Market,Services,Indonesia,Java,Low,Ava Nguyen,Self-Serve,2022-10-01,89080.64,122.09,0.01379,0.02,1
+M0003,RetailPay Merchant 0003,Mid-Market,Retail,Vietnam,VN South,Low,Nadia Santos,Self-Serve,2023-07-28,66765.29,45.4,0.01568,0.02,1
+M0004,ServicesPay Merchant 0004,Mid-Market,Services,Vietnam,VN North,Low,Daniel Ho,Self-Serve,2023-03-23,238046.77,60.43,0.01221,0.02,1
+M0005,EducationPay Merchant 0005,Enterprise,Education,Philippines,Philippines Provincial,Low,Minh Pham,Direct Sales,2025-01-22,322701.45,93.04,0.01055,0.015,1
+M0006,TravelPay Merchant 0006,Micro,Travel,Thailand,Bangkok,Low,Nadia Santos,Self-Serve,2022-01-03,37912.53,313.4,0.0216,0.032,1
+M0007,ServicesPay Merchant 0007,SMB,Services,Indonesia,Indonesia Outer,Low,Ava Nguyen,Direct Sales,2021-04-08,39054.75,77.78,0.01835,0.026,1
+M0008,TravelPay Merchant 0008,Micro,Travel,Singapore,Singapore,High,Minh Pham,Self-Serve,2024-05-03,5986.57,353.93,0.01708,0.032,1
+M0009,EducationPay Merchant 0009,Enterprise,Education,Philippines,Metro Manila,Low,Chloe Lim,Direct Sales,2025-01-12,438698.49,67.41,0.01004,0.015,1
+M0010,EducationPay Merchant 0010,SMB,Education,Indonesia,Indonesia Outer,Low,Farah Rahman,Self-Serve,2024-07-09,26567.11,118.38,0.01827,0.026,1
+M0011,UtilitiesPay Merchant 0011,Micro,Utilities,Vietnam,VN Central,Low,Nadia Santos,Direct Sales,2022-05-13,6316.12,41.03,0.0192,0.032,1
+M0012,TravelPay Merchant 0012,Mid-Market,Travel,Vietnam,VN South,Low,Nadia Santos,Partner,2023-12-28,311125.57,318.42,0.01376,0.02,1
+M0013,ServicesPay Merchant 0013,Micro,Services,Thailand,Bangkok,Medium,Daniel Ho,Direct Sales,2021-06-21,35909.47,57.05,0.01961,0.032,1
+M0014,FoodPay Merchant 0014,SMB,Food Delivery,Singapore,Singapore,Low,Ava Nguyen,Self-Serve,2024-10-09,27836.76,31.59,0.01645,0.026,1
+M0015,MarketplacePay Merchant 0015,SMB,Marketplace,Vietnam,VN North,Low,Ava Nguyen,Platform Referral,2022-02-13,64625.17,98.18,0.01695,0.026,1
+M0016,RetailPay Merchant 0016,SMB,Retail,Singapore,Singapore,Low,Farah Rahman,Direct Sales,2021-12-06,18908.74,43.18,0.01631,0.026,1
+M0017,MarketplacePay Merchant 0017,SMB,Marketplace,Thailand,Thailand Provincial,Low,Bao Tran,Platform Referral,2023-04-14,70538.38,39.47,0.01882,0.026,1
+M0018,EducationPay Merchant 0018,SMB,Education,Philippines,Metro Manila,Low,Bao Tran,Self-Serve,2024-08-17,25084.45,98.77,0.01734,0.026,1
+M0019,FoodPay Merchant 0019,Mid-Market,Food Delivery,Singapore,Singapore,Medium,Farah Rahman,Direct Sales,2024-02-01,174128.24,23.3,0.01432,0.02,1
+M0020,GamingPay Merchant 0020,Mid-Market,Gaming,Indonesia,Indonesia Outer,Medium,Bao Tran,Direct Sales,2022-04-19,388946.97,27.69,0.01433,0.02,1
+M0021,TravelPay Merchant 0021,SMB,Travel,Thailand,Bangkok,High,Minh Pham,Direct Sales,2021-01-29,154315.12,294.28,0.01691,0.026,1
+M0022,TravelPay Merchant 0022,SMB,Travel,Vietnam,VN Central,Low,Bao Tran,Self-Serve,2022-01-02,143024.42,281.76,0.0166,0.026,1
+M0023,UtilitiesPay Merchant 0023,Micro,Utilities,Singapore,Singapore,High,Ava Nguyen,Direct Sales,2022-11-28,15294.05,30.39,0.01955,0.032,1
+M0024,UtilitiesPay Merchant 0024,SMB,Utilities,Vietnam,VN North,Medium,Daniel Ho,Partner,2022-01-28,140369.83,85.6,0.01734,0.026,1
+M0025,GamingPay Merchant 0025,Mid-Market,Gaming,Philippines,Metro Manila,Medium,Daniel Ho,Self-Serve,2024-08-17,877769.68,23.89,0.01426,0.02,1
+M0026,ServicesPay Merchant 0026,Micro,Services,Indonesia,Java,Low,Daniel Ho,Partner,2021-02-02,4639.06,65.05,0.02011,0.032,1
+M0027,MarketplacePay Merchant 0027,SMB,Marketplace,Indonesia,Java,Low,Ava Nguyen,Direct Sales,2024-02-27,125043.35,56.23,0.01816,0.026,1
+M0028,ServicesPay Merchant 0028,Micro,Services,Philippines,Philippines Provincial,Low,Chloe Lim,Platform Referral,2024-02-04,18843.03,62.08,0.0203,0.032,1
+M0029,GamingPay Merchant 0029,Mid-Market,Gaming,Vietnam,VN Central,Low,Ava Nguyen,Partner,2023-12-07,243247.29,23.76,0.01334,0.02,1
+M0030,ServicesPay Merchant 0030,Enterprise,Services,Thailand,Thailand Provincial,Low,Bao Tran,Partner,2024-08-17,344377.04,80.06,0.01068,0.015,1
+M0031,TravelPay Merchant 0031,SMB,Travel,Vietnam,VN Central,Low,Bao Tran,Direct Sales,2022-09-02,141836.88,197.78,0.01746,0.026,1
+M0032,ServicesPay Merchant 0032,Mid-Market,Services,Thailand,Thailand Provincial,Low,Ava Nguyen,Self-Serve,2023-12-24,237847.32,93.65,0.01474,0.02,1
+M0033,MarketplacePay Merchant 0033,Micro,Marketplace,Indonesia,Indonesia Outer,Low,Daniel Ho,Self-Serve,2024-03-21,47401.78,45.09,0.01809,0.032,1
+M0034,GamingPay Merchant 0034,Mid-Market,Gaming,Vietnam,VN South,Low,Ava Nguyen,Self-Serve,2023-02-15,191054.83,22.7,0.01348,0.02,1
+M0035,ServicesPay Merchant 0035,SMB,Services,Vietnam,VN Central,Medium,Nadia Santos,Partner,2022-05-08,62667.86,75.6,0.01645,0.026,1
+M0036,UtilitiesPay Merchant 0036,Micro,Utilities,Vietnam,VN North,Medium,Bao Tran,Partner,2023-11-01,7799.16,37.1,0.02122,0.032,1
+M0037,RetailPay Merchant 0037,Micro,Retail,Vietnam,VN Central,High,Farah Rahman,Partner,2022-03-17,60163.76,67.93,0.01954,0.032,1
+M0038,TravelPay Merchant 0038,Micro,Travel,Philippines,Philippines Provincial,Low,Chloe Lim,Direct Sales,2021-07-23,8240.99,243.9,0.02159,0.032,1
+M0039,FoodPay Merchant 0039,SMB,Food Delivery,Indonesia,Indonesia Outer,Medium,Bao Tran,Direct Sales,2025-03-10,14211.83,18.74,0.01539,0.026,1
+M0040,RetailPay Merchant 0040,SMB,Retail,Philippines,Metro Manila,Low,Minh Pham,Direct Sales,2022-03-17,26753.71,62.88,0.01893,0.026,1
+M0041,EducationPay Merchant 0041,Enterprise,Education,Philippines,Philippines Provincial,Low,Bao Tran,Self-Serve,2022-08-23,680887.11,123.28,0.01145,0.015,1
+M0042,ServicesPay Merchant 0042,Mid-Market,Services,Vietnam,VN North,Low,Daniel Ho,Direct Sales,2022-06-12,171277.78,100.36,0.01533,0.02,1
+M0043,EducationPay Merchant 0043,SMB,Education,Indonesia,Java,Medium,Chloe Lim,Direct Sales,2024-06-21,44614.7,98.69,0.0196,0.026,1
+M0044,GamingPay Merchant 0044,SMB,Gaming,Indonesia,Java,Low,Minh Pham,Direct Sales,2024-09-06,41615.87,32.71,0.01534,0.026,1
+M0045,FoodPay Merchant 0045,SMB,Food Delivery,Vietnam,VN South,Low,Daniel Ho,Direct Sales,2025-03-13,22910.11,20.49,0.01983,0.026,1
+M0046,GamingPay Merchant 0046,SMB,Gaming,Vietnam,VN Central,Medium,Farah Rahman,Direct Sales,2021-12-20,102750.64,42.62,0.01792,0.026,1
+M0047,RetailPay Merchant 0047,Mid-Market,Retail,Singapore,Singapore,Low,Nadia Santos,Direct Sales,2022-04-23,47477.26,25.95,0.01191,0.02,1
+M0048,EducationPay Merchant 0048,SMB,Education,Thailand,Thailand Provincial,Low,Bao Tran,Direct Sales,2022-06-16,24961.83,50.54,0.01606,0.026,1
+M0049,GamingPay Merchant 0049,SMB,Gaming,Vietnam,VN North,Medium,Nadia Santos,Self-Serve,2021-11-08,43351.16,33.7,0.01581,0.026,1
+M0050,ServicesPay Merchant 0050,Micro,Services,Indonesia,Java,Medium,Farah Rahman,Direct Sales,2024-11-24,13449.17,72.04,0.02206,0.032,1
+M0051,TravelPay Merchant 0051,SMB,Travel,Vietnam,VN North,Low,Chloe Lim,Self-Serve,2022-01-31,267662.6,271.45,0.01667,0.026,1
+M0052,TravelPay Merchant 0052,SMB,Travel,Vietnam,VN North,Low,Farah Rahman,Direct Sales,2022-07-17,82320.42,168.24,0.01524,0.026,1
+M0053,GamingPay Merchant 0053,SMB,Gaming,Thailand,Bangkok,Medium,Minh Pham,Self-Serve,2023-06-08,99670.94,34.6,0.01867,0.026,1
+M0054,GamingPay Merchant 0054,SMB,Gaming,Philippines,Philippines Provincial,Low,Bao Tran,Direct Sales,2025-01-06,50173.74,39.44,0.01412,0.026,1
+M0055,GamingPay Merchant 0055,Enterprise,Gaming,Vietnam,VN South,Medium,Bao Tran,Partner,2023-07-27,322434.56,35.45,0.01135,0.015,1
+M0056,TravelPay Merchant 0056,Micro,Travel,Indonesia,Indonesia Outer,Low,Chloe Lim,Self-Serve,2022-05-16,15958.66,380.27,0.01976,0.032,1
+M0057,FoodPay Merchant 0057,SMB,Food Delivery,Vietnam,VN North,Medium,Chloe Lim,Direct Sales,2021-03-18,38292.88,34.93,0.01824,0.026,1
+M0058,TravelPay Merchant 0058,Micro,Travel,Vietnam,VN South,Low,Bao Tran,Self-Serve,2022-12-14,12531.27,276.54,0.02393,0.032,1
+M0059,MarketplacePay Merchant 0059,SMB,Marketplace,Vietnam,VN Central,Low,Minh Pham,Partner,2022-06-29,114041.81,66.14,0.01831,0.026,1
+M0060,UtilitiesPay Merchant 0060,Mid-Market,Utilities,Vietnam,VN Central,Low,Ava Nguyen,Direct Sales,2025-03-14,181504.79,114.73,0.01576,0.02,1
+M0061,TravelPay Merchant 0061,SMB,Travel,Philippines,Philippines Provincial,Medium,Minh Pham,Direct Sales,2021-08-07,191442.72,342.11,0.01962,0.026,1
+M0062,RetailPay Merchant 0062,Enterprise,Retail,Vietnam,VN South,Low,Ava Nguyen,Direct Sales,2022-06-18,1137495.29,76.89,0.01045,0.015,1
+M0063,RetailPay Merchant 0063,Mid-Market,Retail,Vietnam,VN Central,Medium,Minh Pham,Partner,2022-06-23,449146.66,98.12,0.01216,0.02,1
+M0064,MarketplacePay Merchant 0064,Mid-Market,Marketplace,Singapore,Singapore,Low,Daniel Ho,Direct Sales,2022-09-14,108045.12,59.45,0.01181,0.02,1
+M0065,MarketplacePay Merchant 0065,SMB,Marketplace,Singapore,Singapore,Low,Chloe Lim,Direct Sales,2023-05-25,35764.77,35.9,0.01561,0.026,1
+M0066,GamingPay Merchant 0066,Micro,Gaming,Philippines,Metro Manila,Low,Farah Rahman,Direct Sales,2024-10-01,22767.39,42.85,0.01942,0.032,1
+M0067,MarketplacePay Merchant 0067,SMB,Marketplace,Vietnam,VN South,Low,Nadia Santos,Direct Sales,2024-12-21,183627.88,63.94,0.01863,0.026,1
+M0068,MarketplacePay Merchant 0068,Enterprise,Marketplace,Vietnam,VN North,Low,Bao Tran,Partner,2022-10-18,954636.92,69.42,0.01168,0.015,1
+M0069,UtilitiesPay Merchant 0069,Mid-Market,Utilities,Singapore,Singapore,Medium,Daniel Ho,Partner,2024-05-25,178374.15,40.1,0.01302,0.02,1
+M0070,FoodPay Merchant 0070,Micro,Food Delivery,Vietnam,VN North,Low,Bao Tran,Direct Sales,2022-09-12,17947.78,31.92,0.01959,0.032,1
+M0071,GamingPay Merchant 0071,Micro,Gaming,Vietnam,VN North,Low,Bao Tran,Platform Referral,2022-02-23,27649.23,39.28,0.02144,0.032,1
+M0072,FoodPay Merchant 0072,Mid-Market,Food Delivery,Thailand,Bangkok,Medium,Chloe Lim,Platform Referral,2021-07-10,158029.21,19.52,0.01424,0.02,1
+M0073,MarketplacePay Merchant 0073,Micro,Marketplace,Singapore,Singapore,Medium,Chloe Lim,Direct Sales,2022-02-25,18059.89,34.1,0.01923,0.032,1
+M0074,ServicesPay Merchant 0074,SMB,Services,Vietnam,VN North,Medium,Bao Tran,Direct Sales,2021-11-21,7770.88,77.3,0.01655,0.026,1
+M0075,FoodPay Merchant 0075,Micro,Food Delivery,Vietnam,VN Central,Low,Daniel Ho,Direct Sales,2022-07-23,12730.82,22.7,0.02317,0.032,1
+M0076,FoodPay Merchant 0076,Mid-Market,Food Delivery,Singapore,Singapore,High,Daniel Ho,Partner,2023-01-22,679864.16,35.85,0.01547,0.02,1
+M0077,MarketplacePay Merchant 0077,SMB,Marketplace,Vietnam,VN Central,Medium,Minh Pham,Direct Sales,2024-03-01,65197.81,72.49,0.0207,0.026,1
+M0078,EducationPay Merchant 0078,SMB,Education,Thailand,Thailand Provincial,Low,Daniel Ho,Self-Serve,2022-02-02,44843.2,136.3,0.01561,0.026,1
+M0079,TravelPay Merchant 0079,Enterprise,Travel,Indonesia,Indonesia Outer,Low,Farah Rahman,Partner,2022-11-03,2206483.52,343.11,0.00931,0.015,1
+M0080,FoodPay Merchant 0080,SMB,Food Delivery,Vietnam,VN South,Low,Daniel Ho,Partner,2023-11-13,150925.33,21.91,0.01731,0.026,1
+M0081,FoodPay Merchant 0081,SMB,Food Delivery,Singapore,Singapore,Low,Ava Nguyen,Direct Sales,2022-01-11,33104.67,36.15,0.01807,0.026,1
+M0082,RetailPay Merchant 0082,Mid-Market,Retail,Thailand,Bangkok,Low,Ava Nguyen,Self-Serve,2021-08-08,300906.46,75.94,0.0133,0.02,1
+M0083,TravelPay Merchant 0083,Micro,Travel,Philippines,Philippines Provincial,Low,Nadia Santos,Self-Serve,2024-03-31,50565.24,131.27,0.02029,0.032,1
+M0084,FoodPay Merchant 0084,Enterprise,Food Delivery,Indonesia,Java,Low,Farah Rahman,Partner,2021-12-28,158804.37,20.21,0.01066,0.015,1
+M0085,ServicesPay Merchant 0085,SMB,Services,Vietnam,VN North,Low,Chloe Lim,Direct Sales,2024-10-06,27570.36,92.59,0.01784,0.026,1
+M0086,UtilitiesPay Merchant 0086,SMB,Utilities,Philippines,Philippines Provincial,Low,Farah Rahman,Direct Sales,2023-01-02,39633.76,28.24,0.01364,0.026,1
+M0087,UtilitiesPay Merchant 0087,SMB,Utilities,Thailand,Bangkok,Low,Nadia Santos,Direct Sales,2024-10-07,31893.61,65.15,0.01706,0.026,1
+M0088,TravelPay Merchant 0088,Mid-Market,Travel,Philippines,Philippines Provincial,Low,Nadia Santos,Self-Serve,2023-10-21,160561.16,251.22,0.01476,0.02,1
+M0089,MarketplacePay Merchant 0089,SMB,Marketplace,Philippines,Metro Manila,Medium,Minh Pham,Platform Referral,2022-11-17,414333.61,61.97,0.01733,0.026,1
+M0090,EducationPay Merchant 0090,Micro,Education,Philippines,Metro Manila,Low,Bao Tran,Self-Serve,2022-02-03,14050.84,65.74,0.01892,0.032,1
+M0091,MarketplacePay Merchant 0091,SMB,Marketplace,Singapore,Singapore,Medium,Chloe Lim,Self-Serve,2023-01-04,103188.7,44.44,0.01702,0.026,1
+M0092,TravelPay Merchant 0092,Mid-Market,Travel,Vietnam,VN North,Low,Bao Tran,Self-Serve,2024-11-04,352442.41,264.56,0.01408,0.02,1
+M0093,ServicesPay Merchant 0093,SMB,Services,Vietnam,VN South,Low,Ava Nguyen,Platform Referral,2024-02-27,64917.49,82.79,0.02105,0.026,1
+M0094,EducationPay Merchant 0094,Micro,Education,Philippines,Philippines Provincial,Low,Nadia Santos,Platform Referral,2023-09-15,7880.08,77.94,0.01736,0.032,1
+M0095,GamingPay Merchant 0095,SMB,Gaming,Philippines,Metro Manila,Medium,Ava Nguyen,Self-Serve,2024-08-16,87859.4,23.17,0.0185,0.026,1
+M0096,ServicesPay Merchant 0096,SMB,Services,Vietnam,VN North,Low,Daniel Ho,Partner,2024-12-15,8964.57,73.46,0.01477,0.026,1
+M0097,MarketplacePay Merchant 0097,Mid-Market,Marketplace,Vietnam,VN Central,High,Minh Pham,Direct Sales,2025-03-22,259807.27,69.54,0.0113,0.02,1
+M0098,TravelPay Merchant 0098,SMB,Travel,Philippines,Metro Manila,Medium,Chloe Lim,Self-Serve,2023-12-04,55771.86,291.01,0.01687,0.026,1
+M0099,RetailPay Merchant 0099,SMB,Retail,Thailand,Bangkok,Low,Ava Nguyen,Direct Sales,2022-04-22,104633.61,55.84,0.01853,0.026,1
+M0100,RetailPay Merchant 0100,Micro,Retail,Vietnam,VN South,Low,Farah Rahman,Direct Sales,2024-07-14,57917.23,57.68,0.01758,0.032,1
+M0101,EducationPay Merchant 0101,Mid-Market,Education,Thailand,Thailand Provincial,Low,Chloe Lim,Direct Sales,2023-12-10,26985.41,57.01,0.01273,0.02,1
+M0102,UtilitiesPay Merchant 0102,Enterprise,Utilities,Singapore,Singapore,Low,Chloe Lim,Self-Serve,2021-08-10,224365.09,61.29,0.01257,0.015,1
+M0103,RetailPay Merchant 0103,Micro,Retail,Philippines,Metro Manila,Low,Bao Tran,Partner,2023-10-07,57111.95,63.08,0.02027,0.032,1
+M0104,EducationPay Merchant 0104,Micro,Education,Vietnam,VN North,Medium,Farah Rahman,Direct Sales,2021-12-20,5526.56,64.0,0.01969,0.032,1
+M0105,RetailPay Merchant 0105,SMB,Retail,Vietnam,VN South,Low,Ava Nguyen,Self-Serve,2024-03-26,155631.6,78.44,0.01774,0.026,1
+M0106,RetailPay Merchant 0106,SMB,Retail,Indonesia,Java,Low,Daniel Ho,Partner,2024-10-05,103453.9,55.5,0.01472,0.026,1
+M0107,ServicesPay Merchant 0107,Micro,Services,Vietnam,VN Central,Low,Farah Rahman,Direct Sales,2023-11-13,18940.28,67.5,0.01836,0.032,1
+M0108,MarketplacePay Merchant 0108,Micro,Marketplace,Thailand,Thailand Provincial,Low,Ava Nguyen,Partner,2023-10-01,25213.81,73.12,0.02029,0.032,1
+M0109,GamingPay Merchant 0109,Mid-Market,Gaming,Thailand,Thailand Provincial,Medium,Ava Nguyen,Direct Sales,2021-01-14,99183.07,45.77,0.0128,0.02,1
+M0110,ServicesPay Merchant 0110,SMB,Services,Thailand,Bangkok,Low,Nadia Santos,Direct Sales,2024-11-30,19059.13,75.49,0.0169,0.026,1
+M0111,GamingPay Merchant 0111,Enterprise,Gaming,Indonesia,Indonesia Outer,Medium,Chloe Lim,Direct Sales,2021-08-31,219468.19,20.27,0.01353,0.015,1
+M0112,UtilitiesPay Merchant 0112,Enterprise,Utilities,Vietnam,VN South,Low,Farah Rahman,Direct Sales,2022-02-17,307028.45,75.71,0.01266,0.015,1
+M0113,FoodPay Merchant 0113,Enterprise,Food Delivery,Philippines,Metro Manila,Low,Bao Tran,Direct Sales,2024-10-21,280516.38,14.61,0.01039,0.015,1
+M0114,MarketplacePay Merchant 0114,SMB,Marketplace,Vietnam,VN Central,Low,Minh Pham,Partner,2024-10-01,26852.4,53.55,0.01802,0.026,1
+M0115,ServicesPay Merchant 0115,Micro,Services,Vietnam,VN Central,Low,Minh Pham,Self-Serve,2022-02-19,4658.72,110.71,0.01999,0.032,1
+M0116,UtilitiesPay Merchant 0116,SMB,Utilities,Indonesia,Indonesia Outer,Medium,Daniel Ho,Self-Serve,2024-02-09,35284.33,34.47,0.0171,0.026,1
+M0117,GamingPay Merchant 0117,SMB,Gaming,Vietnam,VN South,Low,Farah Rahman,Direct Sales,2024-09-01,104655.28,23.63,0.01748,0.026,1
+M0118,FoodPay Merchant 0118,Micro,Food Delivery,Vietnam,VN South,High,Farah Rahman,Partner,2021-02-25,21834.06,23.19,0.02078,0.032,1
+M0119,FoodPay Merchant 0119,Mid-Market,Food Delivery,Indonesia,Java,Medium,Nadia Santos,Self-Serve,2021-03-08,123384.0,17.73,0.01536,0.02,1
+M0120,EducationPay Merchant 0120,Mid-Market,Education,Singapore,Singapore,Low,Farah Rahman,Direct Sales,2024-09-21,119752.65,104.28,0.01389,0.02,1
+M0121,MarketplacePay Merchant 0121,SMB,Marketplace,Indonesia,Java,Low,Daniel Ho,Direct Sales,2023-02-04,140887.1,32.09,0.01606,0.026,1
+M0122,RetailPay Merchant 0122,Micro,Retail,Thailand,Thailand Provincial,Low,Daniel Ho,Self-Serve,2023-10-28,18141.17,75.48,0.02118,0.032,1
+M0123,FoodPay Merchant 0123,Micro,Food Delivery,Singapore,Singapore,Low,Minh Pham,Partner,2022-10-26,8287.39,26.5,0.0204,0.032,1
+M0124,EducationPay Merchant 0124,SMB,Education,Singapore,Singapore,Low,Bao Tran,Self-Serve,2022-12-19,18554.24,75.52,0.01724,0.026,1
+M0125,RetailPay Merchant 0125,Micro,Retail,Singapore,Singapore,Medium,Daniel Ho,Direct Sales,2024-09-09,28417.27,43.38,0.02163,0.032,1
+M0126,MarketplacePay Merchant 0126,Mid-Market,Marketplace,Thailand,Bangkok,Medium,Bao Tran,Direct Sales,2021-04-15,136710.07,74.39,0.01625,0.02,1
+M0127,FoodPay Merchant 0127,Micro,Food Delivery,Thailand,Bangkok,Low,Farah Rahman,Partner,2021-02-21,13669.36,36.21,0.02135,0.032,1
+M0128,RetailPay Merchant 0128,Micro,Retail,Vietnam,VN South,High,Chloe Lim,Direct Sales,2023-10-09,48608.53,89.96,0.01993,0.032,1
+M0129,UtilitiesPay Merchant 0129,SMB,Utilities,Philippines,Philippines Provincial,Low,Ava Nguyen,Direct Sales,2022-01-10,42806.89,47.47,0.01625,0.026,1
+M0130,EducationPay Merchant 0130,Mid-Market,Education,Indonesia,Indonesia Outer,Medium,Nadia Santos,Direct Sales,2023-09-09,128522.61,67.4,0.01561,0.02,1
+M0131,TravelPay Merchant 0131,SMB,Travel,Vietnam,VN North,Low,Daniel Ho,Direct Sales,2024-10-14,229475.28,171.73,0.0172,0.026,1
+M0132,EducationPay Merchant 0132,Micro,Education,Vietnam,VN South,Low,Daniel Ho,Direct Sales,2021-01-25,3546.47,158.16,0.01748,0.032,1
+M0133,UtilitiesPay Merchant 0133,Micro,Utilities,Vietnam,VN Central,High,Bao Tran,Direct Sales,2022-03-30,37719.8,40.26,0.02192,0.032,1
+M0134,MarketplacePay Merchant 0134,Enterprise,Marketplace,Singapore,Singapore,High,Ava Nguyen,Partner,2021-05-01,2012621.93,66.35,0.01016,0.015,1
+M0135,EducationPay Merchant 0135,SMB,Education,Vietnam,VN South,Medium,Ava Nguyen,Direct Sales,2022-09-04,61929.91,93.52,0.01716,0.026,1
+M0136,MarketplacePay Merchant 0136,Micro,Marketplace,Vietnam,VN North,Low,Ava Nguyen,Partner,2021-10-15,210001.93,57.66,0.01804,0.032,1
+M0137,TravelPay Merchant 0137,Micro,Travel,Indonesia,Java,Low,Daniel Ho,Direct Sales,2024-08-24,10150.34,219.24,0.02191,0.032,1
+M0138,RetailPay Merchant 0138,SMB,Retail,Vietnam,VN North,Low,Ava Nguyen,Platform Referral,2023-04-06,50064.31,90.1,0.01715,0.026,1
+M0139,TravelPay Merchant 0139,SMB,Travel,Vietnam,VN North,Medium,Daniel Ho,Direct Sales,2023-04-05,139477.99,187.39,0.01872,0.026,1
+M0140,ServicesPay Merchant 0140,SMB,Services,Vietnam,VN North,Low,Chloe Lim,Direct Sales,2023-08-01,29820.3,65.93,0.01923,0.026,1
+M0141,MarketplacePay Merchant 0141,Mid-Market,Marketplace,Philippines,Philippines Provincial,Low,Nadia Santos,Self-Serve,2022-04-11,63175.97,45.48,0.01257,0.02,1
+M0142,ServicesPay Merchant 0142,Enterprise,Services,Indonesia,Indonesia Outer,Medium,Nadia Santos,Direct Sales,2023-12-01,396126.07,41.98,0.01276,0.015,1
+M0143,GamingPay Merchant 0143,SMB,Gaming,Thailand,Thailand Provincial,Low,Farah Rahman,Direct Sales,2022-04-13,28322.66,37.89,0.01885,0.026,1
+M0144,FoodPay Merchant 0144,Mid-Market,Food Delivery,Indonesia,Indonesia Outer,Low,Nadia Santos,Direct Sales,2022-04-30,32611.13,15.33,0.01266,0.02,1
+M0145,MarketplacePay Merchant 0145,SMB,Marketplace,Indonesia,Java,Low,Ava Nguyen,Direct Sales,2021-06-03,78031.45,42.88,0.01917,0.026,1
+M0146,FoodPay Merchant 0146,Micro,Food Delivery,Thailand,Thailand Provincial,Medium,Minh Pham,Platform Referral,2024-04-01,3107.49,18.16,0.02113,0.032,1
+M0147,EducationPay Merchant 0147,Mid-Market,Education,Thailand,Bangkok,Medium,Nadia Santos,Direct Sales,2022-07-14,285076.34,74.97,0.01417,0.02,1
+M0148,TravelPay Merchant 0148,Micro,Travel,Indonesia,Indonesia Outer,Medium,Nadia Santos,Partner,2023-01-08,7209.86,160.66,0.01995,0.032,1
+M0149,ServicesPay Merchant 0149,Micro,Services,Vietnam,VN Central,Low,Farah Rahman,Partner,2024-01-21,12334.89,46.58,0.01876,0.032,1
+M0150,MarketplacePay Merchant 0150,Micro,Marketplace,Vietnam,VN Central,Low,Minh Pham,Direct Sales,2023-08-17,20204.22,94.61,0.02121,0.032,1
+M0151,UtilitiesPay Merchant 0151,Mid-Market,Utilities,Philippines,Metro Manila,Low,Nadia Santos,Self-Serve,2021-11-19,190969.16,52.45,0.01474,0.02,1
+M0152,FoodPay Merchant 0152,Micro,Food Delivery,Thailand,Thailand Provincial,Medium,Bao Tran,Self-Serve,2025-02-24,5527.64,17.07,0.01938,0.032,1
+M0153,ServicesPay Merchant 0153,Mid-Market,Services,Vietnam,VN Central,Medium,Daniel Ho,Partner,2022-05-14,148620.5,82.42,0.01467,0.02,1
+M0154,EducationPay Merchant 0154,Micro,Education,Singapore,Singapore,Low,Daniel Ho,Direct Sales,2022-09-10,9136.94,74.55,0.0231,0.032,1
+M0155,GamingPay Merchant 0155,Mid-Market,Gaming,Thailand,Thailand Provincial,Low,Ava Nguyen,Partner,2024-12-22,362481.53,24.66,0.01303,0.02,1
+M0156,UtilitiesPay Merchant 0156,Mid-Market,Utilities,Indonesia,Java,Low,Ava Nguyen,Partner,2023-10-24,231688.02,68.22,0.01492,0.02,1
+M0157,UtilitiesPay Merchant 0157,SMB,Utilities,Philippines,Philippines Provincial,Medium,Nadia Santos,Direct Sales,2021-10-13,48348.37,44.5,0.01857,0.026,1
+M0158,EducationPay Merchant 0158,Mid-Market,Education,Indonesia,Indonesia Outer,High,Chloe Lim,Partner,2023-01-31,181373.75,111.84,0.01485,0.02,1
+M0159,ServicesPay Merchant 0159,Mid-Market,Services,Singapore,Singapore,Low,Nadia Santos,Direct Sales,2022-10-01,76389.76,72.94,0.01452,0.02,1
+M0160,FoodPay Merchant 0160,Enterprise,Food Delivery,Indonesia,Java,Low,Chloe Lim,Partner,2024-11-05,368829.97,13.36,0.00865,0.015,1
+M0161,RetailPay Merchant 0161,SMB,Retail,Philippines,Philippines Provincial,Medium,Nadia Santos,Partner,2021-06-04,170503.21,42.19,0.02032,0.026,1
+M0162,GamingPay Merchant 0162,Enterprise,Gaming,Thailand,Thailand Provincial,Medium,Chloe Lim,Direct Sales,2024-10-05,1645310.8,14.14,0.01008,0.015,1
+M0163,GamingPay Merchant 0163,SMB,Gaming,Vietnam,VN North,Medium,Minh Pham,Self-Serve,2021-11-25,38714.96,21.44,0.01526,0.026,1
+M0164,EducationPay Merchant 0164,Micro,Education,Vietnam,VN South,High,Chloe Lim,Partner,2021-03-24,21714.65,70.49,0.0189,0.032,1
+M0165,ServicesPay Merchant 0165,Micro,Services,Vietnam,VN North,High,Chloe Lim,Direct Sales,2024-11-11,10282.9,73.89,0.0197,0.032,1
+M0166,UtilitiesPay Merchant 0166,Mid-Market,Utilities,Indonesia,Java,Medium,Bao Tran,Partner,2023-11-07,243064.41,46.56,0.01515,0.02,1
+M0167,RetailPay Merchant 0167,SMB,Retail,Vietnam,VN North,Low,Ava Nguyen,Partner,2024-12-20,35225.5,44.05,0.01961,0.026,1
+M0168,ServicesPay Merchant 0168,Micro,Services,Indonesia,Java,Low,Ava Nguyen,Direct Sales,2023-06-04,6275.14,75.52,0.01899,0.032,1
+M0169,MarketplacePay Merchant 0169,SMB,Marketplace,Singapore,Singapore,Low,Chloe Lim,Direct Sales,2021-09-21,68658.51,36.58,0.01575,0.026,1
+M0170,ServicesPay Merchant 0170,Micro,Services,Philippines,Philippines Provincial,Medium,Minh Pham,Platform Referral,2022-12-04,27966.64,94.19,0.01851,0.032,1
+M0171,FoodPay Merchant 0171,Mid-Market,Food Delivery,Indonesia,Indonesia Outer,Medium,Chloe Lim,Direct Sales,2022-03-20,188117.04,34.71,0.01405,0.02,1
+M0172,FoodPay Merchant 0172,SMB,Food Delivery,Vietnam,VN Central,Low,Daniel Ho,Direct Sales,2021-03-07,40852.39,21.73,0.01629,0.026,1
+M0173,EducationPay Merchant 0173,Mid-Market,Education,Philippines,Philippines Provincial,Low,Bao Tran,Self-Serve,2021-02-01,153571.31,109.94,0.01308,0.02,1
+M0174,GamingPay Merchant 0174,Mid-Market,Gaming,Indonesia,Java,Low,Chloe Lim,Direct Sales,2022-12-11,329135.8,26.71,0.01287,0.02,1
+M0175,FoodPay Merchant 0175,Mid-Market,Food Delivery,Vietnam,VN South,Low,Minh Pham,Direct Sales,2021-04-29,434740.89,19.13,0.01402,0.02,1
+M0176,GamingPay Merchant 0176,Micro,Gaming,Singapore,Singapore,Medium,Minh Pham,Partner,2024-03-29,11186.76,25.14,0.01946,0.032,1
+M0177,GamingPay Merchant 0177,Enterprise,Gaming,Indonesia,Indonesia Outer,Low,Nadia Santos,Self-Serve,2021-11-21,168780.53,35.46,0.00891,0.015,1
+M0178,GamingPay Merchant 0178,Micro,Gaming,Vietnam,VN Central,Medium,Chloe Lim,Platform Referral,2021-08-10,259394.1,31.4,0.02243,0.032,1
+M0179,MarketplacePay Merchant 0179,Mid-Market,Marketplace,Philippines,Metro Manila,Medium,Chloe Lim,Direct Sales,2023-11-19,547645.69,96.6,0.01223,0.02,1
+M0180,ServicesPay Merchant 0180,Micro,Services,Thailand,Thailand Provincial,Low,Bao Tran,Self-Serve,2024-06-21,21993.33,53.85,0.02032,0.032,1
+M0181,ServicesPay Merchant 0181,Enterprise,Services,Philippines,Metro Manila,Medium,Farah Rahman,Platform Referral,2023-07-22,221908.47,96.55,0.01298,0.015,1
+M0182,FoodPay Merchant 0182,SMB,Food Delivery,Vietnam,VN South,Low,Chloe Lim,Direct Sales,2021-07-27,165905.18,26.92,0.01592,0.026,1
+M0183,EducationPay Merchant 0183,SMB,Education,Indonesia,Indonesia Outer,Medium,Farah Rahman,Direct Sales,2021-02-18,73131.33,83.25,0.01564,0.026,1
+M0184,TravelPay Merchant 0184,Micro,Travel,Thailand,Thailand Provincial,Medium,Farah Rahman,Direct Sales,2023-02-09,23848.23,248.32,0.02194,0.032,1
+M0185,UtilitiesPay Merchant 0185,Mid-Market,Utilities,Thailand,Thailand Provincial,Low,Minh Pham,Platform Referral,2022-03-27,74006.47,55.46,0.01417,0.02,1
+M0186,GamingPay Merchant 0186,Micro,Gaming,Thailand,Bangkok,Low,Ava Nguyen,Direct Sales,2022-11-24,18464.2,37.13,0.02016,0.032,1
+M0187,FoodPay Merchant 0187,Micro,Food Delivery,Vietnam,VN North,Low,Minh Pham,Partner,2021-01-16,17739.29,13.79,0.02106,0.032,1
+M0188,UtilitiesPay Merchant 0188,Mid-Market,Utilities,Thailand,Bangkok,High,Chloe Lim,Direct Sales,2023-11-15,445634.03,75.19,0.01335,0.02,1
+M0189,ServicesPay Merchant 0189,Micro,Services,Vietnam,VN South,Low,Daniel Ho,Partner,2021-03-21,21506.14,93.57,0.01918,0.032,1
+M0190,TravelPay Merchant 0190,SMB,Travel,Vietnam,VN North,Low,Farah Rahman,Partner,2022-05-23,85443.38,144.08,0.01628,0.026,1
+M0191,TravelPay Merchant 0191,Mid-Market,Travel,Indonesia,Indonesia Outer,High,Bao Tran,Platform Referral,2022-02-26,266502.34,334.23,0.01316,0.02,1
+M0192,RetailPay Merchant 0192,SMB,Retail,Vietnam,VN Central,Medium,Minh Pham,Direct Sales,2021-07-16,27826.02,73.77,0.01687,0.026,1
+M0193,MarketplacePay Merchant 0193,Micro,Marketplace,Philippines,Philippines Provincial,Medium,Farah Rahman,Partner,2022-08-28,16586.38,45.37,0.02241,0.032,1
+M0194,GamingPay Merchant 0194,SMB,Gaming,Vietnam,VN Central,Low,Farah Rahman,Self-Serve,2021-01-03,133139.43,23.1,0.01963,0.026,1
+M0195,FoodPay Merchant 0195,Mid-Market,Food Delivery,Thailand,Bangkok,Medium,Ava Nguyen,Direct Sales,2025-02-08,104941.65,23.93,0.01406,0.02,1
+M0196,TravelPay Merchant 0196,SMB,Travel,Indonesia,Java,Medium,Ava Nguyen,Partner,2024-06-16,23587.77,322.89,0.01787,0.026,1
+M0197,ServicesPay Merchant 0197,Micro,Services,Indonesia,Java,Low,Chloe Lim,Direct Sales,2022-06-19,2989.44,45.77,0.01914,0.032,1
+M0198,ServicesPay Merchant 0198,SMB,Services,Thailand,Thailand Provincial,Low,Daniel Ho,Partner,2023-12-02,57374.13,60.01,0.01957,0.026,1
+M0199,FoodPay Merchant 0199,SMB,Food Delivery,Thailand,Thailand Provincial,Medium,Chloe Lim,Self-Serve,2021-03-14,45218.3,24.55,0.01468,0.026,1
+M0200,ServicesPay Merchant 0200,Mid-Market,Services,Vietnam,VN South,Low,Chloe Lim,Self-Serve,2021-07-23,72873.02,76.89,0.01537,0.02,1

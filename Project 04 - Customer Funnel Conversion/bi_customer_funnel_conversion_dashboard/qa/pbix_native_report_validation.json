@@ -1,0 +1,7 @@
+{
+    "timestamp":  "2026-06-11 11:43:57 +07:00",
+    "status":  "failed_precondition_missing_model_pbix",
+    "source_model_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\dashboard_model.pbix",
+    "reason":  "No valid model PBIX exists. Run 07_push_model_to_powerbi_desktop.ps1, then save Power BI Desktop as output/dashboard_model.pbix.",
+    "final_pbix_created":  false
+}

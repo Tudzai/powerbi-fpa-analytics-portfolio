@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project 05 - Retention Cohort LTV Retention & Cohort Dashboard</title>
+  <style>
+    :root {
+      --paper: #F4F7FB;
+      --ink: #172033;
+      --muted: #667085;
+      --card: #FFFFFF;
+      --grid: #D9E2EC;
+      --blue: #2F80ED;
+      --navy: #102033;
+    }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+    header {
+      padding: 36px clamp(20px, 5vw, 70px) 18px;
+      display: flex;
+      gap: 24px;
+      align-items: end;
+      justify-content: space-between;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 820px;
+      line-height: 1.55;
+    }
+    .badge {
+      background: var(--navy);
+      color: white;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    main {
+      padding: 14px clamp(20px, 5vw, 70px) 56px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .page-card {
+      background: var(--card);
+      border: 1px solid var(--grid);
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+    }
+    .page-meta {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin: 0 0 10px;
+      text-transform: uppercase;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Retention & Cohort Dashboard</h1>
+      <p>Visual refresh inspired by modern Power BI dashboard guidance: fewer stronger KPIs, clear reading order, consistent theme, and chart-led lifecycle diagnostics.</p>
+    </div>
+    <div class="badge">Project 05 - Retention Cohort LTV</div>
+  </header>
+  <main>
+    
+            <article class="page-card">
+              <div class="page-meta">Page 01</div>
+              <img src="screenshots/page_01_lifecycle_overview.png" alt="Dashboard page 1">
+            </article>
+            
+            <article class="page-card">
+              <div class="page-meta">Page 02</div>
+              <img src="screenshots/page_02_monthly_cohort_retention.png" alt="Dashboard page 2">
+            </article>
+            
+            <article class="page-card">
+              <div class="page-meta">Page 03</div>
+              <img src="screenshots/page_03_ltv_revenue_cohorts.png" alt="Dashboard page 3">
+            </article>
+            
+            <article class="page-card">
+              <div class="page-meta">Page 04</div>
+              <img src="screenshots/page_04_churn_signal_winback.png" alt="Dashboard page 4">
+            </article>
+            
+  </main>
+</body>
+</html>

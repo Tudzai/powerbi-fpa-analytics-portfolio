@@ -1,0 +1,209 @@
+[
+  {
+    "name": "Revenue",
+    "display_name": "Revenue",
+    "table": "KPI_Measures",
+    "dax": "Revenue = SUM(FactRevenueDriver[RevenueUSD])",
+    "format": "$#,0;($#,0);$0",
+    "unit": "USD",
+    "definition": "Net revenue after surcharge and discount at current filter context."
+  },
+  {
+    "name": "Direct Cost",
+    "display_name": "Direct Cost",
+    "table": "KPI_Measures",
+    "dax": "Direct Cost = SUM(FactCostDriver[DirectCostUSD])",
+    "format": "$#,0;($#,0);$0",
+    "unit": "USD",
+    "definition": "Carrier, handling, fuel and customs direct costs."
+  },
+  {
+    "name": "Gross Profit",
+    "display_name": "Gross Profit",
+    "table": "KPI_Measures",
+    "dax": "Gross Profit = [Revenue] - [Direct Cost]",
+    "format": "$#,0;($#,0);$0",
+    "unit": "USD",
+    "definition": "Revenue less direct cost."
+  },
+  {
+    "name": "Gross Margin %",
+    "display_name": "Gross Margin %",
+    "table": "KPI_Measures",
+    "dax": "Gross Margin % = DIVIDE([Gross Profit], [Revenue])",
+    "format": "0.0%",
+    "unit": "%",
+    "definition": "Gross profit divided by revenue."
+  },
+  {
+    "name": "Payroll Cost",
+    "display_name": "Payroll Cost",
+    "table": "KPI_Measures",
+    "dax": "Payroll Cost = SUM(FactHeadcountPlan[PayrollCostUSD])",
+    "format": "$#,0;($#,0);$0",
+    "unit": "USD",
+    "definition": "Salary cost from the headcount plan."
+  },
+  {
+    "name": "Non Payroll OPEX",
+    "display_name": "Non Payroll OPEX",
+    "table": "KPI_Measures",
+    "dax": "Non Payroll OPEX = SUM(FactOpexDriver[NonPayrollOpexUSD])",
+    "format": "$#,0;($#,0);$0",
+    "unit": "USD",
+    "definition": "Rent, software, marketing, travel and G&A cost excluding payroll."
+  },
+  {
+    "name": "EBITDA",
+    "display_name": "EBITDA",
+    "table": "KPI_Measures",
+    "dax": "EBITDA = [Gross Profit] - [Payroll Cost] - [Non Payroll OPEX]",
+    "format": "$#,0;($#,0);$0",
+    "unit": "USD",
+    "definition": "Forecast P&L operating profit proxy before tax and capex."
+  },
+  {
+    "name": "EBITDA Margin %",
+    "display_name": "EBITDA Margin %",
+    "table": "KPI_Measures",
+    "dax": "EBITDA Margin % = DIVIDE([EBITDA], [Revenue])",
+    "format": "0.0%",
+    "unit": "%",
+    "definition": "EBITDA divided by revenue."
+  },
+  {
+    "name": "Jobs",
+    "display_name": "Jobs",
+    "table": "KPI_Measures",
+    "dax": "Jobs = SUM(FactRevenueDriver[VolumeJobs])",
+    "format": "#,0",
+    "unit": "jobs",
+    "definition": "Total shipment or service jobs."
+  },
+  {
+    "name": "Revenue per Job",
+    "display_name": "Revenue / Job",
+    "table": "KPI_Measures",
+    "dax": "Revenue per Job = DIVIDE([Revenue], [Jobs])",
+    "format": "$#,0.0",
+    "unit": "USD/job",
+    "definition": "Revenue productivity per job."
+  },
+  {
+    "name": "Variable Cost per Job",
+    "display_name": "Variable Cost / Job",
+    "table": "KPI_Measures",
+    "dax": "Variable Cost per Job = DIVIDE([Direct Cost], [Jobs])",
+    "format": "$#,0.0",
+    "unit": "USD/job",
+    "definition": "Direct cost productivity per job."
+  },
+  {
+    "name": "Average FTE",
+    "display_name": "Average FTE",
+    "table": "KPI_Measures",
+    "dax": "Average FTE = AVERAGEX(VALUES(DimDate[YearMonth]), SUM(FactHeadcountPlan[FTE]))",
+    "format": "#,0.0",
+    "unit": "FTE",
+    "definition": "Average monthly FTE in the selected period."
+  },
+  {
+    "name": "Jobs per FTE",
+    "display_name": "Jobs / FTE",
+    "table": "KPI_Measures",
+    "dax": "Jobs per FTE = DIVIDE([Jobs], [Average FTE])",
+    "format": "#,0.0",
+    "unit": "jobs/FTE",
+    "definition": "Capacity productivity based on average monthly FTE."
+  },
+  {
+    "name": "Operating Cash Flow",
+    "display_name": "Operating Cash Flow",
+    "table": "KPI_Measures",
+    "dax": "Operating Cash Flow = SUM(FactCashImpact[OperatingCashFlowUSD])",
+    "format": "$#,0;($#,0);$0",
+    "unit": "USD",
+    "definition": "EBITDA less tax and working-capital drag."
+  },
+  {
+    "name": "Ending Cash Latest Month",
+    "display_name": "Ending Cash",
+    "table": "KPI_Measures",
+    "dax": "Ending Cash Latest Month = CALCULATE(SUM(FactCashImpact[EndingCashUSD]), LASTNONBLANK(DimDate[Date], [Operating Cash Flow]))",
+    "format": "$#,0;($#,0);$0",
+    "unit": "USD",
+    "definition": "Ending cash balance at latest visible period."
+  },
+  {
+    "name": "Working Capital",
+    "display_name": "Working Capital",
+    "table": "KPI_Measures",
+    "dax": "Working Capital = SUM(FactCashImpact[WorkingCapitalUSD])",
+    "format": "$#,0;($#,0);$0",
+    "unit": "USD",
+    "definition": "AR and AP timing impact based on DSO and DPO assumptions."
+  },
+  {
+    "name": "DSO Days",
+    "display_name": "DSO",
+    "table": "KPI_Measures",
+    "dax": "DSO Days = AVERAGE(FactCashImpact[DSODays])",
+    "format": "#,0",
+    "unit": "days",
+    "definition": "Average days sales outstanding in current scenario."
+  },
+  {
+    "name": "DPO Days",
+    "display_name": "DPO",
+    "table": "KPI_Measures",
+    "dax": "DPO Days = AVERAGE(FactCashImpact[DPODays])",
+    "format": "#,0",
+    "unit": "days",
+    "definition": "Average days payable outstanding in current scenario."
+  },
+  {
+    "name": "MAPE",
+    "display_name": "MAPE",
+    "table": "KPI_Measures",
+    "dax": "MAPE = AVERAGE(FactForecastAccuracy[AbsolutePctError])",
+    "format": "0.0%",
+    "unit": "%",
+    "definition": "Mean absolute percentage error for forecast accuracy tracking."
+  },
+  {
+    "name": "Forecast Bias %",
+    "display_name": "Forecast Bias %",
+    "table": "KPI_Measures",
+    "dax": "Forecast Bias % = AVERAGE(FactForecastAccuracy[ForecastBiasPct])",
+    "format": "0.0%",
+    "unit": "%",
+    "definition": "Average signed forecast bias."
+  },
+  {
+    "name": "Base Revenue",
+    "display_name": "Base Revenue",
+    "table": "KPI_Measures",
+    "dax": "Base Revenue = CALCULATE([Revenue], DimScenario[Scenario] = \"Base\")",
+    "format": "$#,0;($#,0);$0",
+    "unit": "USD",
+    "definition": "Base scenario revenue for variance comparisons."
+  },
+  {
+    "name": "Scenario Revenue Variance vs Base",
+    "display_name": "Revenue Var vs Base",
+    "table": "KPI_Measures",
+    "dax": "Scenario Revenue Variance vs Base = [Revenue] - [Base Revenue]",
+    "format": "$#,0;($#,0);$0",
+    "unit": "USD",
+    "definition": "Selected scenario revenue less base scenario revenue."
+  },
+  {
+    "name": "Scenario Revenue Variance % vs Base",
+    "display_name": "Revenue Var % vs Base",
+    "table": "KPI_Measures",
+    "dax": "Scenario Revenue Variance % vs Base = DIVIDE([Scenario Revenue Variance vs Base], [Base Revenue])",
+    "format": "0.0%",
+    "unit": "%",
+    "definition": "Selected scenario revenue variance percentage versus base."
+  }
+]

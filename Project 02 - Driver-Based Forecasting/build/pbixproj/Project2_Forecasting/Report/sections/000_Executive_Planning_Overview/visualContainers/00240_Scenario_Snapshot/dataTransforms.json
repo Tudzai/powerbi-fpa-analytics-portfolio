@@ -1,0 +1,271 @@
+{
+  "objects": {
+    "grid": [
+      {
+        "properties": {
+          "gridHorizontal": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "outlineColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#D9DEE7'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "columnHeaders": [
+      {
+        "properties": {
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI Semibold'"
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.5D"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#2454A6'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "values": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.5D"
+              }
+            }
+          },
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Values": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Scenario",
+        "Name": "DimScenario.Scenario",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Revenue",
+        "Name": "KPI_Measures.Revenue",
+        "Type": 1,
+        "Format": "$#,0;($#,0);$0"
+      },
+      {
+        "Restatement": "EBITDA",
+        "Name": "KPI_Measures.EBITDA",
+        "Type": 1,
+        "Format": "$#,0;($#,0);$0"
+      },
+      {
+        "Restatement": "GM %",
+        "Name": "KPI_Measures.Gross Margin %",
+        "Type": 1,
+        "Format": "0.0%"
+      },
+      {
+        "Restatement": "OCF",
+        "Name": "KPI_Measures.Operating Cash Flow",
+        "Type": 1,
+        "Format": "$#,0;($#,0);$0"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 2,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 3,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 4,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Scenario",
+      "queryName": "DimScenario.Scenario",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "f0"
+            }
+          },
+          "Property": "Scenario"
+        }
+      }
+    },
+    {
+      "displayName": "Revenue",
+      "queryName": "KPI_Measures.Revenue",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "Revenue"
+        }
+      },
+      "format": "$#,0;($#,0);$0",
+      "sort": 2,
+      "sortOrder": 0
+    },
+    {
+      "displayName": "EBITDA",
+      "queryName": "KPI_Measures.EBITDA",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "EBITDA"
+        }
+      },
+      "format": "$#,0;($#,0);$0",
+      "sort": 2,
+      "sortOrder": 0
+    },
+    {
+      "displayName": "GM %",
+      "queryName": "KPI_Measures.Gross Margin %",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "Gross Margin %"
+        }
+      },
+      "format": "0.0%",
+      "sort": 2,
+      "sortOrder": 0
+    },
+    {
+      "displayName": "OCF",
+      "queryName": "KPI_Measures.Operating Cash Flow",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "m"
+            }
+          },
+          "Property": "Operating Cash Flow"
+        }
+      },
+      "format": "$#,0;($#,0);$0",
+      "sort": 2,
+      "sortOrder": 0
+    }
+  ]
+}

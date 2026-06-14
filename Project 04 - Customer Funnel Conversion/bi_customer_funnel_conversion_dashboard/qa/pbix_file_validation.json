@@ -1,0 +1,40 @@
+{
+  "status": "pass",
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\dashboard_final.pbix",
+  "final_pbix_exists": true,
+  "final_pbix_size_bytes": 2283154,
+  "model_source": "Project 04 - Customer Funnel Conversion compatibility model pushed into native Power BI template and saved",
+  "offline_export_counts": {
+    "dim_channel.csv": 7,
+    "dim_customer.csv": 74985,
+    "dim_date.csv": 516,
+    "dim_device.csv": 3,
+    "dim_product.csv": 48,
+    "dim_region.csv": 5,
+    "fact_marketing_spend.csv": 119,
+    "fact_orders.csv": 18567,
+    "fact_sessions.csv": 43240,
+    "KPI Measures.csv": 1
+  },
+  "metric_checks": {
+    "orders": 18567,
+    "net_revenue": 1558769.34,
+    "session_aggregate_rows": 43240,
+    "sessions": 161097
+  },
+  "powerbi_push": {
+    "timestamp": "2026-06-11 13:50:35 +07:00",
+    "status": "template_compat_model_pushed",
+    "target_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\Project4_Customer_Funnel_Conversion_Dashboard.pbix",
+    "power_bi_port": 62691,
+    "process_id": 27840,
+    "tables": 10,
+    "relationships": 11,
+    "measures": 17
+  },
+  "known_note": "Native report layout uses a compatible ecommerce executive template; the semantic model and exported data are Project 04 - Customer Funnel Conversion Customer Funnel data.",
+  "intermediate_pbix_removed": true,
+  "output_pbix_files": [
+    "dashboard_final.pbix"
+  ]
+}

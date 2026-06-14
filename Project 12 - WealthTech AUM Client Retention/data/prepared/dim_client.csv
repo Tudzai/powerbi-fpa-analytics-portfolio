@@ -1,0 +1,861 @@
+﻿ClientID,ClientName,ClientSegment,RiskProfile,Region,AdvisorName,OnboardingChannel,JoinMonth,SuitabilityScore,ModelPortfolio,TargetRiskScore,FeeBps
+CL00001,Nico Lee,UHNW,Conservative,APAC,Mina Patel,Partner API,2024-03-01,82,Income Shield,25,74
+CL00002,Nico Hughes,Mass Affluent,Growth,Europe,Sofia Garcia,Partner API,2026-03-01,75,Growth Builder,68,42
+CL00003,Ari Nguyen,Digital Starter,Aggressive,APAC,Sofia Garcia,Organic App,2024-09-01,87,Equity Edge,84,29
+CL00004,Reese Cooper,Retirement,Balanced,North America,Sofia Garcia,Employer Plan,2025-01-01,80,Balanced Core,48,38
+CL00005,Morgan Adams,Mass Affluent,Balanced,North America,Noah Miller,Advisor Referral,2025-01-01,84,Balanced Core,48,42
+CL00006,Casey Wong,HNW,Balanced,APAC,Avery Chen,Advisor Referral,2026-03-01,87,Balanced Core,48,58
+CL00007,Sam Singh,Retirement,Conservative,North America,Sofia Garcia,Advisor Referral,2026-02-01,73,Income Shield,25,38
+CL00008,Quinn Young,Mass Affluent,Conservative,North America,Lin Nguyen,Partner API,2025-02-01,87,Income Shield,25,42
+CL00009,Quinn Cooper,UHNW,Balanced,LATAM,Avery Chen,Partner API,2025-06-01,78,Balanced Core,48,74
+CL00010,Lena Wong,Mass Affluent,Growth,Europe,Sofia Garcia,Organic App,2026-01-01,88,Growth Builder,68,42
+CL00011,Quinn Hughes,HNW,Growth,North America,Mina Patel,Paid Search,2025-05-01,94,Growth Builder,68,58
+CL00012,Morgan Tran,Mass Affluent,Growth,North America,Jon Bell,Organic App,2024-05-01,79,Growth Builder,68,42
+CL00013,Rowan Stone,Retirement,Balanced,Europe,Sofia Garcia,Paid Search,2025-09-01,81,Balanced Core,48,38
+CL00014,Quinn Kim,Digital Starter,Growth,North America,Lin Nguyen,Organic App,2024-07-01,94,Growth Builder,68,29
+CL00015,Casey Patel,HNW,Balanced,North America,Noah Miller,Organic App,2024-07-01,91,Balanced Core,48,58
+CL00016,Taylor Brooks,Mass Affluent,Balanced,APAC,Jon Bell,Advisor Referral,2025-02-01,81,Balanced Core,48,42
+CL00017,Parker Hughes,Digital Starter,Growth,APAC,Jon Bell,Paid Search,2024-03-01,79,Growth Builder,68,29
+CL00018,Jordan Nguyen,Mass Affluent,Growth,North America,Avery Chen,Organic App,2025-07-01,68,Growth Builder,68,42
+CL00019,Quinn Rivera,Digital Starter,Aggressive,North America,Noah Miller,Employer Plan,2024-06-01,89,Equity Edge,84,29
+CL00020,Casey Rivera,Retirement,Growth,APAC,Sofia Garcia,Organic App,2025-07-01,92,Growth Builder,68,38
+CL00021,Ari Stone,UHNW,Growth,North America,Sofia Garcia,Partner API,2025-03-01,76,Growth Builder,68,74
+CL00022,Harper Stone,Mass Affluent,Aggressive,North America,Mina Patel,Paid Search,2026-05-01,77,Equity Edge,84,42
+CL00023,Skyler Martin,Mass Affluent,Growth,Europe,Jon Bell,Employer Plan,2025-01-01,82,Growth Builder,68,42
+CL00024,Morgan Hughes,Digital Starter,Aggressive,APAC,Noah Miller,Partner API,2025-12-01,90,Equity Edge,84,29
+CL00025,Reese Rivera,Mass Affluent,Conservative,LATAM,Avery Chen,Advisor Referral,2026-04-01,71,Income Shield,25,42
+CL00026,Sam Stone,Digital Starter,Balanced,North America,Noah Miller,Partner API,2025-09-01,84,Balanced Core,48,29
+CL00027,Reese Hughes,Mass Affluent,Growth,LATAM,Lin Nguyen,Employer Plan,2024-01-01,89,Growth Builder,68,42
+CL00028,Skyler Cooper,Mass Affluent,Conservative,North America,Jon Bell,Employer Plan,2025-02-01,85,Income Shield,25,42
+CL00029,Lena Stone,Digital Starter,Growth,North America,Lin Nguyen,Organic App,2025-07-01,89,Growth Builder,68,29
+CL00030,Alex Hughes,HNW,Growth,North America,Lin Nguyen,Organic App,2026-03-01,96,Growth Builder,68,58
+CL00031,Skyler Bennett,HNW,Balanced,APAC,Sofia Garcia,Partner API,2026-01-01,77,Balanced Core,48,58
+CL00032,Ari Patel,Digital Starter,Balanced,North America,Jon Bell,Advisor Referral,2025-11-01,92,Balanced Core,48,29
+CL00033,Riley Singh,Retirement,Conservative,North America,Avery Chen,Employer Plan,2025-07-01,99,Income Shield,25,38
+CL00034,Rowan Wong,Retirement,Growth,APAC,Avery Chen,Organic App,2026-03-01,76,Growth Builder,68,38
+CL00035,Quinn Young,HNW,Balanced,North America,Jon Bell,Advisor Referral,2026-04-01,93,Balanced Core,48,58
+CL00036,Taylor Patel,UHNW,Conservative,North America,Jon Bell,Partner API,2025-06-01,85,Income Shield,25,74
+CL00037,Alex Brooks,Digital Starter,Conservative,Europe,Noah Miller,Organic App,2024-05-01,78,Income Shield,25,29
+CL00038,Rowan Tran,Mass Affluent,Conservative,North America,Sofia Garcia,Organic App,2026-05-01,99,Income Shield,25,42
+CL00039,Ari Kim,HNW,Balanced,Europe,Lin Nguyen,Organic App,2024-09-01,82,Balanced Core,48,58
+CL00040,Jordan Carter,Retirement,Conservative,North America,Avery Chen,Paid Search,2025-03-01,71,Income Shield,25,38
+CL00041,Sam Tran,Mass Affluent,Conservative,North America,Jon Bell,Organic App,2024-08-01,72,Income Shield,25,42
+CL00042,Sam Morris,Mass Affluent,Conservative,Europe,Avery Chen,Organic App,2025-08-01,87,Income Shield,25,42
+CL00043,Harper Cole,Mass Affluent,Conservative,APAC,Jon Bell,Paid Search,2024-01-01,85,Income Shield,25,42
+CL00044,Parker Martin,Retirement,Balanced,APAC,Mina Patel,Paid Search,2024-06-01,76,Balanced Core,48,38
+CL00045,Morgan Cole,Mass Affluent,Conservative,North America,Mina Patel,Advisor Referral,2024-03-01,96,Income Shield,25,42
+CL00046,Parker Price,Mass Affluent,Balanced,APAC,Jon Bell,Partner API,2024-02-01,99,Balanced Core,48,42
+CL00047,Harper Young,HNW,Balanced,North America,Sofia Garcia,Organic App,2024-11-01,94,Balanced Core,48,58
+CL00048,Reese Lee,Mass Affluent,Growth,Europe,Sofia Garcia,Advisor Referral,2024-05-01,98,Growth Builder,68,42
+CL00049,Parker Wong,Mass Affluent,Conservative,North America,Noah Miller,Paid Search,2025-12-01,84,Income Shield,25,42
+CL00050,Emerson Brooks,Mass Affluent,Balanced,APAC,Noah Miller,Organic App,2026-05-01,86,Balanced Core,48,42
+CL00051,Sam Tran,Digital Starter,Balanced,North America,Noah Miller,Organic App,2026-02-01,91,Balanced Core,48,29
+CL00052,Lena Wong,HNW,Growth,North America,Avery Chen,Partner API,2026-02-01,79,Growth Builder,68,58
+CL00053,Drew Singh,Retirement,Balanced,North America,Avery Chen,Employer Plan,2024-10-01,89,Balanced Core,48,38
+CL00054,Drew Price,Mass Affluent,Balanced,North America,Lin Nguyen,Organic App,2025-03-01,89,Balanced Core,48,42
+CL00055,Cameron Cole,Mass Affluent,Aggressive,Europe,Jon Bell,Advisor Referral,2026-02-01,77,Equity Edge,84,42
+CL00056,Rowan Singh,HNW,Balanced,North America,Sofia Garcia,Paid Search,2026-05-01,91,Balanced Core,48,58
+CL00057,Reese Adams,Mass Affluent,Growth,North America,Jon Bell,Advisor Referral,2025-06-01,84,Growth Builder,68,42
+CL00058,Harper Rivera,HNW,Conservative,Europe,Noah Miller,Advisor Referral,2026-02-01,95,Income Shield,25,58
+CL00059,Rowan Martin,Mass Affluent,Balanced,North America,Avery Chen,Paid Search,2025-10-01,98,Balanced Core,48,42
+CL00060,Reese Singh,UHNW,Growth,APAC,Noah Miller,Paid Search,2026-02-01,89,Growth Builder,68,74
+CL00061,Taylor Cooper,HNW,Balanced,APAC,Jon Bell,Employer Plan,2024-10-01,97,Balanced Core,48,58
+CL00062,Alex Tran,HNW,Balanced,North America,Noah Miller,Partner API,2024-05-01,89,Balanced Core,48,58
+CL00063,Morgan Patel,UHNW,Balanced,North America,Mina Patel,Employer Plan,2024-01-01,91,Balanced Core,48,74
+CL00064,Reese Martin,Digital Starter,Balanced,Europe,Sofia Garcia,Organic App,2025-06-01,75,Balanced Core,48,29
+CL00065,Drew Kim,Mass Affluent,Growth,North America,Sofia Garcia,Organic App,2025-07-01,99,Growth Builder,68,42
+CL00066,Jordan Wong,Digital Starter,Growth,APAC,Noah Miller,Paid Search,2026-02-01,84,Growth Builder,68,29
+CL00067,Riley Martin,Digital Starter,Balanced,North America,Jon Bell,Employer Plan,2026-05-01,84,Balanced Core,48,29
+CL00068,Lena Tran,Digital Starter,Balanced,APAC,Sofia Garcia,Organic App,2026-01-01,83,Balanced Core,48,29
+CL00069,Skyler Rivera,Digital Starter,Balanced,North America,Lin Nguyen,Paid Search,2024-10-01,82,Balanced Core,48,29
+CL00070,Skyler Kim,Retirement,Aggressive,North America,Sofia Garcia,Organic App,2026-05-01,99,Equity Edge,84,38
+CL00071,Morgan Stone,Digital Starter,Balanced,North America,Noah Miller,Paid Search,2025-11-01,68,Balanced Core,48,29
+CL00072,Emerson Tran,HNW,Balanced,North America,Mina Patel,Advisor Referral,2025-05-01,78,Balanced Core,48,58
+CL00073,Alex Morris,Mass Affluent,Growth,North America,Lin Nguyen,Employer Plan,2024-08-01,74,Growth Builder,68,42
+CL00074,Cameron Rivera,Mass Affluent,Conservative,Europe,Sofia Garcia,Paid Search,2024-12-01,78,Income Shield,25,42
+CL00075,Harper Bennett,Digital Starter,Aggressive,North America,Avery Chen,Employer Plan,2026-01-01,99,Equity Edge,84,29
+CL00076,Casey Nguyen,Mass Affluent,Balanced,Europe,Sofia Garcia,Organic App,2025-04-01,78,Balanced Core,48,42
+CL00077,Riley Bennett,Mass Affluent,Conservative,APAC,Lin Nguyen,Paid Search,2024-01-01,99,Income Shield,25,42
+CL00078,Jordan Rivera,UHNW,Aggressive,APAC,Noah Miller,Paid Search,2025-07-01,70,Equity Edge,84,74
+CL00079,Jordan Young,HNW,Growth,North America,Noah Miller,Organic App,2024-05-01,85,Growth Builder,68,58
+CL00080,Ari Tran,HNW,Balanced,North America,Avery Chen,Paid Search,2024-05-01,94,Balanced Core,48,58
+CL00081,Parker Adams,Mass Affluent,Growth,North America,Sofia Garcia,Organic App,2024-09-01,85,Growth Builder,68,42
+CL00082,Riley Lee,HNW,Aggressive,North America,Jon Bell,Advisor Referral,2024-07-01,89,Equity Edge,84,58
+CL00083,Reese Tran,HNW,Conservative,Europe,Noah Miller,Paid Search,2024-04-01,93,Income Shield,25,58
+CL00084,Alex Morris,Mass Affluent,Balanced,APAC,Avery Chen,Advisor Referral,2026-02-01,99,Balanced Core,48,42
+CL00085,Parker Cooper,UHNW,Conservative,North America,Jon Bell,Advisor Referral,2025-09-01,78,Income Shield,25,74
+CL00086,Drew Bennett,HNW,Balanced,North America,Avery Chen,Employer Plan,2025-04-01,81,Balanced Core,48,58
+CL00087,Reese Stone,Mass Affluent,Aggressive,North America,Mina Patel,Organic App,2026-02-01,68,Equity Edge,84,42
+CL00088,Drew Young,UHNW,Balanced,APAC,Lin Nguyen,Paid Search,2024-01-01,95,Balanced Core,48,74
+CL00089,Jordan Cooper,Retirement,Balanced,North America,Jon Bell,Organic App,2026-05-01,85,Balanced Core,48,38
+CL00090,Morgan Price,Retirement,Growth,APAC,Mina Patel,Paid Search,2025-11-01,82,Growth Builder,68,38
+CL00091,Drew Cooper,UHNW,Growth,Europe,Jon Bell,Advisor Referral,2025-01-01,88,Growth Builder,68,74
+CL00092,Sam Young,Mass Affluent,Growth,North America,Jon Bell,Paid Search,2026-02-01,77,Growth Builder,68,42
+CL00093,Riley Stone,Mass Affluent,Conservative,APAC,Sofia Garcia,Paid Search,2025-05-01,71,Income Shield,25,42
+CL00094,Casey Hughes,Mass Affluent,Conservative,North America,Jon Bell,Organic App,2024-01-01,75,Income Shield,25,42
+CL00095,Jordan Wong,UHNW,Growth,North America,Sofia Garcia,Paid Search,2026-01-01,77,Growth Builder,68,74
+CL00096,Cameron Martin,HNW,Balanced,APAC,Mina Patel,Employer Plan,2025-10-01,70,Balanced Core,48,58
+CL00097,Lena Morris,Digital Starter,Conservative,North America,Jon Bell,Organic App,2024-09-01,85,Income Shield,25,29
+CL00098,Morgan Young,Mass Affluent,Growth,North America,Lin Nguyen,Paid Search,2025-09-01,99,Growth Builder,68,42
+CL00099,Lena Adams,Retirement,Growth,Europe,Jon Bell,Organic App,2025-03-01,83,Growth Builder,68,38
+CL00100,Parker Adams,Mass Affluent,Conservative,APAC,Noah Miller,Partner API,2025-04-01,85,Income Shield,25,42
+CL00101,Parker Carter,HNW,Growth,North America,Lin Nguyen,Employer Plan,2024-09-01,95,Growth Builder,68,58
+CL00102,Jamie Singh,Digital Starter,Growth,North America,Jon Bell,Advisor Referral,2026-03-01,95,Growth Builder,68,29
+CL00103,Reese Singh,Mass Affluent,Growth,North America,Noah Miller,Partner API,2026-04-01,90,Growth Builder,68,42
+CL00104,Morgan Adams,Digital Starter,Conservative,Europe,Jon Bell,Advisor Referral,2025-11-01,89,Income Shield,25,29
+CL00105,Reese Tran,Mass Affluent,Growth,North America,Jon Bell,Organic App,2024-10-01,74,Growth Builder,68,42
+CL00106,Emerson Brooks,HNW,Growth,Europe,Avery Chen,Advisor Referral,2024-03-01,84,Growth Builder,68,58
+CL00107,Reese Adams,Digital Starter,Balanced,Europe,Mina Patel,Organic App,2026-03-01,89,Balanced Core,48,29
+CL00108,Ari Kim,Digital Starter,Growth,Europe,Mina Patel,Organic App,2026-05-01,81,Growth Builder,68,29
+CL00109,Lena Cooper,Retirement,Growth,Europe,Sofia Garcia,Paid Search,2025-03-01,82,Growth Builder,68,38
+CL00110,Morgan Adams,Mass Affluent,Aggressive,North America,Avery Chen,Advisor Referral,2025-08-01,99,Equity Edge,84,42
+CL00111,Alex Cole,HNW,Growth,APAC,Mina Patel,Organic App,2024-06-01,75,Growth Builder,68,58
+CL00112,Jamie Martin,Mass Affluent,Aggressive,APAC,Mina Patel,Partner API,2026-01-01,98,Equity Edge,84,42
+CL00113,Alex Kim,Mass Affluent,Conservative,LATAM,Lin Nguyen,Organic App,2025-10-01,81,Income Shield,25,42
+CL00114,Parker Kim,HNW,Conservative,APAC,Jon Bell,Partner API,2024-04-01,72,Income Shield,25,58
+CL00115,Reese Stone,Digital Starter,Conservative,North America,Jon Bell,Advisor Referral,2025-04-01,94,Income Shield,25,29
+CL00116,Jamie Rivera,Digital Starter,Growth,APAC,Jon Bell,Paid Search,2025-07-01,70,Growth Builder,68,29
+CL00117,Drew Morris,Digital Starter,Conservative,North America,Noah Miller,Paid Search,2025-08-01,94,Income Shield,25,29
+CL00118,Sam Martin,HNW,Growth,Europe,Mina Patel,Organic App,2026-01-01,87,Growth Builder,68,58
+CL00119,Jamie Singh,Digital Starter,Balanced,North America,Lin Nguyen,Advisor Referral,2026-04-01,97,Balanced Core,48,29
+CL00120,Cameron Tran,UHNW,Growth,North America,Mina Patel,Organic App,2024-08-01,85,Growth Builder,68,74
+CL00121,Lena Brooks,Digital Starter,Aggressive,North America,Mina Patel,Advisor Referral,2024-08-01,78,Equity Edge,84,29
+CL00122,Parker Adams,Digital Starter,Balanced,North America,Sofia Garcia,Partner API,2025-12-01,87,Balanced Core,48,29
+CL00123,Drew Rivera,HNW,Growth,North America,Noah Miller,Paid Search,2025-04-01,76,Growth Builder,68,58
+CL00124,Skyler Morris,Mass Affluent,Balanced,APAC,Mina Patel,Partner API,2024-04-01,87,Balanced Core,48,42
+CL00125,Reese Price,Retirement,Growth,North America,Noah Miller,Paid Search,2024-12-01,90,Growth Builder,68,38
+CL00126,Casey Kim,Mass Affluent,Conservative,LATAM,Sofia Garcia,Employer Plan,2024-02-01,92,Income Shield,25,42
+CL00127,Harper Patel,Digital Starter,Balanced,North America,Sofia Garcia,Advisor Referral,2025-03-01,98,Balanced Core,48,29
+CL00128,Lena Tran,Mass Affluent,Conservative,APAC,Avery Chen,Advisor Referral,2025-06-01,86,Income Shield,25,42
+CL00129,Taylor Young,UHNW,Aggressive,Europe,Mina Patel,Paid Search,2026-03-01,71,Equity Edge,84,74
+CL00130,Nico Tran,Digital Starter,Balanced,Europe,Mina Patel,Partner API,2024-12-01,93,Balanced Core,48,29
+CL00131,Alex Stone,Mass Affluent,Balanced,North America,Mina Patel,Paid Search,2025-02-01,77,Balanced Core,48,42
+CL00132,Drew Adams,Digital Starter,Growth,North America,Noah Miller,Advisor Referral,2024-01-01,92,Growth Builder,68,29
+CL00133,Alex Stone,HNW,Growth,Europe,Lin Nguyen,Paid Search,2024-07-01,84,Growth Builder,68,58
+CL00134,Rowan Rivera,HNW,Conservative,APAC,Mina Patel,Partner API,2025-02-01,84,Income Shield,25,58
+CL00135,Jamie Wong,Retirement,Growth,Europe,Mina Patel,Advisor Referral,2025-05-01,99,Growth Builder,68,38
+CL00136,Rowan Wong,Mass Affluent,Aggressive,North America,Noah Miller,Paid Search,2024-04-01,95,Equity Edge,84,42
+CL00137,Jamie Rivera,HNW,Growth,North America,Noah Miller,Advisor Referral,2024-12-01,92,Growth Builder,68,58
+CL00138,Drew Cole,Mass Affluent,Growth,Europe,Sofia Garcia,Organic App,2026-02-01,87,Growth Builder,68,42
+CL00139,Lena Cooper,Digital Starter,Growth,APAC,Noah Miller,Organic App,2025-04-01,99,Growth Builder,68,29
+CL00140,Alex Stone,Digital Starter,Growth,North America,Mina Patel,Employer Plan,2026-04-01,83,Growth Builder,68,29
+CL00141,Morgan Brooks,Mass Affluent,Balanced,North America,Jon Bell,Organic App,2025-12-01,68,Balanced Core,48,42
+CL00142,Riley Tran,HNW,Growth,Europe,Sofia Garcia,Advisor Referral,2025-10-01,96,Growth Builder,68,58
+CL00143,Rowan Price,Mass Affluent,Growth,APAC,Mina Patel,Employer Plan,2024-08-01,88,Growth Builder,68,42
+CL00144,Alex Patel,HNW,Balanced,North America,Lin Nguyen,Organic App,2025-07-01,84,Balanced Core,48,58
+CL00145,Emerson Cooper,UHNW,Conservative,Europe,Noah Miller,Organic App,2024-07-01,83,Income Shield,25,74
+CL00146,Quinn Stone,HNW,Balanced,North America,Jon Bell,Organic App,2024-07-01,97,Balanced Core,48,58
+CL00147,Riley Young,Mass Affluent,Growth,APAC,Sofia Garcia,Partner API,2024-03-01,82,Growth Builder,68,42
+CL00148,Emerson Bennett,Mass Affluent,Balanced,APAC,Avery Chen,Advisor Referral,2026-05-01,91,Balanced Core,48,42
+CL00149,Skyler Hughes,Retirement,Conservative,North America,Lin Nguyen,Organic App,2025-08-01,91,Income Shield,25,38
+CL00150,Drew Hughes,Mass Affluent,Conservative,APAC,Jon Bell,Advisor Referral,2025-01-01,74,Income Shield,25,42
+CL00151,Harper Bennett,HNW,Balanced,APAC,Mina Patel,Advisor Referral,2026-01-01,95,Balanced Core,48,58
+CL00152,Morgan Singh,Mass Affluent,Balanced,North America,Mina Patel,Organic App,2026-01-01,94,Balanced Core,48,42
+CL00153,Ari Price,Mass Affluent,Balanced,LATAM,Avery Chen,Employer Plan,2025-08-01,88,Balanced Core,48,42
+CL00154,Skyler Cooper,Mass Affluent,Balanced,North America,Jon Bell,Paid Search,2024-02-01,79,Balanced Core,48,42
+CL00155,Nico Cole,HNW,Balanced,LATAM,Lin Nguyen,Paid Search,2024-10-01,89,Balanced Core,48,58
+CL00156,Sam Singh,Retirement,Growth,APAC,Noah Miller,Paid Search,2026-04-01,88,Growth Builder,68,38
+CL00157,Cameron Price,Retirement,Growth,APAC,Mina Patel,Organic App,2025-12-01,69,Growth Builder,68,38
+CL00158,Jordan Cooper,Mass Affluent,Aggressive,North America,Avery Chen,Partner API,2026-05-01,66,Equity Edge,84,42
+CL00159,Taylor Stone,Mass Affluent,Growth,North America,Noah Miller,Paid Search,2024-06-01,86,Growth Builder,68,42
+CL00160,Drew Morris,Mass Affluent,Aggressive,North America,Sofia Garcia,Organic App,2024-03-01,92,Equity Edge,84,42
+CL00161,Emerson Rivera,Mass Affluent,Balanced,North America,Noah Miller,Organic App,2024-12-01,99,Balanced Core,48,42
+CL00162,Morgan Tran,Mass Affluent,Balanced,North America,Lin Nguyen,Advisor Referral,2025-12-01,97,Balanced Core,48,42
+CL00163,Drew Rivera,Mass Affluent,Balanced,North America,Jon Bell,Organic App,2025-12-01,77,Balanced Core,48,42
+CL00164,Quinn Price,Mass Affluent,Balanced,North America,Sofia Garcia,Advisor Referral,2024-10-01,89,Balanced Core,48,42
+CL00165,Sam Hughes,Digital Starter,Growth,North America,Noah Miller,Organic App,2025-09-01,85,Growth Builder,68,29
+CL00166,Parker Martin,Digital Starter,Conservative,APAC,Jon Bell,Organic App,2026-04-01,75,Income Shield,25,29
+CL00167,Riley Brooks,Digital Starter,Conservative,North America,Noah Miller,Employer Plan,2026-03-01,94,Income Shield,25,29
+CL00168,Riley Adams,Digital Starter,Balanced,LATAM,Lin Nguyen,Organic App,2025-04-01,92,Balanced Core,48,29
+CL00169,Parker Singh,HNW,Balanced,North America,Mina Patel,Organic App,2024-04-01,84,Balanced Core,48,58
+CL00170,Reese Price,Retirement,Balanced,Europe,Noah Miller,Organic App,2025-11-01,96,Balanced Core,48,38
+CL00171,Ari Cooper,HNW,Conservative,North America,Jon Bell,Partner API,2025-09-01,91,Income Shield,25,58
+CL00172,Alex Kim,Digital Starter,Growth,North America,Jon Bell,Employer Plan,2025-12-01,99,Growth Builder,68,29
+CL00173,Riley Morris,UHNW,Conservative,APAC,Avery Chen,Advisor Referral,2025-07-01,90,Income Shield,25,74
+CL00174,Rowan Hughes,Digital Starter,Growth,Europe,Sofia Garcia,Advisor Referral,2025-05-01,77,Growth Builder,68,29
+CL00175,Cameron Adams,Digital Starter,Growth,APAC,Mina Patel,Advisor Referral,2025-02-01,85,Growth Builder,68,29
+CL00176,Taylor Rivera,Mass Affluent,Growth,North America,Noah Miller,Paid Search,2025-07-01,71,Growth Builder,68,42
+CL00177,Ari Young,Digital Starter,Conservative,Europe,Avery Chen,Organic App,2026-03-01,94,Income Shield,25,29
+CL00178,Sam Bennett,Digital Starter,Balanced,Europe,Noah Miller,Organic App,2024-10-01,87,Balanced Core,48,29
+CL00179,Lena Carter,Retirement,Growth,APAC,Lin Nguyen,Advisor Referral,2026-03-01,84,Growth Builder,68,38
+CL00180,Alex Price,HNW,Conservative,LATAM,Sofia Garcia,Paid Search,2024-06-01,85,Income Shield,25,58
+CL00181,Parker Martin,HNW,Balanced,North America,Jon Bell,Organic App,2025-11-01,85,Balanced Core,48,58
+CL00182,Drew Brooks,HNW,Balanced,Europe,Avery Chen,Advisor Referral,2024-07-01,94,Balanced Core,48,58
+CL00183,Morgan Young,Digital Starter,Conservative,APAC,Avery Chen,Organic App,2025-11-01,82,Income Shield,25,29
+CL00184,Emerson Singh,Mass Affluent,Growth,LATAM,Mina Patel,Organic App,2025-07-01,89,Growth Builder,68,42
+CL00185,Reese Wong,Digital Starter,Conservative,Europe,Mina Patel,Organic App,2024-01-01,85,Income Shield,25,29
+CL00186,Jamie Wong,HNW,Conservative,North America,Noah Miller,Organic App,2026-05-01,75,Income Shield,25,58
+CL00187,Morgan Kim,HNW,Growth,APAC,Lin Nguyen,Advisor Referral,2025-02-01,97,Growth Builder,68,58
+CL00188,Emerson Brooks,Retirement,Balanced,LATAM,Jon Bell,Organic App,2026-01-01,82,Balanced Core,48,38
+CL00189,Drew Carter,Digital Starter,Balanced,North America,Mina Patel,Organic App,2026-01-01,93,Balanced Core,48,29
+CL00190,Riley Martin,Retirement,Growth,North America,Mina Patel,Partner API,2025-03-01,79,Growth Builder,68,38
+CL00191,Rowan Singh,Mass Affluent,Conservative,LATAM,Avery Chen,Partner API,2025-10-01,81,Income Shield,25,42
+CL00192,Parker Nguyen,Digital Starter,Conservative,North America,Avery Chen,Organic App,2025-09-01,85,Income Shield,25,29
+CL00193,Morgan Wong,Mass Affluent,Balanced,Europe,Lin Nguyen,Employer Plan,2026-05-01,98,Balanced Core,48,42
+CL00194,Casey Cole,Retirement,Balanced,North America,Sofia Garcia,Employer Plan,2025-09-01,86,Balanced Core,48,38
+CL00195,Harper Cole,Digital Starter,Balanced,LATAM,Jon Bell,Paid Search,2025-03-01,89,Balanced Core,48,29
+CL00196,Drew Lee,HNW,Growth,Europe,Sofia Garcia,Organic App,2026-05-01,73,Growth Builder,68,58
+CL00197,Jordan Hughes,Mass Affluent,Aggressive,North America,Noah Miller,Employer Plan,2024-05-01,83,Equity Edge,84,42
+CL00198,Sam Rivera,Digital Starter,Balanced,North America,Mina Patel,Advisor Referral,2024-11-01,93,Balanced Core,48,29
+CL00199,Morgan Singh,Digital Starter,Growth,Europe,Mina Patel,Paid Search,2025-04-01,72,Growth Builder,68,29
+CL00200,Lena Price,Mass Affluent,Growth,North America,Sofia Garcia,Organic App,2025-02-01,79,Growth Builder,68,42
+CL00201,Jamie Rivera,Digital Starter,Balanced,Europe,Mina Patel,Organic App,2025-05-01,99,Balanced Core,48,29
+CL00202,Jamie Patel,Digital Starter,Balanced,Europe,Lin Nguyen,Paid Search,2025-10-01,95,Balanced Core,48,29
+CL00203,Casey Rivera,HNW,Growth,North America,Jon Bell,Paid Search,2026-03-01,75,Growth Builder,68,58
+CL00204,Cameron Carter,HNW,Growth,Europe,Sofia Garcia,Advisor Referral,2025-07-01,90,Growth Builder,68,58
+CL00205,Nico Adams,Digital Starter,Conservative,APAC,Sofia Garcia,Advisor Referral,2025-05-01,87,Income Shield,25,29
+CL00206,Casey Singh,Mass Affluent,Balanced,North America,Lin Nguyen,Advisor Referral,2024-08-01,78,Balanced Core,48,42
+CL00207,Jamie Morris,Digital Starter,Growth,APAC,Noah Miller,Organic App,2024-05-01,82,Growth Builder,68,29
+CL00208,Morgan Young,HNW,Conservative,North America,Lin Nguyen,Organic App,2025-01-01,84,Income Shield,25,58
+CL00209,Alex Rivera,Digital Starter,Balanced,Europe,Avery Chen,Paid Search,2025-05-01,89,Balanced Core,48,29
+CL00210,Skyler Hughes,HNW,Balanced,North America,Jon Bell,Organic App,2024-12-01,78,Balanced Core,48,58
+CL00211,Reese Rivera,Mass Affluent,Conservative,North America,Noah Miller,Advisor Referral,2024-09-01,79,Income Shield,25,42
+CL00212,Sam Rivera,Digital Starter,Aggressive,North America,Noah Miller,Partner API,2026-01-01,89,Equity Edge,84,29
+CL00213,Jordan Bennett,HNW,Conservative,Europe,Avery Chen,Organic App,2025-02-01,85,Income Shield,25,58
+CL00214,Parker Lee,HNW,Balanced,Europe,Jon Bell,Partner API,2025-12-01,71,Balanced Core,48,58
+CL00215,Skyler Bennett,Mass Affluent,Aggressive,APAC,Avery Chen,Advisor Referral,2025-11-01,89,Equity Edge,84,42
+CL00216,Riley Young,Mass Affluent,Balanced,North America,Lin Nguyen,Organic App,2025-08-01,69,Balanced Core,48,42
+CL00217,Emerson Hughes,Mass Affluent,Growth,Europe,Avery Chen,Organic App,2025-12-01,78,Growth Builder,68,42
+CL00218,Casey Price,Mass Affluent,Balanced,North America,Lin Nguyen,Employer Plan,2025-01-01,98,Balanced Core,48,42
+CL00219,Reese Tran,Mass Affluent,Balanced,North America,Avery Chen,Organic App,2025-01-01,91,Balanced Core,48,42
+CL00220,Morgan Rivera,Digital Starter,Conservative,Europe,Lin Nguyen,Organic App,2025-11-01,79,Income Shield,25,29
+CL00221,Cameron Brooks,UHNW,Aggressive,Europe,Jon Bell,Employer Plan,2024-08-01,98,Equity Edge,84,74
+CL00222,Rowan Tran,Digital Starter,Conservative,Europe,Noah Miller,Advisor Referral,2026-01-01,84,Income Shield,25,29
+CL00223,Harper Wong,HNW,Conservative,North America,Lin Nguyen,Employer Plan,2026-02-01,79,Income Shield,25,58
+CL00224,Taylor Price,HNW,Aggressive,APAC,Mina Patel,Advisor Referral,2025-08-01,91,Equity Edge,84,58
+CL00225,Jamie Rivera,Mass Affluent,Balanced,North America,Lin Nguyen,Organic App,2024-04-01,95,Balanced Core,48,42
+CL00226,Ari Morris,Digital Starter,Balanced,North America,Jon Bell,Paid Search,2024-06-01,89,Balanced Core,48,29
+CL00227,Casey Hughes,Mass Affluent,Growth,North America,Jon Bell,Paid Search,2024-01-01,73,Growth Builder,68,42
+CL00228,Skyler Nguyen,Digital Starter,Balanced,North America,Lin Nguyen,Organic App,2025-09-01,79,Balanced Core,48,29
+CL00229,Cameron Singh,UHNW,Balanced,APAC,Jon Bell,Organic App,2024-11-01,73,Balanced Core,48,74
+CL00230,Riley Martin,Digital Starter,Balanced,Europe,Jon Bell,Paid Search,2024-09-01,93,Balanced Core,48,29
+CL00231,Taylor Bennett,UHNW,Growth,North America,Jon Bell,Advisor Referral,2026-05-01,84,Growth Builder,68,74
+CL00232,Emerson Bennett,Digital Starter,Growth,APAC,Jon Bell,Paid Search,2025-04-01,81,Growth Builder,68,29
+CL00233,Emerson Tran,Mass Affluent,Conservative,North America,Mina Patel,Organic App,2026-04-01,99,Income Shield,25,42
+CL00234,Drew Lee,Digital Starter,Balanced,North America,Mina Patel,Partner API,2024-03-01,69,Balanced Core,48,29
+CL00235,Rowan Cole,HNW,Growth,APAC,Avery Chen,Organic App,2025-11-01,91,Growth Builder,68,58
+CL00236,Sam Nguyen,UHNW,Growth,APAC,Mina Patel,Partner API,2026-05-01,85,Growth Builder,68,74
+CL00237,Casey Wong,HNW,Balanced,North America,Jon Bell,Partner API,2026-01-01,87,Balanced Core,48,58
+CL00238,Riley Cooper,Retirement,Growth,North America,Sofia Garcia,Paid Search,2025-11-01,85,Growth Builder,68,38
+CL00239,Skyler Lee,HNW,Balanced,APAC,Avery Chen,Organic App,2025-05-01,99,Balanced Core,48,58
+CL00240,Sam Bennett,Retirement,Conservative,North America,Avery Chen,Paid Search,2024-09-01,75,Income Shield,25,38
+CL00241,Harper Stone,Mass Affluent,Growth,North America,Avery Chen,Advisor Referral,2026-04-01,96,Growth Builder,68,42
+CL00242,Cameron Morris,Mass Affluent,Conservative,Europe,Lin Nguyen,Paid Search,2024-09-01,75,Income Shield,25,42
+CL00243,Drew Patel,Digital Starter,Balanced,North America,Noah Miller,Advisor Referral,2024-07-01,86,Balanced Core,48,29
+CL00244,Parker Rivera,HNW,Conservative,APAC,Mina Patel,Paid Search,2026-02-01,91,Income Shield,25,58
+CL00245,Reese Nguyen,HNW,Aggressive,North America,Jon Bell,Advisor Referral,2024-07-01,91,Equity Edge,84,58
+CL00246,Cameron Stone,HNW,Balanced,North America,Mina Patel,Employer Plan,2026-02-01,86,Balanced Core,48,58
+CL00247,Reese Brooks,Digital Starter,Balanced,APAC,Sofia Garcia,Employer Plan,2025-11-01,89,Balanced Core,48,29
+CL00248,Harper Hughes,Digital Starter,Conservative,LATAM,Avery Chen,Advisor Referral,2026-05-01,84,Income Shield,25,29
+CL00249,Morgan Patel,Digital Starter,Conservative,LATAM,Noah Miller,Advisor Referral,2025-11-01,92,Income Shield,25,29
+CL00250,Parker Patel,Digital Starter,Growth,Europe,Sofia Garcia,Organic App,2024-06-01,70,Growth Builder,68,29
+CL00251,Riley Tran,Digital Starter,Conservative,Europe,Lin Nguyen,Advisor Referral,2025-03-01,89,Income Shield,25,29
+CL00252,Reese Martin,Mass Affluent,Balanced,North America,Noah Miller,Organic App,2024-03-01,89,Balanced Core,48,42
+CL00253,Sam Cole,Mass Affluent,Balanced,APAC,Lin Nguyen,Advisor Referral,2024-06-01,81,Balanced Core,48,42
+CL00254,Jordan Morris,Mass Affluent,Balanced,Europe,Noah Miller,Partner API,2025-03-01,76,Balanced Core,48,42
+CL00255,Ari Brooks,Digital Starter,Growth,North America,Jon Bell,Organic App,2026-03-01,81,Growth Builder,68,29
+CL00256,Harper Cooper,HNW,Growth,North America,Noah Miller,Partner API,2024-12-01,76,Growth Builder,68,58
+CL00257,Ari Hughes,HNW,Growth,North America,Lin Nguyen,Organic App,2025-09-01,71,Growth Builder,68,58
+CL00258,Taylor Adams,HNW,Balanced,North America,Sofia Garcia,Organic App,2024-12-01,81,Balanced Core,48,58
+CL00259,Riley Rivera,HNW,Growth,APAC,Sofia Garcia,Advisor Referral,2024-08-01,76,Growth Builder,68,58
+CL00260,Emerson Adams,Mass Affluent,Conservative,North America,Noah Miller,Organic App,2025-09-01,69,Income Shield,25,42
+CL00261,Skyler Lee,Mass Affluent,Growth,APAC,Mina Patel,Advisor Referral,2026-05-01,93,Growth Builder,68,42
+CL00262,Alex Lee,Mass Affluent,Conservative,North America,Noah Miller,Advisor Referral,2025-12-01,91,Income Shield,25,42
+CL00263,Harper Morris,Retirement,Balanced,North America,Sofia Garcia,Paid Search,2026-04-01,91,Balanced Core,48,38
+CL00264,Quinn Hughes,Mass Affluent,Balanced,North America,Sofia Garcia,Organic App,2025-08-01,99,Balanced Core,48,42
+CL00265,Reese Martin,Digital Starter,Growth,North America,Lin Nguyen,Advisor Referral,2024-04-01,76,Growth Builder,68,29
+CL00266,Taylor Price,HNW,Balanced,North America,Avery Chen,Organic App,2026-04-01,80,Balanced Core,48,58
+CL00267,Nico Adams,Mass Affluent,Growth,Europe,Mina Patel,Advisor Referral,2024-10-01,70,Growth Builder,68,42
+CL00268,Lena Young,Digital Starter,Growth,North America,Jon Bell,Advisor Referral,2026-03-01,92,Growth Builder,68,29
+CL00269,Quinn Bennett,Digital Starter,Balanced,North America,Mina Patel,Organic App,2025-03-01,87,Balanced Core,48,29
+CL00270,Casey Lee,HNW,Balanced,APAC,Jon Bell,Advisor Referral,2026-04-01,76,Balanced Core,48,58
+CL00271,Rowan Cole,HNW,Growth,Europe,Mina Patel,Employer Plan,2026-02-01,85,Growth Builder,68,58
+CL00272,Casey Price,HNW,Conservative,North America,Jon Bell,Organic App,2024-06-01,99,Income Shield,25,58
+CL00273,Morgan Bennett,HNW,Aggressive,North America,Avery Chen,Paid Search,2026-01-01,90,Equity Edge,84,58
+CL00274,Parker Kim,Mass Affluent,Balanced,Europe,Avery Chen,Organic App,2024-05-01,89,Balanced Core,48,42
+CL00275,Jordan Rivera,Mass Affluent,Conservative,North America,Avery Chen,Paid Search,2024-09-01,84,Income Shield,25,42
+CL00276,Jamie Martin,HNW,Balanced,APAC,Jon Bell,Advisor Referral,2026-01-01,93,Balanced Core,48,58
+CL00277,Rowan Young,HNW,Balanced,APAC,Sofia Garcia,Paid Search,2025-06-01,82,Balanced Core,48,58
+CL00278,Nico Adams,Mass Affluent,Balanced,North America,Sofia Garcia,Organic App,2024-01-01,94,Balanced Core,48,42
+CL00279,Cameron Singh,Mass Affluent,Growth,Europe,Jon Bell,Organic App,2026-02-01,88,Growth Builder,68,42
+CL00280,Ari Kim,Mass Affluent,Growth,North America,Jon Bell,Organic App,2024-06-01,90,Growth Builder,68,42
+CL00281,Skyler Wong,Digital Starter,Balanced,APAC,Jon Bell,Organic App,2024-12-01,92,Balanced Core,48,29
+CL00282,Ari Tran,HNW,Conservative,APAC,Sofia Garcia,Organic App,2025-12-01,82,Income Shield,25,58
+CL00283,Skyler Price,Digital Starter,Growth,North America,Avery Chen,Organic App,2024-08-01,82,Growth Builder,68,29
+CL00284,Parker Lee,Mass Affluent,Aggressive,North America,Noah Miller,Organic App,2025-02-01,83,Equity Edge,84,42
+CL00285,Parker Brooks,Retirement,Balanced,North America,Noah Miller,Employer Plan,2026-02-01,83,Balanced Core,48,38
+CL00286,Quinn Singh,HNW,Conservative,Europe,Noah Miller,Advisor Referral,2026-01-01,86,Income Shield,25,58
+CL00287,Skyler Lee,Retirement,Balanced,North America,Sofia Garcia,Employer Plan,2024-06-01,75,Balanced Core,48,38
+CL00288,Emerson Hughes,HNW,Conservative,North America,Noah Miller,Employer Plan,2024-05-01,67,Income Shield,25,58
+CL00289,Alex Cooper,Digital Starter,Balanced,North America,Noah Miller,Organic App,2024-12-01,77,Balanced Core,48,29
+CL00290,Morgan Singh,Digital Starter,Balanced,APAC,Sofia Garcia,Partner API,2026-01-01,80,Balanced Core,48,29
+CL00291,Riley Lee,Mass Affluent,Balanced,Europe,Jon Bell,Organic App,2025-05-01,79,Balanced Core,48,42
+CL00292,Jordan Nguyen,Mass Affluent,Aggressive,North America,Sofia Garcia,Advisor Referral,2026-02-01,87,Equity Edge,84,42
+CL00293,Jamie Tran,HNW,Balanced,North America,Mina Patel,Partner API,2025-02-01,85,Balanced Core,48,58
+CL00294,Jamie Wong,Mass Affluent,Balanced,APAC,Noah Miller,Paid Search,2024-11-01,94,Balanced Core,48,42
+CL00295,Casey Cooper,Mass Affluent,Conservative,North America,Noah Miller,Employer Plan,2024-12-01,81,Income Shield,25,42
+CL00296,Taylor Nguyen,Mass Affluent,Conservative,North America,Mina Patel,Partner API,2025-08-01,84,Income Shield,25,42
+CL00297,Drew Bennett,Digital Starter,Conservative,North America,Jon Bell,Organic App,2025-09-01,80,Income Shield,25,29
+CL00298,Cameron Stone,Mass Affluent,Balanced,North America,Sofia Garcia,Employer Plan,2025-12-01,85,Balanced Core,48,42
+CL00299,Riley Singh,Mass Affluent,Balanced,North America,Sofia Garcia,Paid Search,2026-04-01,95,Balanced Core,48,42
+CL00300,Taylor Morris,HNW,Balanced,APAC,Mina Patel,Advisor Referral,2025-10-01,90,Balanced Core,48,58
+CL00301,Nico Adams,HNW,Balanced,APAC,Mina Patel,Advisor Referral,2025-10-01,91,Balanced Core,48,58
+CL00302,Emerson Price,Mass Affluent,Growth,North America,Lin Nguyen,Advisor Referral,2025-05-01,94,Growth Builder,68,42
+CL00303,Emerson Nguyen,HNW,Balanced,North America,Jon Bell,Advisor Referral,2025-02-01,86,Balanced Core,48,58
+CL00304,Skyler Martin,Mass Affluent,Aggressive,North America,Jon Bell,Paid Search,2025-01-01,81,Equity Edge,84,42
+CL00305,Skyler Brooks,Mass Affluent,Balanced,APAC,Jon Bell,Organic App,2025-03-01,85,Balanced Core,48,42
+CL00306,Parker Brooks,Digital Starter,Growth,North America,Noah Miller,Employer Plan,2025-01-01,85,Growth Builder,68,29
+CL00307,Parker Bennett,Digital Starter,Growth,North America,Lin Nguyen,Advisor Referral,2025-07-01,88,Growth Builder,68,29
+CL00308,Harper Young,UHNW,Conservative,North America,Sofia Garcia,Paid Search,2025-08-01,73,Income Shield,25,74
+CL00309,Cameron Cooper,Mass Affluent,Balanced,APAC,Mina Patel,Organic App,2024-08-01,99,Balanced Core,48,42
+CL00310,Nico Cooper,UHNW,Conservative,Europe,Noah Miller,Partner API,2024-08-01,99,Income Shield,25,74
+CL00311,Ari Lee,Retirement,Growth,LATAM,Noah Miller,Organic App,2025-10-01,80,Growth Builder,68,38
+CL00312,Quinn Kim,HNW,Conservative,LATAM,Noah Miller,Advisor Referral,2024-01-01,89,Income Shield,25,58
+CL00313,Parker Young,Digital Starter,Conservative,North America,Lin Nguyen,Paid Search,2024-02-01,99,Income Shield,25,29
+CL00314,Skyler Young,HNW,Balanced,North America,Mina Patel,Organic App,2024-02-01,82,Balanced Core,48,58
+CL00315,Ari Rivera,Digital Starter,Conservative,North America,Jon Bell,Paid Search,2024-08-01,70,Income Shield,25,29
+CL00316,Jordan Cooper,Digital Starter,Growth,North America,Lin Nguyen,Advisor Referral,2026-04-01,97,Growth Builder,68,29
+CL00317,Skyler Brooks,Retirement,Growth,North America,Sofia Garcia,Organic App,2025-08-01,96,Growth Builder,68,38
+CL00318,Morgan Price,Mass Affluent,Growth,North America,Lin Nguyen,Paid Search,2024-04-01,91,Growth Builder,68,42
+CL00319,Lena Nguyen,Mass Affluent,Growth,Europe,Noah Miller,Employer Plan,2025-09-01,89,Growth Builder,68,42
+CL00320,Rowan Bennett,Digital Starter,Growth,APAC,Noah Miller,Partner API,2025-06-01,88,Growth Builder,68,29
+CL00321,Casey Carter,Retirement,Balanced,LATAM,Jon Bell,Organic App,2026-04-01,87,Balanced Core,48,38
+CL00322,Nico Kim,HNW,Balanced,North America,Jon Bell,Organic App,2024-01-01,74,Balanced Core,48,58
+CL00323,Cameron Adams,Mass Affluent,Aggressive,North America,Lin Nguyen,Partner API,2024-04-01,95,Equity Edge,84,42
+CL00324,Casey Tran,Retirement,Aggressive,APAC,Jon Bell,Organic App,2024-01-01,83,Equity Edge,84,38
+CL00325,Sam Singh,Digital Starter,Growth,APAC,Jon Bell,Organic App,2026-04-01,75,Growth Builder,68,29
+CL00326,Morgan Singh,Digital Starter,Balanced,Europe,Lin Nguyen,Advisor Referral,2024-11-01,91,Balanced Core,48,29
+CL00327,Jordan Young,HNW,Growth,LATAM,Avery Chen,Paid Search,2024-02-01,83,Growth Builder,68,58
+CL00328,Reese Stone,Retirement,Growth,Europe,Sofia Garcia,Organic App,2024-02-01,92,Growth Builder,68,38
+CL00329,Harper Patel,HNW,Growth,North America,Avery Chen,Partner API,2024-07-01,87,Growth Builder,68,58
+CL00330,Skyler Patel,Digital Starter,Growth,APAC,Noah Miller,Employer Plan,2025-04-01,89,Growth Builder,68,29
+CL00331,Harper Stone,Retirement,Conservative,APAC,Sofia Garcia,Paid Search,2024-11-01,77,Income Shield,25,38
+CL00332,Emerson Singh,UHNW,Conservative,Europe,Mina Patel,Advisor Referral,2026-01-01,70,Income Shield,25,74
+CL00333,Alex Nguyen,Mass Affluent,Growth,APAC,Sofia Garcia,Employer Plan,2026-05-01,83,Growth Builder,68,42
+CL00334,Taylor Hughes,Mass Affluent,Balanced,APAC,Sofia Garcia,Organic App,2025-12-01,84,Balanced Core,48,42
+CL00335,Sam Morris,Digital Starter,Conservative,North America,Mina Patel,Advisor Referral,2024-04-01,78,Income Shield,25,29
+CL00336,Sam Hughes,Digital Starter,Conservative,LATAM,Jon Bell,Partner API,2026-04-01,66,Income Shield,25,29
+CL00337,Taylor Lee,Mass Affluent,Growth,North America,Noah Miller,Advisor Referral,2025-10-01,87,Growth Builder,68,42
+CL00338,Rowan Young,Digital Starter,Growth,APAC,Mina Patel,Partner API,2024-04-01,87,Growth Builder,68,29
+CL00339,Nico Brooks,HNW,Balanced,Europe,Noah Miller,Paid Search,2025-04-01,99,Balanced Core,48,58
+CL00340,Cameron Morris,HNW,Conservative,North America,Mina Patel,Organic App,2025-07-01,76,Income Shield,25,58
+CL00341,Jordan Singh,Mass Affluent,Balanced,North America,Lin Nguyen,Employer Plan,2025-01-01,88,Balanced Core,48,42
+CL00342,Harper Lee,Retirement,Aggressive,APAC,Noah Miller,Partner API,2024-03-01,73,Equity Edge,84,38
+CL00343,Sam Lee,UHNW,Balanced,APAC,Lin Nguyen,Advisor Referral,2024-03-01,90,Balanced Core,48,74
+CL00344,Emerson Singh,HNW,Growth,North America,Avery Chen,Employer Plan,2026-02-01,88,Growth Builder,68,58
+CL00345,Jamie Hughes,HNW,Growth,North America,Sofia Garcia,Organic App,2024-01-01,74,Growth Builder,68,58
+CL00346,Cameron Bennett,Digital Starter,Balanced,North America,Mina Patel,Employer Plan,2024-11-01,79,Balanced Core,48,29
+CL00347,Cameron Singh,HNW,Growth,Europe,Mina Patel,Advisor Referral,2025-06-01,70,Growth Builder,68,58
+CL00348,Nico Wong,Mass Affluent,Balanced,APAC,Avery Chen,Organic App,2024-12-01,94,Balanced Core,48,42
+CL00349,Lena Morris,HNW,Growth,North America,Avery Chen,Partner API,2026-05-01,95,Growth Builder,68,58
+CL00350,Casey Stone,Mass Affluent,Growth,APAC,Sofia Garcia,Employer Plan,2025-09-01,81,Growth Builder,68,42
+CL00351,Jamie Young,Digital Starter,Balanced,APAC,Sofia Garcia,Organic App,2024-07-01,94,Balanced Core,48,29
+CL00352,Harper Lee,Digital Starter,Growth,North America,Sofia Garcia,Employer Plan,2024-10-01,84,Growth Builder,68,29
+CL00353,Alex Singh,Retirement,Balanced,APAC,Avery Chen,Organic App,2026-05-01,90,Balanced Core,48,38
+CL00354,Lena Morris,Digital Starter,Growth,APAC,Avery Chen,Organic App,2024-02-01,84,Growth Builder,68,29
+CL00355,Jamie Bennett,UHNW,Growth,APAC,Jon Bell,Advisor Referral,2024-07-01,99,Growth Builder,68,74
+CL00356,Alex Cole,Mass Affluent,Growth,APAC,Sofia Garcia,Employer Plan,2026-03-01,99,Growth Builder,68,42
+CL00357,Ari Martin,HNW,Growth,Europe,Jon Bell,Organic App,2026-03-01,88,Growth Builder,68,58
+CL00358,Quinn Patel,Retirement,Balanced,North America,Sofia Garcia,Organic App,2024-08-01,83,Balanced Core,48,38
+CL00359,Taylor Singh,HNW,Aggressive,North America,Mina Patel,Paid Search,2025-03-01,81,Equity Edge,84,58
+CL00360,Riley Bennett,HNW,Conservative,North America,Avery Chen,Paid Search,2024-03-01,87,Income Shield,25,58
+CL00361,Taylor Stone,Digital Starter,Balanced,North America,Jon Bell,Organic App,2026-02-01,88,Balanced Core,48,29
+CL00362,Parker Rivera,Retirement,Growth,North America,Sofia Garcia,Employer Plan,2025-07-01,80,Growth Builder,68,38
+CL00363,Drew Carter,Digital Starter,Balanced,North America,Mina Patel,Advisor Referral,2025-07-01,89,Balanced Core,48,29
+CL00364,Riley Cooper,Retirement,Growth,LATAM,Jon Bell,Paid Search,2026-02-01,92,Growth Builder,68,38
+CL00365,Riley Stone,HNW,Conservative,North America,Lin Nguyen,Advisor Referral,2025-06-01,90,Income Shield,25,58
+CL00366,Alex Stone,Mass Affluent,Growth,North America,Noah Miller,Advisor Referral,2025-08-01,83,Growth Builder,68,42
+CL00367,Morgan Martin,UHNW,Growth,LATAM,Sofia Garcia,Paid Search,2026-02-01,88,Growth Builder,68,74
+CL00368,Cameron Wong,HNW,Growth,North America,Mina Patel,Paid Search,2026-04-01,87,Growth Builder,68,58
+CL00369,Emerson Carter,Retirement,Balanced,Europe,Jon Bell,Paid Search,2025-01-01,65,Balanced Core,48,38
+CL00370,Ari Martin,Mass Affluent,Conservative,North America,Lin Nguyen,Partner API,2024-08-01,90,Income Shield,25,42
+CL00371,Casey Nguyen,Mass Affluent,Balanced,APAC,Lin Nguyen,Advisor Referral,2025-08-01,87,Balanced Core,48,42
+CL00372,Jordan Cole,Mass Affluent,Aggressive,Europe,Noah Miller,Employer Plan,2025-12-01,99,Equity Edge,84,42
+CL00373,Quinn Stone,Digital Starter,Balanced,Europe,Sofia Garcia,Advisor Referral,2026-02-01,77,Balanced Core,48,29
+CL00374,Jordan Tran,Mass Affluent,Balanced,North America,Jon Bell,Advisor Referral,2025-11-01,78,Balanced Core,48,42
+CL00375,Reese Adams,Mass Affluent,Balanced,North America,Lin Nguyen,Organic App,2025-08-01,98,Balanced Core,48,42
+CL00376,Riley Tran,Retirement,Balanced,North America,Jon Bell,Employer Plan,2024-07-01,84,Balanced Core,48,38
+CL00377,Casey Price,UHNW,Growth,Europe,Sofia Garcia,Paid Search,2025-09-01,85,Growth Builder,68,74
+CL00378,Emerson Stone,Mass Affluent,Conservative,North America,Avery Chen,Paid Search,2026-05-01,83,Income Shield,25,42
+CL00379,Quinn Nguyen,Mass Affluent,Balanced,North America,Mina Patel,Partner API,2026-01-01,93,Balanced Core,48,42
+CL00380,Jamie Tran,Digital Starter,Aggressive,North America,Sofia Garcia,Advisor Referral,2025-08-01,80,Equity Edge,84,29
+CL00381,Casey Tran,Mass Affluent,Balanced,North America,Avery Chen,Organic App,2024-11-01,91,Balanced Core,48,42
+CL00382,Riley Martin,Mass Affluent,Growth,North America,Sofia Garcia,Organic App,2025-02-01,91,Growth Builder,68,42
+CL00383,Jamie Morris,Mass Affluent,Balanced,North America,Jon Bell,Employer Plan,2024-01-01,94,Balanced Core,48,42
+CL00384,Sam Lee,Digital Starter,Growth,Europe,Noah Miller,Organic App,2025-10-01,78,Growth Builder,68,29
+CL00385,Taylor Hughes,Retirement,Conservative,APAC,Jon Bell,Organic App,2026-04-01,94,Income Shield,25,38
+CL00386,Skyler Cooper,Mass Affluent,Conservative,North America,Lin Nguyen,Paid Search,2024-05-01,71,Income Shield,25,42
+CL00387,Ari Cooper,Retirement,Growth,APAC,Jon Bell,Paid Search,2025-03-01,75,Growth Builder,68,38
+CL00388,Taylor Rivera,Digital Starter,Balanced,North America,Noah Miller,Paid Search,2024-06-01,78,Balanced Core,48,29
+CL00389,Emerson Cole,HNW,Growth,Europe,Sofia Garcia,Employer Plan,2025-10-01,83,Growth Builder,68,58
+CL00390,Sam Nguyen,Retirement,Balanced,North America,Sofia Garcia,Organic App,2026-04-01,94,Balanced Core,48,38
+CL00391,Skyler Morris,Digital Starter,Growth,North America,Noah Miller,Organic App,2025-05-01,84,Growth Builder,68,29
+CL00392,Emerson Cole,Mass Affluent,Conservative,North America,Mina Patel,Partner API,2025-09-01,89,Income Shield,25,42
+CL00393,Rowan Carter,Digital Starter,Balanced,North America,Mina Patel,Advisor Referral,2025-09-01,99,Balanced Core,48,29
+CL00394,Riley Price,Mass Affluent,Balanced,APAC,Sofia Garcia,Paid Search,2024-07-01,87,Balanced Core,48,42
+CL00395,Rowan Bennett,Mass Affluent,Balanced,North America,Jon Bell,Partner API,2025-10-01,99,Balanced Core,48,42
+CL00396,Nico Brooks,Digital Starter,Balanced,North America,Noah Miller,Paid Search,2024-08-01,77,Balanced Core,48,29
+CL00397,Drew Kim,Retirement,Conservative,North America,Jon Bell,Advisor Referral,2025-12-01,92,Income Shield,25,38
+CL00398,Morgan Martin,Mass Affluent,Growth,APAC,Lin Nguyen,Partner API,2025-12-01,80,Growth Builder,68,42
+CL00399,Casey Wong,Digital Starter,Conservative,APAC,Avery Chen,Employer Plan,2024-07-01,86,Income Shield,25,29
+CL00400,Reese Patel,HNW,Conservative,North America,Lin Nguyen,Paid Search,2024-08-01,85,Income Shield,25,58
+CL00401,Jordan Cooper,Digital Starter,Balanced,North America,Lin Nguyen,Organic App,2024-12-01,88,Balanced Core,48,29
+CL00402,Reese Cole,Retirement,Conservative,North America,Mina Patel,Employer Plan,2026-01-01,85,Income Shield,25,38
+CL00403,Ari Bennett,Mass Affluent,Conservative,Europe,Lin Nguyen,Organic App,2024-08-01,82,Income Shield,25,42
+CL00404,Cameron Hughes,Digital Starter,Conservative,APAC,Avery Chen,Organic App,2024-03-01,96,Income Shield,25,29
+CL00405,Parker Brooks,Mass Affluent,Conservative,Europe,Noah Miller,Advisor Referral,2024-02-01,94,Income Shield,25,42
+CL00406,Ari Adams,Mass Affluent,Conservative,APAC,Lin Nguyen,Partner API,2025-08-01,75,Income Shield,25,42
+CL00407,Morgan Brooks,Retirement,Balanced,APAC,Sofia Garcia,Partner API,2025-04-01,84,Balanced Core,48,38
+CL00408,Harper Lee,Retirement,Conservative,Europe,Avery Chen,Advisor Referral,2026-05-01,83,Income Shield,25,38
+CL00409,Emerson Kim,HNW,Growth,APAC,Noah Miller,Organic App,2025-03-01,82,Growth Builder,68,58
+CL00410,Harper Nguyen,HNW,Growth,North America,Noah Miller,Organic App,2025-09-01,79,Growth Builder,68,58
+CL00411,Rowan Morris,Digital Starter,Balanced,APAC,Mina Patel,Advisor Referral,2026-03-01,79,Balanced Core,48,29
+CL00412,Harper Nguyen,Digital Starter,Balanced,APAC,Jon Bell,Organic App,2025-10-01,80,Balanced Core,48,29
+CL00413,Skyler Nguyen,Retirement,Aggressive,North America,Sofia Garcia,Advisor Referral,2025-10-01,81,Equity Edge,84,38
+CL00414,Jordan Tran,Digital Starter,Growth,APAC,Jon Bell,Paid Search,2025-10-01,78,Growth Builder,68,29
+CL00415,Rowan Rivera,HNW,Growth,APAC,Sofia Garcia,Employer Plan,2024-10-01,89,Growth Builder,68,58
+CL00416,Ari Morris,Mass Affluent,Aggressive,APAC,Lin Nguyen,Partner API,2026-02-01,88,Equity Edge,84,42
+CL00417,Sam Cole,Digital Starter,Balanced,North America,Avery Chen,Paid Search,2024-10-01,92,Balanced Core,48,29
+CL00418,Drew Patel,Mass Affluent,Growth,LATAM,Jon Bell,Organic App,2024-05-01,70,Growth Builder,68,42
+CL00419,Jamie Wong,Mass Affluent,Balanced,North America,Sofia Garcia,Organic App,2025-01-01,87,Balanced Core,48,42
+CL00420,Quinn Stone,Mass Affluent,Balanced,North America,Lin Nguyen,Advisor Referral,2026-01-01,89,Balanced Core,48,42
+CL00421,Ari Brooks,HNW,Balanced,North America,Sofia Garcia,Employer Plan,2025-11-01,92,Balanced Core,48,58
+CL00422,Jordan Cole,HNW,Growth,LATAM,Noah Miller,Advisor Referral,2024-06-01,79,Growth Builder,68,58
+CL00423,Jordan Cooper,Retirement,Growth,North America,Sofia Garcia,Employer Plan,2026-03-01,91,Growth Builder,68,38
+CL00424,Sam Stone,Mass Affluent,Growth,APAC,Jon Bell,Organic App,2025-06-01,80,Growth Builder,68,42
+CL00425,Nico Cooper,Mass Affluent,Growth,LATAM,Noah Miller,Paid Search,2025-12-01,79,Growth Builder,68,42
+CL00426,Alex Price,Retirement,Growth,LATAM,Sofia Garcia,Partner API,2024-09-01,78,Growth Builder,68,38
+CL00427,Morgan Cooper,Mass Affluent,Balanced,APAC,Lin Nguyen,Employer Plan,2026-04-01,83,Balanced Core,48,42
+CL00428,Cameron Price,Mass Affluent,Conservative,North America,Noah Miller,Advisor Referral,2026-05-01,99,Income Shield,25,42
+CL00429,Jordan Carter,Digital Starter,Growth,North America,Noah Miller,Organic App,2025-08-01,78,Growth Builder,68,29
+CL00430,Morgan Patel,Digital Starter,Growth,North America,Jon Bell,Paid Search,2025-06-01,97,Growth Builder,68,29
+CL00431,Drew Tran,Mass Affluent,Balanced,Europe,Lin Nguyen,Paid Search,2026-02-01,72,Balanced Core,48,42
+CL00432,Sam Martin,Mass Affluent,Balanced,APAC,Avery Chen,Advisor Referral,2024-12-01,80,Balanced Core,48,42
+CL00433,Reese Brooks,Mass Affluent,Aggressive,Europe,Lin Nguyen,Advisor Referral,2025-01-01,86,Equity Edge,84,42
+CL00434,Harper Price,Retirement,Balanced,Europe,Avery Chen,Partner API,2025-04-01,81,Balanced Core,48,38
+CL00435,Casey Tran,HNW,Balanced,APAC,Sofia Garcia,Organic App,2026-01-01,96,Balanced Core,48,58
+CL00436,Taylor Stone,HNW,Growth,LATAM,Lin Nguyen,Advisor Referral,2025-03-01,80,Growth Builder,68,58
+CL00437,Alex Young,HNW,Balanced,North America,Sofia Garcia,Organic App,2026-02-01,82,Balanced Core,48,58
+CL00438,Cameron Tran,Retirement,Growth,Europe,Noah Miller,Employer Plan,2024-01-01,99,Growth Builder,68,38
+CL00439,Ari Cooper,HNW,Conservative,North America,Avery Chen,Advisor Referral,2025-07-01,91,Income Shield,25,58
+CL00440,Rowan Young,HNW,Balanced,Europe,Lin Nguyen,Partner API,2025-10-01,92,Balanced Core,48,58
+CL00441,Emerson Morris,Digital Starter,Aggressive,APAC,Mina Patel,Advisor Referral,2024-07-01,82,Equity Edge,84,29
+CL00442,Jordan Nguyen,Mass Affluent,Balanced,North America,Lin Nguyen,Organic App,2024-12-01,80,Balanced Core,48,42
+CL00443,Jordan Rivera,Mass Affluent,Growth,LATAM,Mina Patel,Employer Plan,2024-01-01,96,Growth Builder,68,42
+CL00444,Alex Rivera,HNW,Balanced,APAC,Jon Bell,Organic App,2025-03-01,82,Balanced Core,48,58
+CL00445,Harper Patel,Retirement,Conservative,North America,Sofia Garcia,Organic App,2025-03-01,93,Income Shield,25,38
+CL00446,Quinn Nguyen,Mass Affluent,Conservative,North America,Avery Chen,Organic App,2025-10-01,94,Income Shield,25,42
+CL00447,Quinn Wong,Mass Affluent,Growth,North America,Lin Nguyen,Organic App,2025-06-01,86,Growth Builder,68,42
+CL00448,Lena Hughes,Digital Starter,Conservative,North America,Lin Nguyen,Advisor Referral,2025-04-01,81,Income Shield,25,29
+CL00449,Cameron Bennett,HNW,Growth,North America,Lin Nguyen,Organic App,2025-04-01,93,Growth Builder,68,58
+CL00450,Parker Martin,Mass Affluent,Growth,Europe,Noah Miller,Paid Search,2025-08-01,78,Growth Builder,68,42
+CL00451,Cameron Tran,Digital Starter,Balanced,Europe,Lin Nguyen,Paid Search,2025-09-01,62,Balanced Core,48,29
+CL00452,Taylor Carter,Retirement,Aggressive,North America,Noah Miller,Organic App,2025-05-01,86,Equity Edge,84,38
+CL00453,Harper Patel,Retirement,Conservative,Europe,Mina Patel,Organic App,2025-01-01,81,Income Shield,25,38
+CL00454,Ari Tran,Mass Affluent,Balanced,LATAM,Noah Miller,Advisor Referral,2026-05-01,77,Balanced Core,48,42
+CL00455,Quinn Rivera,Digital Starter,Growth,LATAM,Avery Chen,Organic App,2025-02-01,98,Growth Builder,68,29
+CL00456,Parker Tran,Mass Affluent,Balanced,North America,Mina Patel,Organic App,2025-07-01,96,Balanced Core,48,42
+CL00457,Nico Brooks,HNW,Growth,Europe,Noah Miller,Advisor Referral,2025-03-01,89,Growth Builder,68,58
+CL00458,Casey Bennett,Digital Starter,Conservative,LATAM,Sofia Garcia,Paid Search,2024-05-01,99,Income Shield,25,29
+CL00459,Skyler Singh,Digital Starter,Conservative,Europe,Jon Bell,Paid Search,2025-03-01,89,Income Shield,25,29
+CL00460,Alex Rivera,Digital Starter,Aggressive,APAC,Avery Chen,Advisor Referral,2025-01-01,89,Equity Edge,84,29
+CL00461,Drew Morris,HNW,Balanced,Europe,Sofia Garcia,Advisor Referral,2024-07-01,83,Balanced Core,48,58
+CL00462,Drew Young,Digital Starter,Conservative,APAC,Mina Patel,Advisor Referral,2024-01-01,70,Income Shield,25,29
+CL00463,Riley Patel,HNW,Growth,Europe,Noah Miller,Advisor Referral,2025-08-01,90,Growth Builder,68,58
+CL00464,Rowan Nguyen,Mass Affluent,Conservative,APAC,Sofia Garcia,Employer Plan,2026-01-01,72,Income Shield,25,42
+CL00465,Emerson Morris,Mass Affluent,Growth,North America,Noah Miller,Employer Plan,2026-05-01,81,Growth Builder,68,42
+CL00466,Morgan Lee,Mass Affluent,Balanced,North America,Jon Bell,Partner API,2025-09-01,86,Balanced Core,48,42
+CL00467,Ari Singh,Mass Affluent,Conservative,Europe,Lin Nguyen,Employer Plan,2025-04-01,77,Income Shield,25,42
+CL00468,Reese Bennett,Digital Starter,Growth,North America,Mina Patel,Organic App,2024-04-01,85,Growth Builder,68,29
+CL00469,Lena Price,Retirement,Conservative,LATAM,Noah Miller,Employer Plan,2026-04-01,88,Income Shield,25,38
+CL00470,Parker Carter,UHNW,Aggressive,North America,Mina Patel,Partner API,2025-02-01,78,Equity Edge,84,74
+CL00471,Riley Stone,HNW,Aggressive,Europe,Lin Nguyen,Paid Search,2024-01-01,98,Equity Edge,84,58
+CL00472,Casey Morris,Mass Affluent,Conservative,North America,Sofia Garcia,Organic App,2025-05-01,90,Income Shield,25,42
+CL00473,Jamie Martin,Mass Affluent,Conservative,LATAM,Mina Patel,Advisor Referral,2025-04-01,88,Income Shield,25,42
+CL00474,Quinn Lee,Digital Starter,Aggressive,APAC,Avery Chen,Partner API,2025-10-01,83,Equity Edge,84,29
+CL00475,Alex Adams,Mass Affluent,Balanced,North America,Jon Bell,Paid Search,2024-12-01,89,Balanced Core,48,42
+CL00476,Jordan Hughes,HNW,Balanced,Europe,Mina Patel,Employer Plan,2025-05-01,91,Balanced Core,48,58
+CL00477,Quinn Singh,HNW,Aggressive,LATAM,Avery Chen,Organic App,2024-04-01,85,Equity Edge,84,58
+CL00478,Jamie Hughes,Mass Affluent,Aggressive,North America,Noah Miller,Partner API,2025-05-01,67,Equity Edge,84,42
+CL00479,Sam Kim,HNW,Growth,APAC,Sofia Garcia,Organic App,2025-02-01,91,Growth Builder,68,58
+CL00480,Cameron Kim,Mass Affluent,Balanced,North America,Avery Chen,Paid Search,2025-03-01,91,Balanced Core,48,42
+CL00481,Morgan Morris,Retirement,Growth,North America,Jon Bell,Partner API,2025-08-01,73,Growth Builder,68,38
+CL00482,Skyler Adams,HNW,Conservative,North America,Lin Nguyen,Organic App,2026-01-01,91,Income Shield,25,58
+CL00483,Nico Rivera,Mass Affluent,Balanced,North America,Noah Miller,Advisor Referral,2026-02-01,91,Balanced Core,48,42
+CL00484,Quinn Adams,Mass Affluent,Conservative,North America,Noah Miller,Organic App,2026-02-01,99,Income Shield,25,42
+CL00485,Morgan Kim,Mass Affluent,Aggressive,North America,Mina Patel,Organic App,2025-09-01,93,Equity Edge,84,42
+CL00486,Jordan Adams,Digital Starter,Balanced,North America,Sofia Garcia,Employer Plan,2026-04-01,94,Balanced Core,48,29
+CL00487,Drew Bennett,Mass Affluent,Growth,Europe,Noah Miller,Organic App,2024-12-01,80,Growth Builder,68,42
+CL00488,Nico Tran,Mass Affluent,Balanced,North America,Mina Patel,Paid Search,2024-06-01,71,Balanced Core,48,42
+CL00489,Morgan Morris,Mass Affluent,Growth,North America,Jon Bell,Organic App,2026-01-01,92,Growth Builder,68,42
+CL00490,Ari Adams,HNW,Conservative,APAC,Mina Patel,Partner API,2026-01-01,86,Income Shield,25,58
+CL00491,Sam Wong,Mass Affluent,Balanced,North America,Noah Miller,Partner API,2024-06-01,99,Balanced Core,48,42
+CL00492,Casey Cole,Mass Affluent,Balanced,North America,Lin Nguyen,Organic App,2025-12-01,89,Balanced Core,48,42
+CL00493,Casey Kim,Digital Starter,Aggressive,Europe,Noah Miller,Advisor Referral,2024-12-01,86,Equity Edge,84,29
+CL00494,Skyler Lee,Mass Affluent,Balanced,North America,Mina Patel,Advisor Referral,2024-08-01,80,Balanced Core,48,42
+CL00495,Lena Rivera,Digital Starter,Balanced,Europe,Mina Patel,Organic App,2025-08-01,92,Balanced Core,48,29
+CL00496,Riley Kim,Mass Affluent,Conservative,North America,Noah Miller,Organic App,2025-04-01,83,Income Shield,25,42
+CL00497,Nico Tran,Digital Starter,Conservative,North America,Mina Patel,Partner API,2025-08-01,99,Income Shield,25,29
+CL00498,Emerson Price,Mass Affluent,Balanced,North America,Mina Patel,Paid Search,2025-03-01,79,Balanced Core,48,42
+CL00499,Lena Brooks,Digital Starter,Growth,North America,Lin Nguyen,Organic App,2025-06-01,76,Growth Builder,68,29
+CL00500,Lena Martin,HNW,Aggressive,North America,Lin Nguyen,Advisor Referral,2024-10-01,85,Equity Edge,84,58
+CL00501,Quinn Hughes,HNW,Growth,North America,Sofia Garcia,Advisor Referral,2025-06-01,69,Growth Builder,68,58
+CL00502,Casey Price,HNW,Growth,North America,Avery Chen,Organic App,2024-04-01,79,Growth Builder,68,58
+CL00503,Rowan Morris,Retirement,Conservative,APAC,Mina Patel,Organic App,2024-04-01,87,Income Shield,25,38
+CL00504,Jordan Hughes,Mass Affluent,Balanced,North America,Noah Miller,Organic App,2024-09-01,75,Balanced Core,48,42
+CL00505,Ari Brooks,Mass Affluent,Balanced,Europe,Mina Patel,Partner API,2024-10-01,91,Balanced Core,48,42
+CL00506,Rowan Stone,HNW,Balanced,North America,Lin Nguyen,Partner API,2024-10-01,85,Balanced Core,48,58
+CL00507,Casey Young,Digital Starter,Balanced,LATAM,Jon Bell,Employer Plan,2026-03-01,93,Balanced Core,48,29
+CL00508,Jamie Wong,Mass Affluent,Balanced,LATAM,Lin Nguyen,Organic App,2024-03-01,88,Balanced Core,48,42
+CL00509,Alex Young,Mass Affluent,Balanced,Europe,Jon Bell,Employer Plan,2026-05-01,71,Balanced Core,48,42
+CL00510,Sam Brooks,Digital Starter,Growth,North America,Lin Nguyen,Advisor Referral,2024-11-01,78,Growth Builder,68,29
+CL00511,Emerson Brooks,Mass Affluent,Aggressive,North America,Noah Miller,Advisor Referral,2025-12-01,83,Equity Edge,84,42
+CL00512,Alex Stone,Retirement,Growth,APAC,Noah Miller,Paid Search,2025-08-01,83,Growth Builder,68,38
+CL00513,Drew Rivera,Retirement,Growth,APAC,Sofia Garcia,Employer Plan,2025-11-01,86,Growth Builder,68,38
+CL00514,Lena Young,Mass Affluent,Conservative,Europe,Mina Patel,Advisor Referral,2025-08-01,84,Income Shield,25,42
+CL00515,Skyler Cooper,Mass Affluent,Growth,North America,Jon Bell,Paid Search,2024-11-01,87,Growth Builder,68,42
+CL00516,Rowan Lee,Digital Starter,Balanced,APAC,Jon Bell,Advisor Referral,2024-04-01,97,Balanced Core,48,29
+CL00517,Jordan Bennett,Mass Affluent,Balanced,APAC,Noah Miller,Paid Search,2025-05-01,94,Balanced Core,48,42
+CL00518,Parker Carter,Digital Starter,Balanced,North America,Sofia Garcia,Advisor Referral,2024-10-01,92,Balanced Core,48,29
+CL00519,Rowan Carter,Mass Affluent,Balanced,Europe,Jon Bell,Employer Plan,2026-01-01,90,Balanced Core,48,42
+CL00520,Lena Patel,Digital Starter,Growth,APAC,Avery Chen,Partner API,2024-10-01,91,Growth Builder,68,29
+CL00521,Morgan Wong,HNW,Growth,North America,Noah Miller,Partner API,2026-05-01,80,Growth Builder,68,58
+CL00522,Nico Hughes,Retirement,Conservative,North America,Mina Patel,Advisor Referral,2025-06-01,91,Income Shield,25,38
+CL00523,Skyler Young,Digital Starter,Conservative,North America,Jon Bell,Partner API,2026-03-01,91,Income Shield,25,29
+CL00524,Reese Young,Mass Affluent,Conservative,North America,Mina Patel,Advisor Referral,2025-05-01,83,Income Shield,25,42
+CL00525,Jamie Price,Digital Starter,Growth,APAC,Jon Bell,Paid Search,2026-04-01,71,Growth Builder,68,29
+CL00526,Riley Kim,Mass Affluent,Balanced,APAC,Jon Bell,Advisor Referral,2024-03-01,93,Balanced Core,48,42
+CL00527,Casey Kim,HNW,Growth,North America,Noah Miller,Employer Plan,2024-02-01,93,Growth Builder,68,58
+CL00528,Lena Lee,HNW,Balanced,North America,Jon Bell,Employer Plan,2026-04-01,91,Balanced Core,48,58
+CL00529,Nico Kim,Mass Affluent,Growth,North America,Sofia Garcia,Partner API,2024-11-01,85,Growth Builder,68,42
+CL00530,Quinn Martin,Digital Starter,Conservative,APAC,Noah Miller,Organic App,2025-04-01,74,Income Shield,25,29
+CL00531,Emerson Morris,Retirement,Growth,North America,Lin Nguyen,Organic App,2024-06-01,90,Growth Builder,68,38
+CL00532,Casey Kim,HNW,Balanced,North America,Jon Bell,Paid Search,2026-02-01,97,Balanced Core,48,58
+CL00533,Lena Young,Digital Starter,Growth,North America,Mina Patel,Organic App,2024-12-01,70,Growth Builder,68,29
+CL00534,Riley Carter,HNW,Growth,North America,Jon Bell,Organic App,2026-02-01,83,Growth Builder,68,58
+CL00535,Sam Rivera,Digital Starter,Balanced,APAC,Jon Bell,Paid Search,2026-01-01,94,Balanced Core,48,29
+CL00536,Jordan Stone,Digital Starter,Balanced,North America,Noah Miller,Advisor Referral,2024-06-01,84,Balanced Core,48,29
+CL00537,Sam Singh,HNW,Growth,APAC,Mina Patel,Advisor Referral,2025-03-01,72,Growth Builder,68,58
+CL00538,Alex Rivera,Mass Affluent,Conservative,Europe,Mina Patel,Organic App,2025-07-01,86,Income Shield,25,42
+CL00539,Morgan Kim,Mass Affluent,Balanced,North America,Lin Nguyen,Partner API,2024-08-01,77,Balanced Core,48,42
+CL00540,Jordan Lee,HNW,Balanced,North America,Mina Patel,Advisor Referral,2026-03-01,92,Balanced Core,48,58
+CL00541,Riley Brooks,Retirement,Growth,APAC,Jon Bell,Organic App,2024-01-01,85,Growth Builder,68,38
+CL00542,Jordan Singh,Digital Starter,Balanced,North America,Mina Patel,Organic App,2026-01-01,84,Balanced Core,48,29
+CL00543,Emerson Patel,Mass Affluent,Growth,North America,Noah Miller,Advisor Referral,2026-05-01,83,Growth Builder,68,42
+CL00544,Jamie Adams,HNW,Growth,North America,Jon Bell,Employer Plan,2026-03-01,84,Growth Builder,68,58
+CL00545,Lena Patel,Digital Starter,Balanced,North America,Jon Bell,Organic App,2025-05-01,97,Balanced Core,48,29
+CL00546,Ari Bennett,Digital Starter,Growth,North America,Mina Patel,Employer Plan,2025-01-01,92,Growth Builder,68,29
+CL00547,Jamie Price,Mass Affluent,Conservative,North America,Mina Patel,Advisor Referral,2025-12-01,82,Income Shield,25,42
+CL00548,Lena Cooper,Retirement,Balanced,North America,Mina Patel,Employer Plan,2024-01-01,84,Balanced Core,48,38
+CL00549,Drew Young,Mass Affluent,Balanced,North America,Noah Miller,Employer Plan,2025-11-01,86,Balanced Core,48,42
+CL00550,Parker Young,Digital Starter,Conservative,North America,Jon Bell,Employer Plan,2026-01-01,83,Income Shield,25,29
+CL00551,Alex Wong,Digital Starter,Balanced,North America,Lin Nguyen,Employer Plan,2024-12-01,90,Balanced Core,48,29
+CL00552,Parker Patel,HNW,Balanced,North America,Sofia Garcia,Advisor Referral,2024-05-01,85,Balanced Core,48,58
+CL00553,Nico Adams,Mass Affluent,Aggressive,North America,Jon Bell,Organic App,2024-12-01,85,Equity Edge,84,42
+CL00554,Lena Singh,Mass Affluent,Growth,Europe,Lin Nguyen,Advisor Referral,2026-05-01,88,Growth Builder,68,42
+CL00555,Emerson Price,Mass Affluent,Conservative,APAC,Noah Miller,Organic App,2024-11-01,89,Income Shield,25,42
+CL00556,Quinn Stone,Mass Affluent,Growth,Europe,Sofia Garcia,Paid Search,2026-02-01,98,Growth Builder,68,42
+CL00557,Cameron Adams,Digital Starter,Balanced,North America,Mina Patel,Organic App,2025-03-01,79,Balanced Core,48,29
+CL00558,Morgan Lee,Digital Starter,Growth,North America,Lin Nguyen,Organic App,2024-10-01,98,Growth Builder,68,29
+CL00559,Drew Martin,Digital Starter,Balanced,North America,Lin Nguyen,Organic App,2025-11-01,97,Balanced Core,48,29
+CL00560,Quinn Martin,Digital Starter,Balanced,APAC,Noah Miller,Employer Plan,2025-08-01,88,Balanced Core,48,29
+CL00561,Rowan Wong,Digital Starter,Growth,Europe,Mina Patel,Organic App,2026-04-01,89,Growth Builder,68,29
+CL00562,Emerson Hughes,Mass Affluent,Balanced,North America,Lin Nguyen,Organic App,2025-12-01,93,Balanced Core,48,42
+CL00563,Casey Adams,Mass Affluent,Balanced,Europe,Noah Miller,Organic App,2025-12-01,68,Balanced Core,48,42
+CL00564,Harper Lee,Mass Affluent,Growth,North America,Mina Patel,Partner API,2024-04-01,99,Growth Builder,68,42
+CL00565,Alex Singh,Digital Starter,Conservative,North America,Jon Bell,Advisor Referral,2024-03-01,82,Income Shield,25,29
+CL00566,Parker Brooks,UHNW,Growth,LATAM,Avery Chen,Employer Plan,2026-03-01,84,Growth Builder,68,74
+CL00567,Sam Brooks,HNW,Growth,North America,Mina Patel,Employer Plan,2025-09-01,77,Growth Builder,68,58
+CL00568,Drew Cooper,Digital Starter,Balanced,North America,Noah Miller,Advisor Referral,2024-11-01,81,Balanced Core,48,29
+CL00569,Drew Cooper,HNW,Growth,APAC,Mina Patel,Employer Plan,2024-09-01,83,Growth Builder,68,58
+CL00570,Taylor Hughes,HNW,Balanced,North America,Mina Patel,Organic App,2026-04-01,80,Balanced Core,48,58
+CL00571,Riley Hughes,HNW,Aggressive,North America,Avery Chen,Advisor Referral,2025-11-01,87,Equity Edge,84,58
+CL00572,Lena Price,Digital Starter,Balanced,North America,Avery Chen,Organic App,2024-11-01,81,Balanced Core,48,29
+CL00573,Cameron Carter,UHNW,Conservative,North America,Jon Bell,Paid Search,2026-04-01,86,Income Shield,25,74
+CL00574,Jordan Carter,Retirement,Balanced,North America,Lin Nguyen,Paid Search,2026-03-01,93,Balanced Core,48,38
+CL00575,Jamie Price,Digital Starter,Aggressive,APAC,Jon Bell,Employer Plan,2024-03-01,80,Equity Edge,84,29
+CL00576,Skyler Price,Digital Starter,Growth,North America,Avery Chen,Employer Plan,2025-03-01,75,Growth Builder,68,29
+CL00577,Ari Price,HNW,Conservative,North America,Mina Patel,Organic App,2024-09-01,95,Income Shield,25,58
+CL00578,Quinn Stone,Digital Starter,Aggressive,North America,Sofia Garcia,Paid Search,2026-02-01,98,Equity Edge,84,29
+CL00579,Emerson Hughes,HNW,Balanced,LATAM,Mina Patel,Paid Search,2025-03-01,91,Balanced Core,48,58
+CL00580,Morgan Carter,Mass Affluent,Growth,North America,Sofia Garcia,Partner API,2025-06-01,86,Growth Builder,68,42
+CL00581,Skyler Bennett,Retirement,Balanced,Europe,Jon Bell,Organic App,2025-06-01,91,Balanced Core,48,38
+CL00582,Drew Morris,Mass Affluent,Growth,Europe,Lin Nguyen,Paid Search,2025-05-01,86,Growth Builder,68,42
+CL00583,Ari Carter,Digital Starter,Balanced,Europe,Mina Patel,Partner API,2026-04-01,84,Balanced Core,48,29
+CL00584,Nico Cole,Mass Affluent,Balanced,Europe,Mina Patel,Paid Search,2025-10-01,92,Balanced Core,48,42
+CL00585,Harper Martin,Mass Affluent,Conservative,Europe,Jon Bell,Paid Search,2024-09-01,80,Income Shield,25,42
+CL00586,Cameron Adams,Digital Starter,Growth,North America,Avery Chen,Employer Plan,2025-11-01,89,Growth Builder,68,29
+CL00587,Taylor Cole,Retirement,Growth,North America,Sofia Garcia,Organic App,2025-01-01,91,Growth Builder,68,38
+CL00588,Jamie Young,Digital Starter,Growth,APAC,Noah Miller,Employer Plan,2026-04-01,94,Growth Builder,68,29
+CL00589,Jordan Cooper,Mass Affluent,Balanced,APAC,Lin Nguyen,Advisor Referral,2026-01-01,76,Balanced Core,48,42
+CL00590,Cameron Tran,Mass Affluent,Growth,North America,Lin Nguyen,Organic App,2026-05-01,80,Growth Builder,68,42
+CL00591,Cameron Rivera,HNW,Conservative,North America,Noah Miller,Organic App,2024-11-01,72,Income Shield,25,58
+CL00592,Ari Nguyen,HNW,Growth,Europe,Jon Bell,Employer Plan,2025-09-01,79,Growth Builder,68,58
+CL00593,Rowan Patel,HNW,Growth,North America,Noah Miller,Advisor Referral,2024-07-01,78,Growth Builder,68,58
+CL00594,Casey Nguyen,Mass Affluent,Balanced,Europe,Lin Nguyen,Organic App,2025-02-01,75,Balanced Core,48,42
+CL00595,Jordan Rivera,Digital Starter,Balanced,North America,Jon Bell,Advisor Referral,2025-12-01,90,Balanced Core,48,29
+CL00596,Harper Cooper,Digital Starter,Balanced,North America,Jon Bell,Paid Search,2026-05-01,89,Balanced Core,48,29
+CL00597,Sam Bennett,Mass Affluent,Conservative,North America,Mina Patel,Paid Search,2024-05-01,69,Income Shield,25,42
+CL00598,Jamie Rivera,HNW,Balanced,North America,Noah Miller,Employer Plan,2024-04-01,75,Balanced Core,48,58
+CL00599,Casey Lee,Digital Starter,Balanced,Europe,Noah Miller,Advisor Referral,2024-11-01,74,Balanced Core,48,29
+CL00600,Riley Lee,Mass Affluent,Balanced,North America,Jon Bell,Employer Plan,2025-12-01,89,Balanced Core,48,42
+CL00601,Drew Martin,Digital Starter,Conservative,APAC,Noah Miller,Paid Search,2025-03-01,93,Income Shield,25,29
+CL00602,Cameron Kim,Mass Affluent,Balanced,LATAM,Sofia Garcia,Organic App,2026-05-01,87,Balanced Core,48,42
+CL00603,Emerson Young,Digital Starter,Balanced,North America,Noah Miller,Paid Search,2026-01-01,99,Balanced Core,48,29
+CL00604,Riley Wong,Digital Starter,Balanced,North America,Mina Patel,Employer Plan,2024-04-01,84,Balanced Core,48,29
+CL00605,Cameron Patel,HNW,Conservative,APAC,Avery Chen,Partner API,2026-04-01,81,Income Shield,25,58
+CL00606,Drew Nguyen,Digital Starter,Balanced,Europe,Avery Chen,Employer Plan,2026-01-01,81,Balanced Core,48,29
+CL00607,Riley Hughes,Retirement,Conservative,North America,Avery Chen,Organic App,2025-09-01,92,Income Shield,25,38
+CL00608,Lena Martin,Retirement,Conservative,North America,Noah Miller,Organic App,2024-12-01,83,Income Shield,25,38
+CL00609,Sam Patel,Digital Starter,Balanced,LATAM,Avery Chen,Organic App,2025-04-01,83,Balanced Core,48,29
+CL00610,Riley Price,Mass Affluent,Growth,North America,Lin Nguyen,Advisor Referral,2025-05-01,90,Growth Builder,68,42
+CL00611,Quinn Lee,HNW,Growth,LATAM,Lin Nguyen,Organic App,2024-09-01,84,Growth Builder,68,58
+CL00612,Casey Nguyen,Mass Affluent,Aggressive,Europe,Mina Patel,Organic App,2025-02-01,90,Equity Edge,84,42
+CL00613,Quinn Morris,Digital Starter,Growth,North America,Mina Patel,Organic App,2024-03-01,88,Growth Builder,68,29
+CL00614,Lena Nguyen,Mass Affluent,Balanced,Europe,Sofia Garcia,Organic App,2024-08-01,84,Balanced Core,48,42
+CL00615,Emerson Rivera,Mass Affluent,Balanced,North America,Lin Nguyen,Advisor Referral,2024-04-01,99,Balanced Core,48,42
+CL00616,Quinn Carter,HNW,Conservative,North America,Avery Chen,Organic App,2025-01-01,81,Income Shield,25,58
+CL00617,Skyler Patel,HNW,Growth,North America,Sofia Garcia,Advisor Referral,2024-09-01,88,Growth Builder,68,58
+CL00618,Jamie Bennett,Mass Affluent,Conservative,North America,Noah Miller,Advisor Referral,2024-04-01,77,Income Shield,25,42
+CL00619,Cameron Adams,Digital Starter,Conservative,Europe,Noah Miller,Paid Search,2025-03-01,99,Income Shield,25,29
+CL00620,Harper Kim,Mass Affluent,Aggressive,APAC,Lin Nguyen,Partner API,2024-02-01,75,Equity Edge,84,42
+CL00621,Nico Morris,Retirement,Growth,North America,Avery Chen,Advisor Referral,2024-04-01,89,Growth Builder,68,38
+CL00622,Jordan Young,Mass Affluent,Conservative,North America,Jon Bell,Organic App,2024-01-01,96,Income Shield,25,42
+CL00623,Harper Hughes,Digital Starter,Growth,North America,Sofia Garcia,Advisor Referral,2024-02-01,75,Growth Builder,68,29
+CL00624,Drew Young,Mass Affluent,Conservative,North America,Noah Miller,Advisor Referral,2025-06-01,96,Income Shield,25,42
+CL00625,Cameron Singh,Digital Starter,Balanced,North America,Avery Chen,Organic App,2024-07-01,86,Balanced Core,48,29
+CL00626,Quinn Martin,Digital Starter,Balanced,North America,Jon Bell,Advisor Referral,2024-05-01,90,Balanced Core,48,29
+CL00627,Nico Wong,Mass Affluent,Conservative,APAC,Mina Patel,Organic App,2025-05-01,70,Income Shield,25,42
+CL00628,Ari Kim,UHNW,Balanced,North America,Jon Bell,Paid Search,2026-04-01,83,Balanced Core,48,74
+CL00629,Nico Tran,HNW,Balanced,North America,Jon Bell,Advisor Referral,2025-08-01,81,Balanced Core,48,58
+CL00630,Quinn Adams,Mass Affluent,Growth,APAC,Avery Chen,Organic App,2025-03-01,68,Growth Builder,68,42
+CL00631,Ari Patel,Digital Starter,Conservative,Europe,Mina Patel,Employer Plan,2026-01-01,82,Income Shield,25,29
+CL00632,Morgan Nguyen,HNW,Balanced,Europe,Avery Chen,Employer Plan,2026-02-01,93,Balanced Core,48,58
+CL00633,Morgan Young,HNW,Balanced,North America,Jon Bell,Organic App,2025-12-01,99,Balanced Core,48,58
+CL00634,Reese Patel,Digital Starter,Aggressive,Europe,Mina Patel,Partner API,2024-04-01,86,Equity Edge,84,29
+CL00635,Sam Carter,Mass Affluent,Growth,North America,Avery Chen,Employer Plan,2026-04-01,78,Growth Builder,68,42
+CL00636,Ari Adams,Digital Starter,Balanced,North America,Sofia Garcia,Advisor Referral,2024-10-01,96,Balanced Core,48,29
+CL00637,Skyler Patel,Mass Affluent,Growth,North America,Jon Bell,Organic App,2024-07-01,87,Growth Builder,68,42
+CL00638,Rowan Cooper,UHNW,Conservative,APAC,Lin Nguyen,Employer Plan,2026-04-01,85,Income Shield,25,74
+CL00639,Taylor Cole,Mass Affluent,Balanced,North America,Sofia Garcia,Advisor Referral,2026-01-01,84,Balanced Core,48,42
+CL00640,Ari Kim,Mass Affluent,Balanced,North America,Sofia Garcia,Organic App,2025-12-01,80,Balanced Core,48,42
+CL00641,Ari Carter,Mass Affluent,Conservative,North America,Avery Chen,Partner API,2024-03-01,93,Income Shield,25,42
+CL00642,Emerson Carter,UHNW,Balanced,Europe,Mina Patel,Partner API,2026-02-01,82,Balanced Core,48,74
+CL00643,Ari Carter,Mass Affluent,Growth,LATAM,Noah Miller,Organic App,2025-06-01,91,Growth Builder,68,42
+CL00644,Jordan Kim,HNW,Aggressive,APAC,Jon Bell,Employer Plan,2024-11-01,76,Equity Edge,84,58
+CL00645,Cameron Brooks,Retirement,Balanced,Europe,Jon Bell,Employer Plan,2025-12-01,68,Balanced Core,48,38
+CL00646,Taylor Cooper,Mass Affluent,Balanced,North America,Mina Patel,Partner API,2025-05-01,84,Balanced Core,48,42
+CL00647,Drew Martin,Digital Starter,Balanced,APAC,Noah Miller,Employer Plan,2025-05-01,91,Balanced Core,48,29
+CL00648,Ari Lee,Mass Affluent,Balanced,North America,Sofia Garcia,Organic App,2026-02-01,99,Balanced Core,48,42
+CL00649,Lena Bennett,Mass Affluent,Growth,North America,Lin Nguyen,Paid Search,2025-01-01,89,Growth Builder,68,42
+CL00650,Taylor Stone,Mass Affluent,Balanced,APAC,Sofia Garcia,Paid Search,2024-09-01,89,Balanced Core,48,42
+CL00651,Jamie Carter,Mass Affluent,Conservative,Europe,Mina Patel,Organic App,2026-03-01,88,Income Shield,25,42
+CL00652,Casey Martin,Digital Starter,Balanced,LATAM,Mina Patel,Employer Plan,2024-06-01,75,Balanced Core,48,29
+CL00653,Morgan Morris,Retirement,Conservative,North America,Jon Bell,Organic App,2026-03-01,84,Income Shield,25,38
+CL00654,Jordan Bennett,Mass Affluent,Growth,APAC,Mina Patel,Paid Search,2025-01-01,86,Growth Builder,68,42
+CL00655,Quinn Martin,Digital Starter,Conservative,Europe,Lin Nguyen,Organic App,2026-01-01,84,Income Shield,25,29
+CL00656,Ari Bennett,Retirement,Growth,North America,Noah Miller,Partner API,2026-04-01,76,Growth Builder,68,38
+CL00657,Quinn Carter,Mass Affluent,Balanced,LATAM,Noah Miller,Organic App,2025-05-01,95,Balanced Core,48,42
+CL00658,Rowan Kim,Mass Affluent,Balanced,APAC,Lin Nguyen,Organic App,2026-02-01,80,Balanced Core,48,42
+CL00659,Casey Singh,HNW,Balanced,North America,Lin Nguyen,Organic App,2025-09-01,83,Balanced Core,48,58
+CL00660,Jordan Tran,Digital Starter,Balanced,Europe,Avery Chen,Advisor Referral,2024-03-01,89,Balanced Core,48,29
+CL00661,Parker Young,Mass Affluent,Conservative,Europe,Jon Bell,Organic App,2026-02-01,80,Income Shield,25,42
+CL00662,Emerson Cole,Retirement,Aggressive,North America,Jon Bell,Organic App,2025-10-01,81,Equity Edge,84,38
+CL00663,Jamie Rivera,Retirement,Balanced,North America,Sofia Garcia,Advisor Referral,2025-03-01,82,Balanced Core,48,38
+CL00664,Reese Patel,Digital Starter,Conservative,Europe,Lin Nguyen,Organic App,2025-01-01,99,Income Shield,25,29
+CL00665,Taylor Stone,Retirement,Aggressive,APAC,Jon Bell,Organic App,2025-08-01,93,Equity Edge,84,38
+CL00666,Harper Cooper,Digital Starter,Growth,North America,Avery Chen,Organic App,2026-02-01,88,Growth Builder,68,29
+CL00667,Nico Price,Retirement,Balanced,Europe,Mina Patel,Organic App,2026-02-01,86,Balanced Core,48,38
+CL00668,Cameron Kim,Digital Starter,Aggressive,North America,Avery Chen,Advisor Referral,2025-10-01,89,Equity Edge,84,29
+CL00669,Skyler Bennett,Retirement,Growth,North America,Noah Miller,Advisor Referral,2025-08-01,94,Growth Builder,68,38
+CL00670,Casey Cooper,Digital Starter,Conservative,Europe,Noah Miller,Partner API,2025-05-01,93,Income Shield,25,29
+CL00671,Reese Martin,Digital Starter,Balanced,APAC,Noah Miller,Employer Plan,2025-08-01,84,Balanced Core,48,29
+CL00672,Ari Kim,Digital Starter,Conservative,Europe,Avery Chen,Advisor Referral,2024-08-01,89,Income Shield,25,29
+CL00673,Cameron Bennett,Mass Affluent,Growth,APAC,Lin Nguyen,Paid Search,2025-08-01,96,Growth Builder,68,42
+CL00674,Jamie Young,Mass Affluent,Growth,APAC,Noah Miller,Organic App,2025-06-01,99,Growth Builder,68,42
+CL00675,Taylor Adams,Mass Affluent,Balanced,North America,Lin Nguyen,Partner API,2024-09-01,66,Balanced Core,48,42
+CL00676,Jamie Carter,Mass Affluent,Balanced,APAC,Jon Bell,Paid Search,2025-03-01,76,Balanced Core,48,42
+CL00677,Cameron Brooks,HNW,Aggressive,LATAM,Avery Chen,Advisor Referral,2024-05-01,83,Equity Edge,84,58
+CL00678,Taylor Nguyen,Mass Affluent,Balanced,North America,Noah Miller,Organic App,2025-12-01,82,Balanced Core,48,42
+CL00679,Jordan Cole,Retirement,Growth,North America,Jon Bell,Paid Search,2026-01-01,88,Growth Builder,68,38
+CL00680,Ari Cole,Retirement,Growth,APAC,Sofia Garcia,Advisor Referral,2025-07-01,91,Growth Builder,68,38
+CL00681,Drew Cole,Mass Affluent,Growth,APAC,Sofia Garcia,Partner API,2025-12-01,80,Growth Builder,68,42
+CL00682,Parker Tran,Mass Affluent,Growth,Europe,Sofia Garcia,Organic App,2025-11-01,85,Growth Builder,68,42
+CL00683,Lena Morris,Digital Starter,Balanced,North America,Mina Patel,Paid Search,2025-12-01,88,Balanced Core,48,29
+CL00684,Parker Patel,Mass Affluent,Growth,APAC,Jon Bell,Paid Search,2024-10-01,83,Growth Builder,68,42
+CL00685,Drew Cooper,HNW,Growth,APAC,Avery Chen,Employer Plan,2025-01-01,93,Growth Builder,68,58
+CL00686,Nico Lee,Retirement,Growth,APAC,Sofia Garcia,Organic App,2024-02-01,94,Growth Builder,68,38
+CL00687,Skyler Lee,HNW,Growth,APAC,Lin Nguyen,Advisor Referral,2026-01-01,89,Growth Builder,68,58
+CL00688,Riley Brooks,Mass Affluent,Aggressive,North America,Mina Patel,Paid Search,2026-04-01,88,Equity Edge,84,42
+CL00689,Morgan Brooks,UHNW,Aggressive,LATAM,Sofia Garcia,Employer Plan,2025-10-01,74,Equity Edge,84,74
+CL00690,Taylor Cole,HNW,Balanced,North America,Mina Patel,Paid Search,2025-03-01,87,Balanced Core,48,58
+CL00691,Skyler Bennett,HNW,Growth,APAC,Avery Chen,Partner API,2024-10-01,75,Growth Builder,68,58
+CL00692,Ari Patel,HNW,Balanced,LATAM,Mina Patel,Advisor Referral,2025-05-01,81,Balanced Core,48,58
+CL00693,Skyler Cole,Mass Affluent,Growth,North America,Jon Bell,Employer Plan,2025-11-01,95,Growth Builder,68,42
+CL00694,Quinn Bennett,Digital Starter,Aggressive,APAC,Noah Miller,Organic App,2024-08-01,90,Equity Edge,84,29
+CL00695,Jamie Adams,HNW,Balanced,North America,Avery Chen,Organic App,2024-06-01,84,Balanced Core,48,58
+CL00696,Skyler Patel,HNW,Balanced,North America,Sofia Garcia,Partner API,2024-01-01,85,Balanced Core,48,58
+CL00697,Taylor Kim,Mass Affluent,Balanced,Europe,Lin Nguyen,Advisor Referral,2024-12-01,90,Balanced Core,48,42
+CL00698,Riley Tran,Digital Starter,Growth,Europe,Jon Bell,Advisor Referral,2026-01-01,87,Growth Builder,68,29
+CL00699,Drew Tran,Digital Starter,Aggressive,North America,Lin Nguyen,Partner API,2025-03-01,78,Equity Edge,84,29
+CL00700,Drew Cooper,Mass Affluent,Growth,North America,Mina Patel,Paid Search,2025-12-01,76,Growth Builder,68,42
+CL00701,Casey Stone,Digital Starter,Balanced,APAC,Mina Patel,Advisor Referral,2025-06-01,81,Balanced Core,48,29
+CL00702,Emerson Carter,Mass Affluent,Growth,North America,Mina Patel,Organic App,2025-09-01,89,Growth Builder,68,42
+CL00703,Alex Morris,HNW,Conservative,APAC,Jon Bell,Employer Plan,2025-07-01,81,Income Shield,25,58
+CL00704,Morgan Singh,Digital Starter,Balanced,North America,Jon Bell,Organic App,2025-12-01,90,Balanced Core,48,29
+CL00705,Skyler Rivera,Retirement,Growth,North America,Jon Bell,Employer Plan,2024-09-01,81,Growth Builder,68,38
+CL00706,Nico Lee,Mass Affluent,Aggressive,Europe,Sofia Garcia,Advisor Referral,2025-07-01,90,Equity Edge,84,42
+CL00707,Quinn Adams,Retirement,Balanced,North America,Jon Bell,Employer Plan,2024-12-01,98,Balanced Core,48,38
+CL00708,Morgan Brooks,Mass Affluent,Aggressive,North America,Avery Chen,Paid Search,2025-09-01,84,Equity Edge,84,42
+CL00709,Harper Nguyen,HNW,Balanced,LATAM,Jon Bell,Paid Search,2025-04-01,96,Balanced Core,48,58
+CL00710,Alex Hughes,Mass Affluent,Growth,LATAM,Noah Miller,Paid Search,2026-01-01,76,Growth Builder,68,42
+CL00711,Quinn Young,Digital Starter,Conservative,North America,Lin Nguyen,Employer Plan,2025-08-01,74,Income Shield,25,29
+CL00712,Taylor Martin,Mass Affluent,Growth,LATAM,Lin Nguyen,Employer Plan,2025-10-01,99,Growth Builder,68,42
+CL00713,Skyler Nguyen,Mass Affluent,Balanced,APAC,Sofia Garcia,Organic App,2025-11-01,93,Balanced Core,48,42
+CL00714,Jordan Singh,Mass Affluent,Aggressive,APAC,Mina Patel,Organic App,2026-04-01,90,Equity Edge,84,42
+CL00715,Jamie Tran,Retirement,Growth,APAC,Avery Chen,Organic App,2024-08-01,88,Growth Builder,68,38
+CL00716,Alex Young,Retirement,Aggressive,North America,Avery Chen,Organic App,2024-10-01,92,Equity Edge,84,38
+CL00717,Rowan Hughes,UHNW,Balanced,Europe,Lin Nguyen,Paid Search,2025-11-01,90,Balanced Core,48,74
+CL00718,Taylor Lee,Digital Starter,Balanced,North America,Jon Bell,Organic App,2024-07-01,93,Balanced Core,48,29
+CL00719,Alex Brooks,Mass Affluent,Balanced,APAC,Lin Nguyen,Advisor Referral,2024-09-01,84,Balanced Core,48,42
+CL00720,Lena Singh,HNW,Growth,APAC,Lin Nguyen,Partner API,2026-04-01,94,Growth Builder,68,58
+CL00721,Quinn Nguyen,Digital Starter,Aggressive,North America,Mina Patel,Employer Plan,2024-10-01,82,Equity Edge,84,29
+CL00722,Jordan Brooks,Digital Starter,Growth,LATAM,Jon Bell,Employer Plan,2024-05-01,81,Growth Builder,68,29
+CL00723,Jordan Cooper,Digital Starter,Growth,North America,Lin Nguyen,Advisor Referral,2024-07-01,86,Growth Builder,68,29
+CL00724,Morgan Tran,Digital Starter,Conservative,North America,Jon Bell,Advisor Referral,2024-03-01,91,Income Shield,25,29
+CL00725,Jamie Stone,Mass Affluent,Conservative,APAC,Noah Miller,Organic App,2026-02-01,80,Income Shield,25,42
+CL00726,Taylor Stone,Mass Affluent,Growth,North America,Avery Chen,Partner API,2025-11-01,71,Growth Builder,68,42
+CL00727,Ari Cole,HNW,Balanced,North America,Sofia Garcia,Advisor Referral,2025-03-01,74,Balanced Core,48,58
+CL00728,Lena Lee,UHNW,Aggressive,Europe,Jon Bell,Employer Plan,2025-01-01,82,Equity Edge,84,74
+CL00729,Jordan Rivera,HNW,Balanced,North America,Noah Miller,Employer Plan,2025-12-01,86,Balanced Core,48,58
+CL00730,Reese Patel,Retirement,Growth,North America,Avery Chen,Advisor Referral,2024-12-01,84,Growth Builder,68,38
+CL00731,Riley Martin,Mass Affluent,Conservative,APAC,Jon Bell,Advisor Referral,2026-03-01,93,Income Shield,25,42
+CL00732,Parker Cooper,Mass Affluent,Balanced,APAC,Mina Patel,Paid Search,2025-10-01,85,Balanced Core,48,42
+CL00733,Riley Wong,Mass Affluent,Growth,APAC,Lin Nguyen,Employer Plan,2024-11-01,80,Growth Builder,68,42
+CL00734,Quinn Wong,Mass Affluent,Growth,Europe,Avery Chen,Paid Search,2025-06-01,92,Growth Builder,68,42
+CL00735,Jamie Lee,HNW,Conservative,APAC,Sofia Garcia,Organic App,2026-03-01,86,Income Shield,25,58
+CL00736,Jamie Hughes,Retirement,Aggressive,North America,Mina Patel,Paid Search,2026-03-01,97,Equity Edge,84,38
+CL00737,Reese Tran,UHNW,Balanced,North America,Lin Nguyen,Organic App,2024-08-01,93,Balanced Core,48,74
+CL00738,Jamie Brooks,Retirement,Balanced,APAC,Mina Patel,Organic App,2025-05-01,81,Balanced Core,48,38
+CL00739,Emerson Wong,Digital Starter,Conservative,Europe,Noah Miller,Employer Plan,2025-10-01,99,Income Shield,25,29
+CL00740,Emerson Morris,HNW,Balanced,North America,Jon Bell,Advisor Referral,2024-02-01,91,Balanced Core,48,58
+CL00741,Cameron Young,Mass Affluent,Balanced,APAC,Noah Miller,Advisor Referral,2025-06-01,81,Balanced Core,48,42
+CL00742,Alex Kim,Retirement,Growth,North America,Sofia Garcia,Organic App,2025-01-01,79,Growth Builder,68,38
+CL00743,Emerson Morris,Digital Starter,Growth,APAC,Avery Chen,Paid Search,2024-12-01,99,Growth Builder,68,29
+CL00744,Emerson Bennett,Mass Affluent,Aggressive,North America,Sofia Garcia,Advisor Referral,2026-02-01,99,Equity Edge,84,42
+CL00745,Sam Nguyen,Mass Affluent,Balanced,North America,Jon Bell,Advisor Referral,2025-06-01,89,Balanced Core,48,42
+CL00746,Parker Cooper,Digital Starter,Conservative,North America,Sofia Garcia,Organic App,2024-08-01,88,Income Shield,25,29
+CL00747,Rowan Kim,Mass Affluent,Conservative,APAC,Sofia Garcia,Paid Search,2024-10-01,76,Income Shield,25,42
+CL00748,Rowan Rivera,HNW,Balanced,Europe,Noah Miller,Employer Plan,2025-09-01,78,Balanced Core,48,58
+CL00749,Quinn Cooper,Mass Affluent,Growth,North America,Lin Nguyen,Partner API,2025-05-01,82,Growth Builder,68,42
+CL00750,Riley Nguyen,Digital Starter,Balanced,North America,Noah Miller,Organic App,2025-07-01,88,Balanced Core,48,29
+CL00751,Cameron Adams,Mass Affluent,Balanced,Europe,Sofia Garcia,Advisor Referral,2026-05-01,80,Balanced Core,48,42
+CL00752,Jamie Rivera,Mass Affluent,Balanced,Europe,Mina Patel,Organic App,2024-07-01,94,Balanced Core,48,42
+CL00753,Cameron Bennett,Mass Affluent,Growth,North America,Jon Bell,Organic App,2026-02-01,73,Growth Builder,68,42
+CL00754,Riley Cole,Digital Starter,Balanced,Europe,Noah Miller,Organic App,2024-12-01,72,Balanced Core,48,29
+CL00755,Quinn Carter,HNW,Balanced,APAC,Sofia Garcia,Partner API,2025-07-01,86,Balanced Core,48,58
+CL00756,Jordan Tran,Mass Affluent,Aggressive,North America,Lin Nguyen,Organic App,2025-07-01,88,Equity Edge,84,42
+CL00757,Cameron Bennett,Mass Affluent,Conservative,Europe,Sofia Garcia,Advisor Referral,2024-09-01,77,Income Shield,25,42
+CL00758,Nico Price,HNW,Growth,Europe,Lin Nguyen,Advisor Referral,2024-02-01,69,Growth Builder,68,58
+CL00759,Emerson Singh,Retirement,Aggressive,North America,Avery Chen,Paid Search,2025-02-01,85,Equity Edge,84,38
+CL00760,Skyler Adams,Mass Affluent,Balanced,LATAM,Avery Chen,Employer Plan,2025-03-01,92,Balanced Core,48,42
+CL00761,Cameron Morris,Mass Affluent,Balanced,North America,Mina Patel,Partner API,2025-02-01,88,Balanced Core,48,42
+CL00762,Casey Carter,Mass Affluent,Conservative,North America,Sofia Garcia,Organic App,2026-03-01,90,Income Shield,25,42
+CL00763,Casey Rivera,Digital Starter,Growth,North America,Avery Chen,Partner API,2026-02-01,81,Growth Builder,68,29
+CL00764,Reese Hughes,Retirement,Balanced,North America,Mina Patel,Organic App,2025-11-01,90,Balanced Core,48,38
+CL00765,Cameron Hughes,UHNW,Growth,APAC,Noah Miller,Organic App,2026-03-01,81,Growth Builder,68,74
+CL00766,Jordan Wong,Digital Starter,Growth,North America,Jon Bell,Organic App,2026-02-01,91,Growth Builder,68,29
+CL00767,Ari Adams,HNW,Growth,Europe,Sofia Garcia,Advisor Referral,2024-08-01,83,Growth Builder,68,58
+CL00768,Emerson Adams,HNW,Balanced,North America,Sofia Garcia,Paid Search,2024-08-01,78,Balanced Core,48,58
+CL00769,Drew Martin,Mass Affluent,Conservative,Europe,Noah Miller,Paid Search,2024-07-01,87,Income Shield,25,42
+CL00770,Cameron Bennett,HNW,Growth,North America,Sofia Garcia,Partner API,2024-02-01,85,Growth Builder,68,58
+CL00771,Morgan Singh,HNW,Conservative,North America,Lin Nguyen,Organic App,2024-06-01,93,Income Shield,25,58
+CL00772,Cameron Rivera,Mass Affluent,Balanced,North America,Avery Chen,Organic App,2025-07-01,81,Balanced Core,48,42
+CL00773,Skyler Bennett,Mass Affluent,Aggressive,APAC,Noah Miller,Partner API,2025-12-01,71,Equity Edge,84,42
+CL00774,Jamie Cooper,Digital Starter,Balanced,North America,Mina Patel,Organic App,2025-06-01,71,Balanced Core,48,29
+CL00775,Alex Morris,Mass Affluent,Conservative,North America,Mina Patel,Advisor Referral,2025-12-01,74,Income Shield,25,42
+CL00776,Reese Morris,Retirement,Conservative,APAC,Lin Nguyen,Paid Search,2024-12-01,93,Income Shield,25,38
+CL00777,Alex Singh,Digital Starter,Conservative,APAC,Sofia Garcia,Organic App,2024-06-01,84,Income Shield,25,29
+CL00778,Emerson Nguyen,Digital Starter,Conservative,North America,Mina Patel,Organic App,2024-12-01,84,Income Shield,25,29
+CL00779,Taylor Lee,Mass Affluent,Growth,APAC,Jon Bell,Partner API,2024-02-01,83,Growth Builder,68,42
+CL00780,Nico Cooper,HNW,Growth,North America,Mina Patel,Paid Search,2026-04-01,84,Growth Builder,68,58
+CL00781,Harper Brooks,HNW,Balanced,Europe,Noah Miller,Paid Search,2025-09-01,91,Balanced Core,48,58
+CL00782,Morgan Price,Mass Affluent,Aggressive,North America,Noah Miller,Advisor Referral,2025-12-01,99,Equity Edge,84,42
+CL00783,Nico Tran,Mass Affluent,Balanced,North America,Jon Bell,Advisor Referral,2025-08-01,87,Balanced Core,48,42
+CL00784,Casey Wong,Mass Affluent,Conservative,North America,Sofia Garcia,Organic App,2024-04-01,85,Income Shield,25,42
+CL00785,Harper Wong,HNW,Growth,Europe,Sofia Garcia,Employer Plan,2024-03-01,86,Growth Builder,68,58
+CL00786,Ari Bennett,Mass Affluent,Balanced,APAC,Lin Nguyen,Partner API,2025-08-01,90,Balanced Core,48,42
+CL00787,Skyler Cole,Mass Affluent,Growth,North America,Jon Bell,Organic App,2026-03-01,90,Growth Builder,68,42
+CL00788,Quinn Carter,HNW,Growth,North America,Noah Miller,Organic App,2024-01-01,78,Growth Builder,68,58
+CL00789,Sam Cole,HNW,Aggressive,Europe,Noah Miller,Organic App,2025-04-01,78,Equity Edge,84,58
+CL00790,Parker Young,Mass Affluent,Balanced,Europe,Avery Chen,Paid Search,2025-07-01,84,Balanced Core,48,42
+CL00791,Ari Brooks,Retirement,Balanced,Europe,Sofia Garcia,Employer Plan,2025-06-01,87,Balanced Core,48,38
+CL00792,Ari Morris,HNW,Balanced,Europe,Avery Chen,Employer Plan,2024-06-01,78,Balanced Core,48,58
+CL00793,Parker Kim,Mass Affluent,Growth,North America,Jon Bell,Employer Plan,2025-06-01,90,Growth Builder,68,42
+CL00794,Harper Wong,Mass Affluent,Growth,North America,Mina Patel,Advisor Referral,2026-02-01,99,Growth Builder,68,42
+CL00795,Cameron Kim,UHNW,Balanced,Europe,Noah Miller,Paid Search,2024-10-01,89,Balanced Core,48,74
+CL00796,Nico Cole,Mass Affluent,Balanced,North America,Mina Patel,Organic App,2024-01-01,97,Balanced Core,48,42
+CL00797,Skyler Wong,HNW,Conservative,Europe,Jon Bell,Partner API,2025-09-01,88,Income Shield,25,58
+CL00798,Drew Patel,Digital Starter,Aggressive,North America,Avery Chen,Employer Plan,2026-02-01,94,Equity Edge,84,29
+CL00799,Nico Hughes,HNW,Growth,North America,Lin Nguyen,Advisor Referral,2024-05-01,86,Growth Builder,68,58
+CL00800,Jamie Kim,Retirement,Growth,APAC,Jon Bell,Advisor Referral,2024-09-01,74,Growth Builder,68,38
+CL00801,Alex Adams,Digital Starter,Growth,North America,Avery Chen,Partner API,2024-12-01,91,Growth Builder,68,29
+CL00802,Jordan Hughes,Digital Starter,Balanced,North America,Noah Miller,Organic App,2025-05-01,86,Balanced Core,48,29
+CL00803,Morgan Brooks,Mass Affluent,Balanced,Europe,Noah Miller,Paid Search,2025-01-01,80,Balanced Core,48,42
+CL00804,Sam Young,Mass Affluent,Balanced,APAC,Mina Patel,Advisor Referral,2026-05-01,93,Balanced Core,48,42
+CL00805,Nico Hughes,Mass Affluent,Growth,North America,Lin Nguyen,Paid Search,2025-05-01,84,Growth Builder,68,42
+CL00806,Casey Tran,Mass Affluent,Conservative,LATAM,Sofia Garcia,Paid Search,2024-12-01,87,Income Shield,25,42
+CL00807,Sam Stone,Mass Affluent,Growth,Europe,Jon Bell,Paid Search,2024-05-01,85,Growth Builder,68,42
+CL00808,Nico Morris,Mass Affluent,Balanced,North America,Mina Patel,Paid Search,2025-12-01,90,Balanced Core,48,42
+CL00809,Jordan Tran,UHNW,Balanced,LATAM,Avery Chen,Partner API,2025-04-01,88,Balanced Core,48,74
+CL00810,Skyler Rivera,Digital Starter,Balanced,North America,Jon Bell,Employer Plan,2026-01-01,94,Balanced Core,48,29
+CL00811,Jamie Brooks,Digital Starter,Balanced,LATAM,Avery Chen,Paid Search,2025-04-01,82,Balanced Core,48,29
+CL00812,Parker Lee,Digital Starter,Growth,APAC,Lin Nguyen,Paid Search,2026-02-01,83,Growth Builder,68,29
+CL00813,Rowan Carter,HNW,Balanced,APAC,Sofia Garcia,Paid Search,2024-06-01,86,Balanced Core,48,58
+CL00814,Quinn Carter,Digital Starter,Conservative,APAC,Mina Patel,Employer Plan,2025-03-01,89,Income Shield,25,29
+CL00815,Sam Carter,HNW,Growth,North America,Noah Miller,Advisor Referral,2025-05-01,90,Growth Builder,68,58
+CL00816,Lena Rivera,HNW,Balanced,Europe,Mina Patel,Organic App,2024-09-01,67,Balanced Core,48,58
+CL00817,Nico Morris,Retirement,Aggressive,APAC,Mina Patel,Organic App,2026-01-01,72,Equity Edge,84,38
+CL00818,Taylor Cole,Mass Affluent,Growth,APAC,Avery Chen,Advisor Referral,2025-02-01,81,Growth Builder,68,42
+CL00819,Taylor Carter,HNW,Balanced,APAC,Avery Chen,Organic App,2025-08-01,78,Balanced Core,48,58
+CL00820,Casey Tran,Retirement,Balanced,Europe,Jon Bell,Paid Search,2024-12-01,87,Balanced Core,48,38
+CL00821,Emerson Cooper,Mass Affluent,Balanced,North America,Lin Nguyen,Advisor Referral,2025-07-01,82,Balanced Core,48,42
+CL00822,Harper Brooks,HNW,Balanced,APAC,Noah Miller,Organic App,2024-05-01,93,Balanced Core,48,58
+CL00823,Rowan Young,Mass Affluent,Balanced,APAC,Lin Nguyen,Paid Search,2024-01-01,88,Balanced Core,48,42
+CL00824,Harper Price,Mass Affluent,Growth,APAC,Sofia Garcia,Paid Search,2025-07-01,82,Growth Builder,68,42
+CL00825,Harper Price,Mass Affluent,Balanced,Europe,Jon Bell,Organic App,2026-02-01,91,Balanced Core,48,42
+CL00826,Alex Wong,Digital Starter,Balanced,APAC,Mina Patel,Advisor Referral,2026-01-01,87,Balanced Core,48,29
+CL00827,Emerson Bennett,Mass Affluent,Conservative,North America,Avery Chen,Employer Plan,2026-01-01,71,Income Shield,25,42
+CL00828,Cameron Cooper,HNW,Conservative,Europe,Jon Bell,Advisor Referral,2025-04-01,85,Income Shield,25,58
+CL00829,Skyler Hughes,Mass Affluent,Balanced,LATAM,Jon Bell,Partner API,2026-05-01,84,Balanced Core,48,42
+CL00830,Harper Lee,UHNW,Balanced,North America,Avery Chen,Advisor Referral,2025-03-01,83,Balanced Core,48,74
+CL00831,Sam Martin,Mass Affluent,Conservative,North America,Lin Nguyen,Paid Search,2024-01-01,77,Income Shield,25,42
+CL00832,Morgan Wong,HNW,Balanced,APAC,Noah Miller,Paid Search,2024-06-01,99,Balanced Core,48,58
+CL00833,Lena Rivera,Mass Affluent,Balanced,North America,Noah Miller,Organic App,2026-03-01,85,Balanced Core,48,42
+CL00834,Taylor Martin,Mass Affluent,Balanced,Europe,Mina Patel,Employer Plan,2025-11-01,84,Balanced Core,48,42
+CL00835,Reese Nguyen,Digital Starter,Growth,North America,Mina Patel,Organic App,2024-12-01,93,Growth Builder,68,29
+CL00836,Alex Cooper,Digital Starter,Conservative,North America,Jon Bell,Partner API,2025-07-01,95,Income Shield,25,29
+CL00837,Morgan Morris,Mass Affluent,Conservative,APAC,Noah Miller,Advisor Referral,2024-12-01,74,Income Shield,25,42
+CL00838,Skyler Young,Retirement,Growth,North America,Avery Chen,Partner API,2024-08-01,80,Growth Builder,68,38
+CL00839,Rowan Hughes,Digital Starter,Balanced,North America,Lin Nguyen,Organic App,2026-01-01,90,Balanced Core,48,29
+CL00840,Quinn Lee,Mass Affluent,Balanced,APAC,Sofia Garcia,Organic App,2025-12-01,88,Balanced Core,48,42
+CL00841,Ari Tran,Retirement,Conservative,APAC,Sofia Garcia,Employer Plan,2024-11-01,94,Income Shield,25,38
+CL00842,Morgan Patel,Digital Starter,Balanced,North America,Lin Nguyen,Advisor Referral,2024-09-01,99,Balanced Core,48,29
+CL00843,Riley Wong,HNW,Conservative,Europe,Mina Patel,Organic App,2025-03-01,94,Income Shield,25,58
+CL00844,Rowan Stone,Mass Affluent,Balanced,North America,Sofia Garcia,Advisor Referral,2025-12-01,99,Balanced Core,48,42
+CL00845,Reese Patel,Mass Affluent,Conservative,APAC,Jon Bell,Organic App,2025-04-01,77,Income Shield,25,42
+CL00846,Quinn Stone,Mass Affluent,Growth,North America,Jon Bell,Paid Search,2025-09-01,86,Growth Builder,68,42
+CL00847,Harper Young,UHNW,Balanced,North America,Sofia Garcia,Organic App,2026-04-01,83,Balanced Core,48,74
+CL00848,Parker Martin,UHNW,Growth,Europe,Noah Miller,Advisor Referral,2024-09-01,94,Growth Builder,68,74
+CL00849,Jordan Cole,HNW,Conservative,Europe,Mina Patel,Advisor Referral,2026-04-01,84,Income Shield,25,58
+CL00850,Cameron Brooks,HNW,Aggressive,North America,Lin Nguyen,Paid Search,2026-05-01,87,Equity Edge,84,58
+CL00851,Morgan Rivera,Digital Starter,Growth,North America,Noah Miller,Partner API,2025-07-01,92,Growth Builder,68,29
+CL00852,Morgan Lee,Digital Starter,Balanced,North America,Jon Bell,Organic App,2025-01-01,83,Balanced Core,48,29
+CL00853,Sam Brooks,Digital Starter,Aggressive,North America,Avery Chen,Advisor Referral,2025-09-01,72,Equity Edge,84,29
+CL00854,Drew Lee,Retirement,Balanced,APAC,Jon Bell,Organic App,2026-05-01,99,Balanced Core,48,38
+CL00855,Harper Stone,Retirement,Conservative,North America,Jon Bell,Organic App,2024-10-01,79,Income Shield,25,38
+CL00856,Parker Tran,HNW,Balanced,APAC,Sofia Garcia,Paid Search,2024-04-01,89,Balanced Core,48,58
+CL00857,Harper Cooper,Mass Affluent,Aggressive,Europe,Noah Miller,Employer Plan,2025-05-01,86,Equity Edge,84,42
+CL00858,Jamie Bennett,UHNW,Conservative,North America,Jon Bell,Organic App,2024-06-01,79,Income Shield,25,74
+CL00859,Casey Morris,HNW,Growth,North America,Sofia Garcia,Advisor Referral,2025-04-01,96,Growth Builder,68,58
+CL00860,Reese Nguyen,HNW,Growth,Europe,Noah Miller,Employer Plan,2025-05-01,68,Growth Builder,68,58

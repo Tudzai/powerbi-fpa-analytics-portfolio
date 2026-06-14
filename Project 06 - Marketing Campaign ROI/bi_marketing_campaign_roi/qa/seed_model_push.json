@@ -1,0 +1,41 @@
+{
+    "timestamp":  "2026-06-11 14:30:26 +07:00",
+    "status":  "project6_model_pushed_to_seed_pbix_session",
+    "target_pbix":  "C:\\Users\\Win\\OneDrive - BEE LOGISTICS CORPORATION\\Documentss\\Portfolio\\Project 06 - Marketing Campaign ROI\\bi_marketing_campaign_roi\\output\\dashboard_model_seed.pbix",
+    "power_bi_port":  56671,
+    "process_id":  7876,
+    "database":  "010162f9-c651-40b1-bdea-c5d5c2869485",
+    "tables":  [
+                   "dim_date",
+                   "dim_product",
+                   "dim_customer",
+                   "dim_region",
+                   "dim_channel",
+                   "dim_device",
+                   "fact_orders",
+                   "fact_sessions",
+                   "fact_marketing_spend",
+                   "KPI Measures"
+               ],
+    "relationship_count":  11,
+    "measure_count":  17,
+    "measures":  [
+                     "GMV",
+                     "Net Revenue",
+                     "Orders",
+                     "Completed Orders",
+                     "Refunded Orders",
+                     "Cancelled Orders",
+                     "AOV",
+                     "Sessions",
+                     "Visitors",
+                     "Conversion Rate",
+                     "Refund/Cancel Rate",
+                     "Marketing Spend",
+                     "ROAS",
+                     "Contribution Margin",
+                     "Contribution Margin %",
+                     "Top Category",
+                     "Top Traffic Channel"
+                 ]
+}

@@ -1,0 +1,49 @@
+﻿product_id,product_name,category,subcategory,brand,base_price,launch_date,unit_cost,active_flag
+SKU_1001,Apparel Outerwear 1,Apparel,Outerwear,Mova,55.32,2024-01-01,32.09,1
+SKU_1002,Apparel Outerwear 2,Apparel,Outerwear,Luma,68.86,2024-01-01,39.94,1
+SKU_1003,Apparel Footwear 1,Apparel,Footwear,Aster,71.09,2024-01-01,41.23,1
+SKU_1004,Apparel Footwear 2,Apparel,Footwear,ClearPeak,58.25,2024-01-01,33.78,1
+SKU_1005,Apparel Basics 1,Apparel,Basics,Aster,59.14,2024-01-01,34.3,1
+SKU_1006,Apparel Basics 2,Apparel,Basics,Northline,56.56,2024-01-01,32.8,1
+SKU_1007,Apparel Accessories 1,Apparel,Accessories,Aster,49.81,2024-01-01,28.89,1
+SKU_1008,Apparel Accessories 2,Apparel,Accessories,Aster,59.11,2024-01-01,34.28,1
+SKU_1009,Beauty Skincare 1,Beauty,Skincare,Northline,46.75,2024-01-01,27.12,1
+SKU_1010,Beauty Skincare 2,Beauty,Skincare,Mova,37.2,2024-01-01,21.58,1
+SKU_1011,Beauty Makeup 1,Beauty,Makeup,Northline,35.96,2024-01-01,20.86,1
+SKU_1012,Beauty Makeup 2,Beauty,Makeup,Mova,30.42,2024-01-01,17.64,1
+SKU_1013,Beauty Fragrance 1,Beauty,Fragrance,Luma,50.45,2024-01-01,29.26,1
+SKU_1014,Beauty Fragrance 2,Beauty,Fragrance,Aster,35.24,2024-01-01,20.44,1
+SKU_1015,Beauty Haircare 1,Beauty,Haircare,Luma,46.32,2024-01-01,26.87,1
+SKU_1016,Beauty Haircare 2,Beauty,Haircare,Luma,27.61,2024-01-01,16.01,1
+SKU_1017,Electronics Audio 1,Electronics,Audio,Aster,214.0,2024-01-01,124.12,1
+SKU_1018,Electronics Audio 2,Electronics,Audio,Northline,258.83,2024-01-01,150.12,1
+SKU_1019,Electronics Smart Home 1,Electronics,Smart Home,Mova,206.64,2024-01-01,119.85,1
+SKU_1020,Electronics Smart Home 2,Electronics,Smart Home,Luma,218.82,2024-01-01,126.92,1
+SKU_1021,Electronics Wearables 1,Electronics,Wearables,Northline,231.2,2024-01-01,134.1,1
+SKU_1022,Electronics Wearables 2,Electronics,Wearables,ClearPeak,208.98,2024-01-01,121.21,1
+SKU_1023,Electronics Accessories 1,Electronics,Accessories,Northline,262.59,2024-01-01,152.3,1
+SKU_1024,Electronics Accessories 2,Electronics,Accessories,Aster,205.32,2024-01-01,119.09,1
+SKU_1025,Home Kitchen 1,Home,Kitchen,Luma,87.29,2024-01-01,50.63,1
+SKU_1026,Home Kitchen 2,Home,Kitchen,Mova,95.4,2024-01-01,55.33,1
+SKU_1027,Home Bedding 1,Home,Bedding,ClearPeak,102.06,2024-01-01,59.19,1
+SKU_1028,Home Bedding 2,Home,Bedding,Aster,83.76,2024-01-01,48.58,1
+SKU_1029,Home Decor 1,Home,Decor,Luma,98.15,2024-01-01,56.93,1
+SKU_1030,Home Decor 2,Home,Decor,Aster,90.66,2024-01-01,52.58,1
+SKU_1031,Home Storage 1,Home,Storage,Mova,87.53,2024-01-01,50.77,1
+SKU_1032,Home Storage 2,Home,Storage,Luma,111.87,2024-01-01,64.88,1
+SKU_1033,Sports Training 1,Sports,Training,Northline,78.25,2024-01-01,45.38,1
+SKU_1034,Sports Training 2,Sports,Training,Aster,82.03,2024-01-01,47.58,1
+SKU_1035,Sports Outdoor 1,Sports,Outdoor,Northline,83.01,2024-01-01,48.15,1
+SKU_1036,Sports Outdoor 2,Sports,Outdoor,Aster,68.56,2024-01-01,39.76,1
+SKU_1037,Sports Recovery 1,Sports,Recovery,Luma,67.21,2024-01-01,38.98,1
+SKU_1038,Sports Recovery 2,Sports,Recovery,Aster,91.48,2024-01-01,53.06,1
+SKU_1039,Sports Team Sports 1,Sports,Team Sports,Luma,89.83,2024-01-01,52.1,1
+SKU_1040,Sports Team Sports 2,Sports,Team Sports,Northline,78.28,2024-01-01,45.4,1
+SKU_1041,Books Business 1,Books,Business,Luma,21.2,2024-01-01,12.3,1
+SKU_1042,Books Business 2,Books,Business,Northline,25.86,2024-01-01,15.0,1
+SKU_1043,Books Fiction 1,Books,Fiction,Luma,20.68,2024-01-01,11.99,1
+SKU_1044,Books Fiction 2,Books,Fiction,Northline,26.55,2024-01-01,15.4,1
+SKU_1045,Books Children 1,Books,Children,Aster,24.57,2024-01-01,14.25,1
+SKU_1046,Books Children 2,Books,Children,Mova,27.66,2024-01-01,16.04,1
+SKU_1047,Books Wellness 1,Books,Wellness,Aster,24.09,2024-01-01,13.97,1
+SKU_1048,Books Wellness 2,Books,Wellness,ClearPeak,28.96,2024-01-01,16.8,1

@@ -1,0 +1,238 @@
+{
+  "objects": {
+    "grid": [
+      {
+        "properties": {
+          "gridHorizontal": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "outlineColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#D8DEE9'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "columnHeaders": [
+      {
+        "properties": {
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI Semibold'"
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.2D"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#172033'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "values": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.0D"
+              }
+            }
+          },
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI'"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#172033'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Values": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "From bucket",
+        "Name": "FactRollRate.prior_dpd_bucket",
+        "Type": 2048
+      },
+      {
+        "Restatement": "To bucket",
+        "Name": "FactRollRate.dpd_bucket",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Roll rate",
+        "Name": "KPI Measures.Roll Rate",
+        "Type": 1,
+        "Format": "0.0%"
+      },
+      {
+        "Restatement": "Balance",
+        "Name": "KPI Measures.Loan Book Balance",
+        "Type": 1,
+        "Format": "$#,0,,.0M"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 2,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 3,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "From bucket",
+      "queryName": "FactRollRate.prior_dpd_bucket",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "FactRollRate"
+            }
+          },
+          "Property": "prior_dpd_bucket"
+        }
+      }
+    },
+    {
+      "displayName": "To bucket",
+      "queryName": "FactRollRate.dpd_bucket",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "FactRollRate"
+            }
+          },
+          "Property": "dpd_bucket"
+        }
+      }
+    },
+    {
+      "displayName": "Roll rate",
+      "queryName": "KPI Measures.Roll Rate",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Roll Rate"
+        }
+      },
+      "format": "0.0%"
+    },
+    {
+      "displayName": "Balance",
+      "queryName": "KPI Measures.Loan Book Balance",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Loan Book Balance"
+        }
+      },
+      "format": "$#,0,,.0M"
+    }
+  ]
+}

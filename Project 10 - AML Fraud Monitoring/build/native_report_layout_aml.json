@@ -1,0 +1,6079 @@
+{
+  "id": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "name": "SharedResources",
+        "type": 2,
+        "items": [
+          {
+            "type": 202,
+            "path": "BaseThemes/CY26SU05.json",
+            "name": "CY26SU05"
+          }
+        ],
+        "disabled": false
+      }
+    }
+  ],
+  "sections": [
+    {
+      "id": 0,
+      "name": "Page01_Fraud___Compliance_Overview",
+      "displayName": "Fraud & Compliance Overview",
+      "filters": "[]",
+      "ordinal": 0,
+      "visualContainers": [
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_transactions",
+          "position": {
+            "x": 24,
+            "y": 84,
+            "z": 100,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 100
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Total Transactions"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Total Transactions",
+                      "displayName": "Total Transactions"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Total Transactions'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_flagged_amount",
+          "position": {
+            "x": 224,
+            "y": 84,
+            "z": 101,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 101
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Flagged Amount"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Flagged Amount",
+                      "displayName": "Flagged Amount"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Flagged Amount'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_alerts",
+          "position": {
+            "x": 424,
+            "y": 84,
+            "z": 102,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 102
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Count",
+                      "displayName": "Alerts"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Alerts'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_suspicious",
+          "position": {
+            "x": 624,
+            "y": 84,
+            "z": 103,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 103
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Suspicious Cases"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Suspicious Cases",
+                      "displayName": "Suspicious Cases"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Suspicious Cases'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_fpr",
+          "position": {
+            "x": 824,
+            "y": 84,
+            "z": 104,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 104
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "False Positive Rate"
+                        }
+                      },
+                      "queryRef": "KPI Measures.False Positive Rate",
+                      "displayName": "False Positive Rate"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'False Positive Rate'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_overdue",
+          "position": {
+            "x": 1024,
+            "y": 84,
+            "z": 105,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 105
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Overdue Cases"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Overdue Cases",
+                      "displayName": "Overdue Cases"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Overdue Cases'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "slicer_month",
+          "position": {
+            "x": 900,
+            "y": 20,
+            "z": 10,
+            "height": 48,
+            "width": 110,
+            "tabOrder": 10
+          },
+          "visual": {
+            "visualType": "slicer",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimDate"
+                            }
+                          },
+                          "Property": "MonthYear"
+                        }
+                      },
+                      "queryRef": "DimDate.MonthYear",
+                      "displayName": "Month"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Month'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "slicer_corridor",
+          "position": {
+            "x": 1020,
+            "y": 20,
+            "z": 11,
+            "height": 48,
+            "width": 120,
+            "tabOrder": 11
+          },
+          "visual": {
+            "visualType": "slicer",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimCorridor"
+                            }
+                          },
+                          "Property": "CorridorRiskTier"
+                        }
+                      },
+                      "queryRef": "DimCorridor.CorridorRiskTier",
+                      "displayName": "Corridor"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Corridor'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "slicer_severity",
+          "position": {
+            "x": 1150,
+            "y": 20,
+            "z": 12,
+            "height": 48,
+            "width": 104,
+            "tabOrder": 12
+          },
+          "visual": {
+            "visualType": "slicer",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FactAlerts"
+                            }
+                          },
+                          "Property": "Severity"
+                        }
+                      },
+                      "queryRef": "FactAlerts.Severity",
+                      "displayName": "Severity"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Severity'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "trend_alerts_cases",
+          "position": {
+            "x": 24,
+            "y": 210,
+            "z": 200,
+            "height": 300,
+            "width": 760,
+            "tabOrder": 200
+          },
+          "visual": {
+            "visualType": "lineChart",
+            "query": {
+              "queryState": {
+                "Category": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimDate"
+                            }
+                          },
+                          "Property": "MonthYear"
+                        }
+                      },
+                      "queryRef": "DimDate.MonthYear",
+                      "displayName": "Month"
+                    }
+                  ]
+                },
+                "Y": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Count",
+                      "displayName": "Alert Count"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Case Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Case Count",
+                      "displayName": "Case Count"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "SAR Filed Cases"
+                        }
+                      },
+                      "queryRef": "KPI Measures.SAR Filed Cases",
+                      "displayName": "SAR Filed Cases"
+                    }
+                  ]
+                }
+              },
+              "sortDefinition": {
+                "sort": [
+                  {
+                    "field": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "DimDate"
+                          }
+                        },
+                        "Property": "MonthIndex"
+                      }
+                    },
+                    "direction": "Ascending"
+                  }
+                ]
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Alert, Case, and SAR Trend'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "subTitle": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Monthly monitoring activity.'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#657383"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "8L"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "typology_mix",
+          "position": {
+            "x": 812,
+            "y": 210,
+            "z": 201,
+            "height": 300,
+            "width": 444,
+            "tabOrder": 201
+          },
+          "visual": {
+            "visualType": "barChart",
+            "query": {
+              "queryState": {
+                "Category": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimRule"
+                            }
+                          },
+                          "Property": "Typology"
+                        }
+                      },
+                      "queryRef": "DimRule.Typology",
+                      "displayName": "Typology"
+                    }
+                  ]
+                },
+                "Y": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Count",
+                      "displayName": "Alert Count"
+                    }
+                  ]
+                }
+              },
+              "sortDefinition": {
+                "sort": [
+                  {
+                    "field": {
+                      "Measure": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "KPI Measures"
+                          }
+                        },
+                        "Property": "Alert Count"
+                      }
+                    },
+                    "direction": "Descending"
+                  }
+                ]
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Alerts by Typology'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "subTitle": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Top rule families by alert volume.'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#657383"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "8L"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "corridor_risk",
+          "position": {
+            "x": 24,
+            "y": 540,
+            "z": 300,
+            "height": 150,
+            "width": 760,
+            "tabOrder": 300
+          },
+          "visual": {
+            "visualType": "tableEx",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimCorridor"
+                            }
+                          },
+                          "Property": "Corridor"
+                        }
+                      },
+                      "queryRef": "DimCorridor.Corridor",
+                      "displayName": "Corridor"
+                    },
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimCorridor"
+                            }
+                          },
+                          "Property": "CorridorRiskTier"
+                        }
+                      },
+                      "queryRef": "DimCorridor.CorridorRiskTier",
+                      "displayName": "Risk Tier"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Count",
+                      "displayName": "Alerts"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Flagged Amount"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Flagged Amount",
+                      "displayName": "Flagged Amount"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "False Positive Rate"
+                        }
+                      },
+                      "queryRef": "KPI Measures.False Positive Rate",
+                      "displayName": "FPR"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Country / Corridor Risk Watchlist'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "severity_mix",
+          "position": {
+            "x": 812,
+            "y": 540,
+            "z": 301,
+            "height": 150,
+            "width": 444,
+            "tabOrder": 301
+          },
+          "visual": {
+            "visualType": "donutChart",
+            "query": {
+              "queryState": {
+                "Category": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FactAlerts"
+                            }
+                          },
+                          "Property": "Severity"
+                        }
+                      },
+                      "queryRef": "FactAlerts.Severity",
+                      "displayName": "Severity"
+                    }
+                  ]
+                },
+                "Y": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Count",
+                      "displayName": "Alert Count"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Alert Severity Mix'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":\"#F6F7F4\"}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0.0D\"}}}}}],\"outspace\":[{\"properties\":{\"color\":{\"solid\":{\"color\":\"#F6F7F4\"}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0.0D\"}}}}}]}}",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "id": 1,
+      "name": "Page02_Alert___Customer_Risk_Deep_Dive",
+      "displayName": "Alert & Customer Risk Deep Dive",
+      "filters": "[]",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "slicer_rule",
+          "position": {
+            "x": 886,
+            "y": 20,
+            "z": 10,
+            "height": 48,
+            "width": 120,
+            "tabOrder": 10
+          },
+          "visual": {
+            "visualType": "slicer",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimRule"
+                            }
+                          },
+                          "Property": "Typology"
+                        }
+                      },
+                      "queryRef": "DimRule.Typology",
+                      "displayName": "Rule"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Rule'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "slicer_channel",
+          "position": {
+            "x": 1020,
+            "y": 20,
+            "z": 11,
+            "height": 48,
+            "width": 110,
+            "tabOrder": 11
+          },
+          "visual": {
+            "visualType": "slicer",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimChannel"
+                            }
+                          },
+                          "Property": "Channel"
+                        }
+                      },
+                      "queryRef": "DimChannel.Channel",
+                      "displayName": "Channel"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Channel'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "slicer_customer_tier",
+          "position": {
+            "x": 1140,
+            "y": 20,
+            "z": 12,
+            "height": 48,
+            "width": 116,
+            "tabOrder": 12
+          },
+          "visual": {
+            "visualType": "slicer",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimCustomer"
+                            }
+                          },
+                          "Property": "CustomerRiskTier"
+                        }
+                      },
+                      "queryRef": "DimCustomer.CustomerRiskTier",
+                      "displayName": "Customer Risk"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Customer Risk'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "alert_funnel",
+          "position": {
+            "x": 24,
+            "y": 88,
+            "z": 100,
+            "height": 300,
+            "width": 390,
+            "tabOrder": 100
+          },
+          "visual": {
+            "visualType": "funnel",
+            "query": {
+              "queryState": {
+                "Category": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimRule"
+                            }
+                          },
+                          "Property": "Typology"
+                        }
+                      },
+                      "queryRef": "DimRule.Typology",
+                      "displayName": "Typology"
+                    }
+                  ]
+                },
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Count",
+                      "displayName": "Alert Count"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Alert Funnel by Typology'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "subTitle": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Alert concentration and case conversion entry point.'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#657383"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "8L"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "rule_performance_scatter",
+          "position": {
+            "x": 444,
+            "y": 88,
+            "z": 101,
+            "height": 300,
+            "width": 390,
+            "tabOrder": 101
+          },
+          "visual": {
+            "visualType": "scatterChart",
+            "query": {
+              "queryState": {
+                "Details": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimRule"
+                            }
+                          },
+                          "Property": "RuleName"
+                        }
+                      },
+                      "queryRef": "DimRule.RuleName",
+                      "displayName": "Rule"
+                    }
+                  ]
+                },
+                "X": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Count",
+                      "displayName": "Alert Volume"
+                    }
+                  ]
+                },
+                "Y": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Rule Precision"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Rule Precision",
+                      "displayName": "Precision"
+                    }
+                  ]
+                },
+                "Size": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Amount"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Amount",
+                      "displayName": "Alert Amount"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Rule Performance'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "subTitle": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Precision versus alert volume.'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#657383"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "8L"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "high_risk_customers",
+          "position": {
+            "x": 864,
+            "y": 88,
+            "z": 102,
+            "height": 300,
+            "width": 392,
+            "tabOrder": 102
+          },
+          "visual": {
+            "visualType": "tableEx",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimCustomer"
+                            }
+                          },
+                          "Property": "Customer"
+                        }
+                      },
+                      "queryRef": "DimCustomer.Customer",
+                      "displayName": "Customer"
+                    },
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimCustomer"
+                            }
+                          },
+                          "Property": "CustomerRiskTier"
+                        }
+                      },
+                      "queryRef": "DimCustomer.CustomerRiskTier",
+                      "displayName": "Tier"
+                    },
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimCustomer"
+                            }
+                          },
+                          "Property": "HomeCountry"
+                        }
+                      },
+                      "queryRef": "DimCustomer.HomeCountry",
+                      "displayName": "Country"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Count",
+                      "displayName": "Alerts"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Case Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Case Count",
+                      "displayName": "Cases"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Amount"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Amount",
+                      "displayName": "Alert Amount"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Average Alert Risk Score"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Average Alert Risk Score",
+                      "displayName": "Risk"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'High-Risk Customers'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "corridor_amount",
+          "position": {
+            "x": 24,
+            "y": 420,
+            "z": 200,
+            "height": 270,
+            "width": 560,
+            "tabOrder": 200
+          },
+          "visual": {
+            "visualType": "barChart",
+            "query": {
+              "queryState": {
+                "Category": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimCorridor"
+                            }
+                          },
+                          "Property": "Corridor"
+                        }
+                      },
+                      "queryRef": "DimCorridor.Corridor",
+                      "displayName": "Corridor"
+                    }
+                  ]
+                },
+                "Y": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Flagged Amount"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Flagged Amount",
+                      "displayName": "Flagged Amount"
+                    }
+                  ]
+                }
+              },
+              "sortDefinition": {
+                "sort": [
+                  {
+                    "field": {
+                      "Measure": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "KPI Measures"
+                          }
+                        },
+                        "Property": "Flagged Amount"
+                      }
+                    },
+                    "direction": "Descending"
+                  }
+                ]
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Flagged Amount by Corridor'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "subTitle": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Value exposure by origin-destination corridor.'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#657383"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "8L"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "channel_risk",
+          "position": {
+            "x": 616,
+            "y": 420,
+            "z": 201,
+            "height": 270,
+            "width": 310,
+            "tabOrder": 201
+          },
+          "visual": {
+            "visualType": "columnChart",
+            "query": {
+              "queryState": {
+                "Category": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimChannel"
+                            }
+                          },
+                          "Property": "Channel"
+                        }
+                      },
+                      "queryRef": "DimChannel.Channel",
+                      "displayName": "Channel"
+                    }
+                  ]
+                },
+                "Y": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Rate"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Rate",
+                      "displayName": "Alert Rate"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "False Positive Rate"
+                        }
+                      },
+                      "queryRef": "KPI Measures.False Positive Rate",
+                      "displayName": "False Positive Rate"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Channel Risk Quality'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "subTitle": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Alert rate and false positive rate.'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#657383"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "8L"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "alert_detail",
+          "position": {
+            "x": 956,
+            "y": 420,
+            "z": 202,
+            "height": 270,
+            "width": 300,
+            "tabOrder": 202
+          },
+          "visual": {
+            "visualType": "tableEx",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimRule"
+                            }
+                          },
+                          "Property": "RuleName"
+                        }
+                      },
+                      "queryRef": "DimRule.RuleName",
+                      "displayName": "Rule"
+                    },
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FactAlerts"
+                            }
+                          },
+                          "Property": "Severity"
+                        }
+                      },
+                      "queryRef": "FactAlerts.Severity",
+                      "displayName": "Severity"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Alert Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Alert Count",
+                      "displayName": "Alert Count"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Rule Precision"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Rule Precision",
+                      "displayName": "Rule Precision"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Rule Detail'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":\"#F6F7F4\"}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0.0D\"}}}}}],\"outspace\":[{\"properties\":{\"color\":{\"solid\":{\"color\":\"#F6F7F4\"}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0.0D\"}}}}}]}}",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "id": 2,
+      "name": "Page03_Case_SLA___Rule_Governance",
+      "displayName": "Case SLA & Rule Governance",
+      "filters": "[]",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_open_cases",
+          "position": {
+            "x": 24,
+            "y": 84,
+            "z": 100,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 100
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Open Cases"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Open Cases",
+                      "displayName": "Open Cases"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Open Cases'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_sla",
+          "position": {
+            "x": 224,
+            "y": 84,
+            "z": 101,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 101
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "SLA Compliance Rate"
+                        }
+                      },
+                      "queryRef": "KPI Measures.SLA Compliance Rate",
+                      "displayName": "SLA Compliance"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'SLA Compliance'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_avg_age",
+          "position": {
+            "x": 424,
+            "y": 84,
+            "z": 102,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 102
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Average Case Age Days"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Average Case Age Days",
+                      "displayName": "Avg Case Age"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Avg Case Age'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_rule_precision",
+          "position": {
+            "x": 624,
+            "y": 84,
+            "z": 103,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 103
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Rule Precision"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Rule Precision",
+                      "displayName": "Rule Precision"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Rule Precision'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_gov",
+          "position": {
+            "x": 824,
+            "y": 84,
+            "z": 104,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 104
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Governance Changes"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Governance Changes",
+                      "displayName": "Governance Changes"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Governance Changes'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "kpi_sars",
+          "position": {
+            "x": 1024,
+            "y": 84,
+            "z": 105,
+            "height": 92,
+            "width": 185,
+            "tabOrder": 105
+          },
+          "visual": {
+            "visualType": "card",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "SAR Filed Cases"
+                        }
+                      },
+                      "queryRef": "KPI Measures.SAR Filed Cases",
+                      "displayName": "SAR Filed"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'SAR Filed'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "slicer_priority",
+          "position": {
+            "x": 1020,
+            "y": 20,
+            "z": 11,
+            "height": 48,
+            "width": 110,
+            "tabOrder": 11
+          },
+          "visual": {
+            "visualType": "slicer",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FactCases"
+                            }
+                          },
+                          "Property": "CasePriority"
+                        }
+                      },
+                      "queryRef": "FactCases.CasePriority",
+                      "displayName": "Priority"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Priority'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "slicer_queue",
+          "position": {
+            "x": 1140,
+            "y": 20,
+            "z": 12,
+            "height": 48,
+            "width": 116,
+            "tabOrder": 12
+          },
+          "visual": {
+            "visualType": "slicer",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimAnalyst"
+                            }
+                          },
+                          "Property": "Queue"
+                        }
+                      },
+                      "queryRef": "DimAnalyst.Queue",
+                      "displayName": "Queue"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Queue'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "case_aging",
+          "position": {
+            "x": 24,
+            "y": 210,
+            "z": 200,
+            "height": 300,
+            "width": 390,
+            "tabOrder": 200
+          },
+          "visual": {
+            "visualType": "columnChart",
+            "query": {
+              "queryState": {
+                "Category": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FactCases"
+                            }
+                          },
+                          "Property": "CaseStatus"
+                        }
+                      },
+                      "queryRef": "FactCases.CaseStatus",
+                      "displayName": "CaseStatus"
+                    }
+                  ]
+                },
+                "Y": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Case Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Case Count",
+                      "displayName": "Case Count"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Overdue Cases"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Overdue Cases",
+                      "displayName": "Overdue Cases"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Case Aging and Status'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "subTitle": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Open, closed, SAR, and overdue case inventory.'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#657383"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "8L"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "analyst_workload",
+          "position": {
+            "x": 444,
+            "y": 210,
+            "z": 201,
+            "height": 300,
+            "width": 390,
+            "tabOrder": 201
+          },
+          "visual": {
+            "visualType": "barChart",
+            "query": {
+              "queryState": {
+                "Category": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimAnalyst"
+                            }
+                          },
+                          "Property": "Analyst"
+                        }
+                      },
+                      "queryRef": "DimAnalyst.Analyst",
+                      "displayName": "Analyst"
+                    }
+                  ]
+                },
+                "Y": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Case Count"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Case Count",
+                      "displayName": "Case Count"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Overdue Cases"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Overdue Cases",
+                      "displayName": "Overdue Cases"
+                    }
+                  ]
+                }
+              },
+              "sortDefinition": {
+                "sort": [
+                  {
+                    "field": {
+                      "Measure": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "KPI Measures"
+                          }
+                        },
+                        "Property": "Case Count"
+                      }
+                    },
+                    "direction": "Descending"
+                  }
+                ]
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Analyst Workload'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "subTitle": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Case load and overdue count by analyst.'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#657383"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "8L"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "rule_precision",
+          "position": {
+            "x": 864,
+            "y": 210,
+            "z": 202,
+            "height": 300,
+            "width": 392,
+            "tabOrder": 202
+          },
+          "visual": {
+            "visualType": "barChart",
+            "query": {
+              "queryState": {
+                "Category": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimRule"
+                            }
+                          },
+                          "Property": "RuleName"
+                        }
+                      },
+                      "queryRef": "DimRule.RuleName",
+                      "displayName": "RuleName"
+                    }
+                  ]
+                },
+                "Y": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "Rule Precision"
+                        }
+                      },
+                      "queryRef": "KPI Measures.Rule Precision",
+                      "displayName": "Rule Precision"
+                    },
+                    {
+                      "field": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "KPI Measures"
+                            }
+                          },
+                          "Property": "False Positive Rate"
+                        }
+                      },
+                      "queryRef": "KPI Measures.False Positive Rate",
+                      "displayName": "False Positive Rate"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Rule Precision and FPR'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "subTitle": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Quality indicators by rule.'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#657383"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "8L"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+          "name": "governance_log",
+          "position": {
+            "x": 24,
+            "y": 540,
+            "z": 300,
+            "height": 150,
+            "width": 1232,
+            "tabOrder": 300
+          },
+          "visual": {
+            "visualType": "tableEx",
+            "query": {
+              "queryState": {
+                "Values": {
+                  "projections": [
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimDate"
+                            }
+                          },
+                          "Property": "MonthYear"
+                        }
+                      },
+                      "queryRef": "DimDate.MonthYear",
+                      "displayName": "Change Month"
+                    },
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DimRule"
+                            }
+                          },
+                          "Property": "RuleName"
+                        }
+                      },
+                      "queryRef": "DimRule.RuleName",
+                      "displayName": "Rule"
+                    },
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FactRuleGovernance"
+                            }
+                          },
+                          "Property": "ChangeType"
+                        }
+                      },
+                      "queryRef": "FactRuleGovernance.ChangeType",
+                      "displayName": "Change"
+                    },
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FactRuleGovernance"
+                            }
+                          },
+                          "Property": "ApprovalStatus"
+                        }
+                      },
+                      "queryRef": "FactRuleGovernance.ApprovalStatus",
+                      "displayName": "Status"
+                    },
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FactRuleGovernance"
+                            }
+                          },
+                          "Property": "PrecisionBefore"
+                        }
+                      },
+                      "queryRef": "FactRuleGovernance.PrecisionBefore",
+                      "displayName": "Precision Before"
+                    },
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FactRuleGovernance"
+                            }
+                          },
+                          "Property": "PrecisionAfter"
+                        }
+                      },
+                      "queryRef": "FactRuleGovernance.PrecisionAfter",
+                      "displayName": "Precision After"
+                    },
+                    {
+                      "field": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "FactRuleGovernance"
+                            }
+                          },
+                          "Property": "AlertVolumeDeltaPct"
+                        }
+                      },
+                      "queryRef": "FactRuleGovernance.AlertVolumeDeltaPct",
+                      "displayName": "Volume Delta"
+                    }
+                  ]
+                }
+              }
+            },
+            "visualContainerObjects": {
+              "title": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "text": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "'Rule Governance Audit Log'"
+                        }
+                      }
+                    },
+                    "fontColor": {
+                      "solid": {
+                        "color": "#17202A"
+                      }
+                    },
+                    "fontSize": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "10L"
+                        }
+                      }
+                    },
+                    "bold": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "titleWrap": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "background": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#FFFFFF"
+                      }
+                    },
+                    "transparency": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "border": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    },
+                    "color": {
+                      "solid": {
+                        "color": "#D8DED8"
+                      }
+                    },
+                    "radius": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "6L"
+                        }
+                      }
+                    }
+                  }
+                }
+              ],
+              "visualHeader": [
+                {
+                  "properties": {
+                    "show": {
+                      "expr": {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":\"#F6F7F4\"}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0.0D\"}}}}}],\"outspace\":[{\"properties\":{\"color\":{\"solid\":{\"color\":\"#F6F7F4\"}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0.0D\"}}}}}]}}",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "config": "{\"version\":\"5.73\",\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"useEnhancedTooltips\":true}}",
+  "layoutOptimization": 0
+}

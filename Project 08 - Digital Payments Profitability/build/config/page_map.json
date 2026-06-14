@@ -1,0 +1,38 @@
+{
+  "pages": [
+    {
+      "name": "01 Executive Overview",
+      "purpose": "Monitor GMV, transaction volume, revenue, take rate, contribution margin, and MoM growth.",
+      "visuals": [
+        "KPI strip",
+        "GMV/revenue/margin trend",
+        "segment margin",
+        "payment method mix",
+        "top merchant table"
+      ]
+    },
+    {
+      "name": "02 Merchant & Transaction Drivers",
+      "purpose": "Diagnose merchant segment, payment method, channel, refund, chargeback, and top/bottom merchant drivers.",
+      "visuals": [
+        "driver KPI strip",
+        "channel GMV",
+        "refund by vertical",
+        "chargeback bps",
+        "bottom merchant table",
+        "risk merchant table"
+      ]
+    },
+    {
+      "name": "03 Margin & Scenario Planning",
+      "purpose": "Model fee revenue bridge, cost per transaction, margin sensitivity, and price/take-rate scenarios.",
+      "visuals": [
+        "scenario KPI strip",
+        "fee revenue bridge",
+        "cost per transaction trend",
+        "margin sensitivity",
+        "scenario assumptions"
+      ]
+    }
+  ]
+}

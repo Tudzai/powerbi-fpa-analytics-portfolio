@@ -1,0 +1,1506 @@
+{
+  "name": "ad2bcba4-61e4-4388-ba37-81762f02e3ac",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimDate",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date",
+            "dataType": "string",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthStart",
+            "dataType": "string",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "dataType": "string",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthNumber",
+            "dataType": "string",
+            "sourceColumn": "MonthNumber",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sortByColumn": "MonthNumber",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthYear",
+            "dataType": "string",
+            "sourceColumn": "MonthYear",
+            "sortByColumn": "MonthIndex",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthIndex",
+            "dataType": "int64",
+            "sourceColumn": "MonthIndex",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "IsLatestCompleteMonth",
+            "dataType": "string",
+            "sourceColumn": "IsLatestCompleteMonth",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\dim_date.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"DateKey\", Int64.Type}, {\"Date\", type text}, {\"MonthStart\", type text}, {\"Year\", type text}, {\"Quarter\", type text}, {\"MonthNumber\", type text}, {\"MonthName\", type text}, {\"MonthYear\", type text}, {\"MonthIndex\", Int64.Type}, {\"IsLatestCompleteMonth\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCountry",
+        "columns": [
+          {
+            "name": "CountryCode",
+            "dataType": "string",
+            "sourceColumn": "CountryCode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CountryRiskScore",
+            "dataType": "int64",
+            "sourceColumn": "CountryRiskScore",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "CountryRiskTier",
+            "dataType": "string",
+            "sourceColumn": "CountryRiskTier",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCountry-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\dim_country.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"CountryCode\", type text}, {\"Country\", type text}, {\"Region\", type text}, {\"CountryRiskScore\", Int64.Type}, {\"CountryRiskTier\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCorridor",
+        "columns": [
+          {
+            "name": "CorridorKey",
+            "dataType": "string",
+            "sourceColumn": "CorridorKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OriginCountryCode",
+            "dataType": "string",
+            "sourceColumn": "OriginCountryCode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DestinationCountryCode",
+            "dataType": "string",
+            "sourceColumn": "DestinationCountryCode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Corridor",
+            "dataType": "string",
+            "sourceColumn": "Corridor",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CorridorName",
+            "dataType": "string",
+            "sourceColumn": "CorridorName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CorridorRiskScore",
+            "dataType": "int64",
+            "sourceColumn": "CorridorRiskScore",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "CorridorRiskTier",
+            "dataType": "string",
+            "sourceColumn": "CorridorRiskTier",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCorridor-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\dim_corridor.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"CorridorKey\", type text}, {\"OriginCountryCode\", type text}, {\"DestinationCountryCode\", type text}, {\"Corridor\", type text}, {\"CorridorName\", type text}, {\"CorridorRiskScore\", Int64.Type}, {\"CorridorRiskTier\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimChannel",
+        "columns": [
+          {
+            "name": "ChannelKey",
+            "dataType": "string",
+            "sourceColumn": "ChannelKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Channel",
+            "dataType": "string",
+            "sourceColumn": "Channel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelMode",
+            "dataType": "string",
+            "sourceColumn": "ChannelMode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelRiskScore",
+            "dataType": "int64",
+            "sourceColumn": "ChannelRiskScore",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimChannel-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\dim_channel.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"ChannelKey\", type text}, {\"Channel\", type text}, {\"ChannelMode\", type text}, {\"ChannelRiskScore\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimProduct",
+        "columns": [
+          {
+            "name": "ProductKey",
+            "dataType": "string",
+            "sourceColumn": "ProductKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Product",
+            "dataType": "string",
+            "sourceColumn": "Product",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProductFamily",
+            "dataType": "string",
+            "sourceColumn": "ProductFamily",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProductRiskScore",
+            "dataType": "int64",
+            "sourceColumn": "ProductRiskScore",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimProduct-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\dim_product.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"ProductKey\", type text}, {\"Product\", type text}, {\"ProductFamily\", type text}, {\"ProductRiskScore\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimRule",
+        "columns": [
+          {
+            "name": "RuleKey",
+            "dataType": "string",
+            "sourceColumn": "RuleKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RuleName",
+            "dataType": "string",
+            "sourceColumn": "RuleName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Typology",
+            "dataType": "string",
+            "sourceColumn": "Typology",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RuleSeverity",
+            "dataType": "string",
+            "sourceColumn": "RuleSeverity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RuleStatus",
+            "dataType": "string",
+            "sourceColumn": "RuleStatus",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RuleOwner",
+            "dataType": "string",
+            "sourceColumn": "RuleOwner",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RuleRiskScore",
+            "dataType": "int64",
+            "sourceColumn": "RuleRiskScore",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "LastTunedDate",
+            "dataType": "string",
+            "sourceColumn": "LastTunedDate",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimRule-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\dim_rule.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"RuleKey\", type text}, {\"RuleName\", type text}, {\"Typology\", type text}, {\"RuleSeverity\", type text}, {\"RuleStatus\", type text}, {\"RuleOwner\", type text}, {\"RuleRiskScore\", Int64.Type}, {\"LastTunedDate\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimAnalyst",
+        "columns": [
+          {
+            "name": "AnalystKey",
+            "dataType": "string",
+            "sourceColumn": "AnalystKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Analyst",
+            "dataType": "string",
+            "sourceColumn": "Analyst",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AnalystTier",
+            "dataType": "string",
+            "sourceColumn": "AnalystTier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Queue",
+            "dataType": "string",
+            "sourceColumn": "Queue",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimAnalyst-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\dim_analyst.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"AnalystKey\", type text}, {\"Analyst\", type text}, {\"AnalystTier\", type text}, {\"Queue\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCustomer",
+        "columns": [
+          {
+            "name": "CustomerKey",
+            "dataType": "string",
+            "sourceColumn": "CustomerKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Customer",
+            "dataType": "string",
+            "sourceColumn": "Customer",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerSegment",
+            "dataType": "string",
+            "sourceColumn": "CustomerSegment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerType",
+            "dataType": "string",
+            "sourceColumn": "CustomerType",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "HomeCountryCode",
+            "dataType": "string",
+            "sourceColumn": "HomeCountryCode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "HomeCountry",
+            "dataType": "string",
+            "sourceColumn": "HomeCountry",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerRiskScore",
+            "dataType": "int64",
+            "sourceColumn": "CustomerRiskScore",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "CustomerRiskTier",
+            "dataType": "string",
+            "sourceColumn": "CustomerRiskTier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PEPFlag",
+            "dataType": "string",
+            "sourceColumn": "PEPFlag",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WatchlistFlag",
+            "dataType": "string",
+            "sourceColumn": "WatchlistFlag",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "KYCStatus",
+            "dataType": "string",
+            "sourceColumn": "KYCStatus",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OnboardingDate",
+            "dataType": "string",
+            "sourceColumn": "OnboardingDate",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCustomer-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\dim_customer.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"CustomerKey\", type text}, {\"Customer\", type text}, {\"CustomerSegment\", type text}, {\"CustomerType\", type text}, {\"HomeCountryCode\", type text}, {\"HomeCountry\", type text}, {\"CustomerRiskScore\", Int64.Type}, {\"CustomerRiskTier\", type text}, {\"PEPFlag\", type text}, {\"WatchlistFlag\", type text}, {\"KYCStatus\", type text}, {\"OnboardingDate\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactTransactions",
+        "columns": [
+          {
+            "name": "TransactionKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "TransactionKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CustomerKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CorridorKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CorridorKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ChannelKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProductKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ProductKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AmountUSD",
+            "dataType": "decimal",
+            "sourceColumn": "AmountUSD",
+            "formatString": "$#,0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "RiskScore",
+            "dataType": "int64",
+            "sourceColumn": "RiskScore",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "IsFlagged",
+            "dataType": "string",
+            "sourceColumn": "IsFlagged",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PrimaryRuleKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "PrimaryRuleKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RoundDollarFlag",
+            "dataType": "string",
+            "sourceColumn": "RoundDollarFlag",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TransactionType",
+            "dataType": "string",
+            "sourceColumn": "TransactionType",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactTransactions-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\fact_transactions.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"TransactionKey\", type text}, {\"DateKey\", Int64.Type}, {\"CustomerKey\", type text}, {\"CorridorKey\", type text}, {\"ChannelKey\", type text}, {\"ProductKey\", type text}, {\"AmountUSD\", type number}, {\"RiskScore\", Int64.Type}, {\"IsFlagged\", type text}, {\"PrimaryRuleKey\", type text}, {\"RoundDollarFlag\", type text}, {\"TransactionType\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactAlerts",
+        "columns": [
+          {
+            "name": "AlertKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "AlertKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TransactionKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "TransactionKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AlertDateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "AlertDateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CustomerKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RuleKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "RuleKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CorridorKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CorridorKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ChannelKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProductKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ProductKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AlertAmountUSD",
+            "dataType": "decimal",
+            "sourceColumn": "AlertAmountUSD",
+            "formatString": "$#,0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "RiskScore",
+            "dataType": "int64",
+            "sourceColumn": "RiskScore",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Severity",
+            "dataType": "string",
+            "sourceColumn": "Severity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AlertStatus",
+            "dataType": "string",
+            "sourceColumn": "AlertStatus",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsFalsePositive",
+            "dataType": "string",
+            "sourceColumn": "IsFalsePositive",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsTruePositive",
+            "dataType": "string",
+            "sourceColumn": "IsTruePositive",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EscalatedToCase",
+            "dataType": "string",
+            "sourceColumn": "EscalatedToCase",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CaseKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CaseKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ClosedDateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ClosedDateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "HoursToDisposition",
+            "dataType": "decimal",
+            "sourceColumn": "HoursToDisposition",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactAlerts-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\fact_alerts.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"AlertKey\", type text}, {\"TransactionKey\", type text}, {\"DateKey\", Int64.Type}, {\"AlertDateKey\", Int64.Type}, {\"CustomerKey\", type text}, {\"RuleKey\", type text}, {\"CorridorKey\", type text}, {\"ChannelKey\", type text}, {\"ProductKey\", type text}, {\"AlertAmountUSD\", type number}, {\"RiskScore\", Int64.Type}, {\"Severity\", type text}, {\"AlertStatus\", type text}, {\"IsFalsePositive\", type text}, {\"IsTruePositive\", type text}, {\"EscalatedToCase\", type text}, {\"CaseKey\", type text}, {\"ClosedDateKey\", Int64.Type}, {\"HoursToDisposition\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCases",
+        "columns": [
+          {
+            "name": "CaseKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CaseKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AlertKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "AlertKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CreatedDateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CreatedDateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ClosedDateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ClosedDateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CustomerKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RuleKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "RuleKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CorridorKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CorridorKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AnalystKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "AnalystKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CasePriority",
+            "dataType": "string",
+            "sourceColumn": "CasePriority",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CaseStatus",
+            "dataType": "string",
+            "sourceColumn": "CaseStatus",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Outcome",
+            "dataType": "string",
+            "sourceColumn": "Outcome",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SARFiled",
+            "dataType": "string",
+            "sourceColumn": "SARFiled",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SLAHours",
+            "dataType": "int64",
+            "sourceColumn": "SLAHours",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "AgeDays",
+            "dataType": "int64",
+            "sourceColumn": "AgeDays",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "HoursToClose",
+            "dataType": "decimal",
+            "sourceColumn": "HoursToClose",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "IsOverdue",
+            "dataType": "string",
+            "sourceColumn": "IsOverdue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CaseAmountUSD",
+            "dataType": "decimal",
+            "sourceColumn": "CaseAmountUSD",
+            "formatString": "$#,0",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactCases-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\fact_cases.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"CaseKey\", type text}, {\"AlertKey\", type text}, {\"CreatedDateKey\", Int64.Type}, {\"ClosedDateKey\", Int64.Type}, {\"CustomerKey\", type text}, {\"RuleKey\", type text}, {\"CorridorKey\", type text}, {\"AnalystKey\", type text}, {\"CasePriority\", type text}, {\"CaseStatus\", type text}, {\"Outcome\", type text}, {\"SARFiled\", type text}, {\"SLAHours\", Int64.Type}, {\"AgeDays\", Int64.Type}, {\"HoursToClose\", type number}, {\"IsOverdue\", type text}, {\"CaseAmountUSD\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactRuleGovernance",
+        "columns": [
+          {
+            "name": "GovernanceKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "GovernanceKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RuleKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "RuleKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChangeDateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ChangeDateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChangeType",
+            "dataType": "string",
+            "sourceColumn": "ChangeType",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChangeReason",
+            "dataType": "string",
+            "sourceColumn": "ChangeReason",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ApprovalStatus",
+            "dataType": "string",
+            "sourceColumn": "ApprovalStatus",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ApprovedBy",
+            "dataType": "string",
+            "sourceColumn": "ApprovedBy",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PrecisionBefore",
+            "dataType": "decimal",
+            "sourceColumn": "PrecisionBefore",
+            "formatString": "0.0%",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "PrecisionAfter",
+            "dataType": "decimal",
+            "sourceColumn": "PrecisionAfter",
+            "formatString": "0.0%",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "AlertVolumeDeltaPct",
+            "dataType": "decimal",
+            "sourceColumn": "AlertVolumeDeltaPct",
+            "formatString": "0.0%",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactRuleGovernance-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 10 - AML Fraud Monitoring\\\\data\\\\prepared\\\\fact_rule_governance.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"GovernanceKey\", type text}, {\"RuleKey\", type text}, {\"ChangeDateKey\", Int64.Type}, {\"ChangeType\", type text}, {\"ChangeReason\", type text}, {\"ApprovalStatus\", type text}, {\"ApprovedBy\", type text}, {\"PrecisionBefore\", type number}, {\"PrecisionAfter\", type number}, {\"AlertVolumeDeltaPct\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI Measures",
+        "columns": [
+          {
+            "name": "MeasureKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "MeasureKey"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "KPI Measures-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [MeasureKey = text], {{\"KPI\"}}) in Source"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Transactions",
+            "expression": "COUNTROWS ( FactTransactions )",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Transaction Amount",
+            "expression": "SUM ( FactTransactions[AmountUSD] )",
+            "formatString": "$#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Flagged Transactions",
+            "expression": "CALCULATE ( [Total Transactions], FactTransactions[IsFlagged] = \"Y\" )",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Flagged Amount",
+            "expression": "CALCULATE ( [Transaction Amount], FactTransactions[IsFlagged] = \"Y\" )",
+            "formatString": "$#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Alert Count",
+            "expression": "COUNTROWS ( FactAlerts )",
+            "formatString": "#,0",
+            "displayFolder": "Alert"
+          },
+          {
+            "name": "Case Count",
+            "expression": "COUNTROWS ( FactCases )",
+            "formatString": "#,0",
+            "displayFolder": "Case"
+          },
+          {
+            "name": "Suspicious Cases",
+            "expression": "CALCULATE ( [Case Count], FactCases[Outcome] IN { \"Confirmed Suspicious\", \"SAR Filed\" } )",
+            "formatString": "#,0",
+            "displayFolder": "Case"
+          },
+          {
+            "name": "SAR Filed Cases",
+            "expression": "CALCULATE ( [Case Count], FactCases[SARFiled] = \"Y\" )",
+            "formatString": "#,0",
+            "displayFolder": "Case"
+          },
+          {
+            "name": "Closed Alerts",
+            "expression": "CALCULATE ( [Alert Count], FactAlerts[AlertStatus] IN { \"Closed False Positive\", \"Closed True Positive\", \"SAR Filed\" } )",
+            "formatString": "#,0",
+            "displayFolder": "Alert"
+          },
+          {
+            "name": "False Positive Alerts",
+            "expression": "CALCULATE ( [Closed Alerts], FactAlerts[IsFalsePositive] = \"Y\" )",
+            "formatString": "#,0",
+            "displayFolder": "Alert"
+          },
+          {
+            "name": "False Positive Rate",
+            "expression": "DIVIDE ( [False Positive Alerts], [Closed Alerts] )",
+            "formatString": "0.0%",
+            "displayFolder": "Alert"
+          },
+          {
+            "name": "True Positive Alerts",
+            "expression": "CALCULATE ( [Alert Count], FactAlerts[IsTruePositive] = \"Y\" )",
+            "formatString": "#,0",
+            "displayFolder": "Alert"
+          },
+          {
+            "name": "Rule Precision",
+            "expression": "DIVIDE ( [True Positive Alerts], [Closed Alerts] )",
+            "formatString": "0.0%",
+            "displayFolder": "Rule"
+          },
+          {
+            "name": "Alert Rate",
+            "expression": "DIVIDE ( [Alert Count], [Total Transactions] )",
+            "formatString": "0.0%",
+            "displayFolder": "Alert"
+          },
+          {
+            "name": "Alert to Case Conversion",
+            "expression": "DIVIDE ( [Case Count], [Alert Count] )",
+            "formatString": "0.0%",
+            "displayFolder": "Alert"
+          },
+          {
+            "name": "SAR Conversion Rate",
+            "expression": "DIVIDE ( [SAR Filed Cases], [Case Count] )",
+            "formatString": "0.0%",
+            "displayFolder": "Case"
+          },
+          {
+            "name": "Open Cases",
+            "expression": "CALCULATE ( [Case Count], NOT ( FactCases[CaseStatus] IN { \"Closed\", \"SAR Filed\" } ) )",
+            "formatString": "#,0",
+            "displayFolder": "Case"
+          },
+          {
+            "name": "Overdue Cases",
+            "expression": "CALCULATE ( [Case Count], FactCases[IsOverdue] = \"Y\" )",
+            "formatString": "#,0",
+            "displayFolder": "SLA"
+          },
+          {
+            "name": "SLA Compliance Rate",
+            "expression": "DIVIDE ( [Case Count] - [Overdue Cases], [Case Count] )",
+            "formatString": "0.0%",
+            "displayFolder": "SLA"
+          },
+          {
+            "name": "Average Case Age Days",
+            "expression": "AVERAGE ( FactCases[AgeDays] )",
+            "formatString": "0.0",
+            "displayFolder": "SLA"
+          },
+          {
+            "name": "Average Alert Risk Score",
+            "expression": "AVERAGE ( FactAlerts[RiskScore] )",
+            "formatString": "0.0",
+            "displayFolder": "Risk"
+          },
+          {
+            "name": "High Risk Customers",
+            "expression": "CALCULATE ( DISTINCTCOUNT ( DimCustomer[CustomerKey] ), DimCustomer[CustomerRiskTier] = \"High\" )",
+            "formatString": "#,0",
+            "displayFolder": "Risk"
+          },
+          {
+            "name": "Governance Changes",
+            "expression": "COUNTROWS ( FactRuleGovernance )",
+            "formatString": "#,0",
+            "displayFolder": "Governance"
+          },
+          {
+            "name": "Avg Precision After Tuning",
+            "expression": "AVERAGE ( FactRuleGovernance[PrecisionAfter] )",
+            "formatString": "0.0%",
+            "displayFolder": "Governance"
+          },
+          {
+            "name": "Alert Amount",
+            "expression": "SUM ( FactAlerts[AlertAmountUSD] )",
+            "formatString": "$#,0",
+            "displayFolder": "Alert"
+          },
+          {
+            "name": "Case Amount",
+            "expression": "SUM ( FactCases[CaseAmountUSD] )",
+            "formatString": "$#,0",
+            "displayFolder": "Case"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "FactTransactions_Date",
+        "fromTable": "FactTransactions",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "FactTransactions_Customer",
+        "fromTable": "FactTransactions",
+        "fromColumn": "CustomerKey",
+        "toTable": "DimCustomer",
+        "toColumn": "CustomerKey"
+      },
+      {
+        "name": "FactTransactions_Corridor",
+        "fromTable": "FactTransactions",
+        "fromColumn": "CorridorKey",
+        "toTable": "DimCorridor",
+        "toColumn": "CorridorKey"
+      },
+      {
+        "name": "FactTransactions_Channel",
+        "fromTable": "FactTransactions",
+        "fromColumn": "ChannelKey",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelKey"
+      },
+      {
+        "name": "FactTransactions_Product",
+        "fromTable": "FactTransactions",
+        "fromColumn": "ProductKey",
+        "toTable": "DimProduct",
+        "toColumn": "ProductKey"
+      },
+      {
+        "name": "FactAlerts_Date",
+        "fromTable": "FactAlerts",
+        "fromColumn": "AlertDateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "FactAlerts_Customer",
+        "fromTable": "FactAlerts",
+        "fromColumn": "CustomerKey",
+        "toTable": "DimCustomer",
+        "toColumn": "CustomerKey"
+      },
+      {
+        "name": "FactAlerts_Rule",
+        "fromTable": "FactAlerts",
+        "fromColumn": "RuleKey",
+        "toTable": "DimRule",
+        "toColumn": "RuleKey"
+      },
+      {
+        "name": "FactAlerts_Corridor",
+        "fromTable": "FactAlerts",
+        "fromColumn": "CorridorKey",
+        "toTable": "DimCorridor",
+        "toColumn": "CorridorKey"
+      },
+      {
+        "name": "FactAlerts_Channel",
+        "fromTable": "FactAlerts",
+        "fromColumn": "ChannelKey",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelKey"
+      },
+      {
+        "name": "FactAlerts_Product",
+        "fromTable": "FactAlerts",
+        "fromColumn": "ProductKey",
+        "toTable": "DimProduct",
+        "toColumn": "ProductKey"
+      },
+      {
+        "name": "FactCases_Date",
+        "fromTable": "FactCases",
+        "fromColumn": "CreatedDateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "FactCases_Customer",
+        "fromTable": "FactCases",
+        "fromColumn": "CustomerKey",
+        "toTable": "DimCustomer",
+        "toColumn": "CustomerKey"
+      },
+      {
+        "name": "FactCases_Rule",
+        "fromTable": "FactCases",
+        "fromColumn": "RuleKey",
+        "toTable": "DimRule",
+        "toColumn": "RuleKey"
+      },
+      {
+        "name": "FactCases_Corridor",
+        "fromTable": "FactCases",
+        "fromColumn": "CorridorKey",
+        "toTable": "DimCorridor",
+        "toColumn": "CorridorKey"
+      },
+      {
+        "name": "FactCases_Analyst",
+        "fromTable": "FactCases",
+        "fromColumn": "AnalystKey",
+        "toTable": "DimAnalyst",
+        "toColumn": "AnalystKey"
+      },
+      {
+        "name": "FactRuleGovernance_Date",
+        "fromTable": "FactRuleGovernance",
+        "fromColumn": "ChangeDateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "FactRuleGovernance_Rule",
+        "fromTable": "FactRuleGovernance",
+        "fromColumn": "RuleKey",
+        "toTable": "DimRule",
+        "toColumn": "RuleKey"
+      }
+    ],
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Version": "2.0.0",
+            "Language": "en-US",
+            "Entities": {
+              "bee_measures.bee_revenue": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "BEE Measures",
+                    "ConceptualProperty": "BEE Revenue"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Revenue": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  },
+                  {
+                    "Customer Revenue": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  },
+                  {
+                    "Sales Revenue": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "bee_measures.bee_profit": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "BEE Measures",
+                    "ConceptualProperty": "BEE Profit"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Profit": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  },
+                  {
+                    "Customer Profit": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  },
+                  {
+                    "Sales Profit": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "bee_measures.bee_profit_margin_": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "BEE Measures",
+                    "ConceptualProperty": "BEE Profit Margin %"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Margin": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "bee_measures.bee_jobs": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "BEE Measures",
+                    "ConceptualProperty": "BEE Jobs"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Jobs": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "bee_measures.bee_volume": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "BEE Measures",
+                    "ConceptualProperty": "BEE Volume"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Volume": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "bee_measures.bee_revenue_per_job": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "BEE Measures",
+                    "ConceptualProperty": "BEE Revenue per Job"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Rev / Job": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "bee_measures.bee_profit_per_job": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "BEE Measures",
+                    "ConceptualProperty": "BEE Profit per Job"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Profit / Job": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"MCP-PBIModeling\"]"
+      }
+    ]
+  }
+}

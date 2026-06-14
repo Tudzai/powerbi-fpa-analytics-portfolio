@@ -1,0 +1,99 @@
+Latest Month =
+MAX ( DimDate[MonthStart] )
+-- Format: yyyy-mm-dd
+
+Total AUM =
+SUM ( FactAUMMonthly[EndingAUM] )
+-- Format: $#,0,,.0M
+
+Beginning AUM =
+SUM ( FactAUMMonthly[BeginningAUM] )
+-- Format: $#,0,,.0M
+
+Inflows =
+SUM ( FactAUMMonthly[Inflows] )
+-- Format: $#,0,,.0M
+
+Outflows =
+SUM ( FactAUMMonthly[Outflows] )
+-- Format: $#,0,,.0M
+
+Net New Money =
+SUM ( FactAUMMonthly[NetNewMoney] )
+-- Format: $#,0,,.0M
+
+Market Effect =
+SUM ( FactAUMMonthly[MarketEffect] )
+-- Format: $#,0,,.0M
+
+Advisory Revenue =
+SUM ( FactAUMMonthly[AdvisoryRevenue] )
+-- Format: $#,0,.0K
+
+Allocation Amount =
+SUM ( FactAllocationMonthly[AllocationAmount] )
+-- Format: $#,0,,.0M
+
+Active Clients =
+CALCULATE ( DISTINCTCOUNT ( FactAUMMonthly[ClientID] ), FactAUMMonthly[ActiveClientFlag] = 1 )
+-- Format: #,0
+
+Net Flow Rate =
+DIVIDE ( [Net New Money], [Beginning AUM] )
+-- Format: 0.0%
+
+Portfolio Return % =
+DIVIDE ( SUMX ( FactAUMMonthly, FactAUMMonthly[EndingAUM] * FactAUMMonthly[PortfolioReturnPct] ), [Total AUM] )
+-- Format: 0.0%
+
+Benchmark Return % =
+DIVIDE ( SUMX ( FactAUMMonthly, FactAUMMonthly[EndingAUM] * FactAUMMonthly[BenchmarkReturnPct] ), [Total AUM] )
+-- Format: 0.0%
+
+Alpha % =
+[Portfolio Return %] - [Benchmark Return %]
+-- Format: 0.0%
+
+Risk Mismatch Clients =
+CALCULATE ( DISTINCTCOUNT ( FactAUMMonthly[ClientID] ), FactAUMMonthly[RiskMismatchFlag] = 1 )
+-- Format: #,0
+
+Risk Mismatch Rate =
+DIVIDE ( [Risk Mismatch Clients], [Active Clients] )
+-- Format: 0.0%
+
+Rebalance Needed Clients =
+CALCULATE ( DISTINCTCOUNT ( FactAUMMonthly[ClientID] ), FactAUMMonthly[RebalanceNeededFlag] = 1 )
+-- Format: #,0
+
+Rebalance Needed Rate =
+DIVIDE ( [Rebalance Needed Clients], [Active Clients] )
+-- Format: 0.0%
+
+High Churn Risk Clients =
+CALCULATE ( DISTINCTCOUNT ( FactAUMMonthly[ClientID] ), FactAUMMonthly[ChurnRiskScore] >= 0.70 )
+-- Format: #,0
+
+High Outflow Risk Clients =
+CALCULATE ( DISTINCTCOUNT ( FactAUMMonthly[ClientID] ), FactAUMMonthly[OutflowRiskScore] >= 0.65 )
+-- Format: #,0
+
+Churn Risk AUM =
+SUMX ( FILTER ( FactAUMMonthly, FactAUMMonthly[ChurnRiskScore] >= 0.70 ), FactAUMMonthly[EndingAUM] )
+-- Format: $#,0,,.0M
+
+Churn Risk AUM Rate =
+DIVIDE ( [Churn Risk AUM], [Total AUM] )
+-- Format: 0.0%
+
+Top 10 Client AUM Share =
+VAR t = TOPN ( 10, SUMMARIZE ( DimClient, DimClient[ClientID], "AUMValue", [Total AUM] ), [AUMValue], DESC ) RETURN DIVIDE ( SUMX ( t, [AUMValue] ), [Total AUM] )
+-- Format: 0.0%
+
+Retention Action AUM =
+SUM ( FactRetentionActions[ExpectedRetainedAUM] )
+-- Format: $#,0,,.0M
+
+Open Retention Actions =
+COUNTROWS ( FactRetentionActions )
+-- Format: #,0

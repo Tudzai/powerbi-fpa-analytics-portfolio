@@ -1,0 +1,83 @@
+New Users = SUM ( FactGrowthMonthly[NewUsers] )
+
+KYC Submitted = SUM ( FactGrowthMonthly[KycSubmitted] )
+
+KYC Approved = SUM ( FactGrowthMonthly[KycApproved] )
+
+Activated Users = SUM ( FactGrowthMonthly[ActivatedUsers] )
+
+Funded Accounts = SUM ( FactGrowthMonthly[FundedAccounts] )
+
+Active Users = SUM ( FactGrowthMonthly[ActiveUsers] )
+
+Deposit Volume = SUM ( FactGrowthMonthly[DepositVolume] )
+
+Revenue = SUM ( FactGrowthMonthly[TotalRevenue] )
+
+Gross Profit = SUM ( FactGrowthMonthly[GrossProfit] )
+
+Marketing Spend = SUM ( FactGrowthMonthly[MarketingSpend] )
+
+Churned Users = SUM ( FactGrowthMonthly[ChurnedUsers] )
+
+Dormant Customers = SUM ( FactGrowthMonthly[DormantCustomers] )
+
+Churn Risk Users = SUM ( FactGrowthMonthly[ChurnRiskUsers] )
+
+KYC Completion Rate = DIVIDE ( [KYC Approved], [New Users] )
+
+Activation Rate = DIVIDE ( [Activated Users], [New Users] )
+
+Funded Rate = DIVIDE ( [Funded Accounts], [New Users] )
+
+CAC = DIVIDE ( [Marketing Spend], [Funded Accounts] )
+
+Monthly ARPU = DIVIDE ( [Revenue], [Active Users] )
+
+Churn Rate = DIVIDE ( [Churned Users], [Active Users] + [Churned Users] )
+
+LTV = DIVIDE ( [Monthly ARPU] * 0.68, [Churn Rate] )
+
+LTV CAC Ratio = DIVIDE ( [LTV], [CAC] )
+
+Payback Months = DIVIDE ( [CAC], DIVIDE ( [Gross Profit], [Active Users] ) )
+
+Marketing ROI = DIVIDE ( [Gross Profit] - [Marketing Spend], [Marketing Spend] )
+
+Contribution Profit = [Gross Profit] - [Marketing Spend]
+
+Funnel Users = SUM ( FunnelMonthly[UserCount] )
+
+Cohort Retention Rate = DIVIDE ( SUM ( CohortRetention[RetainedUsers] ), SUM ( CohortRetention[CohortSize] ) )
+
+Cohort LTV = DIVIDE ( SUM ( CohortRetention[CumulativeRevenue] ), SUM ( CohortRetention[CohortSize] ) )
+
+Campaign Spend = SUM ( CampaignMonthly[Spend] )
+
+Campaign Revenue = SUM ( CampaignMonthly[Revenue] )
+
+Campaign Gross Profit = SUM ( CampaignMonthly[GrossProfit] )
+
+Campaign Funded Accounts = SUM ( CampaignMonthly[FundedAccounts] )
+
+Campaign CAC = DIVIDE ( [Campaign Spend], [Campaign Funded Accounts] )
+
+Campaign ROI = DIVIDE ( [Campaign Gross Profit] - [Campaign Spend], [Campaign Spend] )
+
+Campaign Payback Months = DIVIDE ( [Campaign CAC], DIVIDE ( [Campaign Gross Profit], [Campaign Funded Accounts] ) )
+
+Latest New Users = VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [New Users], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )
+
+Latest Active Users = VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Active Users], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )
+
+Latest Funded Accounts = VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Funded Accounts], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )
+
+Latest Deposits = VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Deposit Volume], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )
+
+Latest Revenue = VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Revenue], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )
+
+Latest CAC = VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [CAC], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )
+
+Latest LTV = VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [LTV], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )
+
+Latest LTV CAC Ratio = VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [LTV CAC Ratio], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )

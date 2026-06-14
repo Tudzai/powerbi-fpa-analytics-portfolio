@@ -1,0 +1,164 @@
+[
+  {
+    "name": "Applications",
+    "expression": "COUNTROWS ( FactApplications )",
+    "format": "#,0",
+    "description": "Total submitted credit applications."
+  },
+  {
+    "name": "Approved Applications",
+    "expression": "CALCULATE ( [Applications], FactApplications[approved_flag] = 1 )",
+    "format": "#,0",
+    "description": "Approved application count."
+  },
+  {
+    "name": "Approval Rate",
+    "expression": "DIVIDE ( [Approved Applications], [Applications] )",
+    "format": "0.0%",
+    "description": "Approved applications divided by total applications."
+  },
+  {
+    "name": "Disbursed Loans",
+    "expression": "COUNTROWS ( FactLoans )",
+    "format": "#,0",
+    "description": "Funded loan count."
+  },
+  {
+    "name": "Disbursement Amount",
+    "expression": "SUM ( FactLoans[funded_amount] )",
+    "format": "$#,0,,.0M",
+    "description": "Total funded amount."
+  },
+  {
+    "name": "Loan Book Balance",
+    "expression": "SUM ( FactLoanMonthly[current_principal] )",
+    "format": "$#,0,,.0M",
+    "description": "Outstanding principal balance in selected snapshot context."
+  },
+  {
+    "name": "DPD 30+ Balance",
+    "expression": "SUM ( FactLoanMonthly[dpd30_balance] )",
+    "format": "$#,0,,.0M",
+    "description": "Outstanding balance with 30 or more days past due."
+  },
+  {
+    "name": "DPD 60+ Balance",
+    "expression": "SUM ( FactLoanMonthly[dpd60_balance] )",
+    "format": "$#,0,,.0M",
+    "description": "Outstanding balance with 60 or more days past due."
+  },
+  {
+    "name": "NPL Balance",
+    "expression": "SUM ( FactLoanMonthly[npl_balance] )",
+    "format": "$#,0,,.0M",
+    "description": "Outstanding 90+ DPD or non-performing balance."
+  },
+  {
+    "name": "Delinquency Rate",
+    "expression": "DIVIDE ( [DPD 30+ Balance], [Loan Book Balance] )",
+    "format": "0.0%",
+    "description": "DPD 30+ balance divided by loan book balance."
+  },
+  {
+    "name": "NPL Rate",
+    "expression": "DIVIDE ( [NPL Balance], [Loan Book Balance] )",
+    "format": "0.0%",
+    "description": "NPL balance divided by loan book balance."
+  },
+  {
+    "name": "Expected Loss",
+    "expression": "SUM ( FactLoanMonthly[expected_loss_amount] )",
+    "format": "$#,0,,.0M",
+    "description": "Expected credit loss amount."
+  },
+  {
+    "name": "Expected Loss Rate",
+    "expression": "DIVIDE ( [Expected Loss], [Loan Book Balance] )",
+    "format": "0.0%",
+    "description": "Expected loss divided by loan book balance."
+  },
+  {
+    "name": "Provision Amount",
+    "expression": "SUM ( FactLoanMonthly[provision_amount] )",
+    "format": "$#,0,,.0M",
+    "description": "Provision amount calculated from expected loss policy."
+  },
+  {
+    "name": "Provision Coverage",
+    "expression": "DIVIDE ( [Provision Amount], [Expected Loss] )",
+    "format": "0.0x",
+    "description": "Provision amount divided by expected loss."
+  },
+  {
+    "name": "Autopay Failure Loans",
+    "expression": "CALCULATE ( DISTINCTCOUNT ( FactLoanMonthly[loan_id] ), FactLoanMonthly[autopay_failure_flag] = 1 )",
+    "format": "#,0",
+    "description": "Loans with autopay failure flag."
+  },
+  {
+    "name": "Recovery Amount",
+    "expression": "SUM ( FactCollections[recovery_amount] )",
+    "format": "$#,0,,.0M",
+    "description": "Total recovery amount from collection cases."
+  },
+  {
+    "name": "Case Balance",
+    "expression": "SUM ( FactCollections[case_balance] )",
+    "format": "$#,0,,.0M",
+    "description": "Total balance assigned to collection cases."
+  },
+  {
+    "name": "Recovery Rate",
+    "expression": "DIVIDE ( [Recovery Amount], [Case Balance] )",
+    "format": "0.0%",
+    "description": "Recovered amount divided by collection case balance."
+  },
+  {
+    "name": "Collections SLA %",
+    "expression": "DIVIDE ( SUM ( FactCollections[within_sla_flag] ), COUNTROWS ( FactCollections ) )",
+    "format": "0.0%",
+    "description": "Share of collection cases handled within SLA."
+  },
+  {
+    "name": "Promise To Pay %",
+    "expression": "DIVIDE ( SUM ( FactCollections[promise_to_pay_flag] ), COUNTROWS ( FactCollections ) )",
+    "format": "0.0%",
+    "description": "Share of cases with promise to pay."
+  },
+  {
+    "name": "Vintage 30+ Rate",
+    "expression": "DIVIDE ( SUM ( FactVintage[dpd30_balance] ), SUM ( FactVintage[outstanding_balance] ) )",
+    "format": "0.0%",
+    "description": "Vintage cohort DPD 30+ balance share."
+  },
+  {
+    "name": "Vintage Loss Rate",
+    "expression": "AVERAGE ( FactVintage[cumulative_loss_rate] )",
+    "format": "0.0%",
+    "description": "Average cumulative loss rate across visible vintage cells."
+  },
+  {
+    "name": "Roll Rate",
+    "expression": "AVERAGE ( FactRollRate[roll_rate] )",
+    "format": "0.0%",
+    "description": "Average roll rate across selected transition cells."
+  },
+  {
+    "name": "Forecast Provision",
+    "expression": "SUM ( FactProvisionForecast[forecast_provision] )",
+    "format": "$#,0,,.0M",
+    "description": "Forecast provision amount."
+  },
+  {
+    "name": "Forecast Expected Loss",
+    "expression": "SUM ( FactProvisionForecast[forecast_expected_loss] )",
+    "format": "$#,0,,.0M",
+    "description": "Forecast expected loss."
+  },
+  {
+    "name": "Incremental Provision",
+    "expression": "SUM ( FactProvisionForecast[incremental_provision] )",
+    "format": "$#,0,,.0M",
+    "description": "Incremental provision bridge amount."
+  }
+]

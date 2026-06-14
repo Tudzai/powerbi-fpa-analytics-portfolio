@@ -1,0 +1,49 @@
+{
+  "pages": [
+    {
+      "page_number": 1,
+      "name": "Executive Overview",
+      "purpose": "Single-page business pulse for GMV, revenue, orders, conversion, and refund/cancel risk.",
+      "visuals": [
+        "kpi_cards",
+        "monthly_trend",
+        "category_gmv",
+        "channel_mix",
+        "risk_breakdown"
+      ]
+    },
+    {
+      "page_number": 2,
+      "name": "Revenue & Category",
+      "purpose": "Explain GMV and revenue by category, subcategory, region, customer segment, and month.",
+      "visuals": [
+        "category_tree",
+        "subcategory_table",
+        "region_heatmap",
+        "segment_bar"
+      ]
+    },
+    {
+      "page_number": 3,
+      "name": "Traffic & Conversion",
+      "purpose": "Track sessions, conversion, AOV, and marketing efficiency by channel and device.",
+      "visuals": [
+        "funnel",
+        "channel_table",
+        "device_conversion",
+        "roas_trend"
+      ]
+    },
+    {
+      "page_number": 4,
+      "name": "Refunds & Operations",
+      "purpose": "Monitor refund/cancel rate, refund reasons, risky categories, and revenue leakage.",
+      "visuals": [
+        "refund_rate_trend",
+        "reason_bar",
+        "category_risk_matrix",
+        "order_status_table"
+      ]
+    }
+  ]
+}

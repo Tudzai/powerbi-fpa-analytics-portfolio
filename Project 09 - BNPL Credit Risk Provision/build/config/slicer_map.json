@@ -1,0 +1,12 @@
+{
+  "global_slicers": [
+    "Month",
+    "Product",
+    "Risk"
+  ],
+  "tables": [
+    "DimMonth",
+    "DimProduct",
+    "DimRiskBand"
+  ]
+}

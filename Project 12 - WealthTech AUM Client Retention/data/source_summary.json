@@ -1,0 +1,20 @@
+{
+  "synthetic": true,
+  "seed": 20260611,
+  "latest_complete_month": "2026-05-01",
+  "raw_tables": {
+    "DimClient": "clients_raw.csv",
+    "DimPortfolio": "portfolios_raw.csv",
+    "FactAUMMonthly": "aum_monthly_raw.csv",
+    "FactAllocationMonthly": "allocation_monthly_raw.csv",
+    "FactRetentionActions": "retention_actions_raw.csv"
+  },
+  "prepared_tables": {
+    "DimDate": "dim_date.csv",
+    "DimClient": "dim_client.csv",
+    "DimPortfolio": "dim_portfolio.csv",
+    "FactAUMMonthly": "fact_aum_monthly.csv",
+    "FactAllocationMonthly": "fact_allocation_monthly.csv",
+    "FactRetentionActions": "fact_retention_actions.csv"
+  }
+}

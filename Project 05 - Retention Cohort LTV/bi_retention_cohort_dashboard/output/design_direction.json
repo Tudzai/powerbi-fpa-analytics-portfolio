@@ -1,0 +1,18 @@
+{
+  "version": "v02",
+  "date": "2026-06-11",
+  "style": "modern product analytics console",
+  "principles": [
+    "summary first",
+    "five or fewer hero KPIs per page",
+    "one-screen story",
+    "consistent theme and visual hierarchy",
+    "chart-led diagnostics with sparse annotation"
+  ],
+  "outputs": [
+    "output\\screenshots\\page_01_lifecycle_overview.png",
+    "output\\screenshots\\page_02_monthly_cohort_retention.png",
+    "output\\screenshots\\page_03_ltv_revenue_cohorts.png",
+    "output\\screenshots\\page_04_churn_signal_winback.png"
+  ]
+}

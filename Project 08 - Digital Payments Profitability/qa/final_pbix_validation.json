@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 08 - Digital Payments Profitability\\output\\dashboard_final.pbix",
+  "pbix_bytes": 5670105,
+  "security_bindings_present": true,
+  "page_count": 3,
+  "page_names": [
+    "01 Executive Overview",
+    "02 Merchant & Transaction Drivers",
+    "03 Margin & Scenario Planning"
+  ],
+  "visual_count": 45,
+  "visual_types": {
+    "barChart": 5,
+    "cardVisual": 18,
+    "lineChart": 3,
+    "slicer": 12,
+    "tableEx": 3,
+    "textbox": 3,
+    "waterfallChart": 1
+  },
+  "exported_fact_payment_rows": 69600
+}

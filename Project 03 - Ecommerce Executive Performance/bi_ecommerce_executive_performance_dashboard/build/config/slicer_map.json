@@ -1,0 +1,22 @@
+{
+  "global_slicers": [
+    "dim_date[year_month]",
+    "dim_region[region]",
+    "dim_channel[channel]",
+    "dim_device[device]"
+  ],
+  "page_specific_slicers": {
+    "Revenue & Category": [
+      "dim_product[category]",
+      "dim_product[subcategory]"
+    ],
+    "Traffic & Conversion": [
+      "dim_channel[channel]",
+      "dim_device[device]"
+    ],
+    "Refunds & Operations": [
+      "fact_orders[status]",
+      "dim_product[category]"
+    ]
+  }
+}

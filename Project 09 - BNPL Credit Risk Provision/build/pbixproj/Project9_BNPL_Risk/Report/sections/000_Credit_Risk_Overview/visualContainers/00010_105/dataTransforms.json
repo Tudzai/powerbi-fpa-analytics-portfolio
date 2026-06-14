@@ -1,0 +1,211 @@
+{
+  "objects": {
+    "layout": [
+      {
+        "properties": {
+          "rectangleRoundedCurve": {
+            "expr": {
+              "Literal": {
+                "Value": "6L"
+              }
+            }
+          },
+          "cellPadding": {
+            "expr": {
+              "Literal": {
+                "Value": "6.0D"
+              }
+            }
+          },
+          "paddingUniform": {
+            "expr": {
+              "Literal": {
+                "Value": "6.0D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "default"
+        }
+      }
+    ],
+    "fillCustom": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outline": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "default"
+        }
+      }
+    ],
+    "value": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "19.0D"
+              }
+            }
+          },
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI Semibold'"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#D45D5D'"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "KPI Measures.Expected Loss"
+        }
+      }
+    ],
+    "label": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          },
+          "position": {
+            "expr": {
+              "Literal": {
+                "Value": "'belowValue'"
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.5D"
+              }
+            }
+          },
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI'"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#687385'"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "KPI Measures.Expected Loss"
+        }
+      }
+    ],
+    "spacing": [
+      {
+        "properties": {
+          "verticalSpacing": {
+            "expr": {
+              "Literal": {
+                "Value": "0.0D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "id": "default"
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Data": [
+      0
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Expected loss",
+        "Name": "KPI Measures.Expected Loss",
+        "Type": 1,
+        "Format": "$#,0,,.0M"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Data",
+          "Projection": 0,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Expected loss",
+      "queryName": "KPI Measures.Expected Loss",
+      "roles": {
+        "Data": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Expected Loss"
+        }
+      },
+      "format": "$#,0,,.0M"
+    }
+  ]
+}

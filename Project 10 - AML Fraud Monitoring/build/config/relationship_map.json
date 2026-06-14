@@ -1,0 +1,164 @@
+[
+  {
+    "name": "FactTransactions_Date",
+    "from_table": "FactTransactions",
+    "from_column": "DateKey",
+    "to_table": "DimDate",
+    "to_column": "DateKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactTransactions_Customer",
+    "from_table": "FactTransactions",
+    "from_column": "CustomerKey",
+    "to_table": "DimCustomer",
+    "to_column": "CustomerKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactTransactions_Corridor",
+    "from_table": "FactTransactions",
+    "from_column": "CorridorKey",
+    "to_table": "DimCorridor",
+    "to_column": "CorridorKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactTransactions_Channel",
+    "from_table": "FactTransactions",
+    "from_column": "ChannelKey",
+    "to_table": "DimChannel",
+    "to_column": "ChannelKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactTransactions_Product",
+    "from_table": "FactTransactions",
+    "from_column": "ProductKey",
+    "to_table": "DimProduct",
+    "to_column": "ProductKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactAlerts_Date",
+    "from_table": "FactAlerts",
+    "from_column": "AlertDateKey",
+    "to_table": "DimDate",
+    "to_column": "DateKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactAlerts_Customer",
+    "from_table": "FactAlerts",
+    "from_column": "CustomerKey",
+    "to_table": "DimCustomer",
+    "to_column": "CustomerKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactAlerts_Rule",
+    "from_table": "FactAlerts",
+    "from_column": "RuleKey",
+    "to_table": "DimRule",
+    "to_column": "RuleKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactAlerts_Corridor",
+    "from_table": "FactAlerts",
+    "from_column": "CorridorKey",
+    "to_table": "DimCorridor",
+    "to_column": "CorridorKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactAlerts_Channel",
+    "from_table": "FactAlerts",
+    "from_column": "ChannelKey",
+    "to_table": "DimChannel",
+    "to_column": "ChannelKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactAlerts_Product",
+    "from_table": "FactAlerts",
+    "from_column": "ProductKey",
+    "to_table": "DimProduct",
+    "to_column": "ProductKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactCases_Date",
+    "from_table": "FactCases",
+    "from_column": "CreatedDateKey",
+    "to_table": "DimDate",
+    "to_column": "DateKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactCases_Customer",
+    "from_table": "FactCases",
+    "from_column": "CustomerKey",
+    "to_table": "DimCustomer",
+    "to_column": "CustomerKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactCases_Rule",
+    "from_table": "FactCases",
+    "from_column": "RuleKey",
+    "to_table": "DimRule",
+    "to_column": "RuleKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactCases_Corridor",
+    "from_table": "FactCases",
+    "from_column": "CorridorKey",
+    "to_table": "DimCorridor",
+    "to_column": "CorridorKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactCases_Analyst",
+    "from_table": "FactCases",
+    "from_column": "AnalystKey",
+    "to_table": "DimAnalyst",
+    "to_column": "AnalystKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactRuleGovernance_Date",
+    "from_table": "FactRuleGovernance",
+    "from_column": "ChangeDateKey",
+    "to_table": "DimDate",
+    "to_column": "DateKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  },
+  {
+    "name": "FactRuleGovernance_Rule",
+    "from_table": "FactRuleGovernance",
+    "from_column": "RuleKey",
+    "to_table": "DimRule",
+    "to_column": "RuleKey",
+    "cardinality": "Many-to-one",
+    "cross_filter": "Single"
+  }
+]

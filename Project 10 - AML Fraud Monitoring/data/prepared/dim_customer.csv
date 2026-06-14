@@ -1,0 +1,181 @@
+CustomerKey,Customer,CustomerSegment,CustomerType,HomeCountryCode,HomeCountry,CustomerRiskScore,CustomerRiskTier,PEPFlag,WatchlistFlag,KYCStatus,OnboardingDate
+C0001,Customer 0001,Fintech,Individual,TR,Turkey,67,Medium,N,N,Current,2025-11-23
+C0002,Customer 0002,Retail,Individual,SG,Singapore,15,Low,N,N,Current,2025-02-02
+C0003,Customer 0003,SME,Shell-risk entity,PH,Philippines,69,Medium,N,N,Current,2024-11-09
+C0004,Customer 0004,SME,Individual,ZA,South Africa,57,Medium,N,N,Current,2023-01-01
+C0005,Customer 0005,Money Services Business,Individual,HK,Hong Kong,45,Medium,N,N,Current,2025-12-05
+C0006,Customer 0006,Corporate,Individual,MX,Mexico,50,Medium,N,N,Current,2023-08-20
+C0007,Customer 0007,Wealth,Shell-risk entity,TR,Turkey,78,High,N,N,Current,2023-05-19
+C0008,Customer 0008,Money Services Business,Individual,SG,Singapore,22,Low,N,N,Current,2025-09-13
+C0009,Customer 0009,Retail,Individual,VN,Vietnam,36,Low,N,N,Due Soon,2023-05-16
+C0010,Customer 0010,Money Services Business,Business,GB,United Kingdom,16,Low,N,N,Due Soon,2023-10-31
+C0011,Customer 0011,Retail,Individual,SG,Singapore,43,Low,N,N,Current,2024-06-19
+C0012,Customer 0012,Fintech,Business,SG,Singapore,33,Low,N,Y,Overdue,2023-04-24
+C0013,Customer 0013,SME,Business,PH,Philippines,43,Low,Y,N,Current,2025-05-04
+C0014,Customer 0014,Corporate,Individual,PH,Philippines,56,Medium,N,N,Due Soon,2023-09-16
+C0015,Customer 0015,Retail,Individual,US,United States,39,Low,N,N,Current,2025-05-17
+C0016,Customer 0016,Fintech,Business,US,United States,21,Low,N,N,Current,2023-06-16
+C0017,Customer 0017,Money Services Business,Individual,VN,Vietnam,49,Medium,N,N,Current,2025-08-26
+C0018,Customer 0018,Retail,Individual,HK,Hong Kong,47,Medium,N,N,Current,2024-01-19
+C0019,Customer 0019,Retail,Individual,ZA,South Africa,70,High,N,N,Due Soon,2023-01-22
+C0020,Customer 0020,Money Services Business,Business,GB,United Kingdom,55,Medium,N,N,Current,2024-06-22
+C0021,Customer 0021,Retail,Shell-risk entity,US,United States,61,Medium,N,N,Due Soon,2023-07-21
+C0022,Customer 0022,Retail,Individual,HK,Hong Kong,48,Medium,N,N,Current,2024-12-19
+C0023,Customer 0023,Retail,Business,TR,Turkey,49,Medium,N,N,Overdue,2023-03-24
+C0024,Customer 0024,SME,Individual,GB,United Kingdom,52,Medium,N,N,Current,2025-12-02
+C0025,Customer 0025,SME,Individual,SG,Singapore,40,Low,N,N,Current,2024-07-08
+C0026,Customer 0026,Retail,Business,AE,United Arab Emirates,84,High,Y,N,Current,2025-04-22
+C0027,Customer 0027,Fintech,Individual,HK,Hong Kong,44,Low,N,N,Current,2025-07-28
+C0028,Customer 0028,Money Services Business,Individual,ZA,South Africa,59,Medium,N,N,Current,2024-05-04
+C0029,Customer 0029,Fintech,Individual,BR,Brazil,33,Low,N,N,Current,2025-03-12
+C0030,Customer 0030,Retail,Individual,PH,Philippines,54,Medium,N,N,Current,2024-07-11
+C0031,Customer 0031,Wealth,Individual,GB,United Kingdom,54,Medium,N,N,Due Soon,2024-12-28
+C0032,Customer 0032,Corporate,Individual,TR,Turkey,76,High,Y,N,Current,2025-10-29
+C0033,Customer 0033,Money Services Business,Individual,TR,Turkey,57,Medium,N,N,Overdue,2023-10-03
+C0034,Customer 0034,Wealth,Individual,HK,Hong Kong,35,Low,N,N,Current,2025-09-03
+C0035,Customer 0035,Retail,Business,PH,Philippines,55,Medium,N,N,Current,2025-10-14
+C0036,Customer 0036,Retail,Individual,SG,Singapore,38,Low,N,N,Current,2024-05-10
+C0037,Customer 0037,Retail,Business,SG,Singapore,28,Low,N,N,Current,2024-01-05
+C0038,Customer 0038,Money Services Business,Individual,PH,Philippines,46,Medium,N,N,Due Soon,2023-04-08
+C0039,Customer 0039,Fintech,Individual,VN,Vietnam,24,Low,N,N,Current,2023-06-20
+C0040,Customer 0040,Retail,Individual,MX,Mexico,52,Medium,N,N,Due Soon,2025-09-21
+C0041,Customer 0041,Retail,Individual,SG,Singapore,45,Medium,N,N,Due Soon,2025-08-09
+C0042,Customer 0042,Retail,Individual,TR,Turkey,54,Medium,N,N,Overdue,2024-03-28
+C0043,Customer 0043,Corporate,Individual,GB,United Kingdom,15,Low,N,N,Current,2025-03-25
+C0044,Customer 0044,Corporate,Individual,VN,Vietnam,65,Medium,N,Y,Current,2024-10-08
+C0045,Customer 0045,Retail,Non-resident,US,United States,21,Low,N,N,Current,2023-02-22
+C0046,Customer 0046,Retail,Individual,SG,Singapore,33,Low,N,N,Current,2026-02-05
+C0047,Customer 0047,Retail,Individual,VN,Vietnam,46,Medium,N,N,Current,2023-02-22
+C0048,Customer 0048,Money Services Business,Business,SG,Singapore,15,Low,N,N,Current,2023-03-30
+C0049,Customer 0049,Retail,Business,GB,United Kingdom,42,Low,N,N,Current,2023-03-19
+C0050,Customer 0050,Corporate,Individual,SG,Singapore,69,Medium,N,Y,Current,2026-03-06
+C0051,Customer 0051,Fintech,Individual,AE,United Arab Emirates,66,Medium,N,N,Current,2025-11-03
+C0052,Customer 0052,Fintech,Individual,US,United States,15,Low,N,N,Current,2024-11-02
+C0053,Customer 0053,Corporate,Business,GB,United Kingdom,56,Medium,N,N,Current,2023-08-30
+C0054,Customer 0054,Money Services Business,Business,MX,Mexico,58,Medium,N,N,Current,2025-01-23
+C0055,Customer 0055,Money Services Business,Individual,SG,Singapore,40,Low,N,N,Overdue,2025-03-23
+C0056,Customer 0056,Corporate,Business,SG,Singapore,39,Low,N,N,Current,2024-08-03
+C0057,Customer 0057,Retail,Individual,PH,Philippines,55,Medium,N,N,Current,2025-07-15
+C0058,Customer 0058,Corporate,Individual,US,United States,28,Low,N,N,Due Soon,2023-02-17
+C0059,Customer 0059,Corporate,Business,SG,Singapore,35,Low,N,N,Due Soon,2025-03-18
+C0060,Customer 0060,Retail,Non-resident,MX,Mexico,59,Medium,N,N,Overdue,2025-04-20
+C0061,Customer 0061,Corporate,Individual,US,United States,29,Low,N,N,Current,2026-02-23
+C0062,Customer 0062,SME,Business,VN,Vietnam,44,Low,N,N,Current,2025-08-18
+C0063,Customer 0063,Retail,Individual,US,United States,30,Low,N,N,Current,2023-12-30
+C0064,Customer 0064,Corporate,Business,MX,Mexico,72,High,N,N,Current,2024-06-21
+C0065,Customer 0065,SME,Individual,GB,United Kingdom,50,Medium,N,N,Current,2024-10-19
+C0066,Customer 0066,Fintech,Shell-risk entity,US,United States,38,Low,N,N,Due Soon,2024-12-15
+C0067,Customer 0067,Retail,Individual,MX,Mexico,45,Medium,N,N,Current,2024-03-19
+C0068,Customer 0068,SME,Individual,AE,United Arab Emirates,52,Medium,N,N,Due Soon,2023-04-19
+C0069,Customer 0069,Corporate,Non-resident,BR,Brazil,49,Medium,N,N,Current,2025-09-21
+C0070,Customer 0070,Wealth,Individual,AE,United Arab Emirates,64,Medium,N,N,Current,2023-06-17
+C0071,Customer 0071,SME,Individual,SG,Singapore,48,Medium,N,N,Current,2024-05-05
+C0072,Customer 0072,Retail,Shell-risk entity,MX,Mexico,52,Medium,N,N,Current,2025-12-09
+C0073,Customer 0073,Retail,Individual,HK,Hong Kong,46,Medium,N,N,Current,2025-01-03
+C0074,Customer 0074,SME,Non-resident,HK,Hong Kong,38,Low,N,N,Current,2026-02-28
+C0075,Customer 0075,Retail,Individual,GB,United Kingdom,76,High,N,N,Due Soon,2025-12-28
+C0076,Customer 0076,Retail,Individual,PH,Philippines,55,Medium,N,N,Current,2025-09-04
+C0077,Customer 0077,Money Services Business,Business,BR,Brazil,36,Low,N,N,Current,2025-08-26
+C0078,Customer 0078,Fintech,Individual,US,United States,64,Medium,N,N,Current,2025-04-24
+C0079,Customer 0079,SME,Individual,PH,Philippines,37,Low,N,N,Current,2025-10-08
+C0080,Customer 0080,Retail,Individual,BR,Brazil,55,Medium,N,N,Current,2025-07-07
+C0081,Customer 0081,Wealth,Individual,ZA,South Africa,66,Medium,N,N,Current,2026-01-08
+C0082,Customer 0082,Fintech,Individual,VN,Vietnam,43,Low,N,N,Overdue,2023-09-05
+C0083,Customer 0083,Retail,Business,HK,Hong Kong,81,High,N,N,Overdue,2025-04-08
+C0084,Customer 0084,Corporate,Individual,VN,Vietnam,34,Low,N,N,Current,2023-12-11
+C0085,Customer 0085,Retail,Business,ZA,South Africa,50,Medium,N,N,Current,2023-04-04
+C0086,Customer 0086,Fintech,Business,VN,Vietnam,57,Medium,N,N,Current,2026-01-03
+C0087,Customer 0087,Retail,Individual,VN,Vietnam,52,Medium,N,N,Current,2024-03-13
+C0088,Customer 0088,Retail,Individual,GB,United Kingdom,52,Medium,Y,N,Current,2024-04-20
+C0089,Customer 0089,SME,Non-resident,PH,Philippines,33,Low,N,N,Due Soon,2023-05-19
+C0090,Customer 0090,Retail,Non-resident,US,United States,37,Low,N,N,Due Soon,2025-06-30
+C0091,Customer 0091,Retail,Business,SG,Singapore,39,Low,N,N,Current,2025-06-13
+C0092,Customer 0092,Fintech,Individual,MX,Mexico,40,Low,N,N,Due Soon,2024-07-25
+C0093,Customer 0093,Fintech,Non-resident,SG,Singapore,16,Low,N,N,Current,2024-02-07
+C0094,Customer 0094,Corporate,Individual,HK,Hong Kong,43,Low,N,N,Due Soon,2025-09-18
+C0095,Customer 0095,Corporate,Individual,VN,Vietnam,50,Medium,N,N,Current,2025-03-21
+C0096,Customer 0096,SME,Individual,ZA,South Africa,57,Medium,N,N,Current,2023-09-02
+C0097,Customer 0097,Wealth,Individual,AE,United Arab Emirates,53,Medium,Y,N,Due Soon,2025-04-15
+C0098,Customer 0098,SME,Individual,MX,Mexico,41,Low,N,N,Current,2025-04-10
+C0099,Customer 0099,Retail,Business,GB,United Kingdom,43,Low,N,N,Current,2023-01-16
+C0100,Customer 0100,Wealth,Individual,BR,Brazil,48,Medium,N,N,Current,2024-10-23
+C0101,Customer 0101,Corporate,Business,AE,United Arab Emirates,69,Medium,N,N,Current,2025-08-20
+C0102,Customer 0102,Retail,Individual,ZA,South Africa,60,Medium,N,N,Current,2025-04-18
+C0103,Customer 0103,Fintech,Business,TR,Turkey,56,Medium,N,N,Current,2023-03-23
+C0104,Customer 0104,Corporate,Individual,PH,Philippines,28,Low,N,N,Current,2025-11-05
+C0105,Customer 0105,Corporate,Individual,SG,Singapore,39,Low,N,N,Due Soon,2024-07-28
+C0106,Customer 0106,Retail,Individual,VN,Vietnam,29,Low,N,N,Overdue,2024-09-14
+C0107,Customer 0107,Fintech,Individual,SG,Singapore,29,Low,N,N,Current,2023-07-11
+C0108,Customer 0108,SME,Individual,HK,Hong Kong,28,Low,N,N,Current,2024-03-22
+C0109,Customer 0109,Retail,Individual,PH,Philippines,49,Medium,N,N,Current,2023-08-31
+C0110,Customer 0110,Retail,Individual,GB,United Kingdom,58,Medium,Y,N,Current,2025-06-20
+C0111,Customer 0111,Corporate,Individual,MX,Mexico,57,Medium,N,N,Current,2025-06-09
+C0112,Customer 0112,Corporate,Individual,PH,Philippines,58,Medium,N,N,Current,2024-05-28
+C0113,Customer 0113,Fintech,Individual,NG,Nigeria,39,Low,N,N,Current,2025-01-22
+C0114,Customer 0114,SME,Individual,VN,Vietnam,15,Low,N,N,Due Soon,2026-02-26
+C0115,Customer 0115,Fintech,Individual,HK,Hong Kong,49,Medium,N,N,Due Soon,2024-06-29
+C0116,Customer 0116,Corporate,Individual,TR,Turkey,69,Medium,N,Y,Current,2024-03-27
+C0117,Customer 0117,Fintech,Business,US,United States,27,Low,N,N,Current,2025-09-17
+C0118,Customer 0118,Money Services Business,Business,NG,Nigeria,58,Medium,N,N,Current,2023-06-22
+C0119,Customer 0119,Fintech,Individual,VN,Vietnam,61,Medium,N,N,Current,2025-09-07
+C0120,Customer 0120,Money Services Business,Individual,MX,Mexico,51,Medium,N,N,Current,2025-02-12
+C0121,Customer 0121,Money Services Business,Individual,BR,Brazil,43,Low,N,N,Current,2025-01-12
+C0122,Customer 0122,Fintech,Individual,VN,Vietnam,35,Low,N,N,Due Soon,2024-07-29
+C0123,Customer 0123,SME,Individual,SG,Singapore,32,Low,N,N,Current,2025-12-10
+C0124,Customer 0124,Money Services Business,Business,GB,United Kingdom,47,Medium,N,N,Current,2025-01-28
+C0125,Customer 0125,Corporate,Business,VN,Vietnam,45,Medium,N,N,Due Soon,2026-02-06
+C0126,Customer 0126,Retail,Business,GB,United Kingdom,43,Low,N,N,Current,2024-06-09
+C0127,Customer 0127,SME,Non-resident,AE,United Arab Emirates,65,Medium,N,N,Current,2024-12-23
+C0128,Customer 0128,Money Services Business,Business,MX,Mexico,62,Medium,N,N,Due Soon,2023-07-08
+C0129,Customer 0129,SME,Individual,AE,United Arab Emirates,55,Medium,N,N,Current,2024-05-17
+C0130,Customer 0130,SME,Individual,GB,United Kingdom,23,Low,N,N,Current,2024-05-06
+C0131,Customer 0131,Money Services Business,Individual,NG,Nigeria,68,Medium,N,N,Due Soon,2025-01-06
+C0132,Customer 0132,Retail,Non-resident,BR,Brazil,66,Medium,N,N,Current,2023-10-05
+C0133,Customer 0133,SME,Business,GB,United Kingdom,57,Medium,N,N,Current,2023-10-31
+C0134,Customer 0134,Retail,Business,PH,Philippines,46,Medium,N,N,Current,2023-11-18
+C0135,Customer 0135,Corporate,Shell-risk entity,VN,Vietnam,31,Low,N,N,Overdue,2023-06-17
+C0136,Customer 0136,Retail,Individual,VN,Vietnam,34,Low,N,N,Current,2024-05-22
+C0137,Customer 0137,Retail,Individual,US,United States,31,Low,N,N,Current,2024-01-04
+C0138,Customer 0138,Money Services Business,Individual,SG,Singapore,46,Medium,N,N,Current,2024-02-02
+C0139,Customer 0139,SME,Shell-risk entity,ZA,South Africa,88,High,Y,N,Current,2024-04-07
+C0140,Customer 0140,Corporate,Individual,BR,Brazil,60,Medium,N,N,Current,2024-06-07
+C0141,Customer 0141,SME,Individual,PH,Philippines,64,Medium,N,N,Current,2024-06-18
+C0142,Customer 0142,Corporate,Business,US,United States,36,Low,N,N,Current,2025-11-05
+C0143,Customer 0143,SME,Individual,BR,Brazil,31,Low,N,N,Overdue,2023-04-01
+C0144,Customer 0144,Retail,Individual,HK,Hong Kong,55,Medium,N,N,Current,2024-06-17
+C0145,Customer 0145,Corporate,Individual,US,United States,65,Medium,N,Y,Current,2026-03-20
+C0146,Customer 0146,Money Services Business,Business,PH,Philippines,67,Medium,Y,N,Current,2023-01-13
+C0147,Customer 0147,Wealth,Individual,VN,Vietnam,51,Medium,N,N,Current,2026-03-04
+C0148,Customer 0148,Fintech,Business,MX,Mexico,60,Medium,N,N,Current,2024-03-01
+C0149,Customer 0149,Retail,Business,MX,Mexico,45,Medium,N,N,Current,2023-05-06
+C0150,Customer 0150,SME,Business,HK,Hong Kong,42,Low,N,N,Current,2026-03-05
+C0151,Customer 0151,Retail,Business,PH,Philippines,49,Medium,N,N,Current,2024-04-30
+C0152,Customer 0152,Corporate,Individual,US,United States,32,Low,N,N,Current,2023-04-23
+C0153,Customer 0153,Corporate,Business,US,United States,40,Low,N,N,Due Soon,2025-12-13
+C0154,Customer 0154,Money Services Business,Business,US,United States,43,Low,N,N,Current,2025-01-09
+C0155,Customer 0155,SME,Individual,BR,Brazil,39,Low,N,N,Current,2024-04-06
+C0156,Customer 0156,Retail,Individual,MX,Mexico,49,Medium,N,N,Current,2025-02-05
+C0157,Customer 0157,Corporate,Business,US,United States,54,Medium,N,N,Current,2025-06-14
+C0158,Customer 0158,Money Services Business,Business,US,United States,29,Low,N,N,Due Soon,2025-01-18
+C0159,Customer 0159,Money Services Business,Business,VN,Vietnam,17,Low,N,N,Current,2025-09-03
+C0160,Customer 0160,SME,Individual,SG,Singapore,45,Medium,N,N,Current,2024-02-10
+C0161,Customer 0161,Corporate,Business,VN,Vietnam,53,Medium,N,N,Current,2025-05-30
+C0162,Customer 0162,Wealth,Individual,AE,United Arab Emirates,72,High,N,N,Current,2025-12-23
+C0163,Customer 0163,Wealth,Individual,MX,Mexico,48,Medium,N,N,Current,2025-06-20
+C0164,Customer 0164,Retail,Individual,SG,Singapore,51,Medium,N,N,Current,2024-09-15
+C0165,Customer 0165,Money Services Business,Individual,TR,Turkey,73,High,N,N,Current,2023-06-30
+C0166,Customer 0166,Corporate,Individual,HK,Hong Kong,35,Low,N,N,Current,2024-07-01
+C0167,Customer 0167,Retail,Business,NG,Nigeria,95,High,N,N,Current,2023-06-21
+C0168,Customer 0168,SME,Individual,GB,United Kingdom,33,Low,N,N,Current,2025-01-23
+C0169,Customer 0169,Money Services Business,Non-resident,HK,Hong Kong,66,Medium,N,N,Current,2025-02-16
+C0170,Customer 0170,Corporate,Business,US,United States,35,Low,N,N,Current,2024-12-04
+C0171,Customer 0171,SME,Individual,MX,Mexico,34,Low,N,N,Current,2025-12-09
+C0172,Customer 0172,Retail,Individual,PH,Philippines,49,Medium,N,N,Current,2025-01-16
+C0173,Customer 0173,Corporate,Individual,VN,Vietnam,42,Low,N,N,Current,2023-07-08
+C0174,Customer 0174,Money Services Business,Individual,US,United States,49,Medium,N,N,Current,2025-02-06
+C0175,Customer 0175,Wealth,Individual,AE,United Arab Emirates,66,Medium,N,N,Due Soon,2023-09-17
+C0176,Customer 0176,SME,Business,US,United States,31,Low,N,N,Due Soon,2023-12-13
+C0177,Customer 0177,Wealth,Non-resident,GB,United Kingdom,64,Medium,N,N,Current,2024-04-30
+C0178,Customer 0178,Retail,Business,TR,Turkey,61,Medium,N,N,Due Soon,2024-03-23
+C0179,Customer 0179,Fintech,Individual,TR,Turkey,73,High,N,N,Current,2024-05-09
+C0180,Customer 0180,Retail,Individual,HK,Hong Kong,45,Medium,N,N,Current,2024-10-18

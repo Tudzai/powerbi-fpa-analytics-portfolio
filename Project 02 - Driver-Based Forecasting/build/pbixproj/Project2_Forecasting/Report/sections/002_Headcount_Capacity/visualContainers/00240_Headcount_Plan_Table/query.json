@@ -1,0 +1,125 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f0",
+              "Entity": "DimDepartment",
+              "Type": 0
+            },
+            {
+              "Name": "m",
+              "Entity": "KPI_Measures",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f0"
+                  }
+                },
+                "Property": "Department"
+              },
+              "Name": "DimDepartment.Department",
+              "NativeReferenceName": "Department"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Average FTE"
+              },
+              "Name": "KPI_Measures.Average FTE",
+              "NativeReferenceName": "FTE"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Payroll Cost"
+              },
+              "Name": "KPI_Measures.Payroll Cost",
+              "NativeReferenceName": "Payroll"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Jobs per FTE"
+              },
+              "Name": "KPI_Measures.Jobs per FTE",
+              "NativeReferenceName": "Jobs / FTE"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Non Payroll OPEX"
+              },
+              "Name": "KPI_Measures.Non Payroll OPEX",
+              "NativeReferenceName": "OPEX"
+            }
+          ],
+          "OrderBy": [
+            {
+              "Direction": 2,
+              "Expression": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "Average FTE"
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 4,
+            "Primary": {
+              "Window": {
+                "Count": 1000
+              }
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

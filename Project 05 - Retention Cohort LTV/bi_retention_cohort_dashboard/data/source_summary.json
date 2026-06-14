@@ -1,0 +1,24 @@
+{
+  "source_type": "Synthetic portfolio demo data",
+  "seed": 20260611,
+  "generated_at": "2026-06-11T12:41:56",
+  "latest_complete_date": "2026-05-31",
+  "raw_tables": {
+    "customers_raw.csv": 6200,
+    "orders_raw.csv": 24549,
+    "activity_raw.csv": 88403
+  },
+  "prepared_tables": {
+    "DimUser": 6113,
+    "DimMonth": 29,
+    "FactOrders": 22552,
+    "FactUserMonth": 87258,
+    "CohortRetention": 435,
+    "MonthlyKPIs": 29,
+    "MonthlyLifecycleMix": 87,
+    "ChurnRiskSnapshot": 6113,
+    "SegmentMonthly": 522
+  },
+  "business_context": "Ecommerce/SaaS-like lifecycle data for a retention and cohort dashboard.",
+  "caveat": "Synthetic data is realistic for portfolio demonstration but is not production company data."
+}

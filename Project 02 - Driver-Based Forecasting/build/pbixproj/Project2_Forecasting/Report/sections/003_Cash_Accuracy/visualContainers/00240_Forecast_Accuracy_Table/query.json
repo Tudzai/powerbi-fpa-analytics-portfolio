@@ -1,0 +1,125 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f0",
+              "Entity": "DimService",
+              "Type": 0
+            },
+            {
+              "Name": "m",
+              "Entity": "KPI_Measures",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f0"
+                  }
+                },
+                "Property": "ServiceLine"
+              },
+              "Name": "DimService.ServiceLine",
+              "NativeReferenceName": "Service"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "MAPE"
+              },
+              "Name": "KPI_Measures.MAPE",
+              "NativeReferenceName": "MAPE"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Forecast Bias %"
+              },
+              "Name": "KPI_Measures.Forecast Bias %",
+              "NativeReferenceName": "Bias %"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Revenue"
+              },
+              "Name": "KPI_Measures.Revenue",
+              "NativeReferenceName": "Revenue"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Operating Cash Flow"
+              },
+              "Name": "KPI_Measures.Operating Cash Flow",
+              "NativeReferenceName": "OCF"
+            }
+          ],
+          "OrderBy": [
+            {
+              "Direction": 2,
+              "Expression": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "MAPE"
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 4,
+            "Primary": {
+              "Window": {
+                "Count": 1000
+              }
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

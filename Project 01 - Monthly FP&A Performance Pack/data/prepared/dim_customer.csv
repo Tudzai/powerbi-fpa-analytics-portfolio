@@ -1,0 +1,13 @@
+CustomerKey,Customer,CustomerSegment,Industry
+C001,Aster Retail Group,Strategic,Retail
+C002,Bluewave Electronics,Strategic,Electronics
+C003,Cobalt Manufacturing,Enterprise,Industrial
+C004,Delta Pharma,Enterprise,Healthcare
+C005,Evergreen Foods,Enterprise,FMCG
+C006,Futura Apparel,Enterprise,Fashion
+C007,GreenMart Online,Growth,E-commerce
+C008,Helio Auto Parts,Growth,Automotive
+C009,Indigo Home,Growth,Home Goods
+C010,Jade Coffee,SMB,FMCG
+C011,Kite Cosmetics,SMB,Beauty
+C012,Long Tail Customers,SMB,Mixed

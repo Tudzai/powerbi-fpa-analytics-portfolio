@@ -1,0 +1,212 @@
+﻿ActionID,MonthStart,ClientID,ActionType,Priority,RiskReason,Status,ExpectedRetainedAUM
+ACT-00001,2026-05-01,CL00001,Rebalance proposal,Medium,Allocation drift,Open,792213.78
+ACT-00002,2026-05-01,CL00008,Rebalance proposal,Medium,Allocation drift,In Progress,61836.49
+ACT-00003,2026-05-01,CL00015,Rebalance proposal,Medium,Allocation drift,Scheduled,185328.92
+ACT-00004,2026-05-01,CL00018,Rebalance proposal,Medium,Allocation drift,In Progress,57420.99
+ACT-00005,2026-05-01,CL00019,Rebalance proposal,Medium,Allocation drift,Open,42156.76
+ACT-00006,2026-05-01,CL00021,Rebalance proposal,Medium,Allocation drift,In Progress,2317735.13
+ACT-00007,2026-05-01,CL00025,Rebalance proposal,Medium,Allocation drift,Open,167637.52
+ACT-00008,2026-05-01,CL00026,Rebalance proposal,Medium,Allocation drift,Open,36569.69
+ACT-00009,2026-05-01,CL00029,Rebalance proposal,Medium,Allocation drift,Open,30203.42
+ACT-00010,2026-05-01,CL00031,Rebalance proposal,Medium,Allocation drift,In Progress,329191.34
+ACT-00011,2026-05-01,CL00036,Rebalance proposal,Medium,Allocation drift,Open,2221187.41
+ACT-00012,2026-05-01,CL00040,Rebalance proposal,Medium,Allocation drift,Scheduled,76088.54
+ACT-00013,2026-05-01,CL00043,Rebalance proposal,Medium,Allocation drift,Scheduled,149256.47
+ACT-00014,2026-05-01,CL00044,Rebalance proposal,Medium,Allocation drift,Open,181462.69
+ACT-00015,2026-05-01,CL00045,Rebalance proposal,Medium,Allocation drift,In Progress,60042.94
+ACT-00016,2026-05-01,CL00046,Cashflow check-in,Low,Outflow watch,In Progress,39378.79
+ACT-00017,2026-05-01,CL00061,Rebalance proposal,Medium,Allocation drift,Open,673228.97
+ACT-00018,2026-05-01,CL00068,Cashflow check-in,Low,Outflow watch,Open,16944.03
+ACT-00019,2026-05-01,CL00071,Rebalance proposal,Medium,Allocation drift,Scheduled,23484.76
+ACT-00020,2026-05-01,CL00078,Rebalance proposal,Medium,Allocation drift,Scheduled,2309632.86
+ACT-00021,2026-05-01,CL00079,Rebalance proposal,Medium,Allocation drift,In Progress,458671.3
+ACT-00022,2026-05-01,CL00080,Rebalance proposal,Medium,Allocation drift,Scheduled,275565.6
+ACT-00023,2026-05-01,CL00082,Cashflow check-in,Low,Outflow watch,Scheduled,190427.01
+ACT-00024,2026-05-01,CL00087,Rebalance proposal,Medium,Allocation drift,Scheduled,103461.04
+ACT-00025,2026-05-01,CL00088,Rebalance proposal,Medium,Allocation drift,Open,998583.12
+ACT-00026,2026-05-01,CL00091,Rebalance proposal,Medium,Allocation drift,Open,502443.73
+ACT-00027,2026-05-01,CL00093,Rebalance proposal,Medium,Allocation drift,Open,173760.91
+ACT-00028,2026-05-01,CL00095,Rebalance proposal,Medium,Allocation drift,In Progress,1180828.1
+ACT-00029,2026-05-01,CL00096,Rebalance proposal,Medium,Allocation drift,Open,2324975.69
+ACT-00030,2026-05-01,CL00097,Rebalance proposal,Medium,Allocation drift,In Progress,22252.95
+ACT-00031,2026-05-01,CL00100,Rebalance proposal,Medium,Allocation drift,In Progress,130153.68
+ACT-00032,2026-05-01,CL00102,Rebalance proposal,Medium,Allocation drift,In Progress,54765.78
+ACT-00033,2026-05-01,CL00109,Rebalance proposal,Medium,Allocation drift,In Progress,90219.83
+ACT-00034,2026-05-01,CL00114,Rebalance proposal,Medium,Allocation drift,In Progress,624513.2
+ACT-00035,2026-05-01,CL00116,Rebalance proposal,Medium,Allocation drift,In Progress,14554.57
+ACT-00036,2026-05-01,CL00118,Rebalance proposal,Medium,Allocation drift,Open,472287.33
+ACT-00037,2026-05-01,CL00121,Rebalance proposal,Medium,Allocation drift,Scheduled,18279.51
+ACT-00038,2026-05-01,CL00129,Rebalance proposal,Medium,Allocation drift,Open,917864.86
+ACT-00039,2026-05-01,CL00132,Rebalance proposal,Medium,Allocation drift,Open,3238.04
+ACT-00040,2026-05-01,CL00134,Rebalance proposal,Medium,Allocation drift,In Progress,221299.86
+ACT-00041,2026-05-01,CL00135,Advisor outreach,High,Churn risk,Open,235708.25
+ACT-00042,2026-05-01,CL00137,Rebalance proposal,Medium,Allocation drift,Open,1645654.24
+ACT-00043,2026-05-01,CL00140,Rebalance proposal,Medium,Allocation drift,Open,27372.98
+ACT-00044,2026-05-01,CL00141,Rebalance proposal,Medium,Allocation drift,Open,37506.82
+ACT-00045,2026-05-01,CL00146,Rebalance proposal,Medium,Allocation drift,Open,683607.3
+ACT-00046,2026-05-01,CL00150,Cashflow check-in,Low,Outflow watch,In Progress,103979.63
+ACT-00047,2026-05-01,CL00157,Rebalance proposal,Medium,Allocation drift,Scheduled,129808.44
+ACT-00048,2026-05-01,CL00158,Rebalance proposal,Medium,Allocation drift,In Progress,105984.43
+ACT-00049,2026-05-01,CL00159,Rebalance proposal,Medium,Allocation drift,In Progress,41613.64
+ACT-00050,2026-05-01,CL00165,Rebalance proposal,Medium,Allocation drift,Open,6895.81
+ACT-00051,2026-05-01,CL00173,Rebalance proposal,Medium,Allocation drift,Open,4904328.07
+ACT-00052,2026-05-01,CL00176,Rebalance proposal,Medium,Allocation drift,Open,51767.66
+ACT-00053,2026-05-01,CL00182,Cashflow check-in,Low,Outflow watch,In Progress,887484.59
+ACT-00054,2026-05-01,CL00188,Rebalance proposal,Medium,Allocation drift,In Progress,159949.5
+ACT-00055,2026-05-01,CL00196,Rebalance proposal,Medium,Allocation drift,Scheduled,168569.67
+ACT-00056,2026-05-01,CL00199,Rebalance proposal,Medium,Allocation drift,Open,19670.73
+ACT-00057,2026-05-01,CL00207,Rebalance proposal,Medium,Allocation drift,Scheduled,10581.21
+ACT-00058,2026-05-01,CL00209,Rebalance proposal,Medium,Allocation drift,Open,25815.49
+ACT-00059,2026-05-01,CL00210,Rebalance proposal,Medium,Allocation drift,Scheduled,183483.09
+ACT-00060,2026-05-01,CL00211,Rebalance proposal,Medium,Allocation drift,Open,87877.58
+ACT-00061,2026-05-01,CL00214,Rebalance proposal,Medium,Allocation drift,In Progress,502749.59
+ACT-00062,2026-05-01,CL00216,Rebalance proposal,Medium,Allocation drift,Open,36204.58
+ACT-00063,2026-05-01,CL00223,Rebalance proposal,Medium,Allocation drift,Open,1359562.52
+ACT-00064,2026-05-01,CL00232,Rebalance proposal,Medium,Allocation drift,Open,74868.19
+ACT-00065,2026-05-01,CL00234,Rebalance proposal,Medium,Allocation drift,Open,43816.83
+ACT-00066,2026-05-01,CL00237,Rebalance proposal,Medium,Allocation drift,Open,286800.83
+ACT-00067,2026-05-01,CL00238,Rebalance proposal,Medium,Allocation drift,Open,255756.49
+ACT-00068,2026-05-01,CL00243,Rebalance proposal,Medium,Allocation drift,Open,20036.45
+ACT-00069,2026-05-01,CL00245,Cashflow check-in,Low,Outflow watch,In Progress,109397.29
+ACT-00070,2026-05-01,CL00250,Rebalance proposal,Medium,Allocation drift,Open,48736.71
+ACT-00071,2026-05-01,CL00256,Cashflow check-in,Low,Outflow watch,Scheduled,139835.08
+ACT-00072,2026-05-01,CL00257,Rebalance proposal,Medium,Allocation drift,Open,184991.75
+ACT-00073,2026-05-01,CL00260,Rebalance proposal,Medium,Allocation drift,In Progress,104149.17
+ACT-00074,2026-05-01,CL00267,Rebalance proposal,Medium,Allocation drift,Open,143237.75
+ACT-00075,2026-05-01,CL00275,Rebalance proposal,Medium,Allocation drift,Open,107216.36
+ACT-00076,2026-05-01,CL00280,Rebalance proposal,Medium,Allocation drift,Scheduled,41797.99
+ACT-00077,2026-05-01,CL00288,Rebalance proposal,Medium,Allocation drift,Scheduled,508505.22
+ACT-00078,2026-05-01,CL00298,Rebalance proposal,Medium,Allocation drift,In Progress,117312.17
+ACT-00079,2026-05-01,CL00309,Rebalance proposal,Medium,Allocation drift,Scheduled,123111.04
+ACT-00080,2026-05-01,CL00312,Rebalance proposal,Medium,Allocation drift,Open,676361.56
+ACT-00081,2026-05-01,CL00314,Rebalance proposal,Medium,Allocation drift,In Progress,217601.87
+ACT-00082,2026-05-01,CL00315,Rebalance proposal,Medium,Allocation drift,Open,5975.84
+ACT-00083,2026-05-01,CL00320,Rebalance proposal,Medium,Allocation drift,Open,16806.47
+ACT-00084,2026-05-01,CL00324,Rebalance proposal,Medium,Allocation drift,Open,87232.0
+ACT-00085,2026-05-01,CL00330,Rebalance proposal,Medium,Allocation drift,Open,9921.67
+ACT-00086,2026-05-01,CL00331,Rebalance proposal,Medium,Allocation drift,In Progress,13702.52
+ACT-00087,2026-05-01,CL00332,Rebalance proposal,Medium,Allocation drift,Open,2074174.54
+ACT-00088,2026-05-01,CL00336,Rebalance proposal,Medium,Allocation drift,In Progress,11110.16
+ACT-00089,2026-05-01,CL00338,Rebalance proposal,Medium,Allocation drift,In Progress,10968.27
+ACT-00090,2026-05-01,CL00339,Rebalance proposal,Medium,Allocation drift,In Progress,973906.75
+ACT-00091,2026-05-01,CL00344,Rebalance proposal,Medium,Allocation drift,In Progress,621241.55
+ACT-00092,2026-05-01,CL00347,Rebalance proposal,Medium,Allocation drift,Open,591988.28
+ACT-00093,2026-05-01,CL00351,Advisor outreach,High,Churn risk,Open,32853.83
+ACT-00094,2026-05-01,CL00354,Rebalance proposal,Medium,Allocation drift,Scheduled,2970.33
+ACT-00095,2026-05-01,CL00355,Cashflow check-in,Low,Outflow watch,Open,1118706.48
+ACT-00096,2026-05-01,CL00362,Rebalance proposal,Medium,Allocation drift,Open,202671.52
+ACT-00097,2026-05-01,CL00369,Rebalance proposal,Medium,Allocation drift,Open,424595.59
+ACT-00098,2026-05-01,CL00370,Rebalance proposal,Medium,Allocation drift,In Progress,32246.9
+ACT-00099,2026-05-01,CL00376,Rebalance proposal,Medium,Allocation drift,In Progress,112564.07
+ACT-00100,2026-05-01,CL00379,Cashflow check-in,Low,Outflow watch,Scheduled,62347.33
+ACT-00101,2026-05-01,CL00381,Cashflow check-in,Low,Outflow watch,In Progress,61853.75
+ACT-00102,2026-05-01,CL00386,Rebalance proposal,Medium,Allocation drift,In Progress,244193.85
+ACT-00103,2026-05-01,CL00388,Cashflow check-in,Low,Outflow watch,Open,11978.34
+ACT-00104,2026-05-01,CL00395,Rebalance proposal,Medium,Allocation drift,In Progress,54340.56
+ACT-00105,2026-05-01,CL00397,Rebalance proposal,Medium,Allocation drift,In Progress,257054.11
+ACT-00106,2026-05-01,CL00398,Rebalance proposal,Medium,Allocation drift,Scheduled,154515.87
+ACT-00107,2026-05-01,CL00403,Rebalance proposal,Medium,Allocation drift,Open,146170.01
+ACT-00108,2026-05-01,CL00407,Rebalance proposal,Medium,Allocation drift,In Progress,145987.17
+ACT-00109,2026-05-01,CL00416,Rebalance proposal,Medium,Allocation drift,Scheduled,163224.27
+ACT-00110,2026-05-01,CL00418,Rebalance proposal,Medium,Allocation drift,Open,95767.45
+ACT-00111,2026-05-01,CL00431,Rebalance proposal,Medium,Allocation drift,In Progress,66433.65
+ACT-00112,2026-05-01,CL00436,Rebalance proposal,Medium,Allocation drift,In Progress,546086.31
+ACT-00113,2026-05-01,CL00437,Rebalance proposal,Medium,Allocation drift,In Progress,303846.05
+ACT-00114,2026-05-01,CL00444,Rebalance proposal,Medium,Allocation drift,In Progress,543127.33
+ACT-00115,2026-05-01,CL00445,Cashflow check-in,Low,Outflow watch,In Progress,140746.47
+ACT-00116,2026-05-01,CL00451,Advisor outreach,High,Churn risk,Open,12149.17
+ACT-00117,2026-05-01,CL00453,Rebalance proposal,Medium,Allocation drift,In Progress,103479.17
+ACT-00118,2026-05-01,CL00459,Rebalance proposal,Medium,Allocation drift,Open,10349.87
+ACT-00119,2026-05-01,CL00462,Rebalance proposal,Medium,Allocation drift,Open,2822.63
+ACT-00120,2026-05-01,CL00465,Cashflow check-in,Low,Outflow watch,Scheduled,158791.26
+ACT-00121,2026-05-01,CL00472,Rebalance proposal,Medium,Allocation drift,Open,49160.69
+ACT-00122,2026-05-01,CL00478,Rebalance proposal,Medium,Allocation drift,In Progress,161490.26
+ACT-00123,2026-05-01,CL00479,Rebalance proposal,Medium,Allocation drift,Scheduled,285786.78
+ACT-00124,2026-05-01,CL00481,Rebalance proposal,Medium,Allocation drift,Open,128773.51
+ACT-00125,2026-05-01,CL00482,Rebalance proposal,Medium,Allocation drift,Scheduled,436943.1
+ACT-00126,2026-05-01,CL00483,Cashflow check-in,Low,Outflow watch,Open,325159.17
+ACT-00127,2026-05-01,CL00488,Rebalance proposal,Medium,Allocation drift,Open,109130.37
+ACT-00128,2026-05-01,CL00490,Cashflow check-in,Low,Outflow watch,Open,513440.0
+ACT-00129,2026-05-01,CL00495,Rebalance proposal,Medium,Allocation drift,In Progress,13500.89
+ACT-00130,2026-05-01,CL00496,Rebalance proposal,Medium,Allocation drift,In Progress,76908.88
+ACT-00131,2026-05-01,CL00499,Rebalance proposal,Medium,Allocation drift,Scheduled,44500.01
+ACT-00132,2026-05-01,CL00501,Rebalance proposal,Medium,Allocation drift,Scheduled,920210.26
+ACT-00133,2026-05-01,CL00502,Rebalance proposal,Medium,Allocation drift,Open,182772.06
+ACT-00134,2026-05-01,CL00503,Rebalance proposal,Medium,Allocation drift,In Progress,195264.6
+ACT-00135,2026-05-01,CL00506,Rebalance proposal,Medium,Allocation drift,In Progress,230388.03
+ACT-00136,2026-05-01,CL00509,Rebalance proposal,Medium,Allocation drift,In Progress,100965.25
+ACT-00137,2026-05-01,CL00515,Rebalance proposal,Medium,Allocation drift,Open,112635.38
+ACT-00138,2026-05-01,CL00525,Rebalance proposal,Medium,Allocation drift,Scheduled,9357.32
+ACT-00139,2026-05-01,CL00531,Cashflow check-in,Low,Outflow watch,Open,49579.57
+ACT-00140,2026-05-01,CL00533,Rebalance proposal,Medium,Allocation drift,Scheduled,69725.98
+ACT-00141,2026-05-01,CL00551,Rebalance proposal,Medium,Allocation drift,In Progress,9763.66
+ACT-00142,2026-05-01,CL00557,Cashflow check-in,Low,Outflow watch,Open,13470.57
+ACT-00143,2026-05-01,CL00563,Rebalance proposal,Medium,Allocation drift,Open,48920.49
+ACT-00144,2026-05-01,CL00564,Rebalance proposal,Medium,Allocation drift,Scheduled,184507.8
+ACT-00145,2026-05-01,CL00565,Rebalance proposal,Medium,Allocation drift,Open,15677.46
+ACT-00146,2026-05-01,CL00567,Rebalance proposal,Medium,Allocation drift,In Progress,305344.7
+ACT-00147,2026-05-01,CL00570,Rebalance proposal,Medium,Allocation drift,In Progress,195752.29
+ACT-00148,2026-05-01,CL00575,Rebalance proposal,Medium,Allocation drift,In Progress,10954.24
+ACT-00149,2026-05-01,CL00579,Rebalance proposal,Medium,Allocation drift,In Progress,334955.18
+ACT-00150,2026-05-01,CL00591,Cashflow check-in,Low,Outflow watch,Open,1023895.47
+ACT-00151,2026-05-01,CL00593,Rebalance proposal,Medium,Allocation drift,In Progress,190875.84
+ACT-00152,2026-05-01,CL00597,Rebalance proposal,Medium,Allocation drift,Open,22336.57
+ACT-00153,2026-05-01,CL00598,Rebalance proposal,Medium,Allocation drift,In Progress,307050.66
+ACT-00154,2026-05-01,CL00599,Rebalance proposal,Medium,Allocation drift,In Progress,16274.22
+ACT-00155,2026-05-01,CL00601,Rebalance proposal,Medium,Allocation drift,In Progress,17434.06
+ACT-00156,2026-05-01,CL00607,Rebalance proposal,Medium,Allocation drift,Open,548477.48
+ACT-00157,2026-05-01,CL00613,Rebalance proposal,Medium,Allocation drift,In Progress,24345.5
+ACT-00158,2026-05-01,CL00624,Rebalance proposal,Medium,Allocation drift,Scheduled,95385.74
+ACT-00159,2026-05-01,CL00625,Cashflow check-in,Low,Outflow watch,Scheduled,13709.94
+ACT-00160,2026-05-01,CL00627,Rebalance proposal,Medium,Allocation drift,Scheduled,89905.9
+ACT-00161,2026-05-01,CL00629,Rebalance proposal,Medium,Allocation drift,Open,877767.22
+ACT-00162,2026-05-01,CL00630,Rebalance proposal,Medium,Allocation drift,In Progress,221967.33
+ACT-00163,2026-05-01,CL00632,Rebalance proposal,Medium,Allocation drift,Scheduled,1461302.39
+ACT-00164,2026-05-01,CL00639,Rebalance proposal,Medium,Allocation drift,Open,119210.33
+ACT-00165,2026-05-01,CL00645,Rebalance proposal,Medium,Allocation drift,Open,231202.92
+ACT-00166,2026-05-01,CL00646,Rebalance proposal,Medium,Allocation drift,Open,78138.69
+ACT-00167,2026-05-01,CL00647,Rebalance proposal,Medium,Allocation drift,In Progress,26329.45
+ACT-00168,2026-05-01,CL00649,Cashflow check-in,Low,Outflow watch,In Progress,101083.11
+ACT-00169,2026-05-01,CL00650,Rebalance proposal,Medium,Allocation drift,In Progress,316036.19
+ACT-00170,2026-05-01,CL00652,Rebalance proposal,Medium,Allocation drift,Scheduled,24658.76
+ACT-00171,2026-05-01,CL00660,Cashflow check-in,Low,Outflow watch,Open,11848.94
+ACT-00172,2026-05-01,CL00667,Rebalance proposal,Medium,Allocation drift,Scheduled,103847.89
+ACT-00173,2026-05-01,CL00671,Rebalance proposal,Medium,Allocation drift,Scheduled,32435.35
+ACT-00174,2026-05-01,CL00675,Rebalance proposal,Medium,Allocation drift,Scheduled,116013.88
+ACT-00175,2026-05-01,CL00676,Rebalance proposal,Medium,Allocation drift,In Progress,194323.43
+ACT-00176,2026-05-01,CL00680,Cashflow check-in,Low,Outflow watch,Open,373625.01
+ACT-00177,2026-05-01,CL00686,Rebalance proposal,Medium,Allocation drift,In Progress,55457.14
+ACT-00178,2026-05-01,CL00695,Rebalance proposal,Medium,Allocation drift,In Progress,477308.15
+ACT-00179,2026-05-01,CL00700,Rebalance proposal,Medium,Allocation drift,In Progress,219528.78
+ACT-00180,2026-05-01,CL00716,Rebalance proposal,Medium,Allocation drift,In Progress,198771.77
+ACT-00181,2026-05-01,CL00722,Rebalance proposal,Medium,Allocation drift,In Progress,19916.75
+ACT-00182,2026-05-01,CL00723,Rebalance proposal,Medium,Allocation drift,Open,6597.0
+ACT-00183,2026-05-01,CL00724,Rebalance proposal,Medium,Allocation drift,Open,9697.2
+ACT-00184,2026-05-01,CL00726,Rebalance proposal,Medium,Allocation drift,Open,104283.4
+ACT-00185,2026-05-01,CL00733,Rebalance proposal,Medium,Allocation drift,Open,42718.62
+ACT-00186,2026-05-01,CL00735,Rebalance proposal,Medium,Allocation drift,Open,623810.22
+ACT-00187,2026-05-01,CL00741,Rebalance proposal,Medium,Allocation drift,Open,241589.79
+ACT-00188,2026-05-01,CL00742,Rebalance proposal,Medium,Allocation drift,In Progress,240040.7
+ACT-00189,2026-05-01,CL00745,Rebalance proposal,Medium,Allocation drift,In Progress,30999.67
+ACT-00190,2026-05-01,CL00746,Cashflow check-in,Low,Outflow watch,Open,22565.08
+ACT-00191,2026-05-01,CL00758,Rebalance proposal,Medium,Allocation drift,Open,351241.83
+ACT-00192,2026-05-01,CL00760,Rebalance proposal,Medium,Allocation drift,In Progress,55692.49
+ACT-00193,2026-05-01,CL00767,Rebalance proposal,Medium,Allocation drift,Open,272596.18
+ACT-00194,2026-05-01,CL00768,Rebalance proposal,Medium,Allocation drift,In Progress,582142.81
+ACT-00195,2026-05-01,CL00772,Cashflow check-in,Low,Outflow watch,Open,93060.35
+ACT-00196,2026-05-01,CL00773,Rebalance proposal,Medium,Allocation drift,Open,294632.64
+ACT-00197,2026-05-01,CL00774,Rebalance proposal,Medium,Allocation drift,In Progress,26778.88
+ACT-00198,2026-05-01,CL00777,Cashflow check-in,Low,Outflow watch,Open,3011.54
+ACT-00199,2026-05-01,CL00783,Rebalance proposal,Medium,Allocation drift,Scheduled,110139.14
+ACT-00200,2026-05-01,CL00787,Rebalance proposal,Medium,Allocation drift,Open,90361.43
+ACT-00201,2026-05-01,CL00797,Cashflow check-in,Low,Outflow watch,Open,591671.81
+ACT-00202,2026-05-01,CL00816,Rebalance proposal,Medium,Allocation drift,In Progress,445198.45
+ACT-00203,2026-05-01,CL00821,Rebalance proposal,Medium,Allocation drift,In Progress,48872.38
+ACT-00204,2026-05-01,CL00825,Cashflow check-in,Low,Outflow watch,Open,144342.87
+ACT-00205,2026-05-01,CL00827,Rebalance proposal,Medium,Allocation drift,In Progress,192070.57
+ACT-00206,2026-05-01,CL00837,Cashflow check-in,Low,Outflow watch,In Progress,200715.11
+ACT-00207,2026-05-01,CL00852,Rebalance proposal,Medium,Allocation drift,In Progress,12308.82
+ACT-00208,2026-05-01,CL00853,Rebalance proposal,Medium,Allocation drift,In Progress,19512.9
+ACT-00209,2026-05-01,CL00854,Rebalance proposal,Medium,Allocation drift,In Progress,337640.61
+ACT-00210,2026-05-01,CL00858,Rebalance proposal,Medium,Allocation drift,In Progress,1822132.57
+ACT-00211,2026-05-01,CL00860,Rebalance proposal,Medium,Allocation drift,Scheduled,280520.77

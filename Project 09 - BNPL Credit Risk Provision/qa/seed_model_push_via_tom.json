@@ -1,0 +1,26 @@
+{
+    "timestamp":  "2026-06-11 16:10:05 +07:00",
+    "status":  "project9_model_pushed_via_tom",
+    "target_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 09 - BNPL Credit Risk Provision\\output\\dashboard_model_seed.pbix",
+    "power_bi_port":  59313,
+    "process_id":  36896,
+    "tables":  [
+                   "DimDate",
+                   "DimMonth",
+                   "DimProduct",
+                   "DimChannel",
+                   "DimRiskBand",
+                   "DimMerchant",
+                   "DimCustomerSegment",
+                   "FactApplications",
+                   "FactLoans",
+                   "FactLoanMonthly",
+                   "FactCollections",
+                   "FactVintage",
+                   "FactRollRate",
+                   "FactProvisionForecast",
+                   "KPI Measures"
+               ],
+    "relationship_count":  25,
+    "measure_count":  27
+}

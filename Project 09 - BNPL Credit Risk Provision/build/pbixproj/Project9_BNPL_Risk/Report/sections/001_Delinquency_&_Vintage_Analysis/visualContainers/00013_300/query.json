@@ -1,0 +1,113 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t0",
+              "Entity": "FactVintage",
+              "Type": 0
+            },
+            {
+              "Name": "m",
+              "Entity": "KPI Measures",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t0"
+                  }
+                },
+                "Property": "origination_month"
+              },
+              "Name": "FactVintage.origination_month",
+              "NativeReferenceName": "Cohort"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t0"
+                  }
+                },
+                "Property": "mob"
+              },
+              "Name": "FactVintage.mob",
+              "NativeReferenceName": "MOB"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Vintage 30+ Rate"
+              },
+              "Name": "KPI Measures.Vintage 30+ Rate",
+              "NativeReferenceName": "Vintage 30+"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Vintage Loss Rate"
+              },
+              "Name": "KPI Measures.Vintage Loss Rate",
+              "NativeReferenceName": "Loss rate"
+            }
+          ],
+          "OrderBy": [
+            {
+              "Direction": 2,
+              "Expression": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "Vintage 30+ Rate"
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "Subtotal": 1
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 4,
+            "Primary": {
+              "Window": {
+                "Count": 500
+              }
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

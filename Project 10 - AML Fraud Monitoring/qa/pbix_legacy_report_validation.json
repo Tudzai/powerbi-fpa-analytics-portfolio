@@ -1,0 +1,28 @@
+{
+    "generated_at":  "2026-06-11 21:19:20",
+    "project_root":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring",
+    "source_model_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\output\\dashboard_model_clean.pbix",
+    "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\build\\legacy_report_layout_aml.json",
+    "output_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\output\\dashboard_v01.pbix",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\output\\dashboard_final.pbix",
+    "pages":  [
+                  "Fraud \u0026 Compliance Overview",
+                  "Alert \u0026 Customer Risk Deep Dive",
+                  "Case SLA \u0026 Rule Governance"
+              ],
+    "visual_containers":  52,
+    "visual_type_counts":  {
+                               "tableEx":  3,
+                               "barChart":  5,
+                               "lineClusteredColumnComboChart":  1,
+                               "shape":  6,
+                               "textbox":  9,
+                               "donutChart":  1,
+                               "slicer":  9,
+                               "cardVisual":  16,
+                               "columnChart":  2
+                           },
+    "validation":  "PowerBIPackager.Validate passed for output and final PBIX",
+    "report_layout_format":  "legacy Report/Layout",
+    "security_bindings_removed":  true
+}

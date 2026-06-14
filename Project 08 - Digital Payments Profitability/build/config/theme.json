@@ -1,0 +1,19 @@
+{
+  "name": "Digital Payments Profitability Light",
+  "dataColors": [
+    "#2563EB",
+    "#0891B2",
+    "#16A34A",
+    "#0F766E",
+    "#D97706",
+    "#DC2626",
+    "#7C3AED",
+    "#475569"
+  ],
+  "background": "#F5F7FA",
+  "foreground": "#111827",
+  "tableAccent": "#2563EB",
+  "good": "#16A34A",
+  "neutral": "#D97706",
+  "bad": "#DC2626"
+}

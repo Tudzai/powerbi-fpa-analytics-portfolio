@@ -1,0 +1,30 @@
+[
+    {
+        "name":  "Rel_FactCampaignDaily_date_DimDate_date",
+        "fromTable":  "FactCampaignDaily",
+        "fromColumn":  "date",
+        "toTable":  "DimDate",
+        "toColumn":  "date"
+    },
+    {
+        "name":  "Rel_FactCampaignDaily_month_key_DimMonth_month_key",
+        "fromTable":  "FactCampaignDaily",
+        "fromColumn":  "month_key",
+        "toTable":  "DimMonth",
+        "toColumn":  "month_key"
+    },
+    {
+        "name":  "Rel_FactCampaignDaily_channel_key_DimChannel_channel_key",
+        "fromTable":  "FactCampaignDaily",
+        "fromColumn":  "channel_key",
+        "toTable":  "DimChannel",
+        "toColumn":  "channel_key"
+    },
+    {
+        "name":  "Rel_FactCampaignDaily_campaign_key_DimCampaign_campaign_key",
+        "fromTable":  "FactCampaignDaily",
+        "fromColumn":  "campaign_key",
+        "toTable":  "DimCampaign",
+        "toColumn":  "campaign_key"
+    }
+]

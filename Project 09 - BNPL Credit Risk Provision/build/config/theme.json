@@ -1,0 +1,14 @@
+{
+  "name": "BNPL Credit Risk Executive",
+  "dataColors": [
+    "#2F66B3",
+    "#11887F",
+    "#E6A23C",
+    "#D45D5D",
+    "#B42318",
+    "#7357C8"
+  ],
+  "background": "#F5F7FB",
+  "foreground": "#172033",
+  "tableAccent": "#2F66B3"
+}

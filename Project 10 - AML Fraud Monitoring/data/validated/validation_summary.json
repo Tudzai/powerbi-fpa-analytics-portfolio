@@ -1,0 +1,231 @@
+{
+  "status": "pass",
+  "quality": {
+    "generated_at": "2026-06-11 16:13:11",
+    "seed": 20260611,
+    "synthetic": true,
+    "tables": {
+      "dim_date": {
+        "rows": 516,
+        "columns": [
+          "DateKey",
+          "Date",
+          "MonthStart",
+          "Year",
+          "Quarter",
+          "MonthNumber",
+          "MonthName",
+          "MonthYear",
+          "MonthIndex",
+          "IsLatestCompleteMonth"
+        ],
+        "primary_key": "DateKey",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      },
+      "dim_country": {
+        "rows": 12,
+        "columns": [
+          "CountryCode",
+          "Country",
+          "Region",
+          "CountryRiskScore",
+          "CountryRiskTier"
+        ],
+        "primary_key": "CountryCode",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      },
+      "dim_corridor": {
+        "rows": 12,
+        "columns": [
+          "CorridorKey",
+          "OriginCountryCode",
+          "DestinationCountryCode",
+          "Corridor",
+          "CorridorName",
+          "CorridorRiskScore",
+          "CorridorRiskTier"
+        ],
+        "primary_key": "CorridorKey",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      },
+      "dim_channel": {
+        "rows": 8,
+        "columns": [
+          "ChannelKey",
+          "Channel",
+          "ChannelMode",
+          "ChannelRiskScore"
+        ],
+        "primary_key": "ChannelKey",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      },
+      "dim_product": {
+        "rows": 8,
+        "columns": [
+          "ProductKey",
+          "Product",
+          "ProductFamily",
+          "ProductRiskScore"
+        ],
+        "primary_key": "ProductKey",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      },
+      "dim_rule": {
+        "rows": 10,
+        "columns": [
+          "RuleKey",
+          "RuleName",
+          "Typology",
+          "RuleSeverity",
+          "RuleStatus",
+          "RuleOwner",
+          "RuleRiskScore",
+          "LastTunedDate"
+        ],
+        "primary_key": "RuleKey",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      },
+      "dim_analyst": {
+        "rows": 8,
+        "columns": [
+          "AnalystKey",
+          "Analyst",
+          "AnalystTier",
+          "Queue"
+        ],
+        "primary_key": "AnalystKey",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      },
+      "dim_customer": {
+        "rows": 180,
+        "columns": [
+          "CustomerKey",
+          "Customer",
+          "CustomerSegment",
+          "CustomerType",
+          "HomeCountryCode",
+          "HomeCountry",
+          "CustomerRiskScore",
+          "CustomerRiskTier",
+          "PEPFlag",
+          "WatchlistFlag",
+          "KYCStatus",
+          "OnboardingDate"
+        ],
+        "primary_key": "CustomerKey",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      },
+      "fact_transactions": {
+        "rows": 36000,
+        "columns": [
+          "TransactionKey",
+          "DateKey",
+          "CustomerKey",
+          "CorridorKey",
+          "ChannelKey",
+          "ProductKey",
+          "AmountUSD",
+          "RiskScore",
+          "IsFlagged",
+          "PrimaryRuleKey",
+          "RoundDollarFlag",
+          "TransactionType"
+        ],
+        "primary_key": "TransactionKey",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      },
+      "fact_alerts": {
+        "rows": 6611,
+        "columns": [
+          "AlertKey",
+          "TransactionKey",
+          "DateKey",
+          "AlertDateKey",
+          "CustomerKey",
+          "RuleKey",
+          "CorridorKey",
+          "ChannelKey",
+          "ProductKey",
+          "AlertAmountUSD",
+          "RiskScore",
+          "Severity",
+          "AlertStatus",
+          "IsFalsePositive",
+          "IsTruePositive",
+          "EscalatedToCase",
+          "CaseKey",
+          "ClosedDateKey",
+          "HoursToDisposition"
+        ],
+        "primary_key": "AlertKey",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      },
+      "fact_cases": {
+        "rows": 3556,
+        "columns": [
+          "CaseKey",
+          "AlertKey",
+          "CreatedDateKey",
+          "ClosedDateKey",
+          "CustomerKey",
+          "RuleKey",
+          "CorridorKey",
+          "AnalystKey",
+          "CasePriority",
+          "CaseStatus",
+          "Outcome",
+          "SARFiled",
+          "SLAHours",
+          "AgeDays",
+          "HoursToClose",
+          "IsOverdue",
+          "CaseAmountUSD"
+        ],
+        "primary_key": "CaseKey",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      },
+      "fact_rule_governance": {
+        "rows": 26,
+        "columns": [
+          "GovernanceKey",
+          "RuleKey",
+          "ChangeDateKey",
+          "ChangeType",
+          "ChangeReason",
+          "ApprovalStatus",
+          "ApprovedBy",
+          "PrecisionBefore",
+          "PrecisionAfter",
+          "AlertVolumeDeltaPct"
+        ],
+        "primary_key": "GovernanceKey",
+        "duplicate_key_rows": 0,
+        "missing_critical_values": 0
+      }
+    }
+  },
+  "kpis": {
+    "transactions": 36000,
+    "transactionAmount": 1908512527.82,
+    "flaggedAmount": 420084720.79,
+    "alerts": 6611,
+    "suspiciousCases": 2894,
+    "falsePositiveRate": 0.3542,
+    "alertRate": 0.1836,
+    "openCases": 402,
+    "overdueCases": 1207,
+    "slaCompliance": 0.6606,
+    "highRiskCustomers": 12
+  }
+}

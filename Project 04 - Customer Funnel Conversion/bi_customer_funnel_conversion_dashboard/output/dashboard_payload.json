@@ -1,0 +1,589 @@
+{
+  "generated_at": "2026-06-11T11:38:18",
+  "kpis": {
+    "visits": 161097,
+    "product_views": 137530,
+    "add_to_carts": 51170,
+    "checkouts": 31518,
+    "purchases": 18567,
+    "revenue": 1558769.34,
+    "overall_conversion_rate": 0.115254,
+    "aov": 83.95
+  },
+  "funnel": [
+    {
+      "stage": "Visit",
+      "sessions": 161097
+    },
+    {
+      "stage": "Product View",
+      "sessions": 137530
+    },
+    {
+      "stage": "Add to Cart",
+      "sessions": 51170
+    },
+    {
+      "stage": "Checkout",
+      "sessions": 31518
+    },
+    {
+      "stage": "Purchase",
+      "sessions": 18567
+    }
+  ],
+  "monthly": [
+    {
+      "month_start": "2025-01-01",
+      "visits": 8175,
+      "product_views": 6977,
+      "add_to_carts": 2604,
+      "checkouts": 1627,
+      "purchases": 942,
+      "revenue": 82596.34,
+      "conversion_rate": 0.115229
+    },
+    {
+      "month_start": "2025-02-01",
+      "visits": 8044,
+      "product_views": 6878,
+      "add_to_carts": 2582,
+      "checkouts": 1601,
+      "purchases": 969,
+      "revenue": 80156.0,
+      "conversion_rate": 0.120462
+    },
+    {
+      "month_start": "2025-03-01",
+      "visits": 11052,
+      "product_views": 9440,
+      "add_to_carts": 3573,
+      "checkouts": 2129,
+      "purchases": 1314,
+      "revenue": 115027.75,
+      "conversion_rate": 0.118893
+    },
+    {
+      "month_start": "2025-04-01",
+      "visits": 10895,
+      "product_views": 9301,
+      "add_to_carts": 3405,
+      "checkouts": 2090,
+      "purchases": 1228,
+      "revenue": 106493.22,
+      "conversion_rate": 0.112712
+    },
+    {
+      "month_start": "2025-05-01",
+      "visits": 9204,
+      "product_views": 7820,
+      "add_to_carts": 2830,
+      "checkouts": 1790,
+      "purchases": 1025,
+      "revenue": 81168.96,
+      "conversion_rate": 0.111365
+    },
+    {
+      "month_start": "2025-06-01",
+      "visits": 8685,
+      "product_views": 7418,
+      "add_to_carts": 2708,
+      "checkouts": 1677,
+      "purchases": 990,
+      "revenue": 79449.14,
+      "conversion_rate": 0.11399
+    },
+    {
+      "month_start": "2025-07-01",
+      "visits": 8634,
+      "product_views": 7376,
+      "add_to_carts": 2731,
+      "checkouts": 1664,
+      "purchases": 966,
+      "revenue": 80645.89,
+      "conversion_rate": 0.111883
+    },
+    {
+      "month_start": "2025-08-01",
+      "visits": 8107,
+      "product_views": 6876,
+      "add_to_carts": 2561,
+      "checkouts": 1530,
+      "purchases": 908,
+      "revenue": 72479.87,
+      "conversion_rate": 0.112002
+    },
+    {
+      "month_start": "2025-09-01",
+      "visits": 7663,
+      "product_views": 6580,
+      "add_to_carts": 2493,
+      "checkouts": 1587,
+      "purchases": 953,
+      "revenue": 79815.07,
+      "conversion_rate": 0.124364
+    },
+    {
+      "month_start": "2025-10-01",
+      "visits": 8039,
+      "product_views": 6822,
+      "add_to_carts": 2538,
+      "checkouts": 1582,
+      "purchases": 919,
+      "revenue": 72160.54,
+      "conversion_rate": 0.114318
+    },
+    {
+      "month_start": "2025-11-01",
+      "visits": 9373,
+      "product_views": 7980,
+      "add_to_carts": 2971,
+      "checkouts": 1826,
+      "purchases": 1033,
+      "revenue": 85903.04000000001,
+      "conversion_rate": 0.11021
+    },
+    {
+      "month_start": "2025-12-01",
+      "visits": 8979,
+      "product_views": 7684,
+      "add_to_carts": 2905,
+      "checkouts": 1743,
+      "purchases": 1034,
+      "revenue": 93112.2,
+      "conversion_rate": 0.115158
+    },
+    {
+      "month_start": "2026-01-01",
+      "visits": 9485,
+      "product_views": 8114,
+      "add_to_carts": 3048,
+      "checkouts": 1894,
+      "purchases": 1093,
+      "revenue": 93137.16,
+      "conversion_rate": 0.115235
+    },
+    {
+      "month_start": "2026-02-01",
+      "visits": 9310,
+      "product_views": 7951,
+      "add_to_carts": 2964,
+      "checkouts": 1768,
+      "purchases": 1051,
+      "revenue": 87138.87,
+      "conversion_rate": 0.112889
+    },
+    {
+      "month_start": "2026-03-01",
+      "visits": 12645,
+      "product_views": 10814,
+      "add_to_carts": 4055,
+      "checkouts": 2464,
+      "purchases": 1462,
+      "revenue": 125563.23,
+      "conversion_rate": 0.115619
+    },
+    {
+      "month_start": "2026-04-01",
+      "visits": 12374,
+      "product_views": 10603,
+      "add_to_carts": 3973,
+      "checkouts": 2513,
+      "purchases": 1485,
+      "revenue": 123335.28,
+      "conversion_rate": 0.12001
+    },
+    {
+      "month_start": "2026-05-01",
+      "visits": 10433,
+      "product_views": 8896,
+      "add_to_carts": 3229,
+      "checkouts": 2033,
+      "purchases": 1195,
+      "revenue": 100586.78,
+      "conversion_rate": 0.11454
+    }
+  ],
+  "device": [
+    {
+      "segment": "Desktop",
+      "visits": 62468,
+      "product_views": 53661,
+      "add_to_carts": 22237,
+      "checkouts": 15587,
+      "purchases": 10539,
+      "revenue": 878948.27,
+      "conversion_rate": 0.16871,
+      "aov": 83.4,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Mobile",
+      "visits": 83045,
+      "product_views": 71661,
+      "add_to_carts": 24517,
+      "checkouts": 13328,
+      "purchases": 6628,
+      "revenue": 561412.91,
+      "conversion_rate": 0.079812,
+      "aov": 84.7,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Tablet",
+      "visits": 15584,
+      "product_views": 12208,
+      "add_to_carts": 4416,
+      "checkouts": 2603,
+      "purchases": 1400,
+      "revenue": 118408.16,
+      "conversion_rate": 0.089836,
+      "aov": 84.58,
+      "spend": 0.0,
+      "roas": null
+    }
+  ],
+  "channel": [
+    {
+      "segment": "Organic Search",
+      "visits": 38337,
+      "product_views": 32544,
+      "add_to_carts": 11871,
+      "checkouts": 7158,
+      "purchases": 4102,
+      "revenue": 354664.74,
+      "conversion_rate": 0.106998,
+      "aov": 86.46,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Email",
+      "visits": 19317,
+      "product_views": 18122,
+      "add_to_carts": 8267,
+      "checkouts": 5850,
+      "purchases": 4025,
+      "revenue": 339348.31,
+      "conversion_rate": 0.208366,
+      "aov": 84.31,
+      "spend": 358528.22,
+      "roas": 0.946504
+    },
+    {
+      "segment": "Paid Search",
+      "visits": 29159,
+      "product_views": 25783,
+      "add_to_carts": 9817,
+      "checkouts": 6240,
+      "purchases": 3795,
+      "revenue": 321794.6,
+      "conversion_rate": 0.130148,
+      "aov": 84.79,
+      "spend": 2241044.53,
+      "roas": 0.143591
+    },
+    {
+      "segment": "Direct",
+      "visits": 25744,
+      "product_views": 22452,
+      "add_to_carts": 8713,
+      "checkouts": 5551,
+      "purchases": 3364,
+      "revenue": 277005.05,
+      "conversion_rate": 0.130671,
+      "aov": 82.34,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Paid Social",
+      "visits": 24233,
+      "product_views": 18645,
+      "add_to_carts": 5653,
+      "checkouts": 2771,
+      "purchases": 1213,
+      "revenue": 97487.19,
+      "conversion_rate": 0.050056,
+      "aov": 80.37,
+      "spend": 2012198.87,
+      "roas": 0.048448
+    },
+    {
+      "segment": "Referral",
+      "visits": 9749,
+      "product_views": 8230,
+      "add_to_carts": 3061,
+      "checkouts": 1953,
+      "purchases": 1134,
+      "revenue": 90644.32,
+      "conversion_rate": 0.11632,
+      "aov": 79.93,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Affiliate",
+      "visits": 14558,
+      "product_views": 11754,
+      "add_to_carts": 3788,
+      "checkouts": 1995,
+      "purchases": 934,
+      "revenue": 77825.13,
+      "conversion_rate": 0.064157,
+      "aov": 83.32,
+      "spend": 501727.17,
+      "roas": 0.155114
+    }
+  ],
+  "campaign": [
+    {
+      "segment": "SEO Evergreen",
+      "visits": 38337,
+      "product_views": 32544,
+      "add_to_carts": 11871,
+      "checkouts": 7158,
+      "purchases": 4102,
+      "revenue": 354664.74,
+      "conversion_rate": 0.106998,
+      "aov": 86.46,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Direct / None",
+      "visits": 25744,
+      "product_views": 22452,
+      "add_to_carts": 8713,
+      "checkouts": 5551,
+      "purchases": 3364,
+      "revenue": 277005.05,
+      "conversion_rate": 0.130671,
+      "aov": 82.34,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Cart Recovery",
+      "visits": 10934,
+      "product_views": 10286,
+      "add_to_carts": 4755,
+      "checkouts": 3385,
+      "purchases": 2375,
+      "revenue": 201095.85,
+      "conversion_rate": 0.217212,
+      "aov": 84.67,
+      "spend": 180944.68,
+      "roas": 1.111366
+    },
+    {
+      "segment": "Generic Search",
+      "visits": 16892,
+      "product_views": 14844,
+      "add_to_carts": 5460,
+      "checkouts": 3435,
+      "purchases": 2036,
+      "revenue": 170261.48,
+      "conversion_rate": 0.12053,
+      "aov": 83.63,
+      "spend": 1291576.11,
+      "roas": 0.131825
+    },
+    {
+      "segment": "Brand Search",
+      "visits": 12267,
+      "product_views": 10939,
+      "add_to_carts": 4357,
+      "checkouts": 2805,
+      "purchases": 1759,
+      "revenue": 151533.12,
+      "conversion_rate": 0.143393,
+      "aov": 86.15,
+      "spend": 949468.42,
+      "roas": 0.159598
+    },
+    {
+      "segment": "VIP Product Drop",
+      "visits": 8383,
+      "product_views": 7836,
+      "add_to_carts": 3512,
+      "checkouts": 2465,
+      "purchases": 1650,
+      "revenue": 138252.46,
+      "conversion_rate": 0.196827,
+      "aov": 83.79,
+      "spend": 177583.54,
+      "roas": 0.778521
+    },
+    {
+      "segment": "Review Partners",
+      "visits": 9749,
+      "product_views": 8230,
+      "add_to_carts": 3061,
+      "checkouts": 1953,
+      "purchases": 1134,
+      "revenue": 90644.32,
+      "conversion_rate": 0.11632,
+      "aov": 79.93,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Marketplace Affiliates",
+      "visits": 14558,
+      "product_views": 11754,
+      "add_to_carts": 3788,
+      "checkouts": 1995,
+      "purchases": 934,
+      "revenue": 77825.13,
+      "conversion_rate": 0.064157,
+      "aov": 83.32,
+      "spend": 501727.17,
+      "roas": 0.155114
+    },
+    {
+      "segment": "Spring Sale",
+      "visits": 13036,
+      "product_views": 10156,
+      "add_to_carts": 3194,
+      "checkouts": 1633,
+      "purchases": 746,
+      "revenue": 57723.66,
+      "conversion_rate": 0.057226,
+      "aov": 77.38,
+      "spend": 1114632.18,
+      "roas": 0.051787
+    },
+    {
+      "segment": "Creator Social",
+      "visits": 11197,
+      "product_views": 8489,
+      "add_to_carts": 2459,
+      "checkouts": 1138,
+      "purchases": 467,
+      "revenue": 39763.53,
+      "conversion_rate": 0.041708,
+      "aov": 85.15,
+      "spend": 897566.69,
+      "roas": 0.044301
+    }
+  ],
+  "category": [
+    {
+      "segment": "Electronics",
+      "visits": 27254,
+      "product_views": 22037,
+      "add_to_carts": 6976,
+      "checkouts": 3851,
+      "purchases": 2109,
+      "revenue": 520671.93,
+      "conversion_rate": 0.077383,
+      "aov": 246.88,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Apparel",
+      "visits": 37116,
+      "product_views": 31947,
+      "add_to_carts": 12334,
+      "checkouts": 7679,
+      "purchases": 4475,
+      "revenue": 290824.06,
+      "conversion_rate": 0.120568,
+      "aov": 64.99,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Home",
+      "visits": 27789,
+      "product_views": 23180,
+      "add_to_carts": 8095,
+      "checkouts": 4712,
+      "purchases": 2597,
+      "revenue": 275139.69,
+      "conversion_rate": 0.093454,
+      "aov": 105.95,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Beauty",
+      "visits": 32262,
+      "product_views": 28531,
+      "add_to_carts": 11869,
+      "checkouts": 7887,
+      "purchases": 4952,
+      "revenue": 209695.71,
+      "conversion_rate": 0.153493,
+      "aov": 42.35,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Sports",
+      "visits": 22239,
+      "product_views": 18823,
+      "add_to_carts": 6803,
+      "checkouts": 4134,
+      "purchases": 2332,
+      "revenue": 204120.27,
+      "conversion_rate": 0.104861,
+      "aov": 87.53,
+      "spend": 0.0,
+      "roas": null
+    },
+    {
+      "segment": "Books",
+      "visits": 14437,
+      "product_views": 13012,
+      "add_to_carts": 5093,
+      "checkouts": 3255,
+      "purchases": 2102,
+      "revenue": 58317.68,
+      "conversion_rate": 0.145598,
+      "aov": 27.74,
+      "spend": 0.0,
+      "roas": null
+    }
+  ],
+  "filters": {
+    "device": [
+      "Desktop",
+      "Mobile",
+      "Tablet"
+    ],
+    "channel": [
+      "Affiliate",
+      "Direct",
+      "Email",
+      "Organic Search",
+      "Paid Search",
+      "Paid Social",
+      "Referral"
+    ],
+    "campaign": [
+      "Brand Search",
+      "Cart Recovery",
+      "Creator Social",
+      "Direct / None",
+      "Generic Search",
+      "Marketplace Affiliates",
+      "Review Partners",
+      "SEO Evergreen",
+      "Spring Sale",
+      "VIP Product Drop"
+    ],
+    "category": [
+      "Apparel",
+      "Beauty",
+      "Books",
+      "Electronics",
+      "Home",
+      "Sports"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+    "metadata":  {
+                     "type":  "SemanticModel",
+                     "displayName":  "AML Fraud Monitoring Command Center"
+                 },
+    "config":  {
+                   "version":  "2.0",
+                   "logicalId":  "4f53a5e1-203a-46f3-b53f-cb15a1536840"
+               }
+}

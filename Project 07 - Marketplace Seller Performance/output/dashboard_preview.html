@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Marketplace Seller Performance Dashboard</title>
+  <style>
+    :root { --bg:#F6F7FB; --panel:#FFFFFF; --ink:#101828; --muted:#667085; --line:#D8DEE9; --orange:#EE4D2D; --blue:#2563EB; --teal:#0F766E; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Segoe UI, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+    header { padding:22px 32px 16px; background:var(--panel); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:2; }
+    h1 { margin:0; font-size:24px; line-height:1.2; letter-spacing:0; }
+    .meta { margin-top:6px; color:var(--muted); font-size:13px; display:flex; gap:10px; flex-wrap:wrap; }
+    .pill { border:1px solid var(--line); background:#F8FAFC; border-radius:6px; padding:4px 8px; }
+    main { padding:24px 32px 34px; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:0 8px 24px rgba(16,24,40,.05); }
+    .panel h2 { margin:0; padding:12px 14px; font-size:14px; border-bottom:1px solid var(--line); }
+    img { width:100%; display:block; }
+    @media (max-width: 1000px) { .grid { grid-template-columns:1fr; } header, main { padding-left:18px; padding-right:18px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Marketplace Seller Performance Dashboard</h1>
+    <div class="meta"><span class="pill">Visual refresh: Marketplace Command Center v3</span><span class="pill">Latest: 2026-05</span><span class="pill">Power BI final + 4-page preview</span></div>
+  </header>
+  <main>
+    <div class="grid">
+      <section class="panel"><h2>1. Executive Cockpit</h2><img src="screenshots/page_01.png" alt="Executive Cockpit"></section>
+      <section class="panel"><h2>2. Seller Portfolio</h2><img src="screenshots/page_02.png" alt="Seller Portfolio"></section>
+      <section class="panel"><h2>3. Commercial Growth Drivers</h2><img src="screenshots/page_03.png" alt="Commercial Growth Drivers"></section>
+      <section class="panel"><h2>4. Ops Health & Risk Monitor</h2><img src="screenshots/page_04.png" alt="Ops Health and Risk Monitor"></section>
+    </div>
+  </main>
+</body>
+</html>

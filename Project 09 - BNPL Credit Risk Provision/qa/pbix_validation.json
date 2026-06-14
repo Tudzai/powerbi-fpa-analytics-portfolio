@@ -1,0 +1,55 @@
+{
+    "status":  "passed",
+    "product":  "BNPL / Digital Lending Credit Risk Dashboard",
+    "build_route":  "SCRIPTED_DESKTOP_PBIX",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 09 - BNPL Credit Risk Provision\\output\\dashboard_final.pbix",
+    "final_pbix_size_bytes":  9832735,
+    "desktop_open_check":  {
+                               "status":  "passed",
+                               "exact_file_opened":  true,
+                               "power_bi_window":  "dashboard_final",
+                               "saved_in_desktop":  true,
+                               "visual_error_count":  0,
+                               "screenshot":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 09 - BNPL Credit Risk Provision\\output\\screenshots\\powerbi_desktop_final_open_check_clean.png"
+                           },
+    "model":  {
+                  "table_count":  15,
+                  "relationship_count":  25,
+                  "kpi_measure_count":  27,
+                  "data_export_status":  "passed"
+              },
+    "report":  {
+                   "page_count":  3,
+                   "pages":  [
+                                 "Credit Risk Overview",
+                                 "Delinquency \u0026 Vintage Analysis",
+                                 "Collections \u0026 Provision Forecast"
+                             ],
+                   "visual_container_count":  45,
+                   "screenshots":  [
+                                       "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 09 - BNPL Credit Risk Provision\\output\\screenshots\\powerbi_desktop_final_open_check_clean.png",
+                                       "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 09 - BNPL Credit Risk Provision\\output\\screenshots\\powerbi_page1_credit_risk_overview.png",
+                                       "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 09 - BNPL Credit Risk Provision\\output\\screenshots\\powerbi_page2_delinquency_vintage.png",
+                                       "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 09 - BNPL Credit Risk Provision\\output\\screenshots\\powerbi_page3_collections_forecast.png"
+                                   ]
+               },
+    "data":  {
+                 "synthetic_seed":  90209,
+                 "facts":  {
+                               "applications":  52000,
+                               "loans":  33051,
+                               "monthly_snapshots":  218547,
+                               "collections_cases":  40586,
+                               "vintage_rows":  344,
+                               "roll_rate_rows":  1775,
+                               "forecast_rows":  21
+                           }
+             },
+    "known_issues":  [
+
+                     ],
+    "non_blocking_build_notes":  [
+                                     "pbi-tools PBIT compile failed with Microsoft.PowerBI.Packaging.PowerBIPackager MissingMethodException, so final PBIX used the validated Desktop seed + TOM model push + native Layout patch route."
+                                 ],
+    "validated_at_local":  "2026-06-11 16:17 Asia/Saigon"
+}

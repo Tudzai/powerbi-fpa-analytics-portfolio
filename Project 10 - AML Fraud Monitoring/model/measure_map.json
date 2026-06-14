@@ -1,0 +1,158 @@
+[
+  {
+    "name": "Total Transactions",
+    "expression": "COUNTROWS ( FactTransactions )",
+    "format": "#,0",
+    "display_folder": "Overview"
+  },
+  {
+    "name": "Transaction Amount",
+    "expression": "SUM ( FactTransactions[AmountUSD] )",
+    "format": "$#,0",
+    "display_folder": "Overview"
+  },
+  {
+    "name": "Flagged Transactions",
+    "expression": "CALCULATE ( [Total Transactions], FactTransactions[IsFlagged] = \"Y\" )",
+    "format": "#,0",
+    "display_folder": "Overview"
+  },
+  {
+    "name": "Flagged Amount",
+    "expression": "CALCULATE ( [Transaction Amount], FactTransactions[IsFlagged] = \"Y\" )",
+    "format": "$#,0",
+    "display_folder": "Overview"
+  },
+  {
+    "name": "Alert Count",
+    "expression": "COUNTROWS ( FactAlerts )",
+    "format": "#,0",
+    "display_folder": "Alert"
+  },
+  {
+    "name": "Case Count",
+    "expression": "COUNTROWS ( FactCases )",
+    "format": "#,0",
+    "display_folder": "Case"
+  },
+  {
+    "name": "Suspicious Cases",
+    "expression": "CALCULATE ( [Case Count], FactCases[Outcome] IN { \"Confirmed Suspicious\", \"SAR Filed\" } )",
+    "format": "#,0",
+    "display_folder": "Case"
+  },
+  {
+    "name": "SAR Filed Cases",
+    "expression": "CALCULATE ( [Case Count], FactCases[SARFiled] = \"Y\" )",
+    "format": "#,0",
+    "display_folder": "Case"
+  },
+  {
+    "name": "Closed Alerts",
+    "expression": "CALCULATE ( [Alert Count], FactAlerts[AlertStatus] IN { \"Closed False Positive\", \"Closed True Positive\", \"SAR Filed\" } )",
+    "format": "#,0",
+    "display_folder": "Alert"
+  },
+  {
+    "name": "False Positive Alerts",
+    "expression": "CALCULATE ( [Closed Alerts], FactAlerts[IsFalsePositive] = \"Y\" )",
+    "format": "#,0",
+    "display_folder": "Alert"
+  },
+  {
+    "name": "False Positive Rate",
+    "expression": "DIVIDE ( [False Positive Alerts], [Closed Alerts] )",
+    "format": "0.0%",
+    "display_folder": "Alert"
+  },
+  {
+    "name": "True Positive Alerts",
+    "expression": "CALCULATE ( [Alert Count], FactAlerts[IsTruePositive] = \"Y\" )",
+    "format": "#,0",
+    "display_folder": "Alert"
+  },
+  {
+    "name": "Rule Precision",
+    "expression": "DIVIDE ( [True Positive Alerts], [Closed Alerts] )",
+    "format": "0.0%",
+    "display_folder": "Rule"
+  },
+  {
+    "name": "Alert Rate",
+    "expression": "DIVIDE ( [Alert Count], [Total Transactions] )",
+    "format": "0.0%",
+    "display_folder": "Alert"
+  },
+  {
+    "name": "Alert to Case Conversion",
+    "expression": "DIVIDE ( [Case Count], [Alert Count] )",
+    "format": "0.0%",
+    "display_folder": "Alert"
+  },
+  {
+    "name": "SAR Conversion Rate",
+    "expression": "DIVIDE ( [SAR Filed Cases], [Case Count] )",
+    "format": "0.0%",
+    "display_folder": "Case"
+  },
+  {
+    "name": "Open Cases",
+    "expression": "CALCULATE ( [Case Count], NOT ( FactCases[CaseStatus] IN { \"Closed\", \"SAR Filed\" } ) )",
+    "format": "#,0",
+    "display_folder": "Case"
+  },
+  {
+    "name": "Overdue Cases",
+    "expression": "CALCULATE ( [Case Count], FactCases[IsOverdue] = \"Y\" )",
+    "format": "#,0",
+    "display_folder": "SLA"
+  },
+  {
+    "name": "SLA Compliance Rate",
+    "expression": "DIVIDE ( [Case Count] - [Overdue Cases], [Case Count] )",
+    "format": "0.0%",
+    "display_folder": "SLA"
+  },
+  {
+    "name": "Average Case Age Days",
+    "expression": "AVERAGE ( FactCases[AgeDays] )",
+    "format": "0.0",
+    "display_folder": "SLA"
+  },
+  {
+    "name": "Average Alert Risk Score",
+    "expression": "AVERAGE ( FactAlerts[RiskScore] )",
+    "format": "0.0",
+    "display_folder": "Risk"
+  },
+  {
+    "name": "High Risk Customers",
+    "expression": "CALCULATE ( DISTINCTCOUNT ( DimCustomer[CustomerKey] ), DimCustomer[CustomerRiskTier] = \"High\" )",
+    "format": "#,0",
+    "display_folder": "Risk"
+  },
+  {
+    "name": "Governance Changes",
+    "expression": "COUNTROWS ( FactRuleGovernance )",
+    "format": "#,0",
+    "display_folder": "Governance"
+  },
+  {
+    "name": "Avg Precision After Tuning",
+    "expression": "AVERAGE ( FactRuleGovernance[PrecisionAfter] )",
+    "format": "0.0%",
+    "display_folder": "Governance"
+  },
+  {
+    "name": "Alert Amount",
+    "expression": "SUM ( FactAlerts[AlertAmountUSD] )",
+    "format": "$#,0",
+    "display_folder": "Alert"
+  },
+  {
+    "name": "Case Amount",
+    "expression": "SUM ( FactCases[CaseAmountUSD] )",
+    "format": "$#,0",
+    "display_folder": "Case"
+  }
+]

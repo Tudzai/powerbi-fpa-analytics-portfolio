@@ -1,0 +1,4 @@
+ScenarioKey,Scenario,ScenarioSort,ScenarioType
+S001,Actual,1,Closed actual
+S002,Budget,2,Annual operating plan
+S003,Forecast,3,Latest forecast

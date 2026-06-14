@@ -1,0 +1,1446 @@
+{
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimMonth",
+        "lineageTag": "50b06f1b-c7ac-4d61-9d14-7fc9d6a8089c",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "4a4bbea9-a7c3-4a97-9e33-f8dd83d74477",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthLabel",
+            "dataType": "string",
+            "sourceColumn": "MonthLabel",
+            "lineageTag": "93bc4897-e18b-4933-99b0-86554397555c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthIndex",
+            "dataType": "int64",
+            "sourceColumn": "MonthIndex",
+            "lineageTag": "e7852217-8317-4673-83c7-e3399529462a",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "lineageTag": "fadef237-bd47-4ef9-9db5-2c2fc4010805",
+            "formatString": "0"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter",
+            "lineageTag": "ad416a48-543f-4eca-8f52-10452b9d0b8f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsLatestCompleteMonth",
+            "dataType": "dateTime",
+            "sourceColumn": "IsLatestCompleteMonth",
+            "lineageTag": "cfec7c64-2104-45fc-b488-61106d5c7ae8",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimMonth",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 11 - Neobank Growth Retention LTV\\\\data\\\\prepared\\\\DimMonth.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"MonthLabel\", type text}, {\"MonthIndex\", Int64.Type}, {\"Year\", Int64.Type}, {\"Quarter\", type text}, {\"IsLatestCompleteMonth\", type date}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimChannel",
+        "lineageTag": "15df5d3d-8ef0-4f76-90bf-4567edb6989e",
+        "columns": [
+          {
+            "name": "ChannelKey",
+            "dataType": "string",
+            "sourceColumn": "ChannelKey",
+            "lineageTag": "86860865-f97d-4b6e-aa18-4f2cc46660fc",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelName",
+            "dataType": "string",
+            "sourceColumn": "ChannelName",
+            "lineageTag": "684b514b-6139-48ed-8ab5-fccf066f21c7",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelType",
+            "dataType": "string",
+            "sourceColumn": "ChannelType",
+            "lineageTag": "37eb6aa4-45b6-464c-8438-26725e6bca0f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "QualityIndex",
+            "dataType": "double",
+            "sourceColumn": "QualityIndex",
+            "lineageTag": "cca3e6b3-1b80-47f2-be9c-8ac0fa3d31c0"
+          },
+          {
+            "name": "TargetCAC",
+            "dataType": "int64",
+            "sourceColumn": "TargetCAC",
+            "lineageTag": "4fc86343-ee31-4400-9401-3e234341117a",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "TargetLtvCac",
+            "dataType": "double",
+            "sourceColumn": "TargetLtvCac",
+            "lineageTag": "f394b27e-c6d2-4eaa-8637-aeeaa291f61f"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimChannel",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 11 - Neobank Growth Retention LTV\\\\data\\\\prepared\\\\DimChannel.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"ChannelKey\", type text}, {\"ChannelName\", type text}, {\"ChannelType\", type text}, {\"QualityIndex\", type number}, {\"TargetCAC\", Int64.Type}, {\"TargetLtvCac\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimSegment",
+        "lineageTag": "e69a92f6-9f17-4e89-9586-7560af939a11",
+        "columns": [
+          {
+            "name": "SegmentKey",
+            "dataType": "string",
+            "sourceColumn": "SegmentKey",
+            "lineageTag": "7679660c-d2c7-4323-aaba-11398bc37b53",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SegmentName",
+            "dataType": "string",
+            "sourceColumn": "SegmentName",
+            "lineageTag": "44e2e197-9179-474d-a74f-29172622ee86",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RiskTier",
+            "dataType": "string",
+            "sourceColumn": "RiskTier",
+            "lineageTag": "c938cdee-8294-4206-8156-6019883e03d5",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IncomeBand",
+            "dataType": "string",
+            "sourceColumn": "IncomeBand",
+            "lineageTag": "b5e22f41-cad1-49ff-96b9-867b564ceb88",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimSegment",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 11 - Neobank Growth Retention LTV\\\\data\\\\prepared\\\\DimSegment.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"SegmentKey\", type text}, {\"SegmentName\", type text}, {\"RiskTier\", type text}, {\"IncomeBand\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCampaign",
+        "lineageTag": "001a0732-c7f7-45ee-b340-56ac16d35726",
+        "columns": [
+          {
+            "name": "CampaignKey",
+            "dataType": "string",
+            "sourceColumn": "CampaignKey",
+            "lineageTag": "bc3a2e22-3344-4e28-aaed-8c5a71bbca6f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CampaignName",
+            "dataType": "string",
+            "sourceColumn": "CampaignName",
+            "lineageTag": "b7b2069f-4a8b-4642-a2ee-79402295d820",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelKey",
+            "dataType": "string",
+            "sourceColumn": "ChannelKey",
+            "lineageTag": "2aadecbe-518b-4457-bc59-911022bbfca8",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelName",
+            "dataType": "string",
+            "sourceColumn": "ChannelName",
+            "lineageTag": "25f53d37-b6ce-44ce-bfc1-19454f309e23",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Objective",
+            "dataType": "string",
+            "sourceColumn": "Objective",
+            "lineageTag": "09667296-772f-4641-98ac-d728dfd354f5",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimCampaign",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 11 - Neobank Growth Retention LTV\\\\data\\\\prepared\\\\DimCampaign.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"CampaignKey\", type text}, {\"CampaignName\", type text}, {\"ChannelKey\", type text}, {\"ChannelName\", type text}, {\"Objective\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactGrowthMonthly",
+        "lineageTag": "d5ca637b-2593-42da-adb8-62a47ee67651",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "dad57676-396f-476a-9657-12c15501f0a6",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelKey",
+            "dataType": "string",
+            "sourceColumn": "ChannelKey",
+            "lineageTag": "42d85e1c-aa00-4b09-841f-92346ec2f56b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SegmentKey",
+            "dataType": "string",
+            "sourceColumn": "SegmentKey",
+            "lineageTag": "95b2ff80-07ce-4ca6-8002-4210617dce5b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NewUsers",
+            "dataType": "int64",
+            "sourceColumn": "NewUsers",
+            "lineageTag": "903382c2-9760-4bc9-ae24-571ca4b598af",
+            "formatString": "0"
+          },
+          {
+            "name": "KycSubmitted",
+            "dataType": "int64",
+            "sourceColumn": "KycSubmitted",
+            "lineageTag": "9a5c6554-3372-44ef-a4c2-4c77b96eafae",
+            "formatString": "0"
+          },
+          {
+            "name": "KycApproved",
+            "dataType": "int64",
+            "sourceColumn": "KycApproved",
+            "lineageTag": "f7223723-738b-498c-8192-f148fcedd62f",
+            "formatString": "0"
+          },
+          {
+            "name": "ActivatedUsers",
+            "dataType": "int64",
+            "sourceColumn": "ActivatedUsers",
+            "lineageTag": "7c3a8e85-09ec-4611-b26d-b3063ace68aa",
+            "formatString": "0"
+          },
+          {
+            "name": "FundedAccounts",
+            "dataType": "int64",
+            "sourceColumn": "FundedAccounts",
+            "lineageTag": "c5ad4913-2bf2-440d-814c-7c5148f5268e",
+            "formatString": "0"
+          },
+          {
+            "name": "ActiveUsers",
+            "dataType": "int64",
+            "sourceColumn": "ActiveUsers",
+            "lineageTag": "30266d48-fe3e-45d4-b875-1b4fb1a5eb87",
+            "formatString": "0"
+          },
+          {
+            "name": "ChurnedUsers",
+            "dataType": "int64",
+            "sourceColumn": "ChurnedUsers",
+            "lineageTag": "412406cd-2b2c-42aa-b844-0d1ed8fdc898",
+            "formatString": "0"
+          },
+          {
+            "name": "DormantCustomers",
+            "dataType": "int64",
+            "sourceColumn": "DormantCustomers",
+            "lineageTag": "4f6d794e-39b9-42f0-8126-07098dd88978",
+            "formatString": "0"
+          },
+          {
+            "name": "ChurnRiskUsers",
+            "dataType": "int64",
+            "sourceColumn": "ChurnRiskUsers",
+            "lineageTag": "5f86eb89-5a46-4a9e-b40a-3444e2b1bd0b",
+            "formatString": "0"
+          },
+          {
+            "name": "DepositVolume",
+            "dataType": "double",
+            "sourceColumn": "DepositVolume",
+            "lineageTag": "e7827994-e911-4b0c-b707-24410a10d507",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "InterchangeRevenue",
+            "dataType": "double",
+            "sourceColumn": "InterchangeRevenue",
+            "lineageTag": "e3813c7e-b3b3-4c3a-a911-67ebe8ecf180",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "SubscriptionRevenue",
+            "dataType": "double",
+            "sourceColumn": "SubscriptionRevenue",
+            "lineageTag": "d7176ee6-58a3-4bd3-beec-04a070afa6dc",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "LendingRevenue",
+            "dataType": "double",
+            "sourceColumn": "LendingRevenue",
+            "lineageTag": "f8610ed6-3ecb-4f08-8c50-c0ce53d63d7e",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "TotalRevenue",
+            "dataType": "double",
+            "sourceColumn": "TotalRevenue",
+            "lineageTag": "804cf6a0-5be7-4cb2-939a-cff33e062d79",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "GrossProfit",
+            "dataType": "double",
+            "sourceColumn": "GrossProfit",
+            "lineageTag": "5d55ea39-5f33-4ea3-aa03-86b6f3b27d44",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "MarketingSpend",
+            "dataType": "double",
+            "sourceColumn": "MarketingSpend",
+            "lineageTag": "ee656684-0455-4823-a605-61d9f7776892",
+            "formatString": "$#,0;($#,0);$0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactGrowthMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 11 - Neobank Growth Retention LTV\\\\data\\\\prepared\\\\FactGrowthMonthly.csv\"), [Delimiter=\",\", Columns=19, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"ChannelKey\", type text}, {\"SegmentKey\", type text}, {\"NewUsers\", Int64.Type}, {\"KycSubmitted\", Int64.Type}, {\"KycApproved\", Int64.Type}, {\"ActivatedUsers\", Int64.Type}, {\"FundedAccounts\", Int64.Type}, {\"ActiveUsers\", Int64.Type}, {\"ChurnedUsers\", Int64.Type}, {\"DormantCustomers\", Int64.Type}, {\"ChurnRiskUsers\", Int64.Type}, {\"DepositVolume\", type number}, {\"InterchangeRevenue\", type number}, {\"SubscriptionRevenue\", type number}, {\"LendingRevenue\", type number}, {\"TotalRevenue\", type number}, {\"GrossProfit\", type number}, {\"MarketingSpend\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FunnelMonthly",
+        "lineageTag": "f05014bf-db1a-48ae-9182-efb46658c431",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "c5d2a67d-0697-4731-960a-94ec746aee61",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelKey",
+            "dataType": "string",
+            "sourceColumn": "ChannelKey",
+            "lineageTag": "ca5eff4b-327f-496a-afdd-35e8c7b934d7",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "StageName",
+            "dataType": "string",
+            "sourceColumn": "StageName",
+            "lineageTag": "333399f2-5e0f-4f04-a1c3-b354504a5da2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "StageOrder",
+            "dataType": "int64",
+            "sourceColumn": "StageOrder",
+            "lineageTag": "bf871061-0044-4eb9-8709-b521354cbbc8",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "UserCount",
+            "dataType": "int64",
+            "sourceColumn": "UserCount",
+            "lineageTag": "9bb78af3-241f-4bb2-9a96-5f7dd67928b6",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FunnelMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 11 - Neobank Growth Retention LTV\\\\data\\\\prepared\\\\FunnelMonthly.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"ChannelKey\", type text}, {\"StageName\", type text}, {\"StageOrder\", Int64.Type}, {\"UserCount\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "CohortRetention",
+        "lineageTag": "b8f120db-aa12-4cf6-8785-63a307b8ac73",
+        "columns": [
+          {
+            "name": "CohortMonth",
+            "dataType": "dateTime",
+            "sourceColumn": "CohortMonth",
+            "lineageTag": "79e915cf-4c03-4d1d-9d2e-7b92357bc393",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CohortLabel",
+            "dataType": "string",
+            "sourceColumn": "CohortLabel",
+            "lineageTag": "f514296d-87c5-44a6-a0ca-9bb6e773f768",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ActivityMonth",
+            "dataType": "dateTime",
+            "sourceColumn": "ActivityMonth",
+            "lineageTag": "9710c7f0-c756-41c5-ba00-0dbd2522e7b2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthsSinceCohort",
+            "dataType": "int64",
+            "sourceColumn": "MonthsSinceCohort",
+            "lineageTag": "3f510153-c864-4a18-8c29-304015a6c4be",
+            "formatString": "0"
+          },
+          {
+            "name": "ChannelKey",
+            "dataType": "string",
+            "sourceColumn": "ChannelKey",
+            "lineageTag": "62483a0f-ec46-4818-88d2-0a87f065664e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SegmentKey",
+            "dataType": "string",
+            "sourceColumn": "SegmentKey",
+            "lineageTag": "d41fa0aa-149e-4cf7-878c-4b4f4e3b421d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CohortSize",
+            "dataType": "int64",
+            "sourceColumn": "CohortSize",
+            "lineageTag": "b743782b-560d-4cec-970e-8eb2dae7e06c",
+            "formatString": "0"
+          },
+          {
+            "name": "RetainedUsers",
+            "dataType": "int64",
+            "sourceColumn": "RetainedUsers",
+            "lineageTag": "48f56cf0-2999-4873-b86e-3ffa4c2b2634",
+            "formatString": "0"
+          },
+          {
+            "name": "RetentionRate",
+            "dataType": "double",
+            "sourceColumn": "RetentionRate",
+            "lineageTag": "5de59522-45a4-4d87-a468-7d916d7dddfa"
+          },
+          {
+            "name": "Revenue",
+            "dataType": "double",
+            "sourceColumn": "Revenue",
+            "lineageTag": "0493f85a-00d0-4647-97d1-131f3766eda5",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "CumulativeRevenue",
+            "dataType": "double",
+            "sourceColumn": "CumulativeRevenue",
+            "lineageTag": "7cac2e74-7866-4e6b-b05d-a35e91b522ff",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "CumulativeLTV",
+            "dataType": "double",
+            "sourceColumn": "CumulativeLTV",
+            "lineageTag": "9bf84b4a-5844-4a71-ae9c-c88e5d8f9cd9",
+            "formatString": "$#,0;($#,0);$0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_CohortRetention",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 11 - Neobank Growth Retention LTV\\\\data\\\\prepared\\\\CohortRetention.csv\"), [Delimiter=\",\", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"CohortMonth\", type date}, {\"CohortLabel\", type text}, {\"ActivityMonth\", type date}, {\"MonthsSinceCohort\", Int64.Type}, {\"ChannelKey\", type text}, {\"SegmentKey\", type text}, {\"CohortSize\", Int64.Type}, {\"RetainedUsers\", Int64.Type}, {\"RetentionRate\", type number}, {\"Revenue\", type number}, {\"CumulativeRevenue\", type number}, {\"CumulativeLTV\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "CampaignMonthly",
+        "lineageTag": "4ce1f0a5-8a51-498c-b029-40541a4162ca",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "79e5e9de-ff2d-4201-94a5-ce3329bf06e8",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CampaignKey",
+            "dataType": "string",
+            "sourceColumn": "CampaignKey",
+            "lineageTag": "55c85a13-6ab1-4195-8971-53d74990f616",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelKey",
+            "dataType": "string",
+            "sourceColumn": "ChannelKey",
+            "lineageTag": "367c22a4-3145-49e9-9e7a-032af18ec1e7",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Spend",
+            "dataType": "double",
+            "sourceColumn": "Spend",
+            "lineageTag": "30e7e5cc-64da-4095-a97c-07da505bcfa2",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "NewUsers",
+            "dataType": "int64",
+            "sourceColumn": "NewUsers",
+            "lineageTag": "596a3941-992a-4a88-b82f-967cdf3ee7fa",
+            "formatString": "0"
+          },
+          {
+            "name": "FundedAccounts",
+            "dataType": "int64",
+            "sourceColumn": "FundedAccounts",
+            "lineageTag": "bf400579-2394-4485-bc1d-8a6dd9452be2",
+            "formatString": "0"
+          },
+          {
+            "name": "Revenue",
+            "dataType": "double",
+            "sourceColumn": "Revenue",
+            "lineageTag": "b5f0f503-dea8-4d03-ae63-aa55ebba1b4c",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "GrossProfit",
+            "dataType": "double",
+            "sourceColumn": "GrossProfit",
+            "lineageTag": "b5171364-14ac-4822-8cfb-c0d3b7443203",
+            "formatString": "$#,0;($#,0);$0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_CampaignMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 11 - Neobank Growth Retention LTV\\\\data\\\\prepared\\\\CampaignMonthly.csv\"), [Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"CampaignKey\", type text}, {\"ChannelKey\", type text}, {\"Spend\", type number}, {\"NewUsers\", Int64.Type}, {\"FundedAccounts\", Int64.Type}, {\"Revenue\", type number}, {\"GrossProfit\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "ChurnRiskSnapshot",
+        "lineageTag": "5d272ac6-197e-448b-a120-1c78d42eb2d8",
+        "columns": [
+          {
+            "name": "UserID",
+            "dataType": "string",
+            "sourceColumn": "UserID",
+            "lineageTag": "5d10fd0d-af1b-4957-ba4f-7fc4a45fdecf",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelKey",
+            "dataType": "string",
+            "sourceColumn": "ChannelKey",
+            "lineageTag": "8c2b54ea-be9e-45b6-98b4-1e88ccc19e08",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SegmentKey",
+            "dataType": "string",
+            "sourceColumn": "SegmentKey",
+            "lineageTag": "a4930321-f330-404c-837f-8555d928f456",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RiskBand",
+            "dataType": "string",
+            "sourceColumn": "RiskBand",
+            "lineageTag": "013e0bd8-664a-41ac-96df-bc8fa0e1054e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RiskScore",
+            "dataType": "double",
+            "sourceColumn": "RiskScore",
+            "lineageTag": "e216ae22-9adf-4c02-bd78-9fd7ec9d03c5"
+          },
+          {
+            "name": "DormantDays",
+            "dataType": "int64",
+            "sourceColumn": "DormantDays",
+            "lineageTag": "66491439-cc89-4c72-9207-d458bbf7f27e",
+            "formatString": "0"
+          },
+          {
+            "name": "Balance",
+            "dataType": "double",
+            "sourceColumn": "Balance",
+            "lineageTag": "214678e8-3f0c-4736-876e-39254ddf127e",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "EstimatedLTV",
+            "dataType": "double",
+            "sourceColumn": "EstimatedLTV",
+            "lineageTag": "f907b807-4ff1-415b-bb23-98ae611defc5",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "RecommendedAction",
+            "dataType": "string",
+            "sourceColumn": "RecommendedAction",
+            "lineageTag": "f35a6b35-9913-44f6-ab2d-0d4591630c45",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_ChurnRiskSnapshot",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 11 - Neobank Growth Retention LTV\\\\data\\\\prepared\\\\ChurnRiskSnapshot.csv\"), [Delimiter=\",\", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"UserID\", type text}, {\"ChannelKey\", type text}, {\"SegmentKey\", type text}, {\"RiskBand\", type text}, {\"RiskScore\", type number}, {\"DormantDays\", Int64.Type}, {\"Balance\", type number}, {\"EstimatedLTV\", type number}, {\"RecommendedAction\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "MonthlyKPIs",
+        "lineageTag": "93ec9965-f148-4eed-a97b-7dfcd99d7493",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "4e82db1e-93b9-45b6-8364-dbdcc29fea84",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NewUsers",
+            "dataType": "int64",
+            "sourceColumn": "NewUsers",
+            "lineageTag": "ac21cba8-d0b2-4ff6-b425-132c4df7d03b",
+            "formatString": "0"
+          },
+          {
+            "name": "KycSubmitted",
+            "dataType": "int64",
+            "sourceColumn": "KycSubmitted",
+            "lineageTag": "e7fe21ce-6eed-4e19-99a8-dc3c7343d5c5",
+            "formatString": "0"
+          },
+          {
+            "name": "KycApproved",
+            "dataType": "int64",
+            "sourceColumn": "KycApproved",
+            "lineageTag": "6f65b845-cab4-4b7d-8966-755f669e37e6",
+            "formatString": "0"
+          },
+          {
+            "name": "ActivatedUsers",
+            "dataType": "int64",
+            "sourceColumn": "ActivatedUsers",
+            "lineageTag": "3632f8eb-6837-43ac-bff0-8c1a9c718ca5",
+            "formatString": "0"
+          },
+          {
+            "name": "FundedAccounts",
+            "dataType": "int64",
+            "sourceColumn": "FundedAccounts",
+            "lineageTag": "a1e48164-e03b-44df-a692-50b8720cd7dc",
+            "formatString": "0"
+          },
+          {
+            "name": "ActiveUsers",
+            "dataType": "int64",
+            "sourceColumn": "ActiveUsers",
+            "lineageTag": "59c6c5f6-ff35-44d3-a6e1-26fcf7411eb1",
+            "formatString": "0"
+          },
+          {
+            "name": "ChurnedUsers",
+            "dataType": "int64",
+            "sourceColumn": "ChurnedUsers",
+            "lineageTag": "1d014c8f-7d50-4c32-8249-f6b99158161a",
+            "formatString": "0"
+          },
+          {
+            "name": "DormantCustomers",
+            "dataType": "int64",
+            "sourceColumn": "DormantCustomers",
+            "lineageTag": "4341d59f-d603-4270-9715-858da786af06",
+            "formatString": "0"
+          },
+          {
+            "name": "ChurnRiskUsers",
+            "dataType": "int64",
+            "sourceColumn": "ChurnRiskUsers",
+            "lineageTag": "10175564-f339-4ec3-ada4-25b64b9fa41e",
+            "formatString": "0"
+          },
+          {
+            "name": "DepositVolume",
+            "dataType": "double",
+            "sourceColumn": "DepositVolume",
+            "lineageTag": "a2877155-1fe8-4a6f-86df-a320ddb993ff",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "TotalRevenue",
+            "dataType": "double",
+            "sourceColumn": "TotalRevenue",
+            "lineageTag": "b1eadf53-fde4-447b-9918-ffa1fe054af6",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "GrossProfit",
+            "dataType": "double",
+            "sourceColumn": "GrossProfit",
+            "lineageTag": "9be4c322-5c1c-41ad-a41a-bf0b0be490d2",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "MarketingSpend",
+            "dataType": "double",
+            "sourceColumn": "MarketingSpend",
+            "lineageTag": "157822a8-cc0d-4732-9057-c61180110aed",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "MonthLabel",
+            "dataType": "string",
+            "sourceColumn": "MonthLabel",
+            "lineageTag": "6a282f35-5415-46b2-bea0-a63c7019123e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthIndex",
+            "dataType": "int64",
+            "sourceColumn": "MonthIndex",
+            "lineageTag": "e2f2c882-93a9-4e0e-bcc8-d043524c93fa",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "KycCompletionRate",
+            "dataType": "double",
+            "sourceColumn": "KycCompletionRate",
+            "lineageTag": "6b2a68e3-2866-49f8-aa8b-18802ee5f3b6"
+          },
+          {
+            "name": "ActivationRate",
+            "dataType": "double",
+            "sourceColumn": "ActivationRate",
+            "lineageTag": "0e6a491d-12f1-453c-9484-132fb79c81a7"
+          },
+          {
+            "name": "FundedRate",
+            "dataType": "double",
+            "sourceColumn": "FundedRate",
+            "lineageTag": "fe29f920-291c-4336-880b-51d5f22c60c1"
+          },
+          {
+            "name": "CAC",
+            "dataType": "double",
+            "sourceColumn": "CAC",
+            "lineageTag": "2c8b7dfd-1aba-405e-9503-d1e14ac3c247",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ChurnRate",
+            "dataType": "double",
+            "sourceColumn": "ChurnRate",
+            "lineageTag": "3a253047-cdd7-4910-9a26-e0868b725c38"
+          },
+          {
+            "name": "ARPU",
+            "dataType": "double",
+            "sourceColumn": "ARPU",
+            "lineageTag": "c89cc24c-6782-4b83-a8ac-db843f34e71d"
+          },
+          {
+            "name": "LTV",
+            "dataType": "double",
+            "sourceColumn": "LTV",
+            "lineageTag": "79f348a3-cb22-4899-b196-781bab58c35c",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "LTVCACRatio",
+            "dataType": "double",
+            "sourceColumn": "LTVCACRatio",
+            "lineageTag": "67c8d8b6-0219-41a5-b66a-e9b56eff054d",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "PaybackMonths",
+            "dataType": "double",
+            "sourceColumn": "PaybackMonths",
+            "lineageTag": "0f2a51c0-a199-4c86-8acb-f96d1e3d6fc4"
+          },
+          {
+            "name": "MarketingROI",
+            "dataType": "double",
+            "sourceColumn": "MarketingROI",
+            "lineageTag": "efacf4cc-2f1f-466b-918c-1600e52abebb"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_MonthlyKPIs",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 11 - Neobank Growth Retention LTV\\\\data\\\\prepared\\\\MonthlyKPIs.csv\"), [Delimiter=\",\", Columns=26, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"NewUsers\", Int64.Type}, {\"KycSubmitted\", Int64.Type}, {\"KycApproved\", Int64.Type}, {\"ActivatedUsers\", Int64.Type}, {\"FundedAccounts\", Int64.Type}, {\"ActiveUsers\", Int64.Type}, {\"ChurnedUsers\", Int64.Type}, {\"DormantCustomers\", Int64.Type}, {\"ChurnRiskUsers\", Int64.Type}, {\"DepositVolume\", type number}, {\"TotalRevenue\", type number}, {\"GrossProfit\", type number}, {\"MarketingSpend\", type number}, {\"MonthLabel\", type text}, {\"MonthIndex\", Int64.Type}, {\"KycCompletionRate\", type number}, {\"ActivationRate\", type number}, {\"FundedRate\", type number}, {\"CAC\", type number}, {\"ChurnRate\", type number}, {\"ARPU\", type number}, {\"LTV\", type number}, {\"LTVCACRatio\", type number}, {\"PaybackMonths\", type number}, {\"MarketingROI\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "ChannelMonthly",
+        "lineageTag": "0d7c7f7c-fe00-4849-9687-616de0de0056",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "0512300e-f134-4f36-bbb0-90f6afd7121b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelKey",
+            "dataType": "string",
+            "sourceColumn": "ChannelKey",
+            "lineageTag": "37979abf-6f34-483a-8355-df128e227692",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NewUsers",
+            "dataType": "int64",
+            "sourceColumn": "NewUsers",
+            "lineageTag": "508c28d3-f03a-436f-acf8-2e834283b2c7",
+            "formatString": "0"
+          },
+          {
+            "name": "FundedAccounts",
+            "dataType": "int64",
+            "sourceColumn": "FundedAccounts",
+            "lineageTag": "9f7cbc3d-fec2-480c-9258-0ae9ebe7cb15",
+            "formatString": "0"
+          },
+          {
+            "name": "ActiveUsers",
+            "dataType": "int64",
+            "sourceColumn": "ActiveUsers",
+            "lineageTag": "d8dece32-11fd-4760-a57a-368b207c8912",
+            "formatString": "0"
+          },
+          {
+            "name": "DepositVolume",
+            "dataType": "double",
+            "sourceColumn": "DepositVolume",
+            "lineageTag": "67a441be-0b52-4676-9695-fe67cb19fbdc",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "TotalRevenue",
+            "dataType": "double",
+            "sourceColumn": "TotalRevenue",
+            "lineageTag": "83bd55bf-2d38-4c06-b9f1-d467967a57e0",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "GrossProfit",
+            "dataType": "double",
+            "sourceColumn": "GrossProfit",
+            "lineageTag": "fe75c741-e914-472f-bebb-455e0549fe24",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "MarketingSpend",
+            "dataType": "double",
+            "sourceColumn": "MarketingSpend",
+            "lineageTag": "ad68db3f-7024-4758-b592-61c1da47e0c8",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ChurnedUsers",
+            "dataType": "int64",
+            "sourceColumn": "ChurnedUsers",
+            "lineageTag": "d15591f9-b6e5-4c1f-b92a-21fb682c80f5",
+            "formatString": "0"
+          },
+          {
+            "name": "ChannelName",
+            "dataType": "string",
+            "sourceColumn": "ChannelName",
+            "lineageTag": "a491eb40-85d9-4d80-9713-b4e1b6d96dc4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelType",
+            "dataType": "string",
+            "sourceColumn": "ChannelType",
+            "lineageTag": "8d438b41-8e4f-4d0c-9133-4462c0e7352d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CAC",
+            "dataType": "double",
+            "sourceColumn": "CAC",
+            "lineageTag": "fd1bfac4-769a-4af1-9dc8-91bbc7af6a7a",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "MarketingROI",
+            "dataType": "double",
+            "sourceColumn": "MarketingROI",
+            "lineageTag": "e77c35ba-c608-4765-b8be-bd750e10a7a3"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_ChannelMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 11 - Neobank Growth Retention LTV\\\\data\\\\prepared\\\\ChannelMonthly.csv\"), [Delimiter=\",\", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"ChannelKey\", type text}, {\"NewUsers\", Int64.Type}, {\"FundedAccounts\", Int64.Type}, {\"ActiveUsers\", Int64.Type}, {\"DepositVolume\", type number}, {\"TotalRevenue\", type number}, {\"GrossProfit\", type number}, {\"MarketingSpend\", type number}, {\"ChurnedUsers\", Int64.Type}, {\"ChannelName\", type text}, {\"ChannelType\", type text}, {\"CAC\", type number}, {\"MarketingROI\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI_Measures",
+        "lineageTag": "7990ce9c-283e-4d55-84ba-2bdb2021ae0e",
+        "columns": [
+          {
+            "name": "MeasureName",
+            "dataType": "string",
+            "sourceColumn": "MeasureName",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_KPI_Measures",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [MeasureName = text], {{\"KPI\"}}) in Source"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "New Users",
+            "expression": "SUM ( FactGrowthMonthly[NewUsers] )",
+            "formatString": "#,0",
+            "lineageTag": "404ae3bf-e058-46d2-bf48-0951cbe26f71"
+          },
+          {
+            "name": "KYC Submitted",
+            "expression": "SUM ( FactGrowthMonthly[KycSubmitted] )",
+            "formatString": "#,0",
+            "lineageTag": "e132d729-16ce-4268-9078-196d8f6ce5ee"
+          },
+          {
+            "name": "KYC Approved",
+            "expression": "SUM ( FactGrowthMonthly[KycApproved] )",
+            "formatString": "#,0",
+            "lineageTag": "8ae3cb14-5d94-423f-b9b8-abd1a5dbd690"
+          },
+          {
+            "name": "Activated Users",
+            "expression": "SUM ( FactGrowthMonthly[ActivatedUsers] )",
+            "formatString": "#,0",
+            "lineageTag": "c82e1314-5da6-4b26-aed7-a5221262fc1c"
+          },
+          {
+            "name": "Funded Accounts",
+            "expression": "SUM ( FactGrowthMonthly[FundedAccounts] )",
+            "formatString": "#,0",
+            "lineageTag": "3c99d5af-76e4-430f-8092-d56ee4944934"
+          },
+          {
+            "name": "Active Users",
+            "expression": "SUM ( FactGrowthMonthly[ActiveUsers] )",
+            "formatString": "#,0",
+            "lineageTag": "4be63b1b-90a6-47b3-b7e9-30bc0652888d"
+          },
+          {
+            "name": "Deposit Volume",
+            "expression": "SUM ( FactGrowthMonthly[DepositVolume] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "16c09a2c-a4ca-48f3-a0f0-2e85ec822da5"
+          },
+          {
+            "name": "Revenue",
+            "expression": "SUM ( FactGrowthMonthly[TotalRevenue] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "87e6f18c-c2b3-436c-8501-0a52e8713662"
+          },
+          {
+            "name": "Gross Profit",
+            "expression": "SUM ( FactGrowthMonthly[GrossProfit] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "c5da0147-9e81-43c8-897e-5fa8b1539944"
+          },
+          {
+            "name": "Marketing Spend",
+            "expression": "SUM ( FactGrowthMonthly[MarketingSpend] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "2ea7304a-8d6f-4328-b72d-69acebe37e9b"
+          },
+          {
+            "name": "Churned Users",
+            "expression": "SUM ( FactGrowthMonthly[ChurnedUsers] )",
+            "formatString": "#,0",
+            "lineageTag": "f089f13c-0263-4dc3-aeba-0d61f14fe887"
+          },
+          {
+            "name": "Dormant Customers",
+            "expression": "SUM ( FactGrowthMonthly[DormantCustomers] )",
+            "formatString": "#,0",
+            "lineageTag": "d9daf40d-03e9-40ed-82b9-0a099341342b"
+          },
+          {
+            "name": "Churn Risk Users",
+            "expression": "SUM ( FactGrowthMonthly[ChurnRiskUsers] )",
+            "formatString": "#,0",
+            "lineageTag": "1992cec7-1568-4295-9625-dbada7e7f629"
+          },
+          {
+            "name": "KYC Completion Rate",
+            "expression": "DIVIDE ( [KYC Approved], [New Users] )",
+            "formatString": "0.0%",
+            "lineageTag": "7461626a-a8b4-4713-ad86-eb017393f1aa"
+          },
+          {
+            "name": "Activation Rate",
+            "expression": "DIVIDE ( [Activated Users], [New Users] )",
+            "formatString": "0.0%",
+            "lineageTag": "f3cb2eab-d9f0-46f6-b338-a0bbd182b549"
+          },
+          {
+            "name": "Funded Rate",
+            "expression": "DIVIDE ( [Funded Accounts], [New Users] )",
+            "formatString": "0.0%",
+            "lineageTag": "0d68915f-a15c-4903-8f87-caadfdc7b661"
+          },
+          {
+            "name": "CAC",
+            "expression": "DIVIDE ( [Marketing Spend], [Funded Accounts] )",
+            "formatString": "$#,0",
+            "lineageTag": "5cda33a7-320a-4c55-af12-e3c59a858739"
+          },
+          {
+            "name": "Monthly ARPU",
+            "expression": "DIVIDE ( [Revenue], [Active Users] )",
+            "formatString": "$#,0.00",
+            "lineageTag": "5d54c315-d0bb-4dd0-9679-46d6281bf610"
+          },
+          {
+            "name": "Churn Rate",
+            "expression": "DIVIDE ( [Churned Users], [Active Users] + [Churned Users] )",
+            "formatString": "0.0%",
+            "lineageTag": "b93ca533-349d-488b-ad61-b832270b74e2"
+          },
+          {
+            "name": "LTV",
+            "expression": "DIVIDE ( [Monthly ARPU] * 0.68, [Churn Rate] )",
+            "formatString": "$#,0",
+            "lineageTag": "7791dc9f-96b3-4fba-b9a5-e655d4224e04"
+          },
+          {
+            "name": "LTV CAC Ratio",
+            "expression": "DIVIDE ( [LTV], [CAC] )",
+            "formatString": "0.0x",
+            "lineageTag": "0ec47eff-c4a5-4a81-9a68-10394a652ad6"
+          },
+          {
+            "name": "Payback Months",
+            "expression": "DIVIDE ( [CAC], DIVIDE ( [Gross Profit], [Active Users] ) )",
+            "formatString": "0.0",
+            "lineageTag": "abaf96c8-9777-4474-9acf-bbdd929fe200"
+          },
+          {
+            "name": "Marketing ROI",
+            "expression": "DIVIDE ( [Gross Profit] - [Marketing Spend], [Marketing Spend] )",
+            "formatString": "0.0%",
+            "lineageTag": "8bf42e05-bdbb-4c43-a4c5-659af895bc94"
+          },
+          {
+            "name": "Contribution Profit",
+            "expression": "[Gross Profit] - [Marketing Spend]",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "d64a3aad-f9ad-47ea-bbe2-63e937df4290"
+          },
+          {
+            "name": "Funnel Users",
+            "expression": "SUM ( FunnelMonthly[UserCount] )",
+            "formatString": "#,0",
+            "lineageTag": "796ed13a-3028-48a5-a294-a0611333e1db"
+          },
+          {
+            "name": "Cohort Retention Rate",
+            "expression": "DIVIDE ( SUM ( CohortRetention[RetainedUsers] ), SUM ( CohortRetention[CohortSize] ) )",
+            "formatString": "0.0%",
+            "lineageTag": "3da24be5-1fd6-4c36-9626-d515481b58a1"
+          },
+          {
+            "name": "Cohort LTV",
+            "expression": "DIVIDE ( SUM ( CohortRetention[CumulativeRevenue] ), SUM ( CohortRetention[CohortSize] ) )",
+            "formatString": "$#,0",
+            "lineageTag": "fc83ef72-8fd8-4353-9e28-ccfa1412f124"
+          },
+          {
+            "name": "Campaign Spend",
+            "expression": "SUM ( CampaignMonthly[Spend] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "0f4d5392-21ee-4971-8286-7306af4edff8"
+          },
+          {
+            "name": "Campaign Revenue",
+            "expression": "SUM ( CampaignMonthly[Revenue] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "6ab7c7e7-636e-446b-b940-3462fc82651d"
+          },
+          {
+            "name": "Campaign Gross Profit",
+            "expression": "SUM ( CampaignMonthly[GrossProfit] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "8ded2dfd-3a52-42db-972e-3f8f55802ba2"
+          },
+          {
+            "name": "Campaign Funded Accounts",
+            "expression": "SUM ( CampaignMonthly[FundedAccounts] )",
+            "formatString": "#,0",
+            "lineageTag": "c6835319-6be7-42bf-a58d-d8e07ac5323c"
+          },
+          {
+            "name": "Campaign CAC",
+            "expression": "DIVIDE ( [Campaign Spend], [Campaign Funded Accounts] )",
+            "formatString": "$#,0",
+            "lineageTag": "002f83a6-3ee0-4353-9c62-60584fd83aef"
+          },
+          {
+            "name": "Campaign ROI",
+            "expression": "DIVIDE ( [Campaign Gross Profit] - [Campaign Spend], [Campaign Spend] )",
+            "formatString": "0.0%",
+            "lineageTag": "5519298b-02f8-4c18-9c5a-ae8588eefca7"
+          },
+          {
+            "name": "Campaign Payback Months",
+            "expression": "DIVIDE ( [Campaign CAC], DIVIDE ( [Campaign Gross Profit], [Campaign Funded Accounts] ) )",
+            "formatString": "0.0",
+            "lineageTag": "cae588ea-f1bc-4a10-86f5-cf84ccd9436a"
+          },
+          {
+            "name": "Latest New Users",
+            "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [New Users], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+            "formatString": "#,0",
+            "lineageTag": "cf329891-1aa1-4361-aaf0-fa1a7e655ae4"
+          },
+          {
+            "name": "Latest Active Users",
+            "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Active Users], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+            "formatString": "#,0",
+            "lineageTag": "5c41f07e-a895-41fe-9d47-e8ffd1b5271a"
+          },
+          {
+            "name": "Latest Funded Accounts",
+            "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Funded Accounts], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+            "formatString": "#,0",
+            "lineageTag": "d23601a6-e880-40e1-a611-a94a0e37d5b1"
+          },
+          {
+            "name": "Latest Deposits",
+            "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Deposit Volume], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "c3257a73-c751-499c-994e-f346348e195e"
+          },
+          {
+            "name": "Latest Revenue",
+            "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [Revenue], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "a565de11-79a3-4a75-8a29-423f88f0b645"
+          },
+          {
+            "name": "Latest CAC",
+            "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [CAC], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+            "formatString": "$#,0",
+            "lineageTag": "b4a91346-036c-4c79-bf3d-cd6341f2b6c9"
+          },
+          {
+            "name": "Latest LTV",
+            "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [LTV], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+            "formatString": "$#,0",
+            "lineageTag": "76b973bf-1f7a-40d6-80fb-91265c903092"
+          },
+          {
+            "name": "Latest LTV CAC Ratio",
+            "expression": "VAR m = MAX ( DimMonth[MonthStart] ) RETURN CALCULATE ( [LTV CAC Ratio], FILTER ( ALLSELECTED ( DimMonth ), DimMonth[MonthStart] = m ) )",
+            "formatString": "0.0x",
+            "lineageTag": "32764e3a-3180-4429-af6f-414392180f84"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "Rel_FactGrowthMonthly_MonthStart_DimMonth_MonthStart",
+        "fromTable": "FactGrowthMonthly",
+        "fromColumn": "MonthStart",
+        "toTable": "DimMonth",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactGrowthMonthly_ChannelKey_DimChannel_ChannelKey",
+        "fromTable": "FactGrowthMonthly",
+        "fromColumn": "ChannelKey",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelKey"
+      },
+      {
+        "name": "Rel_FactGrowthMonthly_SegmentKey_DimSegment_SegmentKey",
+        "fromTable": "FactGrowthMonthly",
+        "fromColumn": "SegmentKey",
+        "toTable": "DimSegment",
+        "toColumn": "SegmentKey"
+      },
+      {
+        "name": "Rel_FunnelMonthly_MonthStart_DimMonth_MonthStart",
+        "fromTable": "FunnelMonthly",
+        "fromColumn": "MonthStart",
+        "toTable": "DimMonth",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FunnelMonthly_ChannelKey_DimChannel_ChannelKey",
+        "fromTable": "FunnelMonthly",
+        "fromColumn": "ChannelKey",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelKey"
+      },
+      {
+        "name": "Rel_CohortRetention_ActivityMonth_DimMonth_MonthStart",
+        "fromTable": "CohortRetention",
+        "fromColumn": "ActivityMonth",
+        "toTable": "DimMonth",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_CohortRetention_ChannelKey_DimChannel_ChannelKey",
+        "fromTable": "CohortRetention",
+        "fromColumn": "ChannelKey",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelKey"
+      },
+      {
+        "name": "Rel_CohortRetention_SegmentKey_DimSegment_SegmentKey",
+        "fromTable": "CohortRetention",
+        "fromColumn": "SegmentKey",
+        "toTable": "DimSegment",
+        "toColumn": "SegmentKey"
+      },
+      {
+        "name": "Rel_CampaignMonthly_MonthStart_DimMonth_MonthStart",
+        "fromTable": "CampaignMonthly",
+        "fromColumn": "MonthStart",
+        "toTable": "DimMonth",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_CampaignMonthly_ChannelKey_DimChannel_ChannelKey",
+        "fromTable": "CampaignMonthly",
+        "fromColumn": "ChannelKey",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelKey"
+      },
+      {
+        "name": "Rel_CampaignMonthly_CampaignKey_DimCampaign_CampaignKey",
+        "fromTable": "CampaignMonthly",
+        "fromColumn": "CampaignKey",
+        "toTable": "DimCampaign",
+        "toColumn": "CampaignKey"
+      },
+      {
+        "name": "Rel_ChurnRiskSnapshot_ChannelKey_DimChannel_ChannelKey",
+        "fromTable": "ChurnRiskSnapshot",
+        "fromColumn": "ChannelKey",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelKey"
+      },
+      {
+        "name": "Rel_ChurnRiskSnapshot_SegmentKey_DimSegment_SegmentKey",
+        "fromTable": "ChurnRiskSnapshot",
+        "fromColumn": "SegmentKey",
+        "toTable": "DimSegment",
+        "toColumn": "SegmentKey"
+      },
+      {
+        "name": "Rel_MonthlyKPIs_MonthStart_DimMonth_MonthStart",
+        "fromTable": "MonthlyKPIs",
+        "fromColumn": "MonthStart",
+        "toTable": "DimMonth",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_ChannelMonthly_MonthStart_DimMonth_MonthStart",
+        "fromTable": "ChannelMonthly",
+        "fromColumn": "MonthStart",
+        "toTable": "DimMonth",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_ChannelMonthly_ChannelKey_DimChannel_ChannelKey",
+        "fromTable": "ChannelMonthly",
+        "fromColumn": "ChannelKey",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelKey"
+      }
+    ]
+  }
+}

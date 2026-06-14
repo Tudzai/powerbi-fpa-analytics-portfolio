@@ -1,0 +1,17 @@
+{
+    "visual_containers":  45,
+    "source_model_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 09 - BNPL Credit Risk Provision\\output\\dashboard_model_seed.pbix",
+    "timestamp":  "2026-06-11 16:12:55 +07:00",
+    "validation":  "PowerBIPackager.Validate passed for output and final PBIX after Project 09 - BNPL Credit Risk Provision native report layout patch.",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 09 - BNPL Credit Risk Provision\\output\\dashboard_final.pbix",
+    "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 09 - BNPL Credit Risk Provision\\build\\native_report_layout_project9.json",
+    "output_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 09 - BNPL Credit Risk Provision\\output\\dashboard_v01.pbix",
+    "final_pbix_size":  9826055,
+    "status":  "passed",
+    "final_pbix_created":  true,
+    "pages":  [
+                  "Credit Risk Overview",
+                  "Delinquency \u0026 Vintage Analysis",
+                  "Collections \u0026 Provision Forecast"
+              ]
+}

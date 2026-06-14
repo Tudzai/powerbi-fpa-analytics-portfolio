@@ -1,0 +1,11 @@
+﻿campaign_key,campaign,channel_key,campaign_type,objective,start_date,end_date,daily_budget
+CMP_DIRECT_NONE,Direct / None,CH_DIRECT,Always-on,Navigation,2025-01-01,2026-05-31,0
+CMP_ORG_EVERGREEN,SEO Evergreen,CH_ORGANIC,Always-on,Discovery,2025-01-01,2026-05-31,0
+CMP_BRAND_SEARCH,Brand Search,CH_PAID_SEARCH,Always-on,High intent,2025-01-01,2026-05-31,1700
+CMP_GENERIC_SEARCH,Generic Search,CH_PAID_SEARCH,Always-on,Acquisition,2025-01-01,2026-05-31,2300
+CMP_CREATOR_SOCIAL,Creator Social,CH_SOCIAL,Seasonal,Awareness,2025-03-01,2026-05-31,1800
+CMP_SPRING_SALE,Spring Sale,CH_SOCIAL,Promo,Conversion,2025-03-01,2026-04-30,2400
+CMP_CART_RECOVERY,Cart Recovery,CH_EMAIL,Lifecycle,Recovery,2025-01-01,2026-05-31,320
+CMP_VIP_DROP,VIP Product Drop,CH_EMAIL,Lifecycle,Repeat purchase,2025-05-01,2026-05-31,420
+CMP_AFF_MARKETPLACE,Marketplace Affiliates,CH_AFFILIATE,Always-on,Partner scale,2025-01-01,2026-05-31,900
+CMP_REVIEW_PARTNERS,Review Partners,CH_REFERRAL,Always-on,Trust,2025-01-01,2026-05-31,0

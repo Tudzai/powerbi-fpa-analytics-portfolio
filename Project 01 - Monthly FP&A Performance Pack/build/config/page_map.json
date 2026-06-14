@@ -1,0 +1,103 @@
+{
+  "report_title": "Monthly FP&A Performance Pack",
+  "theme": "FP&A Orange Executive",
+  "page_size": {"width": 1600, "height": 900},
+  "global_slicer_bar": {
+    "fields": [
+      "DimDate[Year]",
+      "DimDate[MonthYear]",
+      "DimBusinessUnit[BusinessUnit]",
+      "DimRegion[Region]"
+    ],
+    "style": "top horizontal slicer bar",
+    "default_filter": "May 2026"
+  },
+  "pages": [
+    {
+      "page_order": 1,
+      "name": "Executive Overview",
+      "business_question": "Did the company hit the monthly FP&A plan, and what should leadership act on?",
+      "layout": "summary-first executive scorecard",
+      "sections": [
+        "Header with reporting month and source freshness",
+        "Five KPI cards: Revenue, Gross Margin %, EBITDA, Opex, Cash",
+        "12-month Revenue and EBITDA trend",
+        "EBITDA variance by business unit",
+        "Commentary: What happened, Why, What next"
+      ],
+      "required_interactions": [
+        "Slicers sync across all report pages",
+        "Clicking a business unit filters trend, variance, and commentary context",
+        "Drillthrough to Business Unit Deep Dive"
+      ]
+    },
+    {
+      "page_order": 2,
+      "name": "Variance Bridge",
+      "business_question": "What explains the movement from Budget EBITDA to Actual EBITDA?",
+      "layout": "waterfall-led variance explanation",
+      "sections": [
+        "Actual vs Budget KPI strip",
+        "Waterfall bridge: Budget EBITDA to Actual EBITDA",
+        "Variance matrix by business unit and region",
+        "Driver ranking for revenue, margin, and opex"
+      ],
+      "required_interactions": [
+        "Bridge filters by business unit and region",
+        "Matrix supports drill-down from BU to region",
+        "Positive variance uses teal and negative variance uses red"
+      ]
+    },
+    {
+      "page_order": 3,
+      "name": "Business Unit Deep Dive",
+      "business_question": "Which business units and products are driving performance?",
+      "layout": "management drilldown",
+      "sections": [
+        "BU KPI cards for Revenue, Gross Margin %, EBITDA %",
+        "Revenue and EBITDA trend by scenario",
+        "Product profitability matrix",
+        "Region contribution bar chart"
+      ],
+      "required_interactions": [
+        "Drill-down from BU to product",
+        "Cross-filter customer/product visuals",
+        "Tooltip shows Actual, Budget, Forecast, and variance"
+      ]
+    },
+    {
+      "page_order": 4,
+      "name": "Customer & Product Drilldown",
+      "business_question": "Which customers and products need commercial action?",
+      "layout": "ranking and exception analysis",
+      "sections": [
+        "Top 10 customer revenue and EBITDA variance",
+        "Revenue vs Gross Margin % scatter by customer",
+        "Product mix and margin table",
+        "Exception table for negative EBITDA variance"
+      ],
+      "required_interactions": [
+        "Customer slicer has search enabled",
+        "Scatter point color uses customer segment",
+        "Exception table supports export"
+      ]
+    },
+    {
+      "page_order": 5,
+      "name": "Opex & Cash Control",
+      "business_question": "Are Opex and cash under control versus plan?",
+      "layout": "cost and liquidity control page",
+      "sections": [
+        "Opex, Cash, AR, DSO KPI cards",
+        "Opex by department and scenario",
+        "Cash balance trend by scenario",
+        "DSO and AR balance by business unit"
+      ],
+      "required_interactions": [
+        "Department filter affects Opex visuals only",
+        "Cash visuals use latest-month balance measure",
+        "BU and region filters sync with cash and opex facts"
+      ]
+    }
+  ]
+}

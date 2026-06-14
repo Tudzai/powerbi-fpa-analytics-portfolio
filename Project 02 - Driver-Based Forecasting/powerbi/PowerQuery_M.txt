@@ -1,0 +1,99 @@
+// Power Query M snippets for Project 02 - Driver-Based Forecasting
+// Create a text parameter named PreparedRoot with this value:
+// C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 02 - Driver-Based Forecasting\\data\\prepared\\
+
+let
+    PreparedRoot = "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 02 - Driver-Based Forecasting\\data\\prepared\\"
+in
+    PreparedRoot
+
+// Query: FactRevenueDriver
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "fact_revenue_driver.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: FactCostDriver
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "fact_cost_driver.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: FactHeadcountPlan
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "fact_headcount_plan.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: FactOpexDriver
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "fact_opex_driver.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: FactCashImpact
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "fact_cash_impact.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: FactForecastAccuracy
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "fact_forecast_accuracy.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: DimDate
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "dim_date.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: DimScenario
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "dim_scenario.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: DimService
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "dim_service.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: DimRegion
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "dim_region.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: DimCustomerSegment
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "dim_customer_segment.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: DimDepartment
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "dim_department.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Query: WhatIfParameters
+let
+    Source = Csv.Document(File.Contents(PreparedRoot & "what_if_parameters.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders

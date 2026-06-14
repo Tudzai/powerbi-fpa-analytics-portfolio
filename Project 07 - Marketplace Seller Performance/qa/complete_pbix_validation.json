@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "complete_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 07 - Marketplace Seller Performance\\output\\dashboard_complete.pbix",
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 07 - Marketplace Seller Performance\\output\\dashboard_final.pbix",
+  "backup": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 07 - Marketplace Seller Performance\\archive\\old_versions\\dashboard_final_before_complete_pbix_20260611_152955.pbix",
+  "page_count": 4,
+  "visual_count": 47,
+  "visual_types": {
+    "textbox": 8,
+    "cardVisual": 24,
+    "lineChart": 5,
+    "barChart": 6,
+    "tableEx": 4
+  },
+  "pages": [
+    "01 Executive Cockpit",
+    "02 Seller Portfolio",
+    "03 Growth Drivers",
+    "04 Ops Risk"
+  ],
+  "powerbi_desktop_open_test": "PASS",
+  "powerbi_desktop_saved_after_rebuild": true,
+  "pbi_tools_extract_after_desktop_save": "PASS",
+  "pbi_tools_export_data_after_desktop_save": "PASS",
+  "security_bindings_regenerated_by_desktop": true
+}

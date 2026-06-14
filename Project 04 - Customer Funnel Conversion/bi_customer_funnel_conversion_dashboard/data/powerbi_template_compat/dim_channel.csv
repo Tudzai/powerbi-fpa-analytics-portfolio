@@ -1,0 +1,8 @@
+﻿channel,channel_type,default_conversion_rate
+Direct,Owned / Direct,0.1
+Organic Search,Organic,0.1
+Paid Search,Paid,0.1
+Paid Social,Paid,0.1
+Email,Owned / Direct,0.1
+Affiliate,Partner,0.1
+Referral,Partner,0.1

@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "created": "2026-06-11T00:00:00",
+  "lastModified": "2026-06-11T00:00:00",
+  "settings": {
+    "model": {
+      "serializationMode": "Raw"
+    },
+    "mashup": {
+      "serializationMode": "Raw"
+    }
+  }
+}

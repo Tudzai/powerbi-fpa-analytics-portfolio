@@ -1,0 +1,272 @@
+{
+  "objects": {
+    "grid": [
+      {
+        "properties": {
+          "gridHorizontal": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "outlineColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#D8DEE9'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "columnHeaders": [
+      {
+        "properties": {
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI Semibold'"
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.2D"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#172033'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "values": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.0D"
+              }
+            }
+          },
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI'"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#172033'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Values": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Scenario",
+        "Name": "FactProvisionForecast.scenario",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Month",
+        "Name": "FactProvisionForecast.forecast_month",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Expected loss",
+        "Name": "KPI Measures.Forecast Expected Loss",
+        "Type": 1,
+        "Format": "$#,0,,.0M"
+      },
+      {
+        "Restatement": "Provision",
+        "Name": "KPI Measures.Forecast Provision",
+        "Type": 1,
+        "Format": "$#,0,,.0M"
+      },
+      {
+        "Restatement": "Incremental",
+        "Name": "KPI Measures.Incremental Provision",
+        "Type": 1,
+        "Format": "$#,0,,.0M"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 2,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 3,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 4,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Scenario",
+      "queryName": "FactProvisionForecast.scenario",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "FactProvisionForecast"
+            }
+          },
+          "Property": "scenario"
+        }
+      }
+    },
+    {
+      "displayName": "Month",
+      "queryName": "FactProvisionForecast.forecast_month",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "FactProvisionForecast"
+            }
+          },
+          "Property": "forecast_month"
+        }
+      }
+    },
+    {
+      "displayName": "Expected loss",
+      "queryName": "KPI Measures.Forecast Expected Loss",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Forecast Expected Loss"
+        }
+      },
+      "format": "$#,0,,.0M"
+    },
+    {
+      "displayName": "Provision",
+      "queryName": "KPI Measures.Forecast Provision",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Forecast Provision"
+        }
+      },
+      "format": "$#,0,,.0M"
+    },
+    {
+      "displayName": "Incremental",
+      "queryName": "KPI Measures.Incremental Provision",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Incremental Provision"
+        }
+      },
+      "format": "$#,0,,.0M"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "checks": [
+    {
+      "check": "Revenue rows have positive revenue",
+      "status": true
+    },
+    {
+      "check": "Revenue driver keys are unique",
+      "status": true
+    },
+    {
+      "check": "Cost driver keys are unique",
+      "status": true
+    },
+    {
+      "check": "Headcount plan keys are unique",
+      "status": true
+    },
+    {
+      "check": "No null scenario keys in facts",
+      "status": true
+    },
+    {
+      "check": "Forecast accuracy MAPE is computable",
+      "status": true
+    },
+    {
+      "check": "Cash table reconciles to P&L aggregate",
+      "status": true,
+      "max_delta": 2.3283064365386963e-09
+    }
+  ],
+  "all_passed": true,
+  "scenario_summary": [
+    {
+      "ScenarioKey": "ACTUAL",
+      "RevenueUSD": 314587311.83,
+      "DirectCostUSD": 246486412.02,
+      "PayrollCostUSD": 22985918.16,
+      "NonPayrollOpexUSD": 7012539.61,
+      "EBITDAUSD": 38102442.04,
+      "GrossMarginPct": 0.2165,
+      "EBITDAMarginPct": 0.1211
+    },
+    {
+      "ScenarioKey": "BASE",
+      "RevenueUSD": 273305308.79,
+      "DirectCostUSD": 219573328.21,
+      "PayrollCostUSD": 17095127.29,
+      "NonPayrollOpexUSD": 5263452.54,
+      "EBITDAUSD": 31373400.75,
+      "GrossMarginPct": 0.1966,
+      "EBITDAMarginPct": 0.1148
+    },
+    {
+      "ScenarioKey": "DOWNSIDE",
+      "RevenueUSD": 226925472.39,
+      "DirectCostUSD": 188116847.44,
+      "PayrollCostUSD": 15243804.64,
+      "NonPayrollOpexUSD": 5208962.9,
+      "EBITDAUSD": 18355857.41,
+      "GrossMarginPct": 0.171,
+      "EBITDAMarginPct": 0.0809
+    },
+    {
+      "ScenarioKey": "UPSIDE",
+      "RevenueUSD": 322768076.04,
+      "DirectCostUSD": 255035266.77,
+      "PayrollCostUSD": 18648691.28,
+      "NonPayrollOpexUSD": 5356918.61,
+      "EBITDAUSD": 43727199.38,
+      "GrossMarginPct": 0.2098,
+      "EBITDAMarginPct": 0.1355
+    }
+  ],
+  "forecast_accuracy_summary": [
+    {
+      "ForecastHorizonMonths": 1,
+      "MAPE": 0.05387,
+      "BiasPct": 0.01119,
+      "Rows": 510
+    },
+    {
+      "ForecastHorizonMonths": 2,
+      "MAPE": 0.06203,
+      "BiasPct": 0.02145,
+      "Rows": 510
+    },
+    {
+      "ForecastHorizonMonths": 3,
+      "MAPE": 0.07725,
+      "BiasPct": 0.03594,
+      "Rows": 510
+    }
+  ]
+}

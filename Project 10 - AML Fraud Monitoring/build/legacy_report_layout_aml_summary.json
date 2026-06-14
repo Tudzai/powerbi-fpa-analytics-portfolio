@@ -1,0 +1,9 @@
+{
+  "layout": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\build\\legacy_report_layout_aml.json",
+  "pages": [
+    "Fraud & Compliance Overview",
+    "Alert & Customer Risk Deep Dive",
+    "Case SLA & Rule Governance"
+  ],
+  "visual_containers": 52
+}

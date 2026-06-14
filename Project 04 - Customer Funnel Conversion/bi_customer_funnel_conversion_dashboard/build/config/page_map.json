@@ -1,0 +1,24 @@
+{
+  "pages": [
+    {
+      "page": 1,
+      "name": "Executive Funnel",
+      "purpose": "Growth command center landing page: KPI strip, top insight, funnel progression, trend, revenue channels, category pressure, and leakage watchlist."
+    },
+    {
+      "page": 2,
+      "name": "Segment Diagnostics",
+      "purpose": "Device/channel/campaign diagnostics with compact executive tables and conversion-quality ranking."
+    },
+    {
+      "page": 3,
+      "name": "Category and Product",
+      "purpose": "Category funnel matrix and revenue concentration view for merchandising follow-up."
+    },
+    {
+      "page": 4,
+      "name": "Marketing Efficiency",
+      "purpose": "Paid efficiency board with spend, ROAS, CAC, conversion, and channel revenue mix."
+    }
+  ]
+}

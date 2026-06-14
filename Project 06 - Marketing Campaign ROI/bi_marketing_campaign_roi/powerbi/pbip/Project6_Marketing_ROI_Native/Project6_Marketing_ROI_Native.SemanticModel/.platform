@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Project6_Marketing_ROI_Native"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "783df6b7-4b51-456c-b49f-a3951e0da368"
+  }
+}

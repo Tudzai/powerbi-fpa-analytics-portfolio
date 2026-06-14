@@ -1,0 +1,31 @@
+{
+  "measure_table": "KPI Measures",
+  "formatting": {
+    "currency": "#,0",
+    "percentage": "0.0%",
+    "integer": "#,0"
+  },
+  "measures": [
+    {"name": "Revenue", "formula": "SUM(FactFinancials[Revenue])", "format": "#,0", "owner": "Power BI Specialist"},
+    {"name": "Gross Margin", "formula": "[Revenue] - [COGS]", "format": "#,0", "owner": "Data Analyst"},
+    {"name": "Gross Margin %", "formula": "DIVIDE([Gross Margin], [Revenue])", "format": "0.0%", "owner": "Data Analyst"},
+    {"name": "Allocated Opex", "formula": "SUM(FactFinancials[AllocatedOpex])", "format": "#,0", "owner": "Power BI Specialist"},
+    {"name": "EBITDA", "formula": "[Gross Margin] - [Allocated Opex]", "format": "#,0", "owner": "Data Analyst"},
+    {"name": "EBITDA %", "formula": "DIVIDE([EBITDA], [Revenue])", "format": "0.0%", "owner": "Data Analyst"},
+    {"name": "Cash Balance Latest Month", "formula": "latest visible month cash balance", "format": "#,0", "owner": "Power BI Specialist"},
+    {"name": "Actual Cash Balance Current Month", "formula": "current actual month cash balance based on latest actual date", "format": "#,0", "owner": "Power BI Specialist"},
+    {"name": "Budget Cash Balance Current Month", "formula": "current budget month cash balance based on latest actual date", "format": "#,0", "owner": "Power BI Specialist"},
+    {"name": "Weighted DSO Current Month", "formula": "current actual month weighted DSO based on latest actual date", "format": "#,0.0", "owner": "Data Analyst"},
+    {"name": "Cash Var Current Month vs Budget", "formula": "[Actual Cash Balance Current Month] - [Budget Cash Balance Current Month]", "format": "#,0", "owner": "FP&A"},
+    {"name": "Revenue Var vs Budget", "formula": "[Actual Revenue] - [Budget Revenue]", "format": "#,0", "owner": "FP&A"},
+    {"name": "EBITDA Var vs Budget", "formula": "[Actual EBITDA] - [Budget EBITDA]", "format": "#,0", "owner": "FP&A"},
+    {"name": "Bridge Amount", "formula": "SUM(FactBridge[Amount])", "format": "#,0", "owner": "FP&A"}
+  ],
+  "do_not_use_raw_fields_in_cards": [
+    "FactFinancials[Revenue]",
+    "FactFinancials[GrossMargin]",
+    "FactFinancials[AllocatedOpex]",
+    "FactFinancials[EBITDA]",
+    "FactCash[CashBalance]"
+  ]
+}

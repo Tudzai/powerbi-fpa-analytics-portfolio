@@ -1,0 +1,6 @@
+﻿RegionKey,Region,Country,Hub,RegionWeight
+VN_NORTH,Vietnam North,Vietnam,Ha Noi,1.05
+VN_SOUTH,Vietnam South,Vietnam,Ho Chi Minh,1.18
+VN_CENTRAL,Vietnam Central,Vietnam,Da Nang,0.74
+TH,Thailand,Thailand,Bangkok,0.62
+CN,China,China,Shanghai,0.82

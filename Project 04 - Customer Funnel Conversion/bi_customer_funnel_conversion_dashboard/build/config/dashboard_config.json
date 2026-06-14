@@ -1,0 +1,11 @@
+{
+  "topic": "Customer Funnel and Conversion Dashboard",
+  "stage_totals": {
+    "visits": 161097,
+    "product_views": 137530,
+    "add_to_carts": 51170,
+    "checkouts": 31518,
+    "purchases": 18567
+  },
+  "seed": 4042026
+}

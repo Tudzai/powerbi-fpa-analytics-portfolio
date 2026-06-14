@@ -1,0 +1,51 @@
+{
+    "status":  "complete",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\output\\dashboard_final.pbix",
+    "final_pbix_bytes":  1426891,
+    "final_pbix_last_write":  "2026-06-11 21:19:20",
+    "powerbi_open_check":  "passed",
+    "powerbi_open_session":  {
+                                 "pid":  21616,
+                                 "port":  61624,
+                                 "path":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\output\\dashboard_final.pbix"
+                             },
+    "desktop_screenshot":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\qa\\screenshots\\dashboard_final_pbix_dark_aesthetic_final.png",
+    "offline_export_data":  "passed",
+    "offline_extract":  "passed",
+    "offline_extract_folder":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 10 - AML Fraud Monitoring\\qa\\extract_final_pbix_dark_aesthetic_final",
+    "pages":  [
+                  "Fraud \u0026 Compliance Overview",
+                  "Alert \u0026 Customer Risk Deep Dive",
+                  "Case SLA \u0026 Rule Governance"
+              ],
+    "visual_containers":  52,
+    "visual_type_counts":  {
+                               "tableEx":  3,
+                               "barChart":  5,
+                               "lineClusteredColumnComboChart":  1,
+                               "shape":  6,
+                               "textbox":  9,
+                               "donutChart":  1,
+                               "slicer":  9,
+                               "cardVisual":  16,
+                               "columnChart":  2
+                           },
+    "model_row_counts":  {
+                             "DimDate":  516,
+                             "DimCountry":  12,
+                             "DimCorridor":  12,
+                             "DimChannel":  8,
+                             "DimProduct":  8,
+                             "DimRule":  10,
+                             "DimAnalyst":  8,
+                             "DimCustomer":  180,
+                             "FactTransactions":  36000,
+                             "FactAlerts":  6611,
+                             "FactCases":  3556,
+                             "FactRuleGovernance":  26,
+                             "KPI Measures":  1
+                         },
+    "layout_format":  "legacy Report/Layout",
+    "design_pass":  "dark command-center aesthetic refresh with semantic risk coloring",
+    "notes":  "PBIX retained the validated AML model and was restyled after agent review: dark section background, light KPI tiles, semantic red/amber/teal/violet accents, compact header, dark chart panels, and updated design tokens."
+}

@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "artifacts": [
+    {
+      "report": {
+        "path": "Neobank_Growth_LTV.Report"
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+merchant_id,merchant_name,merchant_category,merchant_tier
+M001,Merchant 001,Home,Core
+M002,Merchant 002,Travel,Long Tail
+M003,Merchant 003,Sports,Core
+M004,Merchant 004,Beauty,Core
+M005,Merchant 005,Sports,Long Tail
+M006,Merchant 006,Sports,Long Tail
+M007,Merchant 007,Fashion,Long Tail
+M008,Merchant 008,Sports,Strategic
+M009,Merchant 009,Beauty,Core
+M010,Merchant 010,Home,Strategic
+M011,Merchant 011,Home,Core
+M012,Merchant 012,Sports,Strategic
+M013,Merchant 013,Home,Long Tail
+M014,Merchant 014,Beauty,Core
+M015,Merchant 015,Beauty,Strategic
+M016,Merchant 016,Sports,Strategic
+M017,Merchant 017,Sports,Long Tail
+M018,Merchant 018,Fashion,Long Tail
+M019,Merchant 019,Home,Long Tail
+M020,Merchant 020,Home,Core
+M021,Merchant 021,Fashion,Core
+M022,Merchant 022,Electronics,Strategic
+M023,Merchant 023,Electronics,Strategic
+M024,Merchant 024,Beauty,Core
+M025,Merchant 025,Travel,Long Tail
+M026,Merchant 026,Education,Strategic
+M027,Merchant 027,Fashion,Strategic
+M028,Merchant 028,Fashion,Strategic
+M029,Merchant 029,Fashion,Long Tail
+M030,Merchant 030,Sports,Core
+M031,Merchant 031,Sports,Long Tail
+M032,Merchant 032,Education,Core
+M033,Merchant 033,Travel,Strategic
+M034,Merchant 034,Home,Strategic
+M035,Merchant 035,Education,Strategic
+M036,Merchant 036,Sports,Core
+M037,Merchant 037,Fashion,Core
+M038,Merchant 038,Electronics,Core
+M039,Merchant 039,Home,Long Tail
+M040,Merchant 040,Sports,Long Tail
+M041,Merchant 041,Education,Core
+M042,Merchant 042,Fashion,Long Tail
+M043,Merchant 043,Electronics,Long Tail
+M044,Merchant 044,Travel,Core
+M045,Merchant 045,Home,Core
+M046,Merchant 046,Sports,Long Tail
+M047,Merchant 047,Fashion,Strategic
+M048,Merchant 048,Travel,Strategic
+M049,Merchant 049,Home,Core
+M050,Merchant 050,Sports,Core
+M051,Merchant 051,Electronics,Core
+M052,Merchant 052,Education,Core
+M053,Merchant 053,Beauty,Long Tail
+M054,Merchant 054,Travel,Long Tail
+M055,Merchant 055,Beauty,Core
+M056,Merchant 056,Home,Long Tail
+M057,Merchant 057,Travel,Long Tail
+M058,Merchant 058,Sports,Long Tail
+M059,Merchant 059,Education,Long Tail
+M060,Merchant 060,Beauty,Core

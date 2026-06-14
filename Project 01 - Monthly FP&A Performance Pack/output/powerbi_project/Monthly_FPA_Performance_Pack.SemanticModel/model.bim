@@ -1,0 +1,1210 @@
+{
+  "name": "Monthly FP&A Performance Pack",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimDate",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthNumber",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MonthNumber",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sortByColumn": "MonthNumber",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthYear",
+            "dataType": "string",
+            "sourceColumn": "MonthYear",
+            "sortByColumn": "MonthIndex",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthIndex",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MonthIndex",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsActualClosed",
+            "dataType": "string",
+            "sourceColumn": "IsActualClosed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FiscalYear",
+            "dataType": "int64",
+            "sourceColumn": "FiscalYear",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FiscalQuarter",
+            "dataType": "string",
+            "sourceColumn": "FiscalQuarter",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\dim_date.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimScenario",
+        "columns": [
+          {
+            "name": "ScenarioKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ScenarioKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Scenario",
+            "dataType": "string",
+            "sourceColumn": "Scenario",
+            "sortByColumn": "ScenarioSort",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioSort",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ScenarioSort",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioType",
+            "dataType": "string",
+            "sourceColumn": "ScenarioType",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimScenario-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\dim_scenario.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimBusinessUnit",
+        "columns": [
+          {
+            "name": "BusinessUnitKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "BusinessUnitKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BusinessUnit",
+            "dataType": "string",
+            "sourceColumn": "BusinessUnit",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimBusinessUnit-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\dim_business_unit.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimProduct",
+        "columns": [
+          {
+            "name": "ProductKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ProductKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BusinessUnit",
+            "dataType": "string",
+            "sourceColumn": "BusinessUnit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Product",
+            "dataType": "string",
+            "sourceColumn": "Product",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimProduct-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\dim_product.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimRegion",
+        "columns": [
+          {
+            "name": "RegionKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "RegionKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimRegion-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\dim_region.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCustomer",
+        "columns": [
+          {
+            "name": "CustomerKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CustomerKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Customer",
+            "dataType": "string",
+            "sourceColumn": "Customer",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerSegment",
+            "dataType": "string",
+            "sourceColumn": "CustomerSegment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Industry",
+            "dataType": "string",
+            "sourceColumn": "Industry",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCustomer-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\dim_customer.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimDepartment",
+        "columns": [
+          {
+            "name": "DepartmentKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "DepartmentKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Department",
+            "dataType": "string",
+            "sourceColumn": "Department",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDepartment-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\dim_department.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactFinancials",
+        "columns": [
+          {
+            "name": "FactFinanceKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "FactFinanceKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ScenarioKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BusinessUnitKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "BusinessUnitKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProductKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ProductKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "RegionKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CustomerKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Revenue",
+            "dataType": "decimal",
+            "sourceColumn": "Revenue",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "COGS",
+            "dataType": "decimal",
+            "sourceColumn": "COGS",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "GrossMargin",
+            "dataType": "decimal",
+            "sourceColumn": "GrossMargin",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "AllocatedOpex",
+            "dataType": "decimal",
+            "sourceColumn": "AllocatedOpex",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "EBITDA",
+            "dataType": "decimal",
+            "sourceColumn": "EBITDA",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Orders",
+            "dataType": "int64",
+            "sourceColumn": "Orders",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "CashImpact",
+            "dataType": "decimal",
+            "sourceColumn": "CashImpact",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactFinancials-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\fact_financials.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactOpexDepartment",
+        "columns": [
+          {
+            "name": "FactOpexKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "FactOpexKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ScenarioKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BusinessUnitKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "BusinessUnitKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "RegionKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DepartmentKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "DepartmentKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Opex",
+            "dataType": "decimal",
+            "sourceColumn": "Opex",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FTE",
+            "dataType": "double",
+            "sourceColumn": "FTE",
+            "formatString": "#,0.0",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactOpexDepartment-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\fact_opex_department.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCash",
+        "columns": [
+          {
+            "name": "FactCashKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "FactCashKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ScenarioKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BusinessUnitKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "BusinessUnitKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "RegionKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CashBalance",
+            "dataType": "decimal",
+            "sourceColumn": "CashBalance",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ARBalance",
+            "dataType": "decimal",
+            "sourceColumn": "ARBalance",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DSO",
+            "dataType": "double",
+            "sourceColumn": "DSO",
+            "formatString": "#,0.0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Capex",
+            "dataType": "decimal",
+            "sourceColumn": "Capex",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactCash-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\fact_cash.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactBridge",
+        "columns": [
+          {
+            "name": "BridgeKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "BridgeKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BusinessUnitKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "BusinessUnitKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "RegionKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BridgeStep",
+            "dataType": "string",
+            "sourceColumn": "BridgeStep",
+            "sortByColumn": "BridgeOrder",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BridgeOrder",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "BridgeOrder",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Amount",
+            "dataType": "decimal",
+            "sourceColumn": "Amount",
+            "formatString": "#,0",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactBridge-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\fact_bridge.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCommentary",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Audience",
+            "dataType": "string",
+            "sourceColumn": "Audience",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WhatHappened",
+            "dataType": "string",
+            "sourceColumn": "WhatHappened",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Why",
+            "dataType": "string",
+            "sourceColumn": "Why",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WhatNext",
+            "dataType": "string",
+            "sourceColumn": "WhatNext",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Severity",
+            "dataType": "string",
+            "sourceColumn": "Severity",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactCommentary-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 01 - Monthly FP&A Performance Pack\\\\data\\\\prepared\\\\fact_commentary.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI Measures",
+        "columns": [
+          {
+            "name": "MeasureKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "MeasureKey"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "KPI Measures-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [MeasureKey = text], {{\"KPI\"}}) in Source"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Revenue",
+            "expression": "SUM ( FactFinancials[Revenue] )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Core KPI"
+          },
+          {
+            "name": "COGS",
+            "expression": "SUM ( FactFinancials[COGS] )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Core KPI"
+          },
+          {
+            "name": "Gross Margin",
+            "expression": "[Revenue] - [COGS]",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Core KPI"
+          },
+          {
+            "name": "Gross Margin %",
+            "expression": "DIVIDE ( [Gross Margin], [Revenue] )",
+            "formatString": "0.0%",
+            "displayFolder": "Core KPI"
+          },
+          {
+            "name": "Allocated Opex",
+            "expression": "SUM ( FactFinancials[AllocatedOpex] )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Core KPI"
+          },
+          {
+            "name": "Department Opex",
+            "expression": "SUM ( FactOpexDepartment[Opex] )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Core KPI"
+          },
+          {
+            "name": "EBITDA",
+            "expression": "[Gross Margin] - [Allocated Opex]",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Core KPI"
+          },
+          {
+            "name": "EBITDA %",
+            "expression": "DIVIDE ( [EBITDA], [Revenue] )",
+            "formatString": "0.0%",
+            "displayFolder": "Core KPI"
+          },
+          {
+            "name": "Orders",
+            "expression": "SUM ( FactFinancials[Orders] )",
+            "formatString": "#,0",
+            "displayFolder": "Core KPI"
+          },
+          {
+            "name": "Revenue per Order",
+            "expression": "DIVIDE ( [Revenue], [Orders] )",
+            "formatString": "#,0",
+            "displayFolder": "Core KPI"
+          },
+          {
+            "name": "Cash Impact",
+            "expression": "SUM ( FactFinancials[CashImpact] )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Cash"
+          },
+          {
+            "name": "Capex",
+            "expression": "SUM ( FactCash[Capex] )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Cash"
+          },
+          {
+            "name": "Cash Balance Latest Month",
+            "expression": "VAR LatestVisibleDateKey = MAX ( DimDate[DateKey] ) RETURN CALCULATE ( SUM ( FactCash[CashBalance] ), DimDate[DateKey] = LatestVisibleDateKey )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Cash"
+          },
+          {
+            "name": "AR Balance Latest Month",
+            "expression": "VAR LatestVisibleDateKey = MAX ( DimDate[DateKey] ) RETURN CALCULATE ( SUM ( FactCash[ARBalance] ), DimDate[DateKey] = LatestVisibleDateKey )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Cash"
+          },
+          {
+            "name": "Weighted DSO",
+            "expression": "DIVIDE ( SUMX ( FactCash, FactCash[ARBalance] * FactCash[DSO] ), SUM ( FactCash[ARBalance] ) )",
+            "formatString": "#,0.0",
+            "displayFolder": "Cash"
+          },
+          {
+            "name": "Latest Actual DateKey",
+            "expression": "CALCULATE ( MAX ( FactFinancials[DateKey] ), DimScenario[Scenario] = \"Actual\", REMOVEFILTERS ( DimDate ) )",
+            "formatString": "0",
+            "displayFolder": "Time Intelligence"
+          },
+          {
+            "name": "Actual Revenue",
+            "expression": "CALCULATE ( [Revenue], DimScenario[Scenario] = \"Actual\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Budget Revenue",
+            "expression": "CALCULATE ( [Revenue], DimScenario[Scenario] = \"Budget\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Forecast Revenue",
+            "expression": "CALCULATE ( [Revenue], DimScenario[Scenario] = \"Forecast\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Actual Gross Margin",
+            "expression": "CALCULATE ( [Gross Margin], DimScenario[Scenario] = \"Actual\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Budget Gross Margin",
+            "expression": "CALCULATE ( [Gross Margin], DimScenario[Scenario] = \"Budget\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Forecast Gross Margin",
+            "expression": "CALCULATE ( [Gross Margin], DimScenario[Scenario] = \"Forecast\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Actual EBITDA",
+            "expression": "CALCULATE ( [EBITDA], DimScenario[Scenario] = \"Actual\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Budget EBITDA",
+            "expression": "CALCULATE ( [EBITDA], DimScenario[Scenario] = \"Budget\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Forecast EBITDA",
+            "expression": "CALCULATE ( [EBITDA], DimScenario[Scenario] = \"Forecast\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Actual Opex",
+            "expression": "CALCULATE ( [Allocated Opex], DimScenario[Scenario] = \"Actual\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Budget Opex",
+            "expression": "CALCULATE ( [Allocated Opex], DimScenario[Scenario] = \"Budget\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Forecast Opex",
+            "expression": "CALCULATE ( [Allocated Opex], DimScenario[Scenario] = \"Forecast\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Actual Cash Balance",
+            "expression": "CALCULATE ( [Cash Balance Latest Month], DimScenario[Scenario] = \"Actual\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Budget Cash Balance",
+            "expression": "CALCULATE ( [Cash Balance Latest Month], DimScenario[Scenario] = \"Budget\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Forecast Cash Balance",
+            "expression": "CALCULATE ( [Cash Balance Latest Month], DimScenario[Scenario] = \"Forecast\" )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Scenario"
+          },
+          {
+            "name": "Actual Revenue Current Month",
+            "expression": "VAR LatestActualDateKey = [Latest Actual DateKey] RETURN CALCULATE ( [Revenue], DimScenario[Scenario] = \"Actual\", DimDate[DateKey] = LatestActualDateKey )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Current Month"
+          },
+          {
+            "name": "Budget Revenue Current Month",
+            "expression": "VAR LatestActualDateKey = [Latest Actual DateKey] RETURN CALCULATE ( [Revenue], DimScenario[Scenario] = \"Budget\", DimDate[DateKey] = LatestActualDateKey )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Current Month"
+          },
+          {
+            "name": "Forecast Revenue Current Month",
+            "expression": "VAR LatestActualDateKey = [Latest Actual DateKey] RETURN CALCULATE ( [Revenue], DimScenario[Scenario] = \"Forecast\", DimDate[DateKey] = LatestActualDateKey )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Current Month"
+          },
+          {
+            "name": "Actual EBITDA Current Month",
+            "expression": "VAR LatestActualDateKey = [Latest Actual DateKey] RETURN CALCULATE ( [EBITDA], DimScenario[Scenario] = \"Actual\", DimDate[DateKey] = LatestActualDateKey )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Current Month"
+          },
+          {
+            "name": "Budget EBITDA Current Month",
+            "expression": "VAR LatestActualDateKey = [Latest Actual DateKey] RETURN CALCULATE ( [EBITDA], DimScenario[Scenario] = \"Budget\", DimDate[DateKey] = LatestActualDateKey )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Current Month"
+          },
+          {
+            "name": "Revenue Var vs Budget",
+            "expression": "[Actual Revenue] - [Budget Revenue]",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Variance"
+          },
+          {
+            "name": "Revenue Var % vs Budget",
+            "expression": "DIVIDE ( [Revenue Var vs Budget], [Budget Revenue] )",
+            "formatString": "0.0%",
+            "displayFolder": "Variance"
+          },
+          {
+            "name": "Gross Margin Var vs Budget",
+            "expression": "[Actual Gross Margin] - [Budget Gross Margin]",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Variance"
+          },
+          {
+            "name": "EBITDA Var vs Budget",
+            "expression": "[Actual EBITDA] - [Budget EBITDA]",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Variance"
+          },
+          {
+            "name": "EBITDA Var % vs Budget",
+            "expression": "DIVIDE ( [EBITDA Var vs Budget], [Budget EBITDA] )",
+            "formatString": "0.0%",
+            "displayFolder": "Variance"
+          },
+          {
+            "name": "Opex Var vs Budget",
+            "expression": "[Actual Opex] - [Budget Opex]",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Variance"
+          },
+          {
+            "name": "Cash Var vs Budget",
+            "expression": "[Actual Cash Balance] - [Budget Cash Balance]",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Variance"
+          },
+          {
+            "name": "Forecast Revenue Gap vs Budget",
+            "expression": "[Forecast Revenue] - [Budget Revenue]",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Forecast"
+          },
+          {
+            "name": "Forecast EBITDA Gap vs Budget",
+            "expression": "[Forecast EBITDA] - [Budget EBITDA]",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Forecast"
+          },
+          {
+            "name": "Bridge Amount",
+            "expression": "SUM ( FactBridge[Amount] )",
+            "formatString": "#,0,,.0M",
+            "displayFolder": "Bridge"
+          },
+          {
+            "name": "Selected Commentary - What Happened",
+            "expression": "CONCATENATEX ( VALUES ( FactCommentary[WhatHappened] ), FactCommentary[WhatHappened], UNICHAR ( 10 ) )",
+            "displayFolder": "Commentary"
+          },
+          {
+            "name": "Selected Commentary - Why",
+            "expression": "CONCATENATEX ( VALUES ( FactCommentary[Why] ), FactCommentary[Why], UNICHAR ( 10 ) )",
+            "displayFolder": "Commentary"
+          },
+          {
+            "name": "Selected Commentary - What Next",
+            "expression": "CONCATENATEX ( VALUES ( FactCommentary[WhatNext] ), FactCommentary[WhatNext], UNICHAR ( 10 ) )",
+            "displayFolder": "Commentary"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "FactFinancials_Date",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "fromTable": "FactFinancials",
+        "fromColumn": "DateKey"
+      },
+      {
+        "name": "FactFinancials_Scenario",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioKey",
+        "fromTable": "FactFinancials",
+        "fromColumn": "ScenarioKey"
+      },
+      {
+        "name": "FactFinancials_BU",
+        "toTable": "DimBusinessUnit",
+        "toColumn": "BusinessUnitKey",
+        "fromTable": "FactFinancials",
+        "fromColumn": "BusinessUnitKey"
+      },
+      {
+        "name": "FactFinancials_Product",
+        "toTable": "DimProduct",
+        "toColumn": "ProductKey",
+        "fromTable": "FactFinancials",
+        "fromColumn": "ProductKey"
+      },
+      {
+        "name": "FactFinancials_Region",
+        "toTable": "DimRegion",
+        "toColumn": "RegionKey",
+        "fromTable": "FactFinancials",
+        "fromColumn": "RegionKey"
+      },
+      {
+        "name": "FactFinancials_Customer",
+        "toTable": "DimCustomer",
+        "toColumn": "CustomerKey",
+        "fromTable": "FactFinancials",
+        "fromColumn": "CustomerKey"
+      },
+      {
+        "name": "FactOpex_Date",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "fromTable": "FactOpexDepartment",
+        "fromColumn": "DateKey"
+      },
+      {
+        "name": "FactOpex_Scenario",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioKey",
+        "fromTable": "FactOpexDepartment",
+        "fromColumn": "ScenarioKey"
+      },
+      {
+        "name": "FactOpex_BU",
+        "toTable": "DimBusinessUnit",
+        "toColumn": "BusinessUnitKey",
+        "fromTable": "FactOpexDepartment",
+        "fromColumn": "BusinessUnitKey"
+      },
+      {
+        "name": "FactOpex_Region",
+        "toTable": "DimRegion",
+        "toColumn": "RegionKey",
+        "fromTable": "FactOpexDepartment",
+        "fromColumn": "RegionKey"
+      },
+      {
+        "name": "FactOpex_Department",
+        "toTable": "DimDepartment",
+        "toColumn": "DepartmentKey",
+        "fromTable": "FactOpexDepartment",
+        "fromColumn": "DepartmentKey"
+      },
+      {
+        "name": "FactCash_Date",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "fromTable": "FactCash",
+        "fromColumn": "DateKey"
+      },
+      {
+        "name": "FactCash_Scenario",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioKey",
+        "fromTable": "FactCash",
+        "fromColumn": "ScenarioKey"
+      },
+      {
+        "name": "FactCash_BU",
+        "toTable": "DimBusinessUnit",
+        "toColumn": "BusinessUnitKey",
+        "fromTable": "FactCash",
+        "fromColumn": "BusinessUnitKey"
+      },
+      {
+        "name": "FactCash_Region",
+        "toTable": "DimRegion",
+        "toColumn": "RegionKey",
+        "fromTable": "FactCash",
+        "fromColumn": "RegionKey"
+      },
+      {
+        "name": "FactBridge_Date",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "fromTable": "FactBridge",
+        "fromColumn": "DateKey"
+      },
+      {
+        "name": "FactBridge_BU",
+        "toTable": "DimBusinessUnit",
+        "toColumn": "BusinessUnitKey",
+        "fromTable": "FactBridge",
+        "fromColumn": "BusinessUnitKey"
+      },
+      {
+        "name": "FactBridge_Region",
+        "toTable": "DimRegion",
+        "toColumn": "RegionKey",
+        "fromTable": "FactBridge",
+        "fromColumn": "RegionKey"
+      },
+      {
+        "name": "FactCommentary_Date",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "fromTable": "FactCommentary",
+        "fromColumn": "DateKey"
+      }
+    ],
+    "cultures": [
+      {
+        "name": "en-US"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "generated_at": "2026-06-11T11:38:18",
+  "synthetic": true,
+  "table_profiles": [
+    {
+      "table": "raw_sessions",
+      "rows": 163026,
+      "columns": 20,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "raw_events",
+      "rows": 428943,
+      "columns": 15,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "raw_orders",
+      "rows": 18567,
+      "columns": 20,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "raw_spend",
+      "rows": 5160,
+      "columns": 7,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "dim_date",
+      "rows": 516,
+      "columns": 11,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "dim_device",
+      "rows": 3,
+      "columns": 4,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "dim_channel",
+      "rows": 7,
+      "columns": 5,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "dim_campaign",
+      "rows": 10,
+      "columns": 8,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "dim_category",
+      "rows": 6,
+      "columns": 5,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "dim_product",
+      "rows": 48,
+      "columns": 9,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "dim_funnel_stage",
+      "rows": 5,
+      "columns": 5,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "fact_sessions",
+      "rows": 161097,
+      "columns": 22,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "fact_orders",
+      "rows": 18567,
+      "columns": 20,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "fact_stage_sessions",
+      "rows": 187175,
+      "columns": 7,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "fact_stage_transition",
+      "rows": 240128,
+      "columns": 12,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "fact_monthly_funnel",
+      "rows": 2970,
+      "columns": 16,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "fact_marketing_spend",
+      "rows": 5160,
+      "columns": 7,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    }
+  ],
+  "stage_totals": {
+    "visits": 161097,
+    "product_views": 137530,
+    "add_to_carts": 51170,
+    "checkouts": 31518,
+    "purchases": 18567
+  },
+  "monotonic_funnel_pass": true,
+  "overall_conversion_rate": 0.115254,
+  "cart_to_purchase_rate": 0.362849,
+  "checkout_abandonment_rate": 0.410908,
+  "orders": 18567,
+  "revenue": 1558769.34,
+  "gross_revenue": 1748215.59,
+  "refund_amount": 32772.24,
+  "known_data_quality_design": [
+    "raw product_view events intentionally include duplicates; prepared funnel uses distinct session flags",
+    "bot traffic is present in raw sessions and excluded from fact_sessions",
+    "campaign Direct / None and SEO Evergreen have zero media spend by design"
+  ]
+}

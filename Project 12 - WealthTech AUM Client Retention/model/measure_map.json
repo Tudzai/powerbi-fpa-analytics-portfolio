@@ -1,0 +1,152 @@
+[
+  {
+    "Measure": "Latest Month",
+    "DAX": "MAX ( DimDate[MonthStart] )",
+    "Format": "yyyy-mm-dd",
+    "BusinessRole": "diagnostic"
+  },
+  {
+    "Measure": "Total AUM",
+    "DAX": "SUM ( FactAUMMonthly[EndingAUM] )",
+    "Format": "$#,0,,.0M",
+    "BusinessRole": "growth"
+  },
+  {
+    "Measure": "Beginning AUM",
+    "DAX": "SUM ( FactAUMMonthly[BeginningAUM] )",
+    "Format": "$#,0,,.0M",
+    "BusinessRole": "growth"
+  },
+  {
+    "Measure": "Inflows",
+    "DAX": "SUM ( FactAUMMonthly[Inflows] )",
+    "Format": "$#,0,,.0M",
+    "BusinessRole": "growth"
+  },
+  {
+    "Measure": "Outflows",
+    "DAX": "SUM ( FactAUMMonthly[Outflows] )",
+    "Format": "$#,0,,.0M",
+    "BusinessRole": "growth"
+  },
+  {
+    "Measure": "Net New Money",
+    "DAX": "SUM ( FactAUMMonthly[NetNewMoney] )",
+    "Format": "$#,0,,.0M",
+    "BusinessRole": "growth"
+  },
+  {
+    "Measure": "Market Effect",
+    "DAX": "SUM ( FactAUMMonthly[MarketEffect] )",
+    "Format": "$#,0,,.0M",
+    "BusinessRole": "diagnostic"
+  },
+  {
+    "Measure": "Advisory Revenue",
+    "DAX": "SUM ( FactAUMMonthly[AdvisoryRevenue] )",
+    "Format": "$#,0,.0K",
+    "BusinessRole": "growth"
+  },
+  {
+    "Measure": "Allocation Amount",
+    "DAX": "SUM ( FactAllocationMonthly[AllocationAmount] )",
+    "Format": "$#,0,,.0M",
+    "BusinessRole": "diagnostic"
+  },
+  {
+    "Measure": "Active Clients",
+    "DAX": "CALCULATE ( DISTINCTCOUNT ( FactAUMMonthly[ClientID] ), FactAUMMonthly[ActiveClientFlag] = 1 )",
+    "Format": "#,0",
+    "BusinessRole": "diagnostic"
+  },
+  {
+    "Measure": "Net Flow Rate",
+    "DAX": "DIVIDE ( [Net New Money], [Beginning AUM] )",
+    "Format": "0.0%",
+    "BusinessRole": "growth"
+  },
+  {
+    "Measure": "Portfolio Return %",
+    "DAX": "DIVIDE ( SUMX ( FactAUMMonthly, FactAUMMonthly[EndingAUM] * FactAUMMonthly[PortfolioReturnPct] ), [Total AUM] )",
+    "Format": "0.0%",
+    "BusinessRole": "performance"
+  },
+  {
+    "Measure": "Benchmark Return %",
+    "DAX": "DIVIDE ( SUMX ( FactAUMMonthly, FactAUMMonthly[EndingAUM] * FactAUMMonthly[BenchmarkReturnPct] ), [Total AUM] )",
+    "Format": "0.0%",
+    "BusinessRole": "performance"
+  },
+  {
+    "Measure": "Alpha %",
+    "DAX": "[Portfolio Return %] - [Benchmark Return %]",
+    "Format": "0.0%",
+    "BusinessRole": "performance"
+  },
+  {
+    "Measure": "Risk Mismatch Clients",
+    "DAX": "CALCULATE ( DISTINCTCOUNT ( FactAUMMonthly[ClientID] ), FactAUMMonthly[RiskMismatchFlag] = 1 )",
+    "Format": "#,0",
+    "BusinessRole": "guardrail"
+  },
+  {
+    "Measure": "Risk Mismatch Rate",
+    "DAX": "DIVIDE ( [Risk Mismatch Clients], [Active Clients] )",
+    "Format": "0.0%",
+    "BusinessRole": "guardrail"
+  },
+  {
+    "Measure": "Rebalance Needed Clients",
+    "DAX": "CALCULATE ( DISTINCTCOUNT ( FactAUMMonthly[ClientID] ), FactAUMMonthly[RebalanceNeededFlag] = 1 )",
+    "Format": "#,0",
+    "BusinessRole": "guardrail"
+  },
+  {
+    "Measure": "Rebalance Needed Rate",
+    "DAX": "DIVIDE ( [Rebalance Needed Clients], [Active Clients] )",
+    "Format": "0.0%",
+    "BusinessRole": "guardrail"
+  },
+  {
+    "Measure": "High Churn Risk Clients",
+    "DAX": "CALCULATE ( DISTINCTCOUNT ( FactAUMMonthly[ClientID] ), FactAUMMonthly[ChurnRiskScore] >= 0.70 )",
+    "Format": "#,0",
+    "BusinessRole": "guardrail"
+  },
+  {
+    "Measure": "High Outflow Risk Clients",
+    "DAX": "CALCULATE ( DISTINCTCOUNT ( FactAUMMonthly[ClientID] ), FactAUMMonthly[OutflowRiskScore] >= 0.65 )",
+    "Format": "#,0",
+    "BusinessRole": "guardrail"
+  },
+  {
+    "Measure": "Churn Risk AUM",
+    "DAX": "SUMX ( FILTER ( FactAUMMonthly, FactAUMMonthly[ChurnRiskScore] >= 0.70 ), FactAUMMonthly[EndingAUM] )",
+    "Format": "$#,0,,.0M",
+    "BusinessRole": "guardrail"
+  },
+  {
+    "Measure": "Churn Risk AUM Rate",
+    "DAX": "DIVIDE ( [Churn Risk AUM], [Total AUM] )",
+    "Format": "0.0%",
+    "BusinessRole": "guardrail"
+  },
+  {
+    "Measure": "Top 10 Client AUM Share",
+    "DAX": "VAR t = TOPN ( 10, SUMMARIZE ( DimClient, DimClient[ClientID], \"AUMValue\", [Total AUM] ), [AUMValue], DESC ) RETURN DIVIDE ( SUMX ( t, [AUMValue] ), [Total AUM] )",
+    "Format": "0.0%",
+    "BusinessRole": "growth"
+  },
+  {
+    "Measure": "Retention Action AUM",
+    "DAX": "SUM ( FactRetentionActions[ExpectedRetainedAUM] )",
+    "Format": "$#,0,,.0M",
+    "BusinessRole": "growth"
+  },
+  {
+    "Measure": "Open Retention Actions",
+    "DAX": "COUNTROWS ( FactRetentionActions )",
+    "Format": "#,0",
+    "BusinessRole": "diagnostic"
+  }
+]

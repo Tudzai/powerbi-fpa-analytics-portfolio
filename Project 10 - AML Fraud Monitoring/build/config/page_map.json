@@ -1,0 +1,14 @@
+[
+  {
+    "page": "Fraud & Compliance Overview",
+    "purpose": "Executive status, flagged exposure, alert trend, corridor risk."
+  },
+  {
+    "page": "Alert & Customer Risk Deep Dive",
+    "purpose": "Alert funnel, rule performance, high-risk customers, investigation drivers."
+  },
+  {
+    "page": "Case SLA & Rule Governance",
+    "purpose": "Case backlog, analyst workload, overdue inventory, rule tuning governance."
+  }
+]

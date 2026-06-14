@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monthly FP&A Performance Pack Dashboard</title>
+  <style>
+    :root {
+      --orange: #F97316;
+      --orange-dark: #C2410C;
+      --teal: #2A9D8F;
+      --blue: #2563EB;
+      --red: #D62828;
+      --amber: #F59E0B;
+      --ink: #111827;
+      --muted: #64748B;
+      --line: #E5E7EB;
+      --soft-line: #F1F5F9;
+      --bg: #F8FAFC;
+      --panel: #FFFFFF;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .shell { max-width: 1480px; margin: 0 auto; padding: 24px; }
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+    h1 { font-size: 30px; line-height: 1.15; margin: 0; letter-spacing: 0; }
+    .subtitle { color: var(--muted); font-size: 13px; margin-top: 7px; }
+    .filterbar { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .chip {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 12px;
+      color: #334155;
+      white-space: nowrap;
+    }
+    .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      min-width: 0;
+    }
+    .kpi {
+      grid-column: span 2;
+      min-height: 136px;
+      border-top: 4px solid var(--orange);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .half { grid-column: span 6; }
+    .wide { grid-column: span 8; }
+    .side { grid-column: span 4; }
+    .full { grid-column: span 12; }
+    .label { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .value { font-size: 30px; line-height: 1.1; font-weight: 700; overflow-wrap: anywhere; }
+    .delta { margin-top: 8px; font-size: 12px; line-height: 1.35; }
+    .bad { color: var(--red); }
+    .good { color: var(--teal); }
+    .neutral { color: var(--muted); }
+    .chart-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+    .chart-subtitle { color: var(--muted); font-size: 12px; margin-top: -4px; margin-bottom: 10px; }
+    .chart-svg { width: 100%; min-height: 260px; display: block; }
+    .grid-line { stroke: #E5E7EB; stroke-width: 1; }
+    .zero-line { stroke: #CBD5E1; stroke-width: 1.3; }
+    .line-orange { fill: none; stroke: var(--orange); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .line-teal { fill: none; stroke: var(--teal); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .line-blue { fill: none; stroke: var(--blue); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .line-amber { fill: none; stroke: var(--amber); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .dashed { stroke-dasharray: 8 7; }
+    .axis { fill: var(--muted); font-size: 11px; }
+    .driver-list { display: grid; gap: 12px; margin-top: 12px; }
+    .driver-row {
+      display: grid;
+      grid-template-columns: minmax(110px, 1.1fr) minmax(96px, 2fr) 72px;
+      gap: 10px;
+      align-items: center;
+      font-size: 12px;
+    }
+    .driver-name { color: #334155; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .driver-track { height: 12px; background: #F1F5F9; border-radius: 999px; overflow: hidden; }
+    .driver-bar { display: block; height: 100%; border-radius: 999px; }
+    .driver-bar.good { background: var(--teal); }
+    .driver-bar.bad { background: var(--red); }
+    .driver-value { text-align: right; font-weight: 700; }
+    .table-wrap { width: 100%; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; }
+    th, td { border-bottom: 1px solid var(--soft-line); padding: 10px 8px; font-size: 12px; text-align: left; }
+    th { color: var(--muted); font-weight: 700; background: #F8FAFC; }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .wf {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(80px, 1fr));
+      gap: 10px;
+      align-items: end;
+      min-height: 260px;
+      overflow-x: auto;
+      padding-top: 10px;
+    }
+    .wf-item { min-width: 84px; text-align: center; }
+    .wf-plot {
+      height: 180px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .wf-bar { width: 62%; border-radius: 6px 6px 0 0; }
+    .wf-bar.total { background: var(--orange); }
+    .wf-bar.good { background: var(--teal); }
+    .wf-bar.bad { background: var(--red); }
+    .wf-value { font-size: 12px; font-weight: 700; margin-top: 6px; }
+    .wf-value.total { color: var(--orange-dark); }
+    .wf-label { color: var(--muted); font-size: 11px; line-height: 1.25; margin-top: 5px; min-height: 30px; }
+    .commentary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .commentary-block {
+      border-left: 3px solid var(--orange);
+      padding-left: 12px;
+      min-width: 0;
+    }
+    .commentary h3 { margin: 0 0 8px; font-size: 13px; }
+    .commentary p { margin: 0; color: #334155; font-size: 13px; line-height: 1.48; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .tab {
+      border: 1px solid var(--line);
+      background: #FFFFFF;
+      border-radius: 6px;
+      padding: 8px 11px;
+      color: #334155;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .tab.active { border-color: var(--orange); background: #FFF7ED; color: #9A3412; font-weight: 700; }
+    .footnote { color: var(--muted); font-size: 11px; margin-top: 10px; }
+    @media (max-width: 1180px) {
+      .kpi { grid-column: span 4; }
+      .wide, .side, .half { grid-column: span 12; }
+    }
+    @media (max-width: 720px) {
+      .shell { padding: 16px; }
+      .topbar { grid-template-columns: 1fr; }
+      .filterbar { justify-content: flex-start; }
+      .kpi, .wide, .side, .half, .full { grid-column: span 12; }
+      .commentary { grid-template-columns: 1fr; }
+      .value { font-size: 28px; }
+      .driver-row { grid-template-columns: 1fr 1.5fr 68px; }
+      .chart-svg { min-height: 220px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div>
+        <h1>Monthly FP&A Performance Pack</h1>
+        <div class="subtitle">May 2026 close package, orange executive theme, source-backed from prepared FP&A data</div>
+      </div>
+      <div class="filterbar">
+        <div class="chip">Year 2026</div>
+        <div class="chip">Month May</div>
+        <div class="chip">Actual vs Budget vs Forecast</div>
+        <div class="chip">Company Level</div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel kpi">
+        <div>
+          <div class="label">Revenue</div>
+          <div class="value">333.1M</div>
+        </div>
+        <div class="delta bad">-22.4M vs Budget<br>-10.7M vs Forecast</div>
+      </article>
+      <article class="panel kpi">
+        <div>
+          <div class="label">Gross Margin %</div>
+          <div class="value">28.9%</div>
+        </div>
+        <div class="delta">GM 96.3M</div>
+      </article>
+      <article class="panel kpi">
+        <div>
+          <div class="label">EBITDA</div>
+          <div class="value">37.6M</div>
+        </div>
+        <div class="delta bad">-9.0M vs Budget<br>11.3% margin</div>
+      </article>
+      <article class="panel kpi">
+        <div>
+          <div class="label">Opex</div>
+          <div class="value">58.8M</div>
+        </div>
+        <div class="delta good">-2.0M vs Budget</div>
+      </article>
+      <article class="panel kpi">
+        <div>
+          <div class="label">Cash</div>
+          <div class="value">114.6M</div>
+        </div>
+        <div class="delta good">32.3M vs Budget<br>DSO 45.0 days</div>
+      </article>
+      <article class="panel kpi">
+        <div>
+          <div class="label">Orders</div>
+          <div class="value">17,570</div>
+        </div>
+        <div class="delta">Revenue/order 0.0M</div>
+      </article>
+
+      <article class="panel wide">
+        <div class="chart-title">12M Trend: Revenue by Scenario plus Actual EBITDA</div>
+        <div class="chart-subtitle">Actual is shown against operating plan and latest forecast to support monthly FP&A pacing.</div>
+        
+    <svg viewBox="0 0 820 300" class="chart-svg" role="img" aria-label="12 month revenue trend by scenario">
+      <circle cx="56" cy="14" r="4" fill="#F97316"/><text x="65" y="18" class="axis">Actual</text><circle cx="148" cy="14" r="4" fill="#2563EB"/><text x="157" y="18" class="axis">Budget</text><circle cx="240" cy="14" r="4" fill="#2A9D8F"/><text x="249" y="18" class="axis">Forecast</text><circle cx="332" cy="14" r="4" fill="#F59E0B"/><text x="341" y="18" class="axis">EBITDA</text>
+      <line x1="56" y1="254.0" x2="792" y2="254.0" class="grid-line"/><text x="46" y="258.0" text-anchor="end" class="axis">0.0M</text><line x1="56" y1="139.0" x2="792" y2="139.0" class="grid-line"/><text x="46" y="143.0" text-anchor="end" class="axis">195.6M</text><line x1="56" y1="24.0" x2="792" y2="24.0" class="grid-line"/><text x="46" y="28.0" text-anchor="end" class="axis">391.2M</text>
+      <line x1="56" y1="254" x2="792" y2="254" class="zero-line"/>
+      <path d="M 56.0 70.2 L 122.9 63.3 L 189.8 63.4 L 256.7 54.6 L 323.6 42.3 L 390.5 32.6 L 457.5 24.0 L 524.4 78.5 L 591.3 91.7 L 658.2 61.0 L 725.1 62.9 L 792.0 58.1" class="line-orange"/><path d="M 56.0 254.0 L 122.9 254.0 L 189.8 254.0 L 256.7 254.0 L 323.6 254.0 L 390.5 254.0 L 457.5 254.0 L 524.4 69.1 L 591.3 83.8 L 658.2 49.9 L 725.1 53.1 L 792.0 44.9" class="line-blue dashed"/><path d="M 56.0 254.0 L 122.9 254.0 L 189.8 254.0 L 256.7 254.0 L 323.6 254.0 L 390.5 254.0 L 457.5 254.0 L 524.4 75.1 L 591.3 87.8 L 658.2 56.5 L 725.1 57.9 L 792.0 51.8" class="line-teal dashed"/><path d="M 56.0 230.1 L 122.9 229.2 L 189.8 229.2 L 256.7 228.0 L 323.6 226.4 L 390.5 225.2 L 457.5 224.1 L 524.4 231.2 L 591.3 232.9 L 658.2 230.6 L 725.1 232.4 L 792.0 231.9" class="line-amber"/>
+      <text x="56.0" y="284" text-anchor="middle" class="axis">06/25</text><text x="189.8" y="284" text-anchor="middle" class="axis">08/25</text><text x="323.6" y="284" text-anchor="middle" class="axis">10/25</text><text x="457.5" y="284" text-anchor="middle" class="axis">12/25</text><text x="591.3" y="284" text-anchor="middle" class="axis">02/26</text><text x="725.1" y="284" text-anchor="middle" class="axis">04/26</text><text x="792.0" y="284" text-anchor="middle" class="axis">05/26</text>
+    </svg>
+    
+      </article>
+      <article class="panel side">
+        <div class="chart-title">EBITDA Variance by Business Unit</div>
+        <div class="chart-subtitle">Latest month actual less budget.</div>
+        <div class="driver-list">
+          
+          <div class="driver-row">
+            <div class="driver-name">Freight Forwarding</div>
+            <div class="driver-track"><span class="driver-bar bad" style="width:100.0%"></span></div>
+            <div class="driver-value bad">-3.5M</div>
+          </div>
+        
+          <div class="driver-row">
+            <div class="driver-name">Contract Logistics</div>
+            <div class="driver-track"><span class="driver-bar bad" style="width:76.1%"></span></div>
+            <div class="driver-value bad">-2.7M</div>
+          </div>
+        
+          <div class="driver-row">
+            <div class="driver-name">E-commerce Fulfillment</div>
+            <div class="driver-track"><span class="driver-bar bad" style="width:43.5%"></span></div>
+            <div class="driver-value bad">-1.5M</div>
+          </div>
+        
+          <div class="driver-row">
+            <div class="driver-name">Customs Brokerage</div>
+            <div class="driver-track"><span class="driver-bar bad" style="width:36.9%"></span></div>
+            <div class="driver-value bad">-1.3M</div>
+          </div>
+        
+        </div>
+      </article>
+
+      <article class="panel full">
+        <div class="chart-title">Actual vs Budget vs Forecast</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th class="num">Actual</th>
+                <th class="num">Budget</th>
+                <th class="num">Forecast</th>
+                <th class="num">Var to Budget</th>
+                <th class="num">Var to Forecast</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+          <tr>
+            <td>Revenue</td>
+            <td class="num">333.1M</td>
+            <td class="num">355.6M</td>
+            <td class="num">343.8M</td>
+            <td class="num bad">-22.4M</td>
+            <td class="num bad">-10.7M</td>
+          </tr>
+        
+          <tr>
+            <td>Gross Margin %</td>
+            <td class="num">28.9%</td>
+            <td class="num">30.2%</td>
+            <td class="num">29.0%</td>
+            <td class="num bad">-1.3%</td>
+            <td class="num bad">-0.1%</td>
+          </tr>
+        
+          <tr>
+            <td>EBITDA</td>
+            <td class="num">37.6M</td>
+            <td class="num">46.6M</td>
+            <td class="num">38.9M</td>
+            <td class="num bad">-9.0M</td>
+            <td class="num bad">-1.3M</td>
+          </tr>
+        
+          <tr>
+            <td>EBITDA Margin %</td>
+            <td class="num">11.3%</td>
+            <td class="num">13.1%</td>
+            <td class="num">11.3%</td>
+            <td class="num bad">-1.8%</td>
+            <td class="num bad">-0.0%</td>
+          </tr>
+        
+          <tr>
+            <td>Opex</td>
+            <td class="num">58.8M</td>
+            <td class="num">60.8M</td>
+            <td class="num">60.8M</td>
+            <td class="num good">-2.0M</td>
+            <td class="num good">-2.1M</td>
+          </tr>
+        
+          <tr>
+            <td>Cash</td>
+            <td class="num">114.6M</td>
+            <td class="num">82.3M</td>
+            <td class="num">79.2M</td>
+            <td class="num good">32.3M</td>
+            <td class="num good">35.4M</td>
+          </tr>
+        
+          <tr>
+            <td>DSO</td>
+            <td class="num">45.0</td>
+            <td class="num">44.0</td>
+            <td class="num">44.3</td>
+            <td class="num bad">1.0</td>
+            <td class="num bad">0.7</td>
+          </tr>
+        
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="panel half">
+        <div class="chart-title">Budget to Actual EBITDA Bridge</div>
+        <div class="chart-subtitle">Bridge isolates planning gap into volume, rate, productivity, opex, and other drivers.</div>
+        <div class="wf">
+          
+          <div class="wf-item">
+            <div class="wf-plot">
+              <div class="wf-bar total" style="height:170.0px"></div>
+            </div>
+            <div class="wf-value total">46.6M</div>
+            <div class="wf-label">Budget EBITDA</div>
+          </div>
+        
+          <div class="wf-item">
+            <div class="wf-plot">
+              <div class="wf-bar bad" style="height:26.1px"></div>
+            </div>
+            <div class="wf-value bad">-7.2M</div>
+            <div class="wf-label">Revenue volume/mix</div>
+          </div>
+        
+          <div class="wf-item">
+            <div class="wf-plot">
+              <div class="wf-bar bad" style="height:14.3px"></div>
+            </div>
+            <div class="wf-value bad">-3.9M</div>
+            <div class="wf-label">Price/rate</div>
+          </div>
+        
+          <div class="wf-item">
+            <div class="wf-plot">
+              <div class="wf-bar neutral" style="height:8.0px"></div>
+            </div>
+            <div class="wf-value neutral">0.0M</div>
+            <div class="wf-label">COGS productivity</div>
+          </div>
+        
+          <div class="wf-item">
+            <div class="wf-plot">
+              <div class="wf-bar good" style="height:8.0px"></div>
+            </div>
+            <div class="wf-value good">2.0M</div>
+            <div class="wf-label">Opex control</div>
+          </div>
+        
+          <div class="wf-item">
+            <div class="wf-plot">
+              <div class="wf-bar bad" style="height:8.0px"></div>
+            </div>
+            <div class="wf-value bad">-0.0M</div>
+            <div class="wf-label">FX and other</div>
+          </div>
+        
+          <div class="wf-item">
+            <div class="wf-plot">
+              <div class="wf-bar total" style="height:137.0px"></div>
+            </div>
+            <div class="wf-value total">37.6M</div>
+            <div class="wf-label">Actual EBITDA</div>
+          </div>
+        
+        </div>
+      </article>
+      <article class="panel half">
+        <div class="chart-title">Commentary</div>
+        <div class="commentary">
+          <div class="commentary-block"><h3>What happened?</h3><p>Revenue finished below budget, mainly from Contract Logistics softness, while Ocean Freight South partly offset the gap.</p></div>
+          <div class="commentary-block"><h3>Why?</h3><p>Enterprise renewal delays and higher last-mile handling cost compressed EBITDA versus budget. Customs Brokerage stayed resilient with healthy margin mix.</p></div>
+          <div class="commentary-block"><h3>What next?</h3><p>Prioritize CL renewal actions, tighten last-mile productivity, and protect Ocean Freight pricing through Q3 forecast refresh.</p></div>
+        </div>
+      </article>
+
+      <article class="panel full">
+        <div class="chart-title">Drill-down Matrix</div>
+        <div class="chart-subtitle">Switch level to inspect company performance by business unit, product, region, or customer.</div>
+        <div class="tabs" id="tabs"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th id="dimension-heading">Business Unit</th>
+                <th class="num">Actual Revenue</th>
+                <th class="num">Budget Revenue</th>
+                <th class="num">Forecast Revenue</th>
+                <th class="num">Revenue Var</th>
+                <th class="num">GM %</th>
+                <th class="num">EBITDA</th>
+                <th class="num">EBITDA Var</th>
+                <th class="num">Orders</th>
+              </tr>
+            </thead>
+            <tbody id="drilldown-body"></tbody>
+          </table>
+        </div>
+        <div class="footnote">Static HTML version of the dashboard. The PBIX in output contains the Power BI semantic model and DAX measures; this page is the visual management pack handoff.</div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const DATA = {"Business Unit": [{"name": "Freight Forwarding", "actualRevenue": 157933478.25999996, "budgetRevenue": 165076188.23000005, "forecastRevenue": 159908526.7999999, "revenueVariance": -7142709.970000088, "grossMarginPct": 0.2382060772958247, "actualEbitda": 14428662.740000004, "ebitdaVariance": -3524453.5800000075, "orders": 8342.0}, {"name": "Contract Logistics", "actualRevenue": 65866108.25999998, "budgetRevenue": 75110836.36000003, "forecastRevenue": 72383557.5, "revenueVariance": -9244728.100000046, "grossMarginPct": 0.3453653633247165, "actualEbitda": 9480969.259999994, "ebitdaVariance": -2682552.980000006, "orders": 3468.0}, {"name": "E-commerce Fulfillment", "actualRevenue": 70219717.37999998, "budgetRevenue": 73964321.62000003, "forecastRevenue": 71481684.34, "revenueVariance": -3744604.2400000542, "grossMarginPct": 0.2753825787329024, "actualEbitda": 4152485.8500000015, "ebitdaVariance": -1534586.9699999988, "orders": 3718.0}, {"name": "Customs Brokerage", "actualRevenue": 39115513.73999999, "budgetRevenue": 41406925.32000001, "forecastRevenue": 40061686.710000016, "revenueVariance": -2291411.5800000206, "grossMarginPct": 0.4253361835047704, "actualEbitda": 9528606.049999997, "ebitdaVariance": -1302180.9100000039, "orders": 2042.0}], "Product": [{"name": "Warehousing", "actualRevenue": 40355686.66, "budgetRevenue": 46024211.28000001, "forecastRevenue": 44329773.56, "revenueVariance": -5668524.620000012, "grossMarginPct": 0.32599999997125567, "actualEbitda": 5246239.289999998, "ebitdaVariance": -1565343.9600000046, "orders": 2185.0}, {"name": "Ocean Freight", "actualRevenue": 69234384.60000002, "budgetRevenue": 70911410.37, "forecastRevenue": 68966073.27999999, "revenueVariance": -1677025.769999981, "grossMarginPct": 0.2659999999480026, "actualEbitda": 9000469.989999998, "ebitdaVariance": -1494418.7500000056, "orders": 3621.0}, {"name": "Air Freight", "actualRevenue": 55034007.70000001, "budgetRevenue": 58440123.42999999, "forecastRevenue": 56221001.72000001, "revenueVariance": -3406115.729999982, "grossMarginPct": 0.22600000017807167, "actualEbitda": 4182584.6000000006, "ebitdaVariance": -1310787.0100000016, "orders": 2958.0}, {"name": "Value Added Services", "actualRevenue": 25510421.6, "budgetRevenue": 29086625.079999994, "forecastRevenue": 28053783.939999998, "revenueVariance": -3576203.479999993, "grossMarginPct": 0.3760000015052672, "actualEbitda": 4234729.97, "ebitdaVariance": -1117209.0200000005, "orders": 1283.0}, {"name": "Fulfillment", "actualRevenue": 39506194.09999999, "budgetRevenue": 41427119.67000001, "forecastRevenue": 40137070.760000005, "revenueVariance": -1920925.5700000226, "grossMarginPct": 0.3059999988710632, "actualEbitda": 4029631.78, "ebitdaVariance": -941622.5800000005, "orders": 2118.0}, {"name": "Customs Clearance", "actualRevenue": 23093593.13, "budgetRevenue": 24510027.400000002, "forecastRevenue": 23734121.810000002, "revenueVariance": -1416434.2700000033, "grossMarginPct": 0.41099999972156787, "actualEbitda": 5426994.4, "ebitdaVariance": -774042.5199999996, "orders": 1195.0}, {"name": "Road Freight", "actualRevenue": 33665085.95999999, "budgetRevenue": 35724654.43, "forecastRevenue": 34721451.800000004, "revenueVariance": -2059568.4700000063, "grossMarginPct": 0.20100000006059698, "actualEbitda": 1245608.1499999997, "ebitdaVariance": -719247.8200000005, "orders": 1763.0}, {"name": "Last Mile", "actualRevenue": 30713523.280000012, "budgetRevenue": 32537201.95000001, "forecastRevenue": 31344613.58000001, "revenueVariance": -1823678.669999998, "grossMarginPct": 0.23600000019274892, "actualEbitda": 122854.06999999999, "ebitdaVariance": -592964.3900000002, "orders": 1600.0}, {"name": "Trade Compliance", "actualRevenue": 16021920.610000001, "budgetRevenue": 16896897.92, "forecastRevenue": 16327564.900000004, "revenueVariance": -874977.3100000005, "grossMarginPct": 0.44599999799899137, "actualEbitda": 4101611.6500000004, "ebitdaVariance": -528138.3900000006, "orders": 847.0}], "Region": [{"name": "South", "actualRevenue": 114938724.85, "budgetRevenue": 121300217.46, "forecastRevenue": 116541100.77999997, "revenueVariance": -6361492.609999999, "grossMarginPct": 0.28913269268795105, "actualEbitda": 12992290.170000006, "ebitdaVariance": -2928622.1699999906, "orders": 6026.0}, {"name": "North", "actualRevenue": 86775716.50999998, "budgetRevenue": 93134131.46, "forecastRevenue": 90244373.01000005, "revenueVariance": -6358414.950000018, "grossMarginPct": 0.289183039210148, "actualEbitda": 9781249.609999996, "ebitdaVariance": -2407985.2200000007, "orders": 4609.0}, {"name": "Overseas", "actualRevenue": 72632407.28, "budgetRevenue": 78138965.32000004, "forecastRevenue": 75911509.39000003, "revenueVariance": -5506558.040000036, "grossMarginPct": 0.2890427906246865, "actualEbitda": 8182510.840000004, "ebitdaVariance": -2050392.060000006, "orders": 3849.0}, {"name": "Central", "actualRevenue": 58787968.99999997, "budgetRevenue": 62984957.29000001, "forecastRevenue": 61138472.169999994, "revenueVariance": -4196988.290000036, "grossMarginPct": 0.2895598381702896, "actualEbitda": 6634673.279999999, "ebitdaVariance": -1656774.990000002, "orders": 3086.0}], "Customer": [{"name": "Long Tail Customers", "actualRevenue": 41378219.65999999, "budgetRevenue": 44086209.27, "forecastRevenue": 42809955.760000005, "revenueVariance": -2707989.6100000143, "grossMarginPct": 0.28926543549602307, "actualEbitda": 4671948.96, "ebitdaVariance": -1095331.000000001, "orders": 2173.0}, {"name": "Aster Retail Group", "actualRevenue": 39264789.13, "budgetRevenue": 41851494.469999984, "forecastRevenue": 40690378.470000006, "revenueVariance": -2586705.339999981, "grossMarginPct": 0.2888732921103045, "actualEbitda": 4419232.850000002, "ebitdaVariance": -1076102.5999999968, "orders": 2117.0}, {"name": "Bluewave Electronics", "actualRevenue": 36271075.7, "budgetRevenue": 38953129.64, "forecastRevenue": 37243932.11000001, "revenueVariance": -2682053.9399999976, "grossMarginPct": 0.2900516683600866, "actualEbitda": 4113569.0200000005, "ebitdaVariance": -994602.7599999998, "orders": 1895.0}, {"name": "Cobalt Manufacturing", "actualRevenue": 32141135.64, "budgetRevenue": 34364213.51999999, "forecastRevenue": 32864325.609999996, "revenueVariance": -2223077.879999988, "grossMarginPct": 0.2894019509511021, "actualEbitda": 3633658.120000001, "ebitdaVariance": -872521.9799999986, "orders": 1675.0}, {"name": "Delta Pharma", "actualRevenue": 30506514.979999997, "budgetRevenue": 32431879.769999992, "forecastRevenue": 31112524.159999993, "revenueVariance": -1925364.7899999954, "grossMarginPct": 0.2887304107261877, "actualEbitda": 3426230.1699999995, "ebitdaVariance": -839825.0800000005, "orders": 1658.0}, {"name": "Evergreen Foods", "actualRevenue": 27924451.2, "budgetRevenue": 29992030.849999998, "forecastRevenue": 28942694.32999999, "revenueVariance": -2067579.6499999985, "grossMarginPct": 0.2894188710143747, "actualEbitda": 3153760.510000001, "ebitdaVariance": -779138.3499999978, "orders": 1503.0}, {"name": "Futura Apparel", "actualRevenue": 25641531.470000006, "budgetRevenue": 27483342.880000006, "forecastRevenue": 26574831.820000004, "revenueVariance": -1841811.4100000001, "grossMarginPct": 0.2890240993862134, "actualEbitda": 2886296.0199999996, "ebitdaVariance": -705466.6200000015, "orders": 1363.0}, {"name": "GreenMart Online", "actualRevenue": 24670227.83, "budgetRevenue": 26120342.639999993, "forecastRevenue": 25661776.100000005, "revenueVariance": -1450114.809999995, "grossMarginPct": 0.2892998313262841, "actualEbitda": 2791596.95, "ebitdaVariance": -647848.1499999999, "orders": 1292.0}, {"name": "Helio Auto Parts", "actualRevenue": 22426090.760000005, "budgetRevenue": 24032865.210000005, "forecastRevenue": 23568292.06, "revenueVariance": -1606774.4499999993, "grossMarginPct": 0.2889411466914084, "actualEbitda": 2524739.8700000006, "ebitdaVariance": -630592.3499999996, "orders": 1168.0}, {"name": "Indigo Home", "actualRevenue": 20789500.71, "budgetRevenue": 22390277.190000005, "forecastRevenue": 21552783.77, "revenueVariance": -1600776.4800000042, "grossMarginPct": 0.2889547158345392, "actualEbitda": 2338048.7800000003, "ebitdaVariance": -589427.7599999998, "orders": 1078.0}, {"name": "Jade Coffee", "actualRevenue": 16864489.4, "budgetRevenue": 17704421.61, "forecastRevenue": 17238115.32, "revenueVariance": -839932.2100000009, "grossMarginPct": 0.28879876671510735, "actualEbitda": 1902696.4399999997, "ebitdaVariance": -421392.0000000007, "orders": 862.0}, {"name": "Kite Cosmetics", "actualRevenue": 15256791.159999998, "budgetRevenue": 16148064.48, "forecastRevenue": 15575845.839999996, "revenueVariance": -891273.3200000022, "grossMarginPct": 0.28927855429856986, "actualEbitda": 1728946.21, "ebitdaVariance": -391525.79000000004, "orders": 786.0}]};
+    const tabs = document.getElementById("tabs");
+    const tbody = document.getElementById("drilldown-body");
+    const heading = document.getElementById("dimension-heading");
+
+    function formatM(value) {
+      return (value / 1000000).toLocaleString(undefined, { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + "M";
+    }
+
+    function formatPct(value) {
+      return (value * 100).toLocaleString(undefined, { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + "%";
+    }
+
+    function classFor(value) {
+      if (Math.abs(value) < 1e-9) return "neutral";
+      return value > 0 ? "good" : "bad";
+    }
+
+    function render(level) {
+      heading.textContent = level;
+      tbody.innerHTML = DATA[level].map(row => `
+        <tr>
+          <td>${row.name}</td>
+          <td class="num">${formatM(row.actualRevenue)}</td>
+          <td class="num">${formatM(row.budgetRevenue)}</td>
+          <td class="num">${formatM(row.forecastRevenue)}</td>
+          <td class="num ${classFor(row.revenueVariance)}">${formatM(row.revenueVariance)}</td>
+          <td class="num">${formatPct(row.grossMarginPct)}</td>
+          <td class="num">${formatM(row.actualEbitda)}</td>
+          <td class="num ${classFor(row.ebitdaVariance)}">${formatM(row.ebitdaVariance)}</td>
+          <td class="num">${Math.round(row.orders).toLocaleString()}</td>
+        </tr>
+      `).join("");
+      [...tabs.querySelectorAll("button")].forEach(button => {
+        button.classList.toggle("active", button.dataset.level === level);
+      });
+    }
+
+    Object.keys(DATA).forEach((level, idx) => {
+      const button = document.createElement("button");
+      button.className = "tab" + (idx === 0 ? " active" : "");
+      button.type = "button";
+      button.dataset.level = level;
+      button.textContent = level;
+      button.addEventListener("click", () => render(level));
+      tabs.appendChild(button);
+    });
+    render("Business Unit");
+  </script>
+</body>
+</html>

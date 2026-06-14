@@ -1,0 +1,32 @@
+{
+  "latest_month": "2026-05",
+  "previous_month": "2026-04",
+  "current": {
+    "gmv": 41390421.25,
+    "transactions": 963162,
+    "revenue": 540268.55,
+    "take_rate": 0.01305298505508687,
+    "cost": 338390.75,
+    "cost_per_transaction": 0.35133316098434114,
+    "contribution_margin": 201877.22,
+    "contribution_margin_pct": 0.37366087661404684,
+    "refund_rate": 0.021909319659316105,
+    "chargeback_bps": 9.500123171614252,
+    "auth_success_rate": 0.9705345518199431,
+    "mom_gmv_growth": 0.0098700832976213,
+    "mom_revenue_growth": 0.025414916269324624
+  },
+  "previous": {
+    "gmv": 40985887.129999995,
+    "transactions": 953835,
+    "revenue": 526877.99,
+    "take_rate": 0.012855107621041265,
+    "cost": 333663.69,
+    "cost_per_transaction": 0.34981279781094216,
+    "contribution_margin": 193213.96000000002,
+    "contribution_margin_pct": 0.36671480621158614,
+    "refund_rate": 0.021481668487676825,
+    "chargeback_bps": 9.482322506947284,
+    "auth_success_rate": 0.9703879601817924
+  }
+}

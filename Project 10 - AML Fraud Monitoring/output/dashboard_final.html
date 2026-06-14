@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AML / Fraud Monitoring Command Center</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #657383;
+      --line: #d8ded8;
+      --paper: #f6f7f4;
+      --surface: #ffffff;
+      --teal: #0f766e;
+      --mint: #2a9d8f;
+      --amber: #d97706;
+      --red: #b91c1c;
+      --violet: #5b4b8a;
+      --shadow: 0 10px 24px rgba(23, 32, 42, .08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, Segoe UI, Arial, sans-serif; background: var(--paper); color: var(--ink); }
+    .app { min-height: 100vh; display: grid; grid-template-columns: 248px 1fr; }
+    aside { background: #17202a; color: #f7faf8; padding: 22px 18px; position: sticky; top: 0; height: 100vh; }
+    .brand { font-size: 16px; line-height: 1.2; font-weight: 800; letter-spacing: 0; margin-bottom: 18px; }
+    .brand span { display:block; color:#9ad7cd; font-size: 11px; font-weight: 700; margin-top: 6px; }
+    .tabs { display: grid; gap: 8px; margin-top: 20px; }
+    .tab-button { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: #f7faf8; border-radius: 8px; padding: 12px; text-align: left; font-size: 13px; cursor: pointer; }
+    .tab-button.active { background: #f7faf8; color: var(--ink); border-color: #f7faf8; }
+    .side-metric { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.15); }
+    .side-metric div { font-size: 11px; color: #b9c7c2; }
+    .side-metric strong { display: block; font-size: 22px; margin-top: 5px; color: #ffffff; }
+    main { padding: 22px; }
+    .topbar { display:flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 16px; }
+    h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: 0; }
+    .subtitle { color: var(--muted); font-size: 13px; }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    select { border: 1px solid var(--line); background: var(--surface); border-radius: 7px; padding: 8px 28px 8px 10px; color: var(--ink); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 12px; margin-bottom: 12px; }
+    .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 13px 14px; box-shadow: var(--shadow); min-height: 94px; }
+    .kpi label { display: block; color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    .kpi strong { display: block; font-size: 24px; margin-top: 8px; white-space: nowrap; }
+    .kpi small { color: var(--muted); font-size: 12px; }
+    .grid-2 { display: grid; grid-template-columns: 1.35fr .65fr; gap: 12px; }
+    .grid-3 { display: grid; grid-template-columns: .9fr .9fr 1.2fr; gap: 12px; }
+    .grid-balanced { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px; box-shadow: var(--shadow); min-width: 0; }
+    .panel h2 { font-size: 14px; margin: 0 0 2px; }
+    .panel p { margin: 0 0 10px; color: var(--muted); font-size: 12px; }
+    .chart-svg { width: 100%; height: auto; display: block; }
+    .grid { stroke: #e6ebe6; stroke-width: 1; }
+    .axis { stroke: #bfc8c0; stroke-width: 1; }
+    .axis-label, .bar-label, .bar-value, .funnel-stage, .funnel-value { fill: #657383; font-size: 11px; }
+    .rotate { transform: rotate(-90deg); transform-origin: 9px 140px; }
+    .line-alert { fill: none; stroke: var(--amber); stroke-width: 3; }
+    .line-case { fill: none; stroke: var(--teal); stroke-width: 3; }
+    .dot-alert { fill: var(--amber); }
+    .legend-alert { fill: var(--amber); font-size: 12px; font-weight: 700; }
+    .legend-case { fill: var(--teal); font-size: 12px; font-weight: 700; }
+    .bar-bg { fill: #eef2ee; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th { text-align: left; color: var(--muted); border-bottom: 1px solid var(--line); padding: 8px 6px; font-size: 11px; }
+    td { border-bottom: 1px solid #edf0ed; padding: 8px 6px; vertical-align: top; }
+    .chip { display:inline-flex; align-items:center; border-radius:999px; padding:3px 7px; font-size:11px; background:#eef2ee; color:var(--ink); font-weight:700; }
+    .risk-high { background: #fee2e2; color: var(--red); }
+    .risk-med { background: #fef3c7; color: #92400e; }
+    .risk-low { background: #d1fae5; color: #065f46; }
+    .governance-list { display: grid; gap: 8px; }
+    .gov-row { display: grid; grid-template-columns: 78px 1fr 92px 74px; gap: 8px; align-items:center; padding: 8px; border: 1px solid #edf0ed; border-radius: 7px; }
+    .gov-row span { font-size: 12px; color: var(--muted); }
+    .gov-row strong { font-size: 12px; }
+    @media (max-width: 1100px) {
+      .app { grid-template-columns: 1fr; }
+      aside { position: relative; height: auto; }
+      .kpi-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .grid-2, .grid-3, .grid-balanced { grid-template-columns: 1fr; }
+      .topbar { display:block; }
+      .filters { justify-content:flex-start; margin-top:12px; }
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="brand">AML / Fraud Monitoring Command Center<span>Portfolio BI product | Synthetic data | As of May 2026</span></div>
+    <div class="tabs">
+      <button class="tab-button active" data-tab="overview">Fraud & Compliance Overview</button>
+      <button class="tab-button" data-tab="deep">Alert & Customer Risk Deep Dive</button>
+      <button class="tab-button" data-tab="sla">Case SLA & Rule Governance</button>
+    </div>
+    <div class="side-metric"><div>Alert rate</div><strong>18.4%</strong></div>
+    <div class="side-metric"><div>High-risk customers</div><strong>12</strong></div>
+    <div class="side-metric"><div>SLA compliance</div><strong>66.1%</strong></div>
+  </aside>
+  <main>
+    <div class="topbar">
+      <div>
+        <h1>AML / Fraud Monitoring Command Center</h1>
+        <div class="subtitle">Transactions, alerts, case workload, customer risk, rule precision, and governance control.</div>
+      </div>
+      <div class="filters">
+        <select><option>May 2026</option></select>
+        <select><option>All corridors</option><option>High risk corridors</option></select>
+        <select><option>All severities</option><option>Critical and High</option></select>
+      </div>
+    </div>
+
+    <section id="overview" class="tab-panel active">
+      <div class="kpi-grid">
+        <div class="kpi"><label>Total transactions</label><strong>36,000</strong><small>$1.9B monitored</small></div>
+        <div class="kpi"><label>Flagged amount</label><strong>$420.1M</strong><small>18.4% alert rate</small></div>
+        <div class="kpi"><label>Alerts</label><strong>6,611</strong><small>Generated from rules</small></div>
+        <div class="kpi"><label>Suspicious cases</label><strong>2,894</strong><small>SAR and confirmed suspicious</small></div>
+        <div class="kpi"><label>False positive rate</label><strong>35.4%</strong><small>Closed alerts denominator</small></div>
+        <div class="kpi"><label>Overdue cases</label><strong>1,207</strong><small>402 open cases</small></div>
+      </div>
+      <div class="grid-2">
+        <div class="panel"><h2>Alert and Case Trend</h2><p>Monthly alert volume and escalated case load.</p>
+<svg viewBox="0 0 760 260" class="chart-svg" role="img" aria-label="Alert and case monthly trend">
+  <line x1="48" x2="740" y1="24.0" y2="24.0" class="grid"/><line x1="48" x2="740" y1="73.5" y2="73.5" class="grid"/><line x1="48" x2="740" y1="123.0" y2="123.0" class="grid"/><line x1="48" x2="740" y1="172.5" y2="172.5" class="grid"/><line x1="48" x2="740" y1="222.0" y2="222.0" class="grid"/>
+  <line x1="48" y1="222" x2="740" y2="222" class="axis"/>
+  <path d="M48.0,144.7 L91.2,136.6 L134.5,100.4 L177.8,123.2 L221.0,93.2 L264.2,122.2 L307.5,124.4 L350.8,118.8 L394.0,84.8 L437.2,98.5 L480.5,90.4 L523.8,96.3 L567.0,93.2 L610.2,101.6 L653.5,53.0 L696.8,86.1 L740.0,45.2" class="line-alert"/>
+  <path d="M48.0,155.4 L91.2,138.9 L134.5,108.2 L177.8,130.7 L221.0,95.5 L264.2,135.7 L307.5,119.7 L350.8,131.8 L394.0,86.2 L437.2,103.2 L480.5,104.8 L523.8,111.5 L567.0,94.4 L610.2,112.0 L653.5,57.0 L696.8,85.6 L740.0,58.1" class="line-case"/>
+  <circle cx="48.0" cy="144.7" r="3.2" class="dot-alert"/><circle cx="91.2" cy="136.6" r="3.2" class="dot-alert"/><circle cx="134.5" cy="100.4" r="3.2" class="dot-alert"/><circle cx="177.8" cy="123.2" r="3.2" class="dot-alert"/><circle cx="221.0" cy="93.2" r="3.2" class="dot-alert"/><circle cx="264.2" cy="122.2" r="3.2" class="dot-alert"/><circle cx="307.5" cy="124.4" r="3.2" class="dot-alert"/><circle cx="350.8" cy="118.8" r="3.2" class="dot-alert"/><circle cx="394.0" cy="84.8" r="3.2" class="dot-alert"/><circle cx="437.2" cy="98.5" r="3.2" class="dot-alert"/><circle cx="480.5" cy="90.4" r="3.2" class="dot-alert"/><circle cx="523.8" cy="96.3" r="3.2" class="dot-alert"/><circle cx="567.0" cy="93.2" r="3.2" class="dot-alert"/><circle cx="610.2" cy="101.6" r="3.2" class="dot-alert"/><circle cx="653.5" cy="53.0" r="3.2" class="dot-alert"/><circle cx="696.8" cy="86.1" r="3.2" class="dot-alert"/><circle cx="740.0" cy="45.2" r="3.2" class="dot-alert"/>
+  <text x="48.0" y="246" class="axis-label" text-anchor="middle">Jan</text><text x="134.5" y="246" class="axis-label" text-anchor="middle">Mar</text><text x="221.0" y="246" class="axis-label" text-anchor="middle">May</text><text x="307.5" y="246" class="axis-label" text-anchor="middle">Jul</text><text x="394.0" y="246" class="axis-label" text-anchor="middle">Sep</text><text x="480.5" y="246" class="axis-label" text-anchor="middle">Nov</text><text x="567.0" y="246" class="axis-label" text-anchor="middle">Jan</text><text x="653.5" y="246" class="axis-label" text-anchor="middle">Mar</text><text x="740.0" y="246" class="axis-label" text-anchor="middle">May</text>
+  <text x="48" y="16" class="legend-alert">Alerts</text>
+  <text x="126" y="16" class="legend-case">Cases</text>
+</svg></div>
+        <div class="panel"><h2>Typology Mix</h2><p>Alert concentration by detection theme.</p><svg viewBox="0 0 380 260" class="chart-svg"><text x="0" y="29.0" class="bar-label">Velocity</text><rect x="150" y="18.0" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="18.0" width="210.0" height="12" rx="3" fill="#5b4b8a"/><text x="368" y="29.0" class="bar-value" text-anchor="end">1,172</text><text x="0" y="58.2" class="bar-label">Geo/Corridor</text><rect x="150" y="47.2" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="47.2" width="161.6" height="12" rx="3" fill="#5b4b8a"/><text x="368" y="58.2" class="bar-value" text-anchor="end">902</text><text x="0" y="87.5" class="bar-label">Digital Assets</text><rect x="150" y="76.5" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="76.5" width="127.9" height="12" rx="3" fill="#5b4b8a"/><text x="368" y="87.5" class="bar-value" text-anchor="end">714</text><text x="0" y="116.8" class="bar-label">Cash</text><rect x="150" y="105.8" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="105.8" width="126.1" height="12" rx="3" fill="#5b4b8a"/><text x="368" y="116.8" class="bar-value" text-anchor="end">704</text><text x="0" y="146.0" class="bar-label">Structuring</text><rect x="150" y="135.0" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="135.0" width="120.1" height="12" rx="3" fill="#5b4b8a"/><text x="368" y="146.0" class="bar-value" text-anchor="end">670</text><text x="0" y="175.2" class="bar-label">Sanctions</text><rect x="150" y="164.2" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="164.2" width="114.3" height="12" rx="3" fill="#5b4b8a"/><text x="368" y="175.2" class="bar-value" text-anchor="end">638</text><text x="0" y="204.5" class="bar-label">Pattern</text><rect x="150" y="193.5" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="193.5" width="84.9" height="12" rx="3" fill="#5b4b8a"/><text x="368" y="204.5" class="bar-value" text-anchor="end">474</text><text x="0" y="233.8" class="bar-label">Account Takeover</text><rect x="150" y="222.8" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="222.8" width="83.3" height="12" rx="3" fill="#5b4b8a"/><text x="368" y="233.8" class="bar-value" text-anchor="end">465</text></svg></div>
+      </div>
+      <div class="grid-balanced" style="margin-top:12px">
+        <div class="panel"><h2>Country / Corridor Risk</h2><p>Highest risk corridors by alert volume.</p><svg viewBox="0 0 380 260" class="chart-svg"><text x="0" y="29.0" class="bar-label">NG->AE</text><rect x="150" y="18.0" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="18.0" width="210.0" height="12" rx="3" fill="#d97706"/><text x="368" y="29.0" class="bar-value" text-anchor="end">747</text><text x="0" y="58.2" class="bar-label">HK->NG</text><rect x="150" y="47.2" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="47.2" width="194.3" height="12" rx="3" fill="#d97706"/><text x="368" y="58.2" class="bar-value" text-anchor="end">691</text><text x="0" y="87.5" class="bar-label">AE->TR</text><rect x="150" y="76.5" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="76.5" width="177.4" height="12" rx="3" fill="#d97706"/><text x="368" y="87.5" class="bar-value" text-anchor="end">631</text><text x="0" y="116.8" class="bar-label">GB->AE</text><rect x="150" y="105.8" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="105.8" width="162.2" height="12" rx="3" fill="#d97706"/><text x="368" y="116.8" class="bar-value" text-anchor="end">577</text><text x="0" y="146.0" class="bar-label">US->MX</text><rect x="150" y="135.0" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="135.0" width="147.9" height="12" rx="3" fill="#d97706"/><text x="368" y="146.0" class="bar-value" text-anchor="end">526</text><text x="0" y="175.2" class="bar-label">ZA->GB</text><rect x="150" y="164.2" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="164.2" width="151.2" height="12" rx="3" fill="#d97706"/><text x="368" y="175.2" class="bar-value" text-anchor="end">538</text><text x="0" y="204.5" class="bar-label">PH->HK</text><rect x="150" y="193.5" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="193.5" width="156.6" height="12" rx="3" fill="#d97706"/><text x="368" y="204.5" class="bar-value" text-anchor="end">557</text><text x="0" y="233.8" class="bar-label">SG->HK</text><rect x="150" y="222.8" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="222.8" width="124.5" height="12" rx="3" fill="#d97706"/><text x="368" y="233.8" class="bar-value" text-anchor="end">443</text></svg></div>
+        <div class="panel"><h2>Top Corridor Watchlist</h2><p>Risk, amount and false positive context.</p><table><thead><tr><th>Corridor</th><th>Tier</th><th>Alerts</th><th>Amount</th><th>Risk</th><th>FPR</th></tr></thead><tbody><tr><td>NG->AE</td><td>High</td><td>747</td><td>$43.8M</td><td>85.9</td><td>31.3%</td></tr><tr><td>HK->NG</td><td>High</td><td>691</td><td>$41.0M</td><td>85.4</td><td>29.5%</td></tr><tr><td>AE->TR</td><td>High</td><td>631</td><td>$36.8M</td><td>84.2</td><td>34.9%</td></tr><tr><td>GB->AE</td><td>Medium</td><td>577</td><td>$38.6M</td><td>82.3</td><td>33.8%</td></tr><tr><td>US->MX</td><td>Medium</td><td>526</td><td>$33.4M</td><td>81.6</td><td>38.0%</td></tr><tr><td>ZA->GB</td><td>Medium</td><td>538</td><td>$33.2M</td><td>81.2</td><td>38.3%</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section id="deep" class="tab-panel">
+      <div class="grid-3">
+        <div class="panel"><h2>Alert Funnel</h2><p>From monitored activity to SAR filing.</p><svg viewBox="0 0 520 270" class="chart-svg"><rect x="82.0" y="18" width="420.0" height="27" rx="5" fill="#17202a"/><text x="20" y="36" class="funnel-stage">Transactions</text><text x="492" y="36" class="funnel-value" text-anchor="end">36,000</text><rect x="202.0" y="58" width="180.0" height="27" rx="5" fill="#0f766e"/><text x="20" y="76" class="funnel-stage">Flagged Txns</text><text x="492" y="76" class="funnel-value" text-anchor="end">6,611</text><rect x="202.0" y="98" width="180.0" height="27" rx="5" fill="#2a9d8f"/><text x="20" y="116" class="funnel-stage">Alerts</text><text x="492" y="116" class="funnel-value" text-anchor="end">6,611</text><rect x="226.0" y="138" width="132.0" height="27" rx="5" fill="#d97706"/><text x="20" y="156" class="funnel-stage">Cases</text><text x="492" y="156" class="funnel-value" text-anchor="end">3,556</text><rect x="232.5" y="178" width="119.1" height="27" rx="5" fill="#b91c1c"/><text x="20" y="196" class="funnel-stage">Suspicious</text><text x="492" y="196" class="funnel-value" text-anchor="end">2,894</text><rect x="235.1" y="218" width="113.7" height="27" rx="5" fill="#5b4b8a"/><text x="20" y="236" class="funnel-stage">SAR Filed</text><text x="492" y="236" class="funnel-value" text-anchor="end">2,639</text></svg></div>
+        <div class="panel"><h2>Rule Performance</h2><p>Precision vs alert volume, sized by value.</p><svg viewBox="0 0 520 280" class="chart-svg"><line x1="42" y1="238" x2="502" y2="238" class="axis"/><line x1="42" y1="18" x2="42" y2="238" class="axis"/><text x="260.0" y="274" class="axis-label" text-anchor="middle">Alert volume</text><text x="9" y="140.0" class="axis-label rotate" text-anchor="middle">Precision</text><circle cx="492.0" cy="103.4" r="16.2" fill="#0f766e" opacity="0.82"><title>High Velocity Transfers</title></circle><circle cx="388.3" cy="100.2" r="12.6" fill="#0f766e" opacity="0.82"><title>High Risk Corridor</title></circle><circle cx="316.1" cy="106.5" r="13.8" fill="#0f766e" opacity="0.82"><title>Crypto Off-ramp Spike</title></circle><circle cx="312.3" cy="102.3" r="11.5" fill="#0f766e" opacity="0.82"><title>Cash Intensive Pattern</title></circle><circle cx="299.3" cy="102.0" r="12.2" fill="#0f766e" opacity="0.82"><title>Structuring Below Threshold</title></circle><circle cx="287.0" cy="107.7" r="11.7" fill="#0f766e" opacity="0.82"><title>Watchlist Proximity</title></circle><circle cx="224.0" cy="98.9" r="9.9" fill="#0f766e" opacity="0.82"><title>Round Dollar Repetition</title></circle><circle cx="220.5" cy="106.6" r="10.2" fill="#0f766e" opacity="0.82"><title>New Beneficiary Burst</title></circle><circle cx="213.6" cy="110.7" r="9.3" fill="#0f766e" opacity="0.82"><title>Rapid In-Out Funds</title></circle><circle cx="205.2" cy="109.5" r="8.7" fill="#0f766e" opacity="0.82"><title>Dormant Account Reactivation</title></circle></svg></div>
+        <div class="panel"><h2>High-Risk Customers</h2><p>Customer risk and case conversion queue.</p><table><thead><tr><th>Customer</th><th>Country</th><th>Alerts</th><th>Cases</th><th>SAR</th><th>Amount</th><th>Risk</th></tr></thead><tbody><tr><td>Customer 0167</td><td>Nigeria</td><td>71</td><td>62</td><td>52</td><td>$2.0M</td><td>94.7</td></tr><tr><td>Customer 0026</td><td>United Arab Emirates</td><td>60</td><td>52</td><td>42</td><td>$1.5M</td><td>91.8</td></tr><tr><td>Customer 0162</td><td>United Arab Emirates</td><td>56</td><td>43</td><td>31</td><td>$6.6M</td><td>90.9</td></tr><tr><td>Customer 0101</td><td>United Arab Emirates</td><td>54</td><td>43</td><td>40</td><td>$8.1M</td><td>90.9</td></tr><tr><td>Customer 0007</td><td>Turkey</td><td>45</td><td>36</td><td>28</td><td>$4.5M</td><td>90.8</td></tr><tr><td>Customer 0165</td><td>Turkey</td><td>54</td><td>42</td><td>33</td><td>$5.6M</td><td>90.5</td></tr><tr><td>Customer 0146</td><td>Philippines</td><td>48</td><td>36</td><td>32</td><td>$5.5M</td><td>90.2</td></tr><tr><td>Customer 0116</td><td>Turkey</td><td>56</td><td>49</td><td>35</td><td>$7.1M</td><td>90.1</td></tr></tbody></table></div>
+      </div>
+      <div class="grid-balanced" style="margin-top:12px">
+        <div class="panel"><h2>Rule Precision Table</h2><p>Rule-by-rule volume and quality signal.</p><table><thead><tr><th>Rule</th><th>Typology</th><th>Alerts</th><th>Precision</th><th>FPR</th><th>Risk</th></tr></thead><tbody><tr><td>High Velocity Transfers</td><td>Velocity</td><td>1172</td><td>64.1%</td><td>35.9%</td><td>81.4</td></tr><tr><td>High Risk Corridor</td><td>Geo/Corridor</td><td>902</td><td>65.6%</td><td>34.4%</td><td>82.7</td></tr><tr><td>Crypto Off-ramp Spike</td><td>Digital Assets</td><td>714</td><td>62.6%</td><td>37.4%</td><td>82.6</td></tr><tr><td>Cash Intensive Pattern</td><td>Cash</td><td>704</td><td>64.6%</td><td>35.4%</td><td>81.3</td></tr><tr><td>Structuring Below Threshold</td><td>Structuring</td><td>670</td><td>64.8%</td><td>35.2%</td><td>82.8</td></tr><tr><td>Watchlist Proximity</td><td>Sanctions</td><td>638</td><td>62.1%</td><td>37.9%</td><td>83.1</td></tr><tr><td>Round Dollar Repetition</td><td>Pattern</td><td>474</td><td>66.2%</td><td>33.8%</td><td>81.7</td></tr><tr><td>New Beneficiary Burst</td><td>Account Takeover</td><td>465</td><td>62.6%</td><td>37.4%</td><td>81.5</td></tr></tbody></table></div>
+        <div class="panel"><h2>Corridor Exposure Detail</h2><p>Alerting across country corridors.</p><table><thead><tr><th>Corridor</th><th>Name</th><th>Tier</th><th>Alerts</th><th>Amount</th><th>Risk</th></tr></thead><tbody><tr><td>NG->AE</td><td>Enhanced due diligence corridor</td><td>High</td><td>747</td><td>$43.8M</td><td>85.9</td></tr><tr><td>HK->NG</td><td>High-risk trade corridor</td><td>High</td><td>691</td><td>$41.0M</td><td>85.4</td></tr><tr><td>AE->TR</td><td>Cash-intensive corridor</td><td>High</td><td>631</td><td>$36.8M</td><td>84.2</td></tr><tr><td>GB->AE</td><td>Private banking corridor</td><td>Medium</td><td>577</td><td>$38.6M</td><td>82.3</td></tr><tr><td>US->MX</td><td>Remittance corridor</td><td>Medium</td><td>526</td><td>$33.4M</td><td>81.6</td></tr><tr><td>ZA->GB</td><td>Investment services corridor</td><td>Medium</td><td>538</td><td>$33.2M</td><td>81.2</td></tr><tr><td>PH->HK</td><td>Wallet remittance corridor</td><td>Medium</td><td>557</td><td>$32.0M</td><td>81.1</td></tr><tr><td>SG->HK</td><td>Trade finance corridor</td><td>Medium</td><td>443</td><td>$27.5M</td><td>80.9</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section id="sla" class="tab-panel">
+      <div class="kpi-grid">
+        <div class="kpi"><label>Case count</label><strong>3,556</strong><small>Investigation workload</small></div>
+        <div class="kpi"><label>Open cases</label><strong>402</strong><small>Active inventory</small></div>
+        <div class="kpi"><label>SLA compliance</label><strong>66.1%</strong><small>All cases denominator</small></div>
+        <div class="kpi"><label>Governance changes</label><strong>12</strong><small>Latest visible log</small></div>
+        <div class="kpi"><label>Rule precision</label><strong>63.4%</strong><small>Average by rule</small></div>
+        <div class="kpi"><label>SAR filed</label><strong>2,639</strong><small>Filed from cases</small></div>
+      </div>
+      <div class="grid-3">
+        <div class="panel"><h2>Case Aging</h2><p>Open and closed case age distribution.</p><svg viewBox="0 0 400 260" class="chart-svg"><text x="0" y="29.0" class="bar-label">0-3d</text><rect x="150" y="18.0" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="18.0" width="210.0" height="12" rx="3" fill="#b91c1c"/><text x="368" y="29.0" class="bar-value" text-anchor="end">2,852</text><text x="0" y="87.5" class="bar-label">4-7d</text><rect x="150" y="76.5" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="76.5" width="37.6" height="12" rx="3" fill="#b91c1c"/><text x="368" y="87.5" class="bar-value" text-anchor="end">511</text><text x="0" y="146.0" class="bar-label">8-14d</text><rect x="150" y="135.0" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="135.0" width="13.0" height="12" rx="3" fill="#b91c1c"/><text x="368" y="146.0" class="bar-value" text-anchor="end">176</text><text x="0" y="204.5" class="bar-label">15-30d</text><rect x="150" y="193.5" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="193.5" width="1.3" height="12" rx="3" fill="#b91c1c"/><text x="368" y="204.5" class="bar-value" text-anchor="end">17</text></svg></div>
+        <div class="panel"><h2>Analyst Workload</h2><p>Case inventory by analyst queue.</p><svg viewBox="0 0 400 260" class="chart-svg"><text x="0" y="29.0" class="bar-label">Liam Nguyen</text><rect x="150" y="18.0" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="18.0" width="210.0" height="12" rx="3" fill="#0f766e"/><text x="368" y="29.0" class="bar-value" text-anchor="end">497</text><text x="0" y="58.2" class="bar-label">Amelia Chen</text><rect x="150" y="47.2" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="47.2" width="197.3" height="12" rx="3" fill="#0f766e"/><text x="368" y="58.2" class="bar-value" text-anchor="end">467</text><text x="0" y="87.5" class="bar-label">Maya Tran</text><rect x="150" y="76.5" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="76.5" width="194.4" height="12" rx="3" fill="#0f766e"/><text x="368" y="87.5" class="bar-value" text-anchor="end">460</text><text x="0" y="116.8" class="bar-label">Ethan Brooks</text><rect x="150" y="105.8" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="105.8" width="186.8" height="12" rx="3" fill="#0f766e"/><text x="368" y="116.8" class="bar-value" text-anchor="end">442</text><text x="0" y="146.0" class="bar-label">Minh Le</text><rect x="150" y="135.0" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="135.0" width="180.8" height="12" rx="3" fill="#0f766e"/><text x="368" y="146.0" class="bar-value" text-anchor="end">428</text><text x="0" y="175.2" class="bar-label">Aisha Khan</text><rect x="150" y="164.2" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="164.2" width="180.0" height="12" rx="3" fill="#0f766e"/><text x="368" y="175.2" class="bar-value" text-anchor="end">426</text><text x="0" y="204.5" class="bar-label">Noah Garcia</text><rect x="150" y="193.5" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="193.5" width="177.0" height="12" rx="3" fill="#0f766e"/><text x="368" y="204.5" class="bar-value" text-anchor="end">419</text><text x="0" y="233.8" class="bar-label">Sofia Patel</text><rect x="150" y="222.8" width="210" height="12" rx="3" class="bar-bg"/><rect x="150" y="222.8" width="176.2" height="12" rx="3" fill="#0f766e"/><text x="368" y="233.8" class="bar-value" text-anchor="end">417</text></svg></div>
+        <div class="panel"><h2>Workload Detail</h2><p>Overdue and SAR mix by analyst.</p><table><thead><tr><th>Analyst</th><th>Queue</th><th>Cases</th><th>Overdue</th><th>Avg Age</th><th>SAR</th></tr></thead><tbody><tr><td>Liam Nguyen</td><td>APAC Queue</td><td>497</td><td>173</td><td>2.4</td><td>375</td></tr><tr><td>Amelia Chen</td><td>SAR Review</td><td>467</td><td>143</td><td>2.3</td><td>347</td></tr><tr><td>Maya Tran</td><td>APAC Queue</td><td>460</td><td>156</td><td>2.5</td><td>337</td></tr><tr><td>Ethan Brooks</td><td>EMEA Queue</td><td>442</td><td>144</td><td>2.4</td><td>337</td></tr><tr><td>Minh Le</td><td>Payments Queue</td><td>428</td><td>150</td><td>2.4</td><td>317</td></tr><tr><td>Aisha Khan</td><td>Sanctions Escalation</td><td>426</td><td>129</td><td>2.2</td><td>312</td></tr><tr><td>Noah Garcia</td><td>Americas Queue</td><td>419</td><td>156</td><td>2.6</td><td>314</td></tr><tr><td>Sofia Patel</td><td>High Risk Queue</td><td>417</td><td>156</td><td>2.6</td><td>300</td></tr></tbody></table></div>
+      </div>
+      <div class="panel" style="margin-top:12px">
+        <h2>Rule Governance Log</h2><p>Rule tuning, approvals and precision lift audit trail.</p>
+        <div class="governance-list">
+          <div class="gov-row"><span>May 2026</span><strong>Cash Intensive Pattern</strong><span>Sandbox validation</span><span class="chip">Approved</span></div><div class="gov-row"><span>May 2026</span><strong>Dormant Account Reactivation</strong><span>Rule enablement</span><span class="chip">Rejected</span></div><div class="gov-row"><span>Apr 2026</span><strong>Watchlist Proximity</strong><span>Precision backtest</span><span class="chip">Approved</span></div><div class="gov-row"><span>Apr 2026</span><strong>New Beneficiary Burst</strong><span>Owner review</span><span class="chip">Approved</span></div><div class="gov-row"><span>Apr 2026</span><strong>High Risk Corridor</strong><span>Threshold tuning</span><span class="chip">Approved</span></div><div class="gov-row"><span>Apr 2026</span><strong>High Velocity Transfers</strong><span>Precision backtest</span><span class="chip">Approved</span></div><div class="gov-row"><span>Apr 2026</span><strong>Watchlist Proximity</strong><span>Sandbox validation</span><span class="chip">Pending</span></div><div class="gov-row"><span>Mar 2026</span><strong>Round Dollar Repetition</strong><span>Owner review</span><span class="chip">Approved</span></div><div class="gov-row"><span>Feb 2026</span><strong>Dormant Account Reactivation</strong><span>Threshold tuning</span><span class="chip">Pending</span></div><div class="gov-row"><span>Feb 2026</span><strong>New Beneficiary Burst</strong><span>Sandbox validation</span><span class="chip">Approved</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+  const buttons = document.querySelectorAll('.tab-button');
+  const panels = document.querySelectorAll('.tab-panel');
+  buttons.forEach(button => button.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    button.classList.add('active');
+    document.getElementById(button.dataset.tab).classList.add('active');
+  }));
+</script>
+</body>
+</html>

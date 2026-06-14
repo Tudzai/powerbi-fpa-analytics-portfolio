@@ -1,0 +1,6 @@
+risk_band,risk_order,risk_appetite,pd_floor
+A Prime,1,Low,0.01
+B Near Prime,2,Low,0.02
+C Mid,3,Watch,0.035
+D Subprime,4,High,0.065
+E Deep Subprime,5,High,0.11

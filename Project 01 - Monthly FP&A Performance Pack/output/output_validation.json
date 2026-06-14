@@ -1,0 +1,31 @@
+﻿{
+    "project":  "Monthly FP\u0026A Performance Pack",
+    "prepared_row_counts":  {
+                                "FactFinancials":  17712,
+                                "FactOpexDepartment":  3280,
+                                "FactCash":  656,
+                                "FactBridge":  112,
+                                "FactCommentary":  3,
+                                "DimDate":  24,
+                                "DimCustomer":  12
+                            },
+    "qa_artifacts":  {
+                         "source_summary":  true,
+                         "quality_report":  true,
+                         "reconciliation_xlsx":  true,
+                         "qa_checklist":  true
+                     },
+    "dashboard_artifacts":  {
+                                "dashboard_html":  true,
+                                "export_mirror_html":  true,
+                                "powerbi_project_pbip":  true,
+                                "powerbi_project_pages":  4,
+                                "powerbi_project_visuals":  16,
+                                "final_pbix_dashboard":  true,
+                                "final_pbix_pages":  4,
+                                "final_pbix_visual_containers":  366,
+                                "final_pbix_screenshot":  "output/screenshots/dashboard_final_powerbi_final.png"
+                            },
+    "pbix_status":  "final PBIX opens in Power BI Desktop with 4-page FP\u0026A dashboard canvas and complete semantic model",
+    "pbix_target_exists":  true
+}

@@ -1,0 +1,262 @@
+{
+  "source_files": [
+    "data/raw/driver_forecasting_raw.xlsx"
+  ],
+  "latest_actual_month": "2026-05-01",
+  "forecast_horizon": {
+    "start": "2026-06-01",
+    "end": "2027-12-01"
+  },
+  "tables": [
+    {
+      "name": "RevenueDrivers_Raw",
+      "rows": 10320,
+      "columns": 16,
+      "grain": "one row per month, scenario, region, service line, customer segment",
+      "main_date_column": "MonthStart",
+      "date_min": "2024-01-01",
+      "date_max": "2027-12-01",
+      "primary_key_candidate": "RevenueDriverKey",
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "VolumeJobs",
+        "TEU",
+        "CBM",
+        "ChargeableKg",
+        "AvgRateUSD",
+        "SurchargeUSD",
+        "DiscountUSD",
+        "RevenueUSD"
+      ],
+      "null_counts": {}
+    },
+    {
+      "name": "CostDrivers_Raw",
+      "rows": 10320,
+      "columns": 15,
+      "grain": "one row per revenue driver row with direct cost components",
+      "main_date_column": "MonthStart",
+      "date_min": "2024-01-01",
+      "date_max": "2027-12-01",
+      "primary_key_candidate": "CostDriverKey",
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "CarrierCostUSD",
+        "HandlingCostUSD",
+        "FuelCostUSD",
+        "CustomsCostUSD",
+        "DirectCostUSD",
+        "VariableCostPerJobUSD",
+        "CostInflationPct"
+      ],
+      "null_counts": {}
+    },
+    {
+      "name": "HeadcountPlan_Raw",
+      "rows": 2580,
+      "columns": 12,
+      "grain": "one row per month, scenario, region, department",
+      "main_date_column": "MonthStart",
+      "date_min": "2024-01-01",
+      "date_max": "2027-12-01",
+      "primary_key_candidate": "HeadcountPlanKey",
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "FTE",
+        "NewHires",
+        "Attrition",
+        "AvgSalaryUSD",
+        "PayrollCostUSD",
+        "JobsPerFTE"
+      ],
+      "null_counts": {}
+    },
+    {
+      "name": "OpexDrivers_Raw",
+      "rows": 2580,
+      "columns": 12,
+      "grain": "one row per month, scenario, region, department",
+      "main_date_column": "MonthStart",
+      "date_min": "2024-01-01",
+      "date_max": "2027-12-01",
+      "primary_key_candidate": "OpexDriverKey",
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "RentUSD",
+        "SoftwareUSD",
+        "MarketingUSD",
+        "TravelUSD",
+        "GAUSD",
+        "NonPayrollOpexUSD"
+      ],
+      "null_counts": {}
+    },
+    {
+      "name": "CashImpact_Raw",
+      "rows": 86,
+      "columns": 17,
+      "grain": "one row per month and scenario",
+      "main_date_column": "MonthStart",
+      "date_min": "2024-01-01",
+      "date_max": "2027-12-01",
+      "primary_key_candidate": "CashImpactKey",
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "RevenueUSD",
+        "DirectCostUSD",
+        "PayrollCostUSD",
+        "NonPayrollOpexUSD",
+        "GrossProfitUSD",
+        "EBITDAUSD",
+        "TaxPaidUSD",
+        "CapexUSD",
+        "DSODays",
+        "DPODays",
+        "WorkingCapitalUSD",
+        "OperatingCashFlowUSD",
+        "EndingCashUSD"
+      ],
+      "null_counts": {}
+    },
+    {
+      "name": "ForecastAccuracy_Raw",
+      "rows": 1530,
+      "columns": 12,
+      "grain": "one row per month, horizon, region, service line",
+      "main_date_column": "MonthStart",
+      "date_min": "2025-01-01",
+      "date_max": "2026-05-01",
+      "primary_key_candidate": "ForecastAccuracyKey",
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "ForecastHorizonMonths",
+        "ActualRevenueUSD",
+        "ForecastRevenueUSD",
+        "ForecastErrorUSD",
+        "AbsoluteErrorUSD",
+        "AbsolutePctError",
+        "ForecastBiasPct"
+      ],
+      "null_counts": {}
+    },
+    {
+      "name": "Scenario_Assumptions",
+      "rows": 4,
+      "columns": 11,
+      "grain": "one row per planning scenario",
+      "main_date_column": null,
+      "date_min": null,
+      "date_max": null,
+      "primary_key_candidate": null,
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "SortOrder",
+        "VolumeMultiplier",
+        "RateMultiplier",
+        "CostInflationPct",
+        "HeadcountGrowthPct",
+        "SalaryInflationPct",
+        "DSODaysAdjustment",
+        "DPODaysAdjustment"
+      ],
+      "null_counts": {}
+    },
+    {
+      "name": "WhatIf_Parameters",
+      "rows": 7,
+      "columns": 8,
+      "grain": "one row per configurable planning lever",
+      "main_date_column": null,
+      "date_min": null,
+      "date_max": null,
+      "primary_key_candidate": "ParameterKey",
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "BaseValue",
+        "UpsideValue",
+        "DownsideValue"
+      ],
+      "null_counts": {}
+    },
+    {
+      "name": "DimServices",
+      "rows": 6,
+      "columns": 7,
+      "grain": "one row per service line",
+      "main_date_column": null,
+      "date_min": null,
+      "date_max": null,
+      "primary_key_candidate": null,
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "BaseJobs",
+        "BaseRateUSD",
+        "CostRatio",
+        "WorkingCapitalIntensity"
+      ],
+      "null_counts": {}
+    },
+    {
+      "name": "DimRegions",
+      "rows": 5,
+      "columns": 5,
+      "grain": "one row per operating region",
+      "main_date_column": null,
+      "date_min": null,
+      "date_max": null,
+      "primary_key_candidate": null,
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "RegionWeight"
+      ],
+      "null_counts": {}
+    },
+    {
+      "name": "DimSegments",
+      "rows": 4,
+      "columns": 5,
+      "grain": "one row per customer segment",
+      "main_date_column": null,
+      "date_min": null,
+      "date_max": null,
+      "primary_key_candidate": null,
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "SegmentWeight",
+        "DiscountPct",
+        "DSODays"
+      ],
+      "null_counts": {}
+    },
+    {
+      "name": "DimDepartments",
+      "rows": 6,
+      "columns": 5,
+      "grain": "one row per department",
+      "main_date_column": null,
+      "date_min": null,
+      "date_max": null,
+      "primary_key_candidate": null,
+      "duplicate_primary_keys": 0,
+      "numeric_columns": [
+        "BaseFTE",
+        "AvgSalaryUSD"
+      ],
+      "null_counts": {}
+    }
+  ],
+  "kpi_totals": {
+    "actual_revenue_usd": 314587311.83,
+    "actual_direct_cost_usd": 246486412.02,
+    "forecast_base_revenue_usd": 273305308.79,
+    "forecast_base_direct_cost_usd": 219573328.21,
+    "forecast_base_payroll_usd": 17095127.29,
+    "forecast_base_non_payroll_opex_usd": 5263452.54,
+    "latest_base_ending_cash_usd": 21888341.67,
+    "actual_jobs": 438269,
+    "forecast_base_jobs": 340357
+  },
+  "data_quality_flags": [
+    "ForecastAccuracy_Raw: 25 rows have absolute pct error above 20%; kept for accuracy monitoring"
+  ]
+}

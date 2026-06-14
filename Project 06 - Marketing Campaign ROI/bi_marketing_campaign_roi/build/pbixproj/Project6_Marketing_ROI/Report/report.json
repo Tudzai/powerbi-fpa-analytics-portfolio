@@ -1,0 +1,21 @@
+{
+  "id": 0,
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "Project6_Marketing_ROI_Theme.json",
+            "path": "Project6_Marketing_ROI_Theme.json",
+            "type": 201
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "theme": "Project6_Marketing_ROI_Theme.json"
+}

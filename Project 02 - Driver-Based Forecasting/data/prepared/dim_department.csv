@@ -1,0 +1,7 @@
+﻿DepartmentKey,Department,FunctionGroup,BaseFTE,AvgSalaryUSD
+SALES,Sales,Commercial,16,1850
+OPS,Operations,Operations,42,1320
+CS,Customer Success,Operations,17,1180
+FIN,Finance,G&A,9,1550
+IT,IT & Data,G&A,6,1700
+MGT,Management,G&A,5,3100

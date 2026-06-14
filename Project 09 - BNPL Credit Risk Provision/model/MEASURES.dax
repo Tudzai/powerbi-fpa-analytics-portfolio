@@ -1,0 +1,80 @@
+Applications =
+COUNTROWS ( FactApplications )
+
+Approved Applications =
+CALCULATE ( [Applications], FactApplications[approved_flag] = 1 )
+
+Approval Rate =
+DIVIDE ( [Approved Applications], [Applications] )
+
+Disbursed Loans =
+COUNTROWS ( FactLoans )
+
+Disbursement Amount =
+SUM ( FactLoans[funded_amount] )
+
+Loan Book Balance =
+SUM ( FactLoanMonthly[current_principal] )
+
+DPD 30+ Balance =
+SUM ( FactLoanMonthly[dpd30_balance] )
+
+DPD 60+ Balance =
+SUM ( FactLoanMonthly[dpd60_balance] )
+
+NPL Balance =
+SUM ( FactLoanMonthly[npl_balance] )
+
+Delinquency Rate =
+DIVIDE ( [DPD 30+ Balance], [Loan Book Balance] )
+
+NPL Rate =
+DIVIDE ( [NPL Balance], [Loan Book Balance] )
+
+Expected Loss =
+SUM ( FactLoanMonthly[expected_loss_amount] )
+
+Expected Loss Rate =
+DIVIDE ( [Expected Loss], [Loan Book Balance] )
+
+Provision Amount =
+SUM ( FactLoanMonthly[provision_amount] )
+
+Provision Coverage =
+DIVIDE ( [Provision Amount], [Expected Loss] )
+
+Autopay Failure Loans =
+CALCULATE ( DISTINCTCOUNT ( FactLoanMonthly[loan_id] ), FactLoanMonthly[autopay_failure_flag] = 1 )
+
+Recovery Amount =
+SUM ( FactCollections[recovery_amount] )
+
+Case Balance =
+SUM ( FactCollections[case_balance] )
+
+Recovery Rate =
+DIVIDE ( [Recovery Amount], [Case Balance] )
+
+Collections SLA % =
+DIVIDE ( SUM ( FactCollections[within_sla_flag] ), COUNTROWS ( FactCollections ) )
+
+Promise To Pay % =
+DIVIDE ( SUM ( FactCollections[promise_to_pay_flag] ), COUNTROWS ( FactCollections ) )
+
+Vintage 30+ Rate =
+DIVIDE ( SUM ( FactVintage[dpd30_balance] ), SUM ( FactVintage[outstanding_balance] ) )
+
+Vintage Loss Rate =
+AVERAGE ( FactVintage[cumulative_loss_rate] )
+
+Roll Rate =
+AVERAGE ( FactRollRate[roll_rate] )
+
+Forecast Provision =
+SUM ( FactProvisionForecast[forecast_provision] )
+
+Forecast Expected Loss =
+SUM ( FactProvisionForecast[forecast_expected_loss] )
+
+Incremental Provision =
+SUM ( FactProvisionForecast[incremental_provision] )

@@ -1,0 +1,1764 @@
+{
+  "compatibilityLevel": 1600,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DimUser\",\"DimMonth\",\"FactOrders\",\"FactUserMonth\",\"CohortRetention\",\"MonthlyKPIs\",\"MonthlyLifecycleMix\",\"ChurnRiskSnapshot\",\"SegmentMonthly\",\"KPI Measures\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US"
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "FactOrders_User",
+        "fromColumn": "UserID",
+        "fromTable": "FactOrders",
+        "toColumn": "UserID",
+        "toTable": "DimUser"
+      },
+      {
+        "name": "FactOrders_Month",
+        "fromColumn": "OrderMonth",
+        "fromTable": "FactOrders",
+        "toColumn": "MonthStart",
+        "toTable": "DimMonth"
+      },
+      {
+        "name": "FactUserMonth_User",
+        "fromColumn": "UserID",
+        "fromTable": "FactUserMonth",
+        "toColumn": "UserID",
+        "toTable": "DimUser"
+      },
+      {
+        "name": "FactUserMonth_Month",
+        "fromColumn": "MonthStart",
+        "fromTable": "FactUserMonth",
+        "toColumn": "MonthStart",
+        "toTable": "DimMonth"
+      },
+      {
+        "name": "MonthlyKPIs_Month",
+        "fromColumn": "MonthStart",
+        "fromTable": "MonthlyKPIs",
+        "toColumn": "MonthStart",
+        "toTable": "DimMonth"
+      },
+      {
+        "name": "MonthlyLifecycleMix_Month",
+        "fromColumn": "MonthStart",
+        "fromTable": "MonthlyLifecycleMix",
+        "toColumn": "MonthStart",
+        "toTable": "DimMonth"
+      },
+      {
+        "name": "CohortRetention_Month",
+        "fromColumn": "ActivityMonth",
+        "fromTable": "CohortRetention",
+        "toColumn": "MonthStart",
+        "toTable": "DimMonth"
+      },
+      {
+        "name": "ChurnRisk_User",
+        "fromColumn": "UserID",
+        "fromTable": "ChurnRiskSnapshot",
+        "toColumn": "UserID",
+        "toTable": "DimUser"
+      },
+      {
+        "name": "SegmentMonthly_Month",
+        "fromColumn": "MonthStart",
+        "fromTable": "SegmentMonthly",
+        "toColumn": "MonthStart",
+        "toTable": "DimMonth"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimUser",
+        "columns": [
+          {
+            "name": "UserID",
+            "dataType": "string",
+            "lineageTag": "f2065cf2-46ef-4ba5-b462-a17eb91ec11c",
+            "sourceColumn": "UserID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SignupDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2b215d60-7e03-4314-a4bb-b19ff21baa26",
+            "sourceColumn": "SignupDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SignupMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "18decc3a-162d-4bf9-9bc1-64d94e831af7",
+            "sourceColumn": "SignupMonth",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AcquisitionChannel",
+            "dataType": "string",
+            "lineageTag": "c52c6ad5-ffa9-4028-a48d-9850314fde7c",
+            "sourceColumn": "AcquisitionChannel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Campaign",
+            "dataType": "string",
+            "lineageTag": "313df9b0-ff32-4280-a8ad-3284613dcef6",
+            "sourceColumn": "Campaign",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "lineageTag": "fcc00049-21f9-4a07-9e9d-46ed72f3263a",
+            "sourceColumn": "Region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DeviceType",
+            "dataType": "string",
+            "lineageTag": "d9159f30-cfa0-4884-9070-6e49f8618a20",
+            "sourceColumn": "DeviceType",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanTier",
+            "dataType": "string",
+            "lineageTag": "8dbfad70-7483-4512-b277-fc17d7f1896f",
+            "sourceColumn": "PlanTier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerSegment",
+            "dataType": "string",
+            "lineageTag": "4a250687-6e92-474c-80c7-a5ba95884708",
+            "sourceColumn": "CustomerSegment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FirstOrderDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "54ae4db0-6041-4685-8c63-2ffd30fc3cc1",
+            "sourceColumn": "FirstOrderDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FirstOrderMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "304657af-e197-4d0a-aab2-d19c2016cf39",
+            "sourceColumn": "FirstOrderMonth",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsTestUser",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6280479e-3286-42d6-8ad4-fc0e346e85ca",
+            "sourceColumn": "IsTestUser",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "c07e6956-ce8c-48b3-869f-b83a6fbec084",
+        "partitions": [
+          {
+            "name": "DimUser-Import",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 05 - Retention Cohort LTV\\\\bi_retention_cohort_dashboard\\\\data\\\\prepared\\\\DimUser.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimMonth",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "51f1a38a-8053-4e92-a11d-72de88297bfa",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthYear",
+            "dataType": "string",
+            "lineageTag": "6d4e73b5-e4a6-4188-a2a6-7237a7d3ad13",
+            "sourceColumn": "MonthYear",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthIndex",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "42c679f9-5c2f-4e05-91b5-6ce484177b73",
+            "sourceColumn": "MonthIndex",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dcb281bf-3ccf-4cd7-81a3-8cde7fdbf47b",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "lineageTag": "d3eb6990-c751-42ec-8396-6cac58bf5578",
+            "sourceColumn": "Quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsLatestCompleteMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d1d70229-bc6f-4501-83b4-0a1fa00c7a43",
+            "sourceColumn": "IsLatestCompleteMonth",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "654465c2-b863-441d-ba9c-bc91d015c121",
+        "partitions": [
+          {
+            "name": "DimMonth-Import",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 05 - Retention Cohort LTV\\\\bi_retention_cohort_dashboard\\\\data\\\\prepared\\\\DimMonth.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactOrders",
+        "columns": [
+          {
+            "name": "OrderID",
+            "dataType": "string",
+            "lineageTag": "4fc41b49-3327-490f-b36e-ad324fde2937",
+            "sourceColumn": "OrderID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "UserID",
+            "dataType": "string",
+            "lineageTag": "64d69dae-a399-41d2-b08e-83cb8d9480f3",
+            "sourceColumn": "UserID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrderDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a3381a3d-bd7b-494b-a11e-f8bb07f03289",
+            "sourceColumn": "OrderDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrderMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f343cbea-561d-4a6e-bb9b-3ab662038770",
+            "sourceColumn": "OrderMonth",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProductCategory",
+            "dataType": "string",
+            "lineageTag": "fbe28877-08a2-40b8-ba06-b193c82c5196",
+            "sourceColumn": "ProductCategory",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "GrossRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a92e79ac-8afa-4f89-91a4-5e06514243ab",
+            "sourceColumn": "GrossRevenue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DiscountAmount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c7cf79c3-c658-4a6f-ad03-64c65d9a02cf",
+            "sourceColumn": "DiscountAmount",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RefundAmount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ef47cdb7-5641-49fd-8c47-c1f5b88a31cb",
+            "sourceColumn": "RefundAmount",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NetRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "65579d83-f20f-4c4a-8e49-3354a0580aec",
+            "sourceColumn": "NetRevenue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrderStatus",
+            "dataType": "string",
+            "lineageTag": "25867f7c-224d-4602-b98d-d0370d2a99d6",
+            "sourceColumn": "OrderStatus",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "24438199-9a76-4c8f-a7a2-d759cdba9e3f",
+        "partitions": [
+          {
+            "name": "FactOrders-Import",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 05 - Retention Cohort LTV\\\\bi_retention_cohort_dashboard\\\\data\\\\prepared\\\\FactOrders.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactUserMonth",
+        "columns": [
+          {
+            "name": "UserID",
+            "dataType": "string",
+            "lineageTag": "0430747e-3fa7-40f7-89ea-66cc20a0aa7d",
+            "sourceColumn": "UserID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthStart",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d70feea1-0a51-435c-a962-3c4e984660bd",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SessionCount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "94ca70e2-9f65-471a-99ac-c033f11228ef",
+            "sourceColumn": "SessionCount",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FeatureEvents",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b3b40be4-cf4f-409f-91db-5ff49de46ddb",
+            "sourceColumn": "FeatureEvents",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SupportTickets",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e33e30a2-f313-41c1-b8fb-5c1258ecd225",
+            "sourceColumn": "SupportTickets",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FailedPaymentCount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2a7c0e4b-02cd-4e46-96ae-4983a6e18878",
+            "sourceColumn": "FailedPaymentCount",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrderCount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "069b2fc9-3a2c-4492-9677-79c7e6e67f40",
+            "sourceColumn": "OrderCount",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NetRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "fbcceb77-7e13-4b18-82ac-9f03e42eb6e7",
+            "sourceColumn": "NetRevenue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SignupMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b51d58e5-68b8-4671-8afc-b6019a5fd03b",
+            "sourceColumn": "SignupMonth",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FirstOrderMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b16cc87d-dfdf-4733-b066-8d83b88158e5",
+            "sourceColumn": "FirstOrderMonth",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FirstOrderDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8caed127-ef0c-45d2-bb8a-e10671e3898a",
+            "sourceColumn": "FirstOrderDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AcquisitionChannel",
+            "dataType": "string",
+            "lineageTag": "7b415f91-3513-4514-9bf9-90edc711fca1",
+            "sourceColumn": "AcquisitionChannel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "lineageTag": "aed9cab1-89dd-49f0-b78e-0eb1996e8ae0",
+            "sourceColumn": "Region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanTier",
+            "dataType": "string",
+            "lineageTag": "48df3c37-8847-4b3b-b5d7-3c4bd18aa370",
+            "sourceColumn": "PlanTier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerSegment",
+            "dataType": "string",
+            "lineageTag": "ff36eae3-dacf-4c14-bcf8-3eb7cc888b28",
+            "sourceColumn": "CustomerSegment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthIndex",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "422258d2-1ebf-4e80-a8d3-9b1fa9575352",
+            "sourceColumn": "MonthIndex",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthsSinceSignup",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e0cefd1b-942d-4d88-9dad-3e66a9da3484",
+            "sourceColumn": "MonthsSinceSignup",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthsSinceFirstOrder",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "43f14517-b6a5-456d-b1f8-febc0f29fa7e",
+            "sourceColumn": "MonthsSinceFirstOrder",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsActiveUser",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8f7aad1a-3653-466e-9bb0-f8ee48780fc6",
+            "sourceColumn": "IsActiveUser",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsPurchaser",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a1ed570f-8d2b-4653-b94b-dc8715ba2f4f",
+            "sourceColumn": "IsPurchaser",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CumulativeOrders",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8be750a6-242a-4dee-af3d-c5903dce5b36",
+            "sourceColumn": "CumulativeOrders",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CumulativeNetRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4836315e-26b5-43bd-8939-ffb90fb83cd5",
+            "sourceColumn": "CumulativeNetRevenue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsNewUser",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "62a0be32-5222-4754-9300-4a71ea6539a1",
+            "sourceColumn": "IsNewUser",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsReturningUser",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "97c576df-766a-4d67-83b4-cfa75ea7eeb1",
+            "sourceColumn": "IsReturningUser",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsNewCustomer",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "df11bb66-0b82-4372-9e37-53659fa1816c",
+            "sourceColumn": "IsNewCustomer",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsReturningCustomer",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3f49616e-cd37-4be7-935a-e2b1fbcc1bce",
+            "sourceColumn": "IsReturningCustomer",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsRepeatPurchaser",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f2fc07c1-fdbd-498b-a06a-0963333e3371",
+            "sourceColumn": "IsRepeatPurchaser",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DaysSinceLastPurchase",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4cf3fc75-d5f4-41e6-9d74-9812bd976a32",
+            "sourceColumn": "DaysSinceLastPurchase",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RiskScore",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7bf87508-a018-4ac2-8f7f-c56aad8d4394",
+            "sourceColumn": "RiskScore",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsChurnSignal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "15e88131-615a-48b3-8631-8c73e1148f8f",
+            "sourceColumn": "IsChurnSignal",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "0221dc8d-b2d0-4ba0-a2ad-049fed209e4c",
+        "partitions": [
+          {
+            "name": "FactUserMonth-Import",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 05 - Retention Cohort LTV\\\\bi_retention_cohort_dashboard\\\\data\\\\prepared\\\\FactUserMonth.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CohortRetention",
+        "columns": [
+          {
+            "name": "CohortMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cea6bbcf-d338-42b2-bdde-3afacf4f9417",
+            "sourceColumn": "CohortMonth",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CohortMonthLabel",
+            "dataType": "string",
+            "lineageTag": "0da9fcaa-2075-4739-b3d8-35aa432f655c",
+            "sourceColumn": "CohortMonthLabel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ActivityMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "02cb927f-bbae-4de3-880f-1cf3041b5ed9",
+            "sourceColumn": "ActivityMonth",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthsSinceCohort",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3f614af7-bbf5-42a7-a409-bab52b56874c",
+            "sourceColumn": "MonthsSinceCohort",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CohortSize",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "004f8066-ab09-4851-919c-a9266bf9e5c3",
+            "sourceColumn": "CohortSize",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RetainedCustomers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3b962b38-54b9-4d6e-ba64-720a0aeaa724",
+            "sourceColumn": "RetainedCustomers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RepeatCustomers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d73ec22c-03f9-429b-8f02-b63edf1b7808",
+            "sourceColumn": "RepeatCustomers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NetRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6c083346-4286-4688-8ae8-b68004e6f6a0",
+            "sourceColumn": "NetRevenue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CumulativeRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5b0d6084-a4ed-4b0c-8d9f-8a5faaadf252",
+            "sourceColumn": "CumulativeRevenue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RetentionRate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "87b719d2-bd7a-467c-8f7e-d25b36ba7ceb",
+            "sourceColumn": "RetentionRate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RepeatPurchaseRate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e787dda4-184b-40bd-86a3-a2be6e582fe4",
+            "sourceColumn": "RepeatPurchaseRate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CumulativeLTV",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b11485e4-6881-4dd9-a87e-9a89215b8c3e",
+            "sourceColumn": "CumulativeLTV",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsCompleteCohort",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8f22df5f-1bcb-4a94-a8ce-0ef62b20e75c",
+            "sourceColumn": "IsCompleteCohort",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "ced3f69f-18dd-41d8-8634-8e7c0b11a4bf",
+        "partitions": [
+          {
+            "name": "CohortRetention-Import",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 05 - Retention Cohort LTV\\\\bi_retention_cohort_dashboard\\\\data\\\\prepared\\\\CohortRetention.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "MonthlyKPIs",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "82d09c66-79f6-4c9c-8bb3-69b0d5f32e0d",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NewUsers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "93131c96-1237-41e7-8310-6d0606f16d65",
+            "sourceColumn": "NewUsers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ActiveUsers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "760d9415-bbc6-4dc3-a8d0-eb6b753084b5",
+            "sourceColumn": "ActiveUsers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ReturningUsers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e74f63e8-263d-4b8f-8253-c96df0062f84",
+            "sourceColumn": "ReturningUsers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NewCustomers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "83408d4f-91ae-46e9-8dfa-5f7cb09b71fc",
+            "sourceColumn": "NewCustomers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ActiveCustomers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "81aeea3d-f340-4342-8cc2-b7f9e3899f2e",
+            "sourceColumn": "ActiveCustomers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ReturningCustomers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0fafa191-9c1b-42ca-bb38-5c4ad94102ad",
+            "sourceColumn": "ReturningCustomers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RepeatPurchasers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "83bdf9dd-1de6-4e1f-87f8-f6b8d954af66",
+            "sourceColumn": "RepeatPurchasers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChurnSignalCustomers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8ff0f93b-33ee-4ca8-ae3e-1b2de97b5100",
+            "sourceColumn": "ChurnSignalCustomers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChurnRiskRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "afa1b43a-d4c4-4bf4-8372-ff4b63f2935b",
+            "sourceColumn": "ChurnRiskRevenue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NetRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "efa1f3a0-5f46-4d97-956d-dae28c3f6fde",
+            "sourceColumn": "NetRevenue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthYear",
+            "dataType": "string",
+            "lineageTag": "fdf83e2c-0672-41b6-8d5c-14ccd3490811",
+            "sourceColumn": "MonthYear",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RepeatPurchaseRate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "53ddc172-0921-418f-8bf5-f8724209d91e",
+            "sourceColumn": "RepeatPurchaseRate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LTVToDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b274d6c9-adfe-4d1c-80a4-20335a4f3817",
+            "sourceColumn": "LTVToDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "M1Retention",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3b4edafa-6ac7-4097-a7ca-62184acc1b23",
+            "sourceColumn": "M1Retention",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "M3Retention",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3172e99b-f28b-4367-9976-eadc8385da50",
+            "sourceColumn": "M3Retention",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "M6Retention",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1ee6d7b5-c9ab-4847-89b0-477a432cdefe",
+            "sourceColumn": "M6Retention",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "b75eba67-2957-4f58-a21a-bd2fc1b0c4ac",
+        "partitions": [
+          {
+            "name": "MonthlyKPIs-Import",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 05 - Retention Cohort LTV\\\\bi_retention_cohort_dashboard\\\\data\\\\prepared\\\\MonthlyKPIs.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "MonthlyLifecycleMix",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e7caee62-f7ed-44d7-bf24-9ec3eec8a7a1",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthYear",
+            "dataType": "string",
+            "lineageTag": "008075c3-7fb9-4517-a2ec-a8945b7943b1",
+            "sourceColumn": "MonthYear",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LifecycleType",
+            "dataType": "string",
+            "lineageTag": "0100ad28-4042-4cbc-827d-85824e9b0303",
+            "sourceColumn": "LifecycleType",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Users",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1867b3c7-ad2a-4a3a-bbe8-a95c5d9d1f5e",
+            "sourceColumn": "Users",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "7e58924d-3411-4980-a47f-97eaf465f40b",
+        "partitions": [
+          {
+            "name": "MonthlyLifecycleMix-Import",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 05 - Retention Cohort LTV\\\\bi_retention_cohort_dashboard\\\\data\\\\prepared\\\\MonthlyLifecycleMix.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ChurnRiskSnapshot",
+        "columns": [
+          {
+            "name": "UserID",
+            "dataType": "string",
+            "lineageTag": "7349dcfe-679a-4d98-8b39-abab10b1d30f",
+            "sourceColumn": "UserID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LastOrderDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "95787946-87ac-4188-b80a-9a75250bc7dc",
+            "sourceColumn": "LastOrderDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DaysSinceLastPurchase",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "55ea0246-2633-4444-9391-3c2f26621de9",
+            "sourceColumn": "DaysSinceLastPurchase",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LifetimeOrders",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d4112fb6-200e-485a-b547-32a95b3cd681",
+            "sourceColumn": "LifetimeOrders",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LifetimeNetRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1efe06df-df11-43b7-867b-2e2727cc9fe4",
+            "sourceColumn": "LifetimeNetRevenue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AcquisitionChannel",
+            "dataType": "string",
+            "lineageTag": "fdd4890c-d316-44ce-b102-7fbd27aecd30",
+            "sourceColumn": "AcquisitionChannel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "lineageTag": "4c5ec96d-84d6-498a-835b-9eb00c456a8b",
+            "sourceColumn": "Region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanTier",
+            "dataType": "string",
+            "lineageTag": "2b64bfaf-5b1b-4957-89d3-48996d72f034",
+            "sourceColumn": "PlanTier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerSegment",
+            "dataType": "string",
+            "lineageTag": "2d1dfc1f-ae0e-40a8-b99d-15a3306390b2",
+            "sourceColumn": "CustomerSegment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RiskScore",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f13b69a7-2526-4126-840d-3bf444002907",
+            "sourceColumn": "RiskScore",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RiskBand",
+            "dataType": "string",
+            "lineageTag": "5b36f51d-b6fa-4b23-9531-0b46e9f0dae8",
+            "sourceColumn": "RiskBand",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChurnSignal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ba87c08a-7bb6-405d-93f5-66376688d42c",
+            "sourceColumn": "ChurnSignal",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RecommendedAction",
+            "dataType": "string",
+            "lineageTag": "2edc378a-aa28-4a14-b2d2-54b7a24489ca",
+            "sourceColumn": "RecommendedAction",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "0c64a20b-1be4-416d-ba68-552b93bc2d11",
+        "partitions": [
+          {
+            "name": "ChurnRiskSnapshot-Import",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 05 - Retention Cohort LTV\\\\bi_retention_cohort_dashboard\\\\data\\\\prepared\\\\ChurnRiskSnapshot.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "SegmentMonthly",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1971e924-2e2b-4d68-b9e9-11570dfae75c",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SegmentType",
+            "dataType": "string",
+            "lineageTag": "85d0074d-4065-4366-9ff4-ac7c87da4faa",
+            "sourceColumn": "SegmentType",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SegmentName",
+            "dataType": "string",
+            "lineageTag": "0490e048-4a4e-4e1c-9a33-88d6ed4f541c",
+            "sourceColumn": "SegmentName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ActiveCustomers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "08c31e72-c9a7-4027-b60f-19773bf3b865",
+            "sourceColumn": "ActiveCustomers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RepeatPurchaseRate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "af508b7e-a325-4081-8010-b987c2cbcc6b",
+            "sourceColumn": "RepeatPurchaseRate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RetentionM3",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "579844d9-a951-448a-9dee-ab75400c4d32",
+            "sourceColumn": "RetentionM3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NetRevenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0026b266-b8fd-4d3b-99d3-1b764606f315",
+            "sourceColumn": "NetRevenue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChurnSignalCustomers",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "09409bbc-c7dc-4590-8ee1-3559d6e8f586",
+            "sourceColumn": "ChurnSignalCustomers",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LTVToDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7ba281e7-9dd2-48c1-bfef-6d9b6750d3ac",
+            "sourceColumn": "LTVToDate",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "bd90be04-19c7-487b-8baa-93342562b489",
+        "partitions": [
+          {
+            "name": "SegmentMonthly-Import",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 05 - Retention Cohort LTV\\\\bi_retention_cohort_dashboard\\\\data\\\\prepared\\\\SegmentMonthly.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+                "in",
+                "    PromotedHeaders"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI Measures",
+        "columns": [
+          {
+            "name": "MeasureKey",
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "a3f30272-a699-4364-8962-4c98bb4f06cd",
+            "sourceColumn": "MeasureKey"
+          }
+        ],
+        "lineageTag": "7d2e8492-1913-4ed2-8dcd-ac17460bbf01",
+        "measures": [
+          {
+            "name": "Latest Month",
+            "displayFolder": "Time",
+            "expression": "MAX ( DimMonth[MonthStart] )",
+            "formatString": "yyyy-mm-dd",
+            "lineageTag": "b4fc6dc3-5a67-4211-ab19-9dc4860857d1"
+          },
+          {
+            "name": "New Users",
+            "displayFolder": "Lifecycle",
+            "expression": "SUM ( MonthlyKPIs[NewUsers] )",
+            "formatString": "#,0",
+            "lineageTag": "945bc6ca-26e7-43c3-9eb3-4abdb1b67099"
+          },
+          {
+            "name": "Active Users",
+            "displayFolder": "Lifecycle",
+            "expression": "SUM ( MonthlyKPIs[ActiveUsers] )",
+            "formatString": "#,0",
+            "lineageTag": "cb259514-e298-4df3-9a69-2153a92bd322"
+          },
+          {
+            "name": "Returning Users",
+            "displayFolder": "Lifecycle",
+            "expression": "SUM ( MonthlyKPIs[ReturningUsers] )",
+            "formatString": "#,0",
+            "lineageTag": "4cbb4dd5-e727-49a7-aa77-03cd9e94b99d"
+          },
+          {
+            "name": "New Customers",
+            "displayFolder": "Lifecycle",
+            "expression": "SUM ( MonthlyKPIs[NewCustomers] )",
+            "formatString": "#,0",
+            "lineageTag": "6f803bc6-1026-417b-b36f-76933d9bd213"
+          },
+          {
+            "name": "Active Customers",
+            "displayFolder": "Lifecycle",
+            "expression": "SUM ( MonthlyKPIs[ActiveCustomers] )",
+            "formatString": "#,0",
+            "lineageTag": "e209a3d9-c101-4fe7-a11a-71a8d1b918b8"
+          },
+          {
+            "name": "Returning Customers",
+            "displayFolder": "Lifecycle",
+            "expression": "SUM ( MonthlyKPIs[ReturningCustomers] )",
+            "formatString": "#,0",
+            "lineageTag": "7e631b39-0d84-4838-98c6-b54a269100cc"
+          },
+          {
+            "name": "Repeat Purchasers",
+            "displayFolder": "Lifecycle",
+            "expression": "SUM ( MonthlyKPIs[RepeatPurchasers] )",
+            "formatString": "#,0",
+            "lineageTag": "be6fa729-749f-4181-ba4a-e2a0f900f8af"
+          },
+          {
+            "name": "Repeat Purchase Rate",
+            "displayFolder": "Lifecycle",
+            "expression": "DIVIDE ( [Repeat Purchasers], [Active Customers] )",
+            "formatString": "0.0%",
+            "lineageTag": "2d84e19c-a35f-4e02-86b2-391da0e960f7"
+          },
+          {
+            "name": "Churn Signal Customers",
+            "displayFolder": "Risk",
+            "expression": "SUM ( MonthlyKPIs[ChurnSignalCustomers] )",
+            "formatString": "#,0",
+            "lineageTag": "fcedda92-66bc-4df2-92ec-1a76fe6d6596"
+          },
+          {
+            "name": "Churn Risk Revenue",
+            "displayFolder": "Risk",
+            "expression": "SUM ( MonthlyKPIs[ChurnRiskRevenue] )",
+            "formatString": "$#,0,.0K",
+            "lineageTag": "931ce445-ca8c-4881-aa63-0742a95e0801"
+          },
+          {
+            "name": "Net Revenue",
+            "displayFolder": "Revenue",
+            "expression": "SUM ( MonthlyKPIs[NetRevenue] )",
+            "formatString": "$#,0,.0K",
+            "lineageTag": "cbf3fe5a-90a8-4692-abb6-b25e9c34e51c"
+          },
+          {
+            "name": "LTV To Date",
+            "displayFolder": "Revenue",
+            "expression": "AVERAGE ( MonthlyKPIs[LTVToDate] )",
+            "formatString": "$#,0",
+            "lineageTag": "d8bf2e7f-8523-465a-952a-4bda197b0828"
+          },
+          {
+            "name": "Cohort Retention %",
+            "displayFolder": "Cohort",
+            "expression": "DIVIDE ( SUM ( CohortRetention[RetainedCustomers] ), SUM ( CohortRetention[CohortSize] ) )",
+            "formatString": "0.0%",
+            "lineageTag": "c126a281-0bef-4fff-b500-309bd47a2c48"
+          },
+          {
+            "name": "Cohort Repeat Purchase %",
+            "displayFolder": "Cohort",
+            "expression": "DIVIDE ( SUM ( CohortRetention[RepeatCustomers] ), SUM ( CohortRetention[CohortSize] ) )",
+            "formatString": "0.0%",
+            "lineageTag": "fa7a59ff-bb89-4a3e-8468-0c9b0ada75fe"
+          },
+          {
+            "name": "Cumulative LTV",
+            "displayFolder": "Cohort",
+            "expression": "DIVIDE ( SUM ( CohortRetention[CumulativeRevenue] ), SUM ( CohortRetention[CohortSize] ) )",
+            "formatString": "$#,0",
+            "lineageTag": "920de33d-1668-4fa0-8a36-c73e032cfb19"
+          },
+          {
+            "name": "Latest Active Users",
+            "displayFolder": "Latest",
+            "expression": "VAR m = [Latest Month] RETURN CALCULATE ( [Active Users], DimMonth[MonthStart] = m )",
+            "formatString": "#,0",
+            "lineageTag": "74bacaee-0c0f-46eb-b8f9-014eeb0c3014"
+          },
+          {
+            "name": "Latest Returning Users",
+            "displayFolder": "Latest",
+            "expression": "VAR m = [Latest Month] RETURN CALCULATE ( [Returning Users], DimMonth[MonthStart] = m )",
+            "formatString": "#,0",
+            "lineageTag": "3dcaf711-e369-4736-94a4-a92613822ecb"
+          },
+          {
+            "name": "Latest Repeat Purchase Rate",
+            "displayFolder": "Latest",
+            "expression": "VAR m = [Latest Month] RETURN CALCULATE ( [Repeat Purchase Rate], DimMonth[MonthStart] = m )",
+            "formatString": "0.0%",
+            "lineageTag": "7efc1121-ed2c-4fbe-92dd-460e015c542f"
+          },
+          {
+            "name": "Latest Churn Signals",
+            "displayFolder": "Latest",
+            "expression": "VAR m = [Latest Month] RETURN CALCULATE ( [Churn Signal Customers], DimMonth[MonthStart] = m )",
+            "formatString": "#,0",
+            "lineageTag": "2e320775-268d-4b86-80d4-d3790f99d253"
+          },
+          {
+            "name": "Latest Net Revenue",
+            "displayFolder": "Latest",
+            "expression": "VAR m = [Latest Month] RETURN CALCULATE ( [Net Revenue], DimMonth[MonthStart] = m )",
+            "formatString": "$#,0,.0K",
+            "lineageTag": "5d24002a-a32b-4acd-824c-0ea7d237a682"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "KPI Measures-Import",
+            "mode": "import",
+            "source": {
+              "expression": "let Source = #table(type table [MeasureKey = text], {{\"KPI\"}}) in Source",
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "generated_on": "2026-06-11",
+  "seed": 7207,
+  "data_type": "synthetic_demo",
+  "date_range": {
+    "start": "2025-01-01",
+    "end": "2026-05-31"
+  },
+  "tables": {
+    "dim_date": {
+      "rows": 516,
+      "columns": [
+        "date",
+        "date_key",
+        "year",
+        "quarter",
+        "month",
+        "year_month",
+        "month_name",
+        "week_start",
+        "day_of_week",
+        "is_weekend",
+        "campaign_tag"
+      ]
+    },
+    "dim_platform": {
+      "rows": 3,
+      "columns": [
+        "platform_id",
+        "platform_name",
+        "brand_color",
+        "default_commission_rate"
+      ]
+    },
+    "dim_category": {
+      "rows": 8,
+      "columns": [
+        "category_id",
+        "category"
+      ]
+    },
+    "dim_seller": {
+      "rows": 122,
+      "columns": [
+        "seller_id",
+        "seller_name",
+        "platform_id",
+        "region",
+        "seller_tier",
+        "lifecycle_status",
+        "account_manager",
+        "official_store_flag",
+        "active_flag",
+        "join_date",
+        "demand_weight",
+        "fulfillment_quality",
+        "cancel_propensity",
+        "rating_base",
+        "stock_discipline"
+      ]
+    },
+    "dim_product": {
+      "rows": 1294,
+      "columns": [
+        "sku_id",
+        "product_name",
+        "seller_id",
+        "platform_id",
+        "category_id",
+        "category",
+        "brand",
+        "base_price",
+        "product_demand_weight",
+        "active_flag"
+      ]
+    },
+    "fact_order_items": {
+      "rows": 90000,
+      "columns": [
+        "order_item_id",
+        "order_id",
+        "order_date",
+        "platform_id",
+        "seller_id",
+        "sku_id",
+        "category_id",
+        "quantity",
+        "unit_list_price",
+        "seller_discount",
+        "platform_discount",
+        "gross_gmv",
+        "seller_gmv_net",
+        "commission_rate",
+        "commission_revenue",
+        "order_status",
+        "cancellation_reason",
+        "is_cancelled",
+        "is_returned",
+        "is_eligible_for_fulfillment",
+        "campaign_tag"
+      ]
+    },
+    "fact_fulfillment": {
+      "rows": 90000,
+      "columns": [
+        "order_item_id",
+        "packed_at",
+        "shipped_at",
+        "delivered_at",
+        "sla_due_at",
+        "fulfillment_status",
+        "fulfilled_flag",
+        "late_fulfillment_flag",
+        "handling_days"
+      ]
+    },
+    "fact_inventory_snapshot": {
+      "rows": 667704,
+      "columns": [
+        "snapshot_date",
+        "platform_id",
+        "seller_id",
+        "sku_id",
+        "category_id",
+        "stock_on_hand",
+        "reserved_stock",
+        "available_stock",
+        "out_of_stock_flag",
+        "low_stock_flag",
+        "sku_day_count",
+        "in_stock_sku_days"
+      ]
+    },
+    "fact_reviews": {
+      "rows": 26347,
+      "columns": [
+        "review_id",
+        "order_item_id",
+        "review_date",
+        "platform_id",
+        "seller_id",
+        "sku_id",
+        "category_id",
+        "rating",
+        "verified_purchase_flag",
+        "review_weight"
+      ]
+    },
+    "fact_seller_targets": {
+      "rows": 2037,
+      "columns": [
+        "year_month",
+        "platform_id",
+        "seller_id",
+        "seller_gmv_target",
+        "order_target"
+      ]
+    },
+    "fact_ads_spend": {
+      "rows": 2037,
+      "columns": [
+        "year_month",
+        "platform_id",
+        "seller_id",
+        "ads_spend",
+        "voucher_cost"
+      ]
+    }
+  }
+}

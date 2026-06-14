@@ -1,0 +1,23 @@
+{
+  "Executive Funnel": [
+    "Sidebar navigation and slicer rail",
+    "Executive KPI strip with accent-coded metric cards",
+    "Insight pill for the largest funnel leak",
+    "Main funnel progression board with retention and next-drop callouts",
+    "Monthly conversion area/line trend",
+    "Revenue channel table, category pressure table, and leakage watchlist"
+  ],
+  "Segment Diagnostics": [
+    "Device conversion and revenue table",
+    "Channel conversion and AOV table",
+    "Campaign drilldown table with ROAS and CAC-ready structure"
+  ],
+  "Category and Product": [
+    "Category funnel matrix by visit, view, cart, checkout, purchase, CVR",
+    "Revenue concentration bar ranking"
+  ],
+  "Marketing Efficiency": [
+    "Paid efficiency board with spend, revenue, ROAS, CAC, CVR",
+    "Channel revenue mix bars"
+  ]
+}

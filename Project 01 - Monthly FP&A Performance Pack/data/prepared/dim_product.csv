@@ -1,0 +1,10 @@
+ProductKey,BusinessUnit,Product
+P001,Contract Logistics,Value Added Services
+P002,Contract Logistics,Warehousing
+P003,Customs Brokerage,Customs Clearance
+P004,Customs Brokerage,Trade Compliance
+P005,E-commerce Fulfillment,Fulfillment
+P006,E-commerce Fulfillment,Last Mile
+P007,Freight Forwarding,Air Freight
+P008,Freight Forwarding,Ocean Freight
+P009,Freight Forwarding,Road Freight

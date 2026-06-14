@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-06-11",
+  "status": "layout_json_generated",
+  "layout_json": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 12 - WealthTech AUM Client Retention\\build\\native_report_layout_wealthtech.json",
+  "pages": [
+    "AUM & Revenue Overview",
+    "Portfolio & Client Segments",
+    "Risk, Suitability & Retention"
+  ],
+  "visual_containers": 47,
+  "target_model_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 12 - WealthTech AUM Client Retention\\output\\dashboard_model.pbix",
+  "target_final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 12 - WealthTech AUM Client Retention\\output\\dashboard_final.pbix"
+}

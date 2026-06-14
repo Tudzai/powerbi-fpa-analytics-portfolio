@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "check": "Revenue reconciles",
+      "status": "pass"
+    },
+    {
+      "check": "New users reconciles",
+      "status": "pass"
+    },
+    {
+      "check": "Growth grain unique",
+      "status": "pass"
+    },
+    {
+      "check": "Retention bounded",
+      "status": "pass"
+    }
+  ],
+  "prepared_tables": {
+    "DimMonth": 29,
+    "DimChannel": 6,
+    "DimSegment": 4,
+    "DimCampaign": 12,
+    "FactGrowthMonthly": 696,
+    "FunnelMonthly": 870,
+    "CohortRetention": 10440,
+    "CampaignMonthly": 348,
+    "ChurnRiskSnapshot": 244,
+    "MonthlyKPIs": 29,
+    "ChannelMonthly": 174
+  }
+}

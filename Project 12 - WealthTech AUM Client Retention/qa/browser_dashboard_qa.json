@@ -1,0 +1,128 @@
+{
+  "generated_at": "2026-06-11T09:25:42.197Z",
+  "overview": {
+    "activePage": "overview",
+    "activeTab": "AUM & Revenue Overview",
+    "hasHorizontalOverflow": false,
+    "innerWidth": 1280,
+    "kpiCards": 0,
+    "nonBlankVisibleSvgs": 3,
+    "pageTitle": "WealthTech AUM Dashboard",
+    "scrollWidth": 1280,
+    "stage": "desktop-overview",
+    "title": null,
+    "topHeaders": [
+      "Client",
+      "Segment",
+      "AUM",
+      "Return",
+      "Model",
+      "Benchmark"
+    ],
+    "trendTitle": "AUM Growth Trend",
+    "visibleCards": 11,
+    "visibleSvgs": 3
+  },
+  "results": [
+    {
+      "activePage": "segments",
+      "activeTab": "Portfolio & Client Segments",
+      "expectedTab": "Portfolio & Client Segments",
+      "hasHorizontalOverflow": false,
+      "innerWidth": 1280,
+      "kpiCards": 0,
+      "nonBlankVisibleSvgs": 3,
+      "pageTitle": "WealthTech AUM Dashboard",
+      "scrollWidth": 1280,
+      "stage": "desktop-Portfolio & Client Segments",
+      "title": null,
+      "topHeaders": [
+        "Client",
+        "Segment",
+        "AUM",
+        "Return",
+        "Model",
+        "Benchmark"
+      ],
+      "trendTitle": "AUM Growth Trend",
+      "visibleCards": 9,
+      "visibleSvgs": 3
+    },
+    {
+      "activePage": "risk",
+      "activeTab": "Risk, Suitability & Retention",
+      "expectedTab": "Risk, Suitability & Retention",
+      "hasHorizontalOverflow": false,
+      "innerWidth": 1280,
+      "kpiCards": 0,
+      "nonBlankVisibleSvgs": 3,
+      "pageTitle": "WealthTech AUM Dashboard",
+      "scrollWidth": 1280,
+      "stage": "desktop-Risk, Suitability & Retention",
+      "title": null,
+      "topHeaders": [
+        "Client",
+        "Segment",
+        "AUM",
+        "Return",
+        "Model",
+        "Benchmark"
+      ],
+      "trendTitle": "AUM Growth Trend",
+      "visibleCards": 11,
+      "visibleSvgs": 3
+    },
+    {
+      "activePage": "overview",
+      "activeTab": "AUM & Revenue Overview",
+      "expectedTab": "AUM & Revenue Overview",
+      "hasHorizontalOverflow": false,
+      "innerWidth": 1280,
+      "kpiCards": 0,
+      "nonBlankVisibleSvgs": 3,
+      "pageTitle": "WealthTech AUM Dashboard",
+      "scrollWidth": 1280,
+      "stage": "desktop-AUM & Revenue Overview",
+      "title": null,
+      "topHeaders": [
+        "Client",
+        "Segment",
+        "AUM",
+        "Return",
+        "Model",
+        "Benchmark"
+      ],
+      "trendTitle": "AUM Growth Trend",
+      "visibleCards": 11,
+      "visibleSvgs": 3
+    }
+  ],
+  "mobile": {
+    "activePage": "overview",
+    "activeTab": "AUM & Revenue Overview",
+    "hasHorizontalOverflow": false,
+    "innerWidth": 390,
+    "kpiCards": 0,
+    "nonBlankVisibleSvgs": 3,
+    "pageTitle": "WealthTech AUM Dashboard",
+    "scrollWidth": 390,
+    "stage": "mobile-overview",
+    "title": null,
+    "topHeaders": [
+      "Client",
+      "Segment",
+      "AUM",
+      "Return",
+      "Model",
+      "Benchmark"
+    ],
+    "trendTitle": "AUM Growth Trend",
+    "visibleCards": 11,
+    "visibleSvgs": 3,
+    "width": 390
+  },
+  "screenshots": {
+    "desktopShot": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 12 - WealthTech AUM Client Retention\\output\\screenshots\\dashboard_desktop_viewport.png",
+    "mobileShot": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 12 - WealthTech AUM Client Retention\\output\\screenshots\\dashboard_mobile_viewport.png"
+  }
+}

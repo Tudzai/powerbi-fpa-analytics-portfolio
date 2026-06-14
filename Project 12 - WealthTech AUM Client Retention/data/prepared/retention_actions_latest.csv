@@ -1,0 +1,212 @@
+﻿ActionID,MonthStart,ClientID,ActionType,Priority,RiskReason,Status,ExpectedRetainedAUM,ClientName,ClientSegment,RiskProfile,Region,AdvisorName,EndingAUM,ChurnRiskScore,OutflowRiskScore
+ACT-00041,2026-05-01,CL00135,Advisor outreach,High,Churn risk,Open,235708.25,Jamie Wong,Retirement,Growth,Europe,Mina Patel,706005.71,0.7478,0.9228
+ACT-00093,2026-05-01,CL00351,Advisor outreach,High,Churn risk,Open,32853.83,Jamie Young,Digital Starter,Balanced,APAC,Sofia Garcia,94584.29,0.7626,0.99
+ACT-00116,2026-05-01,CL00451,Advisor outreach,High,Churn risk,Open,12149.17,Cameron Tran,Digital Starter,Balanced,Europe,Lin Nguyen,36853.35,0.848,0.8617
+ACT-00095,2026-05-01,CL00355,Cashflow check-in,Low,Outflow watch,Open,1118706.48,Jamie Bennett,UHNW,Growth,APAC,Jon Bell,5669975.19,0.382,0.6677
+ACT-00150,2026-05-01,CL00591,Cashflow check-in,Low,Outflow watch,Open,1023895.47,Cameron Rivera,HNW,Conservative,North America,Noah Miller,2919677.54,0.719,0.855
+ACT-00053,2026-05-01,CL00182,Cashflow check-in,Low,Outflow watch,In Progress,887484.59,Drew Brooks,HNW,Balanced,Europe,Avery Chen,2380398.54,0.6959,0.8696
+ACT-00201,2026-05-01,CL00797,Cashflow check-in,Low,Outflow watch,Open,591671.81,Skyler Wong,HNW,Conservative,Europe,Jon Bell,1796479.98,0.6971,0.811
+ACT-00128,2026-05-01,CL00490,Cashflow check-in,Low,Outflow watch,Open,513440.0,Ari Adams,HNW,Conservative,APAC,Mina Patel,1274932.79,0.5543,0.7386
+ACT-00176,2026-05-01,CL00680,Cashflow check-in,Low,Outflow watch,Open,373625.01,Ari Cole,Retirement,Growth,APAC,Sofia Garcia,1082329.46,0.5082,0.6835
+ACT-00126,2026-05-01,CL00483,Cashflow check-in,Low,Outflow watch,Open,325159.17,Nico Rivera,Mass Affluent,Balanced,North America,Noah Miller,1436928.87,0.4823,0.6356
+ACT-00206,2026-05-01,CL00837,Cashflow check-in,Low,Outflow watch,In Progress,200715.11,Morgan Morris,Mass Affluent,Conservative,APAC,Noah Miller,694797.26,0.7089,0.799
+ACT-00023,2026-05-01,CL00082,Cashflow check-in,Low,Outflow watch,Scheduled,190427.01,Riley Lee,HNW,Aggressive,North America,Jon Bell,1009683.59,0.62,0.913
+ACT-00120,2026-05-01,CL00465,Cashflow check-in,Low,Outflow watch,Scheduled,158791.26,Emerson Morris,Mass Affluent,Growth,North America,Noah Miller,385854.47,0.6608,0.8035
+ACT-00204,2026-05-01,CL00825,Cashflow check-in,Low,Outflow watch,Open,144342.87,Harper Price,Mass Affluent,Balanced,Europe,Jon Bell,380827.75,0.5032,0.7773
+ACT-00115,2026-05-01,CL00445,Cashflow check-in,Low,Outflow watch,In Progress,140746.47,Harper Patel,Retirement,Conservative,North America,Sofia Garcia,737421.88,0.5241,0.7088
+ACT-00071,2026-05-01,CL00256,Cashflow check-in,Low,Outflow watch,Scheduled,139835.08,Harper Cooper,HNW,Growth,North America,Noah Miller,661064.09,0.5795,0.8702
+ACT-00069,2026-05-01,CL00245,Cashflow check-in,Low,Outflow watch,In Progress,109397.29,Reese Nguyen,HNW,Aggressive,North America,Jon Bell,437223.43,0.4797,0.9065
+ACT-00046,2026-05-01,CL00150,Cashflow check-in,Low,Outflow watch,In Progress,103979.63,Drew Hughes,Mass Affluent,Conservative,APAC,Jon Bell,485667.5,0.5651,0.7088
+ACT-00168,2026-05-01,CL00649,Cashflow check-in,Low,Outflow watch,In Progress,101083.11,Lena Bennett,Mass Affluent,Growth,North America,Lin Nguyen,263925.45,0.4824,0.8379
+ACT-00195,2026-05-01,CL00772,Cashflow check-in,Low,Outflow watch,Open,93060.35,Cameron Rivera,Mass Affluent,Balanced,North America,Avery Chen,289777.53,0.5222,0.6628
+ACT-00100,2026-05-01,CL00379,Cashflow check-in,Low,Outflow watch,Scheduled,62347.33,Quinn Nguyen,Mass Affluent,Balanced,North America,Mina Patel,286123.9,0.5937,0.87
+ACT-00101,2026-05-01,CL00381,Cashflow check-in,Low,Outflow watch,In Progress,61853.75,Casey Tran,Mass Affluent,Balanced,North America,Avery Chen,175064.61,0.5572,0.6884
+ACT-00139,2026-05-01,CL00531,Cashflow check-in,Low,Outflow watch,Open,49579.57,Emerson Morris,Retirement,Growth,North America,Lin Nguyen,261607.74,0.6284,0.8093
+ACT-00016,2026-05-01,CL00046,Cashflow check-in,Low,Outflow watch,In Progress,39378.79,Parker Price,Mass Affluent,Balanced,APAC,Jon Bell,115403.73,0.5856,0.8174
+ACT-00190,2026-05-01,CL00746,Cashflow check-in,Low,Outflow watch,Open,22565.08,Parker Cooper,Digital Starter,Conservative,North America,Sofia Garcia,54555.44,0.4717,0.6054
+ACT-00018,2026-05-01,CL00068,Cashflow check-in,Low,Outflow watch,Open,16944.03,Lena Tran,Digital Starter,Balanced,APAC,Sofia Garcia,74200.92,0.6112,0.84
+ACT-00159,2026-05-01,CL00625,Cashflow check-in,Low,Outflow watch,Scheduled,13709.94,Cameron Singh,Digital Starter,Balanced,North America,Avery Chen,38383.66,0.4853,0.689
+ACT-00142,2026-05-01,CL00557,Cashflow check-in,Low,Outflow watch,Open,13470.57,Cameron Adams,Digital Starter,Balanced,North America,Mina Patel,32484.32,0.5983,0.7918
+ACT-00103,2026-05-01,CL00388,Cashflow check-in,Low,Outflow watch,Open,11978.34,Taylor Rivera,Digital Starter,Balanced,North America,Noah Miller,33571.4,0.5293,0.7678
+ACT-00171,2026-05-01,CL00660,Cashflow check-in,Low,Outflow watch,Open,11848.94,Jordan Tran,Digital Starter,Balanced,Europe,Avery Chen,51036.09,0.6369,0.8063
+ACT-00198,2026-05-01,CL00777,Cashflow check-in,Low,Outflow watch,Open,3011.54,Alex Singh,Digital Starter,Conservative,APAC,Sofia Garcia,12819.22,0.5437,0.77
+ACT-00051,2026-05-01,CL00173,Rebalance proposal,Medium,Allocation drift,Open,4904328.07,Riley Morris,UHNW,Conservative,APAC,Avery Chen,12345745.8,0.4266,0.3873
+ACT-00029,2026-05-01,CL00096,Rebalance proposal,Medium,Allocation drift,Open,2324975.69,Cameron Martin,HNW,Balanced,APAC,Mina Patel,5754306.25,0.3645,0.3365
+ACT-00006,2026-05-01,CL00021,Rebalance proposal,Medium,Allocation drift,In Progress,2317735.13,Ari Stone,UHNW,Growth,North America,Sofia Garcia,8591416.23,0.4952,0.4647
+ACT-00020,2026-05-01,CL00078,Rebalance proposal,Medium,Allocation drift,Scheduled,2309632.86,Jordan Rivera,UHNW,Aggressive,APAC,Noah Miller,8036237.41,0.5449,0.2818
+ACT-00011,2026-05-01,CL00036,Rebalance proposal,Medium,Allocation drift,Open,2221187.41,Taylor Patel,UHNW,Conservative,North America,Jon Bell,7837774.19,0.2568,0.1976
+ACT-00087,2026-05-01,CL00332,Rebalance proposal,Medium,Allocation drift,Open,2074174.54,Emerson Singh,UHNW,Conservative,Europe,Mina Patel,5180241.94,0.4557,0.25
+ACT-00210,2026-05-01,CL00858,Rebalance proposal,Medium,Allocation drift,In Progress,1822132.57,Jamie Bennett,UHNW,Conservative,North America,Jon Bell,7124756.34,0.5876,0.4248
+ACT-00042,2026-05-01,CL00137,Rebalance proposal,Medium,Allocation drift,Open,1645654.24,Jamie Rivera,HNW,Growth,North America,Noah Miller,4289361.86,0.471,0.3825
+ACT-00163,2026-05-01,CL00632,Rebalance proposal,Medium,Allocation drift,Scheduled,1461302.39,Morgan Nguyen,HNW,Balanced,Europe,Avery Chen,4429805.42,0.4476,0.4468
+ACT-00063,2026-05-01,CL00223,Rebalance proposal,Medium,Allocation drift,Open,1359562.52,Harper Wong,HNW,Conservative,North America,Lin Nguyen,3491224.88,0.1899,0.1981
+ACT-00028,2026-05-01,CL00095,Rebalance proposal,Medium,Allocation drift,In Progress,1180828.1,Jordan Wong,UHNW,Growth,North America,Sofia Garcia,4223361.76,0.2491,0.383
+ACT-00025,2026-05-01,CL00088,Rebalance proposal,Medium,Allocation drift,Open,998583.12,Drew Young,UHNW,Balanced,APAC,Lin Nguyen,3453623.09,0.5194,0.482
+ACT-00090,2026-05-01,CL00339,Rebalance proposal,Medium,Allocation drift,In Progress,973906.75,Nico Brooks,HNW,Balanced,Europe,Noah Miller,3301653.19,0.3258,0.3741
+ACT-00132,2026-05-01,CL00501,Rebalance proposal,Medium,Allocation drift,Scheduled,920210.26,Quinn Hughes,HNW,Growth,North America,Sofia Garcia,2688628.02,0.5543,0.3402
+ACT-00038,2026-05-01,CL00129,Rebalance proposal,Medium,Allocation drift,Open,917864.86,Taylor Young,UHNW,Aggressive,Europe,Mina Patel,3442528.49,0.6031,0.3841
+ACT-00161,2026-05-01,CL00629,Rebalance proposal,Medium,Allocation drift,Open,877767.22,Nico Tran,HNW,Balanced,North America,Jon Bell,3515508.58,0.4855,0.2782
+ACT-00001,2026-05-01,CL00001,Rebalance proposal,Medium,Allocation drift,Open,792213.78,Nico Lee,UHNW,Conservative,APAC,Mina Patel,3108056.9,0.2451,0.3225
+ACT-00045,2026-05-01,CL00146,Rebalance proposal,Medium,Allocation drift,Open,683607.3,Quinn Stone,HNW,Balanced,North America,Jon Bell,1938906.71,0.4033,0.4326
+ACT-00080,2026-05-01,CL00312,Rebalance proposal,Medium,Allocation drift,Open,676361.56,Quinn Kim,HNW,Conservative,LATAM,Noah Miller,2124669.13,0.5667,0.4428
+ACT-00017,2026-05-01,CL00061,Rebalance proposal,Medium,Allocation drift,Open,673228.97,Taylor Cooper,HNW,Balanced,APAC,Jon Bell,1661081.71,0.1953,0.2487
+ACT-00034,2026-05-01,CL00114,Rebalance proposal,Medium,Allocation drift,In Progress,624513.2,Parker Kim,HNW,Conservative,APAC,Jon Bell,2496054.44,0.4956,0.387
+ACT-00186,2026-05-01,CL00735,Rebalance proposal,Medium,Allocation drift,Open,623810.22,Jamie Lee,HNW,Conservative,APAC,Sofia Garcia,2432002.94,0.4,0.3037
+ACT-00091,2026-05-01,CL00344,Rebalance proposal,Medium,Allocation drift,In Progress,621241.55,Emerson Singh,HNW,Growth,North America,Avery Chen,1794216.88,0.2405,0.1824
+ACT-00092,2026-05-01,CL00347,Rebalance proposal,Medium,Allocation drift,Open,591988.28,Cameron Singh,HNW,Growth,Europe,Mina Patel,1871885.98,0.4596,0.354
+ACT-00194,2026-05-01,CL00768,Rebalance proposal,Medium,Allocation drift,In Progress,582142.81,Emerson Adams,HNW,Balanced,North America,Sofia Garcia,2061484.13,0.5079,0.2408
+ACT-00156,2026-05-01,CL00607,Rebalance proposal,Medium,Allocation drift,Open,548477.48,Riley Hughes,Retirement,Conservative,North America,Avery Chen,1758289.32,0.3197,0.3558
+ACT-00112,2026-05-01,CL00436,Rebalance proposal,Medium,Allocation drift,In Progress,546086.31,Taylor Stone,HNW,Growth,LATAM,Lin Nguyen,2621870.14,0.3843,0.365
+ACT-00114,2026-05-01,CL00444,Rebalance proposal,Medium,Allocation drift,In Progress,543127.33,Alex Rivera,HNW,Balanced,APAC,Jon Bell,1629701.34,0.4554,0.3171
+ACT-00077,2026-05-01,CL00288,Rebalance proposal,Medium,Allocation drift,Scheduled,508505.22,Emerson Hughes,HNW,Conservative,North America,Noah Miller,1910324.92,0.4912,0.3034
+ACT-00061,2026-05-01,CL00214,Rebalance proposal,Medium,Allocation drift,In Progress,502749.59,Parker Lee,HNW,Balanced,Europe,Jon Bell,1540747.48,0.3596,0.303
+ACT-00026,2026-05-01,CL00091,Rebalance proposal,Medium,Allocation drift,Open,502443.73,Drew Cooper,UHNW,Growth,Europe,Jon Bell,1548660.48,0.5924,0.417
+ACT-00178,2026-05-01,CL00695,Rebalance proposal,Medium,Allocation drift,In Progress,477308.15,Jamie Adams,HNW,Balanced,North America,Avery Chen,1772297.69,0.4941,0.4072
+ACT-00036,2026-05-01,CL00118,Rebalance proposal,Medium,Allocation drift,Open,472287.33,Sam Martin,HNW,Growth,Europe,Mina Patel,1307645.52,0.2195,0.2248
+ACT-00021,2026-05-01,CL00079,Rebalance proposal,Medium,Allocation drift,In Progress,458671.3,Jordan Young,HNW,Growth,North America,Noah Miller,1885246.67,0.5094,0.3921
+ACT-00202,2026-05-01,CL00816,Rebalance proposal,Medium,Allocation drift,In Progress,445198.45,Lena Rivera,HNW,Balanced,Europe,Mina Patel,1085546.95,0.4917,0.3001
+ACT-00125,2026-05-01,CL00482,Rebalance proposal,Medium,Allocation drift,Scheduled,436943.1,Skyler Adams,HNW,Conservative,North America,Lin Nguyen,1344642.49,0.4594,0.3453
+ACT-00097,2026-05-01,CL00369,Rebalance proposal,Medium,Allocation drift,Open,424595.59,Emerson Carter,Retirement,Balanced,Europe,Jon Bell,1347587.37,0.4677,0.2287
+ACT-00191,2026-05-01,CL00758,Rebalance proposal,Medium,Allocation drift,Open,351241.83,Nico Price,HNW,Growth,Europe,Lin Nguyen,930670.11,0.3705,0.2817
+ACT-00209,2026-05-01,CL00854,Rebalance proposal,Medium,Allocation drift,In Progress,337640.61,Drew Lee,Retirement,Balanced,APAC,Jon Bell,1301107.98,0.1209,0.109
+ACT-00149,2026-05-01,CL00579,Rebalance proposal,Medium,Allocation drift,In Progress,334955.18,Emerson Hughes,HNW,Balanced,LATAM,Mina Patel,820079.33,0.4311,0.3199
+ACT-00010,2026-05-01,CL00031,Rebalance proposal,Medium,Allocation drift,In Progress,329191.34,Skyler Bennett,HNW,Balanced,APAC,Sofia Garcia,1194373.16,0.4172,0.3119
+ACT-00169,2026-05-01,CL00650,Rebalance proposal,Medium,Allocation drift,In Progress,316036.19,Taylor Stone,Mass Affluent,Balanced,APAC,Sofia Garcia,1281429.64,0.4081,0.2955
+ACT-00153,2026-05-01,CL00598,Rebalance proposal,Medium,Allocation drift,In Progress,307050.66,Jamie Rivera,HNW,Balanced,North America,Noah Miller,895751.3,0.4658,0.3836
+ACT-00146,2026-05-01,CL00567,Rebalance proposal,Medium,Allocation drift,In Progress,305344.7,Sam Brooks,HNW,Growth,North America,Mina Patel,1117664.14,0.4974,0.5006
+ACT-00113,2026-05-01,CL00437,Rebalance proposal,Medium,Allocation drift,In Progress,303846.05,Alex Young,HNW,Balanced,North America,Sofia Garcia,1211156.94,0.2064,0.2991
+ACT-00196,2026-05-01,CL00773,Rebalance proposal,Medium,Allocation drift,Open,294632.64,Skyler Bennett,Mass Affluent,Aggressive,APAC,Noah Miller,934123.06,0.4396,0.2301
+ACT-00066,2026-05-01,CL00237,Rebalance proposal,Medium,Allocation drift,Open,286800.83,Casey Wong,HNW,Balanced,North America,Jon Bell,1240763.37,0.4057,0.1734
+ACT-00123,2026-05-01,CL00479,Rebalance proposal,Medium,Allocation drift,Scheduled,285786.78,Sam Kim,HNW,Growth,APAC,Sofia Garcia,935221.59,0.4949,0.3213
+ACT-00211,2026-05-01,CL00860,Rebalance proposal,Medium,Allocation drift,Scheduled,280520.77,Reese Nguyen,HNW,Growth,Europe,Noah Miller,1360606.47,0.5638,0.3145
+ACT-00022,2026-05-01,CL00080,Rebalance proposal,Medium,Allocation drift,Scheduled,275565.6,Ari Tran,HNW,Balanced,North America,Avery Chen,1351215.94,0.4581,0.3881
+ACT-00193,2026-05-01,CL00767,Rebalance proposal,Medium,Allocation drift,Open,272596.18,Ari Adams,HNW,Growth,Europe,Sofia Garcia,1475356.4,0.2084,0.3337
+ACT-00105,2026-05-01,CL00397,Rebalance proposal,Medium,Allocation drift,In Progress,257054.11,Drew Kim,Retirement,Conservative,North America,Jon Bell,1088122.02,0.2851,0.4627
+ACT-00067,2026-05-01,CL00238,Rebalance proposal,Medium,Allocation drift,Open,255756.49,Riley Cooper,Retirement,Growth,North America,Sofia Garcia,1340787.03,0.4713,0.4119
+ACT-00102,2026-05-01,CL00386,Rebalance proposal,Medium,Allocation drift,In Progress,244193.85,Skyler Cooper,Mass Affluent,Conservative,North America,Lin Nguyen,592883.66,0.4708,0.481
+ACT-00187,2026-05-01,CL00741,Rebalance proposal,Medium,Allocation drift,Open,241589.79,Cameron Young,Mass Affluent,Balanced,APAC,Noah Miller,1325667.0,0.0458,0.1046
+ACT-00188,2026-05-01,CL00742,Rebalance proposal,Medium,Allocation drift,In Progress,240040.7,Alex Kim,Retirement,Growth,North America,Sofia Garcia,978613.17,0.4084,0.3625
+ACT-00165,2026-05-01,CL00645,Rebalance proposal,Medium,Allocation drift,Open,231202.92,Cameron Brooks,Retirement,Balanced,Europe,Jon Bell,563535.06,0.5258,0.3878
+ACT-00135,2026-05-01,CL00506,Rebalance proposal,Medium,Allocation drift,In Progress,230388.03,Rowan Stone,HNW,Balanced,North America,Lin Nguyen,1164276.13,0.559,0.4172
+ACT-00162,2026-05-01,CL00630,Rebalance proposal,Medium,Allocation drift,In Progress,221967.33,Quinn Adams,Mass Affluent,Growth,APAC,Avery Chen,582519.88,0.3178,0.4012
+ACT-00040,2026-05-01,CL00134,Rebalance proposal,Medium,Allocation drift,In Progress,221299.86,Rowan Rivera,HNW,Conservative,APAC,Mina Patel,842274.71,0.3646,0.4042
+ACT-00179,2026-05-01,CL00700,Rebalance proposal,Medium,Allocation drift,In Progress,219528.78,Drew Cooper,Mass Affluent,Growth,North America,Mina Patel,711595.78,0.2688,0.2853
+ACT-00081,2026-05-01,CL00314,Rebalance proposal,Medium,Allocation drift,In Progress,217601.87,Skyler Young,HNW,Balanced,North America,Mina Patel,765571.5,0.4626,0.3552
+ACT-00096,2026-05-01,CL00362,Rebalance proposal,Medium,Allocation drift,Open,202671.52,Parker Rivera,Retirement,Growth,North America,Sofia Garcia,929386.41,0.3858,0.3162
+ACT-00180,2026-05-01,CL00716,Rebalance proposal,Medium,Allocation drift,In Progress,198771.77,Alex Young,Retirement,Aggressive,North America,Avery Chen,530967.62,0.454,0.298
+ACT-00147,2026-05-01,CL00570,Rebalance proposal,Medium,Allocation drift,In Progress,195752.29,Taylor Hughes,HNW,Balanced,North America,Mina Patel,868791.08,0.4618,0.3934
+ACT-00134,2026-05-01,CL00503,Rebalance proposal,Medium,Allocation drift,In Progress,195264.6,Rowan Morris,Retirement,Conservative,APAC,Mina Patel,904217.19,0.5234,0.4773
+ACT-00175,2026-05-01,CL00676,Rebalance proposal,Medium,Allocation drift,In Progress,194323.43,Jamie Carter,Mass Affluent,Balanced,APAC,Jon Bell,529050.56,0.4132,0.3259
+ACT-00205,2026-05-01,CL00827,Rebalance proposal,Medium,Allocation drift,In Progress,192070.57,Emerson Bennett,Mass Affluent,Conservative,North America,Avery Chen,582322.95,0.4685,0.3584
+ACT-00151,2026-05-01,CL00593,Rebalance proposal,Medium,Allocation drift,In Progress,190875.84,Rowan Patel,HNW,Growth,North America,Noah Miller,680928.85,0.5261,0.5396
+ACT-00003,2026-05-01,CL00015,Rebalance proposal,Medium,Allocation drift,Scheduled,185328.92,Casey Patel,HNW,Balanced,North America,Noah Miller,707649.65,0.4193,0.3705
+ACT-00072,2026-05-01,CL00257,Rebalance proposal,Medium,Allocation drift,Open,184991.75,Ari Hughes,HNW,Growth,North America,Lin Nguyen,998554.72,0.4803,0.3968
+ACT-00144,2026-05-01,CL00564,Rebalance proposal,Medium,Allocation drift,Scheduled,184507.8,Harper Lee,Mass Affluent,Growth,North America,Mina Patel,455164.33,0.6176,0.4646
+ACT-00059,2026-05-01,CL00210,Rebalance proposal,Medium,Allocation drift,Scheduled,183483.09,Skyler Hughes,HNW,Balanced,North America,Jon Bell,661503.69,0.1964,0.1433
+ACT-00133,2026-05-01,CL00502,Rebalance proposal,Medium,Allocation drift,Open,182772.06,Casey Price,HNW,Growth,North America,Avery Chen,720061.36,0.46,0.4053
+ACT-00014,2026-05-01,CL00044,Rebalance proposal,Medium,Allocation drift,Open,181462.69,Parker Martin,Retirement,Balanced,APAC,Mina Patel,686843.2,0.4545,0.3778
+ACT-00027,2026-05-01,CL00093,Rebalance proposal,Medium,Allocation drift,Open,173760.91,Riley Stone,Mass Affluent,Conservative,APAC,Sofia Garcia,926756.78,0.4241,0.3313
+ACT-00055,2026-05-01,CL00196,Rebalance proposal,Medium,Allocation drift,Scheduled,168569.67,Drew Lee,HNW,Growth,Europe,Sofia Garcia,893768.14,0.1529,0.1987
+ACT-00007,2026-05-01,CL00025,Rebalance proposal,Medium,Allocation drift,Open,167637.52,Reese Rivera,Mass Affluent,Conservative,LATAM,Avery Chen,736012.59,0.3445,0.1897
+ACT-00109,2026-05-01,CL00416,Rebalance proposal,Medium,Allocation drift,Scheduled,163224.27,Ari Morris,Mass Affluent,Aggressive,APAC,Lin Nguyen,729682.97,0.1592,0.2788
+ACT-00122,2026-05-01,CL00478,Rebalance proposal,Medium,Allocation drift,In Progress,161490.26,Jamie Hughes,Mass Affluent,Aggressive,North America,Noah Miller,461201.47,0.4593,0.3593
+ACT-00054,2026-05-01,CL00188,Rebalance proposal,Medium,Allocation drift,In Progress,159949.5,Emerson Brooks,Retirement,Balanced,LATAM,Jon Bell,548919.43,0.3774,0.3602
+ACT-00106,2026-05-01,CL00398,Rebalance proposal,Medium,Allocation drift,Scheduled,154515.87,Morgan Martin,Mass Affluent,Growth,APAC,Lin Nguyen,401634.54,0.5477,0.3581
+ACT-00013,2026-05-01,CL00043,Rebalance proposal,Medium,Allocation drift,Scheduled,149256.47,Harper Cole,Mass Affluent,Conservative,APAC,Jon Bell,393243.26,0.5445,0.4195
+ACT-00107,2026-05-01,CL00403,Rebalance proposal,Medium,Allocation drift,Open,146170.01,Ari Bennett,Mass Affluent,Conservative,Europe,Lin Nguyen,410603.4,0.5529,0.4411
+ACT-00108,2026-05-01,CL00407,Rebalance proposal,Medium,Allocation drift,In Progress,145987.17,Morgan Brooks,Retirement,Balanced,APAC,Sofia Garcia,612049.13,0.5254,0.3089
+ACT-00074,2026-05-01,CL00267,Rebalance proposal,Medium,Allocation drift,Open,143237.75,Nico Adams,Mass Affluent,Growth,Europe,Mina Patel,342726.6,0.5041,0.3974
+ACT-00031,2026-05-01,CL00100,Rebalance proposal,Medium,Allocation drift,In Progress,130153.68,Parker Adams,Mass Affluent,Conservative,APAC,Noah Miller,543925.6,0.4057,0.2987
+ACT-00047,2026-05-01,CL00157,Rebalance proposal,Medium,Allocation drift,Scheduled,129808.44,Cameron Price,Retirement,Growth,APAC,Mina Patel,684941.74,0.3177,0.2984
+ACT-00124,2026-05-01,CL00481,Rebalance proposal,Medium,Allocation drift,Open,128773.51,Morgan Morris,Retirement,Growth,North America,Jon Bell,618260.61,0.1361,0.2177
+ACT-00079,2026-05-01,CL00309,Rebalance proposal,Medium,Allocation drift,Scheduled,123111.04,Cameron Cooper,Mass Affluent,Balanced,APAC,Mina Patel,480614.77,0.4178,0.3427
+ACT-00164,2026-05-01,CL00639,Rebalance proposal,Medium,Allocation drift,Open,119210.33,Taylor Cole,Mass Affluent,Balanced,North America,Sofia Garcia,297681.92,0.4007,0.3017
+ACT-00078,2026-05-01,CL00298,Rebalance proposal,Medium,Allocation drift,In Progress,117312.17,Cameron Stone,Mass Affluent,Balanced,North America,Sofia Garcia,400097.23,0.1971,0.1658
+ACT-00174,2026-05-01,CL00675,Rebalance proposal,Medium,Allocation drift,Scheduled,116013.88,Taylor Adams,Mass Affluent,Balanced,North America,Lin Nguyen,532535.26,0.5691,0.3452
+ACT-00137,2026-05-01,CL00515,Rebalance proposal,Medium,Allocation drift,Open,112635.38,Skyler Cooper,Mass Affluent,Growth,North America,Jon Bell,299873.32,0.3076,0.2465
+ACT-00099,2026-05-01,CL00376,Rebalance proposal,Medium,Allocation drift,In Progress,112564.07,Riley Tran,Retirement,Balanced,North America,Jon Bell,425582.71,0.7016,0.4467
+ACT-00199,2026-05-01,CL00783,Rebalance proposal,Medium,Allocation drift,Scheduled,110139.14,Nico Tran,Mass Affluent,Balanced,North America,Jon Bell,440340.29,0.5325,0.38
+ACT-00127,2026-05-01,CL00488,Rebalance proposal,Medium,Allocation drift,Open,109130.37,Nico Tran,Mass Affluent,Balanced,North America,Mina Patel,328129.98,0.4975,0.3954
+ACT-00075,2026-05-01,CL00275,Rebalance proposal,Medium,Allocation drift,Open,107216.36,Jordan Rivera,Mass Affluent,Conservative,North America,Avery Chen,548661.05,0.3424,0.3969
+ACT-00048,2026-05-01,CL00158,Rebalance proposal,Medium,Allocation drift,In Progress,105984.43,Jordan Cooper,Mass Affluent,Aggressive,North America,Avery Chen,295076.96,0.4597,0.2795
+ACT-00184,2026-05-01,CL00726,Rebalance proposal,Medium,Allocation drift,Open,104283.4,Taylor Stone,Mass Affluent,Growth,North America,Avery Chen,555188.11,0.4078,0.3136
+ACT-00073,2026-05-01,CL00260,Rebalance proposal,Medium,Allocation drift,In Progress,104149.17,Emerson Adams,Mass Affluent,Conservative,North America,Noah Miller,355170.67,0.3544,0.2444
+ACT-00172,2026-05-01,CL00667,Rebalance proposal,Medium,Allocation drift,Scheduled,103847.89,Nico Price,Retirement,Balanced,Europe,Mina Patel,536095.54,0.1776,0.2268
+ACT-00117,2026-05-01,CL00453,Rebalance proposal,Medium,Allocation drift,In Progress,103479.17,Harper Patel,Retirement,Conservative,Europe,Mina Patel,377008.08,0.357,0.2371
+ACT-00024,2026-05-01,CL00087,Rebalance proposal,Medium,Allocation drift,Scheduled,103461.04,Reese Stone,Mass Affluent,Aggressive,North America,Mina Patel,381150.87,0.3174,0.3256
+ACT-00136,2026-05-01,CL00509,Rebalance proposal,Medium,Allocation drift,In Progress,100965.25,Alex Young,Mass Affluent,Balanced,Europe,Jon Bell,251505.09,0.4941,0.3701
+ACT-00110,2026-05-01,CL00418,Rebalance proposal,Medium,Allocation drift,Open,95767.45,Drew Patel,Mass Affluent,Growth,LATAM,Jon Bell,455428.06,0.4623,0.3378
+ACT-00158,2026-05-01,CL00624,Rebalance proposal,Medium,Allocation drift,Scheduled,95385.74,Drew Young,Mass Affluent,Conservative,North America,Noah Miller,278633.27,0.3652,0.3498
+ACT-00200,2026-05-01,CL00787,Rebalance proposal,Medium,Allocation drift,Open,90361.43,Skyler Cole,Mass Affluent,Growth,North America,Jon Bell,418964.71,0.2812,0.3079
+ACT-00033,2026-05-01,CL00109,Rebalance proposal,Medium,Allocation drift,In Progress,90219.83,Lena Cooper,Retirement,Growth,Europe,Sofia Garcia,347542.91,0.4167,0.2924
+ACT-00160,2026-05-01,CL00627,Rebalance proposal,Medium,Allocation drift,Scheduled,89905.9,Nico Wong,Mass Affluent,Conservative,APAC,Mina Patel,228600.53,0.4122,0.3395
+ACT-00060,2026-05-01,CL00211,Rebalance proposal,Medium,Allocation drift,Open,87877.58,Reese Rivera,Mass Affluent,Conservative,North America,Noah Miller,299173.8,0.3827,0.2536
+ACT-00084,2026-05-01,CL00324,Rebalance proposal,Medium,Allocation drift,Open,87232.0,Casey Tran,Retirement,Aggressive,APAC,Jon Bell,396368.71,0.4405,0.286
+ACT-00166,2026-05-01,CL00646,Rebalance proposal,Medium,Allocation drift,Open,78138.69,Taylor Cooper,Mass Affluent,Balanced,North America,Mina Patel,308498.66,0.0221,0.137
+ACT-00130,2026-05-01,CL00496,Rebalance proposal,Medium,Allocation drift,In Progress,76908.88,Riley Kim,Mass Affluent,Conservative,North America,Noah Miller,382869.76,0.387,0.3202
+ACT-00012,2026-05-01,CL00040,Rebalance proposal,Medium,Allocation drift,Scheduled,76088.54,Jordan Carter,Retirement,Conservative,North America,Avery Chen,400398.49,0.3331,0.2752
+ACT-00064,2026-05-01,CL00232,Rebalance proposal,Medium,Allocation drift,Open,74868.19,Emerson Bennett,Digital Starter,Growth,APAC,Jon Bell,193718.31,0.5437,0.3937
+ACT-00140,2026-05-01,CL00533,Rebalance proposal,Medium,Allocation drift,Scheduled,69725.98,Lena Young,Digital Starter,Growth,North America,Mina Patel,280207.79,0.4983,0.4672
+ACT-00111,2026-05-01,CL00431,Rebalance proposal,Medium,Allocation drift,In Progress,66433.65,Drew Tran,Mass Affluent,Balanced,Europe,Lin Nguyen,239129.37,0.3394,0.2218
+ACT-00002,2026-05-01,CL00008,Rebalance proposal,Medium,Allocation drift,In Progress,61836.49,Quinn Young,Mass Affluent,Conservative,North America,Lin Nguyen,229604.42,0.5323,0.2712
+ACT-00015,2026-05-01,CL00045,Rebalance proposal,Medium,Allocation drift,In Progress,60042.94,Morgan Cole,Mass Affluent,Conservative,North America,Mina Patel,179564.15,0.2162,0.3249
+ACT-00004,2026-05-01,CL00018,Rebalance proposal,Medium,Allocation drift,In Progress,57420.99,Jordan Nguyen,Mass Affluent,Growth,North America,Avery Chen,297541.12,0.3862,0.3888
+ACT-00192,2026-05-01,CL00760,Rebalance proposal,Medium,Allocation drift,In Progress,55692.49,Skyler Adams,Mass Affluent,Balanced,LATAM,Avery Chen,292836.52,0.6268,0.3411
+ACT-00177,2026-05-01,CL00686,Rebalance proposal,Medium,Allocation drift,In Progress,55457.14,Nico Lee,Retirement,Growth,APAC,Sofia Garcia,305980.05,0.2201,0.2459
+ACT-00032,2026-05-01,CL00102,Rebalance proposal,Medium,Allocation drift,In Progress,54765.78,Jamie Singh,Digital Starter,Growth,North America,Jon Bell,137479.54,0.5943,0.3743
+ACT-00104,2026-05-01,CL00395,Rebalance proposal,Medium,Allocation drift,In Progress,54340.56,Rowan Bennett,Mass Affluent,Balanced,North America,Jon Bell,192733.45,0.4215,0.194
+ACT-00052,2026-05-01,CL00176,Rebalance proposal,Medium,Allocation drift,Open,51767.66,Taylor Rivera,Mass Affluent,Growth,North America,Noah Miller,241797.42,0.423,0.2907
+ACT-00121,2026-05-01,CL00472,Rebalance proposal,Medium,Allocation drift,Open,49160.69,Casey Morris,Mass Affluent,Conservative,North America,Sofia Garcia,179685.18,0.4599,0.3038
+ACT-00143,2026-05-01,CL00563,Rebalance proposal,Medium,Allocation drift,Open,48920.49,Casey Adams,Mass Affluent,Balanced,Europe,Noah Miller,159706.0,0.5173,0.344
+ACT-00203,2026-05-01,CL00821,Rebalance proposal,Medium,Allocation drift,In Progress,48872.38,Emerson Cooper,Mass Affluent,Balanced,North America,Lin Nguyen,160252.99,0.4583,0.353
+ACT-00070,2026-05-01,CL00250,Rebalance proposal,Medium,Allocation drift,Open,48736.71,Parker Patel,Digital Starter,Growth,Europe,Sofia Garcia,135412.5,0.4399,0.4181
+ACT-00131,2026-05-01,CL00499,Rebalance proposal,Medium,Allocation drift,Scheduled,44500.01,Lena Brooks,Digital Starter,Growth,North America,Lin Nguyen,128837.08,0.4007,0.3359
+ACT-00065,2026-05-01,CL00234,Rebalance proposal,Medium,Allocation drift,Open,43816.83,Drew Lee,Digital Starter,Balanced,North America,Mina Patel,138831.6,0.3727,0.3976
+ACT-00185,2026-05-01,CL00733,Rebalance proposal,Medium,Allocation drift,Open,42718.62,Riley Wong,Mass Affluent,Growth,APAC,Lin Nguyen,172698.23,0.4285,0.2542
+ACT-00005,2026-05-01,CL00019,Rebalance proposal,Medium,Allocation drift,Open,42156.76,Quinn Rivera,Digital Starter,Aggressive,North America,Noah Miller,106438.17,0.3851,0.4733
+ACT-00076,2026-05-01,CL00280,Rebalance proposal,Medium,Allocation drift,Scheduled,41797.99,Ari Kim,Mass Affluent,Growth,North America,Jon Bell,219459.25,0.5667,0.4476
+ACT-00049,2026-05-01,CL00159,Rebalance proposal,Medium,Allocation drift,In Progress,41613.64,Taylor Stone,Mass Affluent,Growth,North America,Noah Miller,218331.2,0.5362,0.3309
+ACT-00044,2026-05-01,CL00141,Rebalance proposal,Medium,Allocation drift,Open,37506.82,Morgan Brooks,Mass Affluent,Balanced,North America,Jon Bell,132917.42,0.4508,0.3424
+ACT-00008,2026-05-01,CL00026,Rebalance proposal,Medium,Allocation drift,Open,36569.69,Sam Stone,Digital Starter,Balanced,North America,Noah Miller,98729.13,0.4286,0.293
+ACT-00062,2026-05-01,CL00216,Rebalance proposal,Medium,Allocation drift,Open,36204.58,Riley Young,Mass Affluent,Balanced,North America,Lin Nguyen,170396.67,0.4567,0.3803
+ACT-00173,2026-05-01,CL00671,Rebalance proposal,Medium,Allocation drift,Scheduled,32435.35,Reese Martin,Digital Starter,Balanced,APAC,Noah Miller,94714.77,0.362,0.2928
+ACT-00098,2026-05-01,CL00370,Rebalance proposal,Medium,Allocation drift,In Progress,32246.9,Ari Martin,Mass Affluent,Conservative,North America,Lin Nguyen,126942.72,0.4767,0.3958
+ACT-00189,2026-05-01,CL00745,Rebalance proposal,Medium,Allocation drift,In Progress,30999.67,Sam Nguyen,Mass Affluent,Balanced,North America,Jon Bell,128056.07,0.4934,0.3613
+ACT-00009,2026-05-01,CL00029,Rebalance proposal,Medium,Allocation drift,Open,30203.42,Lena Stone,Digital Starter,Growth,North America,Lin Nguyen,98188.31,0.4305,0.3772
+ACT-00043,2026-05-01,CL00140,Rebalance proposal,Medium,Allocation drift,Open,27372.98,Alex Stone,Digital Starter,Growth,North America,Mina Patel,89023.97,0.3582,0.299
+ACT-00197,2026-05-01,CL00774,Rebalance proposal,Medium,Allocation drift,In Progress,26778.88,Jamie Cooper,Digital Starter,Balanced,North America,Mina Patel,84889.85,0.4231,0.3582
+ACT-00167,2026-05-01,CL00647,Rebalance proposal,Medium,Allocation drift,In Progress,26329.45,Drew Martin,Digital Starter,Balanced,APAC,Noah Miller,105422.39,0.4611,0.4086
+ACT-00058,2026-05-01,CL00209,Rebalance proposal,Medium,Allocation drift,Open,25815.49,Alex Rivera,Digital Starter,Balanced,Europe,Avery Chen,75144.99,0.53,0.6911
+ACT-00170,2026-05-01,CL00652,Rebalance proposal,Medium,Allocation drift,Scheduled,24658.76,Casey Martin,Digital Starter,Balanced,LATAM,Mina Patel,65975.68,0.63,0.4504
+ACT-00157,2026-05-01,CL00613,Rebalance proposal,Medium,Allocation drift,In Progress,24345.5,Quinn Morris,Digital Starter,Growth,North America,Mina Patel,92660.65,0.262,0.3287
+ACT-00019,2026-05-01,CL00071,Rebalance proposal,Medium,Allocation drift,Scheduled,23484.76,Morgan Stone,Digital Starter,Balanced,North America,Noah Miller,63818.34,0.3951,0.2631
+ACT-00152,2026-05-01,CL00597,Rebalance proposal,Medium,Allocation drift,Open,22336.57,Sam Bennett,Mass Affluent,Conservative,North America,Mina Patel,112258.77,0.537,0.3107
+ACT-00030,2026-05-01,CL00097,Rebalance proposal,Medium,Allocation drift,In Progress,22252.95,Lena Morris,Digital Starter,Conservative,North America,Jon Bell,90816.12,0.524,0.427
+ACT-00068,2026-05-01,CL00243,Rebalance proposal,Medium,Allocation drift,Open,20036.45,Drew Patel,Digital Starter,Balanced,North America,Noah Miller,68922.27,0.4615,0.3058
+ACT-00181,2026-05-01,CL00722,Rebalance proposal,Medium,Allocation drift,In Progress,19916.75,Jordan Brooks,Digital Starter,Growth,LATAM,Jon Bell,94282.17,0.3236,0.3044
+ACT-00056,2026-05-01,CL00199,Rebalance proposal,Medium,Allocation drift,Open,19670.73,Morgan Singh,Digital Starter,Growth,Europe,Mina Patel,78396.63,0.4432,0.3747
+ACT-00208,2026-05-01,CL00853,Rebalance proposal,Medium,Allocation drift,In Progress,19512.9,Sam Brooks,Digital Starter,Aggressive,North America,Avery Chen,94742.86,0.3166,0.343
+ACT-00037,2026-05-01,CL00121,Rebalance proposal,Medium,Allocation drift,Scheduled,18279.51,Lena Brooks,Digital Starter,Aggressive,North America,Mina Patel,47394.64,0.5387,0.3755
+ACT-00155,2026-05-01,CL00601,Rebalance proposal,Medium,Allocation drift,In Progress,17434.06,Drew Martin,Digital Starter,Conservative,APAC,Noah Miller,75569.15,0.4941,0.265
+ACT-00083,2026-05-01,CL00320,Rebalance proposal,Medium,Allocation drift,Open,16806.47,Rowan Bennett,Digital Starter,Growth,APAC,Noah Miller,72160.78,0.4592,0.3491
+ACT-00154,2026-05-01,CL00599,Rebalance proposal,Medium,Allocation drift,In Progress,16274.22,Casey Lee,Digital Starter,Balanced,Europe,Noah Miller,47695.84,0.5222,0.3849
+ACT-00145,2026-05-01,CL00565,Rebalance proposal,Medium,Allocation drift,Open,15677.46,Alex Singh,Digital Starter,Conservative,North America,Jon Bell,43211.81,0.542,0.3042
+ACT-00035,2026-05-01,CL00116,Rebalance proposal,Medium,Allocation drift,In Progress,14554.57,Jamie Rivera,Digital Starter,Growth,APAC,Jon Bell,62422.83,0.4222,0.296
+ACT-00086,2026-05-01,CL00331,Rebalance proposal,Medium,Allocation drift,In Progress,13702.52,Harper Stone,Retirement,Conservative,APAC,Sofia Garcia,56242.98,0.5461,0.4522
+ACT-00129,2026-05-01,CL00495,Rebalance proposal,Medium,Allocation drift,In Progress,13500.89,Lena Rivera,Digital Starter,Balanced,Europe,Mina Patel,60709.46,0.4669,0.3862
+ACT-00207,2026-05-01,CL00852,Rebalance proposal,Medium,Allocation drift,In Progress,12308.82,Morgan Lee,Digital Starter,Balanced,North America,Jon Bell,38394.12,0.583,0.3117
+ACT-00088,2026-05-01,CL00336,Rebalance proposal,Medium,Allocation drift,In Progress,11110.16,Sam Hughes,Digital Starter,Conservative,LATAM,Jon Bell,51187.8,0.3749,0.2454
+ACT-00089,2026-05-01,CL00338,Rebalance proposal,Medium,Allocation drift,In Progress,10968.27,Rowan Young,Digital Starter,Growth,APAC,Mina Patel,36600.45,0.5766,0.5146
+ACT-00148,2026-05-01,CL00575,Rebalance proposal,Medium,Allocation drift,In Progress,10954.24,Jamie Price,Digital Starter,Aggressive,APAC,Jon Bell,42877.88,0.5791,0.4225
+ACT-00057,2026-05-01,CL00207,Rebalance proposal,Medium,Allocation drift,Scheduled,10581.21,Jamie Morris,Digital Starter,Growth,APAC,Noah Miller,35314.88,0.4041,0.4738
+ACT-00118,2026-05-01,CL00459,Rebalance proposal,Medium,Allocation drift,Open,10349.87,Skyler Singh,Digital Starter,Conservative,Europe,Jon Bell,38459.32,0.5133,0.3574
+ACT-00085,2026-05-01,CL00330,Rebalance proposal,Medium,Allocation drift,Open,9921.67,Skyler Patel,Digital Starter,Growth,APAC,Noah Miller,45656.89,0.1805,0.2888
+ACT-00141,2026-05-01,CL00551,Rebalance proposal,Medium,Allocation drift,In Progress,9763.66,Alex Wong,Digital Starter,Balanced,North America,Lin Nguyen,40774.92,0.624,0.4017
+ACT-00183,2026-05-01,CL00724,Rebalance proposal,Medium,Allocation drift,Open,9697.2,Morgan Tran,Digital Starter,Conservative,North America,Jon Bell,28107.75,0.3522,0.4555
+ACT-00138,2026-05-01,CL00525,Rebalance proposal,Medium,Allocation drift,Scheduled,9357.32,Jamie Price,Digital Starter,Growth,APAC,Jon Bell,25609.01,0.4849,0.3546
+ACT-00050,2026-05-01,CL00165,Rebalance proposal,Medium,Allocation drift,Open,6895.81,Sam Hughes,Digital Starter,Growth,North America,Noah Miller,33212.38,0.2056,0.3167
+ACT-00182,2026-05-01,CL00723,Rebalance proposal,Medium,Allocation drift,Open,6597.0,Jordan Cooper,Digital Starter,Growth,North America,Lin Nguyen,30536.4,0.4954,0.457
+ACT-00082,2026-05-01,CL00315,Rebalance proposal,Medium,Allocation drift,Open,5975.84,Ari Rivera,Digital Starter,Conservative,North America,Jon Bell,28013.37,0.446,0.4593
+ACT-00039,2026-05-01,CL00132,Rebalance proposal,Medium,Allocation drift,Open,3238.04,Drew Adams,Digital Starter,Growth,North America,Noah Miller,12712.8,0.6375,0.5584
+ACT-00094,2026-05-01,CL00354,Rebalance proposal,Medium,Allocation drift,Scheduled,2970.33,Lena Morris,Digital Starter,Growth,APAC,Avery Chen,12593.77,0.5133,0.3464
+ACT-00119,2026-05-01,CL00462,Rebalance proposal,Medium,Allocation drift,Open,2822.63,Drew Young,Digital Starter,Conservative,APAC,Mina Patel,13654.4,0.4893,0.4838

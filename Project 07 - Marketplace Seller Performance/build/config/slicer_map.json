@@ -1,0 +1,18 @@
+{
+  "global_slicers": [
+    "Date",
+    "Platform",
+    "Category",
+    "Seller Tier",
+    "Region",
+    "Fulfillment Model",
+    "Account Manager",
+    "Seller Search"
+  ],
+  "sync_pages": [
+    "Executive Cockpit",
+    "Seller Portfolio & Segmentation",
+    "Commercial Growth Drivers",
+    "Ops Health & Risk Monitor"
+  ]
+}

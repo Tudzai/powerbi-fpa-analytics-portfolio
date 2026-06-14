@@ -1,0 +1,34 @@
+{
+  "project": "bi_ecommerce_executive_performance_dashboard",
+  "audience": "Ecommerce executive team",
+  "business_goal": "Track top-line ecommerce performance, acquisition efficiency, conversion, and risk from refunds/cancellations.",
+  "date_range": {
+    "start": "2025-01-01",
+    "end": "2026-05-31"
+  },
+  "kpi_priority": [
+    "GMV",
+    "Net Revenue",
+    "Orders",
+    "AOV",
+    "Conversion Rate",
+    "Refund/Cancel Rate",
+    "Top Category",
+    "Top Traffic Channel"
+  ],
+  "build_status": "assisted_powerbi_desktop_pending",
+  "current_kpis": {
+    "gmv": 52427076.96,
+    "net_revenue": 45636439.72,
+    "orders": 128271,
+    "completed_orders": 118148,
+    "aov": 408.72,
+    "conversion_rate": 0.033,
+    "refund_cancel_rate": 0.0789,
+    "top_category": "Electronics",
+    "top_channel": "Organic Search",
+    "sessions": 3883799,
+    "marketing_spend": 807481.13,
+    "roas": 56.52
+  }
+}

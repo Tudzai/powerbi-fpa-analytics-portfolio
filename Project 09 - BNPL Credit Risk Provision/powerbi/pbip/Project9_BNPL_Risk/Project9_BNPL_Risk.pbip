@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "artifacts": [
+    {
+      "report": {
+        "path": "Project9_BNPL_Risk.Report"
+      }
+    },
+    {
+      "semanticModel": {
+        "path": "Project9_BNPL_Risk.SemanticModel"
+      }
+    }
+  ]
+}

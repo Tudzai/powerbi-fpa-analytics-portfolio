@@ -1,0 +1,150 @@
+{
+  "name": "Marketplace Command Center",
+  "dataColors": [
+    "#EE4D2D",
+    "#2563EB",
+    "#0EA5E9",
+    "#0F766E",
+    "#16A34A",
+    "#F59E0B",
+    "#DC2626",
+    "#7C3AED",
+    "#475569"
+  ],
+  "background": "#F6F7FB",
+  "foreground": "#101828",
+  "tableAccent": "#EE4D2D",
+  "good": "#16A34A",
+  "neutral": "#F59E0B",
+  "bad": "#DC2626",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "show": true,
+            "fontColor": { "solid": { "color": "#101828" } },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 10,
+            "alignment": "left"
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#D8DEE9" } },
+            "radius": 6
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "color": { "solid": { "color": "#101828" } },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 26
+          }
+        ],
+        "categoryLabels": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#667085" } },
+            "fontFamily": "Segoe UI",
+            "fontSize": 11
+          }
+        ]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "columnHeaders": [
+          {
+            "fontColor": { "solid": { "color": "#101828" } },
+            "backColor": { "solid": { "color": "#F1F5F9" } },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 9
+          }
+        ],
+        "values": [
+          {
+            "fontColor": { "solid": { "color": "#101828" } },
+            "backColor": { "solid": { "color": "#FFFFFF" } },
+            "fontFamily": "Segoe UI",
+            "fontSize": 9
+          }
+        ],
+        "grid": [
+          {
+            "gridVertical": false,
+            "gridHorizontal": true,
+            "outlineColor": { "solid": { "color": "#E5E7EB" } }
+          }
+        ]
+      }
+    },
+    "lineChart": {
+      "*": {
+        "categoryAxis": [
+          {
+            "fontColor": { "solid": { "color": "#667085" } },
+            "titleColor": { "solid": { "color": "#667085" } }
+          }
+        ],
+        "valueAxis": [
+          {
+            "fontColor": { "solid": { "color": "#667085" } },
+            "titleColor": { "solid": { "color": "#667085" } },
+            "gridlineColor": { "solid": { "color": "#EEF2F7" } }
+          }
+        ]
+      }
+    },
+    "barChart": {
+      "*": {
+        "categoryAxis": [
+          {
+            "fontColor": { "solid": { "color": "#667085" } },
+            "titleColor": { "solid": { "color": "#667085" } }
+          }
+        ],
+        "valueAxis": [
+          {
+            "fontColor": { "solid": { "color": "#667085" } },
+            "titleColor": { "solid": { "color": "#667085" } },
+            "gridlineColor": { "solid": { "color": "#EEF2F7" } }
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": { "solid": { "color": "#F6F7FB" } },
+            "transparency": 0
+          }
+        ],
+        "outspace": [
+          {
+            "color": { "solid": { "color": "#F6F7FB" } },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+    "visual_containers":  57,
+    "source_model_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 05 - Retention Cohort LTV\\bi_retention_cohort_dashboard\\output\\dashboard_model.pbix",
+    "timestamp":  "2026-06-11 14:01:00 +07:00",
+    "validation":  "PowerBIPackager.Validate passed after native report layout patch; Power BI Desktop render QA passed after model datatype fix.",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 05 - Retention Cohort LTV\\bi_retention_cohort_dashboard\\output\\dashboard_final.pbix",
+    "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 05 - Retention Cohort LTV\\bi_retention_cohort_dashboard\\build\\native_report_layout_retention.json",
+    "output_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 05 - Retention Cohort LTV\\bi_retention_cohort_dashboard\\output\\dashboard_v01.pbix",
+    "final_pbix_size":  1881639,
+    "status":  "passed",
+    "final_pbix_created":  true,
+    "desktop_render_validation":  "passed_zero_visual_fetch_errors",
+    "pages":  [
+                  "Lifecycle Overview",
+                  "Monthly Cohort Retention",
+                  "LTV \u0026 Revenue Cohorts",
+                  "Churn Signal \u0026 Winback"
+              ]
+}

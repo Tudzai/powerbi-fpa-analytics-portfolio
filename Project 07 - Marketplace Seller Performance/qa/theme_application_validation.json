@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "validated_at": "2026-06-11T15:17:00+07:00",
+  "theme_name": "Marketplace Command Center",
+  "theme_path": "build/config/marketplace_command_center_theme.json",
+  "applied_to": [
+    "output/dashboard_final.pbix",
+    "output/dashboard_complete.pbix"
+  ],
+  "powerbi_desktop_open_test": "PASS",
+  "powerbi_desktop_saved_after_theme": true,
+  "pbi_tools_extract": "PASS",
+  "pbi_tools_export_data": "PASS",
+  "pbix_size_bytes": 411092,
+  "page_count": 4,
+  "native_visual_count": 47,
+  "verified_theme_values": {
+    "background": "#F6F7FB",
+    "foreground": "#101828",
+    "tableAccent": "#EE4D2D",
+    "first_data_colors": [
+      "#EE4D2D",
+      "#2563EB",
+      "#0EA5E9",
+      "#0F766E",
+      "#16A34A"
+    ]
+  },
+  "notes": "Theme and full chart layout were tested in Power BI Desktop before final handoff. The successful complete layout rebuild removes stale SecurityBindings before opening; Power BI Desktop then saves the file and regenerates valid bindings."
+}

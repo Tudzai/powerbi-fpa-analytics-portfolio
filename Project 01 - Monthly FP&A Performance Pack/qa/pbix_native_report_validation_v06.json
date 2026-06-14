@@ -1,0 +1,35 @@
+{
+    "generated_at":  "2026-06-08 15:49:00",
+    "version":  "v08-right-insight-driver",
+    "source_model_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 01 - Monthly FP&A Performance Pack\\output\\dashboard_model.pbix",
+    "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 01 - Monthly FP&A Performance Pack\\build\\native_report_layout_v06.json",
+    "output_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 01 - Monthly FP&A Performance Pack\\output\\dashboard_v02.pbix",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 01 - Monthly FP&A Performance Pack\\output\\dashboard_final.pbix",
+    "pages":  [
+                  "Executive KPI",
+                  "Variance Bridge",
+                  "Dimension Drilldown",
+                  "Opex \u0026 Cash"
+              ],
+    "visual_containers":  41,
+    "visual_type_counts":  {
+                               "textbox":  4,
+                               "slicer":  13,
+                               "cardVisual":  10,
+                               "columnChart":  3,
+                               "barChart":  6,
+                               "tableEx":  4,
+                               "waterfallChart":  1
+                           },
+    "commentary_removed":  true,
+    "commentary_visuals":  0,
+    "safe_zone":  {
+                      "canvas_width":  1280,
+                      "max_visual_right":  1186,
+                      "max_visual_bottom":  690
+                  },
+    "new_driver_chart":  "Revenue Variance by Region",
+    "screenshot":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 01 - Monthly FP&A Performance Pack\\output\\screenshots\\dashboard_final_v08_right_insight.png",
+    "validation":  "PowerBIPackager.Validate passed for output and final PBIX",
+    "known_scope":  "Native Power BI visual containers generated from the existing semantic model; no commentary text blocks on dashboard canvas."
+}

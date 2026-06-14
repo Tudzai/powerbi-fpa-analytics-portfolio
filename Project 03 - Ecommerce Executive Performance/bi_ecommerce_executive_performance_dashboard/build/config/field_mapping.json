@@ -1,0 +1,10 @@
+{
+  "GMV": "fact_orders[gmv]",
+  "Net Revenue": "fact_orders[net_revenue]",
+  "Orders": "fact_orders[order_id]",
+  "AOV": "fact_orders[gmv] / distinct orders",
+  "Conversion Rate": "distinct orders / fact_sessions[sessions]",
+  "Refund/Cancel Rate": "(refunded orders + cancelled orders) / orders",
+  "Top Category": "dim_product[category] sorted by GMV",
+  "Top Traffic Channel": "dim_channel[channel] sorted by GMV"
+}

@@ -1,0 +1,14 @@
+{
+  "pbix_exists": false,
+  "model_push_status": "passed",
+  "model_push_process_id": 24812,
+  "model_push_port": 59498,
+  "model_push_tables": 14,
+  "model_push_relationships": 31,
+  "model_push_measures": 22,
+  "model_pbix_exists": false,
+  "final_pbix_exists": false,
+  "status": "blocked_at_file_qa_missing_model_pbix_after_computer_use_helper_failure",
+  "blocking_step": "Power BI Desktop Save As output/dashboard_model.pbix",
+  "native_package_validation": "qa/pbix_native_report_validation.json"
+}

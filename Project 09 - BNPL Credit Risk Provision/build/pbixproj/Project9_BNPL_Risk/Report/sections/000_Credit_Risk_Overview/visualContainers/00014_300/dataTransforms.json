@@ -1,0 +1,272 @@
+{
+  "objects": {
+    "grid": [
+      {
+        "properties": {
+          "gridHorizontal": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "outlineColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#D8DEE9'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "columnHeaders": [
+      {
+        "properties": {
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI Semibold'"
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.2D"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#172033'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "values": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.0D"
+              }
+            }
+          },
+          "fontFamily": {
+            "expr": {
+              "Literal": {
+                "Value": "'Segoe UI'"
+              }
+            }
+          },
+          "fontColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#172033'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Values": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Category",
+        "Name": "DimMerchant.merchant_category",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Risk",
+        "Name": "DimRiskBand.risk_band",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Loan book",
+        "Name": "KPI Measures.Loan Book Balance",
+        "Type": 1,
+        "Format": "$#,0,,.0M"
+      },
+      {
+        "Restatement": "30+ DPD",
+        "Name": "KPI Measures.Delinquency Rate",
+        "Type": 1,
+        "Format": "0.0%"
+      },
+      {
+        "Restatement": "EL rate",
+        "Name": "KPI Measures.Expected Loss Rate",
+        "Type": 1,
+        "Format": "0.0%"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 2,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 3,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 4,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Category",
+      "queryName": "DimMerchant.merchant_category",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "DimMerchant"
+            }
+          },
+          "Property": "merchant_category"
+        }
+      }
+    },
+    {
+      "displayName": "Risk",
+      "queryName": "DimRiskBand.risk_band",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "DimRiskBand"
+            }
+          },
+          "Property": "risk_band"
+        }
+      }
+    },
+    {
+      "displayName": "Loan book",
+      "queryName": "KPI Measures.Loan Book Balance",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Loan Book Balance"
+        }
+      },
+      "format": "$#,0,,.0M"
+    },
+    {
+      "displayName": "30+ DPD",
+      "queryName": "KPI Measures.Delinquency Rate",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Delinquency Rate"
+        }
+      },
+      "format": "0.0%"
+    },
+    {
+      "displayName": "EL rate",
+      "queryName": "KPI Measures.Expected Loss Rate",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Expected Loss Rate"
+        }
+      },
+      "format": "0.0%"
+    }
+  ]
+}

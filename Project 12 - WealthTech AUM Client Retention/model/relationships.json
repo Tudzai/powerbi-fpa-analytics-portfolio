@@ -1,0 +1,66 @@
+[
+  {
+    "from_table": "FactAUMMonthly",
+    "from_column": "MonthStart",
+    "to_table": "DimDate",
+    "to_column": "MonthStart",
+    "cardinality": "many-to-one",
+    "cross_filter": "single"
+  },
+  {
+    "from_table": "FactAllocationMonthly",
+    "from_column": "MonthStart",
+    "to_table": "DimDate",
+    "to_column": "MonthStart",
+    "cardinality": "many-to-one",
+    "cross_filter": "single"
+  },
+  {
+    "from_table": "FactRetentionActions",
+    "from_column": "MonthStart",
+    "to_table": "DimDate",
+    "to_column": "MonthStart",
+    "cardinality": "many-to-one",
+    "cross_filter": "single"
+  },
+  {
+    "from_table": "FactAUMMonthly",
+    "from_column": "ClientID",
+    "to_table": "DimClient",
+    "to_column": "ClientID",
+    "cardinality": "many-to-one",
+    "cross_filter": "single"
+  },
+  {
+    "from_table": "FactAllocationMonthly",
+    "from_column": "ClientID",
+    "to_table": "DimClient",
+    "to_column": "ClientID",
+    "cardinality": "many-to-one",
+    "cross_filter": "single"
+  },
+  {
+    "from_table": "FactRetentionActions",
+    "from_column": "ClientID",
+    "to_table": "DimClient",
+    "to_column": "ClientID",
+    "cardinality": "many-to-one",
+    "cross_filter": "single"
+  },
+  {
+    "from_table": "FactAUMMonthly",
+    "from_column": "ModelPortfolio",
+    "to_table": "DimPortfolio",
+    "to_column": "ModelPortfolio",
+    "cardinality": "many-to-one",
+    "cross_filter": "single"
+  },
+  {
+    "from_table": "FactAllocationMonthly",
+    "from_column": "ModelPortfolio",
+    "to_table": "DimPortfolio",
+    "to_column": "ModelPortfolio",
+    "cardinality": "many-to-one",
+    "cross_filter": "single"
+  }
+]

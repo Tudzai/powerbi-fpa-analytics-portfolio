@@ -1,0 +1,28 @@
+{
+  "Executive Cockpit": [
+    "KPI strip: GMV, fulfillment, cancellation, rating, stock, active sellers",
+    "GMV monthly trend",
+    "GMV by platform",
+    "Top sellers table",
+    "Seller action table"
+  ],
+  "Seller Portfolio & Segmentation": [
+    "GMV vs cancellation scatter",
+    "Seller GMV Pareto",
+    "GMV by seller tier",
+    "Seller watchlist"
+  ],
+  "Commercial Growth Drivers": [
+    "GMV bridge",
+    "Category growth quadrant",
+    "GMV vs ads/voucher trend",
+    "Opportunity seller table"
+  ],
+  "Ops Health & Risk Monitor": [
+    "Risk KPI strip",
+    "Risk trend",
+    "Cancellation reasons",
+    "GMV impact vs ops risk",
+    "Action queue"
+  ]
+}

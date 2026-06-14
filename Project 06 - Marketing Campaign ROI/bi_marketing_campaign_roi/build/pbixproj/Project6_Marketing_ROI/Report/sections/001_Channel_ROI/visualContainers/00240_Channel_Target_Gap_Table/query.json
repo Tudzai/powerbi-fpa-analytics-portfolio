@@ -1,0 +1,151 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f0",
+              "Entity": "DimChannel",
+              "Type": 0
+            },
+            {
+              "Name": "m",
+              "Entity": "KPI_Measures",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f0"
+                  }
+                },
+                "Property": "channel"
+              },
+              "Name": "DimChannel.channel",
+              "NativeReferenceName": "Channel"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f0"
+                  }
+                },
+                "Property": "recommended_action"
+              },
+              "Name": "DimChannel.recommended_action",
+              "NativeReferenceName": "Action"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "ROAS"
+              },
+              "Name": "KPI_Measures.ROAS",
+              "NativeReferenceName": "ROAS"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Target ROAS"
+              },
+              "Name": "KPI_Measures.Target ROAS",
+              "NativeReferenceName": "Target ROAS"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "ROAS vs Target"
+              },
+              "Name": "KPI_Measures.ROAS vs Target",
+              "NativeReferenceName": "ROAS Gap"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "CAC"
+              },
+              "Name": "KPI_Measures.CAC",
+              "NativeReferenceName": "CAC"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "CAC vs Target"
+              },
+              "Name": "KPI_Measures.CAC vs Target",
+              "NativeReferenceName": "CAC Gap"
+            }
+          ],
+          "OrderBy": [
+            {
+              "Direction": 2,
+              "Expression": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "ROAS"
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 4,
+            "Primary": {
+              "Window": {
+                "Count": 1000
+              }
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

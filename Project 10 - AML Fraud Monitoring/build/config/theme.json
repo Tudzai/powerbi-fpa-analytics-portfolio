@@ -1,0 +1,496 @@
+{
+  "name": "AML Command Center",
+  "version": "2026.06.11",
+  "description": "Dark command-center visual system for AML, fraud monitoring, alert triage, case SLA, and rule governance reporting.",
+  "background": "#071018",
+  "surface": "#111B24",
+  "ink": "#E7EDF3",
+  "teal": "#2DD4BF",
+  "mint": "#7DD3C7",
+  "amber": "#F2B84B",
+  "red": "#F05D5E",
+  "violet": "#8B7CF6",
+  "dataColors": [
+    "#2DD4BF",
+    "#F2B84B",
+    "#5EA8FF",
+    "#F05D5E",
+    "#8B7CF6",
+    "#64D2A6",
+    "#D8DEE9",
+    "#A3B3C5"
+  ],
+  "good": "#64D2A6",
+  "neutral": "#A3B3C5",
+  "bad": "#F05D5E",
+  "minimum": "#64D2A6",
+  "center": "#F2B84B",
+  "maximum": "#F05D5E",
+  "foreground": "#E7EDF3",
+  "foregroundNeutralSecondary": "#A3B3C5",
+  "backgroundLight": "#111B24",
+  "backgroundNeutral": "#192633",
+  "tableAccent": "#2DD4BF",
+  "tokens": {
+    "color": {
+      "canvas": "#071018",
+      "canvasAlt": "#0B151F",
+      "surface": "#111B24",
+      "surfaceRaised": "#162230",
+      "surfaceSunken": "#0A121A",
+      "surfaceOverlay": "#1B2A38",
+      "border": "#263849",
+      "borderSubtle": "#1C2A37",
+      "gridline": "#233241",
+      "textPrimary": "#E7EDF3",
+      "textSecondary": "#A3B3C5",
+      "textTertiary": "#728397",
+      "textMuted": "#536477",
+      "accentPrimary": "#2DD4BF",
+      "accentPrimaryMuted": "#166B62",
+      "accentSecondary": "#5EA8FF",
+      "accentGovernance": "#8B7CF6",
+      "riskCritical": "#F05D5E",
+      "riskHigh": "#F2B84B",
+      "riskMedium": "#5EA8FF",
+      "riskLow": "#64D2A6",
+      "statusOpen": "#F2B84B",
+      "statusInReview": "#5EA8FF",
+      "statusEscalated": "#F05D5E",
+      "statusClosed": "#64D2A6",
+      "white": "#FFFFFF",
+      "black": "#000000"
+    },
+    "typography": {
+      "fontFamily": "Aptos, Segoe UI, Arial, sans-serif",
+      "display": {
+        "size": 24,
+        "weight": 700,
+        "lineHeight": 30
+      },
+      "pageTitle": {
+        "size": 18,
+        "weight": 700,
+        "lineHeight": 24
+      },
+      "sectionTitle": {
+        "size": 12,
+        "weight": 700,
+        "lineHeight": 16,
+        "case": "uppercase"
+      },
+      "cardLabel": {
+        "size": 10,
+        "weight": 600,
+        "lineHeight": 14,
+        "case": "uppercase"
+      },
+      "metricValue": {
+        "size": 25,
+        "weight": 700,
+        "lineHeight": 30
+      },
+      "body": {
+        "size": 10,
+        "weight": 400,
+        "lineHeight": 14
+      },
+      "caption": {
+        "size": 9,
+        "weight": 400,
+        "lineHeight": 12
+      }
+    },
+    "spacing": {
+      "xs": 4,
+      "sm": 8,
+      "md": 12,
+      "lg": 16,
+      "xl": 24,
+      "pageMargin": 24,
+      "visualGap": 12,
+      "kpiGap": 8
+    },
+    "radius": {
+      "none": 0,
+      "sm": 2,
+      "md": 4,
+      "lg": 6,
+      "card": 6
+    },
+    "stroke": {
+      "hairline": 1,
+      "focus": 2,
+      "axis": 1,
+      "threshold": 2
+    },
+    "shadow": {
+      "card": "0 8 18 rgba(0,0,0,0.28)",
+      "popover": "0 14 30 rgba(0,0,0,0.36)"
+    },
+    "opacity": {
+      "disabled": 0.42,
+      "gridline": 0.55,
+      "secondaryData": 0.72,
+      "referenceBand": 0.16
+    }
+  },
+  "semantic": {
+    "risk": {
+      "critical": "#F05D5E",
+      "high": "#F2B84B",
+      "medium": "#5EA8FF",
+      "low": "#64D2A6"
+    },
+    "alertSeverity": {
+      "critical": "#F05D5E",
+      "high": "#F2B84B",
+      "medium": "#5EA8FF",
+      "low": "#64D2A6",
+      "informational": "#A3B3C5"
+    },
+    "caseStatus": {
+      "open": "#F2B84B",
+      "inReview": "#5EA8FF",
+      "escalated": "#F05D5E",
+      "filed": "#8B7CF6",
+      "closed": "#64D2A6"
+    },
+    "ruleQuality": {
+      "highPrecision": "#64D2A6",
+      "watch": "#F2B84B",
+      "noisy": "#F05D5E",
+      "newRule": "#8B7CF6"
+    }
+  },
+  "layout": {
+    "page": {
+      "width": 1280,
+      "height": 720,
+      "margin": 24,
+      "gutter": 12,
+      "headerHeight": 48,
+      "filterRailWidth": 176
+    },
+    "grid": {
+      "columns": 12,
+      "rowHeight": 40,
+      "gutter": 12
+    },
+    "kpiStrip": {
+      "height": 104,
+      "columns": 5,
+      "gap": 8
+    },
+    "visual": {
+      "minHeight": 188,
+      "titleHeight": 24,
+      "innerPadding": 12
+    }
+  },
+  "components": {
+    "pageHeader": {
+      "background": "#071018",
+      "titleColor": "#E7EDF3",
+      "subtitleColor": "#A3B3C5",
+      "dividerColor": "#263849"
+    },
+    "filterRail": {
+      "background": "#0B151F",
+      "border": "#263849",
+      "labelColor": "#A3B3C5",
+      "valueColor": "#E7EDF3",
+      "selectedColor": "#2DD4BF"
+    },
+    "card": {
+      "background": "#111B24",
+      "border": "#263849",
+      "borderRadius": 6,
+      "padding": 12,
+      "labelColor": "#A3B3C5",
+      "valueColor": "#E7EDF3",
+      "deltaPositive": "#64D2A6",
+      "deltaNeutral": "#A3B3C5",
+      "deltaNegative": "#F05D5E"
+    },
+    "chart": {
+      "background": "#111B24",
+      "plotArea": "#0D1822",
+      "axisColor": "#728397",
+      "gridlineColor": "#233241",
+      "labelColor": "#A3B3C5",
+      "titleColor": "#E7EDF3",
+      "referenceLineColor": "#F2B84B",
+      "thresholdLineColor": "#F05D5E"
+    },
+    "table": {
+      "headerBackground": "#162230",
+      "headerText": "#E7EDF3",
+      "rowBackground": "#111B24",
+      "alternateRowBackground": "#0D1822",
+      "rowText": "#D8DEE9",
+      "border": "#263849",
+      "positivePill": "#163A31",
+      "warningPill": "#4A3514",
+      "dangerPill": "#4B1E24"
+    },
+    "slicer": {
+      "background": "#0D1822",
+      "border": "#263849",
+      "selectedBackground": "#123B39",
+      "selectedText": "#E7EDF3",
+      "unselectedText": "#A3B3C5"
+    }
+  },
+  "chartTreatment": {
+    "line": {
+      "strokeWidth": 2.5,
+      "markerSize": 4,
+      "useReferenceBands": true
+    },
+    "bar": {
+      "cornerRadius": 3,
+      "maxCategoryCountBeforeScroll": 12,
+      "sort": "descending_by_risk_or_volume"
+    },
+    "donut": {
+      "innerRadius": 58,
+      "maxSlices": 5,
+      "showCenterMetric": true
+    },
+    "scatter": {
+      "markerSize": 8,
+      "useQuadrants": true,
+      "xReference": "False positive rate target",
+      "yReference": "Precision target"
+    },
+    "funnel": {
+      "stageAccent": "#2DD4BF",
+      "dropOffAccent": "#F2B84B"
+    }
+  },
+  "pageGuidance": {
+    "Fraud & Compliance Overview": {
+      "composition": "Header with latest complete month and global filters, five-card KPI strip, trend and typology analysis across the center, corridor risk and severity distribution on the right.",
+      "primaryAccent": "#2DD4BF",
+      "riskAccent": "#F05D5E",
+      "notes": [
+        "Use the KPI strip for exposure, alerts, SAR conversion, false positives, and SLA breach rate.",
+        "Keep the monthly trend wide enough for 12 to 18 months of history.",
+        "Use red only for true risk, breach, or escalation states."
+      ]
+    },
+    "Alert & Customer Risk Deep Dive": {
+      "composition": "Left-to-right alert funnel, rule precision scatter, ranked customer risk table, and compact channel/rule quality views for investigation handoff.",
+      "primaryAccent": "#5EA8FF",
+      "riskAccent": "#F2B84B",
+      "notes": [
+        "Separate noisy high-volume rules from high-yield rules with scatter quadrants.",
+        "Use tables for customer and rule details; avoid decorative cards around dense evidence.",
+        "Highlight threshold breaches with amber before escalating to red."
+      ]
+    },
+    "Case SLA & Rule Governance": {
+      "composition": "Operational backlog columns and workload trend at the top, rule precision/FPR controls in the center, and governance log as the audit-ready anchor.",
+      "primaryAccent": "#8B7CF6",
+      "riskAccent": "#F05D5E",
+      "notes": [
+        "Make overdue and escalated case states visually immediate but not noisy.",
+        "Keep analyst workload comparable with consistent axes and muted secondary series.",
+        "Use the governance log as a structured table with decision, owner, effective date, and evidence link fields."
+      ]
+    }
+  },
+  "textClasses": {
+    "title": {
+      "fontFace": "Aptos Display",
+      "fontSize": 18,
+      "color": "#E7EDF3"
+    },
+    "header": {
+      "fontFace": "Aptos",
+      "fontSize": 12,
+      "color": "#E7EDF3"
+    },
+    "label": {
+      "fontFace": "Aptos",
+      "fontSize": 10,
+      "color": "#A3B3C5"
+    },
+    "callout": {
+      "fontFace": "Aptos Display",
+      "fontSize": 25,
+      "color": "#E7EDF3"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#111B24"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#263849"
+              }
+            },
+            "radius": 6
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontColor": {
+              "solid": {
+                "color": "#E7EDF3"
+              }
+            },
+            "fontSize": 12,
+            "fontFamily": "Aptos"
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#A3B3C5"
+              }
+            },
+            "gridlineColor": {
+              "solid": {
+                "color": "#233241"
+              }
+            }
+          }
+        ],
+        "valueAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#A3B3C5"
+              }
+            },
+            "gridlineColor": {
+              "solid": {
+                "color": "#233241"
+              }
+            }
+          }
+        ],
+        "legend": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#A3B3C5"
+              }
+            },
+            "fontSize": 9,
+            "fontFamily": "Aptos"
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#071018"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#E7EDF3"
+              }
+            },
+            "fontSize": 25,
+            "fontFamily": "Aptos Display"
+          }
+        ],
+        "categoryLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#A3B3C5"
+              }
+            },
+            "fontSize": 10,
+            "fontFamily": "Aptos"
+          }
+        ]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "grid": [
+          {
+            "gridVertical": false,
+            "gridHorizontal": true,
+            "outlineColor": {
+              "solid": {
+                "color": "#263849"
+              }
+            }
+          }
+        ],
+        "columnHeaders": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#E7EDF3"
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": "#162230"
+              }
+            },
+            "fontSize": 10,
+            "fontFamily": "Aptos"
+          }
+        ],
+        "values": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#D8DEE9"
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": "#111B24"
+              }
+            },
+            "fontSize": 10,
+            "fontFamily": "Aptos"
+          }
+        ]
+      }
+    }
+  }
+}

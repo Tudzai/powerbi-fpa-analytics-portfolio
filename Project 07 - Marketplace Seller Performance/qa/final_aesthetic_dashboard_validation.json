@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "validated_at": "2026-06-11T15:31:00+07:00",
+  "final_pbix": "output/dashboard_final.pbix",
+  "complete_pbix": "output/dashboard_complete.pbix",
+  "powerbi_desktop_open_test": "PASS",
+  "powerbi_window_title": "dashboard_final",
+  "powerbi_last_saved": "Today at 3:31 PM",
+  "powerbi_visual_qa": {
+    "page_tabs_visible": true,
+    "page_indicator": "Page 1 of 4",
+    "cards_visible": true,
+    "line_chart_visible": true,
+    "bar_chart_visible": true,
+    "table_visible": true
+  },
+  "page_count": 4,
+  "native_visual_count": 47,
+  "native_visual_types": {
+    "textbox": 8,
+    "cardVisual": 24,
+    "lineChart": 5,
+    "barChart": 6,
+    "tableEx": 4
+  },
+  "pages": [
+    "01 Executive Cockpit",
+    "02 Seller Portfolio",
+    "03 Growth Drivers",
+    "04 Ops Risk"
+  ],
+  "pbi_tools_extract": "PASS",
+  "pbi_tools_export_data": "PASS",
+  "model_tables": 8,
+  "model_relationships": 8,
+  "model_measures": 29,
+  "notes": "This is the final complete aesthetic PBIX. The earlier open error was fixed by removing stale SecurityBindings after modifying Report/Layout, then opening and saving the file in Power BI Desktop."
+}

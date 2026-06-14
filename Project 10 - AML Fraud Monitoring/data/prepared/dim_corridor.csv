@@ -1,0 +1,13 @@
+CorridorKey,OriginCountryCode,DestinationCountryCode,Corridor,CorridorName,CorridorRiskScore,CorridorRiskTier
+COR001,US,GB,US->GB,Retail wire corridor,40,Low
+COR002,US,MX,US->MX,Remittance corridor,57,Medium
+COR003,GB,AE,GB->AE,Private banking corridor,63,Medium
+COR004,SG,HK,SG->HK,Trade finance corridor,55,Medium
+COR005,VN,SG,VN->SG,SME supplier corridor,46,Low
+COR006,HK,NG,HK->NG,High-risk trade corridor,78,High
+COR007,AE,TR,AE->TR,Cash-intensive corridor,73,High
+COR008,BR,US,BR->US,Merchant settlement corridor,54,Medium
+COR009,PH,HK,PH->HK,Wallet remittance corridor,58,Medium
+COR010,ZA,GB,ZA->GB,Investment services corridor,60,Medium
+COR011,NG,AE,NG->AE,Enhanced due diligence corridor,81,High
+COR012,MX,US,MX->US,Card acquiring corridor,52,Medium

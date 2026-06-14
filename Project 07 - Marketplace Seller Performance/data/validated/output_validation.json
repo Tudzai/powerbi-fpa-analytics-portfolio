@@ -1,0 +1,227 @@
+{
+  "generated_on": "2026-06-11",
+  "status": "PASS",
+  "build_mode": "computer_use_powerbi_desktop",
+  "checks": [
+    {
+      "file": "README.md",
+      "exists": true,
+      "bytes": 688
+    },
+    {
+      "file": "_agent/intake_brief.md",
+      "exists": true,
+      "bytes": 617
+    },
+    {
+      "file": "_agent/run_log.md",
+      "exists": true,
+      "bytes": 407
+    },
+    {
+      "file": "_agent/decision_log.md",
+      "exists": true,
+      "bytes": 614
+    },
+    {
+      "file": "_agent/subagent_plan.md",
+      "exists": true,
+      "bytes": 571
+    },
+    {
+      "file": "_agent/environment_check.md",
+      "exists": true,
+      "bytes": 1332
+    },
+    {
+      "file": "_agent/powerbi_launch_check.md",
+      "exists": true,
+      "bytes": 425
+    },
+    {
+      "file": "_agent/pbix_authoring_decision.md",
+      "exists": true,
+      "bytes": 1090
+    },
+    {
+      "file": "data/source_summary.json",
+      "exists": true,
+      "bytes": 3667
+    },
+    {
+      "file": "data/data_quality_report.md",
+      "exists": true,
+      "bytes": 591
+    },
+    {
+      "file": "data/data_dictionary.md",
+      "exists": true,
+      "bytes": 755
+    },
+    {
+      "file": "data/prepared/fact_order_items.csv",
+      "exists": true,
+      "bytes": 10940318
+    },
+    {
+      "file": "data/prepared/fact_fulfillment.csv",
+      "exists": true,
+      "bytes": 6159038
+    },
+    {
+      "file": "data/prepared/fact_inventory_snapshot.csv",
+      "exists": true,
+      "bytes": 33278688
+    },
+    {
+      "file": "data/prepared/fact_reviews.csv",
+      "exists": true,
+      "bytes": 1687245
+    },
+    {
+      "file": "model/metric_definitions.md",
+      "exists": true,
+      "bytes": 1252
+    },
+    {
+      "file": "model/dax_measures.md",
+      "exists": true,
+      "bytes": 2054
+    },
+    {
+      "file": "model/relationship_map.md",
+      "exists": true,
+      "bytes": 1212
+    },
+    {
+      "file": "model/data_dictionary.md",
+      "exists": true,
+      "bytes": 755
+    },
+    {
+      "file": "build/config/page_map.json",
+      "exists": true,
+      "bytes": 667
+    },
+    {
+      "file": "build/config/insight_map.json",
+      "exists": true,
+      "bytes": 253
+    },
+    {
+      "file": "build/config/visual_map.json",
+      "exists": true,
+      "bytes": 603
+    },
+    {
+      "file": "build/config/theme.json",
+      "exists": true,
+      "bytes": 348
+    },
+    {
+      "file": "build/config/slicer_map.json",
+      "exists": true,
+      "bytes": 343
+    },
+    {
+      "file": "powerbi/launch_powerbi.ps1",
+      "exists": true,
+      "bytes": 508
+    },
+    {
+      "file": "powerbi/notes/authoring_strategy.md",
+      "exists": true,
+      "bytes": 909
+    },
+    {
+      "file": "powerbi/notes/desktop_ui_runbook.md",
+      "exists": true,
+      "bytes": 770
+    },
+    {
+      "file": "powerbi/notes/pbix_build_runbook.md",
+      "exists": true,
+      "bytes": 444
+    },
+    {
+      "file": "qa/qa_checklist.md",
+      "exists": true,
+      "bytes": 550
+    },
+    {
+      "file": "qa/reconciliation.xlsx",
+      "exists": true,
+      "bytes": 14289
+    },
+    {
+      "file": "qa/pbix_validation.json",
+      "exists": true,
+      "bytes": 348
+    },
+    {
+      "file": "qa/visual_qa_notes.md",
+      "exists": true,
+      "bytes": 170
+    },
+    {
+      "file": "qa/interaction_qa_notes.md",
+      "exists": true,
+      "bytes": 167
+    },
+    {
+      "file": "docs/handoff_notes.md",
+      "exists": true,
+      "bytes": 1622
+    },
+    {
+      "file": "docs/changelog.md",
+      "exists": true,
+      "bytes": 648
+    },
+    {
+      "file": "docs/issue_log.md",
+      "exists": true,
+      "bytes": 1253
+    },
+    {
+      "file": "docs/refresh_guide.md",
+      "exists": true,
+      "bytes": 278
+    },
+    {
+      "file": "docs/rebuild_guide.md",
+      "exists": true,
+      "bytes": 247
+    },
+    {
+      "file": "output/dashboard_preview.html",
+      "exists": true,
+      "bytes": 989
+    },
+    {
+      "file": "output/dashboard_final.pbix",
+      "exists": true,
+      "bytes": 396424
+    },
+    {
+      "file": "output/screenshots/page_01.png",
+      "exists": true,
+      "bytes": 233874
+    },
+    {
+      "file": "output/screenshots/page_02.png",
+      "exists": true,
+      "bytes": 207966
+    },
+    {
+      "file": "output/screenshots/page_03.png",
+      "exists": true,
+      "bytes": 270106
+    },
+    {
+      "file": "output/screenshots/page_04.png",
+      "exists": true,
+      "bytes": 280672
+    }
+  ]
+}

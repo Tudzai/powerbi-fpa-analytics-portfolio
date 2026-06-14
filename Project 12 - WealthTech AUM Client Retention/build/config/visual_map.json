@@ -1,0 +1,16 @@
+{
+  "kpi_cards": 17,
+  "charts": [
+    "lineChart",
+    "columnChart",
+    "barChart",
+    "donutChart",
+    "tableEx"
+  ],
+  "slicers": [
+    "Year",
+    "Client Segment",
+    "Region",
+    "Model Portfolio"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "BNPL / Digital Lending Credit Risk Dashboard",
+  "audience": "Credit risk leadership, collections operations, finance provisioning teams",
+  "business_goal": "Monitor portfolio risk, diagnose delinquency/vintage movements, and prioritize collections and provision planning.",
+  "pages": [
+    "Credit Risk Overview",
+    "Delinquency & Vintage Analysis",
+    "Collections & Provision Forecast"
+  ],
+  "latest_snapshot_month": "2026-05-01",
+  "synthetic_data_seed": 90209
+}

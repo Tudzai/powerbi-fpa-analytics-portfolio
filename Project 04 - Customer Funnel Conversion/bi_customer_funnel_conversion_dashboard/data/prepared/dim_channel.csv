@@ -1,0 +1,8 @@
+﻿channel_key,channel,channel_group,paid_flag,sort_order
+CH_DIRECT,Direct,Owned / Direct,0,1
+CH_ORGANIC,Organic Search,Organic,0,2
+CH_PAID_SEARCH,Paid Search,Paid,1,3
+CH_SOCIAL,Paid Social,Paid,1,4
+CH_EMAIL,Email,Owned / Direct,0,5
+CH_AFFILIATE,Affiliate,Partner,1,6
+CH_REFERRAL,Referral,Partner,0,7

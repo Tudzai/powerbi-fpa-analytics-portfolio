@@ -1,0 +1,7 @@
+check,status,value
+orders_have_unique_order_id,PASS,True
+orders_have_non_negative_gmv,PASS,True
+sessions_have_non_negative_sessions,PASS,True
+date_range_has_no_gaps,PASS,True
+prepared_tables_exist,PASS,True
+pbix_final_exists,BLOCKED,False

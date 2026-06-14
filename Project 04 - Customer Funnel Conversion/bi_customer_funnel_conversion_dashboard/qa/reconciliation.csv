@@ -1,0 +1,11 @@
+﻿metric,value,source
+Visits,161097,fact_sessions[visit_flag]
+Product View Sessions,137530,fact_sessions[product_view_flag]
+Add to Cart Sessions,51170,fact_sessions[add_to_cart_flag]
+Checkout Sessions,31518,fact_sessions[checkout_flag]
+Purchase Sessions,18567,fact_sessions[purchase_flag]
+Orders,18567,fact_orders[order_id]
+Revenue,1558769.34,fact_orders[net_revenue]
+Marketing Spend,5113498.79,fact_marketing_spend[spend]
+Overall Conversion Rate,0.115254,Purchase Sessions / Visits
+Checkout Abandonment Rate,0.410908,(Checkout - Purchase) / Checkout

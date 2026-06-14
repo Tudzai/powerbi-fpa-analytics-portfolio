@@ -1,0 +1,58 @@
+{
+  "name": "Project 04 - Customer Funnel Conversion Growth Command Center",
+  "dataColors": [
+    "#155E75",
+    "#0F766E",
+    "#EA580C",
+    "#7C3AED",
+    "#BE123C",
+    "#2563EB",
+    "#475569"
+  ],
+  "background": "#EEF2F7",
+  "foreground": "#101828",
+  "tableAccent": "#0E7490",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 11,
+            "color": {
+              "solid": {
+                "color": "#101828"
+              }
+            }
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ],
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#D8DEE9"
+              }
+            },
+            "radius": 8
+          }
+        ]
+      }
+    }
+  }
+}

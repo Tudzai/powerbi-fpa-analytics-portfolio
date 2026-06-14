@@ -1,0 +1,134 @@
+{
+  "global_slicers": {
+    "Scenario": {
+      "field": "DimScenario[Scenario]",
+      "type": "dropdown",
+      "sync_pages": "all",
+      "sort": "DimScenario[SortOrder]"
+    },
+    "Year": {
+      "field": "DimDate[Year]",
+      "type": "dropdown",
+      "sync_pages": "all"
+    },
+    "Month": {
+      "field": "DimDate[YearMonth]",
+      "type": "dropdown",
+      "sync_pages": "all"
+    },
+    "Region": {
+      "field": "DimRegion[Region]",
+      "type": "dropdown",
+      "sync_pages": "all"
+    }
+  },
+  "visuals": [
+    {
+      "page": "01 Executive Planning Overview",
+      "visual": "Revenue card",
+      "type": "card",
+      "measure": "[Revenue]"
+    },
+    {
+      "page": "01 Executive Planning Overview",
+      "visual": "EBITDA card",
+      "type": "card",
+      "measure": "[EBITDA]"
+    },
+    {
+      "page": "01 Executive Planning Overview",
+      "visual": "Gross Margin card",
+      "type": "card",
+      "measure": "[Gross Margin %]"
+    },
+    {
+      "page": "01 Executive Planning Overview",
+      "visual": "Ending Cash card",
+      "type": "card",
+      "measure": "[Ending Cash Latest Month]"
+    },
+    {
+      "page": "01 Executive Planning Overview",
+      "visual": "Revenue and EBITDA trend",
+      "type": "combo line and column",
+      "axis": "DimDate[YearMonth]",
+      "values": [
+        "[Revenue]",
+        "[EBITDA]"
+      ],
+      "legend": "DimScenario[Scenario]"
+    },
+    {
+      "page": "02 Revenue & Cost Drivers",
+      "visual": "Service revenue ranking",
+      "type": "bar",
+      "axis": "DimService[ServiceLine]",
+      "value": "[Revenue]",
+      "sort": "descending"
+    },
+    {
+      "page": "02 Revenue & Cost Drivers",
+      "visual": "Jobs vs revenue per job",
+      "type": "scatter",
+      "x": "[Jobs]",
+      "y": "[Revenue per Job]",
+      "size": "[Revenue]",
+      "legend": "DimService[ServiceLine]"
+    },
+    {
+      "page": "03 Headcount & Capacity Plan",
+      "visual": "FTE trend",
+      "type": "line",
+      "axis": "DimDate[YearMonth]",
+      "value": "[Average FTE]",
+      "legend": "DimScenario[Scenario]"
+    },
+    {
+      "page": "03 Headcount & Capacity Plan",
+      "visual": "Payroll by department",
+      "type": "stacked bar",
+      "axis": "DimDepartment[Department]",
+      "value": "[Payroll Cost]",
+      "legend": "DimScenario[Scenario]"
+    },
+    {
+      "page": "04 Cash & Forecast Accuracy",
+      "visual": "Operating cash flow trend",
+      "type": "line",
+      "axis": "DimDate[YearMonth]",
+      "value": "[Operating Cash Flow]",
+      "legend": "DimScenario[Scenario]"
+    },
+    {
+      "page": "04 Cash & Forecast Accuracy",
+      "visual": "Forecast MAPE by horizon",
+      "type": "column",
+      "axis": "FactForecastAccuracy[ForecastHorizonMonths]",
+      "value": "[MAPE]"
+    },
+    {
+      "page": "05 Detail & Exceptions",
+      "visual": "Exception table",
+      "type": "table",
+      "columns": [
+        "MonthStart",
+        "Scenario",
+        "Region",
+        "ServiceLine",
+        "Revenue",
+        "Gross Margin %",
+        "MAPE"
+      ]
+    }
+  ],
+  "bookmarks": [
+    "Reset filters",
+    "Base case focus",
+    "Cash risk focus"
+  ],
+  "interaction_rules": [
+    "Scenario slicer filters all visuals",
+    "Forecast accuracy visuals ignore Actual scenario slicer when needed",
+    "Detail tables drill through from service and region visuals"
+  ]
+}

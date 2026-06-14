@@ -1,0 +1,200 @@
+{
+  "template_direction": "Executive ROI command center",
+  "visuals": [
+    {
+      "page": "Executive Overview",
+      "visual": "KPI strip",
+      "type": "Cards",
+      "fields": [
+        "Spend",
+        "Revenue",
+        "ROAS",
+        "CAC",
+        "Marketing ROI",
+        "Conversion Rate"
+      ],
+      "placement": "top row",
+      "style": "left accent stripe, compact context label"
+    },
+    {
+      "page": "Executive Overview",
+      "visual": "Spend and revenue trend",
+      "type": "Line and clustered column",
+      "fields": [
+        "DimMonth[month_key]",
+        "Spend",
+        "Revenue"
+      ],
+      "placement": "middle left",
+      "style": "spend muted bar, revenue blue line"
+    },
+    {
+      "page": "Executive Overview",
+      "visual": "Paid vs organic value",
+      "type": "Clustered bar",
+      "fields": [
+        "DimChannel[paid_organic]",
+        "Spend",
+        "Revenue"
+      ],
+      "placement": "middle right",
+      "style": "teal revenue, coral spend"
+    },
+    {
+      "page": "Executive Overview",
+      "visual": "Spend vs ROAS action map",
+      "type": "Scatter",
+      "fields": [
+        "Spend",
+        "ROAS",
+        "Revenue",
+        "DimChannel[channel]",
+        "Action"
+      ],
+      "placement": "bottom left",
+      "style": "bubble size by revenue, color by action"
+    },
+    {
+      "page": "Executive Overview",
+      "visual": "Budget callouts",
+      "type": "Card group",
+      "fields": [
+        "Action",
+        "DimChannel[channel]"
+      ],
+      "placement": "bottom right",
+      "style": "Scale/Optimize/Review action badges"
+    },
+    {
+      "page": "Channel ROI",
+      "visual": "ROAS vs target",
+      "type": "Horizontal bar with target marker",
+      "fields": [
+        "DimChannel[channel]",
+        "ROAS",
+        "Target ROAS"
+      ],
+      "placement": "top left",
+      "style": "action color bars"
+    },
+    {
+      "page": "Channel ROI",
+      "visual": "CAC vs target",
+      "type": "Horizontal bar with target marker",
+      "fields": [
+        "DimChannel[channel]",
+        "CAC",
+        "Target CAC"
+      ],
+      "placement": "top right",
+      "style": "green when below target, coral when above target"
+    },
+    {
+      "page": "Channel ROI",
+      "visual": "Efficiency quadrant",
+      "type": "Scatter",
+      "fields": [
+        "ROAS vs Target",
+        "CAC vs Target",
+        "Spend Share",
+        "DimChannel[channel]"
+      ],
+      "placement": "bottom left",
+      "style": "target crosshair and spend-share bubbles"
+    },
+    {
+      "page": "Channel ROI",
+      "visual": "Channel scorecard",
+      "type": "Table",
+      "fields": [
+        "DimChannel[channel]",
+        "Spend Share",
+        "ROAS",
+        "CAC",
+        "Action"
+      ],
+      "placement": "bottom right",
+      "style": "compact operational table"
+    },
+    {
+      "page": "Campaign Ranking",
+      "visual": "Scale candidates",
+      "type": "Horizontal bar",
+      "fields": [
+        "DimCampaign[campaign_name]",
+        "Campaign Scale Score"
+      ],
+      "placement": "top left",
+      "style": "green sorted ranking"
+    },
+    {
+      "page": "Campaign Ranking",
+      "visual": "Review/cut candidates",
+      "type": "Horizontal bar",
+      "fields": [
+        "DimCampaign[campaign_name]",
+        "Campaign Scale Score"
+      ],
+      "placement": "top right",
+      "style": "coral sorted ranking"
+    },
+    {
+      "page": "Campaign Ranking",
+      "visual": "Campaign decision table",
+      "type": "Table",
+      "fields": [
+        "DimCampaign[campaign_name]",
+        "DimChannel[channel]",
+        "Spend",
+        "Revenue",
+        "ROAS",
+        "CAC",
+        "Campaign Scale Score",
+        "Action"
+      ],
+      "placement": "bottom",
+      "style": "budget meeting handoff"
+    },
+    {
+      "page": "Exceptions and Actions",
+      "visual": "Budget action matrix",
+      "type": "Scatter",
+      "fields": [
+        "ROAS vs Target",
+        "CAC vs Target",
+        "Spend Share",
+        "DimChannel[channel]"
+      ],
+      "placement": "top left",
+      "style": "quadrant action read"
+    },
+    {
+      "page": "Exceptions and Actions",
+      "visual": "Next-month budget moves",
+      "type": "Card group",
+      "fields": [
+        "Action",
+        "Spend Share",
+        "DimChannel[channel]"
+      ],
+      "placement": "top right",
+      "style": "reduce/fix and scale lists"
+    },
+    {
+      "page": "Exceptions and Actions",
+      "visual": "Operating view",
+      "type": "Table",
+      "fields": [
+        "DimChannel[channel]",
+        "Spend Share",
+        "ROAS vs Target",
+        "CAC vs Target",
+        "ROAS",
+        "CAC",
+        "Action"
+      ],
+      "placement": "bottom",
+      "style": "exception table"
+    }
+  ]
+}

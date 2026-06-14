@@ -1,0 +1,9 @@
+AnalystKey,Analyst,AnalystTier,Queue
+A001,Maya Tran,Tier 1,APAC Queue
+A002,Liam Nguyen,Tier 1,APAC Queue
+A003,Sofia Patel,Tier 2,High Risk Queue
+A004,Noah Garcia,Tier 2,Americas Queue
+A005,Amelia Chen,Tier 3,SAR Review
+A006,Ethan Brooks,Tier 2,EMEA Queue
+A007,Aisha Khan,Tier 3,Sanctions Escalation
+A008,Minh Le,Tier 1,Payments Queue

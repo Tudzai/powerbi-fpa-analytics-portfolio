@@ -1,0 +1,10 @@
+﻿{
+    "timestamp":  "2026-06-11 12:39:06 +07:00",
+    "status":  "model_pushed_to_powerbi_desktop_local_session",
+    "power_bi_port":  57777,
+    "process_id":  34720,
+    "tables":  14,
+    "relationships":  31,
+    "measures":  22,
+    "output_model_pbix":  "not_created_by_tom_requires_desktop_save"
+}

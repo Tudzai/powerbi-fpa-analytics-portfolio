@@ -1,0 +1,7 @@
+﻿ChannelKey,ChannelName,ChannelType,QualityIndex,TargetCAC,TargetLtvCac
+organic,Organic Search,Organic,0.58,54,4.0
+paid_search,Paid Search,Paid,0.47,96,3.0
+paid_social,Paid Social,Paid,0.39,118,3.0
+referral,Referral,Owned,0.62,42,4.0
+partner,Partner Marketplace,Partner,0.56,72,4.0
+lifecycle,Lifecycle Email,Owned,0.52,31,4.0

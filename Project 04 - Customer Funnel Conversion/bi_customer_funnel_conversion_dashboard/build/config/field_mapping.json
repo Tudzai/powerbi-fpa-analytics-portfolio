@@ -1,0 +1,5 @@
+{
+  "funnel_grain": "session",
+  "stage_table": "fact_stage_sessions",
+  "transition_table": "fact_stage_transition"
+}

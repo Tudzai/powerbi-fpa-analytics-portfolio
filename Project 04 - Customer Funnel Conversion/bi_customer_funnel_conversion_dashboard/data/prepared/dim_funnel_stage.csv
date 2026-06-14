@@ -1,0 +1,6 @@
+﻿stage_key,stage,stage_short,stage_order,previous_stage_key
+1,Visit,Visit,1,
+2,Product View,View,2,1
+3,Add to Cart,Cart,3,2
+4,Checkout,Checkout,4,3
+5,Purchase,Purchase,5,4

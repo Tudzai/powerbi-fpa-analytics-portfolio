@@ -1,0 +1,35 @@
+{
+  "checked_on": "2026-06-11",
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 11 - Neobank Growth Retention LTV\\output\\dashboard_final.pbix",
+  "power_bi_desktop_opened": true,
+  "pages_checked": [
+    {
+      "page": "Growth Overview",
+      "screenshot": "qa/desktop_page1_growth.jpg",
+      "visual_errors_detected": 0
+    },
+    {
+      "page": "Funnel & Cohort Retention",
+      "screenshot": "qa/desktop_page2_funnel_cohort.jpg",
+      "visual_errors_detected": 0
+    },
+    {
+      "page": "LTV, Churn & Marketing ROI",
+      "screenshot": "qa/desktop_page3_ltv_roi.jpg",
+      "visual_errors_detected": 0
+    }
+  ],
+  "pbi_tools_extract": {
+    "status": "pass",
+    "path": "qa/pbix_extract_final_project11"
+  },
+  "pbi_tools_export_data": {
+    "status": "pass",
+    "path": "qa/export_data_final",
+    "tables_exported": 12
+  },
+  "final_validation": {
+    "status": "pass",
+    "path": "qa/pbix_final_validation.json"
+  }
+}

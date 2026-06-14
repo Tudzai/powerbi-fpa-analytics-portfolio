@@ -1,0 +1,67 @@
+{
+  "status": "pass",
+  "checks": {
+    "cube_rows": 21840,
+    "all_visits": 161097,
+    "all_purchases": 18567,
+    "all_revenue": 1558769.34,
+    "funnel_monotonic": true,
+    "filter_test": {
+      "scope": {
+        "device": "DEV_MOBILE",
+        "channel": "CH_PAID_SEARCH"
+      },
+      "visits": 14173,
+      "purchases": 1294,
+      "conversion_rate": 0.0913,
+      "changed_from_all": true
+    },
+    "screenshots": [
+      {
+        "page": "p1",
+        "path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\screenshots\\page_p1_complete.png",
+        "width": 1440,
+        "height": 1100,
+        "unique_colors_sample": 2901,
+        "non_white_sample_pixels": 13722,
+        "nonblank": true
+      },
+      {
+        "page": "p2",
+        "path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\screenshots\\page_p2_complete.png",
+        "width": 1440,
+        "height": 1100,
+        "unique_colors_sample": 1889,
+        "non_white_sample_pixels": 14186,
+        "nonblank": true
+      },
+      {
+        "page": "p3",
+        "path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\screenshots\\page_p3_complete.png",
+        "width": 1440,
+        "height": 1100,
+        "unique_colors_sample": 1882,
+        "non_white_sample_pixels": 14040,
+        "nonblank": true
+      },
+      {
+        "page": "p4",
+        "path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\screenshots\\page_p4_complete.png",
+        "width": 1440,
+        "height": 1100,
+        "unique_colors_sample": 1709,
+        "non_white_sample_pixels": 17021,
+        "nonblank": true
+      },
+      {
+        "page": "p5",
+        "path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\screenshots\\page_p5_complete.png",
+        "width": 1440,
+        "height": 1100,
+        "unique_colors_sample": 1777,
+        "non_white_sample_pixels": 15312,
+        "nonblank": true
+      }
+    ]
+  }
+}

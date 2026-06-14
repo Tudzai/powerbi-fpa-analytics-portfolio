@@ -1,0 +1,7 @@
+year_month,bridge_order,bridge_step,bridge_amount,bridge_type
+2026-05,1,Previous Revenue,526877.99,start
+2026-05,2,GMV Volume Effect,5200.329648983283,increase
+2026-05,3,Take-rate / Mix Effect,8190.230351016773,increase
+2026-05,4,Refund Fee Reversal,-8522.579781954148,decrease
+2026-05,5,Chargeback Revenue Drag,-4718.569199999999,decrease
+2026-05,6,Current Revenue,540268.55,total

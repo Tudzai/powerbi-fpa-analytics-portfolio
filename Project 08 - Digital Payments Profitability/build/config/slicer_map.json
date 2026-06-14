@@ -1,0 +1,34 @@
+{
+  "global_slicers": [
+    {
+      "label": "Month",
+      "field": "dim_date[year_month]",
+      "type": "dropdown"
+    },
+    {
+      "label": "Segment",
+      "field": "dim_merchant[merchant_segment]",
+      "type": "dropdown"
+    },
+    {
+      "label": "Method",
+      "field": "dim_payment_method[payment_method]",
+      "type": "dropdown"
+    },
+    {
+      "label": "Channel",
+      "field": "dim_channel[channel]",
+      "type": "dropdown"
+    }
+  ],
+  "scenario_slicer": {
+    "label": "Scenario",
+    "field": "dim_scenario[scenario_name]",
+    "type": "dropdown"
+  },
+  "sync_pages": [
+    "Executive Overview",
+    "Merchant & Transaction Drivers",
+    "Margin & Scenario Planning"
+  ]
+}

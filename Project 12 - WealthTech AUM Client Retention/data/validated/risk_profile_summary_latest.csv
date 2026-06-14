@@ -1,0 +1,5 @@
+﻿RiskProfile,TotalAUM,ActiveClients,PortfolioReturnPct,BenchmarkReturnPct,RiskMismatchClients,RebalanceNeededClients
+Aggressive,73084157.63,82,0.028489,0.029293,10,13
+Balanced,291040688.54,327,0.020275,0.020592,52,64
+Conservative,184906672.86,183,0.014677,0.014238,39,44
+Growth,262021557.34,268,0.025969,0.025465,48,60

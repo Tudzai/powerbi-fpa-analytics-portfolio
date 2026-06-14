@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "page": "p1",
+      "file": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\screenshots\\page_01_executive_funnel.png",
+      "bytes": 147684,
+      "text_length": 1351,
+      "nonblank": true,
+      "overflow_count": 0,
+      "overflow_sample": []
+    },
+    {
+      "page": "p2",
+      "file": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\screenshots\\page_02_segment_diagnostics.png",
+      "bytes": 106390,
+      "text_length": 1255,
+      "nonblank": true,
+      "overflow_count": 0,
+      "overflow_sample": []
+    },
+    {
+      "page": "p3",
+      "file": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\screenshots\\page_03_category_product.png",
+      "bytes": 77276,
+      "text_length": 540,
+      "nonblank": true,
+      "overflow_count": 0,
+      "overflow_sample": []
+    },
+    {
+      "page": "p4",
+      "file": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 04 - Customer Funnel Conversion\\bi_customer_funnel_conversion_dashboard\\output\\screenshots\\page_04_marketing_efficiency.png",
+      "bytes": 84836,
+      "text_length": 651,
+      "nonblank": true,
+      "overflow_count": 0,
+      "overflow_sample": []
+    }
+  ]
+}

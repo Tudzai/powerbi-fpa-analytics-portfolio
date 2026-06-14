@@ -1,0 +1,858 @@
+[
+  {
+    "name": "DimDate",
+    "file": "dim_date.csv",
+    "columns": [
+      {
+        "name": "DateKey",
+        "type": "Int64",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Date",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "MonthStart",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Year",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Quarter",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "MonthNumber",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "MonthName",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "MonthYear",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "MonthIndex",
+        "type": "Int64",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "IsLatestCompleteMonth",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "name": "DimCountry",
+    "file": "dim_country.csv",
+    "columns": [
+      {
+        "name": "CountryCode",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Country",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Region",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CountryRiskScore",
+        "type": "Int64",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CountryRiskTier",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "name": "DimCorridor",
+    "file": "dim_corridor.csv",
+    "columns": [
+      {
+        "name": "CorridorKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "OriginCountryCode",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "DestinationCountryCode",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Corridor",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CorridorName",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CorridorRiskScore",
+        "type": "Int64",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CorridorRiskTier",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "name": "DimChannel",
+    "file": "dim_channel.csv",
+    "columns": [
+      {
+        "name": "ChannelKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Channel",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "ChannelMode",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "ChannelRiskScore",
+        "type": "Int64",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "name": "DimProduct",
+    "file": "dim_product.csv",
+    "columns": [
+      {
+        "name": "ProductKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Product",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "ProductFamily",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "ProductRiskScore",
+        "type": "Int64",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "name": "DimRule",
+    "file": "dim_rule.csv",
+    "columns": [
+      {
+        "name": "RuleKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "RuleName",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Typology",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "RuleSeverity",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "RuleStatus",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "RuleOwner",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "RuleRiskScore",
+        "type": "Int64",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "LastTunedDate",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "name": "DimAnalyst",
+    "file": "dim_analyst.csv",
+    "columns": [
+      {
+        "name": "AnalystKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Analyst",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "AnalystTier",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Queue",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "name": "DimCustomer",
+    "file": "dim_customer.csv",
+    "columns": [
+      {
+        "name": "CustomerKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Customer",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CustomerSegment",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CustomerType",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "HomeCountryCode",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "HomeCountry",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CustomerRiskScore",
+        "type": "Int64",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CustomerRiskTier",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "PEPFlag",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "WatchlistFlag",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "KYCStatus",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "OnboardingDate",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "name": "FactTransactions",
+    "file": "fact_transactions.csv",
+    "columns": [
+      {
+        "name": "TransactionKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "DateKey",
+        "type": "Int64",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "CustomerKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "CorridorKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "ChannelKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "ProductKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "AmountUSD",
+        "type": "Decimal",
+        "summarize_by": "Sum",
+        "format": "$#,0",
+        "hidden": false
+      },
+      {
+        "name": "RiskScore",
+        "type": "Int64",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "IsFlagged",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "PrimaryRuleKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "RoundDollarFlag",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "TransactionType",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "name": "FactAlerts",
+    "file": "fact_alerts.csv",
+    "columns": [
+      {
+        "name": "AlertKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "TransactionKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "DateKey",
+        "type": "Int64",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "AlertDateKey",
+        "type": "Int64",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "CustomerKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "RuleKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "CorridorKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "ChannelKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "ProductKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "AlertAmountUSD",
+        "type": "Decimal",
+        "summarize_by": "Sum",
+        "format": "$#,0",
+        "hidden": false
+      },
+      {
+        "name": "RiskScore",
+        "type": "Int64",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Severity",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "AlertStatus",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "IsFalsePositive",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "IsTruePositive",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "EscalatedToCase",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CaseKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "ClosedDateKey",
+        "type": "Int64",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "HoursToDisposition",
+        "type": "Decimal",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "name": "FactCases",
+    "file": "fact_cases.csv",
+    "columns": [
+      {
+        "name": "CaseKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "AlertKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "CreatedDateKey",
+        "type": "Int64",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "ClosedDateKey",
+        "type": "Int64",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "CustomerKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "RuleKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "CorridorKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "AnalystKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "CasePriority",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CaseStatus",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "Outcome",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "SARFiled",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "SLAHours",
+        "type": "Int64",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "AgeDays",
+        "type": "Int64",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "HoursToClose",
+        "type": "Decimal",
+        "summarize_by": "Sum",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "IsOverdue",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "CaseAmountUSD",
+        "type": "Decimal",
+        "summarize_by": "Sum",
+        "format": "$#,0",
+        "hidden": false
+      }
+    ]
+  },
+  {
+    "name": "FactRuleGovernance",
+    "file": "fact_rule_governance.csv",
+    "columns": [
+      {
+        "name": "GovernanceKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "RuleKey",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "ChangeDateKey",
+        "type": "Int64",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": true
+      },
+      {
+        "name": "ChangeType",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "ChangeReason",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "ApprovalStatus",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "ApprovedBy",
+        "type": "String",
+        "summarize_by": "None",
+        "format": null,
+        "hidden": false
+      },
+      {
+        "name": "PrecisionBefore",
+        "type": "Decimal",
+        "summarize_by": "Sum",
+        "format": "0.0%",
+        "hidden": false
+      },
+      {
+        "name": "PrecisionAfter",
+        "type": "Decimal",
+        "summarize_by": "Sum",
+        "format": "0.0%",
+        "hidden": false
+      },
+      {
+        "name": "AlertVolumeDeltaPct",
+        "type": "Decimal",
+        "summarize_by": "Sum",
+        "format": "0.0%",
+        "hidden": false
+      }
+    ]
+  }
+]

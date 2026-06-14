@@ -1,0 +1,142 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1695.5977933951897,
+            "y": 370.41926650936796
+          },
+          "nodeIndex": "KPI Measures",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1461.5977933951895,
+            "y": 580.49481691445021
+          },
+          "nodeIndex": "ChurnRiskSnapshot",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 461.74799450799696
+          },
+          "nodeIndex": "CohortRetention",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 471.11932303045069,
+            "y": 441.50596137559683
+          },
+          "nodeIndex": "DimMonth",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1177.3629479747437,
+            "y": 493.92463404385722
+          },
+          "nodeIndex": "DimUser",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 890.323892263777,
+            "y": 261.0617901113128
+          },
+          "nodeIndex": "FactOrders",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 758.18162204086684,
+            "y": 614.72602171111168
+          },
+          "nodeIndex": "FactUserMonth",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 184.09254348120749,
+            "y": 108.04094914695384
+          },
+          "nodeIndex": "MonthlyKPIs",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 222.96753645437002,
+            "y": 814.83853301873592
+          },
+          "nodeIndex": "MonthlyLifecycleMix",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 603.24013356220007,
+            "y": -50
+          },
+          "nodeIndex": "SegmentMonthly",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

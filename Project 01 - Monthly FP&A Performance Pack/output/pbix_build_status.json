@@ -1,0 +1,49 @@
+﻿{
+    "project":  "Monthly FP\u0026A Performance Pack",
+    "checked_files":  19,
+    "missing_files":  [
+
+                      ],
+    "power_bi_desktop":  {
+                             "detected":  true,
+                             "version":  "2.154.1260.0",
+                             "install_location":  "C:\\Program Files\\WindowsApps\\Microsoft.MicrosoftPowerBIDesktop_2.154.1260.0_x64__8wekyb3d8bbwe",
+                             "executable":  "C:\\Program Files\\WindowsApps\\Microsoft.MicrosoftPowerBIDesktop_2.154.1260.0_x64__8wekyb3d8bbwe\\bin\\PBIDesktop.exe",
+                             "app_id":  "Microsoft.MicrosoftPowerBIDesktop_8wekyb3d8bbwe!Microsoft.MicrosoftPowerBIDesktop"
+                         },
+    "pbix_status":  "final PBIX opens in Power BI Desktop with 4-page native FP\u0026A dashboard canvas, no commentary sections, and complete semantic model",
+    "powerbi_project_dashboard":  "output/open_dashboard_powerbi.pbip",
+    "powerbi_project_package":  "output/powerbi_project",
+    "powerbi_project_validation":  {
+                                       "pages":  4,
+                                       "visuals":  16,
+                                       "json_files":  27,
+                                       "bad_json":  0
+                                   },
+    "visual_dashboard":  "output/dashboard.html",
+    "visual_dashboard_export":  "output/exports/fpa_dashboard_preview.html",
+    "pbix_target":  "output/dashboard_final.pbix",
+    "model_pbix":  "output/dashboard_model.pbix",
+    "desktop_model_validation":  {
+                                     "tables":  13,
+                                     "relationships":  19,
+                                     "measures":  53,
+                                     "actual_revenue_current_month":  333134817.64,
+                                     "latest_actual_date_key":  20260501,
+                                     "actual_cash_balance_current_month":  114644404.23,
+                                     "weighted_dso_current_month":  45.1152667470912
+                                 },
+    "next_action":  "Open output/dashboard_final.pbix in Power BI Desktop. The PBIX is the final deliverable; HTML/PBIP artifacts are retained as backups/reference only.",
+    "final_pbix_dashboard":  {
+                                 "path":  "output/dashboard_final.pbix",
+                                 "pages":  4,
+                                 "visual_containers":  41,
+                                 "latest_actual_month":  "May 2026",
+                                 "validation":  "PowerBIPackager.Validate passed; opened in Power BI Desktop with title dashboard_final; native visual audit passed",
+                                 "screenshot":  "output/screenshots/dashboard_final_v08_right_insight.png",
+                                 "commentary_visuals":  0,
+                                 "safe_zone_max_right":  1186,
+                                 "canvas_width":  1280,
+                                 "new_driver_chart":  "Revenue Variance by Region"
+                             }
+}

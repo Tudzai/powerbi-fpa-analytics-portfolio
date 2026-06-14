@@ -1,0 +1,49 @@
+﻿product_key,product,category_key,category,subcategory,brand,unit_price,gross_margin_rate,launch_date
+SKU_1001,Apparel Outerwear 1,CAT_APPAREL,Apparel,Outerwear,Mova,55.32,0.347745,2024-01-01
+SKU_1002,Apparel Outerwear 2,CAT_APPAREL,Apparel,Outerwear,Luma,68.86,0.317758,2024-01-01
+SKU_1003,Apparel Footwear 1,CAT_APPAREL,Apparel,Footwear,Aster,71.09,0.441018,2024-01-01
+SKU_1004,Apparel Footwear 2,CAT_APPAREL,Apparel,Footwear,ClearPeak,58.25,0.442347,2024-01-01
+SKU_1005,Apparel Basics 1,CAT_APPAREL,Apparel,Basics,Aster,59.14,0.427806,2024-01-01
+SKU_1006,Apparel Basics 2,CAT_APPAREL,Apparel,Basics,Northline,56.56,0.398227,2024-01-01
+SKU_1007,Apparel Accessories 1,CAT_APPAREL,Apparel,Accessories,Aster,49.81,0.381067,2024-01-01
+SKU_1008,Apparel Accessories 2,CAT_APPAREL,Apparel,Accessories,Aster,59.11,0.330026,2024-01-01
+SKU_1009,Beauty Skincare 1,CAT_BEAUTY,Beauty,Skincare,Northline,46.75,0.419118,2024-01-01
+SKU_1010,Beauty Skincare 2,CAT_BEAUTY,Beauty,Skincare,Mova,37.2,0.335247,2024-01-01
+SKU_1011,Beauty Makeup 1,CAT_BEAUTY,Beauty,Makeup,Northline,35.96,0.310836,2024-01-01
+SKU_1012,Beauty Makeup 2,CAT_BEAUTY,Beauty,Makeup,Mova,30.42,0.343861,2024-01-01
+SKU_1013,Beauty Fragrance 1,CAT_BEAUTY,Beauty,Fragrance,Luma,50.45,0.272351,2024-01-01
+SKU_1014,Beauty Fragrance 2,CAT_BEAUTY,Beauty,Fragrance,Aster,35.24,0.599031,2024-01-01
+SKU_1015,Beauty Haircare 1,CAT_BEAUTY,Beauty,Haircare,Luma,46.32,0.354126,2024-01-01
+SKU_1016,Beauty Haircare 2,CAT_BEAUTY,Beauty,Haircare,Luma,27.61,0.484137,2024-01-01
+SKU_1017,Electronics Audio 1,CAT_ELECTRONICS,Electronics,Audio,Aster,214.0,0.423605,2024-01-01
+SKU_1018,Electronics Audio 2,CAT_ELECTRONICS,Electronics,Audio,Northline,258.83,0.45437,2024-01-01
+SKU_1019,Electronics Smart Home 1,CAT_ELECTRONICS,Electronics,Smart Home,Mova,206.64,0.434457,2024-01-01
+SKU_1020,Electronics Smart Home 2,CAT_ELECTRONICS,Electronics,Smart Home,Luma,218.82,0.450978,2024-01-01
+SKU_1021,Electronics Wearables 1,CAT_ELECTRONICS,Electronics,Wearables,Northline,231.2,0.385058,2024-01-01
+SKU_1022,Electronics Wearables 2,CAT_ELECTRONICS,Electronics,Wearables,ClearPeak,208.98,0.324303,2024-01-01
+SKU_1023,Electronics Accessories 1,CAT_ELECTRONICS,Electronics,Accessories,Northline,262.59,0.410019,2024-01-01
+SKU_1024,Electronics Accessories 2,CAT_ELECTRONICS,Electronics,Accessories,Aster,205.32,0.518241,2024-01-01
+SKU_1025,Home Kitchen 1,CAT_HOME,Home,Kitchen,Luma,87.29,0.443508,2024-01-01
+SKU_1026,Home Kitchen 2,CAT_HOME,Home,Kitchen,Mova,95.4,0.531964,2024-01-01
+SKU_1027,Home Bedding 1,CAT_HOME,Home,Bedding,ClearPeak,102.06,0.282876,2024-01-01
+SKU_1028,Home Bedding 2,CAT_HOME,Home,Bedding,Aster,83.76,0.275347,2024-01-01
+SKU_1029,Home Decor 1,CAT_HOME,Home,Decor,Luma,98.15,0.369398,2024-01-01
+SKU_1030,Home Decor 2,CAT_HOME,Home,Decor,Aster,90.66,0.427144,2024-01-01
+SKU_1031,Home Storage 1,CAT_HOME,Home,Storage,Mova,87.53,0.438962,2024-01-01
+SKU_1032,Home Storage 2,CAT_HOME,Home,Storage,Luma,111.87,0.227988,2024-01-01
+SKU_1033,Sports Training 1,CAT_SPORTS,Sports,Training,Northline,78.25,0.346468,2024-01-01
+SKU_1034,Sports Training 2,CAT_SPORTS,Sports,Training,Aster,82.03,0.498776,2024-01-01
+SKU_1035,Sports Outdoor 1,CAT_SPORTS,Sports,Outdoor,Northline,83.01,0.392996,2024-01-01
+SKU_1036,Sports Outdoor 2,CAT_SPORTS,Sports,Outdoor,Aster,68.56,0.347376,2024-01-01
+SKU_1037,Sports Recovery 1,CAT_SPORTS,Sports,Recovery,Luma,67.21,0.423908,2024-01-01
+SKU_1038,Sports Recovery 2,CAT_SPORTS,Sports,Recovery,Aster,91.48,0.398894,2024-01-01
+SKU_1039,Sports Team Sports 1,CAT_SPORTS,Sports,Team Sports,Luma,89.83,0.435652,2024-01-01
+SKU_1040,Sports Team Sports 2,CAT_SPORTS,Sports,Team Sports,Northline,78.28,0.425451,2024-01-01
+SKU_1041,Books Business 1,CAT_BOOKS,Books,Business,Luma,21.2,0.359095,2024-01-01
+SKU_1042,Books Business 2,CAT_BOOKS,Books,Business,Northline,25.86,0.539316,2024-01-01
+SKU_1043,Books Fiction 1,CAT_BOOKS,Books,Fiction,Luma,20.68,0.400925,2024-01-01
+SKU_1044,Books Fiction 2,CAT_BOOKS,Books,Fiction,Northline,26.55,0.548293,2024-01-01
+SKU_1045,Books Children 1,CAT_BOOKS,Books,Children,Aster,24.57,0.348934,2024-01-01
+SKU_1046,Books Children 2,CAT_BOOKS,Books,Children,Mova,27.66,0.417801,2024-01-01
+SKU_1047,Books Wellness 1,CAT_BOOKS,Books,Wellness,Aster,24.09,0.379712,2024-01-01
+SKU_1048,Books Wellness 2,CAT_BOOKS,Books,Wellness,ClearPeak,28.96,0.415092,2024-01-01

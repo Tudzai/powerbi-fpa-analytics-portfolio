@@ -1,0 +1,19 @@
+{
+  "synthetic": true,
+  "seed": 20260611,
+  "tables": {
+    "dim_date": 516,
+    "dim_country": 12,
+    "dim_corridor": 12,
+    "dim_channel": 8,
+    "dim_product": 8,
+    "dim_rule": 10,
+    "dim_analyst": 8,
+    "dim_customer": 180,
+    "fact_transactions": 36000,
+    "fact_alerts": 6611,
+    "fact_cases": 3556,
+    "fact_rule_governance": 26
+  },
+  "latest_complete_month": "May 2026"
+}

@@ -1,0 +1,646 @@
+{
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimDate",
+        "lineageTag": "cda1b021-8148-4439-8436-f985e651e140",
+        "columns": [
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date",
+            "lineageTag": "d4ecbd86-d21a-4b54-8754-466c9a21171f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "date_key",
+            "dataType": "int64",
+            "sourceColumn": "date_key",
+            "lineageTag": "c1716f15-15b8-4ca5-9941-b1320a4dad12",
+            "formatString": "0"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "lineageTag": "31a5c077-1cb2-4a8b-b419-91fa0bf26723",
+            "formatString": "0"
+          },
+          {
+            "name": "quarter",
+            "dataType": "string",
+            "sourceColumn": "quarter",
+            "lineageTag": "053ec23a-5246-4379-bffd-f4f47cd0c90d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month",
+            "dataType": "int64",
+            "sourceColumn": "month",
+            "lineageTag": "ed2ae7e6-2021-4a6d-bded-7f973d9be47a",
+            "formatString": "0"
+          },
+          {
+            "name": "month_name",
+            "dataType": "string",
+            "sourceColumn": "month_name",
+            "lineageTag": "1cad1d89-3167-441e-bece-65c691f1e611",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_key",
+            "dataType": "string",
+            "sourceColumn": "month_key",
+            "lineageTag": "b28ff5a0-cd53-4157-819c-73ee290c1811",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "week_start",
+            "dataType": "dateTime",
+            "sourceColumn": "week_start",
+            "lineageTag": "9f2d9e1d-4baf-46b1-8cb1-94ef6b0eb79c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_weekend",
+            "dataType": "string",
+            "sourceColumn": "is_weekend",
+            "lineageTag": "e5fb29ad-da43-420d-ae9c-47c350fdd5f9",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimDate",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive - BEE LOGISTICS CORPORATION\\\\Documentss\\\\Portfolio\\\\Project 06 - Marketing Campaign ROI\\\\bi_marketing_campaign_roi\\\\data\\\\prepared\\\\dim_date.csv\"), [Delimiter=\",\", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"date\", type date}, {\"date_key\", Int64.Type}, {\"year\", Int64.Type}, {\"quarter\", type text}, {\"month\", Int64.Type}, {\"month_name\", type text}, {\"month_key\", type text}, {\"week_start\", type date}, {\"is_weekend\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimMonth",
+        "lineageTag": "d0b3c849-b43c-43b8-8925-ccb06b786f14",
+        "columns": [
+          {
+            "name": "month_key",
+            "dataType": "string",
+            "sourceColumn": "month_key",
+            "lineageTag": "fc99f574-27bc-48b5-97cf-6bd8e0ccad37",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "lineageTag": "4480610c-d21a-4288-87d1-833bc08da643",
+            "formatString": "0"
+          },
+          {
+            "name": "month",
+            "dataType": "int64",
+            "sourceColumn": "month",
+            "lineageTag": "3b3e87b3-5f88-4e9f-90e2-74587eff5440",
+            "formatString": "0"
+          },
+          {
+            "name": "month_label",
+            "dataType": "string",
+            "sourceColumn": "month_label",
+            "lineageTag": "f8290d09-891c-4334-9328-83fed461a505",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_start",
+            "dataType": "dateTime",
+            "sourceColumn": "month_start",
+            "lineageTag": "e4d51cf1-037b-42d1-b43c-9f587bc9dba9",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimMonth",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive - BEE LOGISTICS CORPORATION\\\\Documentss\\\\Portfolio\\\\Project 06 - Marketing Campaign ROI\\\\bi_marketing_campaign_roi\\\\data\\\\prepared\\\\dim_month.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"month_key\", type text}, {\"year\", Int64.Type}, {\"month\", Int64.Type}, {\"month_label\", type text}, {\"month_start\", type date}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimChannel",
+        "lineageTag": "9248ce8e-6607-41b4-9b52-d870810482c9",
+        "columns": [
+          {
+            "name": "channel_key",
+            "dataType": "string",
+            "sourceColumn": "channel_key",
+            "lineageTag": "2418c825-b6cd-4190-aaf2-7a1f4a9c32a1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "channel",
+            "dataType": "string",
+            "sourceColumn": "channel",
+            "lineageTag": "d2466770-b2bf-4bec-bdd6-8f57c86ed64c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "paid_organic",
+            "dataType": "string",
+            "sourceColumn": "paid_organic",
+            "lineageTag": "a495405d-fd0f-46f5-b1a7-249d49a6a864",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "target_roas",
+            "dataType": "double",
+            "sourceColumn": "target_roas",
+            "lineageTag": "bd8ced02-de41-4484-8223-5edbcdc71606",
+            "formatString": "0.00x"
+          },
+          {
+            "name": "target_cac",
+            "dataType": "int64",
+            "sourceColumn": "target_cac",
+            "lineageTag": "d125a3d1-964d-42f5-be99-d2644aeb5f44",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "base_spend",
+            "dataType": "int64",
+            "sourceColumn": "base_spend",
+            "lineageTag": "a22355d3-8517-403a-8d26-7744d03809bb",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "recommended_action",
+            "dataType": "string",
+            "sourceColumn": "recommended_action",
+            "lineageTag": "ec225c27-45b1-4623-ab87-fbd406117725",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimChannel",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive - BEE LOGISTICS CORPORATION\\\\Documentss\\\\Portfolio\\\\Project 06 - Marketing Campaign ROI\\\\bi_marketing_campaign_roi\\\\data\\\\prepared\\\\dim_channel.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"channel_key\", type text}, {\"channel\", type text}, {\"paid_organic\", type text}, {\"target_roas\", type number}, {\"target_cac\", Int64.Type}, {\"base_spend\", Int64.Type}}, \"en-US\"),",
+                "    WithAction = Table.AddColumn(ChangedType, \"recommended_action\", each if List.Contains({\"Direct\", \"Email\", \"Referral Partners\", \"Organic Search\"}, [channel]) then \"Scale\" else if [channel] = \"Affiliates\" then \"Optimize\" else \"Review/Cut\", type text)",
+                "in",
+                "    WithAction"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCampaign",
+        "lineageTag": "f8997272-ec04-4031-8a80-f9b367830ca0",
+        "columns": [
+          {
+            "name": "campaign_key",
+            "dataType": "string",
+            "sourceColumn": "campaign_key",
+            "lineageTag": "24d0e184-91c5-4adf-8f59-8909ae2c51f4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "campaign_name",
+            "dataType": "string",
+            "sourceColumn": "campaign_name",
+            "lineageTag": "49a98b17-a36c-42c5-b225-2ae7268086a1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "channel_key",
+            "dataType": "string",
+            "sourceColumn": "channel_key",
+            "lineageTag": "26c580d2-4397-45ca-a1e3-d1fad2e60972",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "channel",
+            "dataType": "string",
+            "sourceColumn": "channel",
+            "lineageTag": "0cab897e-b416-4ad7-9a46-a4967fa2dfbc",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "paid_organic",
+            "dataType": "string",
+            "sourceColumn": "paid_organic",
+            "lineageTag": "cc4d693f-8213-4d0c-adc8-141c03bab488",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "launch_date",
+            "dataType": "dateTime",
+            "sourceColumn": "launch_date",
+            "lineageTag": "f2e63294-a47f-4e89-a632-7d8b8a468b69",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "funnel_stage",
+            "dataType": "string",
+            "sourceColumn": "funnel_stage",
+            "lineageTag": "cb93838a-404a-4781-8b08-a7036d18a4de",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "budget_tier",
+            "dataType": "string",
+            "sourceColumn": "budget_tier",
+            "lineageTag": "a9a64563-2ca7-41ad-b9f2-7d5f61ea3d8b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "recommended_action",
+            "dataType": "string",
+            "sourceColumn": "recommended_action",
+            "lineageTag": "8c51eaa0-483c-4f85-a69e-b00604af337d",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimCampaign",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive - BEE LOGISTICS CORPORATION\\\\Documentss\\\\Portfolio\\\\Project 06 - Marketing Campaign ROI\\\\bi_marketing_campaign_roi\\\\data\\\\prepared\\\\dim_campaign.csv\"), [Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"campaign_key\", type text}, {\"campaign_name\", type text}, {\"channel_key\", type text}, {\"channel\", type text}, {\"paid_organic\", type text}, {\"launch_date\", type date}, {\"funnel_stage\", type text}, {\"budget_tier\", type text}}, \"en-US\"),",
+                "    WithAction = Table.AddColumn(ChangedType, \"recommended_action\", each if List.Contains({\"Direct\", \"Email\", \"Referral Partners\", \"Organic Search\"}, [channel]) then \"Scale\" else if [channel] = \"Affiliates\" then \"Optimize\" else \"Review/Cut\", type text)",
+                "in",
+                "    WithAction"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCampaignDaily",
+        "lineageTag": "d2ad41b4-da4b-4d44-ab92-e2646b105bc4",
+        "columns": [
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date",
+            "lineageTag": "09fb593e-d0cb-40dd-8458-9fdca5803652",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "campaign_key",
+            "dataType": "string",
+            "sourceColumn": "campaign_key",
+            "lineageTag": "a4d97310-7268-4acb-8bd8-7f1f4d169173",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "channel_key",
+            "dataType": "string",
+            "sourceColumn": "channel_key",
+            "lineageTag": "c5326f3d-93a5-493c-9dbc-4fd923465091",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "paid_organic",
+            "dataType": "string",
+            "sourceColumn": "paid_organic",
+            "lineageTag": "3f9fb6d8-7fa2-4194-adf2-09fc1e7b7289",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "spend",
+            "dataType": "double",
+            "sourceColumn": "spend",
+            "lineageTag": "1f8444a0-a0b3-4d06-8c93-3304d9c3e516",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "impressions",
+            "dataType": "int64",
+            "sourceColumn": "impressions",
+            "lineageTag": "aae1027c-1e47-4a09-927c-58f623d464f8",
+            "formatString": "0"
+          },
+          {
+            "name": "clicks",
+            "dataType": "int64",
+            "sourceColumn": "clicks",
+            "lineageTag": "6cf8af49-f10c-4c11-8f8c-48ec4b118824",
+            "formatString": "0"
+          },
+          {
+            "name": "leads",
+            "dataType": "int64",
+            "sourceColumn": "leads",
+            "lineageTag": "1e092f88-9314-47c8-8131-6c2691a8e14a",
+            "formatString": "0"
+          },
+          {
+            "name": "conversions",
+            "dataType": "int64",
+            "sourceColumn": "conversions",
+            "lineageTag": "11155c94-eede-4396-b855-82dc10e41cf3",
+            "formatString": "0"
+          },
+          {
+            "name": "new_customers",
+            "dataType": "int64",
+            "sourceColumn": "new_customers",
+            "lineageTag": "7dd9d7d4-c648-47af-a8bc-a3c9be5a4a90",
+            "formatString": "0"
+          },
+          {
+            "name": "revenue",
+            "dataType": "double",
+            "sourceColumn": "revenue",
+            "lineageTag": "0426998e-de2e-4405-8d23-c929baaf25f1",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "gross_profit",
+            "dataType": "double",
+            "sourceColumn": "gross_profit",
+            "lineageTag": "3ac9c6da-8519-430c-8da0-9a3282ba25ff",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "month_key",
+            "dataType": "string",
+            "sourceColumn": "month_key",
+            "lineageTag": "f98d97b6-faf6-44e3-9193-e197b4bd14d2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "lineageTag": "4116e6a6-137f-4e1f-b417-afb4dc7705c6",
+            "formatString": "0"
+          },
+          {
+            "name": "month",
+            "dataType": "int64",
+            "sourceColumn": "month",
+            "lineageTag": "b156ff6c-0c7e-47e7-9fa3-7074a5924b90",
+            "formatString": "0"
+          },
+          {
+            "name": "week_start",
+            "dataType": "dateTime",
+            "sourceColumn": "week_start",
+            "lineageTag": "8503cb65-096c-4f2a-94bd-5ca46c58a0b3",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactCampaignDaily",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive - BEE LOGISTICS CORPORATION\\\\Documentss\\\\Portfolio\\\\Project 06 - Marketing Campaign ROI\\\\bi_marketing_campaign_roi\\\\data\\\\prepared\\\\fact_campaign_daily.csv\"), [Delimiter=\",\", Columns=16, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"date\", type date}, {\"campaign_key\", type text}, {\"channel_key\", type text}, {\"paid_organic\", type text}, {\"spend\", type number}, {\"impressions\", Int64.Type}, {\"clicks\", Int64.Type}, {\"leads\", Int64.Type}, {\"conversions\", Int64.Type}, {\"new_customers\", Int64.Type}, {\"revenue\", type number}, {\"gross_profit\", type number}, {\"month_key\", type text}, {\"year\", Int64.Type}, {\"month\", Int64.Type}, {\"week_start\", type date}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI_Measures",
+        "lineageTag": "1d5873cb-c790-4796-9db9-aea6c6e426fb",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "MeasureName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[MeasureName]",
+            "isHidden": true,
+            "lineageTag": "bd0495b0-dfb6-4468-9a94-00503336f126"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "KPI_Measures",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": "DATATABLE(\"MeasureName\", STRING, {{\"KPI\"}})"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Spend",
+            "description": "Portfolio media and owned-channel spend.",
+            "expression": "SUM ( FactCampaignDaily[spend] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "21b54f93-eb99-482b-a922-07a54a6751ec"
+          },
+          {
+            "name": "Revenue",
+            "description": "Attributed revenue.",
+            "expression": "SUM ( FactCampaignDaily[revenue] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "986fb99c-56ab-41cb-8f4b-42e184731dcc"
+          },
+          {
+            "name": "Gross Profit",
+            "description": "Attributed gross profit.",
+            "expression": "SUM ( FactCampaignDaily[gross_profit] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "463902df-2d90-48cf-bd98-cf07acdf0b3a"
+          },
+          {
+            "name": "Clicks",
+            "description": "Total clicks.",
+            "expression": "SUM ( FactCampaignDaily[clicks] )",
+            "formatString": "#,0",
+            "lineageTag": "b0bfb9c4-b618-4cf5-aaaa-4b3cf8c39db0"
+          },
+          {
+            "name": "Conversions",
+            "description": "Total conversions.",
+            "expression": "SUM ( FactCampaignDaily[conversions] )",
+            "formatString": "#,0",
+            "lineageTag": "d11193de-fde0-4a78-b233-435c451a4fcf"
+          },
+          {
+            "name": "New Customers",
+            "description": "New customers attributed to campaigns.",
+            "expression": "SUM ( FactCampaignDaily[new_customers] )",
+            "formatString": "#,0",
+            "lineageTag": "38badeac-dd42-4c69-a4fc-aead0cc2f3f9"
+          },
+          {
+            "name": "ROAS",
+            "description": "Revenue divided by spend.",
+            "expression": "DIVIDE ( [Revenue], [Spend] )",
+            "formatString": "0.00x",
+            "lineageTag": "e8f1988c-fdf2-4944-aa13-ad4020cf0450"
+          },
+          {
+            "name": "Marketing ROI",
+            "description": "Profit after spend divided by spend.",
+            "expression": "DIVIDE ( [Gross Profit] - [Spend], [Spend] )",
+            "formatString": "0.0%",
+            "lineageTag": "dc4b162e-bfa4-4104-9cc0-48ac6384f7e7"
+          },
+          {
+            "name": "CAC",
+            "description": "Spend divided by new customers.",
+            "expression": "DIVIDE ( [Spend], [New Customers] )",
+            "formatString": "$#,0",
+            "lineageTag": "3739f1c8-1e1d-447b-a3ea-66f7b78bede8"
+          },
+          {
+            "name": "Conversion Rate",
+            "description": "Conversions divided by clicks.",
+            "expression": "DIVIDE ( [Conversions], [Clicks] )",
+            "formatString": "0.0%",
+            "lineageTag": "a9063aa6-874f-402a-98f8-a528edaad433"
+          },
+          {
+            "name": "Target ROAS",
+            "description": "Average selected channel ROAS target.",
+            "expression": "AVERAGE ( DimChannel[target_roas] )",
+            "formatString": "0.00x",
+            "lineageTag": "ee4eb93e-9ba7-4a36-801b-cbae7230307e"
+          },
+          {
+            "name": "Target CAC",
+            "description": "Average selected channel CAC target.",
+            "expression": "AVERAGE ( DimChannel[target_cac] )",
+            "formatString": "$#,0",
+            "lineageTag": "06efa26a-9edf-4998-ac31-e07bd6a80a91"
+          },
+          {
+            "name": "ROAS vs Target",
+            "description": "ROAS minus target ROAS.",
+            "expression": "[ROAS] - [Target ROAS]",
+            "formatString": "0.00x",
+            "lineageTag": "bc63638b-cb97-45fa-b9af-f796eb203f0c"
+          },
+          {
+            "name": "CAC vs Target",
+            "description": "Positive values mean CAC is under target.",
+            "expression": "[Target CAC] - [CAC]",
+            "formatString": "$#,0",
+            "lineageTag": "845576ff-b549-4086-adc6-074ebdcca4cd"
+          },
+          {
+            "name": "Spend Share",
+            "description": "Share of selected spend.",
+            "expression": "DIVIDE ( [Spend], CALCULATE ( [Spend], ALLSELECTED ( DimChannel[channel] ) ) )",
+            "formatString": "0.0%",
+            "lineageTag": "bec4aef1-dc04-4fa4-a64b-11f596821c45"
+          },
+          {
+            "name": "Campaign Scale Score",
+            "description": "Slicer-aware scale ranking score.",
+            "expression": "VAR campaignCount = COUNTROWS ( ALLSELECTED ( DimCampaign[campaign_name] ) )\nVAR roasPct = DIVIDE ( RANKX ( ALLSELECTED ( DimCampaign[campaign_name] ), [ROAS], , ASC, DENSE ) - 1, campaignCount - 1 )\nVAR roiPct = DIVIDE ( RANKX ( ALLSELECTED ( DimCampaign[campaign_name] ), [Marketing ROI], , ASC, DENSE ) - 1, campaignCount - 1 )\nVAR inverseCacPct = 1 - DIVIDE ( RANKX ( ALLSELECTED ( DimCampaign[campaign_name] ), [CAC], , ASC, DENSE ) - 1, campaignCount - 1 )\nVAR profitPct = DIVIDE ( RANKX ( ALLSELECTED ( DimCampaign[campaign_name] ), [Gross Profit], , ASC, DENSE ) - 1, campaignCount - 1 )\nRETURN IF ( campaignCount <= 1, BLANK (), ( roasPct * 0.4 + roiPct * 0.3 + inverseCacPct * 0.2 + profitPct * 0.1 ) * 100 )",
+            "formatString": "0.0",
+            "lineageTag": "f3c3a941-7689-46d0-a9d4-e625352f3e2d"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "Rel_FactCampaignDaily_date_DimDate_date",
+        "fromTable": "FactCampaignDaily",
+        "fromColumn": "date",
+        "toTable": "DimDate",
+        "toColumn": "date"
+      },
+      {
+        "name": "Rel_FactCampaignDaily_month_key_DimMonth_month_key",
+        "fromTable": "FactCampaignDaily",
+        "fromColumn": "month_key",
+        "toTable": "DimMonth",
+        "toColumn": "month_key"
+      },
+      {
+        "name": "Rel_FactCampaignDaily_channel_key_DimChannel_channel_key",
+        "fromTable": "FactCampaignDaily",
+        "fromColumn": "channel_key",
+        "toTable": "DimChannel",
+        "toColumn": "channel_key"
+      },
+      {
+        "name": "Rel_FactCampaignDaily_campaign_key_DimCampaign_campaign_key",
+        "fromTable": "FactCampaignDaily",
+        "fromColumn": "campaign_key",
+        "toTable": "DimCampaign",
+        "toColumn": "campaign_key"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "Project",
+        "value": "Project 06 - Marketing Campaign ROI Marketing Campaign ROI Dashboard"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DimDate\", \"DimMonth\", \"DimChannel\", \"DimCampaign\", \"FactCampaignDaily\", \"KPI_Measures\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "cultures": [
+      {
+        "name": "en-US"
+      }
+    ]
+  }
+}

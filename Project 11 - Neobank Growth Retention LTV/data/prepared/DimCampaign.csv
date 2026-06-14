@@ -1,0 +1,13 @@
+﻿CampaignKey,CampaignName,ChannelKey,ChannelName,Objective
+seo_guides,SEO Banking Guides,organic,Organic Search,Signup
+appstore,App Store Optimization,organic,Organic Search,Signup
+brand_search,Brand Search Always-On,paid_search,Paid Search,Signup
+competitor,Competitor Search,paid_search,Paid Search,Funded Account
+creator_cashback,Creator Cashback,paid_social,Paid Social,KYC
+salary_lookalike,Salary Advance Lookalike,paid_social,Paid Social,Funded Account
+member_ref,Member Referral Loop,referral,Referral,Funded Account
+payroll_ref,Payroll Referral,referral,Referral,Activation
+payroll_partner,Payroll Partner Launch,partner,Partner Marketplace,Funded Account
+wallet_bundle,Wallet Bundle,partner,Partner Marketplace,Activation
+winback,Dormant Winback,lifecycle,Lifecycle Email,Reactivation
+kyc_reminder,KYC Reminder Journey,lifecycle,Lifecycle Email,KYC

@@ -1,0 +1,151 @@
+{
+  "name": "Marketplace Command Center v3",
+  "dataColors": [
+    "#EE4D2D",
+    "#2563EB",
+    "#0EA5E9",
+    "#0F766E",
+    "#16A34A",
+    "#F59E0B",
+    "#DC2626",
+    "#7C3AED",
+    "#475569"
+  ],
+  "background": "#F6F7FB",
+  "foreground": "#101828",
+  "tableAccent": "#EE4D2D",
+  "riskColors": {
+    "good": "#16A34A",
+    "warning": "#F59E0B",
+    "bad": "#DC2626"
+  },
+  "textClasses": {
+    "callout": {
+      "fontSize": 24,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#101828"
+    },
+    "title": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#101828"
+    },
+    "header": {
+      "fontSize": 11,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#101828"
+    },
+    "label": {
+      "fontSize": 9,
+      "fontFace": "Segoe UI",
+      "color": "#667085"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#D8DEE9"
+              }
+            },
+            "radius": 6,
+            "width": 1
+          }
+        ]
+      }
+    },
+    "cardVisual": {
+      "*": {
+        "value": [
+          {
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 24
+          }
+        ],
+        "label": [
+          {
+            "show": true,
+            "position": "belowValue",
+            "fontFamily": "Segoe UI",
+            "fontSize": 8,
+            "fontColor": {
+              "solid": {
+                "color": "#667085"
+              }
+            }
+          }
+        ],
+        "spacing": [
+          {
+            "verticalSpacing": 2
+          }
+        ],
+        "padding": [
+          {
+            "paddingUniform": 8,
+            "paddingIndividual": false
+          }
+        ]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "columnHeaders": [
+          {
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 8
+          }
+        ],
+        "values": [
+          {
+            "fontFamily": "Segoe UI",
+            "fontSize": 8
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F6F7FB"
+              }
+            }
+          }
+        ],
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F6F7FB"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

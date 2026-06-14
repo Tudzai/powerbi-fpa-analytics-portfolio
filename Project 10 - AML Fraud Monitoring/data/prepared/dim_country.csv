@@ -1,0 +1,13 @@
+CountryCode,Country,Region,CountryRiskScore,CountryRiskTier
+US,United States,North America,38,Low
+GB,United Kingdom,Europe,42,Low
+SG,Singapore,Asia Pacific,36,Low
+VN,Vietnam,Asia Pacific,44,Low
+HK,Hong Kong,Asia Pacific,53,Medium
+AE,United Arab Emirates,Middle East,61,High
+TR,Turkey,EMEA,66,High
+NG,Nigeria,Africa,72,High
+ZA,South Africa,Africa,58,Medium
+BR,Brazil,Latin America,57,Medium
+MX,Mexico,Latin America,55,Medium
+PH,Philippines,Asia Pacific,49,Medium

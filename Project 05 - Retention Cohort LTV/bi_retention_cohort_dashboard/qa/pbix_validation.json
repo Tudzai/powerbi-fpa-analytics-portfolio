@@ -1,0 +1,9 @@
+{
+  "status": "pass",
+  "pbix_exists": true,
+  "pbix_size_bytes": 1881639,
+  "pbip_exists": true,
+  "screenshot_count": 4,
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 05 - Retention Cohort LTV\\bi_retention_cohort_dashboard\\output\\dashboard_final.pbix",
+  "note": "PBIX exists and Power BI Desktop render evidence is recorded in qa/powerbi_desktop_evidence.md."
+}

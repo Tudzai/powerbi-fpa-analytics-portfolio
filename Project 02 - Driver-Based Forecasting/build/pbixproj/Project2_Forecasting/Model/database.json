@@ -1,0 +1,1726 @@
+{
+  "name": "Project2_Driver_Forecasting",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimDate",
+        "lineageTag": "a8679270-99af-44e5-88d3-c9f25e074016",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "lineageTag": "dd58eefe-ef4b-404d-b894-e2f6accb12c6",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "lineageTag": "dc5b45b3-0fee-4dec-93fb-79778401ddf5",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "86eab6f6-3c36-4adc-95db-ba268bc4a662",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "lineageTag": "31c444e5-a8e7-474b-bb8e-784d92d03603",
+            "formatString": "0"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter",
+            "lineageTag": "c7f55db1-1a6d-43ed-a9a6-44de797a5582",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthNumber",
+            "dataType": "int64",
+            "sourceColumn": "MonthNumber",
+            "lineageTag": "8c61ddd6-5181-49d9-8d7d-e6c05c97fb7c",
+            "formatString": "0"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "lineageTag": "ac7f1bc7-28a7-4bb8-9b7b-958264d4b883",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearMonth",
+            "dataType": "string",
+            "sourceColumn": "YearMonth",
+            "lineageTag": "9e86cbdd-9182-43ea-ad61-daaad3cbeee3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthSort",
+            "dataType": "int64",
+            "sourceColumn": "MonthSort",
+            "lineageTag": "4d938ead-b010-482a-808f-baa9b57f68a0",
+            "formatString": "0"
+          },
+          {
+            "name": "IsLatestActualMonth",
+            "dataType": "boolean",
+            "sourceColumn": "IsLatestActualMonth",
+            "lineageTag": "af24889f-c4c5-40f3-8b49-ea37a0b159c1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsForecastMonth",
+            "dataType": "boolean",
+            "sourceColumn": "IsForecastMonth",
+            "lineageTag": "931d771a-c898-4dd5-b241-be86fa444fb0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FiscalYear",
+            "dataType": "int64",
+            "sourceColumn": "FiscalYear",
+            "lineageTag": "4c7817b3-6a35-416b-a59f-2f75baf6ce62",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimDate",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\dim_date.csv\"), [Delimiter=\",\", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"Date\", type date}, {\"DateKey\", Int64.Type}, {\"MonthStart\", type date}, {\"Year\", Int64.Type}, {\"Quarter\", type text}, {\"MonthNumber\", Int64.Type}, {\"MonthName\", type text}, {\"YearMonth\", type text}, {\"MonthSort\", Int64.Type}, {\"IsLatestActualMonth\", type logical}, {\"IsForecastMonth\", type logical}, {\"FiscalYear\", Int64.Type}}, \"en-US\"),",
+                "    MonthlyGrain = Table.Distinct(ChangedType, {\"DateKey\"})",
+                "in",
+                "    MonthlyGrain"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimScenario",
+        "lineageTag": "0142cc9a-3308-4d40-bae7-2b400fca9562",
+        "columns": [
+          {
+            "name": "ScenarioKey",
+            "dataType": "string",
+            "sourceColumn": "ScenarioKey",
+            "lineageTag": "1f1141e7-98a2-4b4e-9dc1-c7ed9fb4df30",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Scenario",
+            "dataType": "string",
+            "sourceColumn": "Scenario",
+            "lineageTag": "391753d1-2d21-40d7-af1c-7b87b0c93286",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SortOrder",
+            "dataType": "int64",
+            "sourceColumn": "SortOrder",
+            "lineageTag": "1b82eb1b-9ab6-4b47-b94c-42c9ca8ce115",
+            "formatString": "0"
+          },
+          {
+            "name": "VolumeMultiplier",
+            "dataType": "double",
+            "sourceColumn": "VolumeMultiplier",
+            "lineageTag": "777e3673-5d0b-4b03-a976-49d17a0e0890",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "RateMultiplier",
+            "dataType": "double",
+            "sourceColumn": "RateMultiplier",
+            "lineageTag": "0fc3bdcc-1b08-4b57-b1a3-d870ff6fc254",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "CostInflationPct",
+            "dataType": "double",
+            "sourceColumn": "CostInflationPct",
+            "lineageTag": "bcbae1d6-57cb-4464-b7e9-fda6f60aaaed",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "HeadcountGrowthPct",
+            "dataType": "double",
+            "sourceColumn": "HeadcountGrowthPct",
+            "lineageTag": "77c009db-6aa9-4526-aa8a-110d3de3fa01",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "SalaryInflationPct",
+            "dataType": "double",
+            "sourceColumn": "SalaryInflationPct",
+            "lineageTag": "b6f55614-43fc-447e-8401-090f4018fe0e",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "DSODaysAdjustment",
+            "dataType": "int64",
+            "sourceColumn": "DSODaysAdjustment",
+            "lineageTag": "03a75d78-edfe-4419-a383-61e61229f2f5",
+            "formatString": "0"
+          },
+          {
+            "name": "DPODaysAdjustment",
+            "dataType": "int64",
+            "sourceColumn": "DPODaysAdjustment",
+            "lineageTag": "15164757-75fd-4671-9b80-e701e9758f12",
+            "formatString": "0"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description",
+            "lineageTag": "1e3cc566-3b81-4b28-b94b-4f3197181049",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimScenario",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\dim_scenario.csv\"), [Delimiter=\",\", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"ScenarioKey\", type text}, {\"Scenario\", type text}, {\"SortOrder\", Int64.Type}, {\"VolumeMultiplier\", type number}, {\"RateMultiplier\", type number}, {\"CostInflationPct\", type number}, {\"HeadcountGrowthPct\", type number}, {\"SalaryInflationPct\", type number}, {\"DSODaysAdjustment\", Int64.Type}, {\"DPODaysAdjustment\", Int64.Type}, {\"Description\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimService",
+        "lineageTag": "6b67713a-769e-43f8-95ed-c83a7b34701a",
+        "columns": [
+          {
+            "name": "ServiceKey",
+            "dataType": "string",
+            "sourceColumn": "ServiceKey",
+            "lineageTag": "473ec1e5-64ce-43bf-be71-afe686fc0d5b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ServiceLine",
+            "dataType": "string",
+            "sourceColumn": "ServiceLine",
+            "lineageTag": "52614ef4-db51-42e2-9ef5-740fb7deaaf6",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BusinessUnit",
+            "dataType": "string",
+            "sourceColumn": "BusinessUnit",
+            "lineageTag": "faa3ce74-85af-4971-8749-34c168c2d562",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BaseJobs",
+            "dataType": "int64",
+            "sourceColumn": "BaseJobs",
+            "lineageTag": "cd325fb5-a532-41d1-9a99-3e379f7d79f6",
+            "formatString": "0"
+          },
+          {
+            "name": "BaseRateUSD",
+            "dataType": "int64",
+            "sourceColumn": "BaseRateUSD",
+            "lineageTag": "d3ec7ea1-2635-4f91-8dfd-4d64aa96889c",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "CostRatio",
+            "dataType": "double",
+            "sourceColumn": "CostRatio",
+            "lineageTag": "fe81c9a1-d465-4a72-999f-8f549065fcca"
+          },
+          {
+            "name": "WorkingCapitalIntensity",
+            "dataType": "double",
+            "sourceColumn": "WorkingCapitalIntensity",
+            "lineageTag": "51616423-d3e7-4c63-a86b-dfa79412ba0f",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimService",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\dim_service.csv\"), [Delimiter=\",\", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"ServiceKey\", type text}, {\"ServiceLine\", type text}, {\"BusinessUnit\", type text}, {\"BaseJobs\", Int64.Type}, {\"BaseRateUSD\", Int64.Type}, {\"CostRatio\", type number}, {\"WorkingCapitalIntensity\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimRegion",
+        "lineageTag": "77e7f872-a7f8-4659-9fb6-df5832bcd037",
+        "columns": [
+          {
+            "name": "RegionKey",
+            "dataType": "string",
+            "sourceColumn": "RegionKey",
+            "lineageTag": "2438019c-92e8-4e9e-9319-ccbf8147d22a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region",
+            "lineageTag": "9bbdfb0d-fc1a-455b-ad64-5eccdc20ddf2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "lineageTag": "9444678b-3ac1-4227-bf5f-73b35359931f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Hub",
+            "dataType": "string",
+            "sourceColumn": "Hub",
+            "lineageTag": "2c7faddd-b9ee-400a-a8bc-ed4d5fdb56ea",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionWeight",
+            "dataType": "double",
+            "sourceColumn": "RegionWeight",
+            "lineageTag": "524e6456-38de-49e7-9575-431cce3ca7b8",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimRegion",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\dim_region.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"RegionKey\", type text}, {\"Region\", type text}, {\"Country\", type text}, {\"Hub\", type text}, {\"RegionWeight\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCustomerSegment",
+        "lineageTag": "05687b12-3f98-4417-9377-e7f40935367f",
+        "columns": [
+          {
+            "name": "SegmentKey",
+            "dataType": "string",
+            "sourceColumn": "SegmentKey",
+            "lineageTag": "2b84265c-bff8-4e28-b30d-353a0d6e4241",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerSegment",
+            "dataType": "string",
+            "sourceColumn": "CustomerSegment",
+            "lineageTag": "32ca3ab8-056e-4b92-9070-ff235e58b18a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SegmentWeight",
+            "dataType": "double",
+            "sourceColumn": "SegmentWeight",
+            "lineageTag": "cd0a959c-e7d1-4b3a-a3f0-f5e137b4313e",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "DiscountPct",
+            "dataType": "double",
+            "sourceColumn": "DiscountPct",
+            "lineageTag": "8ef9e511-b816-4c1c-b676-c6021fc772db",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "DSODays",
+            "dataType": "int64",
+            "sourceColumn": "DSODays",
+            "lineageTag": "f46446b4-f0c5-4b78-884d-0a2c94b6b037",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimCustomerSegment",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\dim_customer_segment.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"SegmentKey\", type text}, {\"CustomerSegment\", type text}, {\"SegmentWeight\", type number}, {\"DiscountPct\", type number}, {\"DSODays\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimDepartment",
+        "lineageTag": "f4fdb703-d514-486a-8f2a-9f7f161b21b7",
+        "columns": [
+          {
+            "name": "DepartmentKey",
+            "dataType": "string",
+            "sourceColumn": "DepartmentKey",
+            "lineageTag": "111e36ab-dc50-43ce-9d87-f9e7fecdf0ba",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Department",
+            "dataType": "string",
+            "sourceColumn": "Department",
+            "lineageTag": "c865bbd1-460f-40d8-a25f-d2c647aa0fb8",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FunctionGroup",
+            "dataType": "string",
+            "sourceColumn": "FunctionGroup",
+            "lineageTag": "753c41e8-f725-41e7-b755-e0df604fc6ba",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BaseFTE",
+            "dataType": "int64",
+            "sourceColumn": "BaseFTE",
+            "lineageTag": "e811a73c-2f94-4154-b8db-8ad4ceb79ed0",
+            "formatString": "0"
+          },
+          {
+            "name": "AvgSalaryUSD",
+            "dataType": "int64",
+            "sourceColumn": "AvgSalaryUSD",
+            "lineageTag": "51153799-41b1-4252-a97a-cef2122dc8e1",
+            "formatString": "$#,0;($#,0);$0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimDepartment",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\dim_department.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"DepartmentKey\", type text}, {\"Department\", type text}, {\"FunctionGroup\", type text}, {\"BaseFTE\", Int64.Type}, {\"AvgSalaryUSD\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactRevenueDriver",
+        "lineageTag": "df4ebe21-b280-48cb-b68d-351e48953f01",
+        "columns": [
+          {
+            "name": "RevenueDriverKey",
+            "dataType": "string",
+            "sourceColumn": "RevenueDriverKey",
+            "lineageTag": "47f20fc0-85ba-4d8c-a1e4-34fdf105ba39",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "e423d20d-06c2-4fea-a94d-a9be7a7ae63d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanPeriod",
+            "dataType": "string",
+            "sourceColumn": "PlanPeriod",
+            "lineageTag": "ff66e5ce-2d18-4523-80d2-312ee06bfb1e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioKey",
+            "dataType": "string",
+            "sourceColumn": "ScenarioKey",
+            "lineageTag": "21e3093e-3f65-4c5e-a81a-aba576bd8830",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionKey",
+            "dataType": "string",
+            "sourceColumn": "RegionKey",
+            "lineageTag": "a89b777f-c91e-49b9-96d1-d0a7efa55d7d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ServiceKey",
+            "dataType": "string",
+            "sourceColumn": "ServiceKey",
+            "lineageTag": "9183aa1c-272d-44e2-a061-590e8048d9ce",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SegmentKey",
+            "dataType": "string",
+            "sourceColumn": "SegmentKey",
+            "lineageTag": "b6459a64-a9b5-4217-a5d6-835011abadf8",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "VolumeJobs",
+            "dataType": "int64",
+            "sourceColumn": "VolumeJobs",
+            "lineageTag": "626a7406-80fe-4e86-a473-43c81ff79249",
+            "formatString": "0"
+          },
+          {
+            "name": "TEU",
+            "dataType": "double",
+            "sourceColumn": "TEU",
+            "lineageTag": "63106488-15d0-4efe-8846-4ceed1fc7df1"
+          },
+          {
+            "name": "CBM",
+            "dataType": "double",
+            "sourceColumn": "CBM",
+            "lineageTag": "e0536119-b5fb-4286-b495-3582b5167c79"
+          },
+          {
+            "name": "ChargeableKg",
+            "dataType": "double",
+            "sourceColumn": "ChargeableKg",
+            "lineageTag": "13a8efee-994a-4d9c-85ef-95efcb51cd67"
+          },
+          {
+            "name": "AvgRateUSD",
+            "dataType": "double",
+            "sourceColumn": "AvgRateUSD",
+            "lineageTag": "64e6c38c-c867-40ac-ac9d-f927d0c2d7f8",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "SurchargeUSD",
+            "dataType": "double",
+            "sourceColumn": "SurchargeUSD",
+            "lineageTag": "57eaa3a5-3b10-4569-968f-9a4a83e9784c",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "DiscountUSD",
+            "dataType": "double",
+            "sourceColumn": "DiscountUSD",
+            "lineageTag": "aa70f77c-444f-409a-82d9-2528275eddfb",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "RevenueUSD",
+            "dataType": "double",
+            "sourceColumn": "RevenueUSD",
+            "lineageTag": "27c9ff39-7582-432e-aafd-a8a3da5ac234",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "DataSource",
+            "dataType": "string",
+            "sourceColumn": "DataSource",
+            "lineageTag": "b526826a-153e-4431-a85e-bd312a74def1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "lineageTag": "beea6c1e-154e-433e-b9be-db68376a894f",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearMonth",
+            "dataType": "string",
+            "sourceColumn": "YearMonth",
+            "lineageTag": "7e29f99d-1a55-4739-b0fd-febb32a760cb",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactRevenueDriver",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\fact_revenue_driver.csv\"), [Delimiter=\",\", Columns=18, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"RevenueDriverKey\", type text}, {\"MonthStart\", type date}, {\"PlanPeriod\", type text}, {\"ScenarioKey\", type text}, {\"RegionKey\", type text}, {\"ServiceKey\", type text}, {\"SegmentKey\", type text}, {\"VolumeJobs\", Int64.Type}, {\"TEU\", type number}, {\"CBM\", type number}, {\"ChargeableKg\", type number}, {\"AvgRateUSD\", type number}, {\"SurchargeUSD\", type number}, {\"DiscountUSD\", type number}, {\"RevenueUSD\", type number}, {\"DataSource\", type text}, {\"DateKey\", Int64.Type}, {\"YearMonth\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCostDriver",
+        "lineageTag": "6b44689f-8bd7-41d5-9681-c9ae7902986d",
+        "columns": [
+          {
+            "name": "CostDriverKey",
+            "dataType": "string",
+            "sourceColumn": "CostDriverKey",
+            "lineageTag": "ca62b97c-a645-435d-b48d-807347b1cc05",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RevenueDriverKey",
+            "dataType": "string",
+            "sourceColumn": "RevenueDriverKey",
+            "lineageTag": "d7499fe8-523c-49b6-84cf-c8a04db36385",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "874cf3ba-f94b-4db1-b340-e18ee8aa9e08",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanPeriod",
+            "dataType": "string",
+            "sourceColumn": "PlanPeriod",
+            "lineageTag": "db4dfaa8-fb0e-4eb5-8fef-29965b178703",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioKey",
+            "dataType": "string",
+            "sourceColumn": "ScenarioKey",
+            "lineageTag": "6a415b0d-c99c-4443-9e1c-b7c925824ea8",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionKey",
+            "dataType": "string",
+            "sourceColumn": "RegionKey",
+            "lineageTag": "a56b4fa4-6a00-4aa8-9771-9553edc7504c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ServiceKey",
+            "dataType": "string",
+            "sourceColumn": "ServiceKey",
+            "lineageTag": "1a48b12d-5c96-4c0d-ba0f-edb149ace5dc",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SegmentKey",
+            "dataType": "string",
+            "sourceColumn": "SegmentKey",
+            "lineageTag": "14b5763f-6707-4030-ac7e-1ad4b6b08889",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CarrierCostUSD",
+            "dataType": "double",
+            "sourceColumn": "CarrierCostUSD",
+            "lineageTag": "b15a9967-6b0b-4c76-925b-e93b873327f0",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "HandlingCostUSD",
+            "dataType": "double",
+            "sourceColumn": "HandlingCostUSD",
+            "lineageTag": "85c5096a-5112-4c05-bfd4-24ed03dfdbe2",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "FuelCostUSD",
+            "dataType": "double",
+            "sourceColumn": "FuelCostUSD",
+            "lineageTag": "668df720-7936-4552-a91d-2650dbdca7c2",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "CustomsCostUSD",
+            "dataType": "double",
+            "sourceColumn": "CustomsCostUSD",
+            "lineageTag": "f9235d55-e94f-4b11-80bb-d880975cf006",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "DirectCostUSD",
+            "dataType": "double",
+            "sourceColumn": "DirectCostUSD",
+            "lineageTag": "9302889f-a3d3-45e9-9c67-34d1af5e3bda",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "VariableCostPerJobUSD",
+            "dataType": "double",
+            "sourceColumn": "VariableCostPerJobUSD",
+            "lineageTag": "caca31f5-0fa5-4adf-a226-4d9657e07d3c",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "CostInflationPct",
+            "dataType": "double",
+            "sourceColumn": "CostInflationPct",
+            "lineageTag": "aa7b8f96-31a0-4f5b-82ad-d1b4223c2581",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "lineageTag": "de8d140a-010b-432d-b695-7ce43abc46ac",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearMonth",
+            "dataType": "string",
+            "sourceColumn": "YearMonth",
+            "lineageTag": "88278a8c-4943-4307-95b2-df68f99822a7",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactCostDriver",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\fact_cost_driver.csv\"), [Delimiter=\",\", Columns=17, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"CostDriverKey\", type text}, {\"RevenueDriverKey\", type text}, {\"MonthStart\", type date}, {\"PlanPeriod\", type text}, {\"ScenarioKey\", type text}, {\"RegionKey\", type text}, {\"ServiceKey\", type text}, {\"SegmentKey\", type text}, {\"CarrierCostUSD\", type number}, {\"HandlingCostUSD\", type number}, {\"FuelCostUSD\", type number}, {\"CustomsCostUSD\", type number}, {\"DirectCostUSD\", type number}, {\"VariableCostPerJobUSD\", type number}, {\"CostInflationPct\", type number}, {\"DateKey\", Int64.Type}, {\"YearMonth\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactHeadcountPlan",
+        "lineageTag": "15dbdd17-662c-406d-9449-2231c369ce65",
+        "columns": [
+          {
+            "name": "HeadcountPlanKey",
+            "dataType": "string",
+            "sourceColumn": "HeadcountPlanKey",
+            "lineageTag": "d2bbe121-7b83-4af8-8c1c-df2bfe48d7be",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "eb927fa9-efe2-4fac-9e8d-a8f8f116c7eb",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanPeriod",
+            "dataType": "string",
+            "sourceColumn": "PlanPeriod",
+            "lineageTag": "992adac5-f8fa-44da-823b-cd6c295fd98a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioKey",
+            "dataType": "string",
+            "sourceColumn": "ScenarioKey",
+            "lineageTag": "45b32bc5-a691-43b5-ba78-991c1e0ba081",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionKey",
+            "dataType": "string",
+            "sourceColumn": "RegionKey",
+            "lineageTag": "958a0989-b248-4023-89ca-7d22ad6dd661",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DepartmentKey",
+            "dataType": "string",
+            "sourceColumn": "DepartmentKey",
+            "lineageTag": "dc8c7af6-de07-4248-bed6-756e41b3d822",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FTE",
+            "dataType": "double",
+            "sourceColumn": "FTE",
+            "lineageTag": "3b3dea57-d797-497d-afe4-54ba1dc76e15"
+          },
+          {
+            "name": "NewHires",
+            "dataType": "double",
+            "sourceColumn": "NewHires",
+            "lineageTag": "e10f6c26-2b03-4fc4-9f34-0a73078038e5"
+          },
+          {
+            "name": "Attrition",
+            "dataType": "double",
+            "sourceColumn": "Attrition",
+            "lineageTag": "34489f03-a384-42ba-8839-1af4c1e6a178"
+          },
+          {
+            "name": "AvgSalaryUSD",
+            "dataType": "double",
+            "sourceColumn": "AvgSalaryUSD",
+            "lineageTag": "376ec80f-9ec4-49fe-82b2-31a20c94de66",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "PayrollCostUSD",
+            "dataType": "double",
+            "sourceColumn": "PayrollCostUSD",
+            "lineageTag": "b0a230b7-5522-4e74-8719-a085894c391d",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "JobsPerFTE",
+            "dataType": "double",
+            "sourceColumn": "JobsPerFTE",
+            "lineageTag": "c3b5bcf1-2e34-4c9f-8ac1-567dc40f9aca"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "lineageTag": "b15aa6e5-16da-4d64-8707-a9a6402d93e8",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearMonth",
+            "dataType": "string",
+            "sourceColumn": "YearMonth",
+            "lineageTag": "36a4867d-d0bd-4cfd-88e2-1a1d26ca015d",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactHeadcountPlan",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\fact_headcount_plan.csv\"), [Delimiter=\",\", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"HeadcountPlanKey\", type text}, {\"MonthStart\", type date}, {\"PlanPeriod\", type text}, {\"ScenarioKey\", type text}, {\"RegionKey\", type text}, {\"DepartmentKey\", type text}, {\"FTE\", type number}, {\"NewHires\", type number}, {\"Attrition\", type number}, {\"AvgSalaryUSD\", type number}, {\"PayrollCostUSD\", type number}, {\"JobsPerFTE\", type number}, {\"DateKey\", Int64.Type}, {\"YearMonth\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactOpexDriver",
+        "lineageTag": "c86c25e4-b15c-468b-9112-35c5b3555b24",
+        "columns": [
+          {
+            "name": "OpexDriverKey",
+            "dataType": "string",
+            "sourceColumn": "OpexDriverKey",
+            "lineageTag": "18ce4e34-ccff-4e30-aa16-87e63873121b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "4905b268-482e-4a17-9871-2e951d1623e9",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanPeriod",
+            "dataType": "string",
+            "sourceColumn": "PlanPeriod",
+            "lineageTag": "18e23e61-7e66-4a44-804e-a01f0c33b036",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioKey",
+            "dataType": "string",
+            "sourceColumn": "ScenarioKey",
+            "lineageTag": "ccf4151a-f9dc-4d21-b0b5-828f45edd12a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionKey",
+            "dataType": "string",
+            "sourceColumn": "RegionKey",
+            "lineageTag": "bd67b7af-0c0c-4362-996e-015a23cb65e2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DepartmentKey",
+            "dataType": "string",
+            "sourceColumn": "DepartmentKey",
+            "lineageTag": "c351259e-a771-4991-84f5-4d691c72f95b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RentUSD",
+            "dataType": "double",
+            "sourceColumn": "RentUSD",
+            "lineageTag": "2a75948f-052f-49d4-b475-49321159a2e4",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "SoftwareUSD",
+            "dataType": "double",
+            "sourceColumn": "SoftwareUSD",
+            "lineageTag": "80dea45c-980f-4f29-84a1-fb4ad2dfac6b",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "MarketingUSD",
+            "dataType": "double",
+            "sourceColumn": "MarketingUSD",
+            "lineageTag": "e90db8a1-3d15-48c8-9b8d-40e23b062a73",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "TravelUSD",
+            "dataType": "double",
+            "sourceColumn": "TravelUSD",
+            "lineageTag": "af8aad48-bc1c-484b-a22b-4b98e2e6fcd3",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "GAUSD",
+            "dataType": "double",
+            "sourceColumn": "GAUSD",
+            "lineageTag": "093d5c26-530e-4b28-bf1c-55bfc0f832a2",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "NonPayrollOpexUSD",
+            "dataType": "double",
+            "sourceColumn": "NonPayrollOpexUSD",
+            "lineageTag": "c9a827be-5eeb-4fdc-832e-ad669453e62a",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "lineageTag": "c4bd931d-b29a-41ed-b5bb-d99183e0ec8a",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearMonth",
+            "dataType": "string",
+            "sourceColumn": "YearMonth",
+            "lineageTag": "5386205a-e59d-47d6-a708-1de8866b3c29",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactOpexDriver",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\fact_opex_driver.csv\"), [Delimiter=\",\", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"OpexDriverKey\", type text}, {\"MonthStart\", type date}, {\"PlanPeriod\", type text}, {\"ScenarioKey\", type text}, {\"RegionKey\", type text}, {\"DepartmentKey\", type text}, {\"RentUSD\", type number}, {\"SoftwareUSD\", type number}, {\"MarketingUSD\", type number}, {\"TravelUSD\", type number}, {\"GAUSD\", type number}, {\"NonPayrollOpexUSD\", type number}, {\"DateKey\", Int64.Type}, {\"YearMonth\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCashImpact",
+        "lineageTag": "17a2f9e9-f44f-40c3-a8e6-a7f7336e857a",
+        "columns": [
+          {
+            "name": "CashImpactKey",
+            "dataType": "string",
+            "sourceColumn": "CashImpactKey",
+            "lineageTag": "27537703-b205-4292-8781-d4ee5bafb5fc",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "6c460c0e-88eb-4887-a4df-5fbff56399fe",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanPeriod",
+            "dataType": "string",
+            "sourceColumn": "PlanPeriod",
+            "lineageTag": "5986302a-766e-4c65-9c0a-3b941ac7b1bb",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioKey",
+            "dataType": "string",
+            "sourceColumn": "ScenarioKey",
+            "lineageTag": "75490009-f208-4b35-b957-bc22cd984ca4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RevenueUSD",
+            "dataType": "double",
+            "sourceColumn": "RevenueUSD",
+            "lineageTag": "0c9db677-7252-4090-b670-90755995af98",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "DirectCostUSD",
+            "dataType": "double",
+            "sourceColumn": "DirectCostUSD",
+            "lineageTag": "5724bb1a-38c6-4ac8-9dce-ad11e322d591",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "PayrollCostUSD",
+            "dataType": "double",
+            "sourceColumn": "PayrollCostUSD",
+            "lineageTag": "7518ebf8-7386-41fb-bfab-09527df48e98",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "NonPayrollOpexUSD",
+            "dataType": "double",
+            "sourceColumn": "NonPayrollOpexUSD",
+            "lineageTag": "c611b43f-a3fd-4a12-8066-c595e488e8d4",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "GrossProfitUSD",
+            "dataType": "double",
+            "sourceColumn": "GrossProfitUSD",
+            "lineageTag": "04ba3b0b-8c74-4fae-b76d-0e7540820366",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "EBITDAUSD",
+            "dataType": "double",
+            "sourceColumn": "EBITDAUSD",
+            "lineageTag": "3cfc76d4-84ea-4733-a48d-944fff707dc7",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "TaxPaidUSD",
+            "dataType": "double",
+            "sourceColumn": "TaxPaidUSD",
+            "lineageTag": "c3bd643e-6fc0-4967-a3c8-222cec0615a9",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "CapexUSD",
+            "dataType": "int64",
+            "sourceColumn": "CapexUSD",
+            "lineageTag": "bb435658-c9a7-40c0-953c-616afd655909",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "DSODays",
+            "dataType": "int64",
+            "sourceColumn": "DSODays",
+            "lineageTag": "5a230d38-3c2e-451a-a46e-c03ae23314ff",
+            "formatString": "0"
+          },
+          {
+            "name": "DPODays",
+            "dataType": "int64",
+            "sourceColumn": "DPODays",
+            "lineageTag": "486560a9-907c-4563-b08c-026e857d6c20",
+            "formatString": "0"
+          },
+          {
+            "name": "WorkingCapitalUSD",
+            "dataType": "double",
+            "sourceColumn": "WorkingCapitalUSD",
+            "lineageTag": "418abbba-8838-41a2-a8a0-4130ce876ebe",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "OperatingCashFlowUSD",
+            "dataType": "double",
+            "sourceColumn": "OperatingCashFlowUSD",
+            "lineageTag": "cd935f8d-9633-4b1e-8309-f3eaf5eeb70a",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "EndingCashUSD",
+            "dataType": "double",
+            "sourceColumn": "EndingCashUSD",
+            "lineageTag": "4e354835-99b1-4614-b834-c3d2af4f5885",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "lineageTag": "820ee699-2013-4d6b-a575-9c2b384a5f5c",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearMonth",
+            "dataType": "string",
+            "sourceColumn": "YearMonth",
+            "lineageTag": "f0d1bc13-1a52-48a7-99de-df2c0b235fde",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactCashImpact",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\fact_cash_impact.csv\"), [Delimiter=\",\", Columns=19, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"CashImpactKey\", type text}, {\"MonthStart\", type date}, {\"PlanPeriod\", type text}, {\"ScenarioKey\", type text}, {\"RevenueUSD\", type number}, {\"DirectCostUSD\", type number}, {\"PayrollCostUSD\", type number}, {\"NonPayrollOpexUSD\", type number}, {\"GrossProfitUSD\", type number}, {\"EBITDAUSD\", type number}, {\"TaxPaidUSD\", type number}, {\"CapexUSD\", Int64.Type}, {\"DSODays\", Int64.Type}, {\"DPODays\", Int64.Type}, {\"WorkingCapitalUSD\", type number}, {\"OperatingCashFlowUSD\", type number}, {\"EndingCashUSD\", type number}, {\"DateKey\", Int64.Type}, {\"YearMonth\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactForecastAccuracy",
+        "lineageTag": "8404160b-55a1-4ee1-9673-6653397d0dca",
+        "columns": [
+          {
+            "name": "ForecastAccuracyKey",
+            "dataType": "string",
+            "sourceColumn": "ForecastAccuracyKey",
+            "lineageTag": "8ee84c21-375c-4920-a3ec-445829e7b57e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "611795b5-944e-4afc-84b3-0ab6375c9702",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ForecastHorizonMonths",
+            "dataType": "int64",
+            "sourceColumn": "ForecastHorizonMonths",
+            "lineageTag": "0b174a9c-2009-43bd-85ed-1812bc9633e5",
+            "formatString": "0"
+          },
+          {
+            "name": "RegionKey",
+            "dataType": "string",
+            "sourceColumn": "RegionKey",
+            "lineageTag": "c916a468-7c03-44c5-ad2f-73b67749b901",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ServiceKey",
+            "dataType": "string",
+            "sourceColumn": "ServiceKey",
+            "lineageTag": "b8dbe1f3-ef5a-4513-bbad-0e44cfc55f59",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioKey",
+            "dataType": "string",
+            "sourceColumn": "ScenarioKey",
+            "lineageTag": "4fe8f44f-a1ba-4bd3-ac7e-6f59fdfd785d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ActualRevenueUSD",
+            "dataType": "double",
+            "sourceColumn": "ActualRevenueUSD",
+            "lineageTag": "997af8c6-c8a1-4cd4-bbcd-8e23c9719d00",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ForecastRevenueUSD",
+            "dataType": "double",
+            "sourceColumn": "ForecastRevenueUSD",
+            "lineageTag": "1c3137e0-ca23-4ff9-9dd3-10d631fe6ef6",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ForecastErrorUSD",
+            "dataType": "double",
+            "sourceColumn": "ForecastErrorUSD",
+            "lineageTag": "11202d59-7836-4096-9f0f-d888b309cb30",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "AbsoluteErrorUSD",
+            "dataType": "double",
+            "sourceColumn": "AbsoluteErrorUSD",
+            "lineageTag": "502ddda0-f144-4b47-a539-21c664ad7cd2",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "AbsolutePctError",
+            "dataType": "double",
+            "sourceColumn": "AbsolutePctError",
+            "lineageTag": "e0f38f4f-263f-4cdf-b4df-36c8bea580dd",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "ForecastBiasPct",
+            "dataType": "double",
+            "sourceColumn": "ForecastBiasPct",
+            "lineageTag": "1e5e9d73-abb6-4387-906c-f284b93c1865",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "lineageTag": "0ed460e7-278e-4e69-9bc9-d3743b5d16ea",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearMonth",
+            "dataType": "string",
+            "sourceColumn": "YearMonth",
+            "lineageTag": "64d47e48-191b-49ba-a7dc-8fdfbe25dbef",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactForecastAccuracy",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\fact_forecast_accuracy.csv\"), [Delimiter=\",\", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"ForecastAccuracyKey\", type text}, {\"MonthStart\", type date}, {\"ForecastHorizonMonths\", Int64.Type}, {\"RegionKey\", type text}, {\"ServiceKey\", type text}, {\"ScenarioKey\", type text}, {\"ActualRevenueUSD\", type number}, {\"ForecastRevenueUSD\", type number}, {\"ForecastErrorUSD\", type number}, {\"AbsoluteErrorUSD\", type number}, {\"AbsolutePctError\", type number}, {\"ForecastBiasPct\", type number}, {\"DateKey\", Int64.Type}, {\"YearMonth\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "WhatIfParameters",
+        "lineageTag": "225baf9e-7941-44de-bb82-2e203eba72a4",
+        "columns": [
+          {
+            "name": "ParameterKey",
+            "dataType": "string",
+            "sourceColumn": "ParameterKey",
+            "lineageTag": "559e1bd7-5c6b-4ae8-8d70-d080b9855738",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Parameter",
+            "dataType": "string",
+            "sourceColumn": "Parameter",
+            "lineageTag": "0964a9ce-52fe-4170-b3cc-4408b446055d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Unit",
+            "dataType": "string",
+            "sourceColumn": "Unit",
+            "lineageTag": "850b7a03-fbf2-4a1e-a4fc-a85e5256fc29",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BaseValue",
+            "dataType": "double",
+            "sourceColumn": "BaseValue",
+            "lineageTag": "a09c3366-46dd-468c-a0fb-91f7f6228481",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "UpsideValue",
+            "dataType": "double",
+            "sourceColumn": "UpsideValue",
+            "lineageTag": "0c38383c-ead0-4a21-874c-700f94ad4bab",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "DownsideValue",
+            "dataType": "double",
+            "sourceColumn": "DownsideValue",
+            "lineageTag": "c9b26356-0bdf-4ce2-96ed-cc1f2f4d1e36",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "AppliesTo",
+            "dataType": "string",
+            "sourceColumn": "AppliesTo",
+            "lineageTag": "d1b13b2f-4c3f-4507-b398-2abde874ec2c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description",
+            "lineageTag": "52103c90-7b83-47d4-8ced-f1a9785eed9e",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_WhatIfParameters",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 02 - Driver-Based Forecasting\\\\data\\\\prepared\\\\what_if_parameters.csv\"), [Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"ParameterKey\", type text}, {\"Parameter\", type text}, {\"Unit\", type text}, {\"BaseValue\", type number}, {\"UpsideValue\", type number}, {\"DownsideValue\", type number}, {\"AppliesTo\", type text}, {\"Description\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI_Measures",
+        "lineageTag": "5d227198-6f34-4ac6-a1b8-1234db44e14a",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "MeasureName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[MeasureName]",
+            "isHidden": true,
+            "lineageTag": "4d9b3c2f-014c-4e45-b811-018e958c9d49"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "KPI_Measures",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": "DATATABLE(\"MeasureName\", STRING, {{\"KPI\"}})"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Revenue",
+            "description": "Net revenue after surcharge and discount at current filter context.",
+            "expression": "SUM(FactRevenueDriver[RevenueUSD])",
+            "formatString": "$#,0;($#,0);$0",
+            "lineageTag": "de07ae96-2f62-450b-8ade-9342feeb55b4"
+          },
+          {
+            "name": "Direct Cost",
+            "description": "Carrier, handling, fuel and customs direct costs.",
+            "expression": "SUM(FactCostDriver[DirectCostUSD])",
+            "formatString": "$#,0;($#,0);$0",
+            "lineageTag": "3e8e102e-44aa-4f47-9d9f-66f6fe7356a3"
+          },
+          {
+            "name": "Gross Profit",
+            "description": "Revenue less direct cost.",
+            "expression": "[Revenue] - [Direct Cost]",
+            "formatString": "$#,0;($#,0);$0",
+            "lineageTag": "f08a2201-fa2c-4801-832c-1407b84c1e49"
+          },
+          {
+            "name": "Gross Margin %",
+            "description": "Gross profit divided by revenue.",
+            "expression": "DIVIDE([Gross Profit], [Revenue])",
+            "formatString": "0.0%",
+            "lineageTag": "d05d39db-8445-45e3-89c8-be75fc5e60c3"
+          },
+          {
+            "name": "Payroll Cost",
+            "description": "Salary cost from the headcount plan.",
+            "expression": "SUM(FactHeadcountPlan[PayrollCostUSD])",
+            "formatString": "$#,0;($#,0);$0",
+            "lineageTag": "2b2f088c-e085-43ce-a17d-94ea2eb72b8c"
+          },
+          {
+            "name": "Non Payroll OPEX",
+            "description": "Rent, software, marketing, travel and G&A cost excluding payroll.",
+            "expression": "SUM(FactOpexDriver[NonPayrollOpexUSD])",
+            "formatString": "$#,0;($#,0);$0",
+            "lineageTag": "3e540486-239a-4216-bbe1-bac4cdd803e8"
+          },
+          {
+            "name": "EBITDA",
+            "description": "Forecast P&L operating profit proxy before tax and capex.",
+            "expression": "[Gross Profit] - [Payroll Cost] - [Non Payroll OPEX]",
+            "formatString": "$#,0;($#,0);$0",
+            "lineageTag": "1fc3bf52-7c77-445d-a860-e9ef278a7544"
+          },
+          {
+            "name": "EBITDA Margin %",
+            "description": "EBITDA divided by revenue.",
+            "expression": "DIVIDE([EBITDA], [Revenue])",
+            "formatString": "0.0%",
+            "lineageTag": "f06c291f-c411-4c17-ae08-b4d881ae6a98"
+          },
+          {
+            "name": "Jobs",
+            "description": "Total shipment or service jobs.",
+            "expression": "SUM(FactRevenueDriver[VolumeJobs])",
+            "formatString": "#,0",
+            "lineageTag": "5d25d9a2-cce3-4a38-8e7a-4d672a2cc2d0"
+          },
+          {
+            "name": "Revenue per Job",
+            "description": "Revenue productivity per job.",
+            "expression": "DIVIDE([Revenue], [Jobs])",
+            "formatString": "$#,0.0",
+            "lineageTag": "1efec76a-f255-4979-bfdc-3a4b3e6b7a94"
+          },
+          {
+            "name": "Variable Cost per Job",
+            "description": "Direct cost productivity per job.",
+            "expression": "DIVIDE([Direct Cost], [Jobs])",
+            "formatString": "$#,0.0",
+            "lineageTag": "df39f726-9721-4117-8b66-c63e85050579"
+          },
+          {
+            "name": "Average FTE",
+            "description": "Average monthly FTE in the selected period.",
+            "expression": "AVERAGEX(VALUES(DimDate[YearMonth]), SUM(FactHeadcountPlan[FTE]))",
+            "formatString": "#,0.0",
+            "lineageTag": "d74da50e-4056-4a0a-8763-9827136028c1"
+          },
+          {
+            "name": "Jobs per FTE",
+            "description": "Capacity productivity based on average monthly FTE.",
+            "expression": "DIVIDE([Jobs], [Average FTE])",
+            "formatString": "#,0.0",
+            "lineageTag": "1b5fd8d8-74ec-4b14-b515-0e0197082d44"
+          },
+          {
+            "name": "Operating Cash Flow",
+            "description": "EBITDA less tax and working-capital drag.",
+            "expression": "SUM(FactCashImpact[OperatingCashFlowUSD])",
+            "formatString": "$#,0;($#,0);$0",
+            "lineageTag": "2bd68332-cd2f-430e-8a95-edd28134e54f"
+          },
+          {
+            "name": "Ending Cash Latest Month",
+            "description": "Ending cash balance at latest visible period.",
+            "expression": "CALCULATE(SUM(FactCashImpact[EndingCashUSD]), LASTNONBLANK(DimDate[Date], [Operating Cash Flow]))",
+            "formatString": "$#,0;($#,0);$0",
+            "lineageTag": "ae84cd50-5f30-4027-923d-b80d13423e4b"
+          },
+          {
+            "name": "Working Capital",
+            "description": "AR and AP timing impact based on DSO and DPO assumptions.",
+            "expression": "SUM(FactCashImpact[WorkingCapitalUSD])",
+            "formatString": "$#,0;($#,0);$0",
+            "lineageTag": "6d3032a6-fb7e-4f08-bfff-314f0294b0f5"
+          },
+          {
+            "name": "DSO Days",
+            "description": "Average days sales outstanding in current scenario.",
+            "expression": "AVERAGE(FactCashImpact[DSODays])",
+            "formatString": "#,0",
+            "lineageTag": "b8fd53b4-85b3-4dfa-9846-77dce0198e64"
+          },
+          {
+            "name": "DPO Days",
+            "description": "Average days payable outstanding in current scenario.",
+            "expression": "AVERAGE(FactCashImpact[DPODays])",
+            "formatString": "#,0",
+            "lineageTag": "fee104e8-4035-4ee4-ad7b-bb551f6bd32d"
+          },
+          {
+            "name": "MAPE",
+            "description": "Mean absolute percentage error for forecast accuracy tracking.",
+            "expression": "AVERAGE(FactForecastAccuracy[AbsolutePctError])",
+            "formatString": "0.0%",
+            "lineageTag": "c9b92f96-b981-4321-a5d2-2516c55336d5"
+          },
+          {
+            "name": "Forecast Bias %",
+            "description": "Average signed forecast bias.",
+            "expression": "AVERAGE(FactForecastAccuracy[ForecastBiasPct])",
+            "formatString": "0.0%",
+            "lineageTag": "f5db4ed4-982e-4299-8cdf-5ef90b85b558"
+          },
+          {
+            "name": "Base Revenue",
+            "description": "Base scenario revenue for variance comparisons.",
+            "expression": "CALCULATE([Revenue], DimScenario[Scenario] = \"Base\")",
+            "formatString": "$#,0;($#,0);$0",
+            "lineageTag": "f4a7a6b1-db69-4df4-9959-81d86c01ed75"
+          },
+          {
+            "name": "Scenario Revenue Variance vs Base",
+            "description": "Selected scenario revenue less base scenario revenue.",
+            "expression": "[Revenue] - [Base Revenue]",
+            "formatString": "$#,0;($#,0);$0",
+            "lineageTag": "d845050b-a9a8-4b61-8fa9-a86d540940a9"
+          },
+          {
+            "name": "Scenario Revenue Variance % vs Base",
+            "description": "Selected scenario revenue variance percentage versus base.",
+            "expression": "DIVIDE([Scenario Revenue Variance vs Base], [Base Revenue])",
+            "formatString": "0.0%",
+            "lineageTag": "5fe35164-cf66-4e18-9bde-bbc5de71a538"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "Rel_FactRevenueDriver_DateKey_DimDate_DateKey",
+        "fromTable": "FactRevenueDriver",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "Rel_FactCostDriver_DateKey_DimDate_DateKey",
+        "fromTable": "FactCostDriver",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "Rel_FactHeadcountPlan_DateKey_DimDate_DateKey",
+        "fromTable": "FactHeadcountPlan",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "Rel_FactOpexDriver_DateKey_DimDate_DateKey",
+        "fromTable": "FactOpexDriver",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "Rel_FactCashImpact_DateKey_DimDate_DateKey",
+        "fromTable": "FactCashImpact",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "Rel_FactForecastAccuracy_DateKey_DimDate_DateKey",
+        "fromTable": "FactForecastAccuracy",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "Rel_FactRevenueDriver_ScenarioKey_DimScenario_ScenarioKey",
+        "fromTable": "FactRevenueDriver",
+        "fromColumn": "ScenarioKey",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioKey"
+      },
+      {
+        "name": "Rel_FactCostDriver_ScenarioKey_DimScenario_ScenarioKey",
+        "fromTable": "FactCostDriver",
+        "fromColumn": "ScenarioKey",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioKey"
+      },
+      {
+        "name": "Rel_FactHeadcountPlan_ScenarioKey_DimScenario_ScenarioKey",
+        "fromTable": "FactHeadcountPlan",
+        "fromColumn": "ScenarioKey",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioKey"
+      },
+      {
+        "name": "Rel_FactOpexDriver_ScenarioKey_DimScenario_ScenarioKey",
+        "fromTable": "FactOpexDriver",
+        "fromColumn": "ScenarioKey",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioKey"
+      },
+      {
+        "name": "Rel_FactCashImpact_ScenarioKey_DimScenario_ScenarioKey",
+        "fromTable": "FactCashImpact",
+        "fromColumn": "ScenarioKey",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioKey"
+      },
+      {
+        "name": "Rel_FactForecastAccuracy_ScenarioKey_DimScenario_ScenarioKey",
+        "fromTable": "FactForecastAccuracy",
+        "fromColumn": "ScenarioKey",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioKey"
+      },
+      {
+        "name": "Rel_FactRevenueDriver_RegionKey_DimRegion_RegionKey",
+        "fromTable": "FactRevenueDriver",
+        "fromColumn": "RegionKey",
+        "toTable": "DimRegion",
+        "toColumn": "RegionKey"
+      },
+      {
+        "name": "Rel_FactCostDriver_RegionKey_DimRegion_RegionKey",
+        "fromTable": "FactCostDriver",
+        "fromColumn": "RegionKey",
+        "toTable": "DimRegion",
+        "toColumn": "RegionKey"
+      },
+      {
+        "name": "Rel_FactHeadcountPlan_RegionKey_DimRegion_RegionKey",
+        "fromTable": "FactHeadcountPlan",
+        "fromColumn": "RegionKey",
+        "toTable": "DimRegion",
+        "toColumn": "RegionKey"
+      },
+      {
+        "name": "Rel_FactOpexDriver_RegionKey_DimRegion_RegionKey",
+        "fromTable": "FactOpexDriver",
+        "fromColumn": "RegionKey",
+        "toTable": "DimRegion",
+        "toColumn": "RegionKey"
+      },
+      {
+        "name": "Rel_FactForecastAccuracy_RegionKey_DimRegion_RegionKey",
+        "fromTable": "FactForecastAccuracy",
+        "fromColumn": "RegionKey",
+        "toTable": "DimRegion",
+        "toColumn": "RegionKey"
+      },
+      {
+        "name": "Rel_FactRevenueDriver_ServiceKey_DimService_ServiceKey",
+        "fromTable": "FactRevenueDriver",
+        "fromColumn": "ServiceKey",
+        "toTable": "DimService",
+        "toColumn": "ServiceKey"
+      },
+      {
+        "name": "Rel_FactCostDriver_ServiceKey_DimService_ServiceKey",
+        "fromTable": "FactCostDriver",
+        "fromColumn": "ServiceKey",
+        "toTable": "DimService",
+        "toColumn": "ServiceKey"
+      },
+      {
+        "name": "Rel_FactForecastAccuracy_ServiceKey_DimService_ServiceKey",
+        "fromTable": "FactForecastAccuracy",
+        "fromColumn": "ServiceKey",
+        "toTable": "DimService",
+        "toColumn": "ServiceKey"
+      },
+      {
+        "name": "Rel_FactRevenueDriver_SegmentKey_DimCustomerSegment_SegmentKey",
+        "fromTable": "FactRevenueDriver",
+        "fromColumn": "SegmentKey",
+        "toTable": "DimCustomerSegment",
+        "toColumn": "SegmentKey"
+      },
+      {
+        "name": "Rel_FactCostDriver_SegmentKey_DimCustomerSegment_SegmentKey",
+        "fromTable": "FactCostDriver",
+        "fromColumn": "SegmentKey",
+        "toTable": "DimCustomerSegment",
+        "toColumn": "SegmentKey"
+      },
+      {
+        "name": "Rel_FactHeadcountPlan_DepartmentKey_DimDepartment_DepartmentKey",
+        "fromTable": "FactHeadcountPlan",
+        "fromColumn": "DepartmentKey",
+        "toTable": "DimDepartment",
+        "toColumn": "DepartmentKey"
+      },
+      {
+        "name": "Rel_FactOpexDriver_DepartmentKey_DimDepartment_DepartmentKey",
+        "fromTable": "FactOpexDriver",
+        "fromColumn": "DepartmentKey",
+        "toTable": "DimDepartment",
+        "toColumn": "DepartmentKey"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "Project",
+        "value": "Project 02 - Driver-Based Forecasting Driver-Based Forecasting & Scenario Planning Model"
+      }
+    ]
+  }
+}

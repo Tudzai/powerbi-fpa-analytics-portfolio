@@ -1,0 +1,11 @@
+﻿{
+    "timestamp":  "2026-06-11 11:01:14 +07:00",
+    "status":  "model_pushed_to_powerbi_desktop_local_session",
+    "power_bi_port":  51090,
+    "process_id":  21096,
+    "tables":  10,
+    "relationships":  11,
+    "measures":  17,
+    "output_model_pbix":  "not_created_requires_safe_desktop_save",
+    "note":  "The semantic model was pushed into the active untitled Power BI Desktop session. A PBIX file is not created by TOM/XMLA alone; saving requires Power BI Desktop save automation or a safe base/model PBIX package."
+}

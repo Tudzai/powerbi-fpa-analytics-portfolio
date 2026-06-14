@@ -1,0 +1,757 @@
+{
+  "asOf": "May 2026",
+  "kpis": {
+    "transactions": 36000,
+    "transactionAmount": 1908512527.82,
+    "flaggedAmount": 420084720.79,
+    "alerts": 6611,
+    "suspiciousCases": 2894,
+    "falsePositiveRate": 0.3542,
+    "alertRate": 0.1836,
+    "openCases": 402,
+    "overdueCases": 1207,
+    "slaCompliance": 0.6606,
+    "highRiskCustomers": 12
+  },
+  "monthly": [
+    {
+      "month": "Jan 2025",
+      "transactions": 1451,
+      "amount": 79549930.1,
+      "alerts": 248,
+      "cases": 121,
+      "sar": 92,
+      "falsePositives": 90
+    },
+    {
+      "month": "Feb 2025",
+      "transactions": 1361,
+      "amount": 79197390.85,
+      "alerts": 274,
+      "cases": 151,
+      "sar": 116,
+      "falsePositives": 103
+    },
+    {
+      "month": "Mar 2025",
+      "transactions": 2146,
+      "amount": 109682840.55,
+      "alerts": 390,
+      "cases": 207,
+      "sar": 144,
+      "falsePositives": 146
+    },
+    {
+      "month": "Apr 2025",
+      "transactions": 1568,
+      "amount": 84735339.81,
+      "alerts": 317,
+      "cases": 166,
+      "sar": 126,
+      "falsePositives": 122
+    },
+    {
+      "month": "May 2025",
+      "transactions": 2233,
+      "amount": 116226366.58,
+      "alerts": 413,
+      "cases": 230,
+      "sar": 169,
+      "falsePositives": 143
+    },
+    {
+      "month": "Jun 2025",
+      "transactions": 1776,
+      "amount": 100024781.05,
+      "alerts": 320,
+      "cases": 157,
+      "sar": 115,
+      "falsePositives": 109
+    },
+    {
+      "month": "Jul 2025",
+      "transactions": 1822,
+      "amount": 93256848.37,
+      "alerts": 313,
+      "cases": 186,
+      "sar": 140,
+      "falsePositives": 105
+    },
+    {
+      "month": "Aug 2025",
+      "transactions": 1804,
+      "amount": 93421524.88,
+      "alerts": 331,
+      "cases": 164,
+      "sar": 117,
+      "falsePositives": 127
+    },
+    {
+      "month": "Sep 2025",
+      "transactions": 2459,
+      "amount": 127947186.27,
+      "alerts": 440,
+      "cases": 247,
+      "sar": 191,
+      "falsePositives": 142
+    },
+    {
+      "month": "Oct 2025",
+      "transactions": 2011,
+      "amount": 113760944.08,
+      "alerts": 396,
+      "cases": 216,
+      "sar": 161,
+      "falsePositives": 136
+    },
+    {
+      "month": "Nov 2025",
+      "transactions": 2509,
+      "amount": 132293331.88,
+      "alerts": 422,
+      "cases": 213,
+      "sar": 164,
+      "falsePositives": 154
+    },
+    {
+      "month": "Dec 2025",
+      "transactions": 2279,
+      "amount": 123505318.3,
+      "alerts": 403,
+      "cases": 201,
+      "sar": 151,
+      "falsePositives": 155
+    },
+    {
+      "month": "Jan 2026",
+      "transactions": 2255,
+      "amount": 114455989.09,
+      "alerts": 413,
+      "cases": 232,
+      "sar": 168,
+      "falsePositives": 153
+    },
+    {
+      "month": "Feb 2026",
+      "transactions": 2064,
+      "amount": 102839349.22,
+      "alerts": 386,
+      "cases": 200,
+      "sar": 143,
+      "falsePositives": 145
+    },
+    {
+      "month": "Mar 2026",
+      "transactions": 2890,
+      "amount": 150321970.87,
+      "alerts": 542,
+      "cases": 300,
+      "sar": 229,
+      "falsePositives": 202
+    },
+    {
+      "month": "Apr 2026",
+      "transactions": 2355,
+      "amount": 125124662.77,
+      "alerts": 436,
+      "cases": 248,
+      "sar": 193,
+      "falsePositives": 148
+    },
+    {
+      "month": "May 2026",
+      "transactions": 3017,
+      "amount": 162168753.15,
+      "alerts": 567,
+      "cases": 298,
+      "sar": 205,
+      "falsePositives": 220
+    }
+  ],
+  "severity": [
+    {
+      "Severity": "High",
+      "alerts": 3232
+    },
+    {
+      "Severity": "Critical",
+      "alerts": 2044
+    },
+    {
+      "Severity": "Medium",
+      "alerts": 1273
+    },
+    {
+      "Severity": "Low",
+      "alerts": 62
+    }
+  ],
+  "typology": [
+    {
+      "Typology": "Velocity",
+      "alerts": 1172,
+      "amount": 78967413.81
+    },
+    {
+      "Typology": "Geo/Corridor",
+      "alerts": 902,
+      "amount": 47765399.15
+    },
+    {
+      "Typology": "Digital Assets",
+      "alerts": 714,
+      "amount": 57374639.339999996
+    },
+    {
+      "Typology": "Cash",
+      "alerts": 704,
+      "amount": 39829716.99
+    },
+    {
+      "Typology": "Structuring",
+      "alerts": 670,
+      "amount": 44729257.53
+    },
+    {
+      "Typology": "Sanctions",
+      "alerts": 638,
+      "amount": 41380537.59
+    },
+    {
+      "Typology": "Pattern",
+      "alerts": 474,
+      "amount": 29866435.14
+    },
+    {
+      "Typology": "Account Takeover",
+      "alerts": 465,
+      "amount": 31334919.22
+    }
+  ],
+  "corridors": [
+    {
+      "corridor": "NG->AE",
+      "name": "Enhanced due diligence corridor",
+      "tier": "High",
+      "alerts": 747,
+      "flaggedAmount": 43805585.69,
+      "avgRisk": 85.9,
+      "falsePositiveRate": 0.3133
+    },
+    {
+      "corridor": "HK->NG",
+      "name": "High-risk trade corridor",
+      "tier": "High",
+      "alerts": 691,
+      "flaggedAmount": 40976446.08,
+      "avgRisk": 85.4,
+      "falsePositiveRate": 0.2952
+    },
+    {
+      "corridor": "AE->TR",
+      "name": "Cash-intensive corridor",
+      "tier": "High",
+      "alerts": 631,
+      "flaggedAmount": 36777568.8,
+      "avgRisk": 84.2,
+      "falsePositiveRate": 0.3487
+    },
+    {
+      "corridor": "GB->AE",
+      "name": "Private banking corridor",
+      "tier": "Medium",
+      "alerts": 577,
+      "flaggedAmount": 38587335.6,
+      "avgRisk": 82.3,
+      "falsePositiveRate": 0.338
+    },
+    {
+      "corridor": "US->MX",
+      "name": "Remittance corridor",
+      "tier": "Medium",
+      "alerts": 526,
+      "flaggedAmount": 33379840.59,
+      "avgRisk": 81.6,
+      "falsePositiveRate": 0.3802
+    },
+    {
+      "corridor": "ZA->GB",
+      "name": "Investment services corridor",
+      "tier": "Medium",
+      "alerts": 538,
+      "flaggedAmount": 33238919.74,
+      "avgRisk": 81.2,
+      "falsePositiveRate": 0.3829
+    },
+    {
+      "corridor": "PH->HK",
+      "name": "Wallet remittance corridor",
+      "tier": "Medium",
+      "alerts": 557,
+      "flaggedAmount": 32047177.84,
+      "avgRisk": 81.1,
+      "falsePositiveRate": 0.3429
+    },
+    {
+      "corridor": "SG->HK",
+      "name": "Trade finance corridor",
+      "tier": "Medium",
+      "alerts": 443,
+      "flaggedAmount": 27548716.54,
+      "avgRisk": 80.9,
+      "falsePositiveRate": 0.4199
+    },
+    {
+      "corridor": "BR->US",
+      "name": "Merchant settlement corridor",
+      "tier": "Medium",
+      "alerts": 544,
+      "flaggedAmount": 38119248.43,
+      "avgRisk": 80.5,
+      "falsePositiveRate": 0.3934
+    },
+    {
+      "corridor": "MX->US",
+      "name": "Card acquiring corridor",
+      "tier": "Medium",
+      "alerts": 513,
+      "flaggedAmount": 38895806.8,
+      "avgRisk": 80.4,
+      "falsePositiveRate": 0.4172
+    }
+  ],
+  "rules": [
+    {
+      "rule": "High Velocity Transfers",
+      "typology": "Velocity",
+      "alerts": 1172,
+      "precision": 0.6408,
+      "falsePositiveRate": 0.3592,
+      "avgRisk": 81.4,
+      "amount": 78967413.81
+    },
+    {
+      "rule": "High Risk Corridor",
+      "typology": "Geo/Corridor",
+      "alerts": 902,
+      "precision": 0.6563,
+      "falsePositiveRate": 0.3437,
+      "avgRisk": 82.7,
+      "amount": 47765399.15
+    },
+    {
+      "rule": "Crypto Off-ramp Spike",
+      "typology": "Digital Assets",
+      "alerts": 714,
+      "precision": 0.6261,
+      "falsePositiveRate": 0.3739,
+      "avgRisk": 82.6,
+      "amount": 57374639.34
+    },
+    {
+      "rule": "Cash Intensive Pattern",
+      "typology": "Cash",
+      "alerts": 704,
+      "precision": 0.6463,
+      "falsePositiveRate": 0.3537,
+      "avgRisk": 81.3,
+      "amount": 39829716.99
+    },
+    {
+      "rule": "Structuring Below Threshold",
+      "typology": "Structuring",
+      "alerts": 670,
+      "precision": 0.6478,
+      "falsePositiveRate": 0.3522,
+      "avgRisk": 82.8,
+      "amount": 44729257.53
+    },
+    {
+      "rule": "Watchlist Proximity",
+      "typology": "Sanctions",
+      "alerts": 638,
+      "precision": 0.6207,
+      "falsePositiveRate": 0.3793,
+      "avgRisk": 83.1,
+      "amount": 41380537.59
+    },
+    {
+      "rule": "Round Dollar Repetition",
+      "typology": "Pattern",
+      "alerts": 474,
+      "precision": 0.6624,
+      "falsePositiveRate": 0.3376,
+      "avgRisk": 81.7,
+      "amount": 29866435.14
+    },
+    {
+      "rule": "New Beneficiary Burst",
+      "typology": "Account Takeover",
+      "alerts": 465,
+      "precision": 0.6258,
+      "falsePositiveRate": 0.3742,
+      "avgRisk": 81.5,
+      "amount": 31334919.22
+    },
+    {
+      "rule": "Rapid In-Out Funds",
+      "typology": "Mule/Funnel",
+      "alerts": 447,
+      "precision": 0.6063,
+      "falsePositiveRate": 0.3937,
+      "avgRisk": 81.3,
+      "amount": 25950122.71
+    },
+    {
+      "rule": "Dormant Account Reactivation",
+      "typology": "Behavioral",
+      "alerts": 425,
+      "precision": 0.6118,
+      "falsePositiveRate": 0.3882,
+      "avgRisk": 81.2,
+      "amount": 22886279.31
+    }
+  ],
+  "highCustomers": [
+    {
+      "customer": "Customer 0167",
+      "tier": "High",
+      "country": "Nigeria",
+      "pep": "N",
+      "watchlist": "N",
+      "alerts": 71,
+      "cases": 62,
+      "sar": 52,
+      "amount": 2032392.51,
+      "avgRisk": 94.7
+    },
+    {
+      "customer": "Customer 0026",
+      "tier": "High",
+      "country": "United Arab Emirates",
+      "pep": "Y",
+      "watchlist": "N",
+      "alerts": 60,
+      "cases": 52,
+      "sar": 42,
+      "amount": 1503049.54,
+      "avgRisk": 91.8
+    },
+    {
+      "customer": "Customer 0162",
+      "tier": "High",
+      "country": "United Arab Emirates",
+      "pep": "N",
+      "watchlist": "N",
+      "alerts": 56,
+      "cases": 43,
+      "sar": 31,
+      "amount": 6644612.52,
+      "avgRisk": 90.9
+    },
+    {
+      "customer": "Customer 0101",
+      "tier": "Medium",
+      "country": "United Arab Emirates",
+      "pep": "N",
+      "watchlist": "N",
+      "alerts": 54,
+      "cases": 43,
+      "sar": 40,
+      "amount": 8054523.33,
+      "avgRisk": 90.9
+    },
+    {
+      "customer": "Customer 0007",
+      "tier": "High",
+      "country": "Turkey",
+      "pep": "N",
+      "watchlist": "N",
+      "alerts": 45,
+      "cases": 36,
+      "sar": 28,
+      "amount": 4541625.2,
+      "avgRisk": 90.8
+    },
+    {
+      "customer": "Customer 0165",
+      "tier": "High",
+      "country": "Turkey",
+      "pep": "N",
+      "watchlist": "N",
+      "alerts": 54,
+      "cases": 42,
+      "sar": 33,
+      "amount": 5573099.09,
+      "avgRisk": 90.5
+    },
+    {
+      "customer": "Customer 0146",
+      "tier": "Medium",
+      "country": "Philippines",
+      "pep": "Y",
+      "watchlist": "N",
+      "alerts": 48,
+      "cases": 36,
+      "sar": 32,
+      "amount": 5544511.61,
+      "avgRisk": 90.2
+    },
+    {
+      "customer": "Customer 0116",
+      "tier": "Medium",
+      "country": "Turkey",
+      "pep": "N",
+      "watchlist": "Y",
+      "alerts": 56,
+      "cases": 49,
+      "sar": 35,
+      "amount": 7109038.29,
+      "avgRisk": 90.1
+    },
+    {
+      "customer": "Customer 0032",
+      "tier": "High",
+      "country": "Turkey",
+      "pep": "Y",
+      "watchlist": "N",
+      "alerts": 58,
+      "cases": 48,
+      "sar": 35,
+      "amount": 3819342.26,
+      "avgRisk": 90.1
+    },
+    {
+      "customer": "Customer 0139",
+      "tier": "High",
+      "country": "South Africa",
+      "pep": "Y",
+      "watchlist": "N",
+      "alerts": 56,
+      "cases": 40,
+      "sar": 34,
+      "amount": 1644119.88,
+      "avgRisk": 89.4
+    }
+  ],
+  "aging": [
+    {
+      "bucket": "0-3d",
+      "cases": 2852
+    },
+    {
+      "bucket": "4-7d",
+      "cases": 511
+    },
+    {
+      "bucket": "8-14d",
+      "cases": 176
+    },
+    {
+      "bucket": "15-30d",
+      "cases": 17
+    }
+  ],
+  "workload": [
+    {
+      "analyst": "Liam Nguyen",
+      "queue": "APAC Queue",
+      "cases": 497,
+      "overdue": 173,
+      "avgAge": 2.4,
+      "sar": 375
+    },
+    {
+      "analyst": "Amelia Chen",
+      "queue": "SAR Review",
+      "cases": 467,
+      "overdue": 143,
+      "avgAge": 2.3,
+      "sar": 347
+    },
+    {
+      "analyst": "Maya Tran",
+      "queue": "APAC Queue",
+      "cases": 460,
+      "overdue": 156,
+      "avgAge": 2.5,
+      "sar": 337
+    },
+    {
+      "analyst": "Ethan Brooks",
+      "queue": "EMEA Queue",
+      "cases": 442,
+      "overdue": 144,
+      "avgAge": 2.4,
+      "sar": 337
+    },
+    {
+      "analyst": "Minh Le",
+      "queue": "Payments Queue",
+      "cases": 428,
+      "overdue": 150,
+      "avgAge": 2.4,
+      "sar": 317
+    },
+    {
+      "analyst": "Aisha Khan",
+      "queue": "Sanctions Escalation",
+      "cases": 426,
+      "overdue": 129,
+      "avgAge": 2.2,
+      "sar": 312
+    },
+    {
+      "analyst": "Noah Garcia",
+      "queue": "Americas Queue",
+      "cases": 419,
+      "overdue": 156,
+      "avgAge": 2.6,
+      "sar": 314
+    },
+    {
+      "analyst": "Sofia Patel",
+      "queue": "High Risk Queue",
+      "cases": 417,
+      "overdue": 156,
+      "avgAge": 2.6,
+      "sar": 300
+    }
+  ],
+  "governance": [
+    {
+      "date": "May 2026",
+      "rule": "Cash Intensive Pattern",
+      "change": "Sandbox validation",
+      "status": "Approved",
+      "precisionBefore": 0.5377,
+      "precisionAfter": 0.5495,
+      "volumeDelta": 0.009
+    },
+    {
+      "date": "May 2026",
+      "rule": "Dormant Account Reactivation",
+      "change": "Rule enablement",
+      "status": "Rejected",
+      "precisionBefore": 0.3675,
+      "precisionAfter": 0.432,
+      "volumeDelta": 0.2008
+    },
+    {
+      "date": "Apr 2026",
+      "rule": "Watchlist Proximity",
+      "change": "Precision backtest",
+      "status": "Approved",
+      "precisionBefore": 0.4861,
+      "precisionAfter": 0.609,
+      "volumeDelta": -0.0027
+    },
+    {
+      "date": "Apr 2026",
+      "rule": "New Beneficiary Burst",
+      "change": "Owner review",
+      "status": "Approved",
+      "precisionBefore": 0.5447,
+      "precisionAfter": 0.6033,
+      "volumeDelta": 0.0653
+    },
+    {
+      "date": "Apr 2026",
+      "rule": "High Risk Corridor",
+      "change": "Threshold tuning",
+      "status": "Approved",
+      "precisionBefore": 0.3361,
+      "precisionAfter": 0.4208,
+      "volumeDelta": -0.1986
+    },
+    {
+      "date": "Apr 2026",
+      "rule": "High Velocity Transfers",
+      "change": "Precision backtest",
+      "status": "Approved",
+      "precisionBefore": 0.6149,
+      "precisionAfter": 0.6619,
+      "volumeDelta": -0.2274
+    },
+    {
+      "date": "Apr 2026",
+      "rule": "Watchlist Proximity",
+      "change": "Sandbox validation",
+      "status": "Pending",
+      "precisionBefore": 0.4507,
+      "precisionAfter": 0.4804,
+      "volumeDelta": 0.2302
+    },
+    {
+      "date": "Mar 2026",
+      "rule": "Round Dollar Repetition",
+      "change": "Owner review",
+      "status": "Approved",
+      "precisionBefore": 0.2973,
+      "precisionAfter": 0.4044,
+      "volumeDelta": 0.1
+    },
+    {
+      "date": "Feb 2026",
+      "rule": "Dormant Account Reactivation",
+      "change": "Threshold tuning",
+      "status": "Pending",
+      "precisionBefore": 0.3827,
+      "precisionAfter": 0.4463,
+      "volumeDelta": -0.1673
+    },
+    {
+      "date": "Feb 2026",
+      "rule": "New Beneficiary Burst",
+      "change": "Sandbox validation",
+      "status": "Approved",
+      "precisionBefore": 0.7261,
+      "precisionAfter": 0.8183,
+      "volumeDelta": 0.2063
+    },
+    {
+      "date": "Feb 2026",
+      "rule": "Watchlist Proximity",
+      "change": "Rule enablement",
+      "status": "Approved",
+      "precisionBefore": 0.1815,
+      "precisionAfter": 0.232,
+      "volumeDelta": -0.0381
+    },
+    {
+      "date": "Jan 2026",
+      "rule": "Cash Intensive Pattern",
+      "change": "Rule enablement",
+      "status": "Approved",
+      "precisionBefore": 0.4949,
+      "precisionAfter": 0.513,
+      "volumeDelta": 0.0259
+    }
+  ],
+  "funnel": [
+    {
+      "stage": "Transactions",
+      "value": 36000
+    },
+    {
+      "stage": "Flagged Txns",
+      "value": 6611
+    },
+    {
+      "stage": "Alerts",
+      "value": 6611
+    },
+    {
+      "stage": "Cases",
+      "value": 3556
+    },
+    {
+      "stage": "Suspicious",
+      "value": 2894
+    },
+    {
+      "stage": "SAR Filed",
+      "value": 2639
+    }
+  ]
+}

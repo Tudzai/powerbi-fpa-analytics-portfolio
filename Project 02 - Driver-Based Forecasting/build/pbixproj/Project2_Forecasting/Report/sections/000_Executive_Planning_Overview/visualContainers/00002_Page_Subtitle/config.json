@@ -1,0 +1,42 @@
+{
+  "name": "146ceefdc2b648b4b494",
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Scenario forecast P&L, cash pressure and planning variance.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "8pt",
+                      "color": "#E8F0F7"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 24,
+        "y": 42,
+        "z": 101,
+        "width": 680,
+        "height": 18,
+        "tabOrder": 101
+      }
+    }
+  ]
+}

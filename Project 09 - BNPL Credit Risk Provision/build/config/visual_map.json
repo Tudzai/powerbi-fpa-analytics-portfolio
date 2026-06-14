@@ -1,0 +1,407 @@
+[
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 0,
+    "visual_type": "basicShape",
+    "x": 0,
+    "y": 0,
+    "w": 1280,
+    "h": 76
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 1,
+    "visual_type": "textbox",
+    "x": 24,
+    "y": 14,
+    "w": 630,
+    "h": 54
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 2,
+    "visual_type": "slicer",
+    "x": 842,
+    "y": 19,
+    "w": 120,
+    "h": 46
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 3,
+    "visual_type": "slicer",
+    "x": 970,
+    "y": 19,
+    "w": 134,
+    "h": 46
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 4,
+    "visual_type": "slicer",
+    "x": 1112,
+    "y": 19,
+    "w": 140,
+    "h": 46
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 5,
+    "visual_type": "cardVisual",
+    "x": 24,
+    "y": 92,
+    "w": 186,
+    "h": 78
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 6,
+    "visual_type": "cardVisual",
+    "x": 229,
+    "y": 92,
+    "w": 186,
+    "h": 78
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 7,
+    "visual_type": "cardVisual",
+    "x": 434,
+    "y": 92,
+    "w": 186,
+    "h": 78
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 8,
+    "visual_type": "cardVisual",
+    "x": 639,
+    "y": 92,
+    "w": 186,
+    "h": 78
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 9,
+    "visual_type": "cardVisual",
+    "x": 844,
+    "y": 92,
+    "w": 186,
+    "h": 78
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 10,
+    "visual_type": "cardVisual",
+    "x": 1049,
+    "y": 92,
+    "w": 186,
+    "h": 78
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 11,
+    "visual_type": "lineClusteredColumnComboChart",
+    "x": 24,
+    "y": 190,
+    "w": 610,
+    "h": 238
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 12,
+    "visual_type": "barChart",
+    "x": 654,
+    "y": 190,
+    "w": 290,
+    "h": 238
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 13,
+    "visual_type": "barChart",
+    "x": 964,
+    "y": 190,
+    "w": 290,
+    "h": 238
+  },
+  {
+    "page": "Credit Risk Overview",
+    "visual_index": 14,
+    "visual_type": "tableEx",
+    "x": 24,
+    "y": 452,
+    "w": 1230,
+    "h": 210
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 0,
+    "visual_type": "basicShape",
+    "x": 0,
+    "y": 0,
+    "w": 1280,
+    "h": 76
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 1,
+    "visual_type": "textbox",
+    "x": 24,
+    "y": 14,
+    "w": 620,
+    "h": 54
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 2,
+    "visual_type": "slicer",
+    "x": 842,
+    "y": 19,
+    "w": 120,
+    "h": 46
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 3,
+    "visual_type": "slicer",
+    "x": 970,
+    "y": 19,
+    "w": 134,
+    "h": 46
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 4,
+    "visual_type": "slicer",
+    "x": 1112,
+    "y": 19,
+    "w": 140,
+    "h": 46
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 5,
+    "visual_type": "cardVisual",
+    "x": 24,
+    "y": 92,
+    "w": 224,
+    "h": 78
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 6,
+    "visual_type": "cardVisual",
+    "x": 269,
+    "y": 92,
+    "w": 224,
+    "h": 78
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 7,
+    "visual_type": "cardVisual",
+    "x": 514,
+    "y": 92,
+    "w": 224,
+    "h": 78
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 8,
+    "visual_type": "cardVisual",
+    "x": 759,
+    "y": 92,
+    "w": 224,
+    "h": 78
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 9,
+    "visual_type": "cardVisual",
+    "x": 1004,
+    "y": 92,
+    "w": 224,
+    "h": 78
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 10,
+    "visual_type": "lineClusteredColumnComboChart",
+    "x": 24,
+    "y": 190,
+    "w": 610,
+    "h": 230
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 11,
+    "visual_type": "barChart",
+    "x": 654,
+    "y": 190,
+    "w": 290,
+    "h": 230
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 12,
+    "visual_type": "barChart",
+    "x": 964,
+    "y": 190,
+    "w": 290,
+    "h": 230
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 13,
+    "visual_type": "tableEx",
+    "x": 24,
+    "y": 446,
+    "w": 610,
+    "h": 220
+  },
+  {
+    "page": "Delinquency & Vintage Analysis",
+    "visual_index": 14,
+    "visual_type": "tableEx",
+    "x": 654,
+    "y": 446,
+    "w": 600,
+    "h": 220
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 0,
+    "visual_type": "basicShape",
+    "x": 0,
+    "y": 0,
+    "w": 1280,
+    "h": 76
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 1,
+    "visual_type": "textbox",
+    "x": 24,
+    "y": 14,
+    "w": 680,
+    "h": 54
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 2,
+    "visual_type": "slicer",
+    "x": 842,
+    "y": 19,
+    "w": 120,
+    "h": 46
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 3,
+    "visual_type": "slicer",
+    "x": 970,
+    "y": 19,
+    "w": 134,
+    "h": 46
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 4,
+    "visual_type": "slicer",
+    "x": 1112,
+    "y": 19,
+    "w": 140,
+    "h": 46
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 5,
+    "visual_type": "cardVisual",
+    "x": 24,
+    "y": 92,
+    "w": 224,
+    "h": 78
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 6,
+    "visual_type": "cardVisual",
+    "x": 269,
+    "y": 92,
+    "w": 224,
+    "h": 78
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 7,
+    "visual_type": "cardVisual",
+    "x": 514,
+    "y": 92,
+    "w": 224,
+    "h": 78
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 8,
+    "visual_type": "cardVisual",
+    "x": 759,
+    "y": 92,
+    "w": 224,
+    "h": 78
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 9,
+    "visual_type": "cardVisual",
+    "x": 1004,
+    "y": 92,
+    "w": 224,
+    "h": 78
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 10,
+    "visual_type": "lineClusteredColumnComboChart",
+    "x": 24,
+    "y": 190,
+    "w": 610,
+    "h": 230
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 11,
+    "visual_type": "barChart",
+    "x": 654,
+    "y": 190,
+    "w": 290,
+    "h": 230
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 12,
+    "visual_type": "barChart",
+    "x": 964,
+    "y": 190,
+    "w": 290,
+    "h": 230
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 13,
+    "visual_type": "tableEx",
+    "x": 24,
+    "y": 446,
+    "w": 610,
+    "h": 220
+  },
+  {
+    "page": "Collections & Provision Forecast",
+    "visual_index": 14,
+    "visual_type": "tableEx",
+    "x": 654,
+    "y": 446,
+    "w": 600,
+    "h": 220
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "id": 0,
+  "layoutOptimization": 0,
+  "sections": [
+    {
+      "displayName": "Credit Risk Overview",
+      "name": "6d7cf8c5c6894dd5be7e",
+      "ordinal": 0
+    },
+    {
+      "displayName": "Delinquency & Vintage Analysis",
+      "name": "fefa23c62ffc4fcb8d26",
+      "ordinal": 1
+    },
+    {
+      "displayName": "Collections & Provision Forecast",
+      "name": "6f7c0e0c343546d7bbe1",
+      "ordinal": 2
+    }
+  ]
+}

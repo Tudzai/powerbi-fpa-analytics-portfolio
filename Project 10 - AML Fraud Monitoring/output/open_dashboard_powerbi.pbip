@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "artifacts": [
+    {
+      "report": {
+        "path": "powerbi_project/AML_Fraud_Monitoring_Command_Center.Report"
+      }
+    }
+  ]
+}

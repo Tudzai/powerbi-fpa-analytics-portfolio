@@ -1,0 +1,12 @@
+{
+  "title": "AML / Fraud Monitoring Command Center",
+  "audience": "Chief Compliance Officer, MLRO, Fraud Ops, AML analysts, rule governance board",
+  "business_goal": "Monitor financial crime exposure, triage alert quality, keep case SLA under control, and govern rule tuning with audit-ready evidence.",
+  "latest_complete_month": "May 2026",
+  "synthetic_seed": 20260611,
+  "tabs": [
+    "Fraud & Compliance Overview",
+    "Alert & Customer Risk Deep Dive",
+    "Case SLA & Rule Governance"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Project 05 - Retention Cohort LTV Retention Cohort Theme v2",
+  "dataColors": [
+    "#2F80ED",
+    "#00A6A6",
+    "#16A34A",
+    "#F59E0B",
+    "#E5484D",
+    "#7C3AED",
+    "#38BDF8",
+    "#64748B"
+  ],
+  "background": "#F4F7FB",
+  "foreground": "#172033",
+  "tableAccent": "#2F80ED",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#172033"
+              }
+            },
+            "fontSize": 12,
+            "fontFamily": "Segoe UI Semibold"
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#D9E2EC"
+              }
+            },
+            "radius": 8
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1681 @@
+{
+  "compatibilityLevel": 1550,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimDate",
+        "lineageTag": "0d6daa1d-1bfc-4035-99d1-dc38fd67a1f8",
+        "columns": [
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date",
+            "lineageTag": "17fef3f8-cf3c-4a24-8c35-3c9ee386bbdd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_start",
+            "dataType": "dateTime",
+            "sourceColumn": "month_start",
+            "lineageTag": "43234133-2ad5-4ffa-932c-037741f71e2d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_label",
+            "dataType": "string",
+            "sourceColumn": "month_label",
+            "lineageTag": "72b4e397-673c-4881-9381-044ffbba389f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "lineageTag": "5f941d59-ff00-4a9d-a1de-5e19e06b7c62",
+            "formatString": "0"
+          },
+          {
+            "name": "quarter",
+            "dataType": "string",
+            "sourceColumn": "quarter",
+            "lineageTag": "5506bd00-2d7a-4234-bde7-a9e3e14dcf5c",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimDate",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\dim_date.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"date\", type date}, {\"month_start\", type date}, {\"month_label\", type text}, {\"year\", Int64.Type}, {\"quarter\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimMonth",
+        "lineageTag": "5063b237-4b60-42ee-963a-38da11ea1e4f",
+        "columns": [
+          {
+            "name": "month_start",
+            "dataType": "dateTime",
+            "sourceColumn": "month_start",
+            "lineageTag": "5a41df30-74f6-415c-ad47-44e0229c3141",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_label",
+            "dataType": "string",
+            "sourceColumn": "month_label",
+            "lineageTag": "5ceb3915-f7bf-454a-86a5-b4be94b41005",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_index",
+            "dataType": "int64",
+            "sourceColumn": "month_index",
+            "lineageTag": "9a1ca98e-b5f3-4f17-9de5-c92a4a0197ee",
+            "formatString": "0"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "lineageTag": "58d2c01e-3fd4-41bc-b671-4bc115c3372c",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimMonth",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\dim_month.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"month_start\", type date}, {\"month_label\", type text}, {\"month_index\", Int64.Type}, {\"year\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimProduct",
+        "lineageTag": "958b5fd9-059e-4500-92d1-efa50588736a",
+        "columns": [
+          {
+            "name": "product_type",
+            "dataType": "string",
+            "sourceColumn": "product_type",
+            "lineageTag": "94b37244-8dba-4c20-a7fc-a9deb17cb6d0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "term_months",
+            "dataType": "int64",
+            "sourceColumn": "term_months",
+            "lineageTag": "96be2d79-1e1b-45a6-a6cb-ca6d9cf9eb1a",
+            "formatString": "0"
+          },
+          {
+            "name": "product_family",
+            "dataType": "string",
+            "sourceColumn": "product_family",
+            "lineageTag": "707b954b-6e05-4cd8-938f-2013237f74a7",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "apr_policy",
+            "dataType": "double",
+            "sourceColumn": "apr_policy",
+            "lineageTag": "96559780-88b0-4db4-a772-1ec3d65dac88"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimProduct",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\dim_product.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"product_type\", type text}, {\"term_months\", Int64.Type}, {\"product_family\", type text}, {\"apr_policy\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimChannel",
+        "lineageTag": "bbee7b7d-f663-4d0b-964e-58116a5634c7",
+        "columns": [
+          {
+            "name": "channel",
+            "dataType": "string",
+            "sourceColumn": "channel",
+            "lineageTag": "fa36fbcb-b6b0-4239-91eb-676009716f40",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "channel_group",
+            "dataType": "string",
+            "sourceColumn": "channel_group",
+            "lineageTag": "8e51c48e-df6c-47c0-a3a9-00da80c5eb07",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimChannel",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\dim_channel.csv\"), [Delimiter=\",\", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"channel\", type text}, {\"channel_group\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimRiskBand",
+        "lineageTag": "25258c0e-175e-42c8-b197-7f5cc0dc4fbe",
+        "columns": [
+          {
+            "name": "risk_band",
+            "dataType": "string",
+            "sourceColumn": "risk_band",
+            "lineageTag": "358d91ed-168b-48bc-a648-1bc6adeffae7",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_order",
+            "dataType": "int64",
+            "sourceColumn": "risk_order",
+            "lineageTag": "5bd1ce98-55ca-4d1b-a8c9-605c8718c59f",
+            "formatString": "0"
+          },
+          {
+            "name": "risk_appetite",
+            "dataType": "string",
+            "sourceColumn": "risk_appetite",
+            "lineageTag": "58c0afc6-e702-407b-8ead-ef4573f829a0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pd_floor",
+            "dataType": "double",
+            "sourceColumn": "pd_floor",
+            "lineageTag": "18b9ed5c-ad23-4574-9cf3-80519eb5eece"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimRiskBand",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\dim_risk_band.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"risk_band\", type text}, {\"risk_order\", Int64.Type}, {\"risk_appetite\", type text}, {\"pd_floor\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimMerchant",
+        "lineageTag": "df796a36-9fd4-433f-be78-6d720a0f85d5",
+        "columns": [
+          {
+            "name": "merchant_id",
+            "dataType": "string",
+            "sourceColumn": "merchant_id",
+            "lineageTag": "5a7bd44a-5dbe-437f-bdc9-3eff020b0987",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "merchant_name",
+            "dataType": "string",
+            "sourceColumn": "merchant_name",
+            "lineageTag": "d7b2a9f4-e0a6-4df3-966c-c15602548053",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "merchant_category",
+            "dataType": "string",
+            "sourceColumn": "merchant_category",
+            "lineageTag": "8280d208-baf3-46bc-8218-87068b793c38",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "merchant_tier",
+            "dataType": "string",
+            "sourceColumn": "merchant_tier",
+            "lineageTag": "9dfdcae9-7953-401f-a90f-4478ad05f43a",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimMerchant",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\dim_merchant.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"merchant_id\", type text}, {\"merchant_name\", type text}, {\"merchant_category\", type text}, {\"merchant_tier\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCustomerSegment",
+        "lineageTag": "5a0529f4-e3cd-403e-a138-601ea691f38b",
+        "columns": [
+          {
+            "name": "customer_segment",
+            "dataType": "string",
+            "sourceColumn": "customer_segment",
+            "lineageTag": "04e6c88c-c80e-473e-b32b-b2ac829e9c90",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "repeat_type",
+            "dataType": "string",
+            "sourceColumn": "repeat_type",
+            "lineageTag": "58b01023-a6a5-4037-923e-a925d2629baf",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimCustomerSegment",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\dim_customer_segment.csv\"), [Delimiter=\",\", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"customer_segment\", type text}, {\"repeat_type\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactApplications",
+        "lineageTag": "8cdfb5de-ce7e-40e6-8e59-2897f0f7f2b0",
+        "columns": [
+          {
+            "name": "application_id",
+            "dataType": "string",
+            "sourceColumn": "application_id",
+            "lineageTag": "d5f7b21d-0731-4142-b146-246d45f5ca15",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "application_date",
+            "dataType": "dateTime",
+            "sourceColumn": "application_date",
+            "lineageTag": "b08da76b-c558-47ef-8c70-44996648d4de",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "application_month",
+            "dataType": "dateTime",
+            "sourceColumn": "application_month",
+            "lineageTag": "895df458-5be6-4d47-a855-1b6c41453663",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "product_type",
+            "dataType": "string",
+            "sourceColumn": "product_type",
+            "lineageTag": "487c5b57-b904-463e-b4e2-c90854c1d808",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "channel",
+            "dataType": "string",
+            "sourceColumn": "channel",
+            "lineageTag": "988ea528-09f4-474c-99d0-a8cd98dcaf40",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_segment",
+            "dataType": "string",
+            "sourceColumn": "customer_segment",
+            "lineageTag": "b179c800-da11-47b3-83a4-17d2a85f5de6",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "lineageTag": "1c3eba83-2695-4fa1-a745-3652e77725e3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "merchant_id",
+            "dataType": "string",
+            "sourceColumn": "merchant_id",
+            "lineageTag": "7424e5a8-a0cd-43f1-9abb-00bf88916140",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "merchant_category",
+            "dataType": "string",
+            "sourceColumn": "merchant_category",
+            "lineageTag": "d64fb550-74e9-48a9-8206-39e2129c9f1f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "requested_amount",
+            "dataType": "double",
+            "sourceColumn": "requested_amount",
+            "lineageTag": "9f204323-4b3a-4d9c-9ecd-15cb1a95a868",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "credit_score",
+            "dataType": "int64",
+            "sourceColumn": "credit_score",
+            "lineageTag": "9c752c9c-5449-4bc5-aae7-3b04c438c35d",
+            "formatString": "0"
+          },
+          {
+            "name": "risk_band",
+            "dataType": "string",
+            "sourceColumn": "risk_band",
+            "lineageTag": "48b88298-c112-4f1e-90f5-20991d263b6d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pd_12m",
+            "dataType": "double",
+            "sourceColumn": "pd_12m",
+            "lineageTag": "2d10d2ca-137b-48ba-89ca-ada5306208e6",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "lgd",
+            "dataType": "double",
+            "sourceColumn": "lgd",
+            "lineageTag": "9c2a560b-cce7-4fd4-a938-9a640ab583f1",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "approved_flag",
+            "dataType": "int64",
+            "sourceColumn": "approved_flag",
+            "lineageTag": "e977c662-1bc5-495f-b07e-02823b58e5fd",
+            "formatString": "0"
+          },
+          {
+            "name": "disbursed_flag",
+            "dataType": "int64",
+            "sourceColumn": "disbursed_flag",
+            "lineageTag": "e64206ec-1629-4377-aad6-2bd27a0fab89",
+            "formatString": "0"
+          },
+          {
+            "name": "approved_amount",
+            "dataType": "double",
+            "sourceColumn": "approved_amount",
+            "lineageTag": "d6fb869f-e7a5-41a4-86b6-aba1bcfe2723",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "funded_amount",
+            "dataType": "double",
+            "sourceColumn": "funded_amount",
+            "lineageTag": "0c7b315a-8722-4915-ab2f-e0f93717ba11",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "decision",
+            "dataType": "string",
+            "sourceColumn": "decision",
+            "lineageTag": "0525328f-d091-41a0-a1dc-ba630c06e754",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactApplications",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\fact_applications.csv\"), [Delimiter=\",\", Columns=19, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"application_id\", type text}, {\"application_date\", type date}, {\"application_month\", type date}, {\"product_type\", type text}, {\"channel\", type text}, {\"customer_segment\", type text}, {\"region\", type text}, {\"merchant_id\", type text}, {\"merchant_category\", type text}, {\"requested_amount\", type number}, {\"credit_score\", Int64.Type}, {\"risk_band\", type text}, {\"pd_12m\", type number}, {\"lgd\", type number}, {\"approved_flag\", Int64.Type}, {\"disbursed_flag\", Int64.Type}, {\"approved_amount\", type number}, {\"funded_amount\", type number}, {\"decision\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactLoans",
+        "lineageTag": "491eecf5-408b-444d-831f-53aff7c34535",
+        "columns": [
+          {
+            "name": "loan_id",
+            "dataType": "string",
+            "sourceColumn": "loan_id",
+            "lineageTag": "4f804fe1-bd1e-4ddc-8b77-d2c49b2e88a8",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "application_id",
+            "dataType": "string",
+            "sourceColumn": "application_id",
+            "lineageTag": "cce37eb9-d1ec-4d87-99bd-05ef5878e7b4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "application_date",
+            "dataType": "dateTime",
+            "sourceColumn": "application_date",
+            "lineageTag": "1457dcb2-23e8-46df-870e-08da2a016949",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "origination_month",
+            "dataType": "dateTime",
+            "sourceColumn": "origination_month",
+            "lineageTag": "25915fb8-a05e-4147-8e5b-35a52a2a117a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "product_type",
+            "dataType": "string",
+            "sourceColumn": "product_type",
+            "lineageTag": "d35fb7b6-d753-426f-844d-d90b3456a548",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "channel",
+            "dataType": "string",
+            "sourceColumn": "channel",
+            "lineageTag": "ea3e1c18-6693-447a-a96e-7d089ef637cf",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_segment",
+            "dataType": "string",
+            "sourceColumn": "customer_segment",
+            "lineageTag": "f515aa38-839c-4fd4-a19f-dcfa099f2692",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "lineageTag": "0929420b-a780-44db-b04b-576c079b9ab7",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "merchant_id",
+            "dataType": "string",
+            "sourceColumn": "merchant_id",
+            "lineageTag": "5c8a96ec-64b3-4bca-ba3b-005f2bbe9d6b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "merchant_category",
+            "dataType": "string",
+            "sourceColumn": "merchant_category",
+            "lineageTag": "01c53712-2f83-44d7-9a0d-514311a33dd2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "funded_amount",
+            "dataType": "double",
+            "sourceColumn": "funded_amount",
+            "lineageTag": "22b16867-96cf-4ce1-b479-2d67124102ea",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "credit_score",
+            "dataType": "int64",
+            "sourceColumn": "credit_score",
+            "lineageTag": "8b80f333-cffa-43eb-8cfc-23f9dc0141d2",
+            "formatString": "0"
+          },
+          {
+            "name": "risk_band",
+            "dataType": "string",
+            "sourceColumn": "risk_band",
+            "lineageTag": "5ece2ebf-2f93-4ab0-bd60-737637464bae",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pd_12m",
+            "dataType": "double",
+            "sourceColumn": "pd_12m",
+            "lineageTag": "c26c389b-15e4-4650-9781-26b7e9fa5c98",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "lgd",
+            "dataType": "double",
+            "sourceColumn": "lgd",
+            "lineageTag": "1558f217-c3b6-4d15-b1e6-d2763f6e9732",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "term_months",
+            "dataType": "int64",
+            "sourceColumn": "term_months",
+            "lineageTag": "685ed083-91eb-4f93-8e14-fe18cec07fac",
+            "formatString": "0"
+          },
+          {
+            "name": "apr",
+            "dataType": "double",
+            "sourceColumn": "apr",
+            "lineageTag": "6367768d-f6d3-4435-998f-518d5163c3c1",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "expected_loss_at_origination",
+            "dataType": "double",
+            "sourceColumn": "expected_loss_at_origination",
+            "lineageTag": "55635e76-8406-4748-8e4e-ddf5e1948451",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "limit_utilization",
+            "dataType": "double",
+            "sourceColumn": "limit_utilization",
+            "lineageTag": "0e738fe2-006b-48b8-af46-d8f558177c19",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactLoans",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\fact_loans.csv\"), [Delimiter=\",\", Columns=19, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"loan_id\", type text}, {\"application_id\", type text}, {\"application_date\", type date}, {\"origination_month\", type date}, {\"product_type\", type text}, {\"channel\", type text}, {\"customer_segment\", type text}, {\"region\", type text}, {\"merchant_id\", type text}, {\"merchant_category\", type text}, {\"funded_amount\", type number}, {\"credit_score\", Int64.Type}, {\"risk_band\", type text}, {\"pd_12m\", type number}, {\"lgd\", type number}, {\"term_months\", Int64.Type}, {\"apr\", type number}, {\"expected_loss_at_origination\", type number}, {\"limit_utilization\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactLoanMonthly",
+        "lineageTag": "e98239ce-20e5-406b-8bff-3d4438395ff8",
+        "columns": [
+          {
+            "name": "loan_id",
+            "dataType": "string",
+            "sourceColumn": "loan_id",
+            "lineageTag": "7fbf3df0-2e09-4d4e-9cdb-c553b132045c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "snapshot_month",
+            "dataType": "dateTime",
+            "sourceColumn": "snapshot_month",
+            "lineageTag": "6aa9e4dd-90a1-475b-a70b-30981f09305f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mob",
+            "dataType": "int64",
+            "sourceColumn": "mob",
+            "lineageTag": "d7e22074-a34c-4bbb-9384-01e8b2fc40d0",
+            "formatString": "0"
+          },
+          {
+            "name": "product_type",
+            "dataType": "string",
+            "sourceColumn": "product_type",
+            "lineageTag": "05e94c10-f3dc-48e8-9318-01b04ba28a35",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "channel",
+            "dataType": "string",
+            "sourceColumn": "channel",
+            "lineageTag": "44cbcc1b-02b0-44d1-801f-a6b707fe6fe0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_segment",
+            "dataType": "string",
+            "sourceColumn": "customer_segment",
+            "lineageTag": "467313a3-1287-4168-ab20-7f0d02bb3f9b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "lineageTag": "3505ee33-67cb-41d7-9a40-a77a6cf0a22b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "merchant_id",
+            "dataType": "string",
+            "sourceColumn": "merchant_id",
+            "lineageTag": "0513cd44-5ea6-478a-bc0f-d07a23f51080",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "merchant_category",
+            "dataType": "string",
+            "sourceColumn": "merchant_category",
+            "lineageTag": "0676752c-eae1-458a-a55c-e685db503172",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_band",
+            "dataType": "string",
+            "sourceColumn": "risk_band",
+            "lineageTag": "394e45d6-6d3d-404c-8fd5-161f744aa665",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dpd_bucket",
+            "dataType": "string",
+            "sourceColumn": "dpd_bucket",
+            "lineageTag": "aaeb19f1-1ea0-49b1-b6d3-f1154ab31a3a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "prior_dpd_bucket",
+            "dataType": "string",
+            "sourceColumn": "prior_dpd_bucket",
+            "lineageTag": "cd3bf12c-fb2f-49db-b06b-f9efe268585c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "funded_amount",
+            "dataType": "double",
+            "sourceColumn": "funded_amount",
+            "lineageTag": "0c38eaa4-a349-4ac9-816b-0f9eb6d9e794",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "current_principal",
+            "dataType": "double",
+            "sourceColumn": "current_principal",
+            "lineageTag": "f777d0d5-7888-4863-895d-84cd15f2d0d9",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "delinquency_balance",
+            "dataType": "double",
+            "sourceColumn": "delinquency_balance",
+            "lineageTag": "adeb857c-ae51-4eca-8e99-592b0c42b2c0",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "dpd30_balance",
+            "dataType": "double",
+            "sourceColumn": "dpd30_balance",
+            "lineageTag": "9309fd15-ee89-4415-9ee6-274ba9749d15",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "dpd60_balance",
+            "dataType": "double",
+            "sourceColumn": "dpd60_balance",
+            "lineageTag": "8fca812d-f23b-4b38-a88b-795b41f464d5",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "npl_balance",
+            "dataType": "double",
+            "sourceColumn": "npl_balance",
+            "lineageTag": "c993f6e8-a01e-4e29-bb95-10ccc3867bba",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "chargeoff_amount",
+            "dataType": "double",
+            "sourceColumn": "chargeoff_amount",
+            "lineageTag": "40de06ea-9272-4920-9fac-0de1d4a2f137",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "expected_loss_amount",
+            "dataType": "double",
+            "sourceColumn": "expected_loss_amount",
+            "lineageTag": "01614461-5e69-417c-b451-8b59b4c4943d",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "provision_amount",
+            "dataType": "double",
+            "sourceColumn": "provision_amount",
+            "lineageTag": "c4bd45df-6be6-49fa-a0ac-c1fb6665de58",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "payment_due",
+            "dataType": "double",
+            "sourceColumn": "payment_due",
+            "lineageTag": "c5399337-61ec-49b8-9786-ad6fd44e7c6a"
+          },
+          {
+            "name": "payment_received",
+            "dataType": "double",
+            "sourceColumn": "payment_received",
+            "lineageTag": "42a67e5f-3179-49d3-a631-e6027aae656c"
+          },
+          {
+            "name": "autopay_failure_flag",
+            "dataType": "int64",
+            "sourceColumn": "autopay_failure_flag",
+            "lineageTag": "4ba36011-ae2d-43b5-95cd-c0f272cdd900",
+            "formatString": "0"
+          },
+          {
+            "name": "npl_flag",
+            "dataType": "int64",
+            "sourceColumn": "npl_flag",
+            "lineageTag": "8735d609-af72-421d-8291-ef6d71911396",
+            "formatString": "0"
+          },
+          {
+            "name": "dpd30_flag",
+            "dataType": "int64",
+            "sourceColumn": "dpd30_flag",
+            "lineageTag": "b4e67c12-289e-4ad7-85b6-75c2ca0b8fef",
+            "formatString": "0"
+          },
+          {
+            "name": "dpd60_flag",
+            "dataType": "int64",
+            "sourceColumn": "dpd60_flag",
+            "lineageTag": "28fdde9e-a2f9-4e7e-8080-8d81ff1ad774",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactLoanMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\fact_loan_monthly.csv\"), [Delimiter=\",\", Columns=27, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"loan_id\", type text}, {\"snapshot_month\", type date}, {\"mob\", Int64.Type}, {\"product_type\", type text}, {\"channel\", type text}, {\"customer_segment\", type text}, {\"region\", type text}, {\"merchant_id\", type text}, {\"merchant_category\", type text}, {\"risk_band\", type text}, {\"dpd_bucket\", type text}, {\"prior_dpd_bucket\", type text}, {\"funded_amount\", type number}, {\"current_principal\", type number}, {\"delinquency_balance\", type number}, {\"dpd30_balance\", type number}, {\"dpd60_balance\", type number}, {\"npl_balance\", type number}, {\"chargeoff_amount\", type number}, {\"expected_loss_amount\", type number}, {\"provision_amount\", type number}, {\"payment_due\", type number}, {\"payment_received\", type number}, {\"autopay_failure_flag\", Int64.Type}, {\"npl_flag\", Int64.Type}, {\"dpd30_flag\", Int64.Type}, {\"dpd60_flag\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCollections",
+        "lineageTag": "20cb2f1d-3afa-424a-b7b7-e2f2aa31f085",
+        "columns": [
+          {
+            "name": "case_id",
+            "dataType": "string",
+            "sourceColumn": "case_id",
+            "lineageTag": "881ff97e-d75d-43aa-90f8-3e2c85f0b0a2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "loan_id",
+            "dataType": "string",
+            "sourceColumn": "loan_id",
+            "lineageTag": "2f4e973a-c970-499e-adee-b4172da37c04",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "snapshot_month",
+            "dataType": "dateTime",
+            "sourceColumn": "snapshot_month",
+            "lineageTag": "b53fb0eb-c51d-4a2c-8988-adfabe237cf5",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dpd_bucket",
+            "dataType": "string",
+            "sourceColumn": "dpd_bucket",
+            "lineageTag": "469dd758-b462-41c0-8dba-ac80c315192d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_band",
+            "dataType": "string",
+            "sourceColumn": "risk_band",
+            "lineageTag": "dce7ed6e-a971-4604-ab2e-0db4c0316e68",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "product_type",
+            "dataType": "string",
+            "sourceColumn": "product_type",
+            "lineageTag": "9c2e3626-cb68-43a4-8db2-1163ee1fc4ea",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "channel",
+            "dataType": "string",
+            "sourceColumn": "channel",
+            "lineageTag": "38af9720-2f9b-48d6-bb7f-175a8a32565b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_segment",
+            "dataType": "string",
+            "sourceColumn": "customer_segment",
+            "lineageTag": "2c9f5e52-03f3-45d8-ac6c-667a9b930a31",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "lineageTag": "a8839374-fb1f-46a7-a4ab-02c9dcfc7bc6",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "queue",
+            "dataType": "string",
+            "sourceColumn": "queue",
+            "lineageTag": "92b47720-d4b7-4e99-b1f1-2963242f3aef",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "contacted_flag",
+            "dataType": "int64",
+            "sourceColumn": "contacted_flag",
+            "lineageTag": "7e7efc2e-e5ba-43aa-a2f4-d2057112427e",
+            "formatString": "0"
+          },
+          {
+            "name": "promise_to_pay_flag",
+            "dataType": "int64",
+            "sourceColumn": "promise_to_pay_flag",
+            "lineageTag": "62c920b3-4cab-44a9-b517-ed5679e6e948",
+            "formatString": "0"
+          },
+          {
+            "name": "resolved_flag",
+            "dataType": "int64",
+            "sourceColumn": "resolved_flag",
+            "lineageTag": "c6b1a367-9c0f-40d7-ae46-4ee97ae226a7",
+            "formatString": "0"
+          },
+          {
+            "name": "sla_hours",
+            "dataType": "double",
+            "sourceColumn": "sla_hours",
+            "lineageTag": "a101c4fb-9b72-4149-86d6-5fc7b92be617"
+          },
+          {
+            "name": "within_sla_flag",
+            "dataType": "int64",
+            "sourceColumn": "within_sla_flag",
+            "lineageTag": "32638622-b29c-4b9d-adb5-50cfaf5d649d",
+            "formatString": "0"
+          },
+          {
+            "name": "recovery_amount",
+            "dataType": "double",
+            "sourceColumn": "recovery_amount",
+            "lineageTag": "33d7a808-0b2e-4dfd-9357-879ed9178e05",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "case_balance",
+            "dataType": "double",
+            "sourceColumn": "case_balance",
+            "lineageTag": "0ca95d5e-2074-4fe0-b514-434133c63161",
+            "formatString": "$#,0;($#,0);$0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactCollections",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\fact_collections.csv\"), [Delimiter=\",\", Columns=17, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"case_id\", type text}, {\"loan_id\", type text}, {\"snapshot_month\", type date}, {\"dpd_bucket\", type text}, {\"risk_band\", type text}, {\"product_type\", type text}, {\"channel\", type text}, {\"customer_segment\", type text}, {\"region\", type text}, {\"queue\", type text}, {\"contacted_flag\", Int64.Type}, {\"promise_to_pay_flag\", Int64.Type}, {\"resolved_flag\", Int64.Type}, {\"sla_hours\", type number}, {\"within_sla_flag\", Int64.Type}, {\"recovery_amount\", type number}, {\"case_balance\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactVintage",
+        "lineageTag": "89ad0384-a2dc-4405-9485-afda57b06c01",
+        "columns": [
+          {
+            "name": "origination_month",
+            "dataType": "dateTime",
+            "sourceColumn": "origination_month",
+            "lineageTag": "4355fdce-d0a5-48ff-96e7-c8cb9ca79e0c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mob",
+            "dataType": "int64",
+            "sourceColumn": "mob",
+            "lineageTag": "e00daac2-7563-4b77-a5d2-8fa9edd34b91",
+            "formatString": "0"
+          },
+          {
+            "name": "loan_count",
+            "dataType": "int64",
+            "sourceColumn": "loan_count",
+            "lineageTag": "be56312f-4713-4728-a2dd-7250accaaa88",
+            "formatString": "0"
+          },
+          {
+            "name": "originated_amount",
+            "dataType": "double",
+            "sourceColumn": "originated_amount",
+            "lineageTag": "db89ee57-54f8-4009-81a9-f911811a1c47",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "outstanding_balance",
+            "dataType": "double",
+            "sourceColumn": "outstanding_balance",
+            "lineageTag": "94965bb3-f8bd-45bc-b4f6-ef16f2fe17da",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "dpd30_balance",
+            "dataType": "double",
+            "sourceColumn": "dpd30_balance",
+            "lineageTag": "158c2f64-40e9-44f3-acca-4adf8109d1e1",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "dpd60_balance",
+            "dataType": "double",
+            "sourceColumn": "dpd60_balance",
+            "lineageTag": "5549749a-ec07-4b59-824b-6a1052601c22",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "npl_balance",
+            "dataType": "double",
+            "sourceColumn": "npl_balance",
+            "lineageTag": "28c7f962-306d-4407-8f14-43917b75da29",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "chargeoff_amount",
+            "dataType": "double",
+            "sourceColumn": "chargeoff_amount",
+            "lineageTag": "9372f5cd-7930-481b-b03f-9d8cd8ba3bcd",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "dpd30_rate",
+            "dataType": "double",
+            "sourceColumn": "dpd30_rate",
+            "lineageTag": "b4e9a3cc-2bf6-4687-a8dd-6360ab63c982",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "dpd60_rate",
+            "dataType": "double",
+            "sourceColumn": "dpd60_rate",
+            "lineageTag": "6720370e-7aec-4942-9352-2102f534fada",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "npl_rate",
+            "dataType": "double",
+            "sourceColumn": "npl_rate",
+            "lineageTag": "37d7b799-8922-4a12-90cc-9d94ded9f413",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "cumulative_loss_rate",
+            "dataType": "double",
+            "sourceColumn": "cumulative_loss_rate",
+            "lineageTag": "d41eabb2-259a-425f-88ec-86def4dc742b",
+            "formatString": "$#,0;($#,0);$0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactVintage",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\fact_vintage.csv\"), [Delimiter=\",\", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"origination_month\", type date}, {\"mob\", Int64.Type}, {\"loan_count\", Int64.Type}, {\"originated_amount\", type number}, {\"outstanding_balance\", type number}, {\"dpd30_balance\", type number}, {\"dpd60_balance\", type number}, {\"npl_balance\", type number}, {\"chargeoff_amount\", type number}, {\"dpd30_rate\", type number}, {\"dpd60_rate\", type number}, {\"npl_rate\", type number}, {\"cumulative_loss_rate\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactRollRate",
+        "lineageTag": "b662f841-58f1-4e7f-8b3b-4fc31488c781",
+        "columns": [
+          {
+            "name": "snapshot_month",
+            "dataType": "dateTime",
+            "sourceColumn": "snapshot_month",
+            "lineageTag": "d6307b89-b51e-406b-95e5-dd48642b6bb3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "prior_dpd_bucket",
+            "dataType": "string",
+            "sourceColumn": "prior_dpd_bucket",
+            "lineageTag": "26073730-1d98-46d5-8799-fa23f71c3585",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dpd_bucket",
+            "dataType": "string",
+            "sourceColumn": "dpd_bucket",
+            "lineageTag": "39f8c41e-5ff9-407e-a065-31bced9a5bfb",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "loan_count",
+            "dataType": "int64",
+            "sourceColumn": "loan_count",
+            "lineageTag": "e322323e-a2a6-423f-b72d-e2143c99f527",
+            "formatString": "0"
+          },
+          {
+            "name": "balance",
+            "dataType": "double",
+            "sourceColumn": "balance",
+            "lineageTag": "f403a778-241a-4f85-8310-0a6616402925",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "roll_rate",
+            "dataType": "double",
+            "sourceColumn": "roll_rate",
+            "lineageTag": "c107c892-2dcd-4b37-b609-cff9ec595233",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactRollRate",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\fact_roll_rate.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"snapshot_month\", type date}, {\"prior_dpd_bucket\", type text}, {\"dpd_bucket\", type text}, {\"loan_count\", Int64.Type}, {\"balance\", type number}, {\"roll_rate\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactProvisionForecast",
+        "lineageTag": "ba93de5d-ff2d-40e0-8e4c-3dbddae5300c",
+        "columns": [
+          {
+            "name": "forecast_month",
+            "dataType": "dateTime",
+            "sourceColumn": "forecast_month",
+            "lineageTag": "ff5391ab-d7be-4c31-bd0e-faaae47f0072",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario",
+            "dataType": "string",
+            "sourceColumn": "scenario",
+            "lineageTag": "d0e57146-0cd9-4ac3-b6e9-3c570bcbd77a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "forecast_balance",
+            "dataType": "double",
+            "sourceColumn": "forecast_balance",
+            "lineageTag": "769dec0d-9021-44db-845c-e4c242e00bcd",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "forecast_expected_loss",
+            "dataType": "double",
+            "sourceColumn": "forecast_expected_loss",
+            "lineageTag": "8552b2c2-1032-475e-a5e4-ef2a45d39683",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "forecast_recovery",
+            "dataType": "double",
+            "sourceColumn": "forecast_recovery",
+            "lineageTag": "dea237ce-0235-491a-a1ac-db6c8665b8f9",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "forecast_provision",
+            "dataType": "double",
+            "sourceColumn": "forecast_provision",
+            "lineageTag": "1699266b-83d9-43ed-8539-f8e87db47c0e",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "incremental_provision",
+            "dataType": "double",
+            "sourceColumn": "incremental_provision",
+            "lineageTag": "f51c560d-f3d0-4743-bdd8-ca7482d76284",
+            "formatString": "$#,0;($#,0);$0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactProvisionForecast",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 09 - BNPL Credit Risk Provision\\\\data\\\\prepared\\\\fact_provision_forecast.csv\"), [Delimiter=\",\", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"forecast_month\", type date}, {\"scenario\", type text}, {\"forecast_balance\", type number}, {\"forecast_expected_loss\", type number}, {\"forecast_recovery\", type number}, {\"forecast_provision\", type number}, {\"incremental_provision\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI Measures",
+        "lineageTag": "38c2efca-3780-4352-88d4-783900e3d759",
+        "columns": [
+          {
+            "name": "MeasureName",
+            "dataType": "string",
+            "sourceColumn": "MeasureName",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "lineageTag": "87845495-b283-4234-a1c3-c06755ebfd05"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Applications",
+            "expression": "COUNTROWS ( FactApplications )",
+            "formatString": "#,0",
+            "description": "Total submitted credit applications.",
+            "lineageTag": "d7211adc-4ab9-4676-aeef-66f627b0d5fd"
+          },
+          {
+            "name": "Approved Applications",
+            "expression": "CALCULATE ( [Applications], FactApplications[approved_flag] = 1 )",
+            "formatString": "#,0",
+            "description": "Approved application count.",
+            "lineageTag": "ed0324fb-e95e-40bd-a0c6-0f02834bf020"
+          },
+          {
+            "name": "Approval Rate",
+            "expression": "DIVIDE ( [Approved Applications], [Applications] )",
+            "formatString": "0.0%",
+            "description": "Approved applications divided by total applications.",
+            "lineageTag": "398a1962-6385-4e5e-80e6-a40a09748b3b"
+          },
+          {
+            "name": "Disbursed Loans",
+            "expression": "COUNTROWS ( FactLoans )",
+            "formatString": "#,0",
+            "description": "Funded loan count.",
+            "lineageTag": "6c3c1614-4ebc-4f79-9cee-af05caa743a6"
+          },
+          {
+            "name": "Disbursement Amount",
+            "expression": "SUM ( FactLoans[funded_amount] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Total funded amount.",
+            "lineageTag": "5a5266e4-89e6-434d-86d8-f2d30c5128d5"
+          },
+          {
+            "name": "Loan Book Balance",
+            "expression": "SUM ( FactLoanMonthly[current_principal] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Outstanding principal balance in selected snapshot context.",
+            "lineageTag": "0763c4e7-d70b-42cc-899b-37a2a4e574e5"
+          },
+          {
+            "name": "DPD 30+ Balance",
+            "expression": "SUM ( FactLoanMonthly[dpd30_balance] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Outstanding balance with 30 or more days past due.",
+            "lineageTag": "5d9e34b7-12da-4f21-bb21-c81aa0a19216"
+          },
+          {
+            "name": "DPD 60+ Balance",
+            "expression": "SUM ( FactLoanMonthly[dpd60_balance] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Outstanding balance with 60 or more days past due.",
+            "lineageTag": "b95c1524-341c-4d18-a8df-280497880547"
+          },
+          {
+            "name": "NPL Balance",
+            "expression": "SUM ( FactLoanMonthly[npl_balance] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Outstanding 90+ DPD or non-performing balance.",
+            "lineageTag": "0883971a-859c-4d36-a590-50f700f0355c"
+          },
+          {
+            "name": "Delinquency Rate",
+            "expression": "DIVIDE ( [DPD 30+ Balance], [Loan Book Balance] )",
+            "formatString": "0.0%",
+            "description": "DPD 30+ balance divided by loan book balance.",
+            "lineageTag": "047372fa-855d-48b2-952c-976dc06e8817"
+          },
+          {
+            "name": "NPL Rate",
+            "expression": "DIVIDE ( [NPL Balance], [Loan Book Balance] )",
+            "formatString": "0.0%",
+            "description": "NPL balance divided by loan book balance.",
+            "lineageTag": "cb1bd2b2-210d-4e69-af25-f6e49fede82a"
+          },
+          {
+            "name": "Expected Loss",
+            "expression": "SUM ( FactLoanMonthly[expected_loss_amount] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Expected credit loss amount.",
+            "lineageTag": "dc5119d0-c6ca-43cf-b7df-10ad624166b0"
+          },
+          {
+            "name": "Expected Loss Rate",
+            "expression": "DIVIDE ( [Expected Loss], [Loan Book Balance] )",
+            "formatString": "0.0%",
+            "description": "Expected loss divided by loan book balance.",
+            "lineageTag": "4a752f93-bf4e-49a0-a7e3-c5b17f72b8ee"
+          },
+          {
+            "name": "Provision Amount",
+            "expression": "SUM ( FactLoanMonthly[provision_amount] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Provision amount calculated from expected loss policy.",
+            "lineageTag": "20a02147-4ffe-421d-81df-1c14cbb7add5"
+          },
+          {
+            "name": "Provision Coverage",
+            "expression": "DIVIDE ( [Provision Amount], [Expected Loss] )",
+            "formatString": "0.0x",
+            "description": "Provision amount divided by expected loss.",
+            "lineageTag": "cf38a448-f6ee-4c14-adaa-4ca9992ea25a"
+          },
+          {
+            "name": "Autopay Failure Loans",
+            "expression": "CALCULATE ( DISTINCTCOUNT ( FactLoanMonthly[loan_id] ), FactLoanMonthly[autopay_failure_flag] = 1 )",
+            "formatString": "#,0",
+            "description": "Loans with autopay failure flag.",
+            "lineageTag": "a4227b78-9907-4e9f-b8cb-ad8fd7a4d9ee"
+          },
+          {
+            "name": "Recovery Amount",
+            "expression": "SUM ( FactCollections[recovery_amount] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Total recovery amount from collection cases.",
+            "lineageTag": "0b438f99-fd3a-45ff-b168-8db0ffe862fd"
+          },
+          {
+            "name": "Case Balance",
+            "expression": "SUM ( FactCollections[case_balance] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Total balance assigned to collection cases.",
+            "lineageTag": "b2874cf4-c197-4438-906b-f8870889f5af"
+          },
+          {
+            "name": "Recovery Rate",
+            "expression": "DIVIDE ( [Recovery Amount], [Case Balance] )",
+            "formatString": "0.0%",
+            "description": "Recovered amount divided by collection case balance.",
+            "lineageTag": "fe113a8f-46df-4309-a9d6-369bb27a8659"
+          },
+          {
+            "name": "Collections SLA %",
+            "expression": "DIVIDE ( SUM ( FactCollections[within_sla_flag] ), COUNTROWS ( FactCollections ) )",
+            "formatString": "0.0%",
+            "description": "Share of collection cases handled within SLA.",
+            "lineageTag": "9fa8b8c0-e51d-4640-a79c-a891c1b5615c"
+          },
+          {
+            "name": "Promise To Pay %",
+            "expression": "DIVIDE ( SUM ( FactCollections[promise_to_pay_flag] ), COUNTROWS ( FactCollections ) )",
+            "formatString": "0.0%",
+            "description": "Share of cases with promise to pay.",
+            "lineageTag": "c50153e4-4645-49bb-96b9-1d2a942684a1"
+          },
+          {
+            "name": "Vintage 30+ Rate",
+            "expression": "DIVIDE ( SUM ( FactVintage[dpd30_balance] ), SUM ( FactVintage[outstanding_balance] ) )",
+            "formatString": "0.0%",
+            "description": "Vintage cohort DPD 30+ balance share.",
+            "lineageTag": "b9539792-c55d-4b15-8016-d74aaa9be608"
+          },
+          {
+            "name": "Vintage Loss Rate",
+            "expression": "AVERAGE ( FactVintage[cumulative_loss_rate] )",
+            "formatString": "0.0%",
+            "description": "Average cumulative loss rate across visible vintage cells.",
+            "lineageTag": "a172e5c1-e8fe-47e6-b3f8-69b205f2cb4a"
+          },
+          {
+            "name": "Roll Rate",
+            "expression": "AVERAGE ( FactRollRate[roll_rate] )",
+            "formatString": "0.0%",
+            "description": "Average roll rate across selected transition cells.",
+            "lineageTag": "aeb1acaf-53e4-402c-9dc6-84f585c8ba33"
+          },
+          {
+            "name": "Forecast Provision",
+            "expression": "SUM ( FactProvisionForecast[forecast_provision] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Forecast provision amount.",
+            "lineageTag": "e164c028-9b5b-49ea-8686-ef8ca5a1083e"
+          },
+          {
+            "name": "Forecast Expected Loss",
+            "expression": "SUM ( FactProvisionForecast[forecast_expected_loss] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Forecast expected loss.",
+            "lineageTag": "54b78f39-bfaf-4ce3-80f0-7eab31efd289"
+          },
+          {
+            "name": "Incremental Provision",
+            "expression": "SUM ( FactProvisionForecast[incremental_provision] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Incremental provision bridge amount.",
+            "lineageTag": "ea067c80-a173-4c05-bd53-07aa21d5132e"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_KPI_Measures",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let Source = #table(type table [MeasureName = text], {{\"KPI\"}}) in Source"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "FactApplications_application_month_to_DimMonth_month_start",
+        "fromTable": "FactApplications",
+        "fromColumn": "application_month",
+        "toTable": "DimMonth",
+        "toColumn": "month_start",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactApplications_product_type_to_DimProduct_product_type",
+        "fromTable": "FactApplications",
+        "fromColumn": "product_type",
+        "toTable": "DimProduct",
+        "toColumn": "product_type",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactApplications_channel_to_DimChannel_channel",
+        "fromTable": "FactApplications",
+        "fromColumn": "channel",
+        "toTable": "DimChannel",
+        "toColumn": "channel",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactApplications_risk_band_to_DimRiskBand_risk_band",
+        "fromTable": "FactApplications",
+        "fromColumn": "risk_band",
+        "toTable": "DimRiskBand",
+        "toColumn": "risk_band",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactApplications_merchant_id_to_DimMerchant_merchant_id",
+        "fromTable": "FactApplications",
+        "fromColumn": "merchant_id",
+        "toTable": "DimMerchant",
+        "toColumn": "merchant_id",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactApplications_customer_segment_to_DimCustomerSegment_customer_segment",
+        "fromTable": "FactApplications",
+        "fromColumn": "customer_segment",
+        "toTable": "DimCustomerSegment",
+        "toColumn": "customer_segment",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoans_origination_month_to_DimMonth_month_start",
+        "fromTable": "FactLoans",
+        "fromColumn": "origination_month",
+        "toTable": "DimMonth",
+        "toColumn": "month_start",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoans_product_type_to_DimProduct_product_type",
+        "fromTable": "FactLoans",
+        "fromColumn": "product_type",
+        "toTable": "DimProduct",
+        "toColumn": "product_type",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoans_channel_to_DimChannel_channel",
+        "fromTable": "FactLoans",
+        "fromColumn": "channel",
+        "toTable": "DimChannel",
+        "toColumn": "channel",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoans_risk_band_to_DimRiskBand_risk_band",
+        "fromTable": "FactLoans",
+        "fromColumn": "risk_band",
+        "toTable": "DimRiskBand",
+        "toColumn": "risk_band",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoans_merchant_id_to_DimMerchant_merchant_id",
+        "fromTable": "FactLoans",
+        "fromColumn": "merchant_id",
+        "toTable": "DimMerchant",
+        "toColumn": "merchant_id",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoans_customer_segment_to_DimCustomerSegment_customer_segment",
+        "fromTable": "FactLoans",
+        "fromColumn": "customer_segment",
+        "toTable": "DimCustomerSegment",
+        "toColumn": "customer_segment",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoanMonthly_snapshot_month_to_DimMonth_month_start",
+        "fromTable": "FactLoanMonthly",
+        "fromColumn": "snapshot_month",
+        "toTable": "DimMonth",
+        "toColumn": "month_start",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoanMonthly_product_type_to_DimProduct_product_type",
+        "fromTable": "FactLoanMonthly",
+        "fromColumn": "product_type",
+        "toTable": "DimProduct",
+        "toColumn": "product_type",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoanMonthly_channel_to_DimChannel_channel",
+        "fromTable": "FactLoanMonthly",
+        "fromColumn": "channel",
+        "toTable": "DimChannel",
+        "toColumn": "channel",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoanMonthly_risk_band_to_DimRiskBand_risk_band",
+        "fromTable": "FactLoanMonthly",
+        "fromColumn": "risk_band",
+        "toTable": "DimRiskBand",
+        "toColumn": "risk_band",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoanMonthly_merchant_id_to_DimMerchant_merchant_id",
+        "fromTable": "FactLoanMonthly",
+        "fromColumn": "merchant_id",
+        "toTable": "DimMerchant",
+        "toColumn": "merchant_id",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactLoanMonthly_customer_segment_to_DimCustomerSegment_customer_segment",
+        "fromTable": "FactLoanMonthly",
+        "fromColumn": "customer_segment",
+        "toTable": "DimCustomerSegment",
+        "toColumn": "customer_segment",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactCollections_snapshot_month_to_DimMonth_month_start",
+        "fromTable": "FactCollections",
+        "fromColumn": "snapshot_month",
+        "toTable": "DimMonth",
+        "toColumn": "month_start",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactCollections_product_type_to_DimProduct_product_type",
+        "fromTable": "FactCollections",
+        "fromColumn": "product_type",
+        "toTable": "DimProduct",
+        "toColumn": "product_type",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactCollections_channel_to_DimChannel_channel",
+        "fromTable": "FactCollections",
+        "fromColumn": "channel",
+        "toTable": "DimChannel",
+        "toColumn": "channel",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactCollections_risk_band_to_DimRiskBand_risk_band",
+        "fromTable": "FactCollections",
+        "fromColumn": "risk_band",
+        "toTable": "DimRiskBand",
+        "toColumn": "risk_band",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactCollections_customer_segment_to_DimCustomerSegment_customer_segment",
+        "fromTable": "FactCollections",
+        "fromColumn": "customer_segment",
+        "toTable": "DimCustomerSegment",
+        "toColumn": "customer_segment",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactVintage_origination_month_to_DimMonth_month_start",
+        "fromTable": "FactVintage",
+        "fromColumn": "origination_month",
+        "toTable": "DimMonth",
+        "toColumn": "month_start",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactRollRate_snapshot_month_to_DimMonth_month_start",
+        "fromTable": "FactRollRate",
+        "fromColumn": "snapshot_month",
+        "toTable": "DimMonth",
+        "toColumn": "month_start",
+        "crossFilteringBehavior": "oneDirection"
+      }
+    ]
+  }
+}

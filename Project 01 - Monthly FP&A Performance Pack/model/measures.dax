@@ -1,0 +1,297 @@
+-- Monthly FP&A Performance Pack
+-- Create a display folder or measure table named "KPI Measures" in Power BI.
+
+Revenue =
+SUM ( FactFinancials[Revenue] )
+
+COGS =
+SUM ( FactFinancials[COGS] )
+
+Gross Margin =
+[Revenue] - [COGS]
+
+Gross Margin % =
+DIVIDE ( [Gross Margin], [Revenue] )
+
+Allocated Opex =
+SUM ( FactFinancials[AllocatedOpex] )
+
+Department Opex =
+SUM ( FactOpexDepartment[Opex] )
+
+EBITDA =
+[Gross Margin] - [Allocated Opex]
+
+EBITDA % =
+DIVIDE ( [EBITDA], [Revenue] )
+
+Orders =
+SUM ( FactFinancials[Orders] )
+
+Revenue per Order =
+DIVIDE ( [Revenue], [Orders] )
+
+Cash Impact =
+SUM ( FactFinancials[CashImpact] )
+
+Capex =
+SUM ( FactCash[Capex] )
+
+AR Balance Latest Month =
+VAR LatestVisibleDateKey =
+    MAX ( DimDate[DateKey] )
+RETURN
+    CALCULATE (
+        SUM ( FactCash[ARBalance] ),
+        DimDate[DateKey] = LatestVisibleDateKey
+    )
+
+Cash Balance Latest Month =
+VAR LatestVisibleDateKey =
+    MAX ( DimDate[DateKey] )
+RETURN
+    CALCULATE (
+        SUM ( FactCash[CashBalance] ),
+        DimDate[DateKey] = LatestVisibleDateKey
+    )
+
+Weighted DSO =
+DIVIDE (
+    SUMX ( FactCash, FactCash[ARBalance] * FactCash[DSO] ),
+    SUM ( FactCash[ARBalance] )
+)
+
+Latest Actual DateKey =
+CALCULATE (
+    MAX ( FactFinancials[DateKey] ),
+    DimScenario[Scenario] = "Actual",
+    REMOVEFILTERS ( DimDate )
+)
+
+Actual Revenue =
+CALCULATE ( [Revenue], DimScenario[Scenario] = "Actual" )
+
+Budget Revenue =
+CALCULATE ( [Revenue], DimScenario[Scenario] = "Budget" )
+
+Forecast Revenue =
+CALCULATE ( [Revenue], DimScenario[Scenario] = "Forecast" )
+
+Actual Gross Margin =
+CALCULATE ( [Gross Margin], DimScenario[Scenario] = "Actual" )
+
+Budget Gross Margin =
+CALCULATE ( [Gross Margin], DimScenario[Scenario] = "Budget" )
+
+Forecast Gross Margin =
+CALCULATE ( [Gross Margin], DimScenario[Scenario] = "Forecast" )
+
+Actual EBITDA =
+CALCULATE ( [EBITDA], DimScenario[Scenario] = "Actual" )
+
+Budget EBITDA =
+CALCULATE ( [EBITDA], DimScenario[Scenario] = "Budget" )
+
+Forecast EBITDA =
+CALCULATE ( [EBITDA], DimScenario[Scenario] = "Forecast" )
+
+Actual Opex =
+CALCULATE ( [Allocated Opex], DimScenario[Scenario] = "Actual" )
+
+Budget Opex =
+CALCULATE ( [Allocated Opex], DimScenario[Scenario] = "Budget" )
+
+Forecast Opex =
+CALCULATE ( [Allocated Opex], DimScenario[Scenario] = "Forecast" )
+
+Actual Cash Balance =
+CALCULATE ( [Cash Balance Latest Month], DimScenario[Scenario] = "Actual" )
+
+Budget Cash Balance =
+CALCULATE ( [Cash Balance Latest Month], DimScenario[Scenario] = "Budget" )
+
+Forecast Cash Balance =
+CALCULATE ( [Cash Balance Latest Month], DimScenario[Scenario] = "Forecast" )
+
+Actual Revenue Current Month =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        [Revenue],
+        DimScenario[Scenario] = "Actual",
+        DimDate[DateKey] = LatestActualDateKey
+    )
+
+Budget Revenue Current Month =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        [Revenue],
+        DimScenario[Scenario] = "Budget",
+        DimDate[DateKey] = LatestActualDateKey
+    )
+
+Forecast Revenue Current Month =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        [Revenue],
+        DimScenario[Scenario] = "Forecast",
+        DimDate[DateKey] = LatestActualDateKey
+    )
+
+Actual EBITDA Current Month =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        [EBITDA],
+        DimScenario[Scenario] = "Actual",
+        DimDate[DateKey] = LatestActualDateKey
+    )
+
+Budget EBITDA Current Month =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        [EBITDA],
+        DimScenario[Scenario] = "Budget",
+        DimDate[DateKey] = LatestActualDateKey
+    )
+
+Actual Cash Balance Current Month =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        SUM ( FactCash[CashBalance] ),
+        DimScenario[Scenario] = "Actual",
+        DimDate[DateKey] = LatestActualDateKey
+    )
+
+Budget Cash Balance Current Month =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        SUM ( FactCash[CashBalance] ),
+        DimScenario[Scenario] = "Budget",
+        DimDate[DateKey] = LatestActualDateKey
+    )
+
+Weighted DSO Current Month =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        [Weighted DSO],
+        DimScenario[Scenario] = "Actual",
+        DimDate[DateKey] = LatestActualDateKey
+    )
+
+Cash Var Current Month vs Budget =
+[Actual Cash Balance Current Month] - [Budget Cash Balance Current Month]
+
+Actual Revenue YTD =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        [Revenue],
+        DimScenario[Scenario] = "Actual",
+        DimDate[DateKey] <= LatestActualDateKey,
+        DimDate[Year] = 2026
+    )
+
+Budget Revenue YTD =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        [Revenue],
+        DimScenario[Scenario] = "Budget",
+        DimDate[DateKey] <= LatestActualDateKey,
+        DimDate[Year] = 2026
+    )
+
+Actual EBITDA YTD =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        [EBITDA],
+        DimScenario[Scenario] = "Actual",
+        DimDate[DateKey] <= LatestActualDateKey,
+        DimDate[Year] = 2026
+    )
+
+Budget EBITDA YTD =
+VAR LatestActualDateKey = [Latest Actual DateKey]
+RETURN
+    CALCULATE (
+        [EBITDA],
+        DimScenario[Scenario] = "Budget",
+        DimDate[DateKey] <= LatestActualDateKey,
+        DimDate[Year] = 2026
+    )
+
+Revenue Var vs Budget =
+[Actual Revenue] - [Budget Revenue]
+
+Revenue Var % vs Budget =
+DIVIDE ( [Revenue Var vs Budget], [Budget Revenue] )
+
+Gross Margin Var vs Budget =
+[Actual Gross Margin] - [Budget Gross Margin]
+
+EBITDA Var vs Budget =
+[Actual EBITDA] - [Budget EBITDA]
+
+EBITDA Var % vs Budget =
+DIVIDE ( [EBITDA Var vs Budget], [Budget EBITDA] )
+
+Opex Var vs Budget =
+[Actual Opex] - [Budget Opex]
+
+Cash Var vs Budget =
+[Actual Cash Balance] - [Budget Cash Balance]
+
+Forecast Revenue Gap vs Budget =
+[Forecast Revenue] - [Budget Revenue]
+
+Forecast EBITDA Gap vs Budget =
+[Forecast EBITDA] - [Budget EBITDA]
+
+Full Year Budget Revenue =
+CALCULATE ( [Revenue], DimScenario[Scenario] = "Budget", DimDate[Year] = 2026 )
+
+Full Year Forecast Revenue =
+CALCULATE ( [Revenue], DimScenario[Scenario] = "Forecast", DimDate[Year] = 2026 )
+
+Full Year Budget EBITDA =
+CALCULATE ( [EBITDA], DimScenario[Scenario] = "Budget", DimDate[Year] = 2026 )
+
+Full Year Forecast EBITDA =
+CALCULATE ( [EBITDA], DimScenario[Scenario] = "Forecast", DimDate[Year] = 2026 )
+
+Bridge Amount =
+SUM ( FactBridge[Amount] )
+
+Selected Commentary - What Happened =
+CONCATENATEX (
+    VALUES ( FactCommentary[WhatHappened] ),
+    FactCommentary[WhatHappened],
+    UNICHAR ( 10 )
+)
+
+Selected Commentary - Why =
+CONCATENATEX (
+    VALUES ( FactCommentary[Why] ),
+    FactCommentary[Why],
+    UNICHAR ( 10 )
+)
+
+Selected Commentary - What Next =
+CONCATENATEX (
+    VALUES ( FactCommentary[WhatNext] ),
+    FactCommentary[WhatNext],
+    UNICHAR ( 10 )
+)
+
+Variance Color =
+VAR ValueToCheck = [EBITDA Var vs Budget]
+RETURN
+    IF ( ValueToCheck >= 0, "#2A9D8F", "#D62828" )

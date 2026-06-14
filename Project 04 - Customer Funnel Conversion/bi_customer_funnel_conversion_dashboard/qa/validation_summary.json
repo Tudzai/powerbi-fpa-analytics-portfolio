@@ -1,0 +1,18 @@
+{
+  "data_qa": "pass",
+  "metric_qa": "pass",
+  "complete_dashboard_html": "pass",
+  "visual_qa_html": "pass_5_pages_nonblank",
+  "interaction_qa_html": "pass_dashboard_wide_filters",
+  "powerbi_launch": "launch_verified",
+  "semantic_model_push": "pass",
+  "semantic_model_push_process_id": 27840,
+  "semantic_model_push_port": 62691,
+  "native_pbix": "pass",
+  "file_qa": "pass_offline_export_validated",
+  "final_pbix": "output/dashboard_final.pbix",
+  "qa_evidence": [
+    "qa/complete_dashboard_qa.json",
+    "qa/pbix_file_validation.json"
+  ]
+}

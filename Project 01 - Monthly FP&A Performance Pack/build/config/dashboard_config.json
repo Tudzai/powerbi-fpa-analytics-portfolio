@@ -1,0 +1,36 @@
+{
+  "project_name": "Monthly FP&A Performance Pack",
+  "audience": ["CFO", "FP&A Manager", "Business Unit Leaders"],
+  "reporting_month": "2026-05-01",
+  "theme": "FP&A Orange Executive",
+  "canvas": {
+    "width": 1600,
+    "height": 900,
+    "grid": 20,
+    "page_background": "#F8FAFC"
+  },
+  "global_filters": [
+    "DimDate[Year]",
+    "DimDate[MonthYear]",
+    "DimScenario[Scenario]",
+    "DimBusinessUnit[BusinessUnit]",
+    "DimRegion[Region]"
+  ],
+  "drill_paths": [
+    "Company > Business Unit > Product > Customer",
+    "Company > Business Unit > Region",
+    "Company > Department"
+  ],
+  "required_pages": [
+    "Executive Overview",
+    "Variance Bridge",
+    "Business Unit Deep Dive",
+    "Customer & Product Drilldown",
+    "Opex & Cash Control"
+  ],
+  "build_status": {
+    "pbix": "pending Desktop build and QA",
+    "reason": "Power BI Desktop Store app is detected, but PBIX authoring/visual QA has not been executed yet.",
+    "target_file": "output/dashboard_final.pbix"
+  }
+}

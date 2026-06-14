@@ -1,0 +1,123 @@
+{
+  "generated_at": "2026-06-11",
+  "synthetic": true,
+  "seed": 20260611,
+  "latest_complete_month": "2026-05-01",
+  "checks": {
+    "DimDate": {
+      "rows": 29,
+      "columns": 7,
+      "duplicate_rows": 0,
+      "missing_values": {},
+      "MonthStart_range": {
+        "min": "2024-01-01",
+        "max": "2026-05-01"
+      }
+    },
+    "DimClient": {
+      "rows": 860,
+      "columns": 12,
+      "duplicate_rows": 0,
+      "missing_values": {},
+      "JoinMonth_range": {
+        "min": "2024-01-01",
+        "max": "2026-05-01"
+      }
+    },
+    "DimPortfolio": {
+      "rows": 4,
+      "columns": 8,
+      "duplicate_rows": 0,
+      "missing_values": {}
+    },
+    "FactAUMMonthly": {
+      "rows": 11540,
+      "columns": 20,
+      "duplicate_rows": 0,
+      "missing_values": {},
+      "MonthStart_range": {
+        "min": "2024-01-01",
+        "max": "2026-05-01"
+      }
+    },
+    "FactAllocationMonthly": {
+      "rows": 57700,
+      "columns": 8,
+      "duplicate_rows": 0,
+      "missing_values": {},
+      "MonthStart_range": {
+        "min": "2024-01-01",
+        "max": "2026-05-01"
+      }
+    },
+    "FactRetentionActions": {
+      "rows": 211,
+      "columns": 8,
+      "duplicate_rows": 0,
+      "missing_values": {},
+      "MonthStart_range": {
+        "min": "2026-05-01",
+        "max": "2026-05-01"
+      }
+    },
+    "MonthlyKPIs": {
+      "rows": 29,
+      "columns": 20,
+      "duplicate_rows": 0,
+      "missing_values": {},
+      "MonthStart_range": {
+        "min": "2024-01-01",
+        "max": "2026-05-01"
+      }
+    },
+    "SegmentSummaryLatest": {
+      "rows": 5,
+      "columns": 9,
+      "duplicate_rows": 0,
+      "missing_values": {}
+    },
+    "RiskProfileSummaryLatest": {
+      "rows": 4,
+      "columns": 7,
+      "duplicate_rows": 0,
+      "missing_values": {}
+    },
+    "PortfolioSummaryLatest": {
+      "rows": 4,
+      "columns": 7,
+      "duplicate_rows": 0,
+      "missing_values": {}
+    },
+    "AllocationLatest": {
+      "rows": 5,
+      "columns": 4,
+      "duplicate_rows": 0,
+      "missing_values": {}
+    },
+    "TopClientsLatest": {
+      "rows": 20,
+      "columns": 13,
+      "duplicate_rows": 0,
+      "missing_values": {}
+    },
+    "RetentionActionsLatest": {
+      "rows": 211,
+      "columns": 16,
+      "duplicate_rows": 0,
+      "missing_values": {},
+      "MonthStart_range": {
+        "min": "2026-05-01",
+        "max": "2026-05-01"
+      }
+    }
+  },
+  "reconciliation": {
+    "latest_month": "2026-05-01",
+    "latest_fact_aum_sum": 811053076.37,
+    "latest_monthly_kpi_aum": 811053076.37,
+    "aum_reconciles": true,
+    "nnm_formula_pass": true,
+    "ending_aum_nonnegative": true
+  },
+  "status": "passed"
+}

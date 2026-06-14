@@ -1,0 +1,23 @@
+{
+  "business_questions": [
+    "Is payment volume growing profitably?",
+    "Which merchant segments and payment methods drive contribution margin?",
+    "Where do refunds and chargebacks erode economics?",
+    "Which take-rate or cost scenario creates the best margin uplift?"
+  ],
+  "latest_month_snapshot": {
+    "gmv": 41390421.25,
+    "transactions": 963162,
+    "revenue": 540268.55,
+    "take_rate": 0.01305298505508687,
+    "cost": 338390.75,
+    "cost_per_transaction": 0.35133316098434114,
+    "contribution_margin": 201877.22,
+    "contribution_margin_pct": 0.37366087661404684,
+    "refund_rate": 0.021909319659316105,
+    "chargeback_bps": 9.500123171614252,
+    "auth_success_rate": 0.9705345518199431,
+    "mom_gmv_growth": 0.0098700832976213,
+    "mom_revenue_growth": 0.025414916269324624
+  }
+}

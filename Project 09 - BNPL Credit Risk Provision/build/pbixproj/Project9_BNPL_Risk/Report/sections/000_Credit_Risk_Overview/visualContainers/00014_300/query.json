@@ -1,0 +1,131 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t0",
+              "Entity": "DimMerchant",
+              "Type": 0
+            },
+            {
+              "Name": "t1",
+              "Entity": "DimRiskBand",
+              "Type": 0
+            },
+            {
+              "Name": "m",
+              "Entity": "KPI Measures",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t0"
+                  }
+                },
+                "Property": "merchant_category"
+              },
+              "Name": "DimMerchant.merchant_category",
+              "NativeReferenceName": "Category"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t1"
+                  }
+                },
+                "Property": "risk_band"
+              },
+              "Name": "DimRiskBand.risk_band",
+              "NativeReferenceName": "Risk"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Loan Book Balance"
+              },
+              "Name": "KPI Measures.Loan Book Balance",
+              "NativeReferenceName": "Loan book"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Delinquency Rate"
+              },
+              "Name": "KPI Measures.Delinquency Rate",
+              "NativeReferenceName": "30+ DPD"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Expected Loss Rate"
+              },
+              "Name": "KPI Measures.Expected Loss Rate",
+              "NativeReferenceName": "EL rate"
+            }
+          ],
+          "OrderBy": [
+            {
+              "Direction": 2,
+              "Expression": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "Expected Loss"
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "Subtotal": 1
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 4,
+            "Primary": {
+              "Window": {
+                "Count": 500
+              }
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

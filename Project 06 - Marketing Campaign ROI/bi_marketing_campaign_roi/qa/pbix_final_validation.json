@@ -1,0 +1,95 @@
+{
+    "timestamp":  "2026-06-11 14:41:39 +07:00",
+    "status":  "passed",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive - BEE LOGISTICS CORPORATION\\Documentss\\Portfolio\\Project 06 - Marketing Campaign ROI\\bi_marketing_campaign_roi\\output\\dashboard_final.pbix",
+    "final_pbix_size":  642260,
+    "packager_validation":  "passed",
+    "extract_validation":  "pbi-tools extract succeeded",
+    "export_data_validation":  "pbi-tools export-data succeeded",
+    "tables":  [
+                   "DimDate",
+                   "DimMonth",
+                   "DimChannel",
+                   "DimCampaign",
+                   "FactCampaignDaily",
+                   "KPI_Measures"
+               ],
+    "relationship_count":  4,
+    "measures":  [
+                     "Spend",
+                     "Revenue",
+                     "Gross Profit",
+                     "Clicks",
+                     "Conversions",
+                     "New Customers",
+                     "ROAS",
+                     "Marketing ROI",
+                     "CAC",
+                     "Conversion Rate",
+                     "Target ROAS",
+                     "Target CAC",
+                     "ROAS vs Target",
+                     "CAC vs Target",
+                     "Spend Share",
+                     "Campaign Scale Score"
+                 ],
+    "measure_count":  16,
+    "report_pages":  [
+                         "01 Executive Overview",
+                         "02 Channel ROI",
+                         "03 Campaign Ranking",
+                         "04 Actions"
+                     ],
+    "report_page_count":  4,
+    "visual_container_count":  59,
+    "exported_rows":  {
+                          "DimCampaign":  23,
+                          "DimChannel":  10,
+                          "DimDate":  516,
+                          "DimMonth":  17,
+                          "FactCampaignDaily":  11868,
+                          "KPI_Measures":  1
+                      },
+    "forbidden_old_model_tables_present":  [
+
+                                           ],
+    "required_tables_present":  [
+                                    {
+                                        "table":  "DimDate",
+                                        "present":  true
+                                    },
+                                    {
+                                        "table":  "DimMonth",
+                                        "present":  true
+                                    },
+                                    {
+                                        "table":  "DimChannel",
+                                        "present":  true
+                                    },
+                                    {
+                                        "table":  "DimCampaign",
+                                        "present":  true
+                                    },
+                                    {
+                                        "table":  "FactCampaignDaily",
+                                        "present":  true
+                                    },
+                                    {
+                                        "table":  "KPI_Measures",
+                                        "present":  true
+                                    }
+                                ],
+    "desktop_open_check":  {
+                               "status":  "passed",
+                               "checked_at":  "2026-06-11 14:43:42 +07:00",
+                               "power_bi_window":  "dashboard_final",
+                               "exact_pbix_path_session_verified":  true,
+                               "visual_error_count":  0,
+                               "observed_page":  "01 Executive Overview",
+                               "observed_values":  [
+                                                       "ROAS 4.49x",
+                                                       "CAC $91",
+                                                       "Channel Decision Table rows include Google Search/Meta/TikTok Review/Cut and Direct/Email/Organic Search Scale"
+                                                   ]
+                           }
+}

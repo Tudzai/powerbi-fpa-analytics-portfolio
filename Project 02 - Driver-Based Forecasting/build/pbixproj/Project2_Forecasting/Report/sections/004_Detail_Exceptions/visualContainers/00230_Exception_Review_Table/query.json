@@ -1,0 +1,179 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f0",
+              "Entity": "DimDate",
+              "Type": 0
+            },
+            {
+              "Name": "f1",
+              "Entity": "DimScenario",
+              "Type": 0
+            },
+            {
+              "Name": "f2",
+              "Entity": "DimRegion",
+              "Type": 0
+            },
+            {
+              "Name": "f3",
+              "Entity": "DimService",
+              "Type": 0
+            },
+            {
+              "Name": "m",
+              "Entity": "KPI_Measures",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f0"
+                  }
+                },
+                "Property": "YearMonth"
+              },
+              "Name": "DimDate.YearMonth",
+              "NativeReferenceName": "Month"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f1"
+                  }
+                },
+                "Property": "Scenario"
+              },
+              "Name": "DimScenario.Scenario",
+              "NativeReferenceName": "Scenario"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f2"
+                  }
+                },
+                "Property": "Region"
+              },
+              "Name": "DimRegion.Region",
+              "NativeReferenceName": "Region"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f3"
+                  }
+                },
+                "Property": "ServiceLine"
+              },
+              "Name": "DimService.ServiceLine",
+              "NativeReferenceName": "Service"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Revenue"
+              },
+              "Name": "KPI_Measures.Revenue",
+              "NativeReferenceName": "Revenue"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Gross Margin %"
+              },
+              "Name": "KPI_Measures.Gross Margin %",
+              "NativeReferenceName": "GM %"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "MAPE"
+              },
+              "Name": "KPI_Measures.MAPE",
+              "NativeReferenceName": "MAPE"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Working Capital"
+              },
+              "Name": "KPI_Measures.Working Capital",
+              "NativeReferenceName": "Working Capital"
+            }
+          ],
+          "OrderBy": [
+            {
+              "Direction": 2,
+              "Expression": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "Revenue"
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 4,
+            "Primary": {
+              "Window": {
+                "Count": 1000
+              }
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

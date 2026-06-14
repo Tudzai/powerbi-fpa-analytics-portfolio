@@ -1,0 +1,4 @@
+﻿device_key,device,device_group,sort_order
+DEV_DESKTOP,Desktop,Large screen,1
+DEV_MOBILE,Mobile,Small screen,2
+DEV_TABLET,Tablet,Small screen,3

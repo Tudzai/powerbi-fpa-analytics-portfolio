@@ -1,0 +1,14 @@
+{
+  "name": "WealthTech Institutional Light",
+  "colors": {
+    "page": "#F5F7FA",
+    "header": "#102033",
+    "panel": "#FFFFFF",
+    "blue": "#2563EB",
+    "teal": "#0F8B8D",
+    "green": "#16A34A",
+    "amber": "#D97706",
+    "red": "#DC2626",
+    "indigo": "#4F46E5"
+  }
+}

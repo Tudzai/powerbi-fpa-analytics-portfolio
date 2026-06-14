@@ -1,0 +1,13 @@
+{
+  "seed": 4042026,
+  "generated_at": "2026-06-11T11:38:14",
+  "purpose": "Synthetic ecommerce funnel data for a portfolio Power BI dashboard.",
+  "grain": {
+    "raw_sessions": "one row per web/app session",
+    "raw_events": "one row per funnel event; product_view can repeat within a session",
+    "fact_sessions": "one qualified non-bot session per row with stage flags",
+    "fact_stage_sessions": "stage-level aggregate at date/device/channel/campaign/category grain",
+    "fact_orders": "one purchase order per completed purchase session",
+    "fact_marketing_spend": "daily spend by campaign and channel"
+  }
+}

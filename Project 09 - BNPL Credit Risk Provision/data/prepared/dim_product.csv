@@ -1,0 +1,5 @@
+product_type,term_months,product_family,apr_policy
+Pay-in-4,2,Short-term,0.0
+Installment 3M,3,Installment,0.065
+Installment 6M,6,Installment,0.115
+Installment 12M,12,Installment,0.165

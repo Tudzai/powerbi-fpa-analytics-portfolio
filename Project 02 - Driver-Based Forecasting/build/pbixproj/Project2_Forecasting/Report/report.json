@@ -1,0 +1,21 @@
+{
+  "id": 0,
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "Project2_Driver_Forecasting_Theme.json",
+            "path": "Project2_Driver_Forecasting_Theme.json",
+            "type": 201
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "theme": "Project2_Driver_Forecasting_Theme.json"
+}

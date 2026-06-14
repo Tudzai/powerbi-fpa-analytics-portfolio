@@ -1,0 +1,11 @@
+RuleKey,RuleName,Typology,RuleSeverity,RuleStatus,RuleOwner,RuleRiskScore,LastTunedDate
+R001,High Velocity Transfers,Velocity,High,Active,Financial Crime Analytics,69,2026-01-11
+R002,Structuring Below Threshold,Structuring,High,Active,AML Monitoring,73,2026-04-18
+R003,High Risk Corridor,Geo/Corridor,High,Active,Sanctions Risk,71,2026-02-28
+R004,Dormant Account Reactivation,Behavioral,Medium,Active,KYC Operations,63,2025-12-01
+R005,Cash Intensive Pattern,Cash,High,Active,Branch Risk,74,2026-04-07
+R006,Round Dollar Repetition,Pattern,Medium,Tuning,Fraud Strategy,58,2026-03-20
+R007,New Beneficiary Burst,Account Takeover,High,Active,Fraud Strategy,76,2025-12-30
+R008,Watchlist Proximity,Sanctions,Critical,Active,Sanctions Risk,86,2026-02-27
+R009,Crypto Off-ramp Spike,Digital Assets,High,Pilot,Digital Assets Risk,81,2026-01-01
+R010,Rapid In-Out Funds,Mule/Funnel,High,Active,AML Monitoring,78,2026-03-02

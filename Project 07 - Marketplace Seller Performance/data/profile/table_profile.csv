@@ -1,0 +1,12 @@
+table,rows,columns,missing_cells,duplicate_rows
+dim_date,516,11,0,0
+dim_platform,3,4,0,0
+dim_category,8,2,0,0
+dim_seller,122,15,0,0
+dim_product,1294,10,0,0
+fact_order_items,90000,21,0,0
+fact_fulfillment,90000,9,7288,0
+fact_inventory_snapshot,667704,12,0,0
+fact_reviews,26347,10,0,0
+fact_seller_targets,2037,5,0,0
+fact_ads_spend,2037,5,0,0

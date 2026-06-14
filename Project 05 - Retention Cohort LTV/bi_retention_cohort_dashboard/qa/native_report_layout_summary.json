@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-06-11",
+  "status": "layout_json_generated",
+  "layout_json": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 05 - Retention Cohort LTV\\bi_retention_cohort_dashboard\\build\\native_report_layout_retention.json",
+  "pages": [
+    "Lifecycle Overview",
+    "Monthly Cohort Retention",
+    "LTV & Revenue Cohorts",
+    "Churn Signal & Winback"
+  ],
+  "visual_containers": 57,
+  "measure_table": "KPI Measures",
+  "target_model_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 05 - Retention Cohort LTV\\bi_retention_cohort_dashboard\\output\\dashboard_model.pbix",
+  "target_final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 05 - Retention Cohort LTV\\bi_retention_cohort_dashboard\\output\\dashboard_final.pbix"
+}

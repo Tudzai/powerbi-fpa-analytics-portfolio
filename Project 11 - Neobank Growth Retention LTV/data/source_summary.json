@@ -1,0 +1,18 @@
+{
+  "source_type": "synthetic_demo_data",
+  "seed": 20260611,
+  "latest_complete_month": "2026-05-01",
+  "tables": {
+    "DimMonth": 29,
+    "DimChannel": 6,
+    "DimSegment": 4,
+    "DimCampaign": 12,
+    "FactGrowthMonthly": 696,
+    "FunnelMonthly": 870,
+    "CohortRetention": 10440,
+    "CampaignMonthly": 348,
+    "ChurnRiskSnapshot": 244,
+    "MonthlyKPIs": 29,
+    "ChannelMonthly": 174
+  }
+}

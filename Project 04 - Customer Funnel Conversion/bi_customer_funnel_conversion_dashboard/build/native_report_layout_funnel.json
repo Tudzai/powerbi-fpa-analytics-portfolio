@@ -1,0 +1,10 @@
+{
+  "status": "layout_spec_generated",
+  "note": "Native Power BI layout generation is documented in build/config/visual_map.json. This placeholder JSON is used by the package step only after a valid model PBIX exists.",
+  "pages": [
+    "Executive Funnel",
+    "Segment Diagnostics",
+    "Category and Product",
+    "Marketing Efficiency"
+  ]
+}

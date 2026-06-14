@@ -1,0 +1,22 @@
+{
+  "overview": [
+    "KPI strip",
+    "Monthly trend",
+    "Typology bar",
+    "Corridor risk table",
+    "Severity donut"
+  ],
+  "deep_dive": [
+    "Alert funnel",
+    "Rule precision scatter",
+    "High-risk customer table",
+    "Channel quality",
+    "Rule detail"
+  ],
+  "sla_governance": [
+    "Case status columns",
+    "Analyst workload",
+    "Rule precision/FPR",
+    "Governance log"
+  ]
+}

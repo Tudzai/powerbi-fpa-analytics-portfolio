@@ -1,0 +1,50 @@
+{
+  "name": "Marketing ROI Command Center",
+  "dataColors": [
+    "#3267B1",
+    "#0E7C7B",
+    "#2E8B57",
+    "#F0B429",
+    "#E3645A",
+    "#7A5CFA",
+    "#7B8794",
+    "#A3B18A"
+  ],
+  "good": "#2E8B57",
+  "neutral": "#F0B429",
+  "bad": "#E3645A",
+  "maximum": "#3267B1",
+  "center": "#F0B429",
+  "minimum": "#DCE6F2",
+  "null": "#B8C2CC",
+  "background": "#F4F7FB",
+  "foreground": "#14213D",
+  "firstLevelElements": "#14213D",
+  "secondLevelElements": "#6C7280",
+  "thirdLevelElements": "#E7EDF5",
+  "fourthLevelElements": "#B8C2CC",
+  "secondaryBackground": "#E9EEF6",
+  "tableAccent": "#0E7C7B",
+  "textClasses": {
+    "callout": {
+      "fontSize": 34,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#14213D"
+    },
+    "title": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#14213D"
+    },
+    "header": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#14213D"
+    },
+    "label": {
+      "fontSize": 10,
+      "fontFace": "Segoe UI",
+      "color": "#233047"
+    }
+  }
+}

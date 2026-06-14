@@ -1,0 +1,11 @@
+channel_key,channel,paid_organic,target_roas,target_cac,base_spend
+CH01,Google Search,Paid,4.5,75,820
+CH02,Meta,Paid,3.2,90,620
+CH03,TikTok,Paid,2.8,85,390
+CH04,LinkedIn,Paid,3.0,140,340
+CH05,Programmatic Display,Paid,2.2,105,240
+CH06,Affiliates,Paid,4.8,65,160
+CH07,Organic Search,Organic,8.0,35,95
+CH08,Email,Organic,9.0,24,55
+CH09,Direct,Organic,10.0,20,70
+CH10,Referral Partners,Organic,8.5,42,115

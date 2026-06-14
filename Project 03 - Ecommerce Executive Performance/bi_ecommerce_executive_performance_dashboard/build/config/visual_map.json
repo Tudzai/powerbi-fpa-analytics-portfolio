@@ -1,0 +1,84 @@
+{
+  "Executive Overview": [
+    {
+      "visual": "Card",
+      "measure": "GMV",
+      "position": "top KPI strip"
+    },
+    {
+      "visual": "Card",
+      "measure": "Net Revenue",
+      "position": "top KPI strip"
+    },
+    {
+      "visual": "Card",
+      "measure": "Orders",
+      "position": "top KPI strip"
+    },
+    {
+      "visual": "Card",
+      "measure": "AOV",
+      "position": "top KPI strip"
+    },
+    {
+      "visual": "Card",
+      "measure": "Conversion Rate",
+      "position": "top KPI strip"
+    },
+    {
+      "visual": "Card",
+      "measure": "Refund/Cancel Rate",
+      "position": "top KPI strip"
+    },
+    {
+      "visual": "Line and clustered column chart",
+      "measure": "GMV, Net Revenue, Orders",
+      "axis": "dim_date[year_month]"
+    },
+    {
+      "visual": "Bar chart",
+      "measure": "GMV",
+      "axis": "dim_product[category]"
+    },
+    {
+      "visual": "Donut chart",
+      "measure": "GMV",
+      "legend": "dim_channel[channel]"
+    }
+  ],
+  "Revenue & Category": [
+    {
+      "visual": "Matrix",
+      "rows": "category, subcategory",
+      "values": "GMV, Net Revenue, AOV, Contribution Margin %"
+    },
+    {
+      "visual": "Map or filled map",
+      "location": "dim_region[country]",
+      "values": "GMV"
+    }
+  ],
+  "Traffic & Conversion": [
+    {
+      "visual": "Funnel",
+      "stages": "Sessions, Add to Cart, Checkout Starts, Orders"
+    },
+    {
+      "visual": "Table",
+      "rows": "channel",
+      "values": "Sessions, Orders, Conversion Rate, AOV, Marketing Spend, ROAS"
+    }
+  ],
+  "Refunds & Operations": [
+    {
+      "visual": "Line chart",
+      "axis": "year_month",
+      "values": "Refund/Cancel Rate"
+    },
+    {
+      "visual": "Bar chart",
+      "axis": "category",
+      "values": "Refunded Orders, Cancelled Orders"
+    }
+  ]
+}

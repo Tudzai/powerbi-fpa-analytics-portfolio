@@ -1,0 +1,21 @@
+﻿ClientID,ClientName,ClientSegment,RiskProfile,Region,AdvisorName,ModelPortfolio,EndingAUM,NetNewMoney,PortfolioReturnPct,ChurnRiskScore,RiskMismatchFlag,RebalanceNeededFlag
+CL00236,Sam Nguyen,UHNW,Growth,APAC,Mina Patel,Growth Builder,20524174.06,4037801.31,0.026992,0.2349,0,0
+CL00173,Riley Morris,UHNW,Conservative,APAC,Avery Chen,Income Shield,12345745.8,30571.31,0.017843,0.4266,1,1
+CL00308,Harper Young,UHNW,Conservative,North America,Sofia Garcia,Income Shield,12307337.9,-345859.54,0.010419,0.2409,0,0
+CL00566,Parker Brooks,UHNW,Growth,LATAM,Avery Chen,Growth Builder,12205096.03,-103497.77,0.030772,0.1643,0,0
+CL00795,Cameron Kim,UHNW,Balanced,Europe,Noah Miller,Balanced Core,11030758.43,-209555.84,0.020886,0.2676,0,0
+CL00689,Morgan Brooks,UHNW,Aggressive,LATAM,Sofia Garcia,Equity Edge,8932617.06,346533.35,0.031157,0.1707,0,0
+CL00085,Parker Cooper,UHNW,Conservative,North America,Jon Bell,Income Shield,8913964.19,-153786.09,0.017751,0.1665,0,0
+CL00021,Ari Stone,UHNW,Growth,North America,Sofia Garcia,Growth Builder,8591416.23,-209329.24,0.02368,0.4952,1,1
+CL00009,Quinn Cooper,UHNW,Balanced,LATAM,Avery Chen,Balanced Core,8036248.1,-77447.65,0.021604,0.1845,0,0
+CL00078,Jordan Rivera,UHNW,Aggressive,APAC,Noah Miller,Equity Edge,8036237.41,-63004.46,0.033858,0.5449,1,1
+CL00229,Cameron Singh,UHNW,Balanced,APAC,Jon Bell,Balanced Core,7931543.51,-373528.98,0.029856,0.171,0,0
+CL00036,Taylor Patel,UHNW,Conservative,North America,Jon Bell,Income Shield,7837774.19,-63141.66,0.007009,0.2568,0,1
+CL00847,Harper Young,UHNW,Balanced,North America,Sofia Garcia,Balanced Core,7581251.79,1266770.8,0.021206,0.1428,0,0
+CL00765,Cameron Hughes,UHNW,Growth,APAC,Noah Miller,Growth Builder,7452048.31,194698.09,0.028218,0.194,0,0
+CL00047,Harper Young,HNW,Balanced,North America,Sofia Garcia,Balanced Core,7389360.07,209876.23,0.014351,0.1727,0,0
+CL00858,Jamie Bennett,UHNW,Conservative,North America,Jon Bell,Income Shield,7124756.34,-360052.48,0.009244,0.5876,1,1
+CL00270,Casey Lee,HNW,Balanced,APAC,Jon Bell,Balanced Core,6534870.03,1345943.12,0.02305,0.2197,0,0
+CL00145,Emerson Cooper,UHNW,Conservative,Europe,Noah Miller,Income Shield,6109869.57,-196625.9,0.01872,0.377,0,0
+CL00096,Cameron Martin,HNW,Balanced,APAC,Mina Patel,Balanced Core,5754306.25,-34924.0,0.023944,0.3645,1,1
+CL00355,Jamie Bennett,UHNW,Growth,APAC,Jon Bell,Growth Builder,5669975.19,-726236.3,0.018421,0.382,0,0
