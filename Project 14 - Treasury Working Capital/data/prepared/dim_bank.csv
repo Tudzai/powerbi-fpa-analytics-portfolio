@@ -1,0 +1,7 @@
+bank_id,bank,counterparty_rating,bank_region
+B001,Global Trust Bank,A,Global
+B002,Continental Treasury Bank,A-,Europe
+B003,Pacific Commercial Bank,BBB+,APAC
+B004,Americas Liquidity Bank,A,North America
+B005,Regional Trade Bank,BBB,LATAM
+B006,Digital Cash Pool,A-,Global

@@ -1,0 +1,4 @@
+scenario_id,scenario,carbon_price_usd_per_t,probability_weight
+SCN01,Base internal price,50,0.45
+SCN02,Regulatory convergence,90,0.35
+SCN03,Stress price shock,140,0.2

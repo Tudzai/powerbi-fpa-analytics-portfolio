@@ -1,0 +1,26 @@
+{
+  "source_type": "synthetic_portfolio_demo",
+  "seed": 20260615,
+  "project": "Project 20 - Board Investor CFO Pack",
+  "date_range": {
+    "start": "2024-01-01",
+    "end": "2026-05-01"
+  },
+  "row_counts": {
+    "DimDate": 29,
+    "DimScenario": 3,
+    "DimBusinessUnit": 4,
+    "DimRegion": 4,
+    "DimCostCategory": 4,
+    "FactPnlMonthly": 1392,
+    "FactOpexMonthly": 348,
+    "FactCashMonthly": 87,
+    "FactStatementLines": 957,
+    "FactCovenantMonthly": 87,
+    "FactValuation": 15,
+    "FactSensitivity": 36,
+    "FactRiskRegister": 30,
+    "FactKpiScorecard": 8
+  },
+  "source_note": "No production source was provided; synthetic data is explicitly labeled and rebuildable."
+}

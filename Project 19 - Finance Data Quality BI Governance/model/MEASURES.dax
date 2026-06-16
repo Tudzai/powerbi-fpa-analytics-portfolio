@@ -1,0 +1,74 @@
+Dataset Count =
+DISTINCTCOUNT ( DimDataset[DatasetKey] )
+
+Critical Dataset Count =
+CALCULATE ( [Dataset Count], DimDataset[Criticality] = "Tier 1" )
+
+Certified Dataset Count =
+CALCULATE ( [Dataset Count], DimDataset[Certified] = "Y" )
+
+Data Quality Score =
+AVERAGE ( FactDatasetDaily[DataQualityScore] )
+
+Completeness % =
+DIVIDE ( SUM ( FactDatasetDaily[RowsLoaded] ), SUM ( FactDatasetDaily[RowsExpected] ) )
+
+Freshness SLA % =
+DIVIDE ( SUM ( FactDatasetDaily[FreshnessWithinSLAFlag] ), COUNTROWS ( FactDatasetDaily ) )
+
+Refresh Runs =
+COUNTROWS ( FactRefreshRuns )
+
+Refresh Success % =
+DIVIDE ( CALCULATE ( [Refresh Runs], FactRefreshRuns[Status] = "Success" ), [Refresh Runs] )
+
+Failed Refreshes =
+CALCULATE ( [Refresh Runs], FactRefreshRuns[Status] = "Failed" )
+
+Avg Refresh Duration Min =
+AVERAGE ( FactRefreshRuns[DurationMinutes] )
+
+DQ Issue Count =
+SUM ( FactDatasetDaily[NullCriticalCount] ) + SUM ( FactDatasetDaily[DuplicateKeyCount] ) + SUM ( FactDatasetDaily[SchemaDriftCount] )
+
+Open Incidents =
+CALCULATE ( COUNTROWS ( FactIncidents ), FactIncidents[IncidentStatus] <> "Closed" )
+
+Avg MTTR Hours =
+AVERAGE ( FactIncidents[MTTRHours] )
+
+Reconciliation Variance =
+SUM ( FactReconciliation[VarianceAmount] )
+
+Abs Reconciliation Variance =
+SUMX ( FactReconciliation, ABS ( FactReconciliation[VarianceAmount] ) )
+
+Reconciliation Pass % =
+DIVIDE ( CALCULATE ( COUNTROWS ( FactReconciliation ), FactReconciliation[ReconciliationStatus] = "Pass" ), COUNTROWS ( FactReconciliation ) )
+
+Report Views =
+SUM ( FactUsage[Views] )
+
+Active Viewer Days =
+SUM ( FactUsage[UniqueViewers] )
+
+Export Events =
+SUM ( FactUsage[ExportEvents] )
+
+Avg Report Load Seconds =
+AVERAGE ( FactUsage[AvgLoadSeconds] )
+
+Failed Visual Count =
+SUM ( FactUsage[FailedVisualCount] )
+
+Access Risk Events =
+SUM ( FactAccessReview[RLSExceptions] ) + SUM ( FactAccessReview[OrphanedUsers] ) + SUM ( FactAccessReview[UnauthorizedSharingEvents] )
+
+RLS Exceptions =
+SUM ( FactAccessReview[RLSExceptions] )
+
+Pending Access Reviews =
+SUM ( FactAccessReview[PendingAccessReviews] )
+
+Deployment Control Score =
+AVERAGE ( FactAccessReview[DeploymentControlScore] )

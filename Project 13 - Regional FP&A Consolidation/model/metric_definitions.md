@@ -1,0 +1,26 @@
+- **Total Revenue**: Consolidated external revenue after excluding intercompany revenue. Formula: `SUM ( FactFinancialSummary[external_revenue_usd] )`
+- **Gross Revenue**: External plus intercompany revenue before elimination. Formula: `SUM ( FactFinancialSummary[gross_revenue_usd] )`
+- **Intercompany Revenue**: Intercompany revenue requiring elimination. Formula: `SUM ( FactFinancialSummary[intercompany_revenue_usd] )`
+- **Intercompany Elimination**: Net intercompany elimination impact. Formula: `SUM ( FactFinancialSummary[intercompany_elimination_usd] )`
+- **Gross Profit**: Revenue minus cost of services. Formula: `SUM ( FactFinancialSummary[gross_profit_usd] )`
+- **Gross Margin %**: Gross profit divided by consolidated external revenue. Formula: `DIVIDE ( [Gross Profit], [Total Revenue] )`
+- **OPEX**: Personnel, facilities, sales and marketing, and G&A. Formula: `SUM ( FactFinancialSummary[opex_usd] )`
+- **EBITDA**: Gross profit plus OPEX after intercompany elimination. Formula: `SUM ( FactFinancialSummary[ebitda_usd] )`
+- **EBITDA Margin %**: EBITDA divided by consolidated external revenue. Formula: `DIVIDE ( [EBITDA], [Total Revenue] )`
+- **Operating Income**: EBITDA less depreciation. Formula: `SUM ( FactFinancialSummary[operating_income_usd] )`
+- **Net Income**: Operating income less interest and tax. Formula: `SUM ( FactFinancialSummary[net_income_usd] )`
+- **Cash Position**: Period-end cash position by entity and BU allocation. Formula: `SUM ( FactFinancialSummary[cash_position_usd] )`
+- **Operating Cash Flow**: Operating cash flow proxy tied to EBITDA conversion. Formula: `SUM ( FactFinancialSummary[operating_cash_flow_usd] )`
+- **Working Capital**: Working capital proxy for close review. Formula: `SUM ( FactFinancialSummary[working_capital_usd] )`
+- **Actual Revenue**: Actual consolidated revenue. Formula: `CALCULATE ( [Total Revenue], DimScenario[scenario] = "Actual" )`
+- **Budget Revenue**: Budget consolidated revenue. Formula: `CALCULATE ( [Total Revenue], DimScenario[scenario] = "Budget" )`
+- **Revenue Var vs Budget**: Actual revenue less budget revenue. Formula: `[Actual Revenue] - [Budget Revenue]`
+- **Revenue Var %**: Revenue variance divided by budget revenue. Formula: `DIVIDE ( [Revenue Var vs Budget], [Budget Revenue] )`
+- **Actual EBITDA**: Actual EBITDA. Formula: `CALCULATE ( [EBITDA], DimScenario[scenario] = "Actual" )`
+- **Budget EBITDA**: Budget EBITDA. Formula: `CALCULATE ( [EBITDA], DimScenario[scenario] = "Budget" )`
+- **EBITDA Var vs Budget**: Actual EBITDA less budget EBITDA. Formula: `[Actual EBITDA] - [Budget EBITDA]`
+- **EBITDA Var %**: EBITDA variance divided by budget EBITDA. Formula: `DIVIDE ( [EBITDA Var vs Budget], [Budget EBITDA] )`
+- **Forecast EBITDA**: Forecast EBITDA. Formula: `CALCULATE ( [EBITDA], DimScenario[scenario] = "Forecast" )`
+- **Forecast Accuracy %**: Directional forecast accuracy for EBITDA. Formula: `1 - ABS ( DIVIDE ( [Actual EBITDA] - [Forecast EBITDA], [Actual EBITDA] ) )`
+- **Open Exception Count**: Open or in-progress close exceptions. Formula: `CALCULATE ( COUNTROWS ( FactCloseExceptions ), FactCloseExceptions[status] <> "Closed" )`
+- **Open Exception Value**: Value attached to unresolved close exceptions. Formula: `CALCULATE ( SUM ( FactCloseExceptions[amount_usd] ), FactCloseExceptions[status] <> "Closed" )`

@@ -1,0 +1,17 @@
+{
+  "source_type": "synthetic",
+  "seed": 17042,
+  "latest_complete_period": "2026-05",
+  "tables": {
+    "dim_date": 17,
+    "dim_customer": 18,
+    "dim_trade_lane": 12,
+    "dim_service": 5,
+    "dim_office": 6,
+    "dim_carrier": 6,
+    "fact_shipment_profitability": 2618,
+    "fact_cost_driver_bridge": 10843,
+    "fact_action_queue": 84
+  },
+  "business_context": "Logistics trade lane profitability by customer, lane, service, office, carrier, and cost driver."
+}

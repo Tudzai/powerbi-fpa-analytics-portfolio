@@ -1,0 +1,77 @@
+Total Revenue =
+SUM ( FactFinancialSummary[external_revenue_usd] )
+
+Gross Revenue =
+SUM ( FactFinancialSummary[gross_revenue_usd] )
+
+Intercompany Revenue =
+SUM ( FactFinancialSummary[intercompany_revenue_usd] )
+
+Intercompany Elimination =
+SUM ( FactFinancialSummary[intercompany_elimination_usd] )
+
+Gross Profit =
+SUM ( FactFinancialSummary[gross_profit_usd] )
+
+Gross Margin % =
+DIVIDE ( [Gross Profit], [Total Revenue] )
+
+OPEX =
+SUM ( FactFinancialSummary[opex_usd] )
+
+EBITDA =
+SUM ( FactFinancialSummary[ebitda_usd] )
+
+EBITDA Margin % =
+DIVIDE ( [EBITDA], [Total Revenue] )
+
+Operating Income =
+SUM ( FactFinancialSummary[operating_income_usd] )
+
+Net Income =
+SUM ( FactFinancialSummary[net_income_usd] )
+
+Cash Position =
+SUM ( FactFinancialSummary[cash_position_usd] )
+
+Operating Cash Flow =
+SUM ( FactFinancialSummary[operating_cash_flow_usd] )
+
+Working Capital =
+SUM ( FactFinancialSummary[working_capital_usd] )
+
+Actual Revenue =
+CALCULATE ( [Total Revenue], DimScenario[scenario] = "Actual" )
+
+Budget Revenue =
+CALCULATE ( [Total Revenue], DimScenario[scenario] = "Budget" )
+
+Revenue Var vs Budget =
+[Actual Revenue] - [Budget Revenue]
+
+Revenue Var % =
+DIVIDE ( [Revenue Var vs Budget], [Budget Revenue] )
+
+Actual EBITDA =
+CALCULATE ( [EBITDA], DimScenario[scenario] = "Actual" )
+
+Budget EBITDA =
+CALCULATE ( [EBITDA], DimScenario[scenario] = "Budget" )
+
+EBITDA Var vs Budget =
+[Actual EBITDA] - [Budget EBITDA]
+
+EBITDA Var % =
+DIVIDE ( [EBITDA Var vs Budget], [Budget EBITDA] )
+
+Forecast EBITDA =
+CALCULATE ( [EBITDA], DimScenario[scenario] = "Forecast" )
+
+Forecast Accuracy % =
+1 - ABS ( DIVIDE ( [Actual EBITDA] - [Forecast EBITDA], [Actual EBITDA] ) )
+
+Open Exception Count =
+CALCULATE ( COUNTROWS ( FactCloseExceptions ), FactCloseExceptions[status] <> "Closed" )
+
+Open Exception Value =
+CALCULATE ( SUM ( FactCloseExceptions[amount_usd] ), FactCloseExceptions[status] <> "Closed" )

@@ -1,0 +1,22 @@
+﻿{
+    "timestamp":  "2026-06-15 02:26:24 +07:00",
+    "status":  "project13_model_pushed_via_tom",
+    "target_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP\u0026A Consolidation\\output\\dashboard_model_seed.pbix",
+    "power_bi_port":  53973,
+    "process_id":  13024,
+    "tables":  [
+                   "DimDate",
+                   "DimEntity",
+                   "DimBusinessUnit",
+                   "DimAccount",
+                   "DimScenario",
+                   "FactFinancials",
+                   "FactFinancialSummary",
+                   "FactVarianceDriverBridge",
+                   "FactCloseExceptions",
+                   "FactFXRate",
+                   "KPI Measures"
+               ],
+    "relationship_count":  15,
+    "measure_count":  26
+}

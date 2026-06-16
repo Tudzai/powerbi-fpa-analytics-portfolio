@@ -1,0 +1,1725 @@
+{
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimDate",
+        "lineageTag": "b638e73a-ad66-4614-9b2d-e80845dcdb50",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "2e2c7b52-9f95-4ca7-80fe-f9611f9c84ae",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthLabel",
+            "dataType": "string",
+            "sourceColumn": "MonthLabel",
+            "lineageTag": "f2e912ae-5770-49d0-bafb-dad18af5422c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthIndex",
+            "dataType": "int64",
+            "sourceColumn": "MonthIndex",
+            "lineageTag": "4bccabba-8002-47a1-a6ce-40d6752e727e",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "lineageTag": "9d9c0451-033f-42fa-9434-93bfa2fb89b6",
+            "formatString": "0"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter",
+            "lineageTag": "0030defa-7394-4927-bb40-3a33515bc9b9",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsLatestCompleteMonth",
+            "dataType": "dateTime",
+            "sourceColumn": "IsLatestCompleteMonth",
+            "lineageTag": "2892ba60-fb16-4ebe-a48f-e877472e4d08",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimDate",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\DimDate.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"MonthLabel\", type text}, {\"MonthIndex\", Int64.Type}, {\"Year\", Int64.Type}, {\"Quarter\", type text}, {\"IsLatestCompleteMonth\", type date}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimPlan",
+        "lineageTag": "99343b06-8678-4fe5-ba95-bb7aecd1a801",
+        "columns": [
+          {
+            "name": "PlanID",
+            "dataType": "string",
+            "sourceColumn": "PlanID",
+            "lineageTag": "bb07fff7-df44-4cd9-abba-f8526bf765af",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanName",
+            "dataType": "string",
+            "sourceColumn": "PlanName",
+            "lineageTag": "68337b47-70a9-4637-94d0-aab22e9991f7",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Segment",
+            "dataType": "string",
+            "sourceColumn": "Segment",
+            "lineageTag": "b302a99c-162f-4585-a3d0-34c14761d0c3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BaseMRR",
+            "dataType": "int64",
+            "sourceColumn": "BaseMRR",
+            "lineageTag": "290afa85-7aee-42bd-94e0-5e426282c692",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "GrossMarginTarget",
+            "dataType": "double",
+            "sourceColumn": "GrossMarginTarget",
+            "lineageTag": "72cf800f-a8d1-48c4-8a0e-50aa92c2be3b",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "MonthlyChurnTarget",
+            "dataType": "double",
+            "sourceColumn": "MonthlyChurnTarget",
+            "lineageTag": "a4727378-a92c-414c-ab0e-73246c968d36"
+          },
+          {
+            "name": "TargetCAC",
+            "dataType": "int64",
+            "sourceColumn": "TargetCAC",
+            "lineageTag": "5958c413-51ab-4881-9fa8-8075604a780b",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "BenchmarkPaybackMonths",
+            "dataType": "int64",
+            "sourceColumn": "BenchmarkPaybackMonths",
+            "lineageTag": "9353007e-b6b1-47f7-be9e-39baa7f0c3f2",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimPlan",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\DimPlan.csv\"), [Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"PlanID\", type text}, {\"PlanName\", type text}, {\"Segment\", type text}, {\"BaseMRR\", Int64.Type}, {\"GrossMarginTarget\", type number}, {\"MonthlyChurnTarget\", type number}, {\"TargetCAC\", Int64.Type}, {\"BenchmarkPaybackMonths\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimChannel",
+        "lineageTag": "a41a4ced-f705-4ca1-83ef-21aa82e4067a",
+        "columns": [
+          {
+            "name": "ChannelID",
+            "dataType": "string",
+            "sourceColumn": "ChannelID",
+            "lineageTag": "fee73b4c-8d1d-47ea-9abb-9468839a59b4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelName",
+            "dataType": "string",
+            "sourceColumn": "ChannelName",
+            "lineageTag": "6d41566f-b28d-4095-845a-a34a180e4afe",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Motion",
+            "dataType": "string",
+            "sourceColumn": "Motion",
+            "lineageTag": "64cdc592-81de-4648-952f-6e6127b6f8dd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SourceType",
+            "dataType": "string",
+            "sourceColumn": "SourceType",
+            "lineageTag": "5634f9a2-9f5d-4835-80dc-7d876e2a518f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CACIndex",
+            "dataType": "double",
+            "sourceColumn": "CACIndex",
+            "lineageTag": "b95cdf59-9b9b-4e55-84a7-677c869e505c",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "QualityIndex",
+            "dataType": "double",
+            "sourceColumn": "QualityIndex",
+            "lineageTag": "ee100d1b-c401-4745-b0e3-3a6f428f9321"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimChannel",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\DimChannel.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"ChannelID\", type text}, {\"ChannelName\", type text}, {\"Motion\", type text}, {\"SourceType\", type text}, {\"CACIndex\", type number}, {\"QualityIndex\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimRegion",
+        "lineageTag": "2cb05140-b62a-416f-b987-165f3bf25477",
+        "columns": [
+          {
+            "name": "RegionID",
+            "dataType": "string",
+            "sourceColumn": "RegionID",
+            "lineageTag": "0de89521-7507-4c46-b066-275d122d0867",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region",
+            "lineageTag": "7964bccc-e6b9-4620-a5cb-147a6d354395",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "GeoGroup",
+            "dataType": "string",
+            "sourceColumn": "GeoGroup",
+            "lineageTag": "b1483e0f-6878-4bdd-a8cf-2a2fdcfc80d4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScaleIndex",
+            "dataType": "double",
+            "sourceColumn": "ScaleIndex",
+            "lineageTag": "ea81695e-f212-4b2a-a75f-ae91643245f0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimRegion",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\DimRegion.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"RegionID\", type text}, {\"Region\", type text}, {\"GeoGroup\", type text}, {\"ScaleIndex\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCustomer",
+        "lineageTag": "824a387a-e500-4cc0-8073-5955410451dd",
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "string",
+            "sourceColumn": "CustomerID",
+            "lineageTag": "4929dd86-a3d5-4d72-954e-3b8d14a08bda",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AccountName",
+            "dataType": "string",
+            "sourceColumn": "AccountName",
+            "lineageTag": "30c13637-e77a-4248-9e84-ed0555dd6cad",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanID",
+            "dataType": "string",
+            "sourceColumn": "PlanID",
+            "lineageTag": "2e34b7b7-36c6-4349-8e47-aa5c1e59d2a3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanName",
+            "dataType": "string",
+            "sourceColumn": "PlanName",
+            "lineageTag": "a887ae94-3954-4d80-bb1f-2a4144534b00",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Segment",
+            "dataType": "string",
+            "sourceColumn": "Segment",
+            "lineageTag": "aef9c7be-eb40-4b76-b10b-0e602a70c369",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelID",
+            "dataType": "string",
+            "sourceColumn": "ChannelID",
+            "lineageTag": "98cb2cee-b1d5-4502-89d7-f2d0f2417ec1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelName",
+            "dataType": "string",
+            "sourceColumn": "ChannelName",
+            "lineageTag": "eb8edecf-45e8-457d-880b-54f9b47f0adf",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Motion",
+            "dataType": "string",
+            "sourceColumn": "Motion",
+            "lineageTag": "40ff508e-6763-472a-b80d-5e726f72fc24",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionID",
+            "dataType": "string",
+            "sourceColumn": "RegionID",
+            "lineageTag": "5518c891-261d-4ad4-a8c9-2a55f7ec7cf5",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region",
+            "lineageTag": "f34e04fc-7823-447e-bea5-319d9b4ef035",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Industry",
+            "dataType": "string",
+            "sourceColumn": "Industry",
+            "lineageTag": "6fb075d9-da4b-4821-a241-fd1e6c86a21a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AcquisitionMonth",
+            "dataType": "dateTime",
+            "sourceColumn": "AcquisitionMonth",
+            "lineageTag": "2115bfe5-e70a-468b-81d2-844c06718a8c",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimCustomer",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\DimCustomer.csv\"), [Delimiter=\",\", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"CustomerID\", type text}, {\"AccountName\", type text}, {\"PlanID\", type text}, {\"PlanName\", type text}, {\"Segment\", type text}, {\"ChannelID\", type text}, {\"ChannelName\", type text}, {\"Motion\", type text}, {\"RegionID\", type text}, {\"Region\", type text}, {\"Industry\", type text}, {\"AcquisitionMonth\", type date}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactSubscriptionMonthly",
+        "lineageTag": "ceb862f3-9850-4a6e-be3d-35fb4a5574fb",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "1fea1468-81b3-43fb-972a-15633c2ec93d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "string",
+            "sourceColumn": "CustomerID",
+            "lineageTag": "da9064e6-c1e5-4319-8e64-2c8bff5ba745",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanID",
+            "dataType": "string",
+            "sourceColumn": "PlanID",
+            "lineageTag": "5adc268b-c5f5-4ae8-8c35-531428d8b057",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelID",
+            "dataType": "string",
+            "sourceColumn": "ChannelID",
+            "lineageTag": "336a916e-d70d-45d9-903d-f01808a35727",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionID",
+            "dataType": "string",
+            "sourceColumn": "RegionID",
+            "lineageTag": "4c336ba1-2aee-42d7-8c39-78e97bfd049c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BeginningMRR",
+            "dataType": "double",
+            "sourceColumn": "BeginningMRR",
+            "lineageTag": "867b1929-8979-4dc6-9bae-2297e728db79",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "NewMRR",
+            "dataType": "double",
+            "sourceColumn": "NewMRR",
+            "lineageTag": "dbc89b31-caa4-4ee5-815e-34622200fb96",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ExpansionMRR",
+            "dataType": "double",
+            "sourceColumn": "ExpansionMRR",
+            "lineageTag": "52a93c61-3c68-4fd4-a00a-75d5b2baf8b3",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ContractionMRR",
+            "dataType": "double",
+            "sourceColumn": "ContractionMRR",
+            "lineageTag": "a20ecaeb-c6f9-4e10-9e4c-880158771ade",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ChurnMRR",
+            "dataType": "double",
+            "sourceColumn": "ChurnMRR",
+            "lineageTag": "faac01da-7450-4047-83ad-82b0c4a10813",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "EndingMRR",
+            "dataType": "double",
+            "sourceColumn": "EndingMRR",
+            "lineageTag": "a333d234-4c8e-4a6b-8fc0-bc9285da321b",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "RecognizedRevenue",
+            "dataType": "double",
+            "sourceColumn": "RecognizedRevenue",
+            "lineageTag": "cf264ada-1f3d-4b75-b434-cd14c576d17c",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "GrossMargin",
+            "dataType": "double",
+            "sourceColumn": "GrossMargin",
+            "lineageTag": "c61f1db4-6f48-4883-ba93-3fc8901c47cb",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Seats",
+            "dataType": "int64",
+            "sourceColumn": "Seats",
+            "lineageTag": "e3724ee6-88e4-4ded-b0ec-0c9ed92e73cd",
+            "formatString": "0"
+          },
+          {
+            "name": "StartingLogo",
+            "dataType": "int64",
+            "sourceColumn": "StartingLogo",
+            "lineageTag": "1c954e12-94df-4143-92b0-71887d821c9d",
+            "formatString": "0"
+          },
+          {
+            "name": "ActiveLogo",
+            "dataType": "int64",
+            "sourceColumn": "ActiveLogo",
+            "lineageTag": "59a4fce5-ea0c-4065-abf7-a9d988aba481",
+            "formatString": "0"
+          },
+          {
+            "name": "NewLogo",
+            "dataType": "int64",
+            "sourceColumn": "NewLogo",
+            "lineageTag": "016fd57b-ae7f-46b6-958e-7f02cdd2e2b7",
+            "formatString": "0"
+          },
+          {
+            "name": "ChurnedLogo",
+            "dataType": "int64",
+            "sourceColumn": "ChurnedLogo",
+            "lineageTag": "bd172003-612c-464c-a357-1ca6e0807832",
+            "formatString": "0"
+          },
+          {
+            "name": "IsSynthetic",
+            "dataType": "string",
+            "sourceColumn": "IsSynthetic",
+            "lineageTag": "70b5242c-0307-4b44-b51a-084b3427523e",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactSubscriptionMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\FactSubscriptionMonthly.csv\"), [Delimiter=\",\", Columns=19, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"CustomerID\", type text}, {\"PlanID\", type text}, {\"ChannelID\", type text}, {\"RegionID\", type text}, {\"BeginningMRR\", type number}, {\"NewMRR\", type number}, {\"ExpansionMRR\", type number}, {\"ContractionMRR\", type number}, {\"ChurnMRR\", type number}, {\"EndingMRR\", type number}, {\"RecognizedRevenue\", type number}, {\"GrossMargin\", type number}, {\"Seats\", Int64.Type}, {\"StartingLogo\", Int64.Type}, {\"ActiveLogo\", Int64.Type}, {\"NewLogo\", Int64.Type}, {\"ChurnedLogo\", Int64.Type}, {\"IsSynthetic\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactMRRMovement",
+        "lineageTag": "7b5b0f9e-b195-41e2-b172-da3f005e2dc8",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "c55edc0e-3935-4735-9301-3051e6260de2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MovementType",
+            "dataType": "string",
+            "sourceColumn": "MovementType",
+            "lineageTag": "db152053-45f7-4c62-8720-a3b6609da9fc",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MovementSort",
+            "dataType": "int64",
+            "sourceColumn": "MovementSort",
+            "lineageTag": "e085c1f4-2f69-4103-a71e-c6324eb781f8",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ARRMovement",
+            "dataType": "double",
+            "sourceColumn": "ARRMovement",
+            "lineageTag": "c9d5a50e-8ab5-4a8b-b1f5-58d8326095df",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "FavorableFlag",
+            "dataType": "int64",
+            "sourceColumn": "FavorableFlag",
+            "lineageTag": "ec70fe8f-06dc-4ba2-a24f-062336fd252d",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactMRRMovement",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\FactMRRMovement.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"MovementType\", type text}, {\"MovementSort\", Int64.Type}, {\"ARRMovement\", type number}, {\"FavorableFlag\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCohortRetention",
+        "lineageTag": "70476705-7bda-46fe-86f3-e730d47277ab",
+        "columns": [
+          {
+            "name": "CohortMonth",
+            "dataType": "dateTime",
+            "sourceColumn": "CohortMonth",
+            "lineageTag": "f3e70a23-4a09-4f16-8d1a-9e3990002f78",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CohortLabel",
+            "dataType": "string",
+            "sourceColumn": "CohortLabel",
+            "lineageTag": "a37ade15-5b26-484c-a3a7-abe008a12a7d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ActivityMonth",
+            "dataType": "dateTime",
+            "sourceColumn": "ActivityMonth",
+            "lineageTag": "6d0d911d-64e9-4a5e-a242-18f1b8cb9e99",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthsSinceCohort",
+            "dataType": "int64",
+            "sourceColumn": "MonthsSinceCohort",
+            "lineageTag": "8f49135f-1162-4ef2-ba50-39cfb1648de7",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanID",
+            "dataType": "string",
+            "sourceColumn": "PlanID",
+            "lineageTag": "4abac570-66e5-4421-9ae6-517b7351ca82",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelID",
+            "dataType": "string",
+            "sourceColumn": "ChannelID",
+            "lineageTag": "8e1d0e51-3aab-4acb-818d-916d882582e0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CohortStartMRR",
+            "dataType": "double",
+            "sourceColumn": "CohortStartMRR",
+            "lineageTag": "1abc153e-ffa6-4c4b-9f17-ad63d55091f3",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "RetainedMRR",
+            "dataType": "double",
+            "sourceColumn": "RetainedMRR",
+            "lineageTag": "60f7bb9f-54e6-46fc-95c0-200f83560248",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ExpansionMRR",
+            "dataType": "double",
+            "sourceColumn": "ExpansionMRR",
+            "lineageTag": "69cd92c6-2a50-4cd4-842d-f1db82c7b6d7",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ContractionMRR",
+            "dataType": "double",
+            "sourceColumn": "ContractionMRR",
+            "lineageTag": "5ef0d775-263b-4a3b-8e32-4ba69889bf11",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "StartLogos",
+            "dataType": "int64",
+            "sourceColumn": "StartLogos",
+            "lineageTag": "5e11b185-cd53-4d00-90de-f059050ae21c",
+            "formatString": "0"
+          },
+          {
+            "name": "ActiveLogos",
+            "dataType": "int64",
+            "sourceColumn": "ActiveLogos",
+            "lineageTag": "711b1ef4-fdaf-4ea2-94fc-b2137b5d4d7d",
+            "formatString": "0"
+          },
+          {
+            "name": "ChurnedLogos",
+            "dataType": "int64",
+            "sourceColumn": "ChurnedLogos",
+            "lineageTag": "14c5164a-e1fb-488a-b606-14a967a16666",
+            "formatString": "0"
+          },
+          {
+            "name": "NetRetentionRate",
+            "dataType": "double",
+            "sourceColumn": "NetRetentionRate",
+            "lineageTag": "fe616155-abdb-41f4-af79-3562ca82d396",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "GrossRetentionRate",
+            "dataType": "double",
+            "sourceColumn": "GrossRetentionRate",
+            "lineageTag": "4f3868bd-ad80-46bd-b3a0-12ec9e7fe4f1",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactCohortRetention",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\FactCohortRetention.csv\"), [Delimiter=\",\", Columns=15, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"CohortMonth\", type date}, {\"CohortLabel\", type text}, {\"ActivityMonth\", type date}, {\"MonthsSinceCohort\", Int64.Type}, {\"PlanID\", type text}, {\"ChannelID\", type text}, {\"CohortStartMRR\", type number}, {\"RetainedMRR\", type number}, {\"ExpansionMRR\", type number}, {\"ContractionMRR\", type number}, {\"StartLogos\", Int64.Type}, {\"ActiveLogos\", Int64.Type}, {\"ChurnedLogos\", Int64.Type}, {\"NetRetentionRate\", type number}, {\"GrossRetentionRate\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactAcquisitionMonthly",
+        "lineageTag": "4d02b6dc-9402-4dca-b279-6158fd6d9332",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "6a2ad2ca-7cc4-449f-9c14-8c74c72b4d5e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanID",
+            "dataType": "string",
+            "sourceColumn": "PlanID",
+            "lineageTag": "09bcab30-255a-46de-b9f0-0d6ade68a4bf",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelID",
+            "dataType": "string",
+            "sourceColumn": "ChannelID",
+            "lineageTag": "8e84db04-e9bb-4951-8e33-6b4c176c8b10",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionID",
+            "dataType": "string",
+            "sourceColumn": "RegionID",
+            "lineageTag": "6408a2c9-e0fc-4c23-ae78-ff91528aff0a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NewCustomers",
+            "dataType": "int64",
+            "sourceColumn": "NewCustomers",
+            "lineageTag": "f624b7ec-15be-409f-b2c9-d9efabdc8e73",
+            "formatString": "0"
+          },
+          {
+            "name": "NewARRBooked",
+            "dataType": "double",
+            "sourceColumn": "NewARRBooked",
+            "lineageTag": "05b1e891-92f1-4517-9a9d-e3c6d69c0ad4",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "SalesMarketingSpend",
+            "dataType": "double",
+            "sourceColumn": "SalesMarketingSpend",
+            "lineageTag": "7d6f021e-ce27-4b9b-b65f-271900e1f82c",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "SalesPipelineARR",
+            "dataType": "double",
+            "sourceColumn": "SalesPipelineARR",
+            "lineageTag": "7bd23f85-461f-476e-9259-2adeff4ea078",
+            "formatString": "$#,0;($#,0);$0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactAcquisitionMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\FactAcquisitionMonthly.csv\"), [Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"PlanID\", type text}, {\"ChannelID\", type text}, {\"RegionID\", type text}, {\"NewCustomers\", Int64.Type}, {\"NewARRBooked\", type number}, {\"SalesMarketingSpend\", type number}, {\"SalesPipelineARR\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactFinanceMonthly",
+        "lineageTag": "725ffa32-0b4e-4cab-8fd0-edfe383827c8",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "7184b58e-4a12-48a4-9d5f-dfb2e81e140b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Revenue",
+            "dataType": "double",
+            "sourceColumn": "Revenue",
+            "lineageTag": "54fad669-87ed-4810-ba0d-228fefd06e7b",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "COGS",
+            "dataType": "double",
+            "sourceColumn": "COGS",
+            "lineageTag": "d9d7982a-4fa3-48af-a38c-01e5ca7265cb"
+          },
+          {
+            "name": "GrossMargin",
+            "dataType": "double",
+            "sourceColumn": "GrossMargin",
+            "lineageTag": "8f961b21-a816-47ce-867b-0eb9bf52088b",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "SalesMarketingExpense",
+            "dataType": "double",
+            "sourceColumn": "SalesMarketingExpense",
+            "lineageTag": "5fbe42fe-b3a8-4a83-8a7b-02e6b85d4ddd",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ResearchDevelopmentExpense",
+            "dataType": "double",
+            "sourceColumn": "ResearchDevelopmentExpense",
+            "lineageTag": "9a6b9b88-ca7c-40b4-af9b-a38d002e56c3",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "GeneralAdminExpense",
+            "dataType": "double",
+            "sourceColumn": "GeneralAdminExpense",
+            "lineageTag": "e96deee4-f6be-4259-8d41-2f570aa24c6f",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "CustomerSuccessExpense",
+            "dataType": "double",
+            "sourceColumn": "CustomerSuccessExpense",
+            "lineageTag": "29edecad-c876-4888-8090-0460d33d49e8",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "EBITDA",
+            "dataType": "double",
+            "sourceColumn": "EBITDA",
+            "lineageTag": "f83328bf-2442-47d1-ac0f-5c759db75af6"
+          },
+          {
+            "name": "CashBalance",
+            "dataType": "double",
+            "sourceColumn": "CashBalance",
+            "lineageTag": "4044293b-3682-4752-b966-7df8427e7fb2",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "NetBurn",
+            "dataType": "double",
+            "sourceColumn": "NetBurn",
+            "lineageTag": "39a96571-2df6-489d-978d-42787ebdd4c1",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ActualARR",
+            "dataType": "double",
+            "sourceColumn": "ActualARR",
+            "lineageTag": "dc3bfa5a-e410-43d9-86a1-599db06eb508",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "PlanARR",
+            "dataType": "double",
+            "sourceColumn": "PlanARR",
+            "lineageTag": "e5b7feaa-0138-412b-a397-05c59919d735",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ForecastARR",
+            "dataType": "double",
+            "sourceColumn": "ForecastARR",
+            "lineageTag": "a717468d-4e7e-42a4-a71e-817909ae7d75",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ARRGrowthPct",
+            "dataType": "double",
+            "sourceColumn": "ARRGrowthPct",
+            "lineageTag": "44e71152-ec59-4d15-b7f9-c1d634d1549b",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactFinanceMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\FactFinanceMonthly.csv\"), [Delimiter=\",\", Columns=15, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"Revenue\", type number}, {\"COGS\", type number}, {\"GrossMargin\", type number}, {\"SalesMarketingExpense\", type number}, {\"ResearchDevelopmentExpense\", type number}, {\"GeneralAdminExpense\", type number}, {\"CustomerSuccessExpense\", type number}, {\"EBITDA\", type number}, {\"CashBalance\", type number}, {\"NetBurn\", type number}, {\"ActualARR\", type number}, {\"PlanARR\", type number}, {\"ForecastARR\", type number}, {\"ARRGrowthPct\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactForecast",
+        "lineageTag": "7896419c-578d-4d9c-b89e-2fa2304ae961",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "19e9fc4e-2b63-4d20-b61b-8ef3fc625af7",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Scenario",
+            "dataType": "string",
+            "sourceColumn": "Scenario",
+            "lineageTag": "76bafcc4-6256-4459-963a-41271de60e68",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ARRValue",
+            "dataType": "double",
+            "sourceColumn": "ARRValue",
+            "lineageTag": "0b06807c-55ab-4eb8-b1ba-166e1e15e0f9",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "RevenueValue",
+            "dataType": "double",
+            "sourceColumn": "RevenueValue",
+            "lineageTag": "738c87e3-deb6-4a44-b7e6-f99586a83437",
+            "formatString": "$#,0;($#,0);$0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactForecast",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\FactForecast.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"Scenario\", type text}, {\"ARRValue\", type number}, {\"RevenueValue\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactAccountHealth",
+        "lineageTag": "072f3a28-61c1-481d-8191-3dc27de0b8b6",
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "string",
+            "sourceColumn": "CustomerID",
+            "lineageTag": "4f9d73be-9329-4d51-9107-4cb36c29e75f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AccountName",
+            "dataType": "string",
+            "sourceColumn": "AccountName",
+            "lineageTag": "172ce970-15f8-47c6-aa48-39b5bd251455",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanID",
+            "dataType": "string",
+            "sourceColumn": "PlanID",
+            "lineageTag": "3295120c-51a3-4214-b587-6ef16480d26e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ChannelID",
+            "dataType": "string",
+            "sourceColumn": "ChannelID",
+            "lineageTag": "0a99cbf0-c495-4d4c-8d50-6af9a4b78fb1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionID",
+            "dataType": "string",
+            "sourceColumn": "RegionID",
+            "lineageTag": "8ecef14d-8930-4157-bb0e-f4e1f626fe80",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Segment",
+            "dataType": "string",
+            "sourceColumn": "Segment",
+            "lineageTag": "26d6bbf1-1ace-48f7-b76e-8405ee8d6ffa",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Industry",
+            "dataType": "string",
+            "sourceColumn": "Industry",
+            "lineageTag": "d3b89f1e-f11b-468f-8aac-51ea0e59a89c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CurrentARR",
+            "dataType": "double",
+            "sourceColumn": "CurrentARR",
+            "lineageTag": "cc8c6c7c-7037-4524-9a25-c69d8fba9721",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Seats",
+            "dataType": "int64",
+            "sourceColumn": "Seats",
+            "lineageTag": "98cdb02a-907a-4050-a86c-e1203883a0dd",
+            "formatString": "0"
+          },
+          {
+            "name": "HealthScore",
+            "dataType": "double",
+            "sourceColumn": "HealthScore",
+            "lineageTag": "b812fe10-2815-45d4-904b-daa9c8c08d87"
+          },
+          {
+            "name": "RenewalRisk",
+            "dataType": "string",
+            "sourceColumn": "RenewalRisk",
+            "lineageTag": "f3241abf-fbe7-47ca-8783-a688c078c44d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NextAction",
+            "dataType": "string",
+            "sourceColumn": "NextAction",
+            "lineageTag": "48e6ae06-7aac-452b-9a87-13237b05c785",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactAccountHealth",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\FactAccountHealth.csv\"), [Delimiter=\",\", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"CustomerID\", type text}, {\"AccountName\", type text}, {\"PlanID\", type text}, {\"ChannelID\", type text}, {\"RegionID\", type text}, {\"Segment\", type text}, {\"Industry\", type text}, {\"CurrentARR\", type number}, {\"Seats\", Int64.Type}, {\"HealthScore\", type number}, {\"RenewalRisk\", type text}, {\"NextAction\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "MonthlyKPIs",
+        "lineageTag": "6c3500a3-b176-4d09-bbab-73ebe8536346",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "lineageTag": "accc0a87-7a1f-43f8-b7c8-c9c9c9707a2c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BeginningMRR",
+            "dataType": "double",
+            "sourceColumn": "BeginningMRR",
+            "lineageTag": "2d1f0ac6-7397-48af-a7eb-2392581347bd",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "NewMRR",
+            "dataType": "double",
+            "sourceColumn": "NewMRR",
+            "lineageTag": "d1d31085-8428-47cd-b12e-42710fef07ca",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ExpansionMRR",
+            "dataType": "double",
+            "sourceColumn": "ExpansionMRR",
+            "lineageTag": "9eb33968-d197-4c7a-ba7d-0d83cb1e8c27",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ContractionMRR",
+            "dataType": "double",
+            "sourceColumn": "ContractionMRR",
+            "lineageTag": "91aade58-610f-4aa8-ad78-acaef3dd1f03",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "ChurnMRR",
+            "dataType": "double",
+            "sourceColumn": "ChurnMRR",
+            "lineageTag": "5fe81947-4935-4ec9-a814-e44f5c6a4c01",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "EndingMRR",
+            "dataType": "double",
+            "sourceColumn": "EndingMRR",
+            "lineageTag": "f2df8bee-9b92-44c8-aa13-28941dac7a4f",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "RecognizedRevenue",
+            "dataType": "double",
+            "sourceColumn": "RecognizedRevenue",
+            "lineageTag": "88d1f9f2-f191-432c-872c-345a1dd5c36b",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "GrossMargin",
+            "dataType": "double",
+            "sourceColumn": "GrossMargin",
+            "lineageTag": "7fe8917c-c874-40e3-a6a5-fba64c28f50c",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "StartingCustomers",
+            "dataType": "int64",
+            "sourceColumn": "StartingCustomers",
+            "lineageTag": "4ae0d730-d4c0-40b7-b947-af50e15ed8b8",
+            "formatString": "0"
+          },
+          {
+            "name": "ActiveCustomers",
+            "dataType": "int64",
+            "sourceColumn": "ActiveCustomers",
+            "lineageTag": "7b0493c8-c859-42ef-b176-5f69e897d9b0",
+            "formatString": "0"
+          },
+          {
+            "name": "NewCustomers",
+            "dataType": "int64",
+            "sourceColumn": "NewCustomers",
+            "lineageTag": "00793b0e-0db5-4425-9b33-ecab0866f0e3",
+            "formatString": "0"
+          },
+          {
+            "name": "ChurnedCustomers",
+            "dataType": "int64",
+            "sourceColumn": "ChurnedCustomers",
+            "lineageTag": "604ccfc6-ff0f-4b95-a223-71c74b621ca5",
+            "formatString": "0"
+          },
+          {
+            "name": "MonthLabel",
+            "dataType": "string",
+            "sourceColumn": "MonthLabel",
+            "lineageTag": "bc9448ae-4036-4f0e-855e-1379d19bacf9",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthIndex",
+            "dataType": "int64",
+            "sourceColumn": "MonthIndex",
+            "lineageTag": "2373fd95-371d-4949-978f-63b23f59bb40",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ARR",
+            "dataType": "double",
+            "sourceColumn": "ARR",
+            "lineageTag": "a1adc449-4dca-47bf-aad8-141a64deb798",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "NetNewARR",
+            "dataType": "double",
+            "sourceColumn": "NetNewARR",
+            "lineageTag": "8f6e1584-bb54-4f58-b826-7942345510ea",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "NRR",
+            "dataType": "double",
+            "sourceColumn": "NRR",
+            "lineageTag": "db52c5a5-b3a5-4a6b-8498-a08605077f73"
+          },
+          {
+            "name": "GRR",
+            "dataType": "double",
+            "sourceColumn": "GRR",
+            "lineageTag": "c5153cdf-f093-4e30-b868-f9b270deda21"
+          },
+          {
+            "name": "RevenueChurnRate",
+            "dataType": "double",
+            "sourceColumn": "RevenueChurnRate",
+            "lineageTag": "7b2a72d5-2307-4378-8645-52517206a53e",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "LogoChurnRate",
+            "dataType": "double",
+            "sourceColumn": "LogoChurnRate",
+            "lineageTag": "8a7d4d95-c8b6-453c-adc4-8ef6d4b30513",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "GrossMarginPct",
+            "dataType": "double",
+            "sourceColumn": "GrossMarginPct",
+            "lineageTag": "8b6e8c3d-bf6b-4e0b-a57f-a2638240a0fb",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "ARRGrowthPct",
+            "dataType": "double",
+            "sourceColumn": "ARRGrowthPct",
+            "lineageTag": "a69f3c97-f2b3-4ca7-b7c3-67c9da3427c0",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_MonthlyKPIs",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 15 - SaaS CFO Metrics\\\\data\\\\prepared\\\\MonthlyKPIs.csv\"), [Delimiter=\",\", Columns=23, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"BeginningMRR\", type number}, {\"NewMRR\", type number}, {\"ExpansionMRR\", type number}, {\"ContractionMRR\", type number}, {\"ChurnMRR\", type number}, {\"EndingMRR\", type number}, {\"RecognizedRevenue\", type number}, {\"GrossMargin\", type number}, {\"StartingCustomers\", Int64.Type}, {\"ActiveCustomers\", Int64.Type}, {\"NewCustomers\", Int64.Type}, {\"ChurnedCustomers\", Int64.Type}, {\"MonthLabel\", type text}, {\"MonthIndex\", Int64.Type}, {\"ARR\", type number}, {\"NetNewARR\", type number}, {\"NRR\", type number}, {\"GRR\", type number}, {\"RevenueChurnRate\", type number}, {\"LogoChurnRate\", type number}, {\"GrossMarginPct\", type number}, {\"ARRGrowthPct\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI_Measures",
+        "lineageTag": "85141888-d1c5-4692-84ff-00d56f603339",
+        "columns": [
+          {
+            "name": "MeasureName",
+            "dataType": "string",
+            "sourceColumn": "MeasureName",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_KPI_Measures",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [MeasureName = text], {{\"KPI\"}}) in Source"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Beginning MRR",
+            "expression": "SUM ( FactSubscriptionMonthly[BeginningMRR] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "fc0476d5-00c9-491a-bc4e-4f84bb87af9e"
+          },
+          {
+            "name": "Ending MRR",
+            "expression": "SUM ( FactSubscriptionMonthly[EndingMRR] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "51a6fc88-58d2-45f2-a6e8-2ea0df7317e6"
+          },
+          {
+            "name": "ARR",
+            "expression": "[Ending MRR] * 12",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "2a5fbf52-1100-4064-adf2-ae11a12c32c1"
+          },
+          {
+            "name": "New ARR",
+            "expression": "SUM ( FactSubscriptionMonthly[NewMRR] ) * 12",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "3aba304b-8bc6-4507-905f-232cd060734e"
+          },
+          {
+            "name": "Expansion ARR",
+            "expression": "SUM ( FactSubscriptionMonthly[ExpansionMRR] ) * 12",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "5dafc48c-5ddd-45c8-a87c-f15088b63cea"
+          },
+          {
+            "name": "Contraction ARR",
+            "expression": "ABS ( SUM ( FactSubscriptionMonthly[ContractionMRR] ) ) * 12",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "67dc7799-56b5-466c-9790-859f7cfa84de"
+          },
+          {
+            "name": "Churn ARR",
+            "expression": "ABS ( SUM ( FactSubscriptionMonthly[ChurnMRR] ) ) * 12",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "d13c3026-b3ca-4b50-a65e-01fb9a789f85"
+          },
+          {
+            "name": "Net New ARR",
+            "expression": "[New ARR] + [Expansion ARR] - [Contraction ARR] - [Churn ARR]",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "6093dbc8-ba9c-46a3-8e0f-711bd76e68c5"
+          },
+          {
+            "name": "ARR Movement",
+            "expression": "SUM ( FactMRRMovement[ARRMovement] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "50049323-b68f-414e-93b9-f801ba2e6869"
+          },
+          {
+            "name": "Revenue",
+            "expression": "SUM ( FactSubscriptionMonthly[RecognizedRevenue] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "4387cbc1-1128-45a3-9985-439cbc144ad2"
+          },
+          {
+            "name": "Gross Margin",
+            "expression": "SUM ( FactSubscriptionMonthly[GrossMargin] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "1c666bd0-62de-4ca2-81f5-3539f0eb5a71"
+          },
+          {
+            "name": "Gross Margin %",
+            "expression": "DIVIDE ( [Gross Margin], [Revenue] )",
+            "formatString": "0.0%",
+            "lineageTag": "e5dcef32-2106-4c85-9ae8-df5cc4a54bd5"
+          },
+          {
+            "name": "Starting Customers",
+            "expression": "SUM ( FactSubscriptionMonthly[StartingLogo] )",
+            "formatString": "#,0",
+            "lineageTag": "9ed711de-395d-4f4c-9fa7-0fdcead67af3"
+          },
+          {
+            "name": "Active Customers",
+            "expression": "SUM ( FactSubscriptionMonthly[ActiveLogo] )",
+            "formatString": "#,0",
+            "lineageTag": "4aed528e-1275-47b5-b055-a0a150b0c66c"
+          },
+          {
+            "name": "New Customers",
+            "expression": "SUM ( FactSubscriptionMonthly[NewLogo] )",
+            "formatString": "#,0",
+            "lineageTag": "9cfcf534-1e5b-410d-925f-9c3b7f1b11ee"
+          },
+          {
+            "name": "Churned Customers",
+            "expression": "SUM ( FactSubscriptionMonthly[ChurnedLogo] )",
+            "formatString": "#,0",
+            "lineageTag": "cfcf26a4-9790-43a7-a981-ccf19cb94b63"
+          },
+          {
+            "name": "NRR",
+            "expression": "DIVIDE ( [Ending MRR] - SUM ( FactSubscriptionMonthly[NewMRR] ), [Beginning MRR] )",
+            "formatString": "0.0%",
+            "lineageTag": "8ac9425f-9015-4f3e-a95a-08acfaa4b814"
+          },
+          {
+            "name": "GRR",
+            "expression": "DIVIDE ( [Beginning MRR] - [Contraction ARR] / 12 - [Churn ARR] / 12, [Beginning MRR] )",
+            "formatString": "0.0%",
+            "lineageTag": "1481218f-6f15-4301-9057-19c1435210f8"
+          },
+          {
+            "name": "Revenue Churn Rate",
+            "expression": "DIVIDE ( [Churn ARR], [Beginning MRR] * 12 )",
+            "formatString": "0.0%",
+            "lineageTag": "02545cd2-497a-49ac-a0f2-b465d09891d8"
+          },
+          {
+            "name": "Logo Churn Rate",
+            "expression": "DIVIDE ( [Churned Customers], [Starting Customers] )",
+            "formatString": "0.0%",
+            "lineageTag": "636efced-9507-45d4-9413-460b5fe6d55b"
+          },
+          {
+            "name": "S&M Spend",
+            "expression": "SUM ( FactAcquisitionMonthly[SalesMarketingSpend] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "432dc97e-288b-4429-a83c-157252107534"
+          },
+          {
+            "name": "New ARR Booked",
+            "expression": "SUM ( FactAcquisitionMonthly[NewARRBooked] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "8ab4eeaf-d7b3-4e5f-ba92-4c761a0a45e9"
+          },
+          {
+            "name": "CAC",
+            "expression": "DIVIDE ( [S&M Spend], SUM ( FactAcquisitionMonthly[NewCustomers] ) )",
+            "formatString": "$#,0",
+            "lineageTag": "f1da9a1e-b694-4a21-87e1-f2c33b3b0dcd"
+          },
+          {
+            "name": "ARPA",
+            "expression": "DIVIDE ( [Ending MRR], [Active Customers] )",
+            "formatString": "$#,0",
+            "lineageTag": "30de6457-c2d0-4dae-ac2a-6babd67b1c46"
+          },
+          {
+            "name": "LTV",
+            "expression": "DIVIDE ( [ARPA] * 12 * [Gross Margin %], [Revenue Churn Rate] )",
+            "formatString": "$#,0",
+            "lineageTag": "4ab2c4b8-6a57-4993-b29b-de9b20d4f189"
+          },
+          {
+            "name": "LTV CAC Ratio",
+            "expression": "DIVIDE ( [LTV], [CAC] )",
+            "formatString": "0.0x",
+            "lineageTag": "e29b401f-9c9b-43ed-b018-7ee248c03163"
+          },
+          {
+            "name": "CAC Payback Months",
+            "expression": "DIVIDE ( [CAC], DIVIDE ( [Gross Margin], [Active Customers] ) )",
+            "formatString": "0.0",
+            "lineageTag": "d04b3545-1e0f-40ca-bc05-61de806df145"
+          },
+          {
+            "name": "Magic Number",
+            "expression": "DIVIDE ( [Net New ARR], [S&M Spend] )",
+            "formatString": "0.0x",
+            "lineageTag": "9a03d7a2-caed-47f2-b455-645c7c7a06b4"
+          },
+          {
+            "name": "EBITDA",
+            "expression": "SUM ( FactFinanceMonthly[EBITDA] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "30080fef-e2ae-402c-875a-07d8efac7a7c"
+          },
+          {
+            "name": "EBITDA Margin",
+            "expression": "DIVIDE ( [EBITDA], SUM ( FactFinanceMonthly[Revenue] ) )",
+            "formatString": "0.0%",
+            "lineageTag": "88ad7b5e-28d0-4d48-a17c-3ebacac4aaea"
+          },
+          {
+            "name": "ARR Growth %",
+            "expression": "AVERAGE ( FactFinanceMonthly[ARRGrowthPct] )",
+            "formatString": "0.0%",
+            "lineageTag": "835ab097-1841-48a2-a9fd-462133b9126e"
+          },
+          {
+            "name": "Rule of 40",
+            "expression": "[ARR Growth %] + [EBITDA Margin]",
+            "formatString": "0.0%",
+            "lineageTag": "73630c19-b040-437e-b3e2-cd3202be2683"
+          },
+          {
+            "name": "Net Burn",
+            "expression": "SUM ( FactFinanceMonthly[NetBurn] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "1d11207a-f48b-4cc8-a15e-182ef872d557"
+          },
+          {
+            "name": "Cash Balance",
+            "expression": "SUM ( FactFinanceMonthly[CashBalance] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "fbbc28b8-aaeb-427f-8146-8c52acb5a8ee"
+          },
+          {
+            "name": "Burn Multiple",
+            "expression": "DIVIDE ( [Net Burn], DIVIDE ( [Net New ARR], 12 ) )",
+            "formatString": "0.0x",
+            "lineageTag": "a9784e65-8ff5-43d4-b5a6-d93951e6929e"
+          },
+          {
+            "name": "Forecast ARR",
+            "expression": "SUM ( FactFinanceMonthly[ForecastARR] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "6abf9616-fa86-4ebf-9e6a-7ffb43aae145"
+          },
+          {
+            "name": "Plan ARR",
+            "expression": "SUM ( FactFinanceMonthly[PlanARR] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "06cfd7e2-9f9d-4e8e-9362-7a67451d6bea"
+          },
+          {
+            "name": "Forecast Accuracy",
+            "expression": "1 - DIVIDE ( ABS ( [ARR] - [Forecast ARR] ), [ARR] )",
+            "formatString": "0.0%",
+            "lineageTag": "5284d0b1-5739-4fc1-8bf0-85b574c83da5"
+          },
+          {
+            "name": "Cohort NRR",
+            "expression": "DIVIDE ( SUM ( FactCohortRetention[RetainedMRR] ), SUM ( FactCohortRetention[CohortStartMRR] ) )",
+            "formatString": "0.0%",
+            "lineageTag": "f4e82e0b-5a70-42a0-a2c9-ca6bda2d7450"
+          },
+          {
+            "name": "Cohort GRR",
+            "expression": "DIVIDE ( SUM ( FactCohortRetention[RetainedMRR] ) - SUM ( FactCohortRetention[ExpansionMRR] ), SUM ( FactCohortRetention[CohortStartMRR] ) )",
+            "formatString": "0.0%",
+            "lineageTag": "37b032a6-cea8-4081-bd94-80b703c2b55a"
+          },
+          {
+            "name": "Cohort Active Logos",
+            "expression": "SUM ( FactCohortRetention[ActiveLogos] )",
+            "formatString": "#,0",
+            "lineageTag": "258e13d9-6543-4e2d-9d27-e5688c6dd32c"
+          },
+          {
+            "name": "Cohort LTV",
+            "expression": "DIVIDE ( SUM ( FactCohortRetention[RetainedMRR] ) * 12, SUM ( FactCohortRetention[StartLogos] ) )",
+            "formatString": "$#,0",
+            "lineageTag": "d36b2ed7-ffbc-4632-9490-60d7b2c2cb55"
+          },
+          {
+            "name": "Scenario ARR",
+            "expression": "SUM ( FactForecast[ARRValue] )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "2a48a173-b959-4fb7-bb2a-d7da6b166099"
+          },
+          {
+            "name": "Account Health Score",
+            "expression": "AVERAGE ( FactAccountHealth[HealthScore] )",
+            "formatString": "0.0",
+            "lineageTag": "e99d12dd-3905-41ed-a92f-3c3cf11f23bc"
+          },
+          {
+            "name": "Latest ARR",
+            "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [ARR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "d9721f9d-befd-4a78-92e5-465b68c6c3e5"
+          },
+          {
+            "name": "Latest Net New ARR",
+            "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [Net New ARR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+            "formatString": "$#,0,,.0M",
+            "lineageTag": "2536d97b-28ce-46d0-bf87-07f0b729502b"
+          },
+          {
+            "name": "Latest NRR",
+            "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [NRR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+            "formatString": "0.0%",
+            "lineageTag": "7fc04537-ffaf-4594-bf5f-088a129cdfbb"
+          },
+          {
+            "name": "Latest GRR",
+            "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [GRR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+            "formatString": "0.0%",
+            "lineageTag": "14a06fd3-8212-4cd2-b955-d395df87d695"
+          },
+          {
+            "name": "Latest CAC Payback",
+            "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [CAC Payback Months], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+            "formatString": "0.0",
+            "lineageTag": "abd633c1-e577-44b3-bbca-e33cb40112bb"
+          },
+          {
+            "name": "Latest LTV CAC Ratio",
+            "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [LTV CAC Ratio], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+            "formatString": "0.0x",
+            "lineageTag": "cf4a2991-1dda-4fcb-8ba8-aeb78188346d"
+          },
+          {
+            "name": "Latest Rule of 40",
+            "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [Rule of 40], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+            "formatString": "0.0%",
+            "lineageTag": "27ff4951-cbf9-4f79-8d3a-fabcbef96ce6"
+          },
+          {
+            "name": "Latest Forecast Accuracy",
+            "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [Forecast Accuracy], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+            "formatString": "0.0%",
+            "lineageTag": "1ecc6d04-3924-45b1-86e1-fb7ab9c36e5b"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "Rel_FactSubscriptionMonthly_MonthStart_DimDate_MonthStart",
+        "fromTable": "FactSubscriptionMonthly",
+        "fromColumn": "MonthStart",
+        "toTable": "DimDate",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactSubscriptionMonthly_PlanID_DimPlan_PlanID",
+        "fromTable": "FactSubscriptionMonthly",
+        "fromColumn": "PlanID",
+        "toTable": "DimPlan",
+        "toColumn": "PlanID"
+      },
+      {
+        "name": "Rel_FactSubscriptionMonthly_ChannelID_DimChannel_ChannelID",
+        "fromTable": "FactSubscriptionMonthly",
+        "fromColumn": "ChannelID",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelID"
+      },
+      {
+        "name": "Rel_FactSubscriptionMonthly_RegionID_DimRegion_RegionID",
+        "fromTable": "FactSubscriptionMonthly",
+        "fromColumn": "RegionID",
+        "toTable": "DimRegion",
+        "toColumn": "RegionID"
+      },
+      {
+        "name": "Rel_FactMRRMovement_MonthStart_DimDate_MonthStart",
+        "fromTable": "FactMRRMovement",
+        "fromColumn": "MonthStart",
+        "toTable": "DimDate",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactCohortRetention_ActivityMonth_DimDate_MonthStart",
+        "fromTable": "FactCohortRetention",
+        "fromColumn": "ActivityMonth",
+        "toTable": "DimDate",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactCohortRetention_PlanID_DimPlan_PlanID",
+        "fromTable": "FactCohortRetention",
+        "fromColumn": "PlanID",
+        "toTable": "DimPlan",
+        "toColumn": "PlanID"
+      },
+      {
+        "name": "Rel_FactCohortRetention_ChannelID_DimChannel_ChannelID",
+        "fromTable": "FactCohortRetention",
+        "fromColumn": "ChannelID",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelID"
+      },
+      {
+        "name": "Rel_FactAcquisitionMonthly_MonthStart_DimDate_MonthStart",
+        "fromTable": "FactAcquisitionMonthly",
+        "fromColumn": "MonthStart",
+        "toTable": "DimDate",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactAcquisitionMonthly_PlanID_DimPlan_PlanID",
+        "fromTable": "FactAcquisitionMonthly",
+        "fromColumn": "PlanID",
+        "toTable": "DimPlan",
+        "toColumn": "PlanID"
+      },
+      {
+        "name": "Rel_FactAcquisitionMonthly_ChannelID_DimChannel_ChannelID",
+        "fromTable": "FactAcquisitionMonthly",
+        "fromColumn": "ChannelID",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelID"
+      },
+      {
+        "name": "Rel_FactAcquisitionMonthly_RegionID_DimRegion_RegionID",
+        "fromTable": "FactAcquisitionMonthly",
+        "fromColumn": "RegionID",
+        "toTable": "DimRegion",
+        "toColumn": "RegionID"
+      },
+      {
+        "name": "Rel_FactFinanceMonthly_MonthStart_DimDate_MonthStart",
+        "fromTable": "FactFinanceMonthly",
+        "fromColumn": "MonthStart",
+        "toTable": "DimDate",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactForecast_MonthStart_DimDate_MonthStart",
+        "fromTable": "FactForecast",
+        "fromColumn": "MonthStart",
+        "toTable": "DimDate",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactAccountHealth_PlanID_DimPlan_PlanID",
+        "fromTable": "FactAccountHealth",
+        "fromColumn": "PlanID",
+        "toTable": "DimPlan",
+        "toColumn": "PlanID"
+      },
+      {
+        "name": "Rel_FactAccountHealth_ChannelID_DimChannel_ChannelID",
+        "fromTable": "FactAccountHealth",
+        "fromColumn": "ChannelID",
+        "toTable": "DimChannel",
+        "toColumn": "ChannelID"
+      },
+      {
+        "name": "Rel_FactAccountHealth_RegionID_DimRegion_RegionID",
+        "fromTable": "FactAccountHealth",
+        "fromColumn": "RegionID",
+        "toTable": "DimRegion",
+        "toColumn": "RegionID"
+      }
+    ]
+  }
+}

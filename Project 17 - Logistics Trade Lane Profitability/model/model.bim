@@ -1,0 +1,1002 @@
+{
+  "compatibilityLevel": 1550,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimDate",
+        "columns": [
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "quarter",
+            "dataType": "string",
+            "sourceColumn": "quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "quarter_number",
+            "dataType": "int64",
+            "sourceColumn": "quarter_number",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_number",
+            "dataType": "int64",
+            "sourceColumn": "month_number",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_label",
+            "dataType": "string",
+            "sourceColumn": "month_label",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_index",
+            "dataType": "int64",
+            "sourceColumn": "month_index",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_latest_complete",
+            "dataType": "string",
+            "sourceColumn": "is_latest_complete",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_date.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"date_id\", type text},\n        {\"date\", type date},\n        {\"year\", Int64.Type},\n        {\"quarter\", type text},\n        {\"quarter_number\", Int64.Type},\n        {\"month_number\", Int64.Type},\n        {\"month_label\", type text},\n        {\"month_index\", Int64.Type},\n        {\"is_latest_complete\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCustomer",
+        "columns": [
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_name",
+            "dataType": "string",
+            "sourceColumn": "customer_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "industry",
+            "dataType": "string",
+            "sourceColumn": "industry",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "segment",
+            "dataType": "string",
+            "sourceColumn": "segment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "tier",
+            "dataType": "string",
+            "sourceColumn": "tier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "account_manager",
+            "dataType": "string",
+            "sourceColumn": "account_manager",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "credit_risk_band",
+            "dataType": "string",
+            "sourceColumn": "credit_risk_band",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCustomer-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_customer.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"customer_id\", type text},\n        {\"customer_name\", type text},\n        {\"industry\", type text},\n        {\"segment\", type text},\n        {\"tier\", type text},\n        {\"account_manager\", type text},\n        {\"credit_risk_band\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimTradeLane",
+        "columns": [
+          {
+            "name": "lane_id",
+            "dataType": "string",
+            "sourceColumn": "lane_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "lane_name",
+            "dataType": "string",
+            "sourceColumn": "lane_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "origin_country",
+            "dataType": "string",
+            "sourceColumn": "origin_country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "origin_node",
+            "dataType": "string",
+            "sourceColumn": "origin_node",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "destination_country",
+            "dataType": "string",
+            "sourceColumn": "destination_country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "destination_node",
+            "dataType": "string",
+            "sourceColumn": "destination_node",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mode",
+            "dataType": "string",
+            "sourceColumn": "mode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "distance_km",
+            "dataType": "double",
+            "sourceColumn": "distance_km",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "lane_cluster",
+            "dataType": "string",
+            "sourceColumn": "lane_cluster",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "strategic_lane",
+            "dataType": "string",
+            "sourceColumn": "strategic_lane",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimTradeLane-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_trade_lane.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"lane_id\", type text},\n        {\"lane_name\", type text},\n        {\"origin_country\", type text},\n        {\"origin_node\", type text},\n        {\"destination_country\", type text},\n        {\"destination_node\", type text},\n        {\"mode\", type text},\n        {\"distance_km\", type number},\n        {\"lane_cluster\", type text},\n        {\"strategic_lane\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimService",
+        "columns": [
+          {
+            "name": "service_id",
+            "dataType": "string",
+            "sourceColumn": "service_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "service",
+            "dataType": "string",
+            "sourceColumn": "service",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "service_family",
+            "dataType": "string",
+            "sourceColumn": "service_family",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mode",
+            "dataType": "string",
+            "sourceColumn": "mode",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimService-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_service.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"service_id\", type text},\n        {\"service\", type text},\n        {\"service_family\", type text},\n        {\"mode\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimOffice",
+        "columns": [
+          {
+            "name": "office_id",
+            "dataType": "string",
+            "sourceColumn": "office_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "office",
+            "dataType": "string",
+            "sourceColumn": "office",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "country",
+            "dataType": "string",
+            "sourceColumn": "country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimOffice-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_office.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"office_id\", type text},\n        {\"office\", type text},\n        {\"country\", type text},\n        {\"region\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCarrier",
+        "columns": [
+          {
+            "name": "carrier_id",
+            "dataType": "string",
+            "sourceColumn": "carrier_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "carrier",
+            "dataType": "string",
+            "sourceColumn": "carrier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "carrier_type",
+            "dataType": "string",
+            "sourceColumn": "carrier_type",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCarrier-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_carrier.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"carrier_id\", type text},\n        {\"carrier\", type text},\n        {\"carrier_type\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactShipmentProfitability",
+        "columns": [
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "lane_id",
+            "dataType": "string",
+            "sourceColumn": "lane_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "service_id",
+            "dataType": "string",
+            "sourceColumn": "service_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "office_id",
+            "dataType": "string",
+            "sourceColumn": "office_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "carrier_id",
+            "dataType": "string",
+            "sourceColumn": "carrier_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "shipment_count",
+            "dataType": "int64",
+            "sourceColumn": "shipment_count",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "teu",
+            "dataType": "double",
+            "sourceColumn": "teu",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "cbm",
+            "dataType": "double",
+            "sourceColumn": "cbm",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "chargeable_weight_kg",
+            "dataType": "double",
+            "sourceColumn": "chargeable_weight_kg",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "net_revenue_usd",
+            "dataType": "double",
+            "sourceColumn": "net_revenue_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "freight_cost_usd",
+            "dataType": "double",
+            "sourceColumn": "freight_cost_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fuel_cost_usd",
+            "dataType": "double",
+            "sourceColumn": "fuel_cost_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "handling_cost_usd",
+            "dataType": "double",
+            "sourceColumn": "handling_cost_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customs_cost_usd",
+            "dataType": "double",
+            "sourceColumn": "customs_cost_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "demurrage_cost_usd",
+            "dataType": "double",
+            "sourceColumn": "demurrage_cost_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "claims_cost_usd",
+            "dataType": "double",
+            "sourceColumn": "claims_cost_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "last_mile_cost_usd",
+            "dataType": "double",
+            "sourceColumn": "last_mile_cost_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "total_cost_usd",
+            "dataType": "double",
+            "sourceColumn": "total_cost_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "gross_profit_usd",
+            "dataType": "double",
+            "sourceColumn": "gross_profit_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "target_margin_pct",
+            "dataType": "double",
+            "sourceColumn": "target_margin_pct",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "on_time_count",
+            "dataType": "int64",
+            "sourceColumn": "on_time_count",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "delayed_count",
+            "dataType": "int64",
+            "sourceColumn": "delayed_count",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "utilization_pct",
+            "dataType": "double",
+            "sourceColumn": "utilization_pct",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactShipmentProfitability-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/fact_shipment_profitability.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"date_id\", type text},\n        {\"customer_id\", type text},\n        {\"lane_id\", type text},\n        {\"service_id\", type text},\n        {\"office_id\", type text},\n        {\"carrier_id\", type text},\n        {\"shipment_count\", Int64.Type},\n        {\"teu\", type number},\n        {\"cbm\", type number},\n        {\"chargeable_weight_kg\", type number},\n        {\"net_revenue_usd\", type number},\n        {\"freight_cost_usd\", type number},\n        {\"fuel_cost_usd\", type number},\n        {\"handling_cost_usd\", type number},\n        {\"customs_cost_usd\", type number},\n        {\"demurrage_cost_usd\", type number},\n        {\"claims_cost_usd\", type number},\n        {\"last_mile_cost_usd\", type number},\n        {\"total_cost_usd\", type number},\n        {\"gross_profit_usd\", type number},\n        {\"target_margin_pct\", type number},\n        {\"on_time_count\", Int64.Type},\n        {\"delayed_count\", Int64.Type},\n        {\"utilization_pct\", type number},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCostDriverBridge",
+        "columns": [
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "lane_id",
+            "dataType": "string",
+            "sourceColumn": "lane_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "driver",
+            "dataType": "string",
+            "sourceColumn": "driver",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "driver_sort",
+            "dataType": "int64",
+            "sourceColumn": "driver_sort",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "amount_usd",
+            "dataType": "double",
+            "sourceColumn": "amount_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "driver_type",
+            "dataType": "string",
+            "sourceColumn": "driver_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactCostDriverBridge-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/fact_cost_driver_bridge.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"date_id\", type text},\n        {\"customer_id\", type text},\n        {\"lane_id\", type text},\n        {\"driver\", type text},\n        {\"driver_sort\", Int64.Type},\n        {\"amount_usd\", type number},\n        {\"driver_type\", type text},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactActionQueue",
+        "columns": [
+          {
+            "name": "action_id",
+            "dataType": "string",
+            "sourceColumn": "action_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "lane_id",
+            "dataType": "string",
+            "sourceColumn": "lane_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "office_id",
+            "dataType": "string",
+            "sourceColumn": "office_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "issue_type",
+            "dataType": "string",
+            "sourceColumn": "issue_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "priority",
+            "dataType": "string",
+            "sourceColumn": "priority",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "owner",
+            "dataType": "string",
+            "sourceColumn": "owner",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_value_usd",
+            "dataType": "double",
+            "sourceColumn": "risk_value_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "target_margin_recovery_usd",
+            "dataType": "double",
+            "sourceColumn": "target_margin_recovery_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "recommended_action",
+            "dataType": "string",
+            "sourceColumn": "recommended_action",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "due_date",
+            "dataType": "dateTime",
+            "sourceColumn": "due_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactActionQueue-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/fact_action_queue.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"action_id\", type text},\n        {\"date_id\", type text},\n        {\"customer_id\", type text},\n        {\"lane_id\", type text},\n        {\"office_id\", type text},\n        {\"issue_type\", type text},\n        {\"priority\", type text},\n        {\"status\", type text},\n        {\"owner\", type text},\n        {\"risk_value_usd\", type number},\n        {\"target_margin_recovery_usd\", type number},\n        {\"recommended_action\", type text},\n        {\"due_date\", type date},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI Measures",
+        "columns": [
+          {
+            "name": "Measure Group",
+            "dataType": "string",
+            "sourceColumn": "Measure Group",
+            "isHidden": true,
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "KPI Measures-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #table(type table [Measure Group = text], {{\"Logistics Trade Lane Profitability\"}})",
+                "in",
+                "    Source"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Net Revenue",
+            "expression": "SUM(FactShipmentProfitability[net_revenue_usd])",
+            "formatString": "$#,0",
+            "description": "Total billed revenue after rebates and credits."
+          },
+          {
+            "name": "Freight Cost",
+            "expression": "SUM(FactShipmentProfitability[freight_cost_usd])",
+            "formatString": "$#,0",
+            "description": "Carrier buy rate and main freight cost."
+          },
+          {
+            "name": "Fuel Cost",
+            "expression": "SUM(FactShipmentProfitability[fuel_cost_usd])",
+            "formatString": "$#,0",
+            "description": "Fuel surcharge cost charged by carriers."
+          },
+          {
+            "name": "Demurrage Cost",
+            "expression": "SUM(FactShipmentProfitability[demurrage_cost_usd])",
+            "formatString": "$#,0",
+            "description": "Demurrage and detention leakage."
+          },
+          {
+            "name": "Claims Cost",
+            "expression": "SUM(FactShipmentProfitability[claims_cost_usd])",
+            "formatString": "$#,0",
+            "description": "Claims and service failure cost."
+          },
+          {
+            "name": "Total Cost",
+            "expression": "SUM(FactShipmentProfitability[total_cost_usd])",
+            "formatString": "$#,0",
+            "description": "Total cost-to-serve for shipments."
+          },
+          {
+            "name": "Gross Profit",
+            "expression": "SUM(FactShipmentProfitability[gross_profit_usd])",
+            "formatString": "$#,0",
+            "description": "Net revenue less total shipment cost."
+          },
+          {
+            "name": "GP Margin %",
+            "expression": "DIVIDE([Gross Profit], [Net Revenue])",
+            "formatString": "0.0%",
+            "description": "Gross profit divided by net revenue."
+          },
+          {
+            "name": "Shipment Count",
+            "expression": "SUM(FactShipmentProfitability[shipment_count])",
+            "formatString": "#,0",
+            "description": "Total shipment records weighted by shipment count."
+          },
+          {
+            "name": "TEU",
+            "expression": "SUM(FactShipmentProfitability[teu])",
+            "formatString": "#,0.0",
+            "description": "Twenty-foot equivalent units for ocean lanes."
+          },
+          {
+            "name": "CBM",
+            "expression": "SUM(FactShipmentProfitability[cbm])",
+            "formatString": "#,0.0",
+            "description": "Cubic meter volume handled."
+          },
+          {
+            "name": "Revenue per Shipment",
+            "expression": "DIVIDE([Net Revenue], [Shipment Count])",
+            "formatString": "$#,0",
+            "description": "Net revenue per shipment."
+          },
+          {
+            "name": "Cost per Shipment",
+            "expression": "DIVIDE([Total Cost], [Shipment Count])",
+            "formatString": "$#,0",
+            "description": "Cost-to-serve per shipment."
+          },
+          {
+            "name": "Target Gross Profit",
+            "expression": "SUMX(FactShipmentProfitability, FactShipmentProfitability[net_revenue_usd] * FactShipmentProfitability[target_margin_pct])",
+            "formatString": "$#,0",
+            "description": "Target gross profit using lane/service margin targets."
+          },
+          {
+            "name": "Margin Gap vs Target",
+            "expression": "[Gross Profit] - [Target Gross Profit]",
+            "formatString": "$#,0",
+            "description": "Actual gross profit less target gross profit."
+          },
+          {
+            "name": "Target Margin %",
+            "expression": "DIVIDE([Target Gross Profit], [Net Revenue])",
+            "formatString": "0.0%",
+            "description": "Weighted target margin for selected scope."
+          },
+          {
+            "name": "Margin Gap %",
+            "expression": "[GP Margin %] - [Target Margin %]",
+            "formatString": "0.0%",
+            "description": "Percentage point gap versus target margin."
+          },
+          {
+            "name": "On-Time %",
+            "expression": "DIVIDE(SUM(FactShipmentProfitability[on_time_count]), [Shipment Count])",
+            "formatString": "0.0%",
+            "description": "On-time shipments divided by shipments."
+          },
+          {
+            "name": "Utilization %",
+            "expression": "AVERAGE(FactShipmentProfitability[utilization_pct])",
+            "formatString": "0.0%",
+            "description": "Average equipment/consolidation utilization."
+          },
+          {
+            "name": "Negative Margin Shipments",
+            "expression": "CALCULATE([Shipment Count], FILTER(FactShipmentProfitability, FactShipmentProfitability[gross_profit_usd] < 0))",
+            "formatString": "#,0",
+            "description": "Shipments with negative gross profit."
+          },
+          {
+            "name": "Reprice Opportunity",
+            "expression": "SUMX(FILTER(FactShipmentProfitability, FactShipmentProfitability[gross_profit_usd] < 0), -FactShipmentProfitability[gross_profit_usd])",
+            "formatString": "$#,0",
+            "description": "Gross profit required to bring negative shipments to zero."
+          },
+          {
+            "name": "Bridge Amount",
+            "expression": "SUM(FactCostDriverBridge[amount_usd])",
+            "formatString": "$#,0",
+            "description": "Driver bridge amount for margin gap explanation."
+          },
+          {
+            "name": "Open Actions",
+            "expression": "CALCULATE(COUNTROWS(FactActionQueue), FILTER(FactActionQueue, FactActionQueue[status] <> \"Closed\"))",
+            "formatString": "#,0",
+            "description": "Non-closed commercial/procurement/ops actions."
+          },
+          {
+            "name": "Action Risk Value",
+            "expression": "SUM(FactActionQueue[risk_value_usd])",
+            "formatString": "$#,0",
+            "description": "Margin value at risk in the action queue."
+          },
+          {
+            "name": "Recovery Value",
+            "expression": "SUM(FactActionQueue[target_margin_recovery_usd])",
+            "formatString": "$#,0",
+            "description": "Expected recoverable margin from action queue."
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "rel_FactShipmentProfitability_date_id_DimDate_date_id",
+        "fromTable": "FactShipmentProfitability",
+        "fromColumn": "date_id",
+        "toTable": "DimDate",
+        "toColumn": "date_id"
+      },
+      {
+        "name": "rel_FactCostDriverBridge_date_id_DimDate_date_id",
+        "fromTable": "FactCostDriverBridge",
+        "fromColumn": "date_id",
+        "toTable": "DimDate",
+        "toColumn": "date_id"
+      },
+      {
+        "name": "rel_FactActionQueue_date_id_DimDate_date_id",
+        "fromTable": "FactActionQueue",
+        "fromColumn": "date_id",
+        "toTable": "DimDate",
+        "toColumn": "date_id"
+      },
+      {
+        "name": "rel_FactShipmentProfitability_customer_id_DimCustomer_customer_id",
+        "fromTable": "FactShipmentProfitability",
+        "fromColumn": "customer_id",
+        "toTable": "DimCustomer",
+        "toColumn": "customer_id"
+      },
+      {
+        "name": "rel_FactCostDriverBridge_customer_id_DimCustomer_customer_id",
+        "fromTable": "FactCostDriverBridge",
+        "fromColumn": "customer_id",
+        "toTable": "DimCustomer",
+        "toColumn": "customer_id"
+      },
+      {
+        "name": "rel_FactActionQueue_customer_id_DimCustomer_customer_id",
+        "fromTable": "FactActionQueue",
+        "fromColumn": "customer_id",
+        "toTable": "DimCustomer",
+        "toColumn": "customer_id"
+      },
+      {
+        "name": "rel_FactShipmentProfitability_lane_id_DimTradeLane_lane_id",
+        "fromTable": "FactShipmentProfitability",
+        "fromColumn": "lane_id",
+        "toTable": "DimTradeLane",
+        "toColumn": "lane_id"
+      },
+      {
+        "name": "rel_FactCostDriverBridge_lane_id_DimTradeLane_lane_id",
+        "fromTable": "FactCostDriverBridge",
+        "fromColumn": "lane_id",
+        "toTable": "DimTradeLane",
+        "toColumn": "lane_id"
+      },
+      {
+        "name": "rel_FactActionQueue_lane_id_DimTradeLane_lane_id",
+        "fromTable": "FactActionQueue",
+        "fromColumn": "lane_id",
+        "toTable": "DimTradeLane",
+        "toColumn": "lane_id"
+      },
+      {
+        "name": "rel_FactShipmentProfitability_service_id_DimService_service_id",
+        "fromTable": "FactShipmentProfitability",
+        "fromColumn": "service_id",
+        "toTable": "DimService",
+        "toColumn": "service_id"
+      },
+      {
+        "name": "rel_FactShipmentProfitability_office_id_DimOffice_office_id",
+        "fromTable": "FactShipmentProfitability",
+        "fromColumn": "office_id",
+        "toTable": "DimOffice",
+        "toColumn": "office_id"
+      },
+      {
+        "name": "rel_FactActionQueue_office_id_DimOffice_office_id",
+        "fromTable": "FactActionQueue",
+        "fromColumn": "office_id",
+        "toTable": "DimOffice",
+        "toColumn": "office_id"
+      },
+      {
+        "name": "rel_FactShipmentProfitability_carrier_id_DimCarrier_carrier_id",
+        "fromTable": "FactShipmentProfitability",
+        "fromColumn": "carrier_id",
+        "toTable": "DimCarrier",
+        "toColumn": "carrier_id"
+      }
+    ]
+  }
+}

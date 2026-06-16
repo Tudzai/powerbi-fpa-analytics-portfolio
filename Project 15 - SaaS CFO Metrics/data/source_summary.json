@@ -1,0 +1,21 @@
+{
+  "source_type": "synthetic_demo_data",
+  "seed": 20260615,
+  "latest_complete_month": "2026-05-01",
+  "tables": {
+    "DimDate": 29,
+    "DimPlan": 5,
+    "DimChannel": 5,
+    "DimRegion": 4,
+    "DimCustomer": 520,
+    "FactSubscriptionMonthly": 6494,
+    "FactMRRMovement": 116,
+    "FactCohortRetention": 4806,
+    "FactAcquisitionMonthly": 447,
+    "FactFinanceMonthly": 29,
+    "FactForecast": 87,
+    "FactAccountHealth": 240,
+    "MonthlyKPIs": 29
+  },
+  "note": "Portfolio/demo SaaS CFO metrics data generated deterministically."
+}

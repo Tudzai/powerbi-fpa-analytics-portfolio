@@ -1,0 +1,6 @@
+﻿ChannelID,ChannelName,Motion,SourceType,CACIndex,QualityIndex
+plg,Product-Led,PLG,Organic,0.72,1.1
+inbound,Inbound Demand,Inbound,Paid,1.05,1.0
+outbound,Outbound Sales,Outbound,Paid,1.32,0.92
+partner,Partner Ecosystem,Partner,Partner,0.96,1.03
+expansion,Customer Success,Expansion,Owned,0.42,1.18

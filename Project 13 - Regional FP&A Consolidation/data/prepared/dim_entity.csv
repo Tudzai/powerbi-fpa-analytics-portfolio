@@ -1,0 +1,8 @@
+entity_id,entity,country,region,currency,ownership
+SGP01,Singapore Regional HQ,Singapore,SEA North,SGD,1.0
+VNM01,Vietnam Logistics,Vietnam,SEA South,VND,0.95
+THA01,Thailand Freight,Thailand,SEA North,THB,0.9
+MYS01,Malaysia Contract Logistics,Malaysia,SEA South,MYR,0.92
+IDN01,Indonesia Distribution,Indonesia,SEA South,IDR,0.87
+PHL01,Philippines Forwarding,Philippines,SEA North,PHP,0.85
+AUS01,Australia Pacific,Australia,ANZ,AUD,1.0

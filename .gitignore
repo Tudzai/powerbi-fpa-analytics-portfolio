@@ -26,6 +26,8 @@ __pycache__/
 **/qa/exported_*/
 **/qa/extract_*/
 **/qa/extract_*.bim
+**/qa/inspect_*/
+**/qa/live_*/
 **/qa/agent_*
 **/qa/legacy_visual_samples/
 **/qa/model_tmdl_from_live/

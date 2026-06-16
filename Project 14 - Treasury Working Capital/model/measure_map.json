@@ -1,0 +1,122 @@
+{
+  "Cash Balance": {
+    "format_string": "$#,0",
+    "definition": "Total book cash balance across bank accounts."
+  },
+  "Available Cash": {
+    "format_string": "$#,0",
+    "definition": "Cash balance net of restricted cash."
+  },
+  "Restricted Cash": {
+    "format_string": "$#,0",
+    "definition": "Restricted bank cash not available for operating liquidity."
+  },
+  "Credit Available": {
+    "format_string": "$#,0",
+    "definition": "Undrawn committed liquidity facilities."
+  },
+  "Available Liquidity": {
+    "format_string": "$#,0",
+    "definition": "Available cash plus undrawn credit facilities."
+  },
+  "Minimum Cash Buffer": {
+    "format_string": "$#,0",
+    "definition": "Entity minimum cash covenant or operating buffer."
+  },
+  "Liquidity Headroom": {
+    "format_string": "$#,0",
+    "definition": "Available liquidity above minimum cash buffer."
+  },
+  "AR Outstanding": {
+    "format_string": "$#,0",
+    "definition": "Open customer receivable balance."
+  },
+  "Overdue AR": {
+    "format_string": "$#,0",
+    "definition": "Open AR balance past due date."
+  },
+  "Overdue AR %": {
+    "format_string": "0.0%",
+    "definition": "Overdue AR as a percentage of total AR outstanding."
+  },
+  "AP Outstanding": {
+    "format_string": "$#,0",
+    "definition": "Open vendor payable balance."
+  },
+  "AP Due 14 Days": {
+    "format_string": "$#,0",
+    "definition": "AP outstanding due in the next 14 days."
+  },
+  "Revenue": {
+    "format_string": "$#,0",
+    "definition": "Monthly revenue used for DSO denominator."
+  },
+  "COGS": {
+    "format_string": "$#,0",
+    "definition": "Monthly cost of goods sold used for DPO and DIO denominators."
+  },
+  "Working Capital": {
+    "format_string": "$#,0",
+    "definition": "AR plus inventory less AP."
+  },
+  "DSO": {
+    "format_string": "0.0",
+    "definition": "Days sales outstanding, based on AR balance over revenue."
+  },
+  "DPO": {
+    "format_string": "0.0",
+    "definition": "Days payable outstanding, based on AP balance over COGS."
+  },
+  "DIO": {
+    "format_string": "0.0",
+    "definition": "Days inventory outstanding, based on inventory balance over COGS."
+  },
+  "Cash Conversion Cycle": {
+    "format_string": "0.0",
+    "definition": "DSO plus DIO minus DPO."
+  },
+  "Forecast Closing Cash": {
+    "format_string": "$#,0",
+    "definition": "Projected closing cash over the selected 13-week forecast scenario."
+  },
+  "Forecast Net Cash Flow": {
+    "format_string": "$#,0",
+    "definition": "Projected cash inflows less outflows."
+  },
+  "Forecast Receipts": {
+    "format_string": "$#,0",
+    "definition": "Forecast customer and other receipts."
+  },
+  "Forecast Payments": {
+    "format_string": "$#,0",
+    "definition": "Forecast supplier, payroll, capex, and debt payments."
+  },
+  "Cash Runway Weeks": {
+    "format_string": "0.0",
+    "definition": "Available liquidity divided by average weekly cash burn when net flow is negative."
+  },
+  "Forecast Error %": {
+    "format_string": "0.0%",
+    "definition": "Absolute forecast error divided by absolute actual net cash flow."
+  },
+  "FX Net Exposure": {
+    "format_string": "$#,0",
+    "definition": "Gross net FX exposure in USD equivalent."
+  },
+  "Unhedged FX Exposure": {
+    "format_string": "$#,0",
+    "definition": "FX exposure remaining after hedge coverage."
+  },
+  "Unhedged FX %": {
+    "format_string": "0.0%",
+    "definition": "Unhedged exposure divided by total net FX exposure."
+  },
+  "Open Risk Value": {
+    "format_string": "$#,0",
+    "definition": "Value attached to non-closed treasury action items."
+  },
+  "Open Risk Count": {
+    "format_string": "#,0",
+    "definition": "Count of non-closed treasury risk action items."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "measures": [
+    {
+      "name": "Total Emissions tCO2e",
+      "business_definition": "Total greenhouse gas emissions in metric tons CO2 equivalent.",
+      "dax": "SUM ( fact_emissions[emissions_tco2e] )",
+      "format": "#,0.0 tCO2e",
+      "validation": "Reconciles to sum of fact_emissions emissions_tco2e."
+    },
+    {
+      "name": "Carbon Cost USD",
+      "business_definition": "Financial exposure if emissions are priced at the selected carbon price scenario.",
+      "dax": "[Total Emissions tCO2e] * [Selected Carbon Price USD/t]",
+      "format": "$#,0",
+      "validation": "Total emissions multiplied by scenario price."
+    },
+    {
+      "name": "Emissions Intensity tCO2e per $M Revenue",
+      "business_definition": "Emissions normalized by revenue.",
+      "dax": "DIVIDE ( [Total Emissions tCO2e], [Revenue USD] ) * 1000000",
+      "format": "#,0.0",
+      "validation": "Uses DIVIDE; no rate summing."
+    },
+    {
+      "name": "Supplier Intensity tCO2e per $M Spend",
+      "business_definition": "Supplier emissions normalized by supplier spend.",
+      "dax": "DIVIDE ( [Supplier Emissions tCO2e], [Supplier Spend USD] ) * 1000000",
+      "format": "#,0.0",
+      "validation": "Uses prepared supplier monthly rollup."
+    },
+    {
+      "name": "Abatement ROI",
+      "business_definition": "Annual benefit from savings and avoided carbon cost divided by capex.",
+      "dax": "DIVIDE ( [Abatement Annual Benefit USD], [Abatement Capex USD] )",
+      "format": "0.0%",
+      "validation": "Uses initiative-level capex, opex savings, and selected carbon price."
+    }
+  ]
+}

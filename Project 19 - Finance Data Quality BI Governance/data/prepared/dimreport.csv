@@ -1,0 +1,10 @@
+ReportKey,ReportName,Workspace,Audience,OwnerTeam,Certified,SensitivityLabel,ReportTier
+RP001,CFO Flash,Finance Executive,Executive,CFO Office,Y,Confidential,Gold
+RP002,Monthly Close Cockpit,Controllership,Manager,R2R Data Product,Y,Confidential,Gold
+RP003,AP Spend Control,Procurement Finance,Analyst,P2P Analytics,Y,Internal,Silver
+RP004,AR Cash Collections,O2C,Manager,O2C Analytics,Y,Internal,Silver
+RP005,Treasury Liquidity Monitor,Treasury,Manager,Treasury Ops,Y,Highly Confidential,Gold
+RP006,Revenue Waterfall,Revenue,Executive,Revenue Ops,Y,Confidential,Gold
+RP007,Cost Center Review,FP&A,Analyst,FP&A Systems,Y,Internal,Silver
+RP008,Tax Provision Pack,Tax,Manager,Tax Ops,N,Highly Confidential,Bronze
+RP009,Finance Data Quality Monitor,BI Governance,Operator,BI Governance,Y,Internal,Gold

@@ -1,0 +1,103 @@
+Beginning MRR = SUM ( FactSubscriptionMonthly[BeginningMRR] )
+
+Ending MRR = SUM ( FactSubscriptionMonthly[EndingMRR] )
+
+ARR = [Ending MRR] * 12
+
+New ARR = SUM ( FactSubscriptionMonthly[NewMRR] ) * 12
+
+Expansion ARR = SUM ( FactSubscriptionMonthly[ExpansionMRR] ) * 12
+
+Contraction ARR = ABS ( SUM ( FactSubscriptionMonthly[ContractionMRR] ) ) * 12
+
+Churn ARR = ABS ( SUM ( FactSubscriptionMonthly[ChurnMRR] ) ) * 12
+
+Net New ARR = [New ARR] + [Expansion ARR] - [Contraction ARR] - [Churn ARR]
+
+ARR Movement = SUM ( FactMRRMovement[ARRMovement] )
+
+Revenue = SUM ( FactSubscriptionMonthly[RecognizedRevenue] )
+
+Gross Margin = SUM ( FactSubscriptionMonthly[GrossMargin] )
+
+Gross Margin % = DIVIDE ( [Gross Margin], [Revenue] )
+
+Starting Customers = SUM ( FactSubscriptionMonthly[StartingLogo] )
+
+Active Customers = SUM ( FactSubscriptionMonthly[ActiveLogo] )
+
+New Customers = SUM ( FactSubscriptionMonthly[NewLogo] )
+
+Churned Customers = SUM ( FactSubscriptionMonthly[ChurnedLogo] )
+
+NRR = DIVIDE ( [Ending MRR] - SUM ( FactSubscriptionMonthly[NewMRR] ), [Beginning MRR] )
+
+GRR = DIVIDE ( [Beginning MRR] - [Contraction ARR] / 12 - [Churn ARR] / 12, [Beginning MRR] )
+
+Revenue Churn Rate = DIVIDE ( [Churn ARR], [Beginning MRR] * 12 )
+
+Logo Churn Rate = DIVIDE ( [Churned Customers], [Starting Customers] )
+
+S&M Spend = SUM ( FactAcquisitionMonthly[SalesMarketingSpend] )
+
+New ARR Booked = SUM ( FactAcquisitionMonthly[NewARRBooked] )
+
+CAC = DIVIDE ( [S&M Spend], SUM ( FactAcquisitionMonthly[NewCustomers] ) )
+
+ARPA = DIVIDE ( [Ending MRR], [Active Customers] )
+
+LTV = DIVIDE ( [ARPA] * 12 * [Gross Margin %], [Revenue Churn Rate] )
+
+LTV CAC Ratio = DIVIDE ( [LTV], [CAC] )
+
+CAC Payback Months = DIVIDE ( [CAC], DIVIDE ( [Gross Margin], [Active Customers] ) )
+
+Magic Number = DIVIDE ( [Net New ARR], [S&M Spend] )
+
+EBITDA = SUM ( FactFinanceMonthly[EBITDA] )
+
+EBITDA Margin = DIVIDE ( [EBITDA], SUM ( FactFinanceMonthly[Revenue] ) )
+
+ARR Growth % = AVERAGE ( FactFinanceMonthly[ARRGrowthPct] )
+
+Rule of 40 = [ARR Growth %] + [EBITDA Margin]
+
+Net Burn = SUM ( FactFinanceMonthly[NetBurn] )
+
+Cash Balance = SUM ( FactFinanceMonthly[CashBalance] )
+
+Burn Multiple = DIVIDE ( [Net Burn], DIVIDE ( [Net New ARR], 12 ) )
+
+Forecast ARR = SUM ( FactFinanceMonthly[ForecastARR] )
+
+Plan ARR = SUM ( FactFinanceMonthly[PlanARR] )
+
+Forecast Accuracy = 1 - DIVIDE ( ABS ( [ARR] - [Forecast ARR] ), [ARR] )
+
+Cohort NRR = DIVIDE ( SUM ( FactCohortRetention[RetainedMRR] ), SUM ( FactCohortRetention[CohortStartMRR] ) )
+
+Cohort GRR = DIVIDE ( SUM ( FactCohortRetention[RetainedMRR] ) - SUM ( FactCohortRetention[ExpansionMRR] ), SUM ( FactCohortRetention[CohortStartMRR] ) )
+
+Cohort Active Logos = SUM ( FactCohortRetention[ActiveLogos] )
+
+Cohort LTV = DIVIDE ( SUM ( FactCohortRetention[RetainedMRR] ) * 12, SUM ( FactCohortRetention[StartLogos] ) )
+
+Scenario ARR = SUM ( FactForecast[ARRValue] )
+
+Account Health Score = AVERAGE ( FactAccountHealth[HealthScore] )
+
+Latest ARR = VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [ARR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )
+
+Latest Net New ARR = VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [Net New ARR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )
+
+Latest NRR = VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [NRR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )
+
+Latest GRR = VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [GRR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )
+
+Latest CAC Payback = VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [CAC Payback Months], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )
+
+Latest LTV CAC Ratio = VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [LTV CAC Ratio], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )
+
+Latest Rule of 40 = VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [Rule of 40], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )
+
+Latest Forecast Accuracy = VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [Forecast Accuracy], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )

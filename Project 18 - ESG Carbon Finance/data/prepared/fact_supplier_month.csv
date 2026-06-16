@@ -1,0 +1,536 @@
+date_key,supplier_id,supplier,supplier_category,carbon_risk_tier,supplier_country,target_status,emissions_tco2e,spend_usd,supplier_intensity_tco2e_per_musd,data_quality_score
+202401,S002,BlueRiver Logistics,Components,High,China,No verified target,1375.25,506319.45,2716.17,0.94
+202401,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,372.84,467688.68,797.2,0.9
+202401,S004,Delta Metals,Travel,Low,Germany,No verified target,2264.01,969061.26,2336.29,0.64
+202401,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,87.76,83996.96,1044.8,0.91
+202401,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,150.18,41918.87,3582.63,0.76
+202401,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,1553.98,765356.58,2030.4,0.95
+202401,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,889.23,773993.43,1148.89,0.81
+202401,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,135.56,385275.13,351.85,0.81
+202401,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,2730.58,880360.38,3101.66,0.87
+202401,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,215.82,351766.39,613.53,0.79
+202401,S013,Mekong Transport,Facilities,Medium,India,Supplier target,888.79,750690.04,1183.96,0.76
+202401,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,1511.09,925054.92,1633.51,0.9
+202401,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,325.44,284636.24,1143.35,0.91
+202401,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,431.9,256860.91,1681.45,0.82
+202401,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,544.08,536572.0,1013.99,0.74
+202401,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,404.01,887420.33,455.26,0.82
+202401,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,126.79,138591.56,914.85,0.7
+202401,S023,Willow Office Supply,Components,High,India,Renewable PPA,545.44,799724.25,682.04,0.73
+202401,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,1274.19,710561.62,1793.22,0.77
+202402,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,1876.67,1311656.46,1430.76,0.78
+202402,S002,BlueRiver Logistics,Components,High,China,No verified target,1300.79,507843.88,2561.4,0.94
+202402,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,1487.78,1205316.07,1234.35,0.9
+202402,S004,Delta Metals,Travel,Low,Germany,No verified target,2461.69,1230465.56,2000.62,0.64
+202402,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,2229.72,1493807.31,1492.64,0.76
+202402,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,132.53,201643.44,657.25,0.95
+202402,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,612.71,194796.07,3145.39,0.87
+202402,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,52.27,40683.59,1284.79,0.79
+202402,S013,Mekong Transport,Facilities,Medium,India,Supplier target,1050.71,621440.29,1690.77,0.76
+202402,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,1622.09,396420.26,4091.84,0.9
+202402,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,4680.77,1857556.07,2519.85,0.82
+202402,S017,Quantum Parts,Energy,High,Mexico,No verified target,627.82,582509.96,1077.78,0.71
+202402,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,177.46,151587.32,1170.68,0.74
+202402,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,1909.3,1574058.74,1212.98,0.8
+202402,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,41.52,71771.09,578.51,0.82
+202402,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,92.25,18198.91,5068.98,0.7
+202402,S023,Willow Office Supply,Components,High,India,Renewable PPA,438.54,845410.01,518.73,0.73
+202402,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,92.45,143770.02,643.04,0.77
+202403,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,3201.64,1423386.96,2249.31,0.78
+202403,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,708.24,945044.05,749.43,0.9
+202403,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,317.34,108832.7,2915.85,0.91
+202403,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,192.3,534145.84,360.01,0.76
+202403,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,878.84,241778.46,3634.9,0.95
+202403,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,1699.75,2284549.74,744.02,0.81
+202403,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,1415.75,1276229.86,1109.32,0.91
+202403,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,191.57,211410.56,906.15,0.81
+202403,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,290.01,130170.85,2227.92,0.87
+202403,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,114.67,19772.13,5799.58,0.79
+202403,S013,Mekong Transport,Facilities,Medium,India,Supplier target,994.29,270211.58,3679.67,0.76
+202403,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,68.72,137259.69,500.66,0.96
+202403,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,1995.09,1035851.85,1926.04,0.74
+202403,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,727.73,161785.07,4498.13,0.82
+202403,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,842.33,343461.48,2452.47,0.7
+202403,S023,Willow Office Supply,Components,High,India,Renewable PPA,1886.9,1434155.47,1315.69,0.73
+202403,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,282.93,225888.53,1252.52,0.77
+202404,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,132.59,53937.01,2458.24,0.78
+202404,S002,BlueRiver Logistics,Components,High,China,No verified target,1895.9,1636649.75,1158.4,0.94
+202404,S004,Delta Metals,Travel,Low,Germany,No verified target,684.93,235624.26,2906.87,0.64
+202404,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,964.85,649784.89,1484.88,0.91
+202404,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,1085.83,644736.01,1684.15,0.76
+202404,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,977.87,326206.17,2997.71,0.91
+202404,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,3018.71,1255002.02,2405.34,0.81
+202404,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,497.22,219461.51,2265.64,0.87
+202404,S013,Mekong Transport,Facilities,Medium,India,Supplier target,93.2,361762.28,257.63,0.76
+202404,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,2380.5,1094452.8,2175.06,0.9
+202404,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,119.43,45702.66,2613.2,0.91
+202404,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,1025.84,132889.74,7719.48,0.82
+202404,S017,Quantum Parts,Energy,High,Mexico,No verified target,305.36,68379.83,4465.64,0.71
+202404,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,1307.01,435775.63,2999.27,0.96
+202404,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,367.2,379456.04,967.7,0.8
+202404,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,225.8,600908.6,375.76,0.82
+202404,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,3994.39,1732199.96,2305.96,0.7
+202404,S023,Willow Office Supply,Components,High,India,Renewable PPA,1153.74,1127238.51,1023.51,0.73
+202405,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,685.51,396474.39,1729.01,0.78
+202405,S002,BlueRiver Logistics,Components,High,China,No verified target,2020.06,1478775.68,1366.04,0.94
+202405,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,114.0,251029.3,454.13,0.9
+202405,S004,Delta Metals,Travel,Low,Germany,No verified target,2473.78,1300371.22,1902.36,0.64
+202405,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,1595.05,799444.45,1995.2,0.91
+202405,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,714.44,165411.37,4319.17,0.87
+202405,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,62.75,125791.35,498.84,0.79
+202405,S013,Mekong Transport,Facilities,Medium,India,Supplier target,149.94,162622.95,922.01,0.76
+202405,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,1679.13,774703.86,2167.45,0.9
+202405,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,311.87,663219.51,470.24,0.91
+202405,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,1471.12,703738.84,2090.43,0.82
+202405,S017,Quantum Parts,Energy,High,Mexico,No verified target,343.78,87679.71,3920.86,0.71
+202405,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,1124.51,984586.52,1142.11,0.96
+202405,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,1871.36,1135608.18,1647.89,0.74
+202405,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,908.33,869867.3,1044.22,0.8
+202405,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,1822.23,755709.69,2411.28,0.7
+202405,S023,Willow Office Supply,Components,High,India,Renewable PPA,460.15,918310.39,501.08,0.73
+202405,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,620.47,338385.28,1833.62,0.77
+202406,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,508.4,90923.7,5591.5,0.78
+202406,S002,BlueRiver Logistics,Components,High,China,No verified target,7338.43,2711096.77,2706.81,0.94
+202406,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,353.8,387460.97,913.12,0.81
+202406,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,323.74,101742.35,3181.96,0.91
+202406,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,3064.29,1287822.11,2379.44,0.81
+202406,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,835.45,443434.01,1884.05,0.9
+202406,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,1938.72,1231033.32,1574.87,0.91
+202406,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,2145.88,1169125.03,1835.46,0.82
+202406,S017,Quantum Parts,Energy,High,Mexico,No verified target,419.3,278215.89,1507.1,0.71
+202406,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,639.92,1545424.26,414.07,0.74
+202406,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,598.92,229674.97,2607.69,0.8
+202406,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,1794.23,799734.24,2243.53,0.82
+202406,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,431.53,399693.07,1079.65,0.7
+202406,S023,Willow Office Supply,Components,High,India,Renewable PPA,2060.16,1268852.84,1623.64,0.73
+202407,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,128.76,51212.48,2514.23,0.78
+202407,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,2263.72,1343465.66,1684.99,0.9
+202407,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,1189.67,662805.9,1794.9,0.91
+202407,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,541.45,224316.47,2413.78,0.76
+202407,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,953.29,370724.15,2571.43,0.81
+202407,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,343.77,341366.86,1007.04,0.91
+202407,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,556.3,437150.46,1272.56,0.87
+202407,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,1384.6,1104635.98,1253.44,0.79
+202407,S013,Mekong Transport,Facilities,Medium,India,Supplier target,65.06,85466.84,761.23,0.76
+202407,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,830.39,551215.06,1506.47,0.9
+202407,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,111.27,38477.32,2891.83,0.91
+202407,S017,Quantum Parts,Energy,High,Mexico,No verified target,1107.3,648414.38,1707.7,0.71
+202407,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,3439.11,1531988.04,2244.87,0.74
+202407,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,134.65,160582.59,838.51,0.8
+202407,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,760.35,703105.09,1081.42,0.82
+202407,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,1631.66,1762871.78,925.57,0.7
+202408,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,326.53,170189.14,1918.63,0.78
+202408,S002,BlueRiver Logistics,Components,High,China,No verified target,2704.0,1196121.91,2260.64,0.94
+202408,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,169.9,315082.69,539.22,0.9
+202408,S004,Delta Metals,Travel,Low,Germany,No verified target,960.52,600689.04,1599.03,0.64
+202408,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,1519.77,1316075.99,1154.77,0.91
+202408,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,541.94,819568.22,661.25,0.95
+202408,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,281.19,599488.82,469.05,0.81
+202408,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,936.91,358516.28,2613.3,0.91
+202408,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,1421.46,551064.92,2579.48,0.81
+202408,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,178.0,326889.74,544.53,0.79
+202408,S013,Mekong Transport,Facilities,Medium,India,Supplier target,1301.04,1021072.58,1274.19,0.76
+202408,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,2419.94,1154455.43,2096.17,0.9
+202408,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,488.9,209439.1,2334.33,0.82
+202408,S017,Quantum Parts,Energy,High,Mexico,No verified target,209.72,43209.62,4853.55,0.71
+202408,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,60.2,60407.52,996.56,0.96
+202408,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,224.84,62594.81,3591.99,0.74
+202408,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,2084.52,1610870.72,1294.03,0.8
+202408,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,403.55,140376.05,2874.78,0.82
+202408,S023,Willow Office Supply,Components,High,India,Renewable PPA,269.51,78535.27,3431.71,0.73
+202409,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,249.61,107201.79,2328.41,0.78
+202409,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,240.52,303428.8,792.67,0.9
+202409,S004,Delta Metals,Travel,Low,Germany,No verified target,438.57,200817.55,2183.92,0.64
+202409,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,503.37,770255.37,653.51,0.81
+202409,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,422.24,325747.94,1296.22,0.91
+202409,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,1650.61,990071.72,1667.16,0.81
+202409,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,387.87,959828.74,404.1,0.87
+202409,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,422.05,989501.35,426.53,0.79
+202409,S013,Mekong Transport,Facilities,Medium,India,Supplier target,735.44,615003.12,1195.83,0.76
+202409,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,5298.62,3443749.68,1538.62,0.9
+202409,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,138.18,74540.97,1853.75,0.91
+202409,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,1093.64,731528.18,1495.01,0.82
+202409,S017,Quantum Parts,Energy,High,Mexico,No verified target,459.28,123536.39,3717.77,0.71
+202409,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,463.22,238372.85,1943.26,0.96
+202409,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,749.27,495788.16,1511.27,0.74
+202409,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,675.86,452095.54,1494.95,0.8
+202409,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,584.66,309629.11,1888.26,0.82
+202409,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,113.73,24389.86,4663.0,0.7
+202409,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,1355.42,942469.33,1438.16,0.77
+202410,S002,BlueRiver Logistics,Components,High,China,No verified target,235.27,75326.03,3123.36,0.94
+202410,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,34.46,7318.49,4708.62,0.9
+202410,S004,Delta Metals,Travel,Low,Germany,No verified target,561.43,1342346.82,418.25,0.64
+202410,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,587.58,157526.44,3730.04,0.76
+202410,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,3029.54,1014391.19,2986.56,0.95
+202410,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,50.69,45498.45,1114.1,0.81
+202410,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,574.06,450545.47,1274.14,0.91
+202410,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,116.44,60921.98,1911.3,0.81
+202410,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,336.17,250112.26,1344.08,0.87
+202410,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,238.75,127242.28,1876.34,0.79
+202410,S013,Mekong Transport,Facilities,Medium,India,Supplier target,185.7,217283.09,854.65,0.76
+202410,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,482.86,138675.98,3481.93,0.9
+202410,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,621.34,212496.24,2924.0,0.91
+202410,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,959.57,429249.41,2235.46,0.82
+202410,S017,Quantum Parts,Energy,High,Mexico,No verified target,1284.95,850564.69,1510.7,0.71
+202410,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,1901.48,1170242.77,1624.86,0.96
+202410,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,989.82,928112.07,1066.49,0.74
+202410,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,149.99,78451.63,1911.88,0.8
+202410,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,805.22,450802.45,1786.19,0.82
+202410,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,93.39,114989.61,812.16,0.7
+202410,S023,Willow Office Supply,Components,High,India,Renewable PPA,192.55,32505.26,5923.66,0.73
+202410,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,368.2,862582.89,426.86,0.77
+202411,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,1410.9,797801.72,1768.48,0.78
+202411,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,266.12,137210.0,1939.51,0.9
+202411,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,1572.65,901720.9,1744.05,0.91
+202411,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,565.96,355142.06,1593.62,0.76
+202411,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,984.47,506212.76,1944.78,0.95
+202411,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,72.69,48333.51,1503.93,0.81
+202411,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,224.8,348764.66,644.56,0.91
+202411,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,1300.42,592740.32,2193.91,0.81
+202411,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,1008.65,1267581.88,795.73,0.87
+202411,S013,Mekong Transport,Facilities,Medium,India,Supplier target,603.54,336304.75,1794.62,0.76
+202411,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,129.34,69257.91,1867.51,0.9
+202411,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,92.15,178656.67,515.79,0.91
+202411,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,1677.82,1024437.17,1637.8,0.82
+202411,S017,Quantum Parts,Energy,High,Mexico,No verified target,882.32,341062.32,2586.98,0.71
+202411,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,1764.35,1204651.94,1464.61,0.96
+202411,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,1418.37,722268.52,1963.77,0.74
+202411,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,668.74,355682.08,1880.16,0.8
+202411,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,30.62,8607.36,3557.42,0.82
+202411,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,760.72,1003232.16,758.27,0.7
+202411,S023,Willow Office Supply,Components,High,India,Renewable PPA,305.04,132292.97,2305.79,0.73
+202412,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,2370.81,1459366.22,1624.55,0.78
+202412,S002,BlueRiver Logistics,Components,High,China,No verified target,900.82,538326.26,1673.37,0.94
+202412,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,1853.21,1870863.88,990.56,0.9
+202412,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,143.86,44908.57,3203.4,0.91
+202412,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,594.48,230743.61,2576.37,0.76
+202412,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,314.44,308773.57,1018.35,0.95
+202412,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,448.37,379616.27,1181.11,0.81
+202412,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,96.65,36738.48,2630.76,0.91
+202412,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,1362.84,827390.27,1647.15,0.81
+202412,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,510.53,244025.61,2092.12,0.87
+202412,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,564.36,546231.6,1033.19,0.79
+202412,S013,Mekong Transport,Facilities,Medium,India,Supplier target,43.23,23981.04,1802.67,0.76
+202412,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,537.81,324868.12,1655.47,0.9
+202412,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,141.39,75634.25,1869.39,0.91
+202412,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,2525.18,2296239.8,1099.7,0.82
+202412,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,599.25,420692.43,1424.44,0.96
+202412,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,473.62,539308.82,878.2,0.82
+202412,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,1377.92,822957.63,1674.35,0.7
+202412,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,350.47,127689.67,2744.7,0.77
+202501,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,2258.24,1615257.98,1398.07,0.78
+202501,S002,BlueRiver Logistics,Components,High,China,No verified target,2207.59,1291900.44,1708.79,0.94
+202501,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,553.38,707022.42,782.69,0.9
+202501,S004,Delta Metals,Travel,Low,Germany,No verified target,142.06,278335.27,510.39,0.64
+202501,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,39.97,177581.92,225.08,0.76
+202501,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,180.66,67035.88,2694.97,0.95
+202501,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,394.26,238758.14,1651.29,0.81
+202501,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,327.62,179502.03,1825.16,0.91
+202501,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,93.69,65296.32,1434.84,0.81
+202501,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,2333.43,1470251.04,1587.1,0.87
+202501,S013,Mekong Transport,Facilities,Medium,India,Supplier target,141.3,210869.79,670.08,0.76
+202501,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,2625.01,981480.83,2674.54,0.91
+202501,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,913.59,371207.12,2461.13,0.82
+202501,S017,Quantum Parts,Energy,High,Mexico,No verified target,1385.0,540773.94,2561.14,0.71
+202501,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,83.45,57616.42,1448.37,0.74
+202501,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,139.14,459630.67,302.72,0.8
+202501,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,870.99,522437.57,1667.17,0.82
+202501,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,1411.68,1023919.06,1378.7,0.7
+202501,S023,Willow Office Supply,Components,High,India,Renewable PPA,234.05,114287.36,2047.91,0.73
+202502,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,1062.22,851173.57,1247.95,0.78
+202502,S002,BlueRiver Logistics,Components,High,China,No verified target,260.36,68672.43,3791.33,0.94
+202502,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,1245.73,493512.51,2524.21,0.9
+202502,S004,Delta Metals,Travel,Low,Germany,No verified target,186.32,294786.7,632.05,0.64
+202502,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,1075.21,1196551.88,898.59,0.91
+202502,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,845.34,524922.2,1610.41,0.76
+202502,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,1263.97,1275966.3,990.6,0.95
+202502,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,202.72,54580.13,3714.17,0.81
+202502,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,316.72,283189.1,1118.4,0.91
+202502,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,1525.61,1271291.32,1200.05,0.81
+202502,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,997.5,1013019.15,984.68,0.87
+202502,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,1511.15,1660116.68,910.27,0.79
+202502,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,220.8,273999.75,805.84,0.9
+202502,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,72.17,68949.19,1046.71,0.91
+202502,S017,Quantum Parts,Energy,High,Mexico,No verified target,96.06,163921.66,586.01,0.71
+202502,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,2311.62,1016250.39,2274.66,0.96
+202502,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,159.36,554733.87,287.27,0.8
+202502,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,1802.9,867728.69,2077.72,0.82
+202502,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,479.77,441336.16,1087.09,0.7
+202502,S023,Willow Office Supply,Components,High,India,Renewable PPA,71.61,15004.54,4772.56,0.73
+202502,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,153.44,111096.25,1381.14,0.77
+202503,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,96.21,32169.64,2990.71,0.78
+202503,S002,BlueRiver Logistics,Components,High,China,No verified target,882.95,488935.4,1805.86,0.94
+202503,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,698.91,411473.08,1698.56,0.9
+202503,S004,Delta Metals,Travel,Low,Germany,No verified target,1735.55,740026.4,2345.25,0.64
+202503,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,573.5,324484.14,1767.42,0.81
+202503,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,340.34,376565.79,903.8,0.91
+202503,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,1838.13,1041317.45,1765.2,0.81
+202503,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,60.97,16434.61,3709.85,0.79
+202503,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,1099.74,488599.23,2250.8,0.91
+202503,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,192.05,690408.68,278.17,0.82
+202503,S017,Quantum Parts,Energy,High,Mexico,No verified target,1842.3,711155.39,2590.57,0.71
+202503,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,1924.78,1589185.44,1211.17,0.96
+202503,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,606.33,273308.85,2218.48,0.74
+202503,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,405.96,198494.19,2045.2,0.8
+202503,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,2591.98,1958205.48,1323.65,0.82
+202503,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,1798.78,1407977.91,1277.56,0.7
+202503,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,238.35,562032.46,424.09,0.77
+202504,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,713.26,697349.46,1022.82,0.78
+202504,S002,BlueRiver Logistics,Components,High,China,No verified target,362.54,998194.2,363.2,0.94
+202504,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,737.64,283874.14,2598.48,0.9
+202504,S004,Delta Metals,Travel,Low,Germany,No verified target,844.26,271329.43,3111.57,0.64
+202504,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,354.08,575785.91,614.95,0.91
+202504,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,113.27,335081.03,338.04,0.76
+202504,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,543.97,99953.7,5442.22,0.95
+202504,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,65.43,202432.67,323.22,0.81
+202504,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,1494.7,913651.09,1635.96,0.81
+202504,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,1639.21,726498.08,2256.32,0.87
+202504,S013,Mekong Transport,Facilities,Medium,India,Supplier target,3205.09,3371290.49,950.7,0.76
+202504,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,1374.22,906781.81,1515.49,0.9
+202504,S017,Quantum Parts,Energy,High,Mexico,No verified target,917.36,310922.92,2950.44,0.71
+202504,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,218.91,63713.67,3435.84,0.96
+202504,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,1753.62,632844.16,2771.01,0.74
+202504,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,1072.13,1375466.68,779.47,0.8
+202504,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,276.2,810055.98,340.96,0.82
+202504,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,291.09,304024.24,957.46,0.7
+202504,S023,Willow Office Supply,Components,High,India,Renewable PPA,91.56,64217.6,1425.78,0.73
+202505,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,372.54,93052.55,4003.54,0.78
+202505,S002,BlueRiver Logistics,Components,High,China,No verified target,1006.84,910487.25,1105.83,0.94
+202505,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,525.65,257664.49,2040.06,0.91
+202505,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,855.52,963494.93,887.93,0.76
+202505,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,1022.29,489509.5,2088.4,0.91
+202505,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,239.53,438261.7,546.55,0.81
+202505,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,1431.01,1670615.52,856.58,0.87
+202505,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,637.02,645610.65,986.69,0.79
+202505,S013,Mekong Transport,Facilities,Medium,India,Supplier target,2124.49,3171312.32,669.91,0.76
+202505,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,737.57,295563.11,2495.47,0.9
+202505,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,1597.94,623457.29,2563.03,0.91
+202505,S017,Quantum Parts,Energy,High,Mexico,No verified target,1836.41,848695.97,2163.8,0.71
+202505,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,276.79,226265.68,1223.3,0.96
+202505,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,427.7,721653.87,592.67,0.74
+202505,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,1953.13,966548.28,2020.73,0.8
+202505,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,210.01,132931.33,1579.84,0.82
+202505,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,305.71,146045.5,2093.25,0.7
+202505,S023,Willow Office Supply,Components,High,India,Renewable PPA,100.32,57137.55,1755.76,0.73
+202506,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,869.47,332609.55,2614.09,0.78
+202506,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,51.5,133329.41,386.26,0.9
+202506,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,872.55,141610.35,6161.63,0.91
+202506,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,667.18,167667.98,3979.17,0.76
+202506,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,80.0,110401.81,724.63,0.95
+202506,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,471.45,1255673.13,375.46,0.81
+202506,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,2245.98,1762395.17,1274.39,0.91
+202506,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,148.64,335902.65,442.51,0.81
+202506,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,1499.3,1548765.02,968.06,0.87
+202506,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,62.8,294601.79,213.17,0.79
+202506,S013,Mekong Transport,Facilities,Medium,India,Supplier target,336.15,155328.78,2164.12,0.76
+202506,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,50.02,16752.74,2985.78,0.9
+202506,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,469.03,334626.27,1401.65,0.91
+202506,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,272.57,31010.64,8789.56,0.82
+202506,S017,Quantum Parts,Energy,High,Mexico,No verified target,3298.29,1471503.73,2241.44,0.71
+202506,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,1352.04,911102.9,1483.96,0.96
+202506,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,275.33,184541.96,1491.96,0.74
+202506,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,2110.3,2709035.82,778.99,0.8
+202506,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,672.46,556043.57,1209.37,0.7
+202506,S023,Willow Office Supply,Components,High,India,Renewable PPA,1066.39,355075.58,3003.28,0.73
+202507,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,2251.33,1234310.0,1823.96,0.78
+202507,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,1258.85,853474.88,1474.97,0.9
+202507,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,175.81,271883.54,646.64,0.76
+202507,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,237.72,137488.76,1729.01,0.81
+202507,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,265.61,151182.61,1756.88,0.87
+202507,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,127.94,46531.36,2749.54,0.79
+202507,S013,Mekong Transport,Facilities,Medium,India,Supplier target,479.58,435628.9,1100.89,0.76
+202507,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,630.21,244941.43,2572.9,0.9
+202507,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,1791.6,761464.48,2352.83,0.82
+202507,S017,Quantum Parts,Energy,High,Mexico,No verified target,769.3,473466.46,1624.82,0.71
+202507,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,1746.44,1394137.08,1252.7,0.96
+202507,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,1280.84,1089419.64,1175.71,0.74
+202507,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,141.57,236295.5,599.12,0.8
+202507,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,1040.29,588941.79,1766.37,0.82
+202507,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,590.94,360327.16,1640.01,0.7
+202507,S023,Willow Office Supply,Components,High,India,Renewable PPA,1048.84,396235.8,2647.01,0.73
+202507,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,340.07,497688.56,683.3,0.77
+202508,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,1660.59,656025.51,2531.29,0.9
+202508,S004,Delta Metals,Travel,Low,Germany,No verified target,958.12,1042943.36,918.67,0.64
+202508,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,61.76,15358.04,4021.35,0.91
+202508,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,1902.76,1323778.36,1437.37,0.76
+202508,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,223.56,38246.88,5845.18,0.95
+202508,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,354.17,216597.17,1635.16,0.81
+202508,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,254.13,530008.78,479.48,0.91
+202508,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,184.58,166104.59,1111.23,0.81
+202508,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,536.32,135376.84,3961.68,0.87
+202508,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,2883.78,766587.48,3761.84,0.9
+202508,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,2256.99,904043.26,2496.55,0.91
+202508,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,984.88,300130.29,3281.51,0.82
+202508,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,165.07,257280.8,641.59,0.96
+202508,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,869.25,1010616.14,860.12,0.74
+202508,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,254.62,255146.82,997.94,0.8
+202508,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,143.3,167861.52,853.68,0.82
+202508,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,101.44,45527.2,2228.12,0.7
+202508,S023,Willow Office Supply,Components,High,India,Renewable PPA,430.11,442629.59,971.72,0.73
+202508,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,215.87,895910.8,240.95,0.77
+202509,S002,BlueRiver Logistics,Components,High,China,No verified target,1786.9,815151.75,2192.11,0.94
+202509,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,1119.63,958729.18,1167.83,0.9
+202509,S004,Delta Metals,Travel,Low,Germany,No verified target,35.63,33011.78,1079.31,0.64
+202509,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,1149.86,942148.3,1220.47,0.91
+202509,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,1396.64,1009311.96,1383.75,0.76
+202509,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,1492.47,567399.75,2630.37,0.95
+202509,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,171.05,129007.18,1325.9,0.81
+202509,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,60.62,21706.82,2792.67,0.87
+202509,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,148.04,71872.31,2059.76,0.79
+202509,S013,Mekong Transport,Facilities,Medium,India,Supplier target,547.34,297099.13,1842.28,0.76
+202509,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,1388.66,983511.24,1411.94,0.82
+202509,S017,Quantum Parts,Energy,High,Mexico,No verified target,399.92,183969.75,2173.84,0.71
+202509,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,729.4,577762.09,1262.46,0.96
+202509,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,1687.2,1021639.42,1651.46,0.74
+202509,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,134.01,38072.0,3519.91,0.8
+202509,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,566.45,289495.44,1956.68,0.82
+202509,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,29.96,108090.56,277.17,0.7
+202510,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,344.3,303213.02,1135.51,0.78
+202510,S002,BlueRiver Logistics,Components,High,China,No verified target,522.11,331286.85,1576.01,0.94
+202510,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,588.99,1609856.98,365.86,0.91
+202510,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,1245.43,488992.92,2546.93,0.76
+202510,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,1038.08,557185.23,1863.08,0.81
+202510,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,721.19,268537.05,2685.63,0.91
+202510,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,1676.14,840424.26,1994.4,0.81
+202510,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,752.9,212908.05,3536.27,0.87
+202510,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,157.1,227724.44,689.87,0.79
+202510,S013,Mekong Transport,Facilities,Medium,India,Supplier target,162.14,58057.43,2792.75,0.76
+202510,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,1591.95,1120190.33,1421.14,0.82
+202510,S017,Quantum Parts,Energy,High,Mexico,No verified target,164.27,493543.29,332.84,0.71
+202510,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,1174.91,721049.91,1629.44,0.96
+202510,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,1257.72,906568.16,1387.34,0.74
+202510,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,115.02,357473.02,321.76,0.8
+202510,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,1943.46,924627.05,2101.89,0.82
+202510,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,198.85,149916.33,1326.41,0.77
+202511,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,257.11,60675.25,4237.48,0.78
+202511,S002,BlueRiver Logistics,Components,High,China,No verified target,1615.51,1099622.4,1469.15,0.94
+202511,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,913.55,463887.61,1969.33,0.9
+202511,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,126.69,118629.61,1067.95,0.91
+202511,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,242.65,599281.98,404.9,0.76
+202511,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,109.03,257243.1,423.84,0.95
+202511,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,2471.85,1739967.52,1420.63,0.81
+202511,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,647.69,691594.42,936.52,0.87
+202511,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,1313.64,707456.3,1856.85,0.79
+202511,S013,Mekong Transport,Facilities,Medium,India,Supplier target,899.35,466016.76,1929.87,0.76
+202511,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,320.33,191350.99,1674.04,0.9
+202511,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,132.0,68117.25,1937.84,0.91
+202511,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,85.46,94668.61,902.73,0.82
+202511,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,2399.47,1425656.34,1683.06,0.96
+202511,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,132.23,97709.66,1353.3,0.74
+202511,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,825.82,416694.8,1981.83,0.8
+202511,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,1846.82,1366521.12,1351.48,0.82
+202511,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,610.32,516860.49,1180.82,0.7
+202511,S023,Willow Office Supply,Components,High,India,Renewable PPA,196.28,461240.0,425.55,0.73
+202511,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,643.82,434237.73,1482.64,0.77
+202512,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,228.63,351301.3,650.81,0.78
+202512,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,378.51,293425.85,1289.97,0.9
+202512,S004,Delta Metals,Travel,Low,Germany,No verified target,145.82,249305.3,584.91,0.64
+202512,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,140.44,442738.03,317.21,0.91
+202512,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,27.44,15522.1,1767.8,0.76
+202512,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,1219.86,1106292.07,1102.66,0.95
+202512,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,263.41,147763.83,1782.64,0.81
+202512,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,684.24,159166.78,4298.89,0.91
+202512,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,2024.53,1340622.42,1510.14,0.81
+202512,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,3975.75,1646972.88,2413.97,0.87
+202512,S013,Mekong Transport,Facilities,Medium,India,Supplier target,1011.82,365288.33,2769.92,0.76
+202512,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,1228.26,785950.05,1562.77,0.9
+202512,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,167.01,53567.97,3117.72,0.91
+202512,S017,Quantum Parts,Energy,High,Mexico,No verified target,333.83,106169.24,3144.32,0.71
+202512,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,354.31,598179.14,592.31,0.74
+202512,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,26.84,95999.38,279.59,0.82
+202512,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,1023.26,703956.29,1453.58,0.7
+202512,S023,Willow Office Supply,Components,High,India,Renewable PPA,2110.62,1418518.7,1487.9,0.73
+202601,S002,BlueRiver Logistics,Components,High,China,No verified target,849.5,757331.88,1121.7,0.94
+202601,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,2106.4,1174957.99,1792.74,0.9
+202601,S004,Delta Metals,Travel,Low,Germany,No verified target,674.97,520820.59,1295.97,0.64
+202601,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,86.24,36014.15,2394.61,0.76
+202601,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,39.57,13365.56,2960.59,0.95
+202601,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,57.29,23969.06,2390.16,0.81
+202601,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,1440.85,909167.62,1584.8,0.91
+202601,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,938.72,565450.81,1660.13,0.81
+202601,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,1524.26,905021.64,1684.22,0.87
+202601,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,536.2,450541.61,1190.12,0.79
+202601,S013,Mekong Transport,Facilities,Medium,India,Supplier target,1400.56,401763.14,3486.03,0.76
+202601,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,522.96,609716.05,857.71,0.9
+202601,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,585.99,197617.41,2965.28,0.91
+202601,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,336.05,659032.99,509.91,0.82
+202601,S017,Quantum Parts,Energy,High,Mexico,No verified target,773.34,111542.99,6933.11,0.71
+202601,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,1051.3,811188.1,1296.0,0.96
+202601,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,106.8,41363.9,2581.96,0.74
+202601,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,676.31,241543.47,2799.95,0.8
+202601,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,127.4,271943.37,468.48,0.82
+202601,S023,Willow Office Supply,Components,High,India,Renewable PPA,1436.34,269325.82,5333.09,0.73
+202602,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,1097.39,1111660.92,987.16,0.78
+202602,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,241.88,526149.38,459.72,0.9
+202602,S004,Delta Metals,Travel,Low,Germany,No verified target,245.69,614616.5,399.75,0.64
+202602,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,1291.42,846173.21,1526.19,0.91
+202602,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,1483.85,1004347.65,1477.43,0.81
+202602,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,806.21,475815.94,1694.37,0.81
+202602,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,921.39,1290013.8,714.25,0.79
+202602,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,1467.55,953368.19,1539.33,0.9
+202602,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,1757.22,830921.49,2114.78,0.82
+202602,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,462.15,145031.22,3186.56,0.96
+202602,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,221.39,89101.08,2484.71,0.74
+202602,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,253.17,253000.18,1000.67,0.8
+202602,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,1222.12,602600.8,2028.08,0.82
+202602,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,90.4,219375.7,412.08,0.7
+202602,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,351.78,358433.64,981.44,0.77
+202603,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,573.99,280847.42,2043.78,0.78
+202603,S002,BlueRiver Logistics,Components,High,China,No verified target,163.67,96831.91,1690.25,0.94
+202603,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,999.96,1053891.27,948.83,0.9
+202603,S004,Delta Metals,Travel,Low,Germany,No verified target,747.99,1454136.29,514.39,0.64
+202603,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,381.2,388171.86,982.04,0.91
+202603,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,269.99,299797.61,900.57,0.76
+202603,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,294.37,90547.25,3251.01,0.95
+202603,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,1584.48,1585246.51,999.52,0.81
+202603,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,710.1,289354.43,2454.08,0.91
+202603,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,1740.34,746279.21,2332.02,0.87
+202603,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,397.14,701192.01,566.38,0.79
+202603,S013,Mekong Transport,Facilities,Medium,India,Supplier target,313.06,295133.45,1060.74,0.76
+202603,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,611.99,190178.94,3217.97,0.9
+202603,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,200.38,360101.51,556.45,0.82
+202603,S017,Quantum Parts,Energy,High,Mexico,No verified target,638.92,355108.87,1799.22,0.71
+202603,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,292.47,413162.27,707.88,0.96
+202603,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,273.75,223343.04,1225.69,0.74
+202603,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,459.91,240101.52,1915.48,0.8
+202603,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,364.21,194290.27,1874.57,0.7
+202603,S023,Willow Office Supply,Components,High,India,Renewable PPA,2632.43,1510909.51,1742.28,0.73
+202603,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,250.32,381997.65,655.29,0.77
+202604,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,609.2,407152.65,1496.24,0.78
+202604,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,598.19,378910.05,1578.71,0.9
+202604,S004,Delta Metals,Travel,Low,Germany,No verified target,1458.08,1085088.24,1343.74,0.64
+202604,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,565.83,1587712.89,356.38,0.91
+202604,S007,GreenPulse Freight,Materials,High,Mexico,Supplier target,2200.04,431430.92,5099.4,0.95
+202604,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,1920.39,1692504.73,1134.64,0.81
+202604,S010,Jade Electronics,Energy,High,Vietnam,Supplier target,688.04,788787.89,872.28,0.81
+202604,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,160.78,420526.2,382.33,0.87
+202604,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,399.06,137907.37,2893.68,0.79
+202604,S013,Mekong Transport,Facilities,Medium,India,Supplier target,671.68,866661.56,775.02,0.76
+202604,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,1514.32,933849.49,1621.59,0.91
+202604,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,469.36,445015.81,1054.7,0.82
+202604,S017,Quantum Parts,Energy,High,Mexico,No verified target,655.5,316736.2,2069.55,0.71
+202604,S018,RiverStone Cement,Travel,Medium,Malaysia,SBTi committed,459.78,246414.61,1865.88,0.96
+202604,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,609.8,328657.63,1855.43,0.82
+202604,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,910.91,852264.64,1068.81,0.7
+202604,S023,Willow Office Supply,Components,High,India,Renewable PPA,356.0,235453.57,1511.98,0.73
+202604,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,696.96,511850.38,1361.65,0.77
+202605,S001,Astra Materials,Packaging,Medium,Thailand,SBTi committed,747.9,822798.87,908.97,0.78
+202605,S002,BlueRiver Logistics,Components,High,China,No verified target,1882.3,1248836.34,1507.24,0.94
+202605,S003,Canopy Packaging,Energy,Medium,India,Renewable PPA,360.62,232741.79,1549.44,0.9
+202605,S004,Delta Metals,Travel,Low,Germany,No verified target,944.99,1122309.48,842.0,0.64
+202605,S005,EastGrid Energy,Logistics,Medium,Netherlands,No verified target,2186.62,1916204.65,1141.12,0.91
+202605,S006,Forest Fiber Co,Facilities,Medium,United States,Renewable PPA,699.74,706350.43,990.64,0.76
+202605,S008,Harbor Components,Packaging,Low,Malaysia,Renewable PPA,1129.26,1109894.33,1017.45,0.81
+202605,S009,Indigo Chemicals,Components,Medium,Japan,Supplier target,105.29,305066.6,345.14,0.91
+202605,S011,Keystone Plastics,Travel,Medium,Thailand,Supplier target,130.27,315383.47,413.05,0.87
+202605,S012,Lumen Utilities,Logistics,Low,China,Renewable PPA,1206.35,884219.03,1364.31,0.79
+202605,S014,Nova Textiles,Materials,High,Germany,Renewable PPA,461.91,112411.56,4109.1,0.9
+202605,S015,Orchid Facilities,Packaging,Medium,Netherlands,Renewable PPA,225.07,455058.42,494.6,0.91
+202605,S016,Pacific Cold Chain,Components,High,United States,Renewable PPA,263.32,106397.28,2474.88,0.82
+202605,S017,Quantum Parts,Energy,High,Mexico,No verified target,55.33,26595.44,2080.43,0.71
+202605,S019,Solaris Power,Logistics,Medium,Japan,SBTi committed,731.93,236672.62,3092.58,0.74
+202605,S020,Terra Warehousing,Facilities,Low,Vietnam,Supplier target,505.05,502633.66,1004.81,0.8
+202605,S021,Urban Mobility,Materials,Medium,Thailand,No verified target,16.2,39460.1,410.54,0.82
+202605,S022,Vector Metals,Packaging,Medium,China,Renewable PPA,875.98,731763.88,1197.08,0.7
+202605,S023,Willow Office Supply,Components,High,India,Renewable PPA,52.03,167143.58,311.29,0.73
+202605,S024,Zenith Packaging,Energy,Low,Germany,Renewable PPA,312.07,166867.43,1870.17,0.77

@@ -1,0 +1,10 @@
+{
+  "status": "blocked",
+  "reason": "Final PBIX has not been saved and reopened in Power BI Desktop yet. Desktop automation found the Project 19 PBIP process, but a credential prompt/topmost window from another Power BI session prevented a clean visual open-check. pbi-tools compile also failed because the generated PBIP is Fabric PBIP format, not legacy PbixProj.",
+  "final_pbix_exists": false,
+  "pbip_process_detected": true,
+  "pbip_process_command_line_contains_project19": true,
+  "desktop_visual_open_check": "blocked",
+  "visual_error_count": null,
+  "safe_to_call_final": false
+}

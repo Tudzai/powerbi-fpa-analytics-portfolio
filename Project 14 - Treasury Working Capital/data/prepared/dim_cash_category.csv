@@ -1,0 +1,7 @@
+category_id,cash_category,cash_flow_type,sort_order
+COLL,Customer collections,Inflow,10
+OTHER_IN,Other receipts,Inflow,20
+SUPP,Supplier payments,Outflow,30
+PAYROLL,Payroll and tax,Outflow,40
+CAPEX,Capex,Outflow,50
+DEBT,Debt service,Outflow,60

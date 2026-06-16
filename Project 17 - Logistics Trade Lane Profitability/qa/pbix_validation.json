@@ -1,0 +1,26 @@
+{
+  "status": "pass",
+  "final_output": "output/dashboard_final.pbix",
+  "route": "SCRIPTED_DESKTOP_PBIX",
+  "seed_template": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Template\\04_Profitability_Margin\\Microsoft_Customer_Profitability.pbix",
+  "model_push": {
+    "status": "pass",
+    "desktop_process_id": 32804,
+    "tables": 10,
+    "relationships": 13,
+    "measures": 25
+  },
+  "native_layout_patch": {
+    "status": "pass",
+    "visual_containers": 56,
+    "security_bindings_removed": true,
+    "package_validation": "PowerBIPackager.Validate passed"
+  },
+  "desktop_open_check": {
+    "status": "pass",
+    "desktop_process_id": 52512,
+    "opened_exact_file": true,
+    "saved_final": true,
+    "visual_error_count": 0
+  }
+}

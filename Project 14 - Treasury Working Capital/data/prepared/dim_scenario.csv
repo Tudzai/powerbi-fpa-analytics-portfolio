@@ -1,0 +1,4 @@
+scenario_id,scenario,scenario_sort
+BASE,Base,1
+DOWN,Downside,2
+UP,Upside,3

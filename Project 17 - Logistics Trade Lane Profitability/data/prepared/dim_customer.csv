@@ -1,0 +1,19 @@
+customer_id,customer_name,industry,segment,tier,account_manager,credit_risk_band
+C001,Aster Apparel Group,Fashion,Enterprise,Strategic,Linh Tran,Medium
+C002,BluePeak Electronics,Electronics,Enterprise,Strategic,Minh Pham,High
+C003,Cobalt Auto Parts,Automotive,Enterprise,Core,Linh Tran,Low
+C004,Delta Fresh Foods,Food & Beverage,Mid-Market,Core,An Nguyen,Low
+C005,Everwell Pharma,Healthcare,Enterprise,Strategic,Minh Pham,Medium
+C006,Futura Homeware,Retail,Mid-Market,Core,Huy Le,Medium
+C007,Golden Bean Coffee,Food & Beverage,SMB,Growth,An Nguyen,Medium
+C008,Helio Solar Tech,Industrial,Mid-Market,Growth,Huy Le,Low
+C009,Ion Mobility,Automotive,Enterprise,Strategic,Linh Tran,Medium
+C010,Jade Consumer Goods,FMCG,Enterprise,Core,Minh Pham,Medium
+C011,Kite Sportswear,Fashion,Mid-Market,Growth,An Nguyen,Low
+C012,Lotus Furniture,Retail,Mid-Market,Core,Huy Le,Medium
+C013,Mekong Machinery,Industrial,Enterprise,Core,Linh Tran,Low
+C014,Nimbus Devices,Electronics,SMB,Growth,Minh Pham,Medium
+C015,Orchid Beauty,FMCG,SMB,Growth,An Nguyen,Medium
+C016,Pacific Cold Chain,Food & Beverage,Enterprise,Strategic,Huy Le,Low
+C017,Quartz Medical,Healthcare,Mid-Market,Core,Minh Pham,Medium
+C018,Redwood Furnishings,Retail,SMB,Growth,Huy Le,Medium

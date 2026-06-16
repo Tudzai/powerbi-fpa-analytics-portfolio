@@ -1,0 +1,89 @@
+Cash Balance =
+SUM(FactCashPosition[balance_usd])
+
+Available Cash =
+SUM(FactCashPosition[available_cash_usd])
+
+Restricted Cash =
+SUM(FactCashPosition[restricted_cash_usd])
+
+Credit Available =
+SUM(FactLiquidityFacility[available_usd])
+
+Available Liquidity =
+[Available Cash] + [Credit Available]
+
+Minimum Cash Buffer =
+SUM(FactLiquidityFacility[min_cash_buffer_usd])
+
+Liquidity Headroom =
+[Available Liquidity] - [Minimum Cash Buffer]
+
+AR Outstanding =
+SUM(FactARInvoice[outstanding_usd])
+
+Overdue AR =
+CALCULATE([AR Outstanding], FactARInvoice[is_overdue] = TRUE())
+
+Overdue AR % =
+DIVIDE([Overdue AR], [AR Outstanding])
+
+AP Outstanding =
+SUM(FactAPInvoice[outstanding_usd])
+
+AP Due 14 Days =
+CALCULATE([AP Outstanding], FactAPInvoice[due_window] = "0-14 days")
+
+Revenue =
+SUM(FactWorkingCapital[revenue_usd])
+
+COGS =
+SUM(FactWorkingCapital[cogs_usd])
+
+Working Capital =
+SUM(FactWorkingCapital[working_capital_usd])
+
+DSO =
+DIVIDE(SUM(FactWorkingCapital[ar_balance_usd]), [Revenue]) * 30
+
+DPO =
+DIVIDE(SUM(FactWorkingCapital[ap_balance_usd]), [COGS]) * 30
+
+DIO =
+DIVIDE(SUM(FactWorkingCapital[inventory_balance_usd]), [COGS]) * 30
+
+Cash Conversion Cycle =
+[DSO] + [DIO] - [DPO]
+
+Forecast Closing Cash =
+SUM(FactCashForecast[closing_cash_usd])
+
+Forecast Net Cash Flow =
+SUM(FactCashForecast[net_cash_flow_usd])
+
+Forecast Receipts =
+SUM(FactCashForecast[customer_receipts_usd]) + SUM(FactCashForecast[other_receipts_usd])
+
+Forecast Payments =
+SUM(FactCashForecast[supplier_payments_usd]) + SUM(FactCashForecast[payroll_tax_usd]) + SUM(FactCashForecast[capex_usd]) + SUM(FactCashForecast[debt_service_usd])
+
+Cash Runway Weeks =
+DIVIDE([Available Liquidity], ABS(AVERAGE(FactCashForecast[net_cash_flow_usd])))
+
+Forecast Error % =
+DIVIDE(SUM(FactForecastAccuracy[abs_error_usd]), SUMX(FactForecastAccuracy, ABS(FactForecastAccuracy[actual_net_cash_flow_usd])))
+
+FX Net Exposure =
+SUM(FactFXExposure[net_exposure_usd])
+
+Unhedged FX Exposure =
+SUM(FactFXExposure[unhedged_exposure_usd])
+
+Unhedged FX % =
+DIVIDE([Unhedged FX Exposure], [FX Net Exposure])
+
+Open Risk Value =
+CALCULATE(SUM(FactTreasuryRiskAction[amount_usd]), FactTreasuryRiskAction[status] <> "Closed")
+
+Open Risk Count =
+CALCULATE(COUNTROWS(FactTreasuryRiskAction), FactTreasuryRiskAction[status] <> "Closed")

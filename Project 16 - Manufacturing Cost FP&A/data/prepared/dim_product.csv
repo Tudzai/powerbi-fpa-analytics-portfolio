@@ -1,0 +1,25 @@
+product_id,product,product_line,lifecycle_stage,standard_price_usd,standard_material_cost_usd,standard_labor_hours,standard_machine_hours,complexity_index,base_monthly_units
+SKU001,Controller A,Electronics Assembly,Core,77.26,28.53,0.408,0.259,1.012,2734
+SKU002,Controller B,Electronics Assembly,Rationalize,76.75,33.78,0.347,0.309,1.015,3069
+SKU003,Controller C,Electronics Assembly,Core,82.47,34.48,0.356,0.263,1.223,3070
+SKU004,Sensor Module A,Electronics Assembly,Growth,43.71,16.27,0.296,0.182,0.994,3100
+SKU005,Sensor Module B,Electronics Assembly,Growth,50.35,18.17,0.279,0.172,0.859,6758
+SKU006,Sensor Module C,Electronics Assembly,Core,44.15,16.7,0.299,0.199,0.977,2435
+SKU007,Pump Housing A,Industrial Components,Growth,111.9,54.53,0.701,0.621,1.166,4870
+SKU008,Pump Housing B,Industrial Components,Growth,110.59,48.68,0.716,0.586,1.322,2784
+SKU009,Pump Housing C,Industrial Components,Rationalize,120.02,44.24,0.754,0.517,1.409,3953
+SKU010,Valve Set A,Industrial Components,Mature,90.55,36.87,0.527,0.408,1.194,1879
+SKU011,Valve Set B,Industrial Components,Core,89.35,32.59,0.542,0.381,1.169,4323
+SKU012,Valve Set C,Industrial Components,Core,77.27,37.24,0.473,0.339,0.981,2012
+SKU013,Film Cartridge A,Packaging Systems,Rationalize,26.9,9.18,0.153,0.107,0.921,6165
+SKU014,Film Cartridge B,Packaging Systems,Mature,26.07,8.71,0.159,0.135,0.88,2326
+SKU015,Film Cartridge C,Packaging Systems,Rationalize,28.99,9.93,0.177,0.116,0.896,6415
+SKU016,Label Applicator A,Packaging Systems,Rationalize,130.97,57.13,0.888,0.695,1.224,1626
+SKU017,Label Applicator B,Packaging Systems,Rationalize,121.3,58.63,0.907,0.594,1.291,4570
+SKU018,Label Applicator C,Packaging Systems,Growth,124.95,56.26,0.771,0.682,1.265,4269
+SKU019,CNC Bracket A,Precision Parts,Core,73.05,23.74,0.429,0.451,1.137,2696
+SKU020,CNC Bracket B,Precision Parts,Rationalize,66.37,23.52,0.418,0.463,1.123,3813
+SKU021,CNC Bracket C,Precision Parts,Rationalize,69.29,23.16,0.466,0.42,1.127,4287
+SKU022,Machined Shaft A,Precision Parts,Rationalize,100.38,38.9,0.571,0.577,1.154,4233
+SKU023,Machined Shaft B,Precision Parts,Core,92.02,41.19,0.676,0.627,1.235,3144
+SKU024,Machined Shaft C,Precision Parts,Rationalize,109.71,39.11,0.691,0.641,1.203,1814

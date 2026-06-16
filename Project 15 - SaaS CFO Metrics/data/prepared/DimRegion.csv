@@ -1,0 +1,5 @@
+﻿RegionID,Region,GeoGroup,ScaleIndex
+na,North America,Americas,1.18
+emea,EMEA,International,0.93
+apac,APAC,International,0.82
+latam,LATAM,Americas,0.58

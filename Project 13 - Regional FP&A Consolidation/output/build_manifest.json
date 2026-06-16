@@ -1,0 +1,27 @@
+{
+  "status": "built",
+  "main_artifact": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP&A Consolidation\\output\\dashboard_final.pbix",
+  "portable_html_artifact": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP&A Consolidation\\output\\dashboard_final.html",
+  "pbix_status": "pass",
+  "generated_at": "2026-06-15T02:42:21",
+  "page_count": 3,
+  "pages": [
+    "Executive Summary",
+    "P&L Variance",
+    "Controls & Storyboard"
+  ],
+  "final_pbix_bytes": 5218861,
+  "row_counts": {
+    "dim_date": 17,
+    "dim_entity": 7,
+    "dim_business_unit": 5,
+    "dim_account": 10,
+    "dim_scenario": 4,
+    "fact_fx_rate": 357,
+    "fact_financials": 23800,
+    "fact_financial_summary": 2380,
+    "fact_variance_driver_bridge": 4165,
+    "fact_close_exceptions": 75
+  },
+  "qa": "pass"
+}

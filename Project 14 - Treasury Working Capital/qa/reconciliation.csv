@@ -1,0 +1,10 @@
+reconciliation,status,detail,tolerance
+FactCashForecast grain uniqueness,pass,"0 duplicate keys on week_id, entity_id, scenario_id",documented check
+FactCashPosition grain uniqueness,pass,"0 duplicate keys on snapshot_date, entity_id, bank_id",documented check
+FactWorkingCapital grain uniqueness,pass,"0 duplicate keys on date_id, entity_id",documented check
+FactFXExposure grain uniqueness,pass,0 duplicate keys on exposure_id,documented check
+13-week forecast cash continuity,pass,0 opening-to-prior-closing mismatches,documented check
+AR/AP outstanding non-negative,pass,0 invoices with negative outstanding balance,documented check
+Working capital days within realistic portfolio band,pass,"DSO outliers=0, DPO outliers=0",documented check
+FX hedge ratios bounded,pass,0 rows outside 0-1 hedge ratio range,documented check
+Entity foreign keys valid,pass,0 invalid entity references,documented check

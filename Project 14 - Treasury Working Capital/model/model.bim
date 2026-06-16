@@ -1,0 +1,1642 @@
+{
+  "compatibilityLevel": 1550,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimDate",
+        "columns": [
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "quarter",
+            "dataType": "string",
+            "sourceColumn": "quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_number",
+            "dataType": "int64",
+            "sourceColumn": "month_number",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_label",
+            "dataType": "string",
+            "sourceColumn": "month_label",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_index",
+            "dataType": "int64",
+            "sourceColumn": "month_index",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_latest_complete",
+            "dataType": "boolean",
+            "sourceColumn": "is_latest_complete",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/dim_date.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"date_id\", type text},\n        {\"date\", type date},\n        {\"year\", Int64.Type},\n        {\"quarter\", type text},\n        {\"month_number\", Int64.Type},\n        {\"month_label\", type text},\n        {\"month_index\", Int64.Type},\n        {\"is_latest_complete\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimWeek",
+        "columns": [
+          {
+            "name": "week_id",
+            "dataType": "string",
+            "sourceColumn": "week_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "week_start",
+            "dataType": "dateTime",
+            "sourceColumn": "week_start",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "week_end",
+            "dataType": "dateTime",
+            "sourceColumn": "week_end",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "week_label",
+            "dataType": "string",
+            "sourceColumn": "week_label",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "week_number",
+            "dataType": "int64",
+            "sourceColumn": "week_number",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_first_four_weeks",
+            "dataType": "boolean",
+            "sourceColumn": "is_first_four_weeks",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_next_thirteen_weeks",
+            "dataType": "boolean",
+            "sourceColumn": "is_next_thirteen_weeks",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimWeek-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/dim_week.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"week_id\", type text},\n        {\"week_start\", type date},\n        {\"week_end\", type date},\n        {\"week_label\", type text},\n        {\"week_number\", Int64.Type},\n        {\"is_first_four_weeks\", type logical},\n        {\"is_next_thirteen_weeks\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimEntity",
+        "columns": [
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity",
+            "dataType": "string",
+            "sourceColumn": "entity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "country",
+            "dataType": "string",
+            "sourceColumn": "country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "currency",
+            "dataType": "string",
+            "sourceColumn": "currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk",
+            "dataType": "string",
+            "sourceColumn": "risk",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimEntity-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/dim_entity.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"entity_id\", type text},\n        {\"entity\", type text},\n        {\"country\", type text},\n        {\"region\", type text},\n        {\"currency\", type text},\n        {\"risk\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCustomer",
+        "columns": [
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer",
+            "dataType": "string",
+            "sourceColumn": "customer",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sector",
+            "dataType": "string",
+            "sourceColumn": "sector",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "credit_terms_days",
+            "dataType": "int64",
+            "sourceColumn": "credit_terms_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_rating",
+            "dataType": "string",
+            "sourceColumn": "risk_rating",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCustomer-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/dim_customer.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"customer_id\", type text},\n        {\"customer\", type text},\n        {\"sector\", type text},\n        {\"entity_id\", type text},\n        {\"region\", type text},\n        {\"credit_terms_days\", Int64.Type},\n        {\"risk_rating\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimVendor",
+        "columns": [
+          {
+            "name": "vendor_id",
+            "dataType": "string",
+            "sourceColumn": "vendor_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "vendor",
+            "dataType": "string",
+            "sourceColumn": "vendor",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "category",
+            "dataType": "string",
+            "sourceColumn": "category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "payment_terms_days",
+            "dataType": "int64",
+            "sourceColumn": "payment_terms_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "criticality",
+            "dataType": "string",
+            "sourceColumn": "criticality",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimVendor-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/dim_vendor.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"vendor_id\", type text},\n        {\"vendor\", type text},\n        {\"category\", type text},\n        {\"entity_id\", type text},\n        {\"region\", type text},\n        {\"payment_terms_days\", Int64.Type},\n        {\"criticality\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimBank",
+        "columns": [
+          {
+            "name": "bank_id",
+            "dataType": "string",
+            "sourceColumn": "bank_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "bank",
+            "dataType": "string",
+            "sourceColumn": "bank",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "counterparty_rating",
+            "dataType": "string",
+            "sourceColumn": "counterparty_rating",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "bank_region",
+            "dataType": "string",
+            "sourceColumn": "bank_region",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimBank-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/dim_bank.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"bank_id\", type text},\n        {\"bank\", type text},\n        {\"counterparty_rating\", type text},\n        {\"bank_region\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimScenario",
+        "columns": [
+          {
+            "name": "scenario_id",
+            "dataType": "string",
+            "sourceColumn": "scenario_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario",
+            "dataType": "string",
+            "sourceColumn": "scenario",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario_sort",
+            "dataType": "int64",
+            "sourceColumn": "scenario_sort",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimScenario-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/dim_scenario.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"scenario_id\", type text},\n        {\"scenario\", type text},\n        {\"scenario_sort\", Int64.Type}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCashCategory",
+        "columns": [
+          {
+            "name": "category_id",
+            "dataType": "string",
+            "sourceColumn": "category_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "cash_category",
+            "dataType": "string",
+            "sourceColumn": "cash_category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "cash_flow_type",
+            "dataType": "string",
+            "sourceColumn": "cash_flow_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sort_order",
+            "dataType": "int64",
+            "sourceColumn": "sort_order",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCashCategory-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/dim_cash_category.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"category_id\", type text},\n        {\"cash_category\", type text},\n        {\"cash_flow_type\", type text},\n        {\"sort_order\", Int64.Type}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCashPosition",
+        "columns": [
+          {
+            "name": "snapshot_date",
+            "dataType": "dateTime",
+            "sourceColumn": "snapshot_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "bank_id",
+            "dataType": "string",
+            "sourceColumn": "bank_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "currency",
+            "dataType": "string",
+            "sourceColumn": "currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "balance_local",
+            "dataType": "string",
+            "sourceColumn": "balance_local",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "balance_usd",
+            "dataType": "double",
+            "sourceColumn": "balance_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "restricted_cash_usd",
+            "dataType": "double",
+            "sourceColumn": "restricted_cash_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "available_cash_usd",
+            "dataType": "double",
+            "sourceColumn": "available_cash_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactCashPosition-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/fact_cash_position.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"snapshot_date\", type date},\n        {\"entity_id\", type text},\n        {\"bank_id\", type text},\n        {\"currency\", type text},\n        {\"balance_local\", type text},\n        {\"balance_usd\", type number},\n        {\"restricted_cash_usd\", type number},\n        {\"available_cash_usd\", type number},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactLiquidityFacility",
+        "columns": [
+          {
+            "name": "facility_id",
+            "dataType": "string",
+            "sourceColumn": "facility_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "facility_type",
+            "dataType": "string",
+            "sourceColumn": "facility_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "committed_usd",
+            "dataType": "double",
+            "sourceColumn": "committed_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "drawn_usd",
+            "dataType": "double",
+            "sourceColumn": "drawn_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "available_usd",
+            "dataType": "double",
+            "sourceColumn": "available_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "min_cash_buffer_usd",
+            "dataType": "double",
+            "sourceColumn": "min_cash_buffer_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "maturity_date",
+            "dataType": "dateTime",
+            "sourceColumn": "maturity_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "covenant_status",
+            "dataType": "string",
+            "sourceColumn": "covenant_status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactLiquidityFacility-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/fact_liquidity_facility.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"facility_id\", type text},\n        {\"entity_id\", type text},\n        {\"facility_type\", type text},\n        {\"committed_usd\", type number},\n        {\"drawn_usd\", type number},\n        {\"available_usd\", type number},\n        {\"min_cash_buffer_usd\", type number},\n        {\"maturity_date\", type date},\n        {\"covenant_status\", type text},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactWorkingCapital",
+        "columns": [
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "revenue_usd",
+            "dataType": "double",
+            "sourceColumn": "revenue_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "cogs_usd",
+            "dataType": "double",
+            "sourceColumn": "cogs_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ar_balance_usd",
+            "dataType": "double",
+            "sourceColumn": "ar_balance_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ap_balance_usd",
+            "dataType": "double",
+            "sourceColumn": "ap_balance_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "inventory_balance_usd",
+            "dataType": "double",
+            "sourceColumn": "inventory_balance_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "working_capital_usd",
+            "dataType": "double",
+            "sourceColumn": "working_capital_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dso_days",
+            "dataType": "int64",
+            "sourceColumn": "dso_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dpo_days",
+            "dataType": "int64",
+            "sourceColumn": "dpo_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dio_days",
+            "dataType": "int64",
+            "sourceColumn": "dio_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactWorkingCapital-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/fact_working_capital.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"date_id\", type text},\n        {\"entity_id\", type text},\n        {\"region\", type text},\n        {\"revenue_usd\", type number},\n        {\"cogs_usd\", type number},\n        {\"ar_balance_usd\", type number},\n        {\"ap_balance_usd\", type number},\n        {\"inventory_balance_usd\", type number},\n        {\"working_capital_usd\", type number},\n        {\"dso_days\", Int64.Type},\n        {\"dpo_days\", Int64.Type},\n        {\"dio_days\", Int64.Type},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactARInvoice",
+        "columns": [
+          {
+            "name": "invoice_id",
+            "dataType": "string",
+            "sourceColumn": "invoice_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "invoice_date",
+            "dataType": "dateTime",
+            "sourceColumn": "invoice_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "due_date",
+            "dataType": "dateTime",
+            "sourceColumn": "due_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "currency",
+            "dataType": "string",
+            "sourceColumn": "currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "invoice_amount_usd",
+            "dataType": "double",
+            "sourceColumn": "invoice_amount_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "outstanding_usd",
+            "dataType": "double",
+            "sourceColumn": "outstanding_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "days_past_due",
+            "dataType": "int64",
+            "sourceColumn": "days_past_due",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "aging_bucket",
+            "dataType": "string",
+            "sourceColumn": "aging_bucket",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_overdue",
+            "dataType": "boolean",
+            "sourceColumn": "is_overdue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "expected_collection_week_id",
+            "dataType": "string",
+            "sourceColumn": "expected_collection_week_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "collection_confidence",
+            "dataType": "string",
+            "sourceColumn": "collection_confidence",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactARInvoice-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/fact_ar_invoice.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"invoice_id\", type text},\n        {\"entity_id\", type text},\n        {\"customer_id\", type text},\n        {\"invoice_date\", type date},\n        {\"due_date\", type date},\n        {\"currency\", type text},\n        {\"invoice_amount_usd\", type number},\n        {\"outstanding_usd\", type number},\n        {\"days_past_due\", Int64.Type},\n        {\"aging_bucket\", type text},\n        {\"is_overdue\", type logical},\n        {\"expected_collection_week_id\", type text},\n        {\"collection_confidence\", type text},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactAPInvoice",
+        "columns": [
+          {
+            "name": "invoice_id",
+            "dataType": "string",
+            "sourceColumn": "invoice_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "vendor_id",
+            "dataType": "string",
+            "sourceColumn": "vendor_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "invoice_date",
+            "dataType": "dateTime",
+            "sourceColumn": "invoice_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "due_date",
+            "dataType": "dateTime",
+            "sourceColumn": "due_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "currency",
+            "dataType": "string",
+            "sourceColumn": "currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "invoice_amount_usd",
+            "dataType": "double",
+            "sourceColumn": "invoice_amount_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "outstanding_usd",
+            "dataType": "double",
+            "sourceColumn": "outstanding_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "days_to_due",
+            "dataType": "int64",
+            "sourceColumn": "days_to_due",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "due_window",
+            "dataType": "string",
+            "sourceColumn": "due_window",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "payment_week_id",
+            "dataType": "string",
+            "sourceColumn": "payment_week_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "payment_priority",
+            "dataType": "string",
+            "sourceColumn": "payment_priority",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactAPInvoice-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/fact_ap_invoice.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"invoice_id\", type text},\n        {\"entity_id\", type text},\n        {\"vendor_id\", type text},\n        {\"invoice_date\", type date},\n        {\"due_date\", type date},\n        {\"currency\", type text},\n        {\"invoice_amount_usd\", type number},\n        {\"outstanding_usd\", type number},\n        {\"days_to_due\", Int64.Type},\n        {\"due_window\", type text},\n        {\"payment_week_id\", type text},\n        {\"payment_priority\", type text},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCashForecast",
+        "columns": [
+          {
+            "name": "week_id",
+            "dataType": "string",
+            "sourceColumn": "week_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario_id",
+            "dataType": "string",
+            "sourceColumn": "scenario_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "opening_cash_usd",
+            "dataType": "double",
+            "sourceColumn": "opening_cash_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_receipts_usd",
+            "dataType": "double",
+            "sourceColumn": "customer_receipts_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "other_receipts_usd",
+            "dataType": "double",
+            "sourceColumn": "other_receipts_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "supplier_payments_usd",
+            "dataType": "double",
+            "sourceColumn": "supplier_payments_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "payroll_tax_usd",
+            "dataType": "double",
+            "sourceColumn": "payroll_tax_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "capex_usd",
+            "dataType": "double",
+            "sourceColumn": "capex_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "debt_service_usd",
+            "dataType": "double",
+            "sourceColumn": "debt_service_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "net_cash_flow_usd",
+            "dataType": "double",
+            "sourceColumn": "net_cash_flow_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "closing_cash_usd",
+            "dataType": "double",
+            "sourceColumn": "closing_cash_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "minimum_cash_buffer_usd",
+            "dataType": "double",
+            "sourceColumn": "minimum_cash_buffer_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactCashForecast-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/fact_cash_forecast.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"week_id\", type text},\n        {\"entity_id\", type text},\n        {\"scenario_id\", type text},\n        {\"opening_cash_usd\", type number},\n        {\"customer_receipts_usd\", type number},\n        {\"other_receipts_usd\", type number},\n        {\"supplier_payments_usd\", type number},\n        {\"payroll_tax_usd\", type number},\n        {\"capex_usd\", type number},\n        {\"debt_service_usd\", type number},\n        {\"net_cash_flow_usd\", type number},\n        {\"closing_cash_usd\", type number},\n        {\"minimum_cash_buffer_usd\", type number},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactForecastAccuracy",
+        "columns": [
+          {
+            "name": "accuracy_id",
+            "dataType": "string",
+            "sourceColumn": "accuracy_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "week_start",
+            "dataType": "dateTime",
+            "sourceColumn": "week_start",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "forecast_net_cash_flow_usd",
+            "dataType": "double",
+            "sourceColumn": "forecast_net_cash_flow_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "actual_net_cash_flow_usd",
+            "dataType": "double",
+            "sourceColumn": "actual_net_cash_flow_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "abs_error_usd",
+            "dataType": "double",
+            "sourceColumn": "abs_error_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "error_direction",
+            "dataType": "string",
+            "sourceColumn": "error_direction",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactForecastAccuracy-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/fact_forecast_accuracy.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"accuracy_id\", type text},\n        {\"week_start\", type date},\n        {\"entity_id\", type text},\n        {\"forecast_net_cash_flow_usd\", type number},\n        {\"actual_net_cash_flow_usd\", type number},\n        {\"abs_error_usd\", type number},\n        {\"error_direction\", type text},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactFXExposure",
+        "columns": [
+          {
+            "name": "exposure_id",
+            "dataType": "string",
+            "sourceColumn": "exposure_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "currency_pair",
+            "dataType": "string",
+            "sourceColumn": "currency_pair",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "exposure_currency",
+            "dataType": "string",
+            "sourceColumn": "exposure_currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "receivable_exposure_usd",
+            "dataType": "double",
+            "sourceColumn": "receivable_exposure_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "payable_exposure_usd",
+            "dataType": "double",
+            "sourceColumn": "payable_exposure_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "net_exposure_usd",
+            "dataType": "double",
+            "sourceColumn": "net_exposure_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "hedged_exposure_usd",
+            "dataType": "double",
+            "sourceColumn": "hedged_exposure_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "unhedged_exposure_usd",
+            "dataType": "double",
+            "sourceColumn": "unhedged_exposure_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "hedge_ratio",
+            "dataType": "double",
+            "sourceColumn": "hedge_ratio",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_bucket",
+            "dataType": "string",
+            "sourceColumn": "risk_bucket",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactFXExposure-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/fact_fx_exposure.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"exposure_id\", type text},\n        {\"entity_id\", type text},\n        {\"currency_pair\", type text},\n        {\"exposure_currency\", type text},\n        {\"receivable_exposure_usd\", type number},\n        {\"payable_exposure_usd\", type number},\n        {\"net_exposure_usd\", type number},\n        {\"hedged_exposure_usd\", type number},\n        {\"unhedged_exposure_usd\", type number},\n        {\"hedge_ratio\", type number},\n        {\"risk_bucket\", type text},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactTreasuryRiskAction",
+        "columns": [
+          {
+            "name": "action_id",
+            "dataType": "string",
+            "sourceColumn": "action_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_type",
+            "dataType": "string",
+            "sourceColumn": "risk_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_level",
+            "dataType": "string",
+            "sourceColumn": "risk_level",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "owner_team",
+            "dataType": "string",
+            "sourceColumn": "owner_team",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "amount_usd",
+            "dataType": "double",
+            "sourceColumn": "amount_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "due_date",
+            "dataType": "dateTime",
+            "sourceColumn": "due_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "recommended_action",
+            "dataType": "string",
+            "sourceColumn": "recommended_action",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactTreasuryRiskAction-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 14 - Treasury Working Capital/data/prepared/fact_treasury_risk_action.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"action_id\", type text},\n        {\"entity_id\", type text},\n        {\"risk_type\", type text},\n        {\"risk_level\", type text},\n        {\"status\", type text},\n        {\"owner_team\", type text},\n        {\"amount_usd\", type number},\n        {\"due_date\", type date},\n        {\"recommended_action\", type text},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI Measures",
+        "columns": [
+          {
+            "name": "Measure Group",
+            "dataType": "string",
+            "sourceColumn": "Measure Group",
+            "isHidden": true,
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "KPI Measures-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #table(type table [Measure Group = text], {{\"Treasury Working Capital\"}})",
+                "in",
+                "    Source"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Cash Balance",
+            "expression": "SUM(FactCashPosition[balance_usd])",
+            "formatString": "$#,0",
+            "description": "Total book cash balance across bank accounts."
+          },
+          {
+            "name": "Available Cash",
+            "expression": "SUM(FactCashPosition[available_cash_usd])",
+            "formatString": "$#,0",
+            "description": "Cash balance net of restricted cash."
+          },
+          {
+            "name": "Restricted Cash",
+            "expression": "SUM(FactCashPosition[restricted_cash_usd])",
+            "formatString": "$#,0",
+            "description": "Restricted bank cash not available for operating liquidity."
+          },
+          {
+            "name": "Credit Available",
+            "expression": "SUM(FactLiquidityFacility[available_usd])",
+            "formatString": "$#,0",
+            "description": "Undrawn committed liquidity facilities."
+          },
+          {
+            "name": "Available Liquidity",
+            "expression": "[Available Cash] + [Credit Available]",
+            "formatString": "$#,0",
+            "description": "Available cash plus undrawn credit facilities."
+          },
+          {
+            "name": "Minimum Cash Buffer",
+            "expression": "SUM(FactLiquidityFacility[min_cash_buffer_usd])",
+            "formatString": "$#,0",
+            "description": "Entity minimum cash covenant or operating buffer."
+          },
+          {
+            "name": "Liquidity Headroom",
+            "expression": "[Available Liquidity] - [Minimum Cash Buffer]",
+            "formatString": "$#,0",
+            "description": "Available liquidity above minimum cash buffer."
+          },
+          {
+            "name": "AR Outstanding",
+            "expression": "SUM(FactARInvoice[outstanding_usd])",
+            "formatString": "$#,0",
+            "description": "Open customer receivable balance."
+          },
+          {
+            "name": "Overdue AR",
+            "expression": "CALCULATE([AR Outstanding], FactARInvoice[is_overdue] = TRUE())",
+            "formatString": "$#,0",
+            "description": "Open AR balance past due date."
+          },
+          {
+            "name": "Overdue AR %",
+            "expression": "DIVIDE([Overdue AR], [AR Outstanding])",
+            "formatString": "0.0%",
+            "description": "Overdue AR as a percentage of total AR outstanding."
+          },
+          {
+            "name": "AP Outstanding",
+            "expression": "SUM(FactAPInvoice[outstanding_usd])",
+            "formatString": "$#,0",
+            "description": "Open vendor payable balance."
+          },
+          {
+            "name": "AP Due 14 Days",
+            "expression": "CALCULATE([AP Outstanding], FactAPInvoice[due_window] = \"0-14 days\")",
+            "formatString": "$#,0",
+            "description": "AP outstanding due in the next 14 days."
+          },
+          {
+            "name": "Revenue",
+            "expression": "SUM(FactWorkingCapital[revenue_usd])",
+            "formatString": "$#,0",
+            "description": "Monthly revenue used for DSO denominator."
+          },
+          {
+            "name": "COGS",
+            "expression": "SUM(FactWorkingCapital[cogs_usd])",
+            "formatString": "$#,0",
+            "description": "Monthly cost of goods sold used for DPO and DIO denominators."
+          },
+          {
+            "name": "Working Capital",
+            "expression": "SUM(FactWorkingCapital[working_capital_usd])",
+            "formatString": "$#,0",
+            "description": "AR plus inventory less AP."
+          },
+          {
+            "name": "DSO",
+            "expression": "DIVIDE(SUM(FactWorkingCapital[ar_balance_usd]), [Revenue]) * 30",
+            "formatString": "0.0",
+            "description": "Days sales outstanding, based on AR balance over revenue."
+          },
+          {
+            "name": "DPO",
+            "expression": "DIVIDE(SUM(FactWorkingCapital[ap_balance_usd]), [COGS]) * 30",
+            "formatString": "0.0",
+            "description": "Days payable outstanding, based on AP balance over COGS."
+          },
+          {
+            "name": "DIO",
+            "expression": "DIVIDE(SUM(FactWorkingCapital[inventory_balance_usd]), [COGS]) * 30",
+            "formatString": "0.0",
+            "description": "Days inventory outstanding, based on inventory balance over COGS."
+          },
+          {
+            "name": "Cash Conversion Cycle",
+            "expression": "[DSO] + [DIO] - [DPO]",
+            "formatString": "0.0",
+            "description": "DSO plus DIO minus DPO."
+          },
+          {
+            "name": "Forecast Closing Cash",
+            "expression": "SUM(FactCashForecast[closing_cash_usd])",
+            "formatString": "$#,0",
+            "description": "Projected closing cash over the selected 13-week forecast scenario."
+          },
+          {
+            "name": "Forecast Net Cash Flow",
+            "expression": "SUM(FactCashForecast[net_cash_flow_usd])",
+            "formatString": "$#,0",
+            "description": "Projected cash inflows less outflows."
+          },
+          {
+            "name": "Forecast Receipts",
+            "expression": "SUM(FactCashForecast[customer_receipts_usd]) + SUM(FactCashForecast[other_receipts_usd])",
+            "formatString": "$#,0",
+            "description": "Forecast customer and other receipts."
+          },
+          {
+            "name": "Forecast Payments",
+            "expression": "SUM(FactCashForecast[supplier_payments_usd]) + SUM(FactCashForecast[payroll_tax_usd]) + SUM(FactCashForecast[capex_usd]) + SUM(FactCashForecast[debt_service_usd])",
+            "formatString": "$#,0",
+            "description": "Forecast supplier, payroll, capex, and debt payments."
+          },
+          {
+            "name": "Cash Runway Weeks",
+            "expression": "DIVIDE([Available Liquidity], ABS(AVERAGE(FactCashForecast[net_cash_flow_usd])))",
+            "formatString": "0.0",
+            "description": "Available liquidity divided by average weekly cash burn when net flow is negative."
+          },
+          {
+            "name": "Forecast Error %",
+            "expression": "DIVIDE(SUM(FactForecastAccuracy[abs_error_usd]), SUMX(FactForecastAccuracy, ABS(FactForecastAccuracy[actual_net_cash_flow_usd])))",
+            "formatString": "0.0%",
+            "description": "Absolute forecast error divided by absolute actual net cash flow."
+          },
+          {
+            "name": "FX Net Exposure",
+            "expression": "SUM(FactFXExposure[net_exposure_usd])",
+            "formatString": "$#,0",
+            "description": "Gross net FX exposure in USD equivalent."
+          },
+          {
+            "name": "Unhedged FX Exposure",
+            "expression": "SUM(FactFXExposure[unhedged_exposure_usd])",
+            "formatString": "$#,0",
+            "description": "FX exposure remaining after hedge coverage."
+          },
+          {
+            "name": "Unhedged FX %",
+            "expression": "DIVIDE([Unhedged FX Exposure], [FX Net Exposure])",
+            "formatString": "0.0%",
+            "description": "Unhedged exposure divided by total net FX exposure."
+          },
+          {
+            "name": "Open Risk Value",
+            "expression": "CALCULATE(SUM(FactTreasuryRiskAction[amount_usd]), FactTreasuryRiskAction[status] <> \"Closed\")",
+            "formatString": "$#,0",
+            "description": "Value attached to non-closed treasury action items."
+          },
+          {
+            "name": "Open Risk Count",
+            "expression": "CALCULATE(COUNTROWS(FactTreasuryRiskAction), FactTreasuryRiskAction[status] <> \"Closed\")",
+            "formatString": "#,0",
+            "description": "Count of non-closed treasury risk action items."
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "rel_FactCashPosition_entity_id_DimEntity_entity_id",
+        "fromTable": "FactCashPosition",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactCashPosition_bank_id_DimBank_bank_id",
+        "fromTable": "FactCashPosition",
+        "fromColumn": "bank_id",
+        "toTable": "DimBank",
+        "toColumn": "bank_id"
+      },
+      {
+        "name": "rel_FactLiquidityFacility_entity_id_DimEntity_entity_id",
+        "fromTable": "FactLiquidityFacility",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactWorkingCapital_date_id_DimDate_date_id",
+        "fromTable": "FactWorkingCapital",
+        "fromColumn": "date_id",
+        "toTable": "DimDate",
+        "toColumn": "date_id"
+      },
+      {
+        "name": "rel_FactWorkingCapital_entity_id_DimEntity_entity_id",
+        "fromTable": "FactWorkingCapital",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactARInvoice_entity_id_DimEntity_entity_id",
+        "fromTable": "FactARInvoice",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactARInvoice_customer_id_DimCustomer_customer_id",
+        "fromTable": "FactARInvoice",
+        "fromColumn": "customer_id",
+        "toTable": "DimCustomer",
+        "toColumn": "customer_id"
+      },
+      {
+        "name": "rel_FactARInvoice_expected_collection_week_id_DimWeek_week_id",
+        "fromTable": "FactARInvoice",
+        "fromColumn": "expected_collection_week_id",
+        "toTable": "DimWeek",
+        "toColumn": "week_id"
+      },
+      {
+        "name": "rel_FactAPInvoice_entity_id_DimEntity_entity_id",
+        "fromTable": "FactAPInvoice",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactAPInvoice_vendor_id_DimVendor_vendor_id",
+        "fromTable": "FactAPInvoice",
+        "fromColumn": "vendor_id",
+        "toTable": "DimVendor",
+        "toColumn": "vendor_id"
+      },
+      {
+        "name": "rel_FactAPInvoice_payment_week_id_DimWeek_week_id",
+        "fromTable": "FactAPInvoice",
+        "fromColumn": "payment_week_id",
+        "toTable": "DimWeek",
+        "toColumn": "week_id"
+      },
+      {
+        "name": "rel_FactCashForecast_week_id_DimWeek_week_id",
+        "fromTable": "FactCashForecast",
+        "fromColumn": "week_id",
+        "toTable": "DimWeek",
+        "toColumn": "week_id"
+      },
+      {
+        "name": "rel_FactCashForecast_entity_id_DimEntity_entity_id",
+        "fromTable": "FactCashForecast",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactCashForecast_scenario_id_DimScenario_scenario_id",
+        "fromTable": "FactCashForecast",
+        "fromColumn": "scenario_id",
+        "toTable": "DimScenario",
+        "toColumn": "scenario_id"
+      },
+      {
+        "name": "rel_FactForecastAccuracy_entity_id_DimEntity_entity_id",
+        "fromTable": "FactForecastAccuracy",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactFXExposure_entity_id_DimEntity_entity_id",
+        "fromTable": "FactFXExposure",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactTreasuryRiskAction_entity_id_DimEntity_entity_id",
+        "fromTable": "FactTreasuryRiskAction",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+ScenarioID,ScenarioName,RevenueIndex,MarginIndex,BurnIndex,ScenarioSort
+Base,Base Case,1.0,1.0,1.0,0
+Upside,Upside Growth,1.11,1.04,0.92,1
+Downside,Downside Protect,0.88,0.96,1.1,2

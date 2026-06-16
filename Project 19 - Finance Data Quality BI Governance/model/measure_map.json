@@ -1,0 +1,152 @@
+[
+  {
+    "measure": "Dataset Count",
+    "folder": "Overview",
+    "format": "#,0",
+    "expression": "DISTINCTCOUNT ( DimDataset[DatasetKey] )"
+  },
+  {
+    "measure": "Critical Dataset Count",
+    "folder": "Overview",
+    "format": "#,0",
+    "expression": "CALCULATE ( [Dataset Count], DimDataset[Criticality] = \"Tier 1\" )"
+  },
+  {
+    "measure": "Certified Dataset Count",
+    "folder": "Overview",
+    "format": "#,0",
+    "expression": "CALCULATE ( [Dataset Count], DimDataset[Certified] = \"Y\" )"
+  },
+  {
+    "measure": "Data Quality Score",
+    "folder": "Quality",
+    "format": "0.0",
+    "expression": "AVERAGE ( FactDatasetDaily[DataQualityScore] )"
+  },
+  {
+    "measure": "Completeness %",
+    "folder": "Quality",
+    "format": "0.0%",
+    "expression": "DIVIDE ( SUM ( FactDatasetDaily[RowsLoaded] ), SUM ( FactDatasetDaily[RowsExpected] ) )"
+  },
+  {
+    "measure": "Freshness SLA %",
+    "folder": "Reliability",
+    "format": "0.0%",
+    "expression": "DIVIDE ( SUM ( FactDatasetDaily[FreshnessWithinSLAFlag] ), COUNTROWS ( FactDatasetDaily ) )"
+  },
+  {
+    "measure": "Refresh Runs",
+    "folder": "Reliability",
+    "format": "#,0",
+    "expression": "COUNTROWS ( FactRefreshRuns )"
+  },
+  {
+    "measure": "Refresh Success %",
+    "folder": "Reliability",
+    "format": "0.0%",
+    "expression": "DIVIDE ( CALCULATE ( [Refresh Runs], FactRefreshRuns[Status] = \"Success\" ), [Refresh Runs] )"
+  },
+  {
+    "measure": "Failed Refreshes",
+    "folder": "Reliability",
+    "format": "#,0",
+    "expression": "CALCULATE ( [Refresh Runs], FactRefreshRuns[Status] = \"Failed\" )"
+  },
+  {
+    "measure": "Avg Refresh Duration Min",
+    "folder": "Reliability",
+    "format": "0.0",
+    "expression": "AVERAGE ( FactRefreshRuns[DurationMinutes] )"
+  },
+  {
+    "measure": "DQ Issue Count",
+    "folder": "Quality",
+    "format": "#,0",
+    "expression": "SUM ( FactDatasetDaily[NullCriticalCount] ) + SUM ( FactDatasetDaily[DuplicateKeyCount] ) + SUM ( FactDatasetDaily[SchemaDriftCount] )"
+  },
+  {
+    "measure": "Open Incidents",
+    "folder": "Reliability",
+    "format": "#,0",
+    "expression": "CALCULATE ( COUNTROWS ( FactIncidents ), FactIncidents[IncidentStatus] <> \"Closed\" )"
+  },
+  {
+    "measure": "Avg MTTR Hours",
+    "folder": "Reliability",
+    "format": "0.0",
+    "expression": "AVERAGE ( FactIncidents[MTTRHours] )"
+  },
+  {
+    "measure": "Reconciliation Variance",
+    "folder": "Reconciliation",
+    "format": "$#,0",
+    "expression": "SUM ( FactReconciliation[VarianceAmount] )"
+  },
+  {
+    "measure": "Abs Reconciliation Variance",
+    "folder": "Reconciliation",
+    "format": "$#,0",
+    "expression": "SUMX ( FactReconciliation, ABS ( FactReconciliation[VarianceAmount] ) )"
+  },
+  {
+    "measure": "Reconciliation Pass %",
+    "folder": "Reconciliation",
+    "format": "0.0%",
+    "expression": "DIVIDE ( CALCULATE ( COUNTROWS ( FactReconciliation ), FactReconciliation[ReconciliationStatus] = \"Pass\" ), COUNTROWS ( FactReconciliation ) )"
+  },
+  {
+    "measure": "Report Views",
+    "folder": "Adoption",
+    "format": "#,0",
+    "expression": "SUM ( FactUsage[Views] )"
+  },
+  {
+    "measure": "Active Viewer Days",
+    "folder": "Adoption",
+    "format": "#,0",
+    "expression": "SUM ( FactUsage[UniqueViewers] )"
+  },
+  {
+    "measure": "Export Events",
+    "folder": "Adoption",
+    "format": "#,0",
+    "expression": "SUM ( FactUsage[ExportEvents] )"
+  },
+  {
+    "measure": "Avg Report Load Seconds",
+    "folder": "Adoption",
+    "format": "0.0",
+    "expression": "AVERAGE ( FactUsage[AvgLoadSeconds] )"
+  },
+  {
+    "measure": "Failed Visual Count",
+    "folder": "Adoption",
+    "format": "#,0",
+    "expression": "SUM ( FactUsage[FailedVisualCount] )"
+  },
+  {
+    "measure": "Access Risk Events",
+    "folder": "Controls",
+    "format": "#,0",
+    "expression": "SUM ( FactAccessReview[RLSExceptions] ) + SUM ( FactAccessReview[OrphanedUsers] ) + SUM ( FactAccessReview[UnauthorizedSharingEvents] )"
+  },
+  {
+    "measure": "RLS Exceptions",
+    "folder": "Controls",
+    "format": "#,0",
+    "expression": "SUM ( FactAccessReview[RLSExceptions] )"
+  },
+  {
+    "measure": "Pending Access Reviews",
+    "folder": "Controls",
+    "format": "#,0",
+    "expression": "SUM ( FactAccessReview[PendingAccessReviews] )"
+  },
+  {
+    "measure": "Deployment Control Score",
+    "folder": "Controls",
+    "format": "0.0",
+    "expression": "AVERAGE ( FactAccessReview[DeploymentControlScore] )"
+  }
+]

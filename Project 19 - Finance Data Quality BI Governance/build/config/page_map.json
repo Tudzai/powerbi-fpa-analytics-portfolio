@@ -1,0 +1,14 @@
+[
+  {
+    "page": "Governance Overview",
+    "purpose": "Executive trust score, SLA health, incidents, reconciliation exposure, and dataset watchlist."
+  },
+  {
+    "page": "Reliability & Quality",
+    "purpose": "Refresh failures, completeness, reconciliation variance, incident root causes, and exception queue."
+  },
+  {
+    "page": "Adoption & Controls",
+    "purpose": "Report adoption, load performance, access review risk, RLS exceptions, and deployment control."
+  }
+]

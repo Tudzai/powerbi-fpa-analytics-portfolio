@@ -1,0 +1,18 @@
+# Relationship Map
+
+- FactPnlMonthly[MonthStart] -> DimDate[MonthStart]
+- FactPnlMonthly[ScenarioID] -> DimScenario[ScenarioID]
+- FactPnlMonthly[BusinessUnitID] -> DimBusinessUnit[BusinessUnitID]
+- FactPnlMonthly[RegionID] -> DimRegion[RegionID]
+- FactOpexMonthly[MonthStart] -> DimDate[MonthStart]
+- FactOpexMonthly[ScenarioID] -> DimScenario[ScenarioID]
+- FactOpexMonthly[CostCategoryID] -> DimCostCategory[CostCategoryID]
+- FactCashMonthly[MonthStart] -> DimDate[MonthStart]
+- FactCashMonthly[ScenarioID] -> DimScenario[ScenarioID]
+- FactStatementLines[MonthStart] -> DimDate[MonthStart]
+- FactStatementLines[ScenarioID] -> DimScenario[ScenarioID]
+- FactCovenantMonthly[MonthStart] -> DimDate[MonthStart]
+- FactCovenantMonthly[ScenarioID] -> DimScenario[ScenarioID]
+- FactValuation[ScenarioID] -> DimScenario[ScenarioID]
+- FactSensitivity[ScenarioID] -> DimScenario[ScenarioID]
+- FactRiskRegister[ScenarioID] -> DimScenario[ScenarioID]

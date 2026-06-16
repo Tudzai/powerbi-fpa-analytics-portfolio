@@ -1,0 +1,121 @@
+[
+  {
+    "name": "Rel_FactSubscriptionMonthly_MonthStart_DimDate_MonthStart",
+    "fromTable": "FactSubscriptionMonthly",
+    "fromColumn": "MonthStart",
+    "toTable": "DimDate",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactSubscriptionMonthly_PlanID_DimPlan_PlanID",
+    "fromTable": "FactSubscriptionMonthly",
+    "fromColumn": "PlanID",
+    "toTable": "DimPlan",
+    "toColumn": "PlanID"
+  },
+  {
+    "name": "Rel_FactSubscriptionMonthly_ChannelID_DimChannel_ChannelID",
+    "fromTable": "FactSubscriptionMonthly",
+    "fromColumn": "ChannelID",
+    "toTable": "DimChannel",
+    "toColumn": "ChannelID"
+  },
+  {
+    "name": "Rel_FactSubscriptionMonthly_RegionID_DimRegion_RegionID",
+    "fromTable": "FactSubscriptionMonthly",
+    "fromColumn": "RegionID",
+    "toTable": "DimRegion",
+    "toColumn": "RegionID"
+  },
+  {
+    "name": "Rel_FactMRRMovement_MonthStart_DimDate_MonthStart",
+    "fromTable": "FactMRRMovement",
+    "fromColumn": "MonthStart",
+    "toTable": "DimDate",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactCohortRetention_ActivityMonth_DimDate_MonthStart",
+    "fromTable": "FactCohortRetention",
+    "fromColumn": "ActivityMonth",
+    "toTable": "DimDate",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactCohortRetention_PlanID_DimPlan_PlanID",
+    "fromTable": "FactCohortRetention",
+    "fromColumn": "PlanID",
+    "toTable": "DimPlan",
+    "toColumn": "PlanID"
+  },
+  {
+    "name": "Rel_FactCohortRetention_ChannelID_DimChannel_ChannelID",
+    "fromTable": "FactCohortRetention",
+    "fromColumn": "ChannelID",
+    "toTable": "DimChannel",
+    "toColumn": "ChannelID"
+  },
+  {
+    "name": "Rel_FactAcquisitionMonthly_MonthStart_DimDate_MonthStart",
+    "fromTable": "FactAcquisitionMonthly",
+    "fromColumn": "MonthStart",
+    "toTable": "DimDate",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactAcquisitionMonthly_PlanID_DimPlan_PlanID",
+    "fromTable": "FactAcquisitionMonthly",
+    "fromColumn": "PlanID",
+    "toTable": "DimPlan",
+    "toColumn": "PlanID"
+  },
+  {
+    "name": "Rel_FactAcquisitionMonthly_ChannelID_DimChannel_ChannelID",
+    "fromTable": "FactAcquisitionMonthly",
+    "fromColumn": "ChannelID",
+    "toTable": "DimChannel",
+    "toColumn": "ChannelID"
+  },
+  {
+    "name": "Rel_FactAcquisitionMonthly_RegionID_DimRegion_RegionID",
+    "fromTable": "FactAcquisitionMonthly",
+    "fromColumn": "RegionID",
+    "toTable": "DimRegion",
+    "toColumn": "RegionID"
+  },
+  {
+    "name": "Rel_FactFinanceMonthly_MonthStart_DimDate_MonthStart",
+    "fromTable": "FactFinanceMonthly",
+    "fromColumn": "MonthStart",
+    "toTable": "DimDate",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactForecast_MonthStart_DimDate_MonthStart",
+    "fromTable": "FactForecast",
+    "fromColumn": "MonthStart",
+    "toTable": "DimDate",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactAccountHealth_PlanID_DimPlan_PlanID",
+    "fromTable": "FactAccountHealth",
+    "fromColumn": "PlanID",
+    "toTable": "DimPlan",
+    "toColumn": "PlanID"
+  },
+  {
+    "name": "Rel_FactAccountHealth_ChannelID_DimChannel_ChannelID",
+    "fromTable": "FactAccountHealth",
+    "fromColumn": "ChannelID",
+    "toTable": "DimChannel",
+    "toColumn": "ChannelID"
+  },
+  {
+    "name": "Rel_FactAccountHealth_RegionID_DimRegion_RegionID",
+    "fromTable": "FactAccountHealth",
+    "fromColumn": "RegionID",
+    "toTable": "DimRegion",
+    "toColumn": "RegionID"
+  }
+]

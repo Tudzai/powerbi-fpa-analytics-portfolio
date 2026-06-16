@@ -1,0 +1,7 @@
+entity_id,entity,country,region,currency,risk
+US01,US Distribution,United States,North America,USD,Medium
+DE01,Germany Manufacturing,Germany,Europe,EUR,Medium
+GB01,UK Commercial,United Kingdom,Europe,GBP,Low
+SG01,Singapore Hub,Singapore,APAC,SGD,Low
+VN01,Vietnam Operations,Vietnam,APAC,VND,Medium
+BR01,Brazil Sales,Brazil,LATAM,BRL,High

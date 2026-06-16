@@ -1,0 +1,73 @@
+```DAX
+-- Project 18 - ESG Carbon Finance DAX Measures
+
+Total Emissions tCO2e =
+SUM ( fact_emissions[emissions_tco2e] )
+
+Scope 1 Emissions tCO2e =
+CALCULATE ( [Total Emissions tCO2e], fact_emissions[scope] = "Scope 1" )
+
+Scope 2 Emissions tCO2e =
+CALCULATE ( [Total Emissions tCO2e], fact_emissions[scope] = "Scope 2" )
+
+Scope 3 Emissions tCO2e =
+CALCULATE ( [Total Emissions tCO2e], fact_emissions[scope] = "Scope 3" )
+
+Total Spend USD =
+SUM ( fact_emissions[spend_usd] )
+
+Revenue USD =
+SUM ( fact_emissions[revenue_usd] )
+
+Emissions Intensity tCO2e per $M Revenue =
+DIVIDE ( [Total Emissions tCO2e], [Revenue USD] ) * 1000000
+
+Selected Carbon Price USD/t =
+SELECTEDVALUE ( dim_carbon_scenario[carbon_price_usd_per_t], 50 )
+
+Carbon Cost USD =
+[Total Emissions tCO2e] * [Selected Carbon Price USD/t]
+
+Supplier Emissions tCO2e =
+SUM ( fact_supplier_month[emissions_tco2e] )
+
+Supplier Spend USD =
+SUM ( fact_supplier_month[spend_usd] )
+
+Supplier Intensity tCO2e per $M Spend =
+DIVIDE ( [Supplier Emissions tCO2e], [Supplier Spend USD] ) * 1000000
+
+Abatement Annual Reduction tCO2e =
+SUM ( fact_abatement_initiatives[annual_reduction_tco2e] )
+
+Abatement Capex USD =
+SUM ( fact_abatement_initiatives[capex_usd] )
+
+Avoided Carbon Cost USD at Selected Price =
+[Abatement Annual Reduction tCO2e] * [Selected Carbon Price USD/t]
+
+Abatement Annual Benefit USD =
+SUM ( fact_abatement_initiatives[annual_opex_savings_usd] ) + [Avoided Carbon Cost USD at Selected Price]
+
+Abatement ROI =
+DIVIDE ( [Abatement Annual Benefit USD], [Abatement Capex USD] )
+
+Payback Years =
+DIVIDE ( [Abatement Capex USD], [Abatement Annual Benefit USD] )
+
+MACC USD per tCO2e =
+DIVIDE (
+    DIVIDE ( [Abatement Capex USD], 7 ) - SUM ( fact_abatement_initiatives[annual_opex_savings_usd] ),
+    [Abatement Annual Reduction tCO2e]
+)
+
+Latest Month Emissions tCO2e =
+VAR LatestMonth = MAX ( dim_date[date_key] )
+RETURN CALCULATE ( [Total Emissions tCO2e], dim_date[date_key] = LatestMonth )
+
+YoY Emissions Change % =
+VAR CurrentEmissions = [Total Emissions tCO2e]
+VAR PriorEmissions =
+    CALCULATE ( [Total Emissions tCO2e], DATEADD ( dim_date[month_start], -1, YEAR ) )
+RETURN DIVIDE ( CurrentEmissions - PriorEmissions, PriorEmissions )
+```

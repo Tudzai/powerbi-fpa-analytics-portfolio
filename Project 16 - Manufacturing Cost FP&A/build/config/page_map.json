@@ -1,0 +1,37 @@
+{
+  "pages": [
+    {
+      "name": "01 Manufacturing FP&A Overview",
+      "purpose": "Monitor margin, standard cost variance, yield, utilization, unit cost, and working capital.",
+      "visuals": [
+        "KPI strip",
+        "Revenue/COGS trend",
+        "Variance by plant",
+        "Margin by product line",
+        "Margin action list"
+      ]
+    },
+    {
+      "name": "02 Standard Cost Variance",
+      "purpose": "Explain cost variance through material, labor, overhead, and yield loss drivers.",
+      "visuals": [
+        "Variance KPI strip",
+        "COGS waterfall",
+        "Material variance by product line",
+        "Labor variance by plant",
+        "Variance detail table"
+      ]
+    },
+    {
+      "name": "03 Yield Capacity & WC",
+      "purpose": "Tie yield, scrap, utilization, capacity gaps, inventory days, and scenario savings to EBITDA protection.",
+      "visuals": [
+        "Operations KPI strip",
+        "Yield/scrap trend",
+        "Utilization by line",
+        "Inventory days",
+        "Scenario and bottleneck table"
+      ]
+    }
+  ]
+}

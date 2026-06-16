@@ -1,0 +1,3 @@
+- Governance Overview: kpi_dq_score, kpi_freshness, kpi_refresh, kpi_open_incidents, kpi_rec_variance, slicer_domain, slicer_month, dq_trend, domain_quality, dataset_watchlist, incident_root_causes, rec_status, governance_summary
+- Reliability & Quality: kpi_failed_refreshes, kpi_completeness, kpi_rec_pass, kpi_mttr, kpi_dq_issues, slicer_owner, slicer_criticality, refresh_success_trend, failure_categories, rec_variance_domain, incident_exception_table, aging_bucket
+- Adoption & Controls: kpi_views, kpi_viewers, kpi_load, kpi_access_risk, kpi_control_score, slicer_workspace, slicer_sensitivity, views_by_report, load_trend, access_by_dept, access_detail, export_events

@@ -1,0 +1,347 @@
+{
+  "status": "pass",
+  "seed": 20260615,
+  "latest_complete_month": "2026-05-01",
+  "tables": {
+    "DimDate": {
+      "rows": 29,
+      "columns": [
+        "MonthStart",
+        "MonthLabel",
+        "MonthIndex",
+        "Year",
+        "Quarter",
+        "IsLatestCompleteMonth"
+      ],
+      "nulls": {
+        "MonthStart": 0,
+        "MonthLabel": 0,
+        "MonthIndex": 0,
+        "Year": 0,
+        "Quarter": 0,
+        "IsLatestCompleteMonth": 0
+      },
+      "duplicate_rows": 0
+    },
+    "DimScenario": {
+      "rows": 3,
+      "columns": [
+        "ScenarioID",
+        "ScenarioName",
+        "RevenueIndex",
+        "MarginIndex",
+        "BurnIndex",
+        "ScenarioSort"
+      ],
+      "nulls": {
+        "ScenarioID": 0,
+        "ScenarioName": 0,
+        "RevenueIndex": 0,
+        "MarginIndex": 0,
+        "BurnIndex": 0,
+        "ScenarioSort": 0
+      },
+      "duplicate_rows": 0
+    },
+    "DimBusinessUnit": {
+      "rows": 4,
+      "columns": [
+        "BusinessUnitID",
+        "BusinessUnit",
+        "RevenueFamily",
+        "MixWeight",
+        "TargetGrossMargin",
+        "GrowthIndex"
+      ],
+      "nulls": {
+        "BusinessUnitID": 0,
+        "BusinessUnit": 0,
+        "RevenueFamily": 0,
+        "MixWeight": 0,
+        "TargetGrossMargin": 0,
+        "GrowthIndex": 0
+      },
+      "duplicate_rows": 0
+    },
+    "DimRegion": {
+      "rows": 4,
+      "columns": [
+        "RegionID",
+        "Region",
+        "RegionMaturity",
+        "MixWeight",
+        "DemandIndex"
+      ],
+      "nulls": {
+        "RegionID": 0,
+        "Region": 0,
+        "RegionMaturity": 0,
+        "MixWeight": 0,
+        "DemandIndex": 0
+      },
+      "duplicate_rows": 0
+    },
+    "DimCostCategory": {
+      "rows": 4,
+      "columns": [
+        "CostCategoryID",
+        "CostCategory",
+        "RevenueLoad"
+      ],
+      "nulls": {
+        "CostCategoryID": 0,
+        "CostCategory": 0,
+        "RevenueLoad": 0
+      },
+      "duplicate_rows": 0
+    },
+    "FactPnlMonthly": {
+      "rows": 1392,
+      "columns": [
+        "MonthStart",
+        "ScenarioID",
+        "BusinessUnitID",
+        "RegionID",
+        "Revenue",
+        "PlanRevenue",
+        "ForecastRevenue",
+        "COGS",
+        "GrossProfit",
+        "OperatingExpense",
+        "EBITDA",
+        "PlanEBITDA",
+        "ForecastEBITDA",
+        "NetIncome",
+        "IsSynthetic"
+      ],
+      "nulls": {
+        "MonthStart": 0,
+        "ScenarioID": 0,
+        "BusinessUnitID": 0,
+        "RegionID": 0,
+        "Revenue": 0,
+        "PlanRevenue": 0,
+        "ForecastRevenue": 0,
+        "COGS": 0,
+        "GrossProfit": 0,
+        "OperatingExpense": 0,
+        "EBITDA": 0,
+        "PlanEBITDA": 0,
+        "ForecastEBITDA": 0,
+        "NetIncome": 0,
+        "IsSynthetic": 0
+      },
+      "duplicate_rows": 0
+    },
+    "FactOpexMonthly": {
+      "rows": 348,
+      "columns": [
+        "MonthStart",
+        "ScenarioID",
+        "CostCategoryID",
+        "OperatingExpense",
+        "PlanOperatingExpense",
+        "ForecastOperatingExpense"
+      ],
+      "nulls": {
+        "MonthStart": 0,
+        "ScenarioID": 0,
+        "CostCategoryID": 0,
+        "OperatingExpense": 0,
+        "PlanOperatingExpense": 0,
+        "ForecastOperatingExpense": 0
+      },
+      "duplicate_rows": 0
+    },
+    "FactCashMonthly": {
+      "rows": 87,
+      "columns": [
+        "MonthStart",
+        "ScenarioID",
+        "CashBalance",
+        "OperatingCashFlow",
+        "Capex",
+        "FreeCashFlow",
+        "NetBurn",
+        "RunwayMonths",
+        "FundingNeed",
+        "Debt",
+        "WorkingCapital",
+        "FinancingInflow"
+      ],
+      "nulls": {
+        "MonthStart": 0,
+        "ScenarioID": 0,
+        "CashBalance": 0,
+        "OperatingCashFlow": 0,
+        "Capex": 0,
+        "FreeCashFlow": 0,
+        "NetBurn": 0,
+        "RunwayMonths": 0,
+        "FundingNeed": 0,
+        "Debt": 0,
+        "WorkingCapital": 0,
+        "FinancingInflow": 0
+      },
+      "duplicate_rows": 0
+    },
+    "FactStatementLines": {
+      "rows": 957,
+      "columns": [
+        "MonthStart",
+        "ScenarioID",
+        "Statement",
+        "LineItem",
+        "LineSort",
+        "ValueActual",
+        "ValuePlan",
+        "ValueForecast"
+      ],
+      "nulls": {
+        "MonthStart": 0,
+        "ScenarioID": 0,
+        "Statement": 0,
+        "LineItem": 0,
+        "LineSort": 0,
+        "ValueActual": 0,
+        "ValuePlan": 0,
+        "ValueForecast": 0
+      },
+      "duplicate_rows": 0
+    },
+    "FactCovenantMonthly": {
+      "rows": 87,
+      "columns": [
+        "MonthStart",
+        "ScenarioID",
+        "RevenueLTM",
+        "EBITDALTM",
+        "NetDebt",
+        "LeverageRatio",
+        "LeverageLimit",
+        "LeverageHeadroom",
+        "InterestCoverage",
+        "InterestCoverageLimit",
+        "Liquidity",
+        "LiquidityMinimum",
+        "LiquidityHeadroom",
+        "CovenantStatus",
+        "RiskScore"
+      ],
+      "nulls": {
+        "MonthStart": 0,
+        "ScenarioID": 0,
+        "RevenueLTM": 0,
+        "EBITDALTM": 0,
+        "NetDebt": 0,
+        "LeverageRatio": 0,
+        "LeverageLimit": 0,
+        "LeverageHeadroom": 0,
+        "InterestCoverage": 0,
+        "InterestCoverageLimit": 0,
+        "Liquidity": 0,
+        "LiquidityMinimum": 0,
+        "LiquidityHeadroom": 0,
+        "CovenantStatus": 0,
+        "RiskScore": 0
+      },
+      "duplicate_rows": 0
+    },
+    "FactValuation": {
+      "rows": 15,
+      "columns": [
+        "ScenarioID",
+        "Method",
+        "MethodSort",
+        "Multiple",
+        "EnterpriseValue",
+        "EquityValue",
+        "LowValue",
+        "HighValue"
+      ],
+      "nulls": {
+        "ScenarioID": 0,
+        "Method": 0,
+        "MethodSort": 0,
+        "Multiple": 0,
+        "EnterpriseValue": 0,
+        "EquityValue": 0,
+        "LowValue": 0,
+        "HighValue": 0
+      },
+      "duplicate_rows": 0
+    },
+    "FactSensitivity": {
+      "rows": 36,
+      "columns": [
+        "ScenarioID",
+        "Driver",
+        "CaseLabel",
+        "DriverCase",
+        "EquityValueDelta",
+        "EquityValue"
+      ],
+      "nulls": {
+        "ScenarioID": 0,
+        "Driver": 0,
+        "CaseLabel": 0,
+        "DriverCase": 0,
+        "EquityValueDelta": 0,
+        "EquityValue": 0
+      },
+      "duplicate_rows": 0
+    },
+    "FactRiskRegister": {
+      "rows": 30,
+      "columns": [
+        "ScenarioID",
+        "RiskID",
+        "RiskCategory",
+        "Risk",
+        "Severity",
+        "Probability",
+        "ExposureUSD",
+        "Owner",
+        "MitigationStatus",
+        "BoardAsk"
+      ],
+      "nulls": {
+        "ScenarioID": 0,
+        "RiskID": 0,
+        "RiskCategory": 0,
+        "Risk": 0,
+        "Severity": 0,
+        "Probability": 0,
+        "ExposureUSD": 0,
+        "Owner": 0,
+        "MitigationStatus": 0,
+        "BoardAsk": 0
+      },
+      "duplicate_rows": 0
+    },
+    "FactKpiScorecard": {
+      "rows": 8,
+      "columns": [
+        "MetricName",
+        "MetricFamily",
+        "ActualDisplay",
+        "PlanDisplay",
+        "VarianceDisplay",
+        "Status",
+        "BoardNarrative",
+        "SortOrder"
+      ],
+      "nulls": {
+        "MetricName": 0,
+        "MetricFamily": 0,
+        "ActualDisplay": 0,
+        "PlanDisplay": 0,
+        "VarianceDisplay": 0,
+        "Status": 0,
+        "BoardNarrative": 0,
+        "SortOrder": 0
+      },
+      "duplicate_rows": 0
+    }
+  }
+}

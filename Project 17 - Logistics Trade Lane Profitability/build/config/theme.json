@@ -1,0 +1,14 @@
+{
+  "name": "Logistics Profitability Control Tower",
+  "dataColors": [
+    "#2563EB",
+    "#0F766E",
+    "#15803D",
+    "#B45309",
+    "#DC2626",
+    "#111827"
+  ],
+  "background": "#F8FAFC",
+  "foreground": "#0F172A",
+  "tableAccent": "#2563EB"
+}

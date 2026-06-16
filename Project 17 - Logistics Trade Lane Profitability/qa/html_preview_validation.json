@@ -1,0 +1,56 @@
+{
+  "status": "pass",
+  "checked_at": "2026-06-14T20:10:12.738Z",
+  "results": [
+    {
+      "viewport": {
+        "name": "desktop",
+        "width": 1366,
+        "height": 768
+      },
+      "screenshotPath": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\screenshots\\dashboard_html_desktop.png",
+      "errors": [],
+      "qa": {
+        "title": "Project 17 - Logistics Trade Lane Profitability",
+        "pages": 3,
+        "cards": 6,
+        "panels": 8,
+        "tables": 3,
+        "svgs": 2,
+        "hasNaN": false,
+        "overflowX": false,
+        "dashboardQa": {
+          "pages": 3,
+          "kpis": 6,
+          "lanes": 12,
+          "actions": 16
+        }
+      }
+    },
+    {
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "screenshotPath": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\screenshots\\dashboard_html_mobile.png",
+      "errors": [],
+      "qa": {
+        "title": "Project 17 - Logistics Trade Lane Profitability",
+        "pages": 3,
+        "cards": 6,
+        "panels": 8,
+        "tables": 3,
+        "svgs": 2,
+        "hasNaN": false,
+        "overflowX": false,
+        "dashboardQa": {
+          "pages": 3,
+          "kpis": 6,
+          "lanes": 12,
+          "actions": 16
+        }
+      }
+    }
+  ]
+}

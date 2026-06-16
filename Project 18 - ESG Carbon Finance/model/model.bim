@@ -1,0 +1,1083 @@
+{
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "dim_date",
+        "lineageTag": "7165ab51-3ee2-4bd4-89df-a45ac4e8a529",
+        "columns": [
+          {
+            "name": "date_key",
+            "dataType": "string",
+            "sourceColumn": "date_key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_start",
+            "dataType": "dateTime",
+            "sourceColumn": "month_start",
+            "summarizeBy": "none",
+            "formatString": "Long Date"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "quarter",
+            "dataType": "string",
+            "sourceColumn": "quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_no",
+            "dataType": "int64",
+            "sourceColumn": "month_no",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "month_name",
+            "dataType": "string",
+            "sourceColumn": "month_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fiscal_year",
+            "dataType": "int64",
+            "sourceColumn": "fiscal_year",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "month_index",
+            "dataType": "int64",
+            "sourceColumn": "month_index",
+            "summarizeBy": "none",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_dim_date",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 18 - ESG Carbon Finance\\\\data\\\\prepared\\\\dim_date.csv\"), [Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"date_key\", type text}, {\"month_start\", type date}, {\"year\", Int64.Type}, {\"quarter\", type text}, {\"month_no\", Int64.Type}, {\"month_name\", type text}, {\"fiscal_year\", Int64.Type}, {\"month_index\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "dim_business_unit",
+        "lineageTag": "86a19c04-6e53-483b-87fb-cbe1fda3265c",
+        "columns": [
+          {
+            "name": "business_unit_id",
+            "dataType": "string",
+            "sourceColumn": "business_unit_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "business_unit",
+            "dataType": "string",
+            "sourceColumn": "business_unit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "portfolio",
+            "dataType": "string",
+            "sourceColumn": "portfolio",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "annual_revenue_usd",
+            "dataType": "double",
+            "sourceColumn": "annual_revenue_usd",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_dim_business_unit",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 18 - ESG Carbon Finance\\\\data\\\\prepared\\\\dim_business_unit.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"business_unit_id\", type text}, {\"business_unit\", type text}, {\"portfolio\", type text}, {\"annual_revenue_usd\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "dim_facility",
+        "lineageTag": "43a802e9-a41d-4ca0-bd90-317d9ba23771",
+        "columns": [
+          {
+            "name": "facility_id",
+            "dataType": "string",
+            "sourceColumn": "facility_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "facility",
+            "dataType": "string",
+            "sourceColumn": "facility",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "country",
+            "dataType": "string",
+            "sourceColumn": "country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "default_business_unit",
+            "dataType": "string",
+            "sourceColumn": "default_business_unit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "latitude",
+            "dataType": "double",
+            "sourceColumn": "latitude",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "longitude",
+            "dataType": "double",
+            "sourceColumn": "longitude",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_dim_facility",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 18 - ESG Carbon Finance\\\\data\\\\prepared\\\\dim_facility.csv\"), [Delimiter=\",\", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"facility_id\", type text}, {\"facility\", type text}, {\"country\", type text}, {\"region\", type text}, {\"default_business_unit\", type text}, {\"latitude\", type number}, {\"longitude\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "dim_activity",
+        "lineageTag": "5f8f826b-9d2f-4a3b-a263-230b80282a88",
+        "columns": [
+          {
+            "name": "activity_id",
+            "dataType": "string",
+            "sourceColumn": "activity_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "activity",
+            "dataType": "string",
+            "sourceColumn": "activity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scope",
+            "dataType": "string",
+            "sourceColumn": "scope",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ghg_category",
+            "dataType": "string",
+            "sourceColumn": "ghg_category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "activity_unit",
+            "dataType": "string",
+            "sourceColumn": "activity_unit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "base_emission_factor",
+            "dataType": "double",
+            "sourceColumn": "base_emission_factor",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_dim_activity",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 18 - ESG Carbon Finance\\\\data\\\\prepared\\\\dim_activity.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"activity_id\", type text}, {\"activity\", type text}, {\"scope\", type text}, {\"ghg_category\", type text}, {\"activity_unit\", type text}, {\"base_emission_factor\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "dim_supplier",
+        "lineageTag": "59ac4610-3ac6-48b7-889d-453dff874609",
+        "columns": [
+          {
+            "name": "supplier_id",
+            "dataType": "string",
+            "sourceColumn": "supplier_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "supplier",
+            "dataType": "string",
+            "sourceColumn": "supplier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "supplier_category",
+            "dataType": "string",
+            "sourceColumn": "supplier_category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "supplier_country",
+            "dataType": "string",
+            "sourceColumn": "supplier_country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "carbon_risk_tier",
+            "dataType": "string",
+            "sourceColumn": "carbon_risk_tier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "target_status",
+            "dataType": "string",
+            "sourceColumn": "target_status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "data_quality_score",
+            "dataType": "double",
+            "sourceColumn": "data_quality_score",
+            "summarizeBy": "sum",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_dim_supplier",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 18 - ESG Carbon Finance\\\\data\\\\prepared\\\\dim_supplier.csv\"), [Delimiter=\",\", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"supplier_id\", type text}, {\"supplier\", type text}, {\"supplier_category\", type text}, {\"supplier_country\", type text}, {\"carbon_risk_tier\", type text}, {\"target_status\", type text}, {\"data_quality_score\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "dim_carbon_scenario",
+        "lineageTag": "d8b63957-bd53-4755-a482-90c44588f4b6",
+        "columns": [
+          {
+            "name": "scenario_id",
+            "dataType": "string",
+            "sourceColumn": "scenario_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "scenario",
+            "dataType": "string",
+            "sourceColumn": "scenario",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "carbon_price_usd_per_t",
+            "dataType": "double",
+            "sourceColumn": "carbon_price_usd_per_t",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          },
+          {
+            "name": "probability_weight",
+            "dataType": "double",
+            "sourceColumn": "probability_weight",
+            "summarizeBy": "sum",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_dim_carbon_scenario",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 18 - ESG Carbon Finance\\\\data\\\\prepared\\\\dim_carbon_scenario.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"scenario_id\", type text}, {\"scenario\", type text}, {\"carbon_price_usd_per_t\", type number}, {\"probability_weight\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "fact_emissions",
+        "lineageTag": "7d552ec7-e4e8-44c9-98c6-c36ac55abb2d",
+        "columns": [
+          {
+            "name": "emission_record_id",
+            "dataType": "string",
+            "sourceColumn": "emission_record_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "date_key",
+            "dataType": "string",
+            "sourceColumn": "date_key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "business_unit_id",
+            "dataType": "string",
+            "sourceColumn": "business_unit_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "facility_id",
+            "dataType": "string",
+            "sourceColumn": "facility_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "supplier_id",
+            "dataType": "string",
+            "sourceColumn": "supplier_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "activity_id",
+            "dataType": "string",
+            "sourceColumn": "activity_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "scope",
+            "dataType": "string",
+            "sourceColumn": "scope",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ghg_category",
+            "dataType": "string",
+            "sourceColumn": "ghg_category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "activity_volume",
+            "dataType": "double",
+            "sourceColumn": "activity_volume",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "activity_unit",
+            "dataType": "string",
+            "sourceColumn": "activity_unit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "emission_factor",
+            "dataType": "double",
+            "sourceColumn": "emission_factor",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "emissions_tco2e",
+            "dataType": "double",
+            "sourceColumn": "emissions_tco2e",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "spend_usd",
+            "dataType": "double",
+            "sourceColumn": "spend_usd",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          },
+          {
+            "name": "revenue_usd",
+            "dataType": "double",
+            "sourceColumn": "revenue_usd",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          },
+          {
+            "name": "data_quality_score",
+            "dataType": "double",
+            "sourceColumn": "data_quality_score",
+            "summarizeBy": "sum",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_fact_emissions",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 18 - ESG Carbon Finance\\\\data\\\\prepared\\\\fact_emissions.csv\"), [Delimiter=\",\", Columns=15, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"emission_record_id\", type text}, {\"date_key\", type text}, {\"business_unit_id\", type text}, {\"facility_id\", type text}, {\"supplier_id\", type text}, {\"activity_id\", type text}, {\"scope\", type text}, {\"ghg_category\", type text}, {\"activity_volume\", type number}, {\"activity_unit\", type text}, {\"emission_factor\", type number}, {\"emissions_tco2e\", type number}, {\"spend_usd\", type number}, {\"revenue_usd\", type number}, {\"data_quality_score\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "fact_supplier_month",
+        "lineageTag": "9f6cdd90-6f03-43d4-97d0-0078ccd724a5",
+        "columns": [
+          {
+            "name": "date_key",
+            "dataType": "string",
+            "sourceColumn": "date_key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "supplier_id",
+            "dataType": "string",
+            "sourceColumn": "supplier_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "supplier",
+            "dataType": "string",
+            "sourceColumn": "supplier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "supplier_category",
+            "dataType": "string",
+            "sourceColumn": "supplier_category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "carbon_risk_tier",
+            "dataType": "string",
+            "sourceColumn": "carbon_risk_tier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "supplier_country",
+            "dataType": "string",
+            "sourceColumn": "supplier_country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "target_status",
+            "dataType": "string",
+            "sourceColumn": "target_status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "emissions_tco2e",
+            "dataType": "double",
+            "sourceColumn": "emissions_tco2e",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "spend_usd",
+            "dataType": "double",
+            "sourceColumn": "spend_usd",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          },
+          {
+            "name": "supplier_intensity_tco2e_per_musd",
+            "dataType": "double",
+            "sourceColumn": "supplier_intensity_tco2e_per_musd",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          },
+          {
+            "name": "data_quality_score",
+            "dataType": "double",
+            "sourceColumn": "data_quality_score",
+            "summarizeBy": "sum",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_fact_supplier_month",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 18 - ESG Carbon Finance\\\\data\\\\prepared\\\\fact_supplier_month.csv\"), [Delimiter=\",\", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"date_key\", type text}, {\"supplier_id\", type text}, {\"supplier\", type text}, {\"supplier_category\", type text}, {\"carbon_risk_tier\", type text}, {\"supplier_country\", type text}, {\"target_status\", type text}, {\"emissions_tco2e\", type number}, {\"spend_usd\", type number}, {\"supplier_intensity_tco2e_per_musd\", type number}, {\"data_quality_score\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "fact_carbon_exposure",
+        "lineageTag": "0b8d49d2-e0a6-43cd-a686-12fa1bf1e91e",
+        "columns": [
+          {
+            "name": "date_key",
+            "dataType": "string",
+            "sourceColumn": "date_key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario_id",
+            "dataType": "string",
+            "sourceColumn": "scenario_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "scenario",
+            "dataType": "string",
+            "sourceColumn": "scenario",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "carbon_price_usd_per_t",
+            "dataType": "double",
+            "sourceColumn": "carbon_price_usd_per_t",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          },
+          {
+            "name": "emissions_tco2e",
+            "dataType": "double",
+            "sourceColumn": "emissions_tco2e",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "carbon_cost_usd",
+            "dataType": "double",
+            "sourceColumn": "carbon_cost_usd",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          },
+          {
+            "name": "probability_weighted_cost_usd",
+            "dataType": "double",
+            "sourceColumn": "probability_weighted_cost_usd",
+            "summarizeBy": "sum",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_fact_carbon_exposure",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 18 - ESG Carbon Finance\\\\data\\\\prepared\\\\fact_carbon_exposure.csv\"), [Delimiter=\",\", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"date_key\", type text}, {\"scenario_id\", type text}, {\"scenario\", type text}, {\"carbon_price_usd_per_t\", type number}, {\"emissions_tco2e\", type number}, {\"carbon_cost_usd\", type number}, {\"probability_weighted_cost_usd\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "fact_abatement_initiatives",
+        "lineageTag": "5644be21-de78-468f-a581-297a7287b376",
+        "columns": [
+          {
+            "name": "initiative_id",
+            "dataType": "string",
+            "sourceColumn": "initiative_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "initiative",
+            "dataType": "string",
+            "sourceColumn": "initiative",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scope",
+            "dataType": "string",
+            "sourceColumn": "scope",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "business_unit",
+            "dataType": "string",
+            "sourceColumn": "business_unit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "implementation_status",
+            "dataType": "string",
+            "sourceColumn": "implementation_status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "start_year",
+            "dataType": "int64",
+            "sourceColumn": "start_year",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "capex_usd",
+            "dataType": "double",
+            "sourceColumn": "capex_usd",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          },
+          {
+            "name": "annual_reduction_tco2e",
+            "dataType": "double",
+            "sourceColumn": "annual_reduction_tco2e",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "annual_opex_savings_usd",
+            "dataType": "double",
+            "sourceColumn": "annual_opex_savings_usd",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          },
+          {
+            "name": "avoided_carbon_cost_usd_at_90",
+            "dataType": "double",
+            "sourceColumn": "avoided_carbon_cost_usd_at_90",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          },
+          {
+            "name": "net_annual_benefit_usd_at_90",
+            "dataType": "double",
+            "sourceColumn": "net_annual_benefit_usd_at_90",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          },
+          {
+            "name": "payback_years_at_90",
+            "dataType": "double",
+            "sourceColumn": "payback_years_at_90",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "roi_at_90",
+            "dataType": "double",
+            "sourceColumn": "roi_at_90",
+            "summarizeBy": "sum",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "macc_usd_per_tco2e",
+            "dataType": "double",
+            "sourceColumn": "macc_usd_per_tco2e",
+            "summarizeBy": "sum",
+            "formatString": "$#,0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_fact_abatement_initiatives",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 18 - ESG Carbon Finance\\\\data\\\\prepared\\\\fact_abatement_initiatives.csv\"), [Delimiter=\",\", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"initiative_id\", type text}, {\"initiative\", type text}, {\"scope\", type text}, {\"business_unit\", type text}, {\"implementation_status\", type text}, {\"start_year\", Int64.Type}, {\"capex_usd\", type number}, {\"annual_reduction_tco2e\", type number}, {\"annual_opex_savings_usd\", type number}, {\"avoided_carbon_cost_usd_at_90\", type number}, {\"net_annual_benefit_usd_at_90\", type number}, {\"payback_years_at_90\", type number}, {\"roi_at_90\", type number}, {\"macc_usd_per_tco2e\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "KPI_Measures",
+        "lineageTag": "576ae6a0-37fd-48ef-9132-3936ab1a63e3",
+        "columns": [
+          {
+            "name": "MeasureName",
+            "dataType": "string",
+            "sourceColumn": "MeasureName",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_KPI_Measures",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [MeasureName = text], {{\"KPI\"}}) in Source"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Emissions tCO2e",
+            "expression": "SUM ( fact_emissions[emissions_tco2e] )",
+            "formatString": "#,0.0",
+            "lineageTag": "f84176c5-f795-4f2b-86ad-6d7a3efed932"
+          },
+          {
+            "name": "Scope 1 Emissions tCO2e",
+            "expression": "CALCULATE ( [Total Emissions tCO2e], fact_emissions[scope] = \"Scope 1\" )",
+            "formatString": "#,0.0",
+            "lineageTag": "50d088eb-fa6d-4b6a-981d-87b18de0c5d5"
+          },
+          {
+            "name": "Scope 2 Emissions tCO2e",
+            "expression": "CALCULATE ( [Total Emissions tCO2e], fact_emissions[scope] = \"Scope 2\" )",
+            "formatString": "#,0.0",
+            "lineageTag": "1c97655e-244e-455f-bc48-a98dbe3c190a"
+          },
+          {
+            "name": "Scope 3 Emissions tCO2e",
+            "expression": "CALCULATE ( [Total Emissions tCO2e], fact_emissions[scope] = \"Scope 3\" )",
+            "formatString": "#,0.0",
+            "lineageTag": "70accc8c-eefc-4d2b-9d23-b352324689de"
+          },
+          {
+            "name": "Total Spend USD",
+            "expression": "SUM ( fact_emissions[spend_usd] )",
+            "formatString": "$#,0",
+            "lineageTag": "e09292f3-85fd-4ffd-9bda-cc4bc6b629ce"
+          },
+          {
+            "name": "Revenue USD",
+            "expression": "SUM ( fact_emissions[revenue_usd] )",
+            "formatString": "$#,0",
+            "lineageTag": "5508ca8b-6067-451c-a29c-d7e1e9ad7385"
+          },
+          {
+            "name": "Emissions Intensity tCO2e per $M Revenue",
+            "expression": "DIVIDE ( [Total Emissions tCO2e], [Revenue USD] ) * 1000000",
+            "formatString": "#,0.0",
+            "lineageTag": "c8544dbb-0fae-4df5-96e8-f17d81604538"
+          },
+          {
+            "name": "Selected Carbon Price USD/t",
+            "expression": "SELECTEDVALUE ( dim_carbon_scenario[carbon_price_usd_per_t], 50 )",
+            "formatString": "$#,0",
+            "lineageTag": "a59470cf-57e4-416d-acfa-0ca75cbc1f55"
+          },
+          {
+            "name": "Carbon Cost USD",
+            "expression": "[Total Emissions tCO2e] * [Selected Carbon Price USD/t]",
+            "formatString": "$#,0",
+            "lineageTag": "8a497053-7fda-498f-9ca9-5f05fa6ed0d0"
+          },
+          {
+            "name": "Scenario Carbon Cost USD",
+            "expression": "SUM ( fact_carbon_exposure[carbon_cost_usd] )",
+            "formatString": "$#,0",
+            "lineageTag": "8fdc400b-3a06-4cae-8e04-84d89ec760cc"
+          },
+          {
+            "name": "Supplier Emissions tCO2e",
+            "expression": "SUM ( fact_supplier_month[emissions_tco2e] )",
+            "formatString": "#,0.0",
+            "lineageTag": "b6c27f59-65ab-427d-bf42-2e7259d23968"
+          },
+          {
+            "name": "Supplier Spend USD",
+            "expression": "SUM ( fact_supplier_month[spend_usd] )",
+            "formatString": "$#,0",
+            "lineageTag": "6fb4f629-0498-4844-8f78-4b893175c0c3"
+          },
+          {
+            "name": "Supplier Intensity tCO2e per $M Spend",
+            "expression": "DIVIDE ( [Supplier Emissions tCO2e], [Supplier Spend USD] ) * 1000000",
+            "formatString": "#,0.0",
+            "lineageTag": "0181ec70-f43b-4269-9163-7fce2b80c16d"
+          },
+          {
+            "name": "Average Data Quality Score",
+            "expression": "AVERAGE ( fact_supplier_month[data_quality_score] )",
+            "formatString": "0.0%",
+            "lineageTag": "6d707451-e5eb-41d3-9f8f-59075ebf5b02"
+          },
+          {
+            "name": "Abatement Annual Reduction tCO2e",
+            "expression": "SUM ( fact_abatement_initiatives[annual_reduction_tco2e] )",
+            "formatString": "#,0",
+            "lineageTag": "7f942077-f3b3-4a53-92ee-5681276d516f"
+          },
+          {
+            "name": "Abatement Capex USD",
+            "expression": "SUM ( fact_abatement_initiatives[capex_usd] )",
+            "formatString": "$#,0",
+            "lineageTag": "5d55996e-6dbd-42b7-9cc3-706c3aff09b3"
+          },
+          {
+            "name": "Avoided Carbon Cost USD at Selected Price",
+            "expression": "[Abatement Annual Reduction tCO2e] * [Selected Carbon Price USD/t]",
+            "formatString": "$#,0",
+            "lineageTag": "b8f6fb31-0623-41ce-a37f-8af664832a40"
+          },
+          {
+            "name": "Abatement Annual Benefit USD",
+            "expression": "SUM ( fact_abatement_initiatives[annual_opex_savings_usd] ) + [Avoided Carbon Cost USD at Selected Price]",
+            "formatString": "$#,0",
+            "lineageTag": "8cb7cc79-995e-4c87-9b73-73a18cc93759"
+          },
+          {
+            "name": "Abatement ROI",
+            "expression": "DIVIDE ( [Abatement Annual Benefit USD], [Abatement Capex USD] )",
+            "formatString": "0.0%",
+            "lineageTag": "5cbae872-e07e-475a-961e-918470260e9e"
+          },
+          {
+            "name": "Payback Years",
+            "expression": "DIVIDE ( [Abatement Capex USD], [Abatement Annual Benefit USD] )",
+            "formatString": "0.0",
+            "lineageTag": "9913d5b5-5c1e-4843-a2d7-768361a04971"
+          },
+          {
+            "name": "MACC USD per tCO2e",
+            "expression": "DIVIDE ( DIVIDE ( [Abatement Capex USD], 7 ) - SUM ( fact_abatement_initiatives[annual_opex_savings_usd] ), [Abatement Annual Reduction tCO2e] )",
+            "formatString": "$#,0.0",
+            "lineageTag": "a57f2987-04c3-4900-8c7b-0a76e959b1ee"
+          },
+          {
+            "name": "Latest Month Emissions tCO2e",
+            "expression": "VAR LatestMonth = MAX ( dim_date[date_key] ) RETURN CALCULATE ( [Total Emissions tCO2e], dim_date[date_key] = LatestMonth )",
+            "formatString": "#,0.0",
+            "lineageTag": "b519e254-b9a9-4b76-8701-de48b3e2cdd7"
+          },
+          {
+            "name": "YoY Emissions Change %",
+            "expression": "VAR CurrentEmissions = [Total Emissions tCO2e] VAR PriorEmissions = CALCULATE ( [Total Emissions tCO2e], DATEADD ( dim_date[month_start], -1, YEAR ) ) RETURN DIVIDE ( CurrentEmissions - PriorEmissions, PriorEmissions )",
+            "formatString": "0.0%",
+            "lineageTag": "255134b3-2424-4294-a2af-83f9a7a5f49b"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "Rel_fact_emissions_date_key_dim_date_date_key",
+        "fromTable": "fact_emissions",
+        "fromColumn": "date_key",
+        "toTable": "dim_date",
+        "toColumn": "date_key"
+      },
+      {
+        "name": "Rel_fact_supplier_month_date_key_dim_date_date_key",
+        "fromTable": "fact_supplier_month",
+        "fromColumn": "date_key",
+        "toTable": "dim_date",
+        "toColumn": "date_key"
+      },
+      {
+        "name": "Rel_fact_carbon_exposure_date_key_dim_date_date_key",
+        "fromTable": "fact_carbon_exposure",
+        "fromColumn": "date_key",
+        "toTable": "dim_date",
+        "toColumn": "date_key"
+      },
+      {
+        "name": "Rel_fact_emissions_business_unit_id_dim_business_unit_business_unit_id",
+        "fromTable": "fact_emissions",
+        "fromColumn": "business_unit_id",
+        "toTable": "dim_business_unit",
+        "toColumn": "business_unit_id"
+      },
+      {
+        "name": "Rel_fact_emissions_facility_id_dim_facility_facility_id",
+        "fromTable": "fact_emissions",
+        "fromColumn": "facility_id",
+        "toTable": "dim_facility",
+        "toColumn": "facility_id"
+      },
+      {
+        "name": "Rel_fact_emissions_activity_id_dim_activity_activity_id",
+        "fromTable": "fact_emissions",
+        "fromColumn": "activity_id",
+        "toTable": "dim_activity",
+        "toColumn": "activity_id"
+      },
+      {
+        "name": "Rel_fact_emissions_supplier_id_dim_supplier_supplier_id",
+        "fromTable": "fact_emissions",
+        "fromColumn": "supplier_id",
+        "toTable": "dim_supplier",
+        "toColumn": "supplier_id"
+      },
+      {
+        "name": "Rel_fact_supplier_month_supplier_id_dim_supplier_supplier_id",
+        "fromTable": "fact_supplier_month",
+        "fromColumn": "supplier_id",
+        "toTable": "dim_supplier",
+        "toColumn": "supplier_id"
+      },
+      {
+        "name": "Rel_fact_carbon_exposure_scenario_id_dim_carbon_scenario_scenario_id",
+        "fromTable": "fact_carbon_exposure",
+        "fromColumn": "scenario_id",
+        "toTable": "dim_carbon_scenario",
+        "toColumn": "scenario_id"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      }
+    ]
+  }
+}

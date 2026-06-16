@@ -1,0 +1,521 @@
+﻿CustomerID,AccountName,PlanID,PlanName,Segment,ChannelID,ChannelName,Motion,RegionID,Region,Industry,AcquisitionMonth
+C0001,Software Cloud 001,enterprise,Enterprise,Enterprise,inbound,Inbound Demand,Inbound,emea,EMEA,Software,2024-06-01
+C0002,Retail Cloud 002,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Retail,2024-03-01
+C0003,Financial Cloud 003,starter,Starter,SMB,expansion,Customer Success,Expansion,na,North America,Financial Services,2024-04-01
+C0004,Manufacturing Cloud 004,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Manufacturing,2025-04-01
+C0005,Education Cloud 005,growth,Growth,SMB,expansion,Customer Success,Expansion,emea,EMEA,Education,2024-05-01
+C0006,Healthcare Cloud 006,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Healthcare,2025-06-01
+C0007,Retail Cloud 007,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,emea,EMEA,Retail,2024-11-01
+C0008,Education Cloud 008,scale,Scale,Mid-Market,partner,Partner Ecosystem,Partner,emea,EMEA,Education,2025-08-01
+C0009,Retail Cloud 009,scale,Scale,Mid-Market,plg,Product-Led,PLG,na,North America,Retail,2024-04-01
+C0010,Retail Cloud 010,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Retail,2024-03-01
+C0011,Logistics Cloud 011,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Logistics,2024-01-01
+C0012,Education Cloud 012,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,na,North America,Education,2026-01-01
+C0013,Education Cloud 013,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,emea,EMEA,Education,2024-12-01
+C0014,Software Cloud 014,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,apac,APAC,Software,2025-05-01
+C0015,Software Cloud 015,growth,Growth,SMB,plg,Product-Led,PLG,apac,APAC,Software,2025-01-01
+C0016,Healthcare Cloud 016,growth,Growth,SMB,outbound,Outbound Sales,Outbound,latam,LATAM,Healthcare,2026-04-01
+C0017,Financial Cloud 017,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Financial Services,2024-05-01
+C0018,Financial Cloud 018,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Financial Services,2025-02-01
+C0019,Software Cloud 019,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Software,2024-12-01
+C0020,Software Cloud 020,scale,Scale,Mid-Market,plg,Product-Led,PLG,emea,EMEA,Software,2024-12-01
+C0021,Retail Cloud 021,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Retail,2024-06-01
+C0022,Healthcare Cloud 022,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,apac,APAC,Healthcare,2024-08-01
+C0023,Financial Cloud 023,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Financial Services,2024-02-01
+C0024,Education Cloud 024,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,apac,APAC,Education,2025-01-01
+C0025,Healthcare Cloud 025,starter,Starter,SMB,plg,Product-Led,PLG,emea,EMEA,Healthcare,2024-01-01
+C0026,Education Cloud 026,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Education,2024-05-01
+C0027,Education Cloud 027,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Education,2025-07-01
+C0028,Logistics Cloud 028,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Logistics,2024-03-01
+C0029,Education Cloud 029,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Education,2025-08-01
+C0030,Manufacturing Cloud 030,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Manufacturing,2025-07-01
+C0031,Healthcare Cloud 031,starter,Starter,SMB,outbound,Outbound Sales,Outbound,na,North America,Healthcare,2024-05-01
+C0032,Software Cloud 032,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Software,2026-04-01
+C0033,Retail Cloud 033,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Retail,2024-02-01
+C0034,Software Cloud 034,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Software,2024-02-01
+C0035,Healthcare Cloud 035,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Healthcare,2026-02-01
+C0036,Software Cloud 036,growth,Growth,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Software,2024-01-01
+C0037,Financial Cloud 037,enterprise,Enterprise,Enterprise,outbound,Outbound Sales,Outbound,latam,LATAM,Financial Services,2025-08-01
+C0038,Financial Cloud 038,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,emea,EMEA,Financial Services,2024-03-01
+C0039,Logistics Cloud 039,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Logistics,2026-02-01
+C0040,Retail Cloud 040,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,emea,EMEA,Retail,2024-09-01
+C0041,Software Cloud 041,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Software,2024-09-01
+C0042,Logistics Cloud 042,growth,Growth,SMB,partner,Partner Ecosystem,Partner,na,North America,Logistics,2025-08-01
+C0043,Retail Cloud 043,starter,Starter,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Retail,2025-01-01
+C0044,Manufacturing Cloud 044,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Manufacturing,2025-05-01
+C0045,Education Cloud 045,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Education,2025-05-01
+C0046,Logistics Cloud 046,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Logistics,2025-02-01
+C0047,Education Cloud 047,growth,Growth,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Education,2025-06-01
+C0048,Manufacturing Cloud 048,growth,Growth,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Manufacturing,2024-04-01
+C0049,Healthcare Cloud 049,enterprise,Enterprise,Enterprise,inbound,Inbound Demand,Inbound,apac,APAC,Healthcare,2024-02-01
+C0050,Healthcare Cloud 050,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,emea,EMEA,Healthcare,2025-05-01
+C0051,Healthcare Cloud 051,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,na,North America,Healthcare,2024-06-01
+C0052,Financial Cloud 052,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Financial Services,2024-11-01
+C0053,Retail Cloud 053,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Retail,2025-08-01
+C0054,Software Cloud 054,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Software,2024-04-01
+C0055,Retail Cloud 055,starter,Starter,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Retail,2025-11-01
+C0056,Software Cloud 056,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Software,2024-12-01
+C0057,Retail Cloud 057,enterprise,Enterprise,Enterprise,partner,Partner Ecosystem,Partner,emea,EMEA,Retail,2025-02-01
+C0058,Education Cloud 058,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,na,North America,Education,2024-10-01
+C0059,Software Cloud 059,business,Business,Mid-Market,plg,Product-Led,PLG,apac,APAC,Software,2025-12-01
+C0060,Logistics Cloud 060,scale,Scale,Mid-Market,plg,Product-Led,PLG,emea,EMEA,Logistics,2024-09-01
+C0061,Manufacturing Cloud 061,growth,Growth,SMB,plg,Product-Led,PLG,emea,EMEA,Manufacturing,2025-10-01
+C0062,Retail Cloud 062,business,Business,Mid-Market,plg,Product-Led,PLG,apac,APAC,Retail,2024-06-01
+C0063,Logistics Cloud 063,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Logistics,2025-05-01
+C0064,Logistics Cloud 064,scale,Scale,Mid-Market,partner,Partner Ecosystem,Partner,na,North America,Logistics,2025-06-01
+C0065,Financial Cloud 065,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Financial Services,2025-12-01
+C0066,Logistics Cloud 066,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Logistics,2024-04-01
+C0067,Retail Cloud 067,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,emea,EMEA,Retail,2024-10-01
+C0068,Software Cloud 068,starter,Starter,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Software,2025-10-01
+C0069,Education Cloud 069,growth,Growth,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Education,2025-04-01
+C0070,Retail Cloud 070,enterprise,Enterprise,Enterprise,inbound,Inbound Demand,Inbound,na,North America,Retail,2025-10-01
+C0071,Education Cloud 071,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Education,2025-06-01
+C0072,Software Cloud 072,starter,Starter,SMB,plg,Product-Led,PLG,emea,EMEA,Software,2024-09-01
+C0073,Logistics Cloud 073,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Logistics,2024-11-01
+C0074,Financial Cloud 074,business,Business,Mid-Market,expansion,Customer Success,Expansion,na,North America,Financial Services,2024-06-01
+C0075,Education Cloud 075,business,Business,Mid-Market,expansion,Customer Success,Expansion,emea,EMEA,Education,2025-02-01
+C0076,Retail Cloud 076,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Retail,2025-01-01
+C0077,Logistics Cloud 077,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Logistics,2025-08-01
+C0078,Healthcare Cloud 078,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Healthcare,2024-11-01
+C0079,Software Cloud 079,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Software,2024-05-01
+C0080,Healthcare Cloud 080,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Healthcare,2024-05-01
+C0081,Software Cloud 081,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Software,2025-12-01
+C0082,Retail Cloud 082,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Retail,2025-07-01
+C0083,Healthcare Cloud 083,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Healthcare,2024-04-01
+C0084,Healthcare Cloud 084,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Healthcare,2025-10-01
+C0085,Retail Cloud 085,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,emea,EMEA,Retail,2024-07-01
+C0086,Software Cloud 086,enterprise,Enterprise,Enterprise,inbound,Inbound Demand,Inbound,latam,LATAM,Software,2024-10-01
+C0087,Education Cloud 087,growth,Growth,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Education,2025-08-01
+C0088,Software Cloud 088,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Software,2024-09-01
+C0089,Education Cloud 089,starter,Starter,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Education,2025-05-01
+C0090,Education Cloud 090,starter,Starter,SMB,outbound,Outbound Sales,Outbound,na,North America,Education,2025-10-01
+C0091,Financial Cloud 091,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,na,North America,Financial Services,2024-04-01
+C0092,Manufacturing Cloud 092,growth,Growth,SMB,partner,Partner Ecosystem,Partner,na,North America,Manufacturing,2025-02-01
+C0093,Manufacturing Cloud 093,scale,Scale,Mid-Market,plg,Product-Led,PLG,apac,APAC,Manufacturing,2025-03-01
+C0094,Software Cloud 094,growth,Growth,SMB,partner,Partner Ecosystem,Partner,latam,LATAM,Software,2026-02-01
+C0095,Manufacturing Cloud 095,business,Business,Mid-Market,expansion,Customer Success,Expansion,na,North America,Manufacturing,2025-08-01
+C0096,Retail Cloud 096,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Retail,2025-08-01
+C0097,Financial Cloud 097,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Financial Services,2024-10-01
+C0098,Logistics Cloud 098,growth,Growth,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Logistics,2025-07-01
+C0099,Education Cloud 099,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,emea,EMEA,Education,2024-06-01
+C0100,Software Cloud 100,starter,Starter,SMB,expansion,Customer Success,Expansion,emea,EMEA,Software,2024-01-01
+C0101,Healthcare Cloud 101,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Healthcare,2024-01-01
+C0102,Retail Cloud 102,starter,Starter,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Retail,2026-02-01
+C0103,Manufacturing Cloud 103,growth,Growth,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Manufacturing,2024-05-01
+C0104,Logistics Cloud 104,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,na,North America,Logistics,2026-04-01
+C0105,Software Cloud 105,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Software,2025-04-01
+C0106,Healthcare Cloud 106,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Healthcare,2025-08-01
+C0107,Healthcare Cloud 107,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Healthcare,2024-06-01
+C0108,Healthcare Cloud 108,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Healthcare,2025-01-01
+C0109,Software Cloud 109,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Software,2025-01-01
+C0110,Retail Cloud 110,starter,Starter,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Retail,2024-08-01
+C0111,Education Cloud 111,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Education,2024-01-01
+C0112,Healthcare Cloud 112,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Healthcare,2024-10-01
+C0113,Manufacturing Cloud 113,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,na,North America,Manufacturing,2025-04-01
+C0114,Healthcare Cloud 114,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Healthcare,2025-04-01
+C0115,Software Cloud 115,starter,Starter,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Software,2024-06-01
+C0116,Education Cloud 116,scale,Scale,Mid-Market,partner,Partner Ecosystem,Partner,na,North America,Education,2026-01-01
+C0117,Logistics Cloud 117,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Logistics,2025-06-01
+C0118,Financial Cloud 118,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Financial Services,2024-07-01
+C0119,Financial Cloud 119,starter,Starter,SMB,inbound,Inbound Demand,Inbound,latam,LATAM,Financial Services,2024-08-01
+C0120,Retail Cloud 120,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,apac,APAC,Retail,2024-08-01
+C0121,Manufacturing Cloud 121,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Manufacturing,2024-07-01
+C0122,Education Cloud 122,business,Business,Mid-Market,plg,Product-Led,PLG,latam,LATAM,Education,2024-09-01
+C0123,Manufacturing Cloud 123,growth,Growth,SMB,outbound,Outbound Sales,Outbound,latam,LATAM,Manufacturing,2024-06-01
+C0124,Education Cloud 124,growth,Growth,SMB,expansion,Customer Success,Expansion,na,North America,Education,2024-12-01
+C0125,Logistics Cloud 125,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Logistics,2025-08-01
+C0126,Education Cloud 126,growth,Growth,SMB,partner,Partner Ecosystem,Partner,na,North America,Education,2024-09-01
+C0127,Software Cloud 127,business,Business,Mid-Market,plg,Product-Led,PLG,apac,APAC,Software,2026-04-01
+C0128,Financial Cloud 128,starter,Starter,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Financial Services,2024-10-01
+C0129,Manufacturing Cloud 129,starter,Starter,SMB,plg,Product-Led,PLG,emea,EMEA,Manufacturing,2024-03-01
+C0130,Logistics Cloud 130,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Logistics,2024-01-01
+C0131,Logistics Cloud 131,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,emea,EMEA,Logistics,2026-02-01
+C0132,Manufacturing Cloud 132,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Manufacturing,2024-03-01
+C0133,Education Cloud 133,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Education,2025-10-01
+C0134,Manufacturing Cloud 134,starter,Starter,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Manufacturing,2024-01-01
+C0135,Education Cloud 135,starter,Starter,SMB,outbound,Outbound Sales,Outbound,na,North America,Education,2025-03-01
+C0136,Education Cloud 136,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,emea,EMEA,Education,2026-01-01
+C0137,Healthcare Cloud 137,business,Business,Mid-Market,expansion,Customer Success,Expansion,emea,EMEA,Healthcare,2025-11-01
+C0138,Education Cloud 138,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Education,2024-02-01
+C0139,Software Cloud 139,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Software,2025-04-01
+C0140,Education Cloud 140,growth,Growth,SMB,partner,Partner Ecosystem,Partner,na,North America,Education,2024-11-01
+C0141,Healthcare Cloud 141,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Healthcare,2026-01-01
+C0142,Retail Cloud 142,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,emea,EMEA,Retail,2024-04-01
+C0143,Education Cloud 143,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Education,2025-03-01
+C0144,Education Cloud 144,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Education,2024-07-01
+C0145,Healthcare Cloud 145,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Healthcare,2024-08-01
+C0146,Manufacturing Cloud 146,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Manufacturing,2024-11-01
+C0147,Retail Cloud 147,growth,Growth,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Retail,2025-01-01
+C0148,Healthcare Cloud 148,business,Business,Mid-Market,plg,Product-Led,PLG,emea,EMEA,Healthcare,2024-03-01
+C0149,Financial Cloud 149,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Financial Services,2024-02-01
+C0150,Financial Cloud 150,starter,Starter,SMB,plg,Product-Led,PLG,emea,EMEA,Financial Services,2025-03-01
+C0151,Logistics Cloud 151,enterprise,Enterprise,Enterprise,outbound,Outbound Sales,Outbound,emea,EMEA,Logistics,2026-02-01
+C0152,Healthcare Cloud 152,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Healthcare,2025-02-01
+C0153,Manufacturing Cloud 153,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Manufacturing,2025-11-01
+C0154,Software Cloud 154,growth,Growth,SMB,plg,Product-Led,PLG,apac,APAC,Software,2025-11-01
+C0155,Healthcare Cloud 155,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Healthcare,2024-08-01
+C0156,Logistics Cloud 156,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Logistics,2024-05-01
+C0157,Retail Cloud 157,growth,Growth,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Retail,2024-12-01
+C0158,Software Cloud 158,enterprise,Enterprise,Enterprise,partner,Partner Ecosystem,Partner,na,North America,Software,2025-05-01
+C0159,Financial Cloud 159,scale,Scale,Mid-Market,plg,Product-Led,PLG,emea,EMEA,Financial Services,2025-04-01
+C0160,Logistics Cloud 160,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,latam,LATAM,Logistics,2025-08-01
+C0161,Financial Cloud 161,scale,Scale,Mid-Market,partner,Partner Ecosystem,Partner,apac,APAC,Financial Services,2026-03-01
+C0162,Education Cloud 162,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Education,2024-02-01
+C0163,Retail Cloud 163,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Retail,2024-06-01
+C0164,Manufacturing Cloud 164,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Manufacturing,2025-09-01
+C0165,Education Cloud 165,growth,Growth,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Education,2025-03-01
+C0166,Software Cloud 166,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Software,2026-02-01
+C0167,Manufacturing Cloud 167,growth,Growth,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Manufacturing,2024-02-01
+C0168,Software Cloud 168,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Software,2025-02-01
+C0169,Logistics Cloud 169,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Logistics,2026-05-01
+C0170,Financial Cloud 170,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Financial Services,2024-09-01
+C0171,Software Cloud 171,business,Business,Mid-Market,plg,Product-Led,PLG,emea,EMEA,Software,2024-02-01
+C0172,Manufacturing Cloud 172,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Manufacturing,2024-05-01
+C0173,Healthcare Cloud 173,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,na,North America,Healthcare,2025-12-01
+C0174,Financial Cloud 174,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Financial Services,2025-06-01
+C0175,Education Cloud 175,enterprise,Enterprise,Enterprise,expansion,Customer Success,Expansion,latam,LATAM,Education,2026-04-01
+C0176,Education Cloud 176,enterprise,Enterprise,Enterprise,outbound,Outbound Sales,Outbound,na,North America,Education,2025-11-01
+C0177,Healthcare Cloud 177,growth,Growth,SMB,expansion,Customer Success,Expansion,na,North America,Healthcare,2024-12-01
+C0178,Healthcare Cloud 178,growth,Growth,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Healthcare,2024-07-01
+C0179,Financial Cloud 179,growth,Growth,SMB,plg,Product-Led,PLG,apac,APAC,Financial Services,2024-08-01
+C0180,Education Cloud 180,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Education,2025-12-01
+C0181,Software Cloud 181,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Software,2025-02-01
+C0182,Manufacturing Cloud 182,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,apac,APAC,Manufacturing,2026-04-01
+C0183,Healthcare Cloud 183,starter,Starter,SMB,inbound,Inbound Demand,Inbound,latam,LATAM,Healthcare,2025-06-01
+C0184,Logistics Cloud 184,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Logistics,2024-07-01
+C0185,Manufacturing Cloud 185,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Manufacturing,2024-02-01
+C0186,Education Cloud 186,enterprise,Enterprise,Enterprise,inbound,Inbound Demand,Inbound,na,North America,Education,2026-01-01
+C0187,Retail Cloud 187,scale,Scale,Mid-Market,plg,Product-Led,PLG,latam,LATAM,Retail,2024-05-01
+C0188,Logistics Cloud 188,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Logistics,2024-08-01
+C0189,Education Cloud 189,scale,Scale,Mid-Market,plg,Product-Led,PLG,na,North America,Education,2025-05-01
+C0190,Manufacturing Cloud 190,starter,Starter,SMB,plg,Product-Led,PLG,emea,EMEA,Manufacturing,2024-11-01
+C0191,Healthcare Cloud 191,growth,Growth,SMB,partner,Partner Ecosystem,Partner,na,North America,Healthcare,2025-10-01
+C0192,Software Cloud 192,starter,Starter,SMB,outbound,Outbound Sales,Outbound,na,North America,Software,2024-03-01
+C0193,Manufacturing Cloud 193,growth,Growth,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Manufacturing,2024-07-01
+C0194,Manufacturing Cloud 194,growth,Growth,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Manufacturing,2024-11-01
+C0195,Retail Cloud 195,starter,Starter,SMB,outbound,Outbound Sales,Outbound,na,North America,Retail,2024-05-01
+C0196,Financial Cloud 196,growth,Growth,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Financial Services,2025-03-01
+C0197,Financial Cloud 197,enterprise,Enterprise,Enterprise,inbound,Inbound Demand,Inbound,na,North America,Financial Services,2024-08-01
+C0198,Education Cloud 198,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Education,2025-04-01
+C0199,Logistics Cloud 199,enterprise,Enterprise,Enterprise,inbound,Inbound Demand,Inbound,apac,APAC,Logistics,2025-10-01
+C0200,Retail Cloud 200,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Retail,2024-12-01
+C0201,Logistics Cloud 201,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Logistics,2025-05-01
+C0202,Software Cloud 202,growth,Growth,SMB,expansion,Customer Success,Expansion,na,North America,Software,2024-02-01
+C0203,Software Cloud 203,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Software,2025-09-01
+C0204,Education Cloud 204,growth,Growth,SMB,partner,Partner Ecosystem,Partner,latam,LATAM,Education,2024-03-01
+C0205,Financial Cloud 205,growth,Growth,SMB,plg,Product-Led,PLG,emea,EMEA,Financial Services,2025-01-01
+C0206,Logistics Cloud 206,business,Business,Mid-Market,plg,Product-Led,PLG,apac,APAC,Logistics,2024-04-01
+C0207,Software Cloud 207,starter,Starter,SMB,plg,Product-Led,PLG,latam,LATAM,Software,2024-01-01
+C0208,Financial Cloud 208,starter,Starter,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Financial Services,2024-03-01
+C0209,Healthcare Cloud 209,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Healthcare,2026-02-01
+C0210,Software Cloud 210,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Software,2026-05-01
+C0211,Healthcare Cloud 211,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Healthcare,2024-01-01
+C0212,Retail Cloud 212,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Retail,2025-09-01
+C0213,Manufacturing Cloud 213,business,Business,Mid-Market,plg,Product-Led,PLG,emea,EMEA,Manufacturing,2025-01-01
+C0214,Logistics Cloud 214,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,na,North America,Logistics,2025-01-01
+C0215,Financial Cloud 215,enterprise,Enterprise,Enterprise,expansion,Customer Success,Expansion,na,North America,Financial Services,2024-11-01
+C0216,Retail Cloud 216,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Retail,2025-02-01
+C0217,Healthcare Cloud 217,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,na,North America,Healthcare,2024-03-01
+C0218,Financial Cloud 218,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,emea,EMEA,Financial Services,2024-12-01
+C0219,Logistics Cloud 219,scale,Scale,Mid-Market,plg,Product-Led,PLG,emea,EMEA,Logistics,2025-02-01
+C0220,Healthcare Cloud 220,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Healthcare,2024-11-01
+C0221,Retail Cloud 221,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Retail,2024-09-01
+C0222,Education Cloud 222,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Education,2025-01-01
+C0223,Education Cloud 223,business,Business,Mid-Market,plg,Product-Led,PLG,apac,APAC,Education,2025-11-01
+C0224,Education Cloud 224,growth,Growth,SMB,plg,Product-Led,PLG,emea,EMEA,Education,2024-02-01
+C0225,Education Cloud 225,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Education,2024-08-01
+C0226,Healthcare Cloud 226,growth,Growth,SMB,expansion,Customer Success,Expansion,apac,APAC,Healthcare,2026-03-01
+C0227,Education Cloud 227,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,emea,EMEA,Education,2025-03-01
+C0228,Manufacturing Cloud 228,growth,Growth,SMB,inbound,Inbound Demand,Inbound,latam,LATAM,Manufacturing,2025-01-01
+C0229,Manufacturing Cloud 229,starter,Starter,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Manufacturing,2024-08-01
+C0230,Manufacturing Cloud 230,enterprise,Enterprise,Enterprise,outbound,Outbound Sales,Outbound,na,North America,Manufacturing,2025-02-01
+C0231,Financial Cloud 231,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Financial Services,2024-06-01
+C0232,Retail Cloud 232,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Retail,2024-02-01
+C0233,Software Cloud 233,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Software,2025-01-01
+C0234,Manufacturing Cloud 234,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Manufacturing,2026-01-01
+C0235,Financial Cloud 235,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Financial Services,2024-05-01
+C0236,Financial Cloud 236,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Financial Services,2024-05-01
+C0237,Manufacturing Cloud 237,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,na,North America,Manufacturing,2024-01-01
+C0238,Logistics Cloud 238,growth,Growth,SMB,partner,Partner Ecosystem,Partner,latam,LATAM,Logistics,2024-06-01
+C0239,Software Cloud 239,business,Business,Mid-Market,expansion,Customer Success,Expansion,na,North America,Software,2024-02-01
+C0240,Logistics Cloud 240,enterprise,Enterprise,Enterprise,inbound,Inbound Demand,Inbound,na,North America,Logistics,2025-11-01
+C0241,Financial Cloud 241,growth,Growth,SMB,expansion,Customer Success,Expansion,na,North America,Financial Services,2026-03-01
+C0242,Retail Cloud 242,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,emea,EMEA,Retail,2025-05-01
+C0243,Education Cloud 243,starter,Starter,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Education,2024-06-01
+C0244,Logistics Cloud 244,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,emea,EMEA,Logistics,2024-11-01
+C0245,Software Cloud 245,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Software,2025-01-01
+C0246,Software Cloud 246,starter,Starter,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Software,2024-09-01
+C0247,Healthcare Cloud 247,enterprise,Enterprise,Enterprise,partner,Partner Ecosystem,Partner,na,North America,Healthcare,2025-05-01
+C0248,Software Cloud 248,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Software,2024-11-01
+C0249,Healthcare Cloud 249,growth,Growth,SMB,plg,Product-Led,PLG,latam,LATAM,Healthcare,2026-03-01
+C0250,Financial Cloud 250,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Financial Services,2024-02-01
+C0251,Software Cloud 251,scale,Scale,Mid-Market,partner,Partner Ecosystem,Partner,latam,LATAM,Software,2025-03-01
+C0252,Manufacturing Cloud 252,starter,Starter,SMB,outbound,Outbound Sales,Outbound,na,North America,Manufacturing,2024-04-01
+C0253,Retail Cloud 253,starter,Starter,SMB,outbound,Outbound Sales,Outbound,na,North America,Retail,2024-10-01
+C0254,Retail Cloud 254,growth,Growth,SMB,expansion,Customer Success,Expansion,apac,APAC,Retail,2025-12-01
+C0255,Retail Cloud 255,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Retail,2024-03-01
+C0256,Financial Cloud 256,starter,Starter,SMB,expansion,Customer Success,Expansion,emea,EMEA,Financial Services,2025-04-01
+C0257,Retail Cloud 257,growth,Growth,SMB,plg,Product-Led,PLG,emea,EMEA,Retail,2026-01-01
+C0258,Financial Cloud 258,growth,Growth,SMB,expansion,Customer Success,Expansion,emea,EMEA,Financial Services,2025-12-01
+C0259,Software Cloud 259,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Software,2024-10-01
+C0260,Manufacturing Cloud 260,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,emea,EMEA,Manufacturing,2024-02-01
+C0261,Financial Cloud 261,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Financial Services,2024-11-01
+C0262,Manufacturing Cloud 262,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Manufacturing,2025-12-01
+C0263,Retail Cloud 263,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Retail,2025-11-01
+C0264,Education Cloud 264,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,emea,EMEA,Education,2025-02-01
+C0265,Manufacturing Cloud 265,growth,Growth,SMB,expansion,Customer Success,Expansion,na,North America,Manufacturing,2024-08-01
+C0266,Healthcare Cloud 266,starter,Starter,SMB,outbound,Outbound Sales,Outbound,latam,LATAM,Healthcare,2025-10-01
+C0267,Retail Cloud 267,growth,Growth,SMB,partner,Partner Ecosystem,Partner,na,North America,Retail,2025-11-01
+C0268,Software Cloud 268,growth,Growth,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Software,2025-01-01
+C0269,Retail Cloud 269,starter,Starter,SMB,outbound,Outbound Sales,Outbound,na,North America,Retail,2024-09-01
+C0270,Logistics Cloud 270,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Logistics,2025-09-01
+C0271,Healthcare Cloud 271,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,apac,APAC,Healthcare,2025-04-01
+C0272,Financial Cloud 272,growth,Growth,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Financial Services,2024-03-01
+C0273,Financial Cloud 273,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Financial Services,2024-05-01
+C0274,Financial Cloud 274,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Financial Services,2025-12-01
+C0275,Logistics Cloud 275,starter,Starter,SMB,outbound,Outbound Sales,Outbound,na,North America,Logistics,2025-03-01
+C0276,Retail Cloud 276,starter,Starter,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Retail,2024-10-01
+C0277,Education Cloud 277,scale,Scale,Mid-Market,partner,Partner Ecosystem,Partner,latam,LATAM,Education,2024-08-01
+C0278,Software Cloud 278,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Software,2024-08-01
+C0279,Education Cloud 279,scale,Scale,Mid-Market,partner,Partner Ecosystem,Partner,na,North America,Education,2026-02-01
+C0280,Software Cloud 280,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,apac,APAC,Software,2026-01-01
+C0281,Software Cloud 281,growth,Growth,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Software,2024-06-01
+C0282,Healthcare Cloud 282,scale,Scale,Mid-Market,plg,Product-Led,PLG,na,North America,Healthcare,2025-05-01
+C0283,Education Cloud 283,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Education,2024-09-01
+C0284,Logistics Cloud 284,growth,Growth,SMB,plg,Product-Led,PLG,apac,APAC,Logistics,2024-07-01
+C0285,Retail Cloud 285,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Retail,2025-02-01
+C0286,Healthcare Cloud 286,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Healthcare,2024-10-01
+C0287,Logistics Cloud 287,growth,Growth,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Logistics,2026-03-01
+C0288,Healthcare Cloud 288,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,emea,EMEA,Healthcare,2024-12-01
+C0289,Manufacturing Cloud 289,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,apac,APAC,Manufacturing,2024-02-01
+C0290,Software Cloud 290,growth,Growth,SMB,plg,Product-Led,PLG,latam,LATAM,Software,2024-10-01
+C0291,Education Cloud 291,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Education,2025-05-01
+C0292,Manufacturing Cloud 292,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Manufacturing,2024-04-01
+C0293,Manufacturing Cloud 293,starter,Starter,SMB,partner,Partner Ecosystem,Partner,latam,LATAM,Manufacturing,2024-01-01
+C0294,Logistics Cloud 294,enterprise,Enterprise,Enterprise,outbound,Outbound Sales,Outbound,apac,APAC,Logistics,2025-09-01
+C0295,Manufacturing Cloud 295,starter,Starter,SMB,plg,Product-Led,PLG,emea,EMEA,Manufacturing,2025-08-01
+C0296,Healthcare Cloud 296,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Healthcare,2025-01-01
+C0297,Financial Cloud 297,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Financial Services,2025-05-01
+C0298,Software Cloud 298,growth,Growth,SMB,plg,Product-Led,PLG,apac,APAC,Software,2025-04-01
+C0299,Retail Cloud 299,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Retail,2025-03-01
+C0300,Manufacturing Cloud 300,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Manufacturing,2026-03-01
+C0301,Logistics Cloud 301,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Logistics,2024-09-01
+C0302,Financial Cloud 302,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Financial Services,2026-05-01
+C0303,Retail Cloud 303,starter,Starter,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Retail,2026-03-01
+C0304,Financial Cloud 304,growth,Growth,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Financial Services,2025-12-01
+C0305,Retail Cloud 305,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,emea,EMEA,Retail,2025-05-01
+C0306,Software Cloud 306,growth,Growth,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Software,2024-07-01
+C0307,Healthcare Cloud 307,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Healthcare,2025-07-01
+C0308,Software Cloud 308,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Software,2025-12-01
+C0309,Retail Cloud 309,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,apac,APAC,Retail,2025-02-01
+C0310,Education Cloud 310,enterprise,Enterprise,Enterprise,outbound,Outbound Sales,Outbound,emea,EMEA,Education,2025-05-01
+C0311,Retail Cloud 311,growth,Growth,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Retail,2025-09-01
+C0312,Software Cloud 312,starter,Starter,SMB,inbound,Inbound Demand,Inbound,latam,LATAM,Software,2024-06-01
+C0313,Financial Cloud 313,starter,Starter,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Financial Services,2024-08-01
+C0314,Financial Cloud 314,starter,Starter,SMB,expansion,Customer Success,Expansion,emea,EMEA,Financial Services,2025-09-01
+C0315,Retail Cloud 315,growth,Growth,SMB,expansion,Customer Success,Expansion,apac,APAC,Retail,2024-09-01
+C0316,Manufacturing Cloud 316,enterprise,Enterprise,Enterprise,partner,Partner Ecosystem,Partner,emea,EMEA,Manufacturing,2024-07-01
+C0317,Financial Cloud 317,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Financial Services,2026-04-01
+C0318,Healthcare Cloud 318,scale,Scale,Mid-Market,plg,Product-Led,PLG,emea,EMEA,Healthcare,2025-04-01
+C0319,Logistics Cloud 319,business,Business,Mid-Market,expansion,Customer Success,Expansion,emea,EMEA,Logistics,2025-01-01
+C0320,Education Cloud 320,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Education,2026-04-01
+C0321,Software Cloud 321,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Software,2024-10-01
+C0322,Manufacturing Cloud 322,enterprise,Enterprise,Enterprise,inbound,Inbound Demand,Inbound,na,North America,Manufacturing,2025-05-01
+C0323,Healthcare Cloud 323,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Healthcare,2024-03-01
+C0324,Retail Cloud 324,growth,Growth,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Retail,2024-04-01
+C0325,Financial Cloud 325,starter,Starter,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Financial Services,2024-08-01
+C0326,Financial Cloud 326,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,emea,EMEA,Financial Services,2025-02-01
+C0327,Software Cloud 327,growth,Growth,SMB,expansion,Customer Success,Expansion,na,North America,Software,2024-12-01
+C0328,Logistics Cloud 328,growth,Growth,SMB,expansion,Customer Success,Expansion,emea,EMEA,Logistics,2024-05-01
+C0329,Manufacturing Cloud 329,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Manufacturing,2025-03-01
+C0330,Retail Cloud 330,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Retail,2024-06-01
+C0331,Logistics Cloud 331,growth,Growth,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Logistics,2025-03-01
+C0332,Healthcare Cloud 332,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,emea,EMEA,Healthcare,2025-03-01
+C0333,Logistics Cloud 333,starter,Starter,SMB,plg,Product-Led,PLG,latam,LATAM,Logistics,2025-05-01
+C0334,Software Cloud 334,growth,Growth,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Software,2025-05-01
+C0335,Logistics Cloud 335,starter,Starter,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Logistics,2024-03-01
+C0336,Software Cloud 336,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Software,2024-06-01
+C0337,Financial Cloud 337,starter,Starter,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Financial Services,2026-02-01
+C0338,Manufacturing Cloud 338,starter,Starter,SMB,plg,Product-Led,PLG,latam,LATAM,Manufacturing,2025-02-01
+C0339,Education Cloud 339,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Education,2024-12-01
+C0340,Logistics Cloud 340,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,na,North America,Logistics,2024-01-01
+C0341,Logistics Cloud 341,starter,Starter,SMB,expansion,Customer Success,Expansion,emea,EMEA,Logistics,2024-08-01
+C0342,Software Cloud 342,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,na,North America,Software,2025-05-01
+C0343,Financial Cloud 343,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Financial Services,2024-05-01
+C0344,Retail Cloud 344,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,apac,APAC,Retail,2025-11-01
+C0345,Healthcare Cloud 345,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Healthcare,2025-05-01
+C0346,Logistics Cloud 346,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,apac,APAC,Logistics,2024-12-01
+C0347,Healthcare Cloud 347,scale,Scale,Mid-Market,partner,Partner Ecosystem,Partner,latam,LATAM,Healthcare,2024-03-01
+C0348,Manufacturing Cloud 348,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,emea,EMEA,Manufacturing,2025-04-01
+C0349,Manufacturing Cloud 349,enterprise,Enterprise,Enterprise,outbound,Outbound Sales,Outbound,na,North America,Manufacturing,2024-08-01
+C0350,Retail Cloud 350,starter,Starter,SMB,plg,Product-Led,PLG,emea,EMEA,Retail,2024-02-01
+C0351,Manufacturing Cloud 351,growth,Growth,SMB,expansion,Customer Success,Expansion,na,North America,Manufacturing,2026-01-01
+C0352,Software Cloud 352,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,apac,APAC,Software,2025-09-01
+C0353,Software Cloud 353,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Software,2024-07-01
+C0354,Manufacturing Cloud 354,growth,Growth,SMB,plg,Product-Led,PLG,apac,APAC,Manufacturing,2026-04-01
+C0355,Financial Cloud 355,scale,Scale,Mid-Market,plg,Product-Led,PLG,na,North America,Financial Services,2026-02-01
+C0356,Software Cloud 356,growth,Growth,SMB,plg,Product-Led,PLG,apac,APAC,Software,2025-09-01
+C0357,Manufacturing Cloud 357,starter,Starter,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Manufacturing,2024-04-01
+C0358,Software Cloud 358,scale,Scale,Mid-Market,plg,Product-Led,PLG,na,North America,Software,2025-10-01
+C0359,Retail Cloud 359,scale,Scale,Mid-Market,plg,Product-Led,PLG,apac,APAC,Retail,2024-02-01
+C0360,Manufacturing Cloud 360,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,emea,EMEA,Manufacturing,2025-03-01
+C0361,Software Cloud 361,growth,Growth,SMB,partner,Partner Ecosystem,Partner,na,North America,Software,2024-01-01
+C0362,Financial Cloud 362,starter,Starter,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Financial Services,2025-09-01
+C0363,Healthcare Cloud 363,growth,Growth,SMB,partner,Partner Ecosystem,Partner,na,North America,Healthcare,2025-07-01
+C0364,Education Cloud 364,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,apac,APAC,Education,2024-07-01
+C0365,Manufacturing Cloud 365,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Manufacturing,2024-07-01
+C0366,Financial Cloud 366,growth,Growth,SMB,expansion,Customer Success,Expansion,na,North America,Financial Services,2026-02-01
+C0367,Logistics Cloud 367,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Logistics,2025-06-01
+C0368,Logistics Cloud 368,growth,Growth,SMB,expansion,Customer Success,Expansion,emea,EMEA,Logistics,2024-07-01
+C0369,Software Cloud 369,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Software,2025-12-01
+C0370,Software Cloud 370,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Software,2024-12-01
+C0371,Education Cloud 371,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Education,2024-06-01
+C0372,Education Cloud 372,business,Business,Mid-Market,plg,Product-Led,PLG,latam,LATAM,Education,2024-12-01
+C0373,Software Cloud 373,business,Business,Mid-Market,plg,Product-Led,PLG,emea,EMEA,Software,2024-01-01
+C0374,Education Cloud 374,starter,Starter,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Education,2024-01-01
+C0375,Manufacturing Cloud 375,growth,Growth,SMB,inbound,Inbound Demand,Inbound,latam,LATAM,Manufacturing,2024-09-01
+C0376,Logistics Cloud 376,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Logistics,2024-11-01
+C0377,Education Cloud 377,growth,Growth,SMB,plg,Product-Led,PLG,apac,APAC,Education,2025-12-01
+C0378,Retail Cloud 378,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Retail,2024-12-01
+C0379,Retail Cloud 379,enterprise,Enterprise,Enterprise,outbound,Outbound Sales,Outbound,latam,LATAM,Retail,2024-02-01
+C0380,Retail Cloud 380,starter,Starter,SMB,inbound,Inbound Demand,Inbound,latam,LATAM,Retail,2025-08-01
+C0381,Education Cloud 381,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Education,2025-11-01
+C0382,Manufacturing Cloud 382,starter,Starter,SMB,expansion,Customer Success,Expansion,na,North America,Manufacturing,2025-10-01
+C0383,Software Cloud 383,business,Business,Mid-Market,plg,Product-Led,PLG,na,North America,Software,2024-08-01
+C0384,Healthcare Cloud 384,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,emea,EMEA,Healthcare,2024-05-01
+C0385,Education Cloud 385,enterprise,Enterprise,Enterprise,plg,Product-Led,PLG,apac,APAC,Education,2025-04-01
+C0386,Healthcare Cloud 386,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,emea,EMEA,Healthcare,2024-07-01
+C0387,Manufacturing Cloud 387,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,na,North America,Manufacturing,2024-12-01
+C0388,Education Cloud 388,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,na,North America,Education,2025-05-01
+C0389,Retail Cloud 389,starter,Starter,SMB,outbound,Outbound Sales,Outbound,na,North America,Retail,2026-02-01
+C0390,Manufacturing Cloud 390,growth,Growth,SMB,expansion,Customer Success,Expansion,emea,EMEA,Manufacturing,2024-05-01
+C0391,Financial Cloud 391,scale,Scale,Mid-Market,plg,Product-Led,PLG,na,North America,Financial Services,2025-03-01
+C0392,Manufacturing Cloud 392,growth,Growth,SMB,plg,Product-Led,PLG,apac,APAC,Manufacturing,2024-08-01
+C0393,Logistics Cloud 393,growth,Growth,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Logistics,2024-04-01
+C0394,Manufacturing Cloud 394,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Manufacturing,2025-07-01
+C0395,Logistics Cloud 395,scale,Scale,Mid-Market,partner,Partner Ecosystem,Partner,apac,APAC,Logistics,2024-07-01
+C0396,Education Cloud 396,growth,Growth,SMB,outbound,Outbound Sales,Outbound,latam,LATAM,Education,2025-02-01
+C0397,Logistics Cloud 397,starter,Starter,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Logistics,2025-06-01
+C0398,Education Cloud 398,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Education,2025-12-01
+C0399,Education Cloud 399,enterprise,Enterprise,Enterprise,partner,Partner Ecosystem,Partner,apac,APAC,Education,2024-10-01
+C0400,Education Cloud 400,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Education,2025-10-01
+C0401,Logistics Cloud 401,growth,Growth,SMB,expansion,Customer Success,Expansion,na,North America,Logistics,2025-03-01
+C0402,Retail Cloud 402,growth,Growth,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Retail,2025-06-01
+C0403,Retail Cloud 403,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Retail,2025-10-01
+C0404,Education Cloud 404,starter,Starter,SMB,plg,Product-Led,PLG,emea,EMEA,Education,2024-04-01
+C0405,Education Cloud 405,starter,Starter,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Education,2025-06-01
+C0406,Healthcare Cloud 406,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Healthcare,2025-06-01
+C0407,Retail Cloud 407,enterprise,Enterprise,Enterprise,outbound,Outbound Sales,Outbound,emea,EMEA,Retail,2025-02-01
+C0408,Education Cloud 408,starter,Starter,SMB,inbound,Inbound Demand,Inbound,latam,LATAM,Education,2026-03-01
+C0409,Education Cloud 409,growth,Growth,SMB,expansion,Customer Success,Expansion,latam,LATAM,Education,2025-11-01
+C0410,Healthcare Cloud 410,growth,Growth,SMB,expansion,Customer Success,Expansion,na,North America,Healthcare,2026-01-01
+C0411,Healthcare Cloud 411,growth,Growth,SMB,outbound,Outbound Sales,Outbound,latam,LATAM,Healthcare,2024-02-01
+C0412,Software Cloud 412,growth,Growth,SMB,plg,Product-Led,PLG,apac,APAC,Software,2025-08-01
+C0413,Financial Cloud 413,scale,Scale,Mid-Market,partner,Partner Ecosystem,Partner,latam,LATAM,Financial Services,2025-08-01
+C0414,Manufacturing Cloud 414,starter,Starter,SMB,outbound,Outbound Sales,Outbound,na,North America,Manufacturing,2025-06-01
+C0415,Software Cloud 415,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Software,2026-02-01
+C0416,Logistics Cloud 416,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Logistics,2025-09-01
+C0417,Education Cloud 417,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Education,2024-06-01
+C0418,Logistics Cloud 418,growth,Growth,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Logistics,2025-03-01
+C0419,Retail Cloud 419,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Retail,2024-08-01
+C0420,Manufacturing Cloud 420,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Manufacturing,2024-02-01
+C0421,Financial Cloud 421,growth,Growth,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Financial Services,2024-03-01
+C0422,Logistics Cloud 422,starter,Starter,SMB,inbound,Inbound Demand,Inbound,latam,LATAM,Logistics,2024-06-01
+C0423,Retail Cloud 423,growth,Growth,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Retail,2025-06-01
+C0424,Manufacturing Cloud 424,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,na,North America,Manufacturing,2025-10-01
+C0425,Software Cloud 425,starter,Starter,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Software,2025-01-01
+C0426,Manufacturing Cloud 426,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,na,North America,Manufacturing,2024-01-01
+C0427,Financial Cloud 427,scale,Scale,Mid-Market,plg,Product-Led,PLG,na,North America,Financial Services,2024-04-01
+C0428,Software Cloud 428,business,Business,Mid-Market,plg,Product-Led,PLG,apac,APAC,Software,2025-11-01
+C0429,Software Cloud 429,enterprise,Enterprise,Enterprise,outbound,Outbound Sales,Outbound,na,North America,Software,2025-07-01
+C0430,Healthcare Cloud 430,starter,Starter,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Healthcare,2025-06-01
+C0431,Manufacturing Cloud 431,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,emea,EMEA,Manufacturing,2025-05-01
+C0432,Software Cloud 432,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,emea,EMEA,Software,2024-09-01
+C0433,Financial Cloud 433,growth,Growth,SMB,expansion,Customer Success,Expansion,apac,APAC,Financial Services,2025-05-01
+C0434,Manufacturing Cloud 434,growth,Growth,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Manufacturing,2025-04-01
+C0435,Software Cloud 435,starter,Starter,SMB,inbound,Inbound Demand,Inbound,latam,LATAM,Software,2025-06-01
+C0436,Retail Cloud 436,enterprise,Enterprise,Enterprise,partner,Partner Ecosystem,Partner,emea,EMEA,Retail,2025-04-01
+C0437,Logistics Cloud 437,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Logistics,2025-08-01
+C0438,Retail Cloud 438,growth,Growth,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Retail,2024-05-01
+C0439,Healthcare Cloud 439,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Healthcare,2024-03-01
+C0440,Education Cloud 440,growth,Growth,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Education,2024-01-01
+C0441,Manufacturing Cloud 441,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Manufacturing,2024-01-01
+C0442,Healthcare Cloud 442,growth,Growth,SMB,plg,Product-Led,PLG,emea,EMEA,Healthcare,2024-01-01
+C0443,Healthcare Cloud 443,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Healthcare,2025-09-01
+C0444,Education Cloud 444,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,emea,EMEA,Education,2024-08-01
+C0445,Retail Cloud 445,growth,Growth,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Retail,2024-02-01
+C0446,Retail Cloud 446,starter,Starter,SMB,outbound,Outbound Sales,Outbound,latam,LATAM,Retail,2024-12-01
+C0447,Software Cloud 447,growth,Growth,SMB,expansion,Customer Success,Expansion,emea,EMEA,Software,2025-04-01
+C0448,Logistics Cloud 448,growth,Growth,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Logistics,2025-06-01
+C0449,Financial Cloud 449,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,latam,LATAM,Financial Services,2024-04-01
+C0450,Education Cloud 450,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Education,2025-05-01
+C0451,Logistics Cloud 451,starter,Starter,SMB,plg,Product-Led,PLG,latam,LATAM,Logistics,2024-06-01
+C0452,Retail Cloud 452,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,na,North America,Retail,2025-01-01
+C0453,Manufacturing Cloud 453,growth,Growth,SMB,partner,Partner Ecosystem,Partner,na,North America,Manufacturing,2025-05-01
+C0454,Logistics Cloud 454,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,apac,APAC,Logistics,2024-09-01
+C0455,Logistics Cloud 455,starter,Starter,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Logistics,2026-02-01
+C0456,Healthcare Cloud 456,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Healthcare,2024-11-01
+C0457,Software Cloud 457,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Software,2024-04-01
+C0458,Retail Cloud 458,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Retail,2024-04-01
+C0459,Financial Cloud 459,business,Business,Mid-Market,outbound,Outbound Sales,Outbound,apac,APAC,Financial Services,2024-06-01
+C0460,Financial Cloud 460,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Financial Services,2025-02-01
+C0461,Manufacturing Cloud 461,growth,Growth,SMB,partner,Partner Ecosystem,Partner,latam,LATAM,Manufacturing,2024-06-01
+C0462,Software Cloud 462,starter,Starter,SMB,plg,Product-Led,PLG,emea,EMEA,Software,2024-05-01
+C0463,Logistics Cloud 463,growth,Growth,SMB,plg,Product-Led,PLG,emea,EMEA,Logistics,2026-01-01
+C0464,Software Cloud 464,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Software,2024-10-01
+C0465,Manufacturing Cloud 465,growth,Growth,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Manufacturing,2026-01-01
+C0466,Manufacturing Cloud 466,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Manufacturing,2024-03-01
+C0467,Education Cloud 467,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,emea,EMEA,Education,2024-12-01
+C0468,Financial Cloud 468,growth,Growth,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Financial Services,2024-12-01
+C0469,Logistics Cloud 469,growth,Growth,SMB,outbound,Outbound Sales,Outbound,na,North America,Logistics,2024-04-01
+C0470,Software Cloud 470,growth,Growth,SMB,expansion,Customer Success,Expansion,apac,APAC,Software,2024-05-01
+C0471,Healthcare Cloud 471,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Healthcare,2024-02-01
+C0472,Education Cloud 472,growth,Growth,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Education,2024-03-01
+C0473,Logistics Cloud 473,scale,Scale,Mid-Market,plg,Product-Led,PLG,na,North America,Logistics,2024-08-01
+C0474,Software Cloud 474,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Software,2026-03-01
+C0475,Software Cloud 475,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,latam,LATAM,Software,2024-05-01
+C0476,Healthcare Cloud 476,starter,Starter,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Healthcare,2025-11-01
+C0477,Financial Cloud 477,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Financial Services,2025-03-01
+C0478,Software Cloud 478,enterprise,Enterprise,Enterprise,inbound,Inbound Demand,Inbound,na,North America,Software,2025-07-01
+C0479,Software Cloud 479,business,Business,Mid-Market,expansion,Customer Success,Expansion,apac,APAC,Software,2024-09-01
+C0480,Logistics Cloud 480,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,latam,LATAM,Logistics,2025-01-01
+C0481,Healthcare Cloud 481,growth,Growth,SMB,plg,Product-Led,PLG,emea,EMEA,Healthcare,2025-07-01
+C0482,Healthcare Cloud 482,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Healthcare,2025-02-01
+C0483,Logistics Cloud 483,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Logistics,2026-05-01
+C0484,Financial Cloud 484,scale,Scale,Mid-Market,outbound,Outbound Sales,Outbound,na,North America,Financial Services,2025-10-01
+C0485,Financial Cloud 485,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Financial Services,2024-02-01
+C0486,Education Cloud 486,starter,Starter,SMB,expansion,Customer Success,Expansion,na,North America,Education,2025-07-01
+C0487,Healthcare Cloud 487,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Healthcare,2024-07-01
+C0488,Retail Cloud 488,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Retail,2024-01-01
+C0489,Education Cloud 489,growth,Growth,SMB,partner,Partner Ecosystem,Partner,na,North America,Education,2025-02-01
+C0490,Software Cloud 490,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Software,2025-03-01
+C0491,Education Cloud 491,scale,Scale,Mid-Market,plg,Product-Led,PLG,apac,APAC,Education,2025-02-01
+C0492,Financial Cloud 492,starter,Starter,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Financial Services,2026-01-01
+C0493,Software Cloud 493,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Software,2026-02-01
+C0494,Retail Cloud 494,starter,Starter,SMB,plg,Product-Led,PLG,apac,APAC,Retail,2024-09-01
+C0495,Software Cloud 495,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Software,2024-12-01
+C0496,Education Cloud 496,growth,Growth,SMB,outbound,Outbound Sales,Outbound,apac,APAC,Education,2024-09-01
+C0497,Logistics Cloud 497,growth,Growth,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Logistics,2025-09-01
+C0498,Healthcare Cloud 498,scale,Scale,Mid-Market,inbound,Inbound Demand,Inbound,emea,EMEA,Healthcare,2026-04-01
+C0499,Software Cloud 499,starter,Starter,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Software,2024-08-01
+C0500,Retail Cloud 500,starter,Starter,SMB,plg,Product-Led,PLG,na,North America,Retail,2024-11-01
+C0501,Financial Cloud 501,starter,Starter,SMB,inbound,Inbound Demand,Inbound,apac,APAC,Financial Services,2026-02-01
+C0502,Software Cloud 502,business,Business,Mid-Market,plg,Product-Led,PLG,apac,APAC,Software,2025-09-01
+C0503,Healthcare Cloud 503,starter,Starter,SMB,outbound,Outbound Sales,Outbound,emea,EMEA,Healthcare,2024-12-01
+C0504,Software Cloud 504,enterprise,Enterprise,Enterprise,inbound,Inbound Demand,Inbound,na,North America,Software,2026-01-01
+C0505,Healthcare Cloud 505,starter,Starter,SMB,inbound,Inbound Demand,Inbound,na,North America,Healthcare,2025-03-01
+C0506,Healthcare Cloud 506,business,Business,Mid-Market,plg,Product-Led,PLG,emea,EMEA,Healthcare,2024-06-01
+C0507,Software Cloud 507,growth,Growth,SMB,partner,Partner Ecosystem,Partner,emea,EMEA,Software,2025-04-01
+C0508,Healthcare Cloud 508,starter,Starter,SMB,inbound,Inbound Demand,Inbound,emea,EMEA,Healthcare,2024-06-01
+C0509,Retail Cloud 509,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Retail,2026-03-01
+C0510,Education Cloud 510,business,Business,Mid-Market,inbound,Inbound Demand,Inbound,na,North America,Education,2024-04-01
+C0511,Education Cloud 511,scale,Scale,Mid-Market,expansion,Customer Success,Expansion,latam,LATAM,Education,2024-08-01
+C0512,Manufacturing Cloud 512,starter,Starter,SMB,partner,Partner Ecosystem,Partner,na,North America,Manufacturing,2024-10-01
+C0513,Education Cloud 513,business,Business,Mid-Market,partner,Partner Ecosystem,Partner,latam,LATAM,Education,2025-09-01
+C0514,Manufacturing Cloud 514,growth,Growth,SMB,plg,Product-Led,PLG,emea,EMEA,Manufacturing,2024-01-01
+C0515,Retail Cloud 515,starter,Starter,SMB,plg,Product-Led,PLG,emea,EMEA,Retail,2024-09-01
+C0516,Software Cloud 516,growth,Growth,SMB,plg,Product-Led,PLG,na,North America,Software,2024-03-01
+C0517,Retail Cloud 517,starter,Starter,SMB,partner,Partner Ecosystem,Partner,apac,APAC,Retail,2024-01-01
+C0518,Education Cloud 518,starter,Starter,SMB,inbound,Inbound Demand,Inbound,latam,LATAM,Education,2024-04-01
+C0519,Logistics Cloud 519,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Logistics,2024-11-01
+C0520,Education Cloud 520,growth,Growth,SMB,inbound,Inbound Demand,Inbound,na,North America,Education,2024-12-01

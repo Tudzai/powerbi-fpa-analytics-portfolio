@@ -1,0 +1,22 @@
+[
+  {
+    "slicer": "Period",
+    "field": "DimDate[date_id]",
+    "default": "2026-05"
+  },
+  {
+    "slicer": "Region",
+    "field": "DimEntity[region]",
+    "default": "All"
+  },
+  {
+    "slicer": "Entity",
+    "field": "DimEntity[entity_id]",
+    "default": "All"
+  },
+  {
+    "slicer": "Business Unit",
+    "field": "DimBusinessUnit[business_unit]",
+    "default": "All"
+  }
+]

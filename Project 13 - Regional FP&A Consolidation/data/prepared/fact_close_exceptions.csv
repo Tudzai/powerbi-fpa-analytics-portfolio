@@ -1,0 +1,76 @@
+exception_id,date_id,entity_id,country,region,exception_type,owner_team,severity,status,amount_usd,due_date,commentary,is_synthetic
+EX001,2026-05,AUS01,Australia,ANZ,Intercompany Mismatch,Regional Controllership,High,Closed,135265.99,2026-05-30,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX002,2025-12,VNM01,Vietnam,SEA South,AR Aging Spike,Credit Control,Low,Action Agreed,225089.9,2026-01-03,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX003,2026-05,IDN01,Indonesia,SEA South,Intercompany Mismatch,Regional Controllership,Low,Closed,16059.49,2026-05-25,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX004,2026-02,AUS01,Australia,ANZ,FX Rate Pending,Treasury,Medium,Closed,45895.06,2026-02-18,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX005,2026-02,SGP01,Singapore,SEA North,FX Rate Pending,Treasury,Medium,Action Agreed,17385.55,2026-02-13,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX006,2025-11,VNM01,Vietnam,SEA South,Intercompany Mismatch,Regional Controllership,High,Open,171170.79,2025-11-29,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX007,2026-01,IDN01,Indonesia,SEA South,Intercompany Mismatch,Regional Controllership,Medium,Closed,125146.32,2026-01-30,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX008,2025-12,PHL01,Philippines,SEA North,Manual Journal Review,FP&A,Medium,Open,101235.02,2025-12-22,Manual Journal Review requires FP&A follow-up before regional close pack sign-off.,TRUE
+EX009,2026-01,VNM01,Vietnam,SEA South,Manual Journal Review,FP&A,Medium,Action Agreed,122690.64,2026-01-14,Manual Journal Review requires FP&A follow-up before regional close pack sign-off.,TRUE
+EX010,2026-04,IDN01,Indonesia,SEA South,Budget Mapping Exception,FP&A Systems,Medium,Open,78566.34,2026-04-27,Budget Mapping Exception requires FP&A Systems follow-up before regional close pack sign-off.,TRUE
+EX011,2026-03,PHL01,Philippines,SEA North,Late Entity Close,Local Finance,Medium,Open,259971.43,2026-03-21,Late Entity Close requires Local Finance follow-up before regional close pack sign-off.,TRUE
+EX012,2026-02,IDN01,Indonesia,SEA South,Manual Journal Review,FP&A,Low,Open,178212.11,2026-02-17,Manual Journal Review requires FP&A follow-up before regional close pack sign-off.,TRUE
+EX013,2026-04,VNM01,Vietnam,SEA South,AR Aging Spike,Credit Control,Low,In Review,156769.02,2026-04-24,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX014,2026-05,THA01,Thailand,SEA North,FX Rate Pending,Treasury,Medium,In Review,25882.07,2026-06-04,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX015,2025-12,VNM01,Vietnam,SEA South,Late Entity Close,Local Finance,Medium,Closed,178148.62,2025-12-21,Late Entity Close requires Local Finance follow-up before regional close pack sign-off.,TRUE
+EX016,2026-02,SGP01,Singapore,SEA North,FX Rate Pending,Treasury,High,Open,403656.84,2026-02-19,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX017,2026-04,VNM01,Vietnam,SEA South,Budget Mapping Exception,FP&A Systems,Medium,In Review,47743.35,2026-04-30,Budget Mapping Exception requires FP&A Systems follow-up before regional close pack sign-off.,TRUE
+EX018,2026-02,IDN01,Indonesia,SEA South,AR Aging Spike,Credit Control,Medium,Open,208530.19,2026-02-23,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX019,2026-02,AUS01,Australia,ANZ,Manual Journal Review,FP&A,Medium,Open,117190.33,2026-03-06,Manual Journal Review requires FP&A follow-up before regional close pack sign-off.,TRUE
+EX020,2025-11,VNM01,Vietnam,SEA South,Intercompany Mismatch,Regional Controllership,Medium,In Review,83036.82,2025-11-15,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX021,2026-02,MYS01,Malaysia,SEA South,Budget Mapping Exception,FP&A Systems,Medium,Action Agreed,206203.04,2026-02-20,Budget Mapping Exception requires FP&A Systems follow-up before regional close pack sign-off.,TRUE
+EX022,2026-04,VNM01,Vietnam,SEA South,AR Aging Spike,Credit Control,High,Action Agreed,238733.88,2026-05-04,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX023,2026-02,SGP01,Singapore,SEA North,Intercompany Mismatch,Regional Controllership,Low,Action Agreed,108550.07,2026-03-06,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX024,2025-12,SGP01,Singapore,SEA North,AR Aging Spike,Credit Control,Medium,Open,17912.52,2026-01-05,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX025,2025-11,PHL01,Philippines,SEA North,Late Entity Close,Local Finance,High,Action Agreed,410493.12,2025-11-12,Late Entity Close requires Local Finance follow-up before regional close pack sign-off.,TRUE
+EX026,2026-01,THA01,Thailand,SEA North,FX Rate Pending,Treasury,Medium,Closed,32077.14,2026-01-22,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX027,2026-02,AUS01,Australia,ANZ,FX Rate Pending,Treasury,Medium,Closed,225001.31,2026-02-12,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX028,2025-12,SGP01,Singapore,SEA North,Late Entity Close,Local Finance,High,Open,281811.43,2026-01-03,Late Entity Close requires Local Finance follow-up before regional close pack sign-off.,TRUE
+EX029,2026-04,MYS01,Malaysia,SEA South,FX Rate Pending,Treasury,High,Action Agreed,274483.61,2026-04-27,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX030,2025-12,THA01,Thailand,SEA North,AR Aging Spike,Credit Control,High,Action Agreed,348499.54,2025-12-22,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX031,2026-04,IDN01,Indonesia,SEA South,AR Aging Spike,Credit Control,Medium,Action Agreed,204922.94,2026-04-24,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX032,2025-11,AUS01,Australia,ANZ,Intercompany Mismatch,Regional Controllership,Medium,Action Agreed,185538.39,2025-12-04,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX033,2026-02,SGP01,Singapore,SEA North,Manual Journal Review,FP&A,Medium,In Review,91135.32,2026-02-19,Manual Journal Review requires FP&A follow-up before regional close pack sign-off.,TRUE
+EX034,2026-05,AUS01,Australia,ANZ,FX Rate Pending,Treasury,High,Open,415176.67,2026-05-13,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX035,2026-02,VNM01,Vietnam,SEA South,AR Aging Spike,Credit Control,Low,Open,114664.6,2026-03-08,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX036,2026-04,VNM01,Vietnam,SEA South,Late Entity Close,Local Finance,Medium,In Review,141287.89,2026-04-25,Late Entity Close requires Local Finance follow-up before regional close pack sign-off.,TRUE
+EX037,2026-05,PHL01,Philippines,SEA North,AR Aging Spike,Credit Control,Medium,Action Agreed,234088.96,2026-05-26,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX038,2026-02,THA01,Thailand,SEA North,Budget Mapping Exception,FP&A Systems,Low,Open,29404.87,2026-03-03,Budget Mapping Exception requires FP&A Systems follow-up before regional close pack sign-off.,TRUE
+EX039,2025-12,VNM01,Vietnam,SEA South,Manual Journal Review,FP&A,Low,Open,113971.01,2025-12-23,Manual Journal Review requires FP&A follow-up before regional close pack sign-off.,TRUE
+EX040,2026-01,PHL01,Philippines,SEA North,Budget Mapping Exception,FP&A Systems,Low,Action Agreed,72320.99,2026-02-04,Budget Mapping Exception requires FP&A Systems follow-up before regional close pack sign-off.,TRUE
+EX041,2026-02,MYS01,Malaysia,SEA South,Late Entity Close,Local Finance,Medium,Closed,239853.4,2026-03-05,Late Entity Close requires Local Finance follow-up before regional close pack sign-off.,TRUE
+EX042,2025-11,MYS01,Malaysia,SEA South,FX Rate Pending,Treasury,Medium,Closed,42002.75,2025-12-04,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX043,2025-12,PHL01,Philippines,SEA North,Manual Journal Review,FP&A,Low,In Review,217503.13,2025-12-31,Manual Journal Review requires FP&A follow-up before regional close pack sign-off.,TRUE
+EX044,2026-03,PHL01,Philippines,SEA North,AR Aging Spike,Credit Control,Medium,Open,65364.73,2026-03-19,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX045,2026-02,PHL01,Philippines,SEA North,Manual Journal Review,FP&A,Low,Open,99661.21,2026-02-19,Manual Journal Review requires FP&A follow-up before regional close pack sign-off.,TRUE
+EX046,2026-03,AUS01,Australia,ANZ,Late Entity Close,Local Finance,Low,Action Agreed,26286.1,2026-03-21,Late Entity Close requires Local Finance follow-up before regional close pack sign-off.,TRUE
+EX047,2025-11,IDN01,Indonesia,SEA South,Intercompany Mismatch,Regional Controllership,Low,Action Agreed,168696.66,2025-12-07,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX048,2026-02,MYS01,Malaysia,SEA South,FX Rate Pending,Treasury,Low,Closed,128555.3,2026-02-15,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX049,2026-05,IDN01,Indonesia,SEA South,Intercompany Mismatch,Regional Controllership,Low,Open,220970.86,2026-05-28,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX050,2026-01,MYS01,Malaysia,SEA South,Manual Journal Review,FP&A,Medium,Open,247753.28,2026-01-13,Manual Journal Review requires FP&A follow-up before regional close pack sign-off.,TRUE
+EX051,2026-05,AUS01,Australia,ANZ,FX Rate Pending,Treasury,Low,Closed,179680.55,2026-05-31,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX052,2025-11,PHL01,Philippines,SEA North,FX Rate Pending,Treasury,High,Open,281293.25,2025-11-16,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX053,2026-01,PHL01,Philippines,SEA North,Intercompany Mismatch,Regional Controllership,Medium,Action Agreed,59270.52,2026-01-19,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX054,2025-11,AUS01,Australia,ANZ,Late Entity Close,Local Finance,Low,In Review,121157.52,2025-11-20,Late Entity Close requires Local Finance follow-up before regional close pack sign-off.,TRUE
+EX055,2026-02,MYS01,Malaysia,SEA South,AR Aging Spike,Credit Control,Medium,Action Agreed,53871.16,2026-02-25,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX056,2026-05,IDN01,Indonesia,SEA South,FX Rate Pending,Treasury,Low,In Review,237144.51,2026-05-21,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX057,2025-11,PHL01,Philippines,SEA North,FX Rate Pending,Treasury,High,Action Agreed,438831.87,2025-12-05,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX058,2026-05,THA01,Thailand,SEA North,Manual Journal Review,FP&A,Medium,In Review,136416.79,2026-05-30,Manual Journal Review requires FP&A follow-up before regional close pack sign-off.,TRUE
+EX059,2026-05,SGP01,Singapore,SEA North,AR Aging Spike,Credit Control,Medium,In Review,203166.64,2026-05-26,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX060,2025-11,MYS01,Malaysia,SEA South,AR Aging Spike,Credit Control,Medium,Open,231223.39,2025-12-07,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX061,2026-05,MYS01,Malaysia,SEA South,Budget Mapping Exception,FP&A Systems,Low,Open,136193.07,2026-06-05,Budget Mapping Exception requires FP&A Systems follow-up before regional close pack sign-off.,TRUE
+EX062,2026-01,THA01,Thailand,SEA North,Budget Mapping Exception,FP&A Systems,Medium,Action Agreed,58124.6,2026-02-04,Budget Mapping Exception requires FP&A Systems follow-up before regional close pack sign-off.,TRUE
+EX063,2026-02,AUS01,Australia,ANZ,Budget Mapping Exception,FP&A Systems,High,In Review,247204.55,2026-02-12,Budget Mapping Exception requires FP&A Systems follow-up before regional close pack sign-off.,TRUE
+EX064,2025-12,IDN01,Indonesia,SEA South,FX Rate Pending,Treasury,Medium,Action Agreed,255936.16,2025-12-22,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX065,2026-05,VNM01,Vietnam,SEA South,Late Entity Close,Local Finance,Medium,Action Agreed,156688.08,2026-05-26,Late Entity Close requires Local Finance follow-up before regional close pack sign-off.,TRUE
+EX066,2026-05,MYS01,Malaysia,SEA South,AR Aging Spike,Credit Control,Medium,Action Agreed,255437.07,2026-05-28,AR Aging Spike requires Credit Control follow-up before regional close pack sign-off.,TRUE
+EX067,2025-12,THA01,Thailand,SEA North,Intercompany Mismatch,Regional Controllership,Low,Closed,97496.49,2026-01-01,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX068,2026-03,THA01,Thailand,SEA North,Budget Mapping Exception,FP&A Systems,Low,Open,37762.63,2026-04-06,Budget Mapping Exception requires FP&A Systems follow-up before regional close pack sign-off.,TRUE
+EX069,2026-03,SGP01,Singapore,SEA North,FX Rate Pending,Treasury,High,Action Agreed,269226.35,2026-03-20,FX Rate Pending requires Treasury follow-up before regional close pack sign-off.,TRUE
+EX070,2026-02,VNM01,Vietnam,SEA South,Intercompany Mismatch,Regional Controllership,Low,Action Agreed,159030.09,2026-03-03,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX071,2026-03,PHL01,Philippines,SEA North,Budget Mapping Exception,FP&A Systems,Low,Action Agreed,30047.76,2026-03-21,Budget Mapping Exception requires FP&A Systems follow-up before regional close pack sign-off.,TRUE
+EX072,2026-03,MYS01,Malaysia,SEA South,Intercompany Mismatch,Regional Controllership,Medium,Closed,177847.66,2026-03-29,Intercompany Mismatch requires Regional Controllership follow-up before regional close pack sign-off.,TRUE
+EX073,2026-02,IDN01,Indonesia,SEA South,Late Entity Close,Local Finance,Medium,Closed,229943.96,2026-02-20,Late Entity Close requires Local Finance follow-up before regional close pack sign-off.,TRUE
+EX074,2025-11,IDN01,Indonesia,SEA South,Budget Mapping Exception,FP&A Systems,High,Open,424481.9,2025-11-12,Budget Mapping Exception requires FP&A Systems follow-up before regional close pack sign-off.,TRUE
+EX075,2026-04,VNM01,Vietnam,SEA South,Late Entity Close,Local Finance,Low,Closed,130045.23,2026-05-02,Late Entity Close requires Local Finance follow-up before regional close pack sign-off.,TRUE

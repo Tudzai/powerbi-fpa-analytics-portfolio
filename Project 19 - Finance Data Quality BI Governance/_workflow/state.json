@@ -1,0 +1,10 @@
+{
+  "status": "pbip_seed_ready_pbix_pending",
+  "final_pbix_path": "output/dashboard_final.pbix",
+  "pages": [
+    "Governance Overview",
+    "Reliability & Quality",
+    "Adoption & Controls"
+  ],
+  "seed": 20260615
+}

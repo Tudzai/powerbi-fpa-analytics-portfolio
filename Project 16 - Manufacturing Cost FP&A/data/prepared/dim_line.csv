@@ -1,0 +1,13 @@
+line_id,plant_id,line_name,product_line,monthly_capacity_units,shift_count,plant_name
+L01,P01,SMT Line 1,Electronics Assembly,89000,2.1,Bac Ninh Electronics
+L02,P01,SMT Line 2,Electronics Assembly,76000,2.0,Bac Ninh Electronics
+L03,P02,CNC Cell 1,Precision Parts,43000,2.4,HCMC Precision
+L04,P02,CNC Cell 2,Precision Parts,39000,2.2,HCMC Precision
+L05,P02,Assembly Cell,Industrial Components,34000,2.0,HCMC Precision
+L06,P03,Mixed Assembly,Electronics Assembly,54000,1.8,Da Nang Assembly
+L07,P03,Packaging Cell,Packaging Systems,63000,1.7,Da Nang Assembly
+L08,P04,Foundry Cell,Industrial Components,28000,2.5,Rayong Components
+L09,P04,Machining Cell,Precision Parts,36000,2.3,Rayong Components
+L10,P05,Packaging Line 1,Packaging Systems,92000,2.0,Johor Packaging Systems
+L11,P05,Packaging Line 2,Packaging Systems,84000,2.0,Johor Packaging Systems
+L12,P05,Final Assembly,Industrial Components,31000,1.9,Johor Packaging Systems

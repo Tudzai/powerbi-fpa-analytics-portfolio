@@ -1,0 +1,125 @@
+{
+  "source_type": "synthetic_demo",
+  "seed": 160416,
+  "generated_on": "2026-06-15",
+  "tables": {
+    "dim_date": {
+      "rows": 29,
+      "columns": [
+        "date_key",
+        "month_start_date",
+        "year_month",
+        "year",
+        "quarter",
+        "month_no",
+        "month_name",
+        "month_index",
+        "is_latest_complete_month"
+      ]
+    },
+    "dim_plant": {
+      "rows": 5,
+      "columns": [
+        "plant_id",
+        "plant_name",
+        "region",
+        "country",
+        "productivity_index",
+        "labor_rate_usd",
+        "fixed_overhead_rate_usd",
+        "material_price_index"
+      ]
+    },
+    "dim_product": {
+      "rows": 24,
+      "columns": [
+        "product_id",
+        "product",
+        "product_line",
+        "lifecycle_stage",
+        "standard_price_usd",
+        "standard_material_cost_usd",
+        "standard_labor_hours",
+        "standard_machine_hours",
+        "complexity_index",
+        "base_monthly_units"
+      ]
+    },
+    "dim_line": {
+      "rows": 12,
+      "columns": [
+        "line_id",
+        "plant_id",
+        "line_name",
+        "product_line",
+        "monthly_capacity_units",
+        "shift_count",
+        "plant_name"
+      ]
+    },
+    "dim_scenario": {
+      "rows": 6,
+      "columns": [
+        "scenario_id",
+        "scenario_name",
+        "material_cost_reduction_pct",
+        "labor_efficiency_gain_pct",
+        "overhead_absorption_gain_pct",
+        "scrap_reduction_pct",
+        "volume_delta_pct",
+        "description"
+      ]
+    },
+    "fact_manufacturing_month": {
+      "rows": 2088,
+      "columns": [
+        "date_key",
+        "month_start_date",
+        "year_month",
+        "month_index",
+        "plant_id",
+        "line_id",
+        "product_id",
+        "budget_units",
+        "produced_units",
+        "good_units",
+        "scrap_units",
+        "rework_units",
+        "capacity_units",
+        "available_hours",
+        "run_hours",
+        "downtime_hours",
+        "actual_revenue",
+        "budget_revenue",
+        "standard_material_cost",
+        "standard_labor_cost",
+        "standard_overhead_cost",
+        "standard_cogs",
+        "actual_material_cost",
+        "actual_labor_cost",
+        "actual_overhead_cost",
+        "scrap_cost",
+        "rework_cost",
+        "actual_cogs",
+        "material_variance",
+        "labor_variance",
+        "overhead_variance",
+        "yield_loss_cost",
+        "gross_margin",
+        "inventory_units",
+        "inventory_value",
+        "slow_moving_inventory_value"
+      ]
+    },
+    "fact_cost_variance_bridge": {
+      "rows": 6,
+      "columns": [
+        "year_month",
+        "bridge_order",
+        "bridge_step",
+        "bridge_amount",
+        "bridge_type"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1 @@
+Star-schema finance model with conformed date and scenario dimensions. P&L facts support business unit and region cuts; cash, valuation, covenant, and risk tables support board/investor scenario review.

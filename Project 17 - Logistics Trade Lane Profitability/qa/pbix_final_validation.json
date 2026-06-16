@@ -1,0 +1,38 @@
+{
+  "status": "pass",
+  "final_output": "output/dashboard_final.pbix",
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix",
+  "final_pbix_bytes_after_desktop_save": 703756,
+  "build_route": "SCRIPTED_DESKTOP_PBIX",
+  "opened_exact_file": true,
+  "desktop_process_id": 52512,
+  "desktop_window_handle": 725102,
+  "desktop_port": 55623,
+  "desktop_save_pass": true,
+  "saved_reopened_after_layout_patch": true,
+  "page_count": 3,
+  "pages": [
+    "Executive Overview",
+    "Trade Lane Margin",
+    "Cost Drivers & Action Queue"
+  ],
+  "visual_containers": 56,
+  "visual_type_counts": {
+    "cardVisual": 18,
+    "slicer": 9,
+    "textbox": 9,
+    "shape": 6,
+    "tableEx": 5,
+    "barChart": 3,
+    "columnChart": 2,
+    "donutChart": 2,
+    "waterfallChart": 2
+  },
+  "visual_error_count": 0,
+  "render_check": {
+    "power_bi_accessibility_error_scan": "No Something went wrong, Failed to load, rendering error, or Visuals are loading text after repair.",
+    "known_repair": "Initial patch used a minimal top-level Report/Layout before seed existed; regenerated layout from the saved seed PBIX and repatched final."
+  },
+  "package_validation": "PowerBIPackager.Validate passed for output and final PBIX",
+  "validated_at": "2026-06-15 03:06 +07:00"
+}

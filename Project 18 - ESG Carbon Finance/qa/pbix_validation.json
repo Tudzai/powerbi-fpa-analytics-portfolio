@@ -1,0 +1,13 @@
+{
+  "final_pbix_path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_final.pbix",
+  "opened_in_power_bi_desktop": false,
+  "saved_after_open": false,
+  "page_count": 0,
+  "visual_count": 0,
+  "visual_error_count": null,
+  "screenshots": [],
+  "qa_status": "pending_desktop_build",
+  "known_issues": [
+    "Final PBIX is not validated until Desktop conversion/save and visual QA complete."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "project": "Project 18 - ESG Carbon Finance",
+  "data_mode": "synthetic_demo",
+  "seed": 180418,
+  "source_owner": "Portfolio demo",
+  "source_location": "data/raw and data/prepared",
+  "latest_complete_month": "2026-05",
+  "date_range": {
+    "start": "2024-01",
+    "end": "2026-05"
+  },
+  "grain": "Monthly emission activity record by facility, business unit, supplier where applicable, and activity source.",
+  "prepared_tables": [
+    "dim_date.csv",
+    "dim_business_unit.csv",
+    "dim_facility.csv",
+    "dim_activity.csv",
+    "dim_supplier.csv",
+    "dim_carbon_scenario.csv",
+    "fact_emissions.csv",
+    "fact_supplier_month.csv",
+    "fact_carbon_exposure.csv",
+    "fact_abatement_initiatives.csv",
+    "powerbi_flat_emissions.csv"
+  ],
+  "source_caveat": "Synthetic data for portfolio/demo use only; do not use as production ESG reporting evidence."
+}

@@ -1,0 +1,19 @@
+{
+  "source_type": "synthetic portfolio demo",
+  "seed": 20260615,
+  "as_of_date": "2026-06-15",
+  "latest_complete_month": "May 2026",
+  "row_counts": {
+    "DimDate": 516,
+    "DimDataset": 12,
+    "DimReport": 9,
+    "DimDepartment": 8,
+    "FactDatasetDaily": 6192,
+    "FactRefreshRuns": 6192,
+    "FactReconciliation": 612,
+    "FactUsage": 4644,
+    "FactAccessReview": 1224,
+    "FactIncidents": 240
+  },
+  "note": "Synthetic data models finance BI governance operations; no production data is used."
+}

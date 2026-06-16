@@ -1,0 +1,25 @@
+supplier_id,supplier,supplier_category,supplier_country,carbon_risk_tier,target_status,data_quality_score
+S001,Astra Materials,Packaging,Thailand,Medium,SBTi committed,0.78
+S002,BlueRiver Logistics,Components,China,High,No verified target,0.94
+S003,Canopy Packaging,Energy,India,Medium,Renewable PPA,0.9
+S004,Delta Metals,Travel,Germany,Low,No verified target,0.64
+S005,EastGrid Energy,Logistics,Netherlands,Medium,No verified target,0.91
+S006,Forest Fiber Co,Facilities,United States,Medium,Renewable PPA,0.76
+S007,GreenPulse Freight,Materials,Mexico,High,Supplier target,0.95
+S008,Harbor Components,Packaging,Malaysia,Low,Renewable PPA,0.81
+S009,Indigo Chemicals,Components,Japan,Medium,Supplier target,0.91
+S010,Jade Electronics,Energy,Vietnam,High,Supplier target,0.81
+S011,Keystone Plastics,Travel,Thailand,Medium,Supplier target,0.87
+S012,Lumen Utilities,Logistics,China,Low,Renewable PPA,0.79
+S013,Mekong Transport,Facilities,India,Medium,Supplier target,0.76
+S014,Nova Textiles,Materials,Germany,High,Renewable PPA,0.9
+S015,Orchid Facilities,Packaging,Netherlands,Medium,Renewable PPA,0.91
+S016,Pacific Cold Chain,Components,United States,High,Renewable PPA,0.82
+S017,Quantum Parts,Energy,Mexico,High,No verified target,0.71
+S018,RiverStone Cement,Travel,Malaysia,Medium,SBTi committed,0.96
+S019,Solaris Power,Logistics,Japan,Medium,SBTi committed,0.74
+S020,Terra Warehousing,Facilities,Vietnam,Low,Supplier target,0.8
+S021,Urban Mobility,Materials,Thailand,Medium,No verified target,0.82
+S022,Vector Metals,Packaging,China,Medium,Renewable PPA,0.7
+S023,Willow Office Supply,Components,India,High,Renewable PPA,0.73
+S024,Zenith Packaging,Energy,Germany,Low,Renewable PPA,0.77

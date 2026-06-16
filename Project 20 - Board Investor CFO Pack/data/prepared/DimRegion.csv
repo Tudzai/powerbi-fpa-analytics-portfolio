@@ -1,0 +1,5 @@
+RegionID,Region,RegionMaturity,MixWeight,DemandIndex
+americas,Americas,Core,0.5,1.14
+emea,EMEA,Core,0.25,0.96
+apac,APAC,Growth,0.18,0.83
+latam,LATAM,Emerging,0.07,0.62

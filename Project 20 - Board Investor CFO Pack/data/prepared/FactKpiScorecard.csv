@@ -1,0 +1,9 @@
+MetricName,MetricFamily,ActualDisplay,PlanDisplay,VarianceDisplay,Status,BoardNarrative,SortOrder
+Revenue,Growth,$36.5M,$35.3M,3.5%,Clear,Revenue remains near board plan.,1
+Gross Margin,Profitability,77.8%,76.0%,+1.8 pts,Clear,Margin expansion depends on cloud cost savings.,2
+EBITDA,Profitability,$15.3M,$12.5M,22.8%,Clear,EBITDA gap is concentrated in GTM timing.,3
+Cash Balance,Liquidity,$376.3M,$55.0M,584.2%,Clear,Cash balance supports planned investment cadence.,4
+Runway,Liquidity,99.0x,24.0x,+75.0x,Clear,Runway is board-visible under downside scenario.,5
+Funding Need,Liquidity,$0,$0,0.0%,Clear,Funding trigger becomes active when runway target is below 24 months.,6
+Leverage,Covenant,0.2x,3.5x,-3.3x,Clear,Leverage covenant has adequate base-case headroom.,7
+Interest Coverage,Covenant,55.0x,2.0x,+53.0x,Clear,Coverage remains above lender threshold.,8

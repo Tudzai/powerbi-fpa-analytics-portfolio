@@ -1,0 +1,13 @@
+{
+  "status": "BLOCKED_PBIX_PERSISTENCE",
+  "reason": "PBIX seed/layout and live Desktop model are prepared, but the Desktop save did not persist the Project 16 DataModel to the PBIX package on disk.",
+  "expected_final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\output\\dashboard_final.pbix",
+  "validated_outputs": {
+    "data": "PASS",
+    "semantic_model_live": "PASS",
+    "native_report_layout": "PASS",
+    "html_preview": "PASS",
+    "pbit_schema_package": "PASS",
+    "offline_final_pbix_datamodel": "FAIL_SEED_MODEL_STILL_PRESENT"
+  }
+}

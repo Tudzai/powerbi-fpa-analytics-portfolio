@@ -1,0 +1,18 @@
+{
+  "source_type": "synthetic",
+  "seed": 13042,
+  "latest_complete_period": "2026-05",
+  "tables": {
+    "dim_date": 17,
+    "dim_entity": 7,
+    "dim_business_unit": 5,
+    "dim_account": 10,
+    "dim_scenario": 4,
+    "fact_fx_rate": 357,
+    "fact_financials": 23800,
+    "fact_financial_summary": 2380,
+    "fact_variance_driver_bridge": 4165,
+    "fact_close_exceptions": 75
+  },
+  "business_context": "Regional FP&A consolidation across entities, currencies, scenarios, and business units."
+}

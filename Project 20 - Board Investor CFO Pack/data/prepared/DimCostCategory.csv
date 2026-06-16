@@ -1,0 +1,5 @@
+CostCategoryID,CostCategory,RevenueLoad
+sm,Sales & Marketing,0.34
+rd,R&D,0.24
+ga,G&A,0.13
+support,Customer Support,0.07

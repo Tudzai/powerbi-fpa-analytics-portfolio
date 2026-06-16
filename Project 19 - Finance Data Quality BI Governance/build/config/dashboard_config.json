@@ -1,0 +1,8 @@
+{
+  "title": "Finance Data Quality BI Governance",
+  "audience": "CFO office, finance data owners, BI product owners, internal audit, and controllership operations",
+  "business_goal": "Monitor whether finance BI datasets and reports are fresh, complete, reconciled, adopted, and controlled.",
+  "page_count": 3,
+  "latest_complete_month": "May 2026",
+  "synthetic_seed": 20260615
+}

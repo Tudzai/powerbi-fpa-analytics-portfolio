@@ -1,0 +1,44 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "check": "Subscription grain unique",
+      "status": "pass"
+    },
+    {
+      "check": "ARR reconciles to ending MRR",
+      "status": "pass"
+    },
+    {
+      "check": "Movement rows available",
+      "status": "pass"
+    },
+    {
+      "check": "NRR bounded",
+      "status": "pass"
+    },
+    {
+      "check": "Critical numeric fields non-null",
+      "status": "pass"
+    }
+  ],
+  "date_range": {
+    "start": "2024-01-01",
+    "end": "2026-05-01"
+  },
+  "prepared_tables": {
+    "DimDate": 29,
+    "DimPlan": 5,
+    "DimChannel": 5,
+    "DimRegion": 4,
+    "DimCustomer": 520,
+    "FactSubscriptionMonthly": 6494,
+    "FactMRRMovement": 116,
+    "FactCohortRetention": 4806,
+    "FactAcquisitionMonthly": 447,
+    "FactFinanceMonthly": 29,
+    "FactForecast": 87,
+    "FactAccountHealth": 240,
+    "MonthlyKPIs": 29
+  }
+}

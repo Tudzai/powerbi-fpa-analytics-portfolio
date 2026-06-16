@@ -1,0 +1,40 @@
+{
+  "visual_containers": 711,
+  "visual_style": "ZoomCharts Inventory-style Finance Control Tower v14 aesthetic pass: deep purple canvas, light neutral outspace, dark purple left sidebar, Year/Scenario visible list slicers, BU/Region dropdown slicers, KPI dashboard cards with metric icons, DAX SVG decoration measures in the model, stable drawn mini sparklines on the canvas, progress bars, colored markers, PY/YoY footers, balanced gutters, six rounded chart/table panels, and no memo note boxes",
+  "chart_contracts": [
+    {
+      "page": "Performance",
+      "question": "Is the company on track versus the board plan?",
+      "visuals": [
+        "large KPI strip",
+        "central board KPI detail table",
+        "regional mix",
+        "revenue-plan-forecast trend",
+        "business unit variance and EBITDA cards"
+      ]
+    },
+    {
+      "page": "Cash Plan",
+      "question": "Is cash sufficient and where does funding pressure emerge?",
+      "visuals": [
+        "cash/runway KPI strip",
+        "central 3-statement detail table",
+        "cash and funding trend",
+        "opex category chart",
+        "funding need and runway scenario cards"
+      ]
+    },
+    {
+      "page": "Risk & Valuation",
+      "question": "Where are valuation, covenant, and risk constraints?",
+      "visuals": [
+        "valuation/risk KPI strip",
+        "central risk register",
+        "valuation range",
+        "risk severity",
+        "sensitivity impact",
+        "covenant trend"
+      ]
+    }
+  ]
+}

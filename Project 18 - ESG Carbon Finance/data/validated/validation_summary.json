@@ -1,0 +1,44 @@
+{
+  "seed": 180418,
+  "data_mode": "synthetic_demo",
+  "row_counts": {
+    "dim_date.csv": 29,
+    "dim_business_unit.csv": 5,
+    "dim_facility.csv": 8,
+    "dim_activity.csv": 9,
+    "dim_supplier.csv": 24,
+    "dim_carbon_scenario.csv": 3,
+    "fact_emissions.csv": 1189,
+    "fact_supplier_month.csv": 535,
+    "fact_carbon_exposure.csv": 87,
+    "fact_abatement_initiatives.csv": 12,
+    "powerbi_flat_emissions.csv": 1189
+  },
+  "date_range": {
+    "min_date_key": "202401",
+    "max_date_key": "202605"
+  },
+  "critical_null_checks": {
+    "fact_emissions_missing_keys": 0,
+    "supplier_missing_category": 0
+  },
+  "duplicate_checks": {
+    "dim_date_duplicate_keys": 0,
+    "dim_supplier_duplicate_keys": 0,
+    "fact_emissions_duplicate_record_ids": 0
+  },
+  "reconciled_kpis": {
+    "total_emissions_tco2e": 719452.61,
+    "scope_totals_tco2e": {
+      "Scope 1": 260249.32,
+      "Scope 2": 87642.71,
+      "Scope 3": 371560.58
+    },
+    "carbon_cost_usd_base_50": 35972630.5,
+    "emissions_intensity_tco2e_per_musd_revenue": 123.13,
+    "latest_month_emissions_tco2e": 21968.59,
+    "yoy_change_latest_month": -0.1285,
+    "target_gap_tco2e_run_rate": 29092.93
+  },
+  "qa_status": "pass"
+}

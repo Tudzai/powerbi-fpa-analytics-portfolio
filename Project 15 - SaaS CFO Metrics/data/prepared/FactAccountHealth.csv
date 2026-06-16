@@ -1,0 +1,241 @@
+﻿CustomerID,AccountName,PlanID,ChannelID,RegionID,Segment,Industry,CurrentARR,Seats,HealthScore,RenewalRisk,NextAction
+C0349,Manufacturing Cloud 349,enterprise,outbound,na,Enterprise,Manufacturing,844756.92,98,64.0,Healthy,Monitor
+C0197,Financial Cloud 197,enterprise,inbound,na,Enterprise,Financial Services,696696.24,73,88.5,Healthy,CSM expansion plan
+C0478,Software Cloud 478,enterprise,inbound,na,Enterprise,Software,476572.44,46,92.3,Healthy,CSM expansion plan
+C0049,Healthcare Cloud 049,enterprise,inbound,apac,Enterprise,Healthcare,460584.84,29,74.3,Healthy,Monitor
+C0316,Manufacturing Cloud 316,enterprise,partner,emea,Enterprise,Manufacturing,450125.52,38,86.0,Healthy,CSM expansion plan
+C0289,Manufacturing Cloud 289,enterprise,plg,apac,Enterprise,Manufacturing,440022.24,16,74.6,Healthy,Monitor
+C0399,Education Cloud 399,enterprise,partner,apac,Enterprise,Education,409048.8,50,74.9,Healthy,Monitor
+C0104,Logistics Cloud 104,enterprise,plg,na,Enterprise,Logistics,404884.56,23,77.0,Healthy,Monitor
+C0237,Manufacturing Cloud 237,enterprise,plg,na,Enterprise,Manufacturing,399338.64,40,99.0,Healthy,CSM expansion plan
+C0342,Software Cloud 342,enterprise,plg,na,Enterprise,Software,384564.12,39,95.3,Healthy,CSM expansion plan
+C0385,Education Cloud 385,enterprise,plg,apac,Enterprise,Education,349685.04,13,70.3,Healthy,Monitor
+C0247,Healthcare Cloud 247,enterprise,partner,na,Enterprise,Healthcare,336984.96,16,72.2,Healthy,Monitor
+C0322,Manufacturing Cloud 322,enterprise,inbound,na,Enterprise,Manufacturing,331722.0,37,87.6,Healthy,CSM expansion plan
+C0346,Logistics Cloud 346,enterprise,plg,apac,Enterprise,Logistics,317851.32,35,77.4,Healthy,Monitor
+C0504,Software Cloud 504,enterprise,inbound,na,Enterprise,Software,293437.92,25,71.8,Healthy,Monitor
+C0186,Education Cloud 186,enterprise,inbound,na,Enterprise,Education,279294.24,25,67.4,Healthy,Monitor
+C0057,Retail Cloud 057,enterprise,partner,emea,Enterprise,Retail,274822.68,33,79.2,Healthy,Monitor
+C0227,Education Cloud 227,enterprise,plg,emea,Enterprise,Education,274464.24,13,88.6,Healthy,CSM expansion plan
+C0240,Logistics Cloud 240,enterprise,inbound,na,Enterprise,Logistics,269814.96,24,64.6,Healthy,Monitor
+C0444,Education Cloud 444,scale,outbound,emea,Mid-Market,Education,249350.64,71,92.0,Healthy,CSM expansion plan
+C0215,Financial Cloud 215,enterprise,expansion,na,Enterprise,Financial Services,241377.48,16,80.1,Healthy,Monitor
+C0340,Logistics Cloud 340,scale,expansion,na,Mid-Market,Logistics,230472.0,48,96.0,Healthy,CSM expansion plan
+C0436,Retail Cloud 436,enterprise,partner,emea,Enterprise,Retail,226425.72,31,98.6,Healthy,CSM expansion plan
+C0052,Financial Cloud 052,scale,outbound,na,Mid-Market,Financial Services,212832.96,61,75.7,Healthy,Monitor
+C0279,Education Cloud 279,scale,partner,na,Mid-Market,Education,210369.6,30,64.5,Healthy,Monitor
+C0511,Education Cloud 511,scale,expansion,latam,Mid-Market,Education,207668.4,35,92.8,Healthy,CSM expansion plan
+C0160,Logistics Cloud 160,enterprise,plg,latam,Enterprise,Logistics,199669.8,8,81.0,Healthy,Monitor
+C0151,Logistics Cloud 151,enterprise,outbound,emea,Enterprise,Logistics,199092.48,26,72.5,Healthy,Monitor
+C0070,Retail Cloud 070,enterprise,inbound,na,Enterprise,Retail,197223.72,18,99.0,Healthy,CSM expansion plan
+C0023,Financial Cloud 023,business,plg,na,Mid-Market,Financial Services,196994.52,59,71.6,Healthy,Monitor
+C0260,Manufacturing Cloud 260,scale,inbound,emea,Mid-Market,Manufacturing,196715.52,43,96.4,Healthy,CSM expansion plan
+C0118,Financial Cloud 118,business,plg,na,Mid-Market,Financial Services,195579.84,106,68.4,Healthy,Monitor
+C0365,Manufacturing Cloud 365,scale,inbound,na,Mid-Market,Manufacturing,192315.24,47,94.7,Healthy,CSM expansion plan
+C0133,Education Cloud 133,scale,outbound,na,Mid-Market,Education,192264.24,16,77.0,Healthy,Monitor
+C0064,Logistics Cloud 064,scale,partner,na,Mid-Market,Logistics,190173.24,17,79.8,Healthy,Monitor
+C0386,Healthcare Cloud 386,scale,expansion,emea,Mid-Market,Healthcare,187701.72,52,87.8,Healthy,CSM expansion plan
+C0219,Logistics Cloud 219,scale,plg,emea,Mid-Market,Logistics,182518.2,41,71.2,Healthy,Monitor
+C0158,Software Cloud 158,enterprise,partner,na,Enterprise,Software,177211.92,23,94.6,Healthy,CSM expansion plan
+C0466,Manufacturing Cloud 466,scale,inbound,na,Mid-Market,Manufacturing,172437.96,23,80.9,Healthy,Monitor
+C0116,Education Cloud 116,scale,partner,na,Mid-Market,Education,171107.76,41,74.4,Healthy,Monitor
+C0120,Retail Cloud 120,business,outbound,apac,Mid-Market,Retail,168360.96,51,91.5,Healthy,CSM expansion plan
+C0242,Retail Cloud 242,scale,expansion,emea,Mid-Market,Retail,166468.8,45,81.6,Healthy,Monitor
+C0217,Healthcare Cloud 217,business,partner,na,Mid-Market,Healthcare,161363.28,25,84.7,Healthy,CSM expansion plan
+C0373,Software Cloud 373,business,plg,emea,Mid-Market,Software,161181.36,30,98.2,Healthy,CSM expansion plan
+C0244,Logistics Cloud 244,scale,expansion,emea,Mid-Market,Logistics,160532.16,46,99.0,Healthy,CSM expansion plan
+C0159,Financial Cloud 159,scale,plg,emea,Mid-Market,Financial Services,151824.24,45,85.3,Healthy,CSM expansion plan
+C0086,Software Cloud 086,enterprise,inbound,latam,Enterprise,Software,151764.0,9,75.3,Healthy,Monitor
+C0475,Software Cloud 475,scale,inbound,latam,Mid-Market,Software,147957.36,32,96.0,Healthy,CSM expansion plan
+C0014,Software Cloud 014,scale,inbound,apac,Mid-Market,Software,144326.16,14,77.4,Healthy,Monitor
+C0067,Retail Cloud 067,scale,inbound,emea,Mid-Market,Retail,144248.88,41,99.0,Healthy,CSM expansion plan
+C0175,Education Cloud 175,enterprise,expansion,latam,Enterprise,Education,141391.2,6,87.0,Healthy,CSM expansion plan
+C0239,Software Cloud 239,business,expansion,na,Mid-Market,Software,139383.0,42,97.7,Healthy,CSM expansion plan
+C0277,Education Cloud 277,scale,partner,latam,Mid-Market,Education,137374.44,39,99.0,Healthy,CSM expansion plan
+C0387,Manufacturing Cloud 387,scale,expansion,na,Mid-Market,Manufacturing,135904.08,28,66.7,Healthy,Monitor
+C0318,Healthcare Cloud 318,scale,plg,emea,Mid-Market,Healthcare,135690.96,18,64.6,Healthy,Monitor
+C0076,Retail Cloud 076,scale,inbound,na,Mid-Market,Retail,132990.12,32,72.2,Healthy,Monitor
+C0189,Education Cloud 189,scale,plg,na,Mid-Market,Education,132128.16,17,80.3,Healthy,Monitor
+C0214,Logistics Cloud 214,business,partner,na,Mid-Market,Logistics,128987.64,25,77.4,Healthy,Monitor
+C0282,Healthcare Cloud 282,scale,plg,na,Mid-Market,Healthcare,125477.16,36,95.1,Healthy,CSM expansion plan
+C0479,Software Cloud 479,business,expansion,apac,Mid-Market,Software,124802.04,47,99.0,Healthy,CSM expansion plan
+C0294,Logistics Cloud 294,enterprise,outbound,apac,Enterprise,Logistics,124660.92,17,74.9,Healthy,Monitor
+C0176,Education Cloud 176,enterprise,outbound,na,Enterprise,Education,121284.24,16,81.4,Healthy,Monitor
+C0449,Financial Cloud 449,scale,outbound,latam,Mid-Market,Financial Services,119682.24,28,99.0,Healthy,CSM expansion plan
+C0364,Education Cloud 364,business,inbound,apac,Mid-Market,Education,118760.88,43,84.7,Healthy,CSM expansion plan
+C0037,Financial Cloud 037,enterprise,outbound,latam,Enterprise,Financial Services,117414.84,10,73.9,Healthy,Monitor
+C0218,Financial Cloud 218,scale,inbound,emea,Mid-Market,Financial Services,117377.04,31,99.0,Healthy,CSM expansion plan
+C0388,Education Cloud 388,scale,expansion,na,Mid-Market,Education,115941.72,21,72.8,Healthy,Monitor
+C0459,Financial Cloud 459,business,outbound,apac,Mid-Market,Financial Services,114098.04,53,80.7,Healthy,Monitor
+C0484,Financial Cloud 484,scale,outbound,na,Mid-Market,Financial Services,112573.68,22,76.2,Healthy,Monitor
+C0347,Healthcare Cloud 347,scale,partner,latam,Mid-Market,Healthcare,112056.96,24,65.2,Healthy,Monitor
+C0012,Education Cloud 012,scale,expansion,na,Mid-Market,Education,110536.8,16,87.8,Healthy,CSM expansion plan
+C0233,Software Cloud 233,business,inbound,na,Mid-Market,Software,107918.52,38,91.8,Healthy,CSM expansion plan
+C0156,Logistics Cloud 156,business,inbound,na,Mid-Market,Logistics,106994.28,52,73.2,Healthy,Monitor
+C0060,Logistics Cloud 060,scale,plg,emea,Mid-Market,Logistics,105585.48,9,75.9,Healthy,Monitor
+C0029,Education Cloud 029,scale,inbound,na,Mid-Market,Education,103966.44,25,78.9,Healthy,Monitor
+C0008,Education Cloud 008,scale,partner,emea,Mid-Market,Education,101616.84,30,77.1,Healthy,Monitor
+C0006,Healthcare Cloud 006,business,outbound,na,Mid-Market,Healthcare,101439.6,53,88.1,Healthy,CSM expansion plan
+C0391,Financial Cloud 391,scale,plg,na,Mid-Market,Financial Services,101110.32,17,68.0,Healthy,Monitor
+C0441,Manufacturing Cloud 441,business,inbound,na,Mid-Market,Manufacturing,98583.6,37,82.2,Healthy,Monitor
+C0010,Retail Cloud 010,business,plg,na,Mid-Market,Retail,96968.04,38,86.2,Healthy,CSM expansion plan
+C0467,Education Cloud 467,scale,outbound,emea,Mid-Market,Education,96253.68,9,75.2,Healthy,Monitor
+C0202,Software Cloud 202,growth,expansion,na,SMB,Software,96027.24,56,77.7,Healthy,Monitor
+C0187,Retail Cloud 187,scale,plg,latam,Mid-Market,Retail,95509.2,14,63.5,Healthy,Monitor
+C0079,Software Cloud 079,business,outbound,na,Mid-Market,Software,94045.56,51,94.8,Healthy,CSM expansion plan
+C0062,Retail Cloud 062,business,plg,apac,Mid-Market,Retail,89046.48,49,89.4,Healthy,CSM expansion plan
+C0091,Financial Cloud 091,business,partner,na,Mid-Market,Financial Services,88179.12,17,65.7,Healthy,Monitor
+C0074,Financial Cloud 074,business,expansion,na,Mid-Market,Financial Services,87923.28,25,76.4,Healthy,Monitor
+C0007,Retail Cloud 007,scale,expansion,emea,Mid-Market,Retail,87359.16,11,84.5,Healthy,CSM expansion plan
+C0213,Manufacturing Cloud 213,business,plg,emea,Mid-Market,Manufacturing,87265.08,21,91.6,Healthy,CSM expansion plan
+C0498,Healthcare Cloud 498,scale,inbound,emea,Mid-Market,Healthcare,85765.2,19,91.5,Healthy,CSM expansion plan
+C0200,Retail Cloud 200,business,plg,na,Mid-Market,Retail,84228.24,40,96.0,Healthy,CSM expansion plan
+C0395,Logistics Cloud 395,scale,partner,apac,Mid-Market,Logistics,83184.84,11,98.7,Healthy,CSM expansion plan
+C0454,Logistics Cloud 454,business,partner,apac,Mid-Market,Logistics,81033.36,24,89.7,Healthy,CSM expansion plan
+C0040,Retail Cloud 040,scale,outbound,emea,Mid-Market,Retail,80912.64,23,71.6,Healthy,Monitor
+C0251,Software Cloud 251,scale,partner,latam,Mid-Market,Software,80531.4,16,74.4,Healthy,Monitor
+C0082,Retail Cloud 082,scale,inbound,na,Mid-Market,Retail,80419.08,13,66.4,Healthy,Monitor
+C0300,Manufacturing Cloud 300,business,plg,na,Mid-Market,Manufacturing,80176.92,47,93.8,Healthy,CSM expansion plan
+C0058,Education Cloud 058,business,partner,na,Mid-Market,Education,80028.0,42,91.0,Healthy,CSM expansion plan
+C0292,Manufacturing Cloud 292,business,outbound,na,Mid-Market,Manufacturing,78692.64,45,74.1,Healthy,Monitor
+C0326,Financial Cloud 326,business,outbound,emea,Mid-Market,Financial Services,78536.76,26,92.6,Healthy,CSM expansion plan
+C0360,Manufacturing Cloud 360,scale,outbound,emea,Mid-Market,Manufacturing,78251.64,9,82.2,Healthy,Monitor
+C0384,Healthcare Cloud 384,business,partner,emea,Mid-Market,Healthcare,76909.56,30,76.0,Healthy,Monitor
+C0137,Healthcare Cloud 137,business,expansion,emea,Mid-Market,Healthcare,74495.4,29,81.1,Healthy,Monitor
+C0095,Manufacturing Cloud 095,business,expansion,na,Mid-Market,Manufacturing,73820.16,18,81.5,Healthy,Monitor
+C0332,Healthcare Cloud 332,business,partner,emea,Mid-Market,Healthcare,73557.48,25,97.3,Healthy,CSM expansion plan
+C0053,Retail Cloud 053,business,plg,na,Mid-Market,Retail,73455.12,34,81.9,Healthy,Monitor
+C0019,Software Cloud 019,growth,plg,na,SMB,Software,72756.24,74,91.3,Healthy,CSM expansion plan
+C0319,Logistics Cloud 319,business,expansion,emea,Mid-Market,Logistics,72576.96,25,80.4,Healthy,Monitor
+C0114,Healthcare Cloud 114,business,outbound,na,Mid-Market,Healthcare,71578.44,17,62.5,Healthy,Monitor
+C0424,Manufacturing Cloud 424,business,partner,na,Mid-Market,Manufacturing,71230.08,39,91.7,Healthy,CSM expansion plan
+C0308,Software Cloud 308,business,plg,na,Mid-Market,Software,70116.12,20,82.7,Healthy,Monitor
+C0169,Logistics Cloud 169,business,outbound,na,Mid-Market,Logistics,70034.4,34,87.3,Healthy,CSM expansion plan
+C0065,Financial Cloud 065,business,plg,na,Mid-Market,Financial Services,69196.92,16,79.1,Healthy,Monitor
+C0081,Software Cloud 081,business,inbound,na,Mid-Market,Software,67523.88,22,73.0,Healthy,Monitor
+C0440,Education Cloud 440,growth,inbound,emea,SMB,Education,66194.88,86,89.5,Healthy,CSM expansion plan
+C0161,Financial Cloud 161,scale,partner,apac,Mid-Market,Financial Services,65423.52,12,74.8,Healthy,Monitor
+C0361,Software Cloud 361,growth,partner,na,SMB,Software,64856.88,113,78.7,Healthy,Monitor
+C0148,Healthcare Cloud 148,business,plg,emea,Mid-Market,Healthcare,64355.64,21,79.6,Healthy,Monitor
+C0073,Logistics Cloud 073,business,plg,na,Mid-Market,Logistics,63610.08,24,77.0,Healthy,Monitor
+C0024,Education Cloud 024,business,partner,apac,Mid-Market,Education,63546.24,18,77.2,Healthy,Monitor
+C0131,Logistics Cloud 131,business,inbound,emea,Mid-Market,Logistics,62758.44,13,91.3,Healthy,CSM expansion plan
+C0136,Education Cloud 136,business,outbound,emea,Mid-Market,Education,61363.8,36,66.1,Healthy,Monitor
+C0046,Logistics Cloud 046,business,plg,na,Mid-Market,Logistics,61034.52,29,78.2,Healthy,Monitor
+C0372,Education Cloud 372,business,plg,latam,Mid-Market,Education,60755.76,22,76.1,Healthy,Monitor
+C0271,Healthcare Cloud 271,scale,expansion,apac,Mid-Market,Healthcare,59854.68,7,64.0,Healthy,Monitor
+C0317,Financial Cloud 317,business,outbound,na,Mid-Market,Financial Services,59223.12,22,75.1,Healthy,Monitor
+C0173,Healthcare Cloud 173,business,partner,na,Mid-Market,Healthcare,57460.8,34,89.3,Healthy,CSM expansion plan
+C0502,Software Cloud 502,business,plg,apac,Mid-Market,Software,54792.6,11,91.7,Healthy,CSM expansion plan
+C0170,Financial Cloud 170,growth,outbound,na,SMB,Financial Services,54185.4,32,84.1,Healthy,CSM expansion plan
+C0270,Logistics Cloud 270,business,plg,na,Mid-Market,Logistics,53911.32,9,79.4,Healthy,Monitor
+C0181,Software Cloud 181,growth,plg,na,SMB,Software,52269.72,31,71.4,Healthy,Monitor
+C0431,Manufacturing Cloud 431,scale,inbound,emea,Mid-Market,Manufacturing,51758.16,12,68.4,Healthy,Monitor
+C0280,Software Cloud 280,business,partner,apac,Mid-Market,Software,50735.64,22,86.9,Healthy,CSM expansion plan
+C0168,Software Cloud 168,growth,inbound,na,SMB,Software,49543.2,77,79.7,Healthy,Monitor
+C0044,Manufacturing Cloud 044,growth,outbound,na,SMB,Manufacturing,49460.64,56,80.6,Healthy,Monitor
+C0458,Retail Cloud 458,growth,plg,na,SMB,Retail,49098.6,84,99.0,Healthy,CSM expansion plan
+C0182,Manufacturing Cloud 182,business,outbound,apac,Mid-Market,Manufacturing,48778.92,24,94.4,Healthy,CSM expansion plan
+C0039,Logistics Cloud 039,business,plg,na,Mid-Market,Logistics,48277.32,20,89.6,Healthy,CSM expansion plan
+C0209,Healthcare Cloud 209,business,plg,na,Mid-Market,Healthcare,47173.56,10,74.3,Healthy,Monitor
+C0288,Healthcare Cloud 288,business,inbound,emea,Mid-Market,Healthcare,46149.84,22,86.2,Healthy,CSM expansion plan
+C0506,Healthcare Cloud 506,business,plg,emea,Mid-Market,Healthcare,45667.44,25,62.3,Healthy,Monitor
+C0344,Retail Cloud 344,business,outbound,apac,Mid-Market,Retail,45529.56,15,69.1,Healthy,Monitor
+C0122,Education Cloud 122,business,plg,latam,Mid-Market,Education,45363.48,19,95.5,Healthy,CSM expansion plan
+C0109,Software Cloud 109,starter,inbound,na,SMB,Software,44234.88,126,99.0,Healthy,CSM expansion plan
+C0223,Education Cloud 223,business,plg,apac,Mid-Market,Education,43978.08,26,74.7,Healthy,Monitor
+C0348,Manufacturing Cloud 348,business,partner,emea,Mid-Market,Manufacturing,42761.04,25,88.6,Healthy,CSM expansion plan
+C0328,Logistics Cloud 328,growth,expansion,emea,SMB,Logistics,42177.0,22,70.6,Healthy,Monitor
+C0017,Financial Cloud 017,growth,plg,na,SMB,Financial Services,42006.24,34,72.9,Healthy,Monitor
+C0415,Software Cloud 415,business,inbound,na,Mid-Market,Software,40684.56,7,80.5,Healthy,Monitor
+C0299,Retail Cloud 299,growth,plg,na,SMB,Retail,40508.4,24,73.1,Healthy,Monitor
+C0327,Software Cloud 327,growth,expansion,na,SMB,Software,39792.72,58,99.0,Healthy,CSM expansion plan
+C0080,Healthcare Cloud 080,growth,plg,na,SMB,Healthcare,39737.52,20,99.0,Healthy,CSM expansion plan
+C0376,Logistics Cloud 376,growth,plg,na,SMB,Logistics,37843.44,26,92.0,Healthy,CSM expansion plan
+C0048,Manufacturing Cloud 048,growth,outbound,apac,SMB,Manufacturing,36027.48,40,82.5,Healthy,Monitor
+C0416,Logistics Cloud 416,growth,inbound,na,SMB,Logistics,35336.88,61,64.7,Healthy,Monitor
+C0470,Software Cloud 470,growth,expansion,apac,SMB,Software,34694.64,56,64.2,Healthy,Monitor
+C0428,Software Cloud 428,business,plg,apac,Mid-Market,Software,33867.6,8,74.7,Healthy,Monitor
+C0178,Healthcare Cloud 178,growth,inbound,apac,SMB,Healthcare,33720.36,44,87.9,Healthy,CSM expansion plan
+C0393,Logistics Cloud 393,growth,partner,emea,SMB,Logistics,33537.48,15,88.3,Healthy,CSM expansion plan
+C0290,Software Cloud 290,growth,plg,latam,SMB,Software,32128.44,54,84.6,Healthy,CSM expansion plan
+C0165,Education Cloud 165,growth,outbound,emea,SMB,Education,31784.28,50,77.2,Healthy,Monitor
+C0339,Education Cloud 339,starter,inbound,na,SMB,Education,31560.84,89,84.2,Healthy,CSM expansion plan
+C0234,Manufacturing Cloud 234,growth,inbound,na,SMB,Manufacturing,31409.88,49,74.2,Healthy,Monitor
+C0141,Healthcare Cloud 141,business,plg,na,Mid-Market,Healthcare,31390.56,15,78.1,Healthy,Monitor
+C0205,Financial Cloud 205,growth,plg,emea,SMB,Financial Services,30233.64,44,99.0,Healthy,CSM expansion plan
+C0254,Retail Cloud 254,growth,expansion,apac,SMB,Retail,30056.16,23,68.7,Healthy,Monitor
+C0297,Financial Cloud 297,growth,plg,na,SMB,Financial Services,29564.28,23,97.8,Healthy,CSM expansion plan
+C0211,Healthcare Cloud 211,growth,outbound,na,SMB,Healthcare,29517.96,33,76.9,Healthy,Monitor
+C0262,Manufacturing Cloud 262,growth,inbound,na,SMB,Manufacturing,29373.24,44,74.1,Healthy,Monitor
+C0188,Logistics Cloud 188,growth,plg,na,SMB,Logistics,29110.92,46,80.5,Healthy,Monitor
+C0177,Healthcare Cloud 177,growth,expansion,na,SMB,Healthcare,28693.08,16,84.1,Healthy,CSM expansion plan
+C0363,Healthcare Cloud 363,growth,partner,na,SMB,Healthcare,28453.44,27,78.3,Healthy,Monitor
+C0258,Financial Cloud 258,growth,expansion,emea,SMB,Financial Services,27708.12,30,98.6,Healthy,CSM expansion plan
+C0411,Healthcare Cloud 411,growth,outbound,latam,SMB,Healthcare,27428.4,16,84.1,Healthy,CSM expansion plan
+C0520,Education Cloud 520,growth,inbound,na,SMB,Education,27369.48,44,89.7,Healthy,CSM expansion plan
+C0191,Healthcare Cloud 191,growth,partner,na,SMB,Healthcare,26793.36,17,76.7,Healthy,Monitor
+C0421,Financial Cloud 421,growth,outbound,apac,SMB,Financial Services,26685.48,15,71.8,Healthy,Monitor
+C0127,Software Cloud 127,business,plg,apac,Mid-Market,Software,26560.56,14,84.5,Healthy,CSM expansion plan
+C0126,Education Cloud 126,growth,partner,na,SMB,Education,26553.96,31,70.8,Healthy,Monitor
+C0438,Retail Cloud 438,growth,partner,emea,SMB,Retail,26131.32,35,92.1,Healthy,CSM expansion plan
+C0392,Manufacturing Cloud 392,growth,plg,apac,SMB,Manufacturing,25495.32,20,68.6,Healthy,Monitor
+C0005,Education Cloud 005,growth,expansion,emea,SMB,Education,24775.8,11,87.4,Healthy,CSM expansion plan
+C0315,Retail Cloud 315,growth,expansion,apac,SMB,Retail,24440.4,42,65.6,Healthy,Monitor
+C0329,Manufacturing Cloud 329,growth,inbound,na,SMB,Manufacturing,23876.4,34,75.1,Healthy,Monitor
+C0419,Retail Cloud 419,starter,plg,na,SMB,Retail,23867.52,50,99.0,Healthy,CSM expansion plan
+C0489,Education Cloud 489,growth,partner,na,SMB,Education,23762.88,27,71.9,Healthy,Monitor
+C0447,Software Cloud 447,growth,expansion,emea,SMB,Software,22962.12,13,88.4,Healthy,CSM expansion plan
+C0356,Software Cloud 356,growth,plg,apac,SMB,Software,22880.88,27,90.3,Healthy,CSM expansion plan
+C0465,Manufacturing Cloud 465,growth,partner,emea,SMB,Manufacturing,22252.8,14,66.7,Healthy,Monitor
+C0101,Healthcare Cloud 101,starter,inbound,emea,SMB,Healthcare,21918.84,52,90.1,Healthy,CSM expansion plan
+C0412,Software Cloud 412,growth,plg,apac,SMB,Software,21685.92,31,82.5,Healthy,Monitor
+C0069,Education Cloud 069,growth,outbound,emea,SMB,Education,21589.8,33,99.0,Healthy,CSM expansion plan
+C0402,Retail Cloud 402,growth,partner,apac,SMB,Retail,21333.6,16,76.2,Healthy,Monitor
+C0098,Logistics Cloud 098,growth,inbound,emea,SMB,Logistics,21056.76,17,76.3,Healthy,Monitor
+C0222,Education Cloud 222,growth,plg,na,SMB,Education,21045.0,20,76.6,Healthy,Monitor
+C0354,Manufacturing Cloud 354,growth,plg,apac,SMB,Manufacturing,20694.36,24,99.0,Healthy,CSM expansion plan
+C0226,Healthcare Cloud 226,growth,expansion,apac,SMB,Healthcare,20650.2,20,79.4,Healthy,Monitor
+C0138,Education Cloud 138,starter,partner,na,SMB,Education,20418.84,68,73.5,Healthy,Monitor
+C0257,Retail Cloud 257,growth,plg,emea,SMB,Retail,20214.96,24,67.3,Healthy,Monitor
+C0184,Logistics Cloud 184,starter,partner,na,SMB,Logistics,20205.96,62,93.3,Healthy,CSM expansion plan
+C0204,Education Cloud 204,growth,partner,latam,SMB,Education,20037.96,16,72.6,Healthy,Monitor
+C0221,Retail Cloud 221,starter,plg,na,SMB,Retail,20009.64,68,93.2,Healthy,CSM expansion plan
+C0036,Software Cloud 036,growth,inbound,apac,SMB,Software,19937.16,33,99.0,Healthy,CSM expansion plan
+C0267,Retail Cloud 267,growth,partner,na,SMB,Retail,19865.16,12,78.4,Healthy,Monitor
+C0003,Financial Cloud 003,starter,expansion,na,SMB,Financial Services,19808.04,22,92.5,Healthy,CSM expansion plan
+C0495,Software Cloud 495,starter,partner,na,SMB,Software,19751.28,72,64.5,Healthy,Monitor
+C0321,Software Cloud 321,growth,outbound,na,SMB,Software,19326.84,21,87.6,Healthy,CSM expansion plan
+C0351,Manufacturing Cloud 351,growth,expansion,na,SMB,Manufacturing,18941.76,28,88.3,Healthy,CSM expansion plan
+C0513,Education Cloud 513,business,partner,latam,Mid-Market,Education,18776.16,10,81.1,Healthy,Monitor
+C0004,Manufacturing Cloud 004,starter,inbound,na,SMB,Manufacturing,18584.64,37,83.2,Healthy,Monitor
+C0284,Logistics Cloud 284,growth,plg,apac,SMB,Logistics,18466.8,19,86.6,Healthy,CSM expansion plan
+C0434,Manufacturing Cloud 434,growth,inbound,apac,SMB,Manufacturing,18076.92,31,76.8,Healthy,Monitor
+C0410,Healthcare Cloud 410,growth,expansion,na,SMB,Healthcare,18020.4,14,99.0,Healthy,CSM expansion plan
+C0263,Retail Cloud 263,growth,inbound,na,SMB,Retail,17645.76,22,91.3,Healthy,CSM expansion plan
+C0331,Logistics Cloud 331,growth,outbound,emea,SMB,Logistics,17478.36,29,62.8,Healthy,Monitor
+C0394,Manufacturing Cloud 394,growth,plg,na,SMB,Manufacturing,17323.2,16,76.0,Healthy,Monitor
+C0406,Healthcare Cloud 406,starter,inbound,na,SMB,Healthcare,17225.16,24,87.2,Healthy,CSM expansion plan
+C0396,Education Cloud 396,growth,outbound,latam,SMB,Education,16990.32,9,88.5,Healthy,CSM expansion plan
+C0154,Software Cloud 154,growth,plg,apac,SMB,Software,16944.84,12,75.2,Healthy,Monitor
+C0278,Software Cloud 278,starter,inbound,na,SMB,Software,16737.84,25,73.1,Healthy,Monitor
+C0268,Software Cloud 268,growth,partner,apac,SMB,Software,16689.0,26,89.0,Healthy,CSM expansion plan
+C0241,Financial Cloud 241,growth,expansion,na,SMB,Financial Services,16667.4,13,85.7,Healthy,CSM expansion plan
+C0061,Manufacturing Cloud 061,growth,plg,emea,SMB,Manufacturing,16568.64,20,74.5,Healthy,Monitor
+C0377,Education Cloud 377,growth,plg,apac,SMB,Education,16462.56,8,82.7,Healthy,Monitor
+C0320,Education Cloud 320,growth,outbound,na,SMB,Education,16149.0,9,71.7,Healthy,Monitor
+C0448,Logistics Cloud 448,growth,inbound,emea,SMB,Logistics,16031.52,26,83.4,Healthy,Monitor
+C0041,Software Cloud 041,starter,plg,na,SMB,Software,15783.72,18,99.0,Healthy,CSM expansion plan
+C0450,Education Cloud 450,starter,plg,apac,SMB,Education,15615.24,31,97.8,Healthy,CSM expansion plan
+C0220,Healthcare Cloud 220,starter,partner,na,SMB,Healthcare,15243.12,58,93.6,Healthy,CSM expansion plan
+C0094,Software Cloud 094,growth,partner,latam,SMB,Software,15114.0,9,86.0,Healthy,CSM expansion plan
+C0507,Software Cloud 507,growth,partner,emea,SMB,Software,15037.8,14,77.4,Healthy,Monitor
+C0238,Logistics Cloud 238,growth,partner,latam,SMB,Logistics,14656.8,17,99.0,Healthy,CSM expansion plan
+C0032,Software Cloud 032,starter,partner,na,SMB,Software,13988.76,43,66.6,Healthy,Monitor
+C0519,Logistics Cloud 519,growth,inbound,na,SMB,Logistics,13848.24,7,88.5,Healthy,CSM expansion plan
+C0146,Manufacturing Cloud 146,starter,plg,na,SMB,Manufacturing,13623.0,36,73.0,Healthy,Monitor
+C0353,Software Cloud 353,starter,inbound,emea,SMB,Software,13558.08,13,82.1,Healthy,Monitor
+C0335,Logistics Cloud 335,starter,inbound,apac,SMB,Logistics,13508.88,13,84.4,Healthy,CSM expansion plan
+C0468,Financial Cloud 468,growth,inbound,emea,SMB,Financial Services,13318.08,11,79.1,Healthy,Monitor
+C0063,Logistics Cloud 063,growth,inbound,na,SMB,Logistics,13273.32,9,83.2,Healthy,Monitor
+C0515,Retail Cloud 515,starter,plg,emea,SMB,Retail,13260.84,21,96.5,Healthy,CSM expansion plan

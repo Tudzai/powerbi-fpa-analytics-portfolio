@@ -1,0 +1,9 @@
+DeptKey,Department,Function,Region
+D001,Corporate FP&A,Finance,Global
+D002,Controllership,Finance,Global
+D003,Treasury,Finance,Global
+D004,Tax,Finance,Global
+D005,Procurement Finance,Finance,APAC
+D006,Revenue Operations,Finance,Americas
+D007,Internal Audit,Risk,Global
+D008,BI Governance,Data,Global

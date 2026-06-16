@@ -1,24 +1,22 @@
 # Project 19 - Finance Data Quality BI Governance
 
-Planned Power BI governance monitor for finance data quality, refresh reliability, reconciliation, report usage, and access controls.
+Portfolio Power BI governance monitor for finance data quality, refresh reliability, reconciliation, report usage, and access controls.
 
-## Intended Business Questions
+## Current Build
 
-- Are key finance datasets fresh, complete, reconciled, and trusted?
-- Which dashboards or measures are used most by finance stakeholders?
-- Where do refresh failures, broken joins, or security risks need attention?
+- PBIP seed: `output/powerbi_project/Finance_Data_Quality_BI_Governance.pbip`
+- Supplemental HTML preview: `output/dashboard_final.html`
+- Final PBIX target: `output/dashboard_final.pbix`
+- Final PBIX status: pending Desktop save/open-check
 
-## Planned Dashboard Pages
+## Pages
 
-- BI Governance Overview
-- Refresh SLA and Data Freshness
-- Reconciliation and Data Quality
-- Report Usage and Adoption
-- RLS, Access, and Deployment Control
+1. Governance Overview
+2. Reliability & Quality
+3. Adoption & Controls
 
-## Skill Signals
+## Rebuild
 
-- Finance data governance
-- BI operations and monitoring
-- Reconciliation thinking
-- Power BI product ownership
+```powershell
+python build\scripts\build_project19.py
+```

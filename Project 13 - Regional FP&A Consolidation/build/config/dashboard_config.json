@@ -1,0 +1,54 @@
+{
+  "title": "Regional FP&A Consolidation",
+  "audience": "Regional CFO, FP&A leadership, country finance controllers",
+  "latest_complete_period": "2026-05",
+  "pages": [
+    {
+      "page": "Executive Overview",
+      "purpose": "Regional KPI status, trend, variance bridge, and action list."
+    },
+    {
+      "page": "Entity & Country P&L",
+      "purpose": "Country/entity P&L matrix, margin heatmap, and detail rows."
+    },
+    {
+      "page": "FX & Intercompany",
+      "purpose": "Currency exposure, local-to-reporting impacts, and elimination control."
+    },
+    {
+      "page": "BU Drilldown",
+      "purpose": "Business unit performance, growth vs margin, and driver table."
+    },
+    {
+      "page": "Close Exceptions",
+      "purpose": "Exception monitoring by severity, owner, status, and value."
+    },
+    {
+      "page": "Board Storyboard",
+      "purpose": "CFO narrative view combining bridge, target pacing, treemap, risk funnel, and board-pack extract."
+    }
+  ],
+  "visual_count": 11,
+  "filters": [
+    {
+      "slicer": "Period",
+      "field": "DimDate[date_id]",
+      "default": "2026-05"
+    },
+    {
+      "slicer": "Region",
+      "field": "DimEntity[region]",
+      "default": "All"
+    },
+    {
+      "slicer": "Entity",
+      "field": "DimEntity[entity_id]",
+      "default": "All"
+    },
+    {
+      "slicer": "Business Unit",
+      "field": "DimBusinessUnit[business_unit]",
+      "default": "All"
+    }
+  ]
+}

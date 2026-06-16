@@ -1,0 +1,44 @@
+{
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final_v18.pbix",
+  "pages": {
+    "Performance": {
+      "counts": {
+        "textbox": 227,
+        "slicer": 4,
+        "barChart": 4,
+        "donutChart": 1,
+        "tableEx": 1
+      },
+      "min_content_x": 204,
+      "gutter_px": 20
+    },
+    "Cash Plan": {
+      "counts": {
+        "textbox": 227,
+        "slicer": 4,
+        "barChart": 5,
+        "tableEx": 1
+      },
+      "min_content_x": 204,
+      "gutter_px": 20
+    },
+    "Risk & Valuation": {
+      "counts": {
+        "textbox": 227,
+        "slicer": 4,
+        "barChart": 5,
+        "tableEx": 1
+      },
+      "min_content_x": 204,
+      "gutter_px": 20
+    }
+  },
+  "empty_non_text_visuals": [],
+  "card_visual_count": 0,
+  "line_chart_count": 0,
+  "internal_terms_found": [],
+  "dax_svg_measures_present": true,
+  "status_measures_present": true,
+  "image_url_category_count": 5,
+  "status": "pass"
+}

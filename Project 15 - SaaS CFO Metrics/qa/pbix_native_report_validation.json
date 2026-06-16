@@ -1,0 +1,12 @@
+﻿{
+    "status":  "passed",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 15 - SaaS CFO Metrics\\output\\dashboard_final.pbix",
+    "final_pbix_created":  true,
+    "final_pbix_size":  4397447,
+    "pages":  [
+                  "Executive Overview",
+                  "Revenue \u0026 Retention",
+                  "Efficiency \u0026 Forecast"
+              ],
+    "visual_containers":  47
+}

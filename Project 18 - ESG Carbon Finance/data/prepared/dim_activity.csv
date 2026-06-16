@@ -1,0 +1,10 @@
+activity_id,activity,scope,ghg_category,activity_unit,base_emission_factor
+A01,Natural gas combustion,Scope 1,Stationary combustion,MWh thermal,0.184
+A02,Diesel fleet fuel,Scope 1,Mobile combustion,kiloliters,2.68
+A03,Refrigerant leakage,Scope 1,Fugitive emissions,kg refrigerant,1.36
+A04,Purchased electricity,Scope 2,Electricity,MWh,0.46
+A05,Purchased heating/cooling,Scope 2,Purchased energy,MWh,0.21
+A06,Purchased goods,Scope 3,Purchased goods and services,USD thousand spend,0.52
+A07,Upstream logistics,Scope 3,Transportation and distribution,ton-km thousand,0.16
+A08,Business travel,Scope 3,Business travel,passenger-km thousand,0.13
+A09,Waste generated,Scope 3,Waste,tonnes waste,0.49

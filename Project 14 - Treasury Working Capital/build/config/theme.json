@@ -1,0 +1,14 @@
+{
+  "name": "Treasury Working Capital",
+  "dataColors": [
+    "#0F766E",
+    "#2F5F9E",
+    "#6F8552",
+    "#B68B36",
+    "#B85062",
+    "#22313F"
+  ],
+  "background": "#F3F6F8",
+  "foreground": "#15202B",
+  "tableAccent": "#0F766E"
+}

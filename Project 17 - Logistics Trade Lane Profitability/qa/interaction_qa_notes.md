@@ -1,0 +1,1 @@
+Native slicers are present on all 3 pages: Year/Mode/Segment, Origin/Destination/Office, and Priority/Status/Owner. File-level interaction QA passed by opening the exact PBIX and confirming the report surface loads without modal errors. Full cross-filter click-through should be repeated after publishing if this becomes a Power BI Service artifact.

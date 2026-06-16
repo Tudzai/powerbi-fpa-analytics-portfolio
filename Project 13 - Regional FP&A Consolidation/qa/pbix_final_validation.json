@@ -1,0 +1,35 @@
+{
+  "final_output": "output/dashboard_final.pbix",
+  "status": "pass",
+  "file_exists": true,
+  "opened_exact_file": true,
+  "saved_reopened": true,
+  "visual_error_count": 0,
+  "final_pbix_bytes": 5218861,
+  "page_count": 3,
+  "pages": [
+    "Executive Summary",
+    "P&L Variance",
+    "Controls & Storyboard"
+  ],
+  "model_tables_exported": {
+    "DimDate": 17,
+    "DimEntity": 7,
+    "DimBusinessUnit": 5,
+    "DimAccount": 10,
+    "DimScenario": 4,
+    "FactFinancials": 23800,
+    "FactFinancialSummary": 2380,
+    "FactVarianceDriverBridge": 4165,
+    "FactCloseExceptions": 75,
+    "FactFXRate": 357,
+    "KPI Measures": 1
+  },
+  "validation": [
+    "PowerBIPackager.Validate passed",
+    "Power BI Desktop opened exact output/dashboard_final.pbix",
+    "Computer Use text scan found no report rendering error on each of the 3 tabs",
+    "pbi-tools extract completed",
+    "pbi-tools export-data completed with expected Project 13 row counts"
+  ]
+}

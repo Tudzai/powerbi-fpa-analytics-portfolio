@@ -1,0 +1,9 @@
+facility_id,facility,country,region,default_business_unit,latitude,longitude
+F01,Hai Phong Plant,Vietnam,APAC,Manufacturing,21.01,106.68
+F02,Binh Duong DC,Vietnam,APAC,Logistics,10.98,106.65
+F03,Bangkok Hub,Thailand,APAC,Logistics,13.75,100.5
+F04,Shenzhen Assembly,China,APAC,Manufacturing,22.54,114.06
+F05,Rotterdam Warehouse,Netherlands,EMEA,Logistics,51.92,4.48
+F06,Hamburg Office,Germany,EMEA,Corporate,53.55,9.99
+F07,Los Angeles DC,United States,Americas,Retail Operations,34.05,-118.24
+F08,Chicago Office,United States,Americas,Corporate,41.88,-87.63

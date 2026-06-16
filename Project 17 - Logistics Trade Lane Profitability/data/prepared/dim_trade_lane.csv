@@ -1,0 +1,13 @@
+lane_id,lane_name,origin_country,origin_node,destination_country,destination_node,mode,distance_km,lane_cluster,strategic_lane
+L001,VN-HCM -> US-LAX,Vietnam,Ho Chi Minh,United States,Los Angeles,Ocean FCL,13100,Transpacific,TRUE
+L002,VN-HCM -> DE-HAM,Vietnam,Ho Chi Minh,Germany,Hamburg,Ocean FCL,10900,Europe,TRUE
+L003,CN-SHA -> VN-HCM,China,Shanghai,Vietnam,Ho Chi Minh,Ocean LCL,2800,Intra-Asia,FALSE
+L004,TH-BKK -> VN-HCM,Thailand,Bangkok,Vietnam,Ho Chi Minh,Road,860,Intra-ASEAN,TRUE
+L005,VN-HAN -> JP-TYO,Vietnam,Ha Noi,Japan,Tokyo,Air,3700,North Asia,FALSE
+L006,SG-SIN -> AU-SYD,Singapore,Singapore,Australia,Sydney,Ocean FCL,6300,Oceania,FALSE
+L007,VN-DAD -> KR-PUS,Vietnam,Da Nang,South Korea,Busan,Ocean LCL,3600,North Asia,FALSE
+L008,ID-JKT -> VN-HCM,Indonesia,Jakarta,Vietnam,Ho Chi Minh,Ocean FCL,3000,Intra-ASEAN,TRUE
+L009,MY-KUL -> VN-HCM,Malaysia,Kuala Lumpur,Vietnam,Ho Chi Minh,Road+Sea,1700,Intra-ASEAN,TRUE
+L010,VN-HCM -> AE-JEA,Vietnam,Ho Chi Minh,UAE,Jebel Ali,Ocean FCL,5900,Middle East,FALSE
+L011,VN-HAN -> CN-SZX,Vietnam,Ha Noi,China,Shenzhen,Air,850,Intra-Asia,FALSE
+L012,KH-PNH -> VN-HCM,Cambodia,Phnom Penh,Vietnam,Ho Chi Minh,Road,240,Cross-border,FALSE

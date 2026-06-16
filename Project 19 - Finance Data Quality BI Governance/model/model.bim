@@ -1,0 +1,1078 @@
+{
+  "name": "finance_data_quality_bi_governance",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimDate",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthEndDate",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthEndDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthKey",
+            "dataType": "int64",
+            "sourceColumn": "MonthKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthNumber",
+            "dataType": "int64",
+            "sourceColumn": "MonthNumber",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "summarizeBy": "none",
+            "sortByColumn": "MonthNumber"
+          },
+          {
+            "name": "MonthYear",
+            "dataType": "string",
+            "sourceColumn": "MonthYear",
+            "summarizeBy": "none",
+            "sortByColumn": "MonthIndex"
+          },
+          {
+            "name": "MonthIndex",
+            "dataType": "int64",
+            "sourceColumn": "MonthIndex",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "IsLatestCompleteMonth",
+            "dataType": "string",
+            "sourceColumn": "IsLatestCompleteMonth",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 19 - Finance Data Quality BI Governance\\\\data\\\\prepared\\\\dimdate.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"DateKey\", Int64.Type}, {\"Date\", type date}, {\"MonthEndDate\", type date}, {\"MonthKey\", Int64.Type}, {\"Year\", Int64.Type}, {\"Quarter\", type text}, {\"MonthNumber\", Int64.Type}, {\"MonthName\", type text}, {\"MonthYear\", type text}, {\"MonthIndex\", Int64.Type}, {\"IsLatestCompleteMonth\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimDataset",
+        "columns": [
+          {
+            "name": "DatasetKey",
+            "dataType": "string",
+            "sourceColumn": "DatasetKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DatasetName",
+            "dataType": "string",
+            "sourceColumn": "DatasetName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Domain",
+            "dataType": "string",
+            "sourceColumn": "Domain",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SourceSystem",
+            "dataType": "string",
+            "sourceColumn": "SourceSystem",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Criticality",
+            "dataType": "string",
+            "sourceColumn": "Criticality",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OwnerTeam",
+            "dataType": "string",
+            "sourceColumn": "OwnerTeam",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SLAHours",
+            "dataType": "int64",
+            "sourceColumn": "SLAHours",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "RefreshFrequency",
+            "dataType": "string",
+            "sourceColumn": "RefreshFrequency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RLSRequired",
+            "dataType": "string",
+            "sourceColumn": "RLSRequired",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Certified",
+            "dataType": "string",
+            "sourceColumn": "Certified",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDataset-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 19 - Finance Data Quality BI Governance\\\\data\\\\prepared\\\\dimdataset.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"DatasetKey\", type text}, {\"DatasetName\", type text}, {\"Domain\", type text}, {\"SourceSystem\", type text}, {\"Criticality\", type text}, {\"OwnerTeam\", type text}, {\"SLAHours\", Int64.Type}, {\"RefreshFrequency\", type text}, {\"RLSRequired\", type text}, {\"Certified\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimReport",
+        "columns": [
+          {
+            "name": "ReportKey",
+            "dataType": "string",
+            "sourceColumn": "ReportKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ReportName",
+            "dataType": "string",
+            "sourceColumn": "ReportName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Workspace",
+            "dataType": "string",
+            "sourceColumn": "Workspace",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Audience",
+            "dataType": "string",
+            "sourceColumn": "Audience",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OwnerTeam",
+            "dataType": "string",
+            "sourceColumn": "OwnerTeam",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Certified",
+            "dataType": "string",
+            "sourceColumn": "Certified",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SensitivityLabel",
+            "dataType": "string",
+            "sourceColumn": "SensitivityLabel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ReportTier",
+            "dataType": "string",
+            "sourceColumn": "ReportTier",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimReport-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 19 - Finance Data Quality BI Governance\\\\data\\\\prepared\\\\dimreport.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"ReportKey\", type text}, {\"ReportName\", type text}, {\"Workspace\", type text}, {\"Audience\", type text}, {\"OwnerTeam\", type text}, {\"Certified\", type text}, {\"SensitivityLabel\", type text}, {\"ReportTier\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimDepartment",
+        "columns": [
+          {
+            "name": "DeptKey",
+            "dataType": "string",
+            "sourceColumn": "DeptKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Department",
+            "dataType": "string",
+            "sourceColumn": "Department",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Function",
+            "dataType": "string",
+            "sourceColumn": "Function",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDepartment-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 19 - Finance Data Quality BI Governance\\\\data\\\\prepared\\\\dimdepartment.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"DeptKey\", type text}, {\"Department\", type text}, {\"Function\", type text}, {\"Region\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactDatasetDaily",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DatasetKey",
+            "dataType": "string",
+            "sourceColumn": "DatasetKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RowsExpected",
+            "dataType": "int64",
+            "sourceColumn": "RowsExpected",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "RowsLoaded",
+            "dataType": "int64",
+            "sourceColumn": "RowsLoaded",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "CompletenessPct",
+            "dataType": "double",
+            "sourceColumn": "CompletenessPct",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "NullCriticalCount",
+            "dataType": "int64",
+            "sourceColumn": "NullCriticalCount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DuplicateKeyCount",
+            "dataType": "int64",
+            "sourceColumn": "DuplicateKeyCount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "SchemaDriftCount",
+            "dataType": "int64",
+            "sourceColumn": "SchemaDriftCount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FreshnessMinutes",
+            "dataType": "int64",
+            "sourceColumn": "FreshnessMinutes",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FreshnessWithinSLAFlag",
+            "dataType": "int64",
+            "sourceColumn": "FreshnessWithinSLAFlag",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DataQualityScore",
+            "dataType": "double",
+            "sourceColumn": "DataQualityScore",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ReconciliationVarianceAmount",
+            "dataType": "double",
+            "sourceColumn": "ReconciliationVarianceAmount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "OpenIssueCount",
+            "dataType": "int64",
+            "sourceColumn": "OpenIssueCount",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactDatasetDaily-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 19 - Finance Data Quality BI Governance\\\\data\\\\prepared\\\\factdatasetdaily.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"DateKey\", Int64.Type}, {\"DatasetKey\", type text}, {\"RowsExpected\", Int64.Type}, {\"RowsLoaded\", Int64.Type}, {\"CompletenessPct\", type number}, {\"NullCriticalCount\", Int64.Type}, {\"DuplicateKeyCount\", Int64.Type}, {\"SchemaDriftCount\", Int64.Type}, {\"FreshnessMinutes\", Int64.Type}, {\"FreshnessWithinSLAFlag\", Int64.Type}, {\"DataQualityScore\", type number}, {\"ReconciliationVarianceAmount\", type number}, {\"OpenIssueCount\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactRefreshRuns",
+        "columns": [
+          {
+            "name": "RefreshRunKey",
+            "dataType": "string",
+            "sourceColumn": "RefreshRunKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DatasetKey",
+            "dataType": "string",
+            "sourceColumn": "DatasetKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FailureCategory",
+            "dataType": "string",
+            "sourceColumn": "FailureCategory",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DurationMinutes",
+            "dataType": "int64",
+            "sourceColumn": "DurationMinutes",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "SLACompliantFlag",
+            "dataType": "int64",
+            "sourceColumn": "SLACompliantFlag",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "RetryCount",
+            "dataType": "int64",
+            "sourceColumn": "RetryCount",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactRefreshRuns-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 19 - Finance Data Quality BI Governance\\\\data\\\\prepared\\\\factrefreshruns.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"RefreshRunKey\", type text}, {\"DateKey\", Int64.Type}, {\"DatasetKey\", type text}, {\"Status\", type text}, {\"FailureCategory\", type text}, {\"DurationMinutes\", Int64.Type}, {\"SLACompliantFlag\", Int64.Type}, {\"RetryCount\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactReconciliation",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DatasetKey",
+            "dataType": "string",
+            "sourceColumn": "DatasetKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DeptKey",
+            "dataType": "string",
+            "sourceColumn": "DeptKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LedgerAmount",
+            "dataType": "double",
+            "sourceColumn": "LedgerAmount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "SubledgerAmount",
+            "dataType": "double",
+            "sourceColumn": "SubledgerAmount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "VarianceAmount",
+            "dataType": "double",
+            "sourceColumn": "VarianceAmount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "VariancePct",
+            "dataType": "double",
+            "sourceColumn": "VariancePct",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ReconciliationStatus",
+            "dataType": "string",
+            "sourceColumn": "ReconciliationStatus",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AgingBucket",
+            "dataType": "string",
+            "sourceColumn": "AgingBucket",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactReconciliation-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 19 - Finance Data Quality BI Governance\\\\data\\\\prepared\\\\factreconciliation.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"DateKey\", Int64.Type}, {\"DatasetKey\", type text}, {\"DeptKey\", type text}, {\"LedgerAmount\", type number}, {\"SubledgerAmount\", type number}, {\"VarianceAmount\", type number}, {\"VariancePct\", type number}, {\"ReconciliationStatus\", type text}, {\"AgingBucket\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactUsage",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ReportKey",
+            "dataType": "string",
+            "sourceColumn": "ReportKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DeptKey",
+            "dataType": "string",
+            "sourceColumn": "DeptKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Views",
+            "dataType": "int64",
+            "sourceColumn": "Views",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "UniqueViewers",
+            "dataType": "int64",
+            "sourceColumn": "UniqueViewers",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ExportEvents",
+            "dataType": "int64",
+            "sourceColumn": "ExportEvents",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "SubscriptionRuns",
+            "dataType": "int64",
+            "sourceColumn": "SubscriptionRuns",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "AvgLoadSeconds",
+            "dataType": "double",
+            "sourceColumn": "AvgLoadSeconds",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FailedVisualCount",
+            "dataType": "int64",
+            "sourceColumn": "FailedVisualCount",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactUsage-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 19 - Finance Data Quality BI Governance\\\\data\\\\prepared\\\\factusage.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"DateKey\", Int64.Type}, {\"ReportKey\", type text}, {\"DeptKey\", type text}, {\"Views\", Int64.Type}, {\"UniqueViewers\", Int64.Type}, {\"ExportEvents\", Int64.Type}, {\"SubscriptionRuns\", Int64.Type}, {\"AvgLoadSeconds\", type number}, {\"FailedVisualCount\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactAccessReview",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ReportKey",
+            "dataType": "string",
+            "sourceColumn": "ReportKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DeptKey",
+            "dataType": "string",
+            "sourceColumn": "DeptKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "UsersWithAccess",
+            "dataType": "int64",
+            "sourceColumn": "UsersWithAccess",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "PrivilegedUsers",
+            "dataType": "int64",
+            "sourceColumn": "PrivilegedUsers",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "OrphanedUsers",
+            "dataType": "int64",
+            "sourceColumn": "OrphanedUsers",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "RLSExceptions",
+            "dataType": "int64",
+            "sourceColumn": "RLSExceptions",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "PendingAccessReviews",
+            "dataType": "int64",
+            "sourceColumn": "PendingAccessReviews",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "UnauthorizedSharingEvents",
+            "dataType": "int64",
+            "sourceColumn": "UnauthorizedSharingEvents",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DeploymentControlScore",
+            "dataType": "double",
+            "sourceColumn": "DeploymentControlScore",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactAccessReview-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 19 - Finance Data Quality BI Governance\\\\data\\\\prepared\\\\factaccessreview.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"DateKey\", Int64.Type}, {\"ReportKey\", type text}, {\"DeptKey\", type text}, {\"UsersWithAccess\", Int64.Type}, {\"PrivilegedUsers\", Int64.Type}, {\"OrphanedUsers\", Int64.Type}, {\"RLSExceptions\", Int64.Type}, {\"PendingAccessReviews\", Int64.Type}, {\"UnauthorizedSharingEvents\", Int64.Type}, {\"DeploymentControlScore\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactIncidents",
+        "columns": [
+          {
+            "name": "IncidentKey",
+            "dataType": "string",
+            "sourceColumn": "IncidentKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DatasetKey",
+            "dataType": "string",
+            "sourceColumn": "DatasetKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Severity",
+            "dataType": "string",
+            "sourceColumn": "Severity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IncidentStatus",
+            "dataType": "string",
+            "sourceColumn": "IncidentStatus",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RootCause",
+            "dataType": "string",
+            "sourceColumn": "RootCause",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MTTRHours",
+            "dataType": "double",
+            "sourceColumn": "MTTRHours",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "SLAOverdueFlag",
+            "dataType": "int64",
+            "sourceColumn": "SLAOverdueFlag",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "BusinessImpact",
+            "dataType": "string",
+            "sourceColumn": "BusinessImpact",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactIncidents-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 19 - Finance Data Quality BI Governance\\\\data\\\\prepared\\\\factincidents.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(PromotedHeaders, {{\"IncidentKey\", type text}, {\"DateKey\", Int64.Type}, {\"DatasetKey\", type text}, {\"Severity\", type text}, {\"IncidentStatus\", type text}, {\"RootCause\", type text}, {\"MTTRHours\", type number}, {\"SLAOverdueFlag\", Int64.Type}, {\"BusinessImpact\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI Measures",
+        "columns": [
+          {
+            "name": "MeasureKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "MeasureKey"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "KPI Measures-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [MeasureKey = text], {{\"KPI\"}}) in Source"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Dataset Count",
+            "expression": "DISTINCTCOUNT ( DimDataset[DatasetKey] )",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Critical Dataset Count",
+            "expression": "CALCULATE ( [Dataset Count], DimDataset[Criticality] = \"Tier 1\" )",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Certified Dataset Count",
+            "expression": "CALCULATE ( [Dataset Count], DimDataset[Certified] = \"Y\" )",
+            "formatString": "#,0",
+            "displayFolder": "Overview"
+          },
+          {
+            "name": "Data Quality Score",
+            "expression": "AVERAGE ( FactDatasetDaily[DataQualityScore] )",
+            "formatString": "0.0",
+            "displayFolder": "Quality"
+          },
+          {
+            "name": "Completeness %",
+            "expression": "DIVIDE ( SUM ( FactDatasetDaily[RowsLoaded] ), SUM ( FactDatasetDaily[RowsExpected] ) )",
+            "formatString": "0.0%",
+            "displayFolder": "Quality"
+          },
+          {
+            "name": "Freshness SLA %",
+            "expression": "DIVIDE ( SUM ( FactDatasetDaily[FreshnessWithinSLAFlag] ), COUNTROWS ( FactDatasetDaily ) )",
+            "formatString": "0.0%",
+            "displayFolder": "Reliability"
+          },
+          {
+            "name": "Refresh Runs",
+            "expression": "COUNTROWS ( FactRefreshRuns )",
+            "formatString": "#,0",
+            "displayFolder": "Reliability"
+          },
+          {
+            "name": "Refresh Success %",
+            "expression": "DIVIDE ( CALCULATE ( [Refresh Runs], FactRefreshRuns[Status] = \"Success\" ), [Refresh Runs] )",
+            "formatString": "0.0%",
+            "displayFolder": "Reliability"
+          },
+          {
+            "name": "Failed Refreshes",
+            "expression": "CALCULATE ( [Refresh Runs], FactRefreshRuns[Status] = \"Failed\" )",
+            "formatString": "#,0",
+            "displayFolder": "Reliability"
+          },
+          {
+            "name": "Avg Refresh Duration Min",
+            "expression": "AVERAGE ( FactRefreshRuns[DurationMinutes] )",
+            "formatString": "0.0",
+            "displayFolder": "Reliability"
+          },
+          {
+            "name": "DQ Issue Count",
+            "expression": "SUM ( FactDatasetDaily[NullCriticalCount] ) + SUM ( FactDatasetDaily[DuplicateKeyCount] ) + SUM ( FactDatasetDaily[SchemaDriftCount] )",
+            "formatString": "#,0",
+            "displayFolder": "Quality"
+          },
+          {
+            "name": "Open Incidents",
+            "expression": "CALCULATE ( COUNTROWS ( FactIncidents ), FactIncidents[IncidentStatus] <> \"Closed\" )",
+            "formatString": "#,0",
+            "displayFolder": "Reliability"
+          },
+          {
+            "name": "Avg MTTR Hours",
+            "expression": "AVERAGE ( FactIncidents[MTTRHours] )",
+            "formatString": "0.0",
+            "displayFolder": "Reliability"
+          },
+          {
+            "name": "Reconciliation Variance",
+            "expression": "SUM ( FactReconciliation[VarianceAmount] )",
+            "formatString": "$#,0",
+            "displayFolder": "Reconciliation"
+          },
+          {
+            "name": "Abs Reconciliation Variance",
+            "expression": "SUMX ( FactReconciliation, ABS ( FactReconciliation[VarianceAmount] ) )",
+            "formatString": "$#,0",
+            "displayFolder": "Reconciliation"
+          },
+          {
+            "name": "Reconciliation Pass %",
+            "expression": "DIVIDE ( CALCULATE ( COUNTROWS ( FactReconciliation ), FactReconciliation[ReconciliationStatus] = \"Pass\" ), COUNTROWS ( FactReconciliation ) )",
+            "formatString": "0.0%",
+            "displayFolder": "Reconciliation"
+          },
+          {
+            "name": "Report Views",
+            "expression": "SUM ( FactUsage[Views] )",
+            "formatString": "#,0",
+            "displayFolder": "Adoption"
+          },
+          {
+            "name": "Active Viewer Days",
+            "expression": "SUM ( FactUsage[UniqueViewers] )",
+            "formatString": "#,0",
+            "displayFolder": "Adoption"
+          },
+          {
+            "name": "Export Events",
+            "expression": "SUM ( FactUsage[ExportEvents] )",
+            "formatString": "#,0",
+            "displayFolder": "Adoption"
+          },
+          {
+            "name": "Avg Report Load Seconds",
+            "expression": "AVERAGE ( FactUsage[AvgLoadSeconds] )",
+            "formatString": "0.0",
+            "displayFolder": "Adoption"
+          },
+          {
+            "name": "Failed Visual Count",
+            "expression": "SUM ( FactUsage[FailedVisualCount] )",
+            "formatString": "#,0",
+            "displayFolder": "Adoption"
+          },
+          {
+            "name": "Access Risk Events",
+            "expression": "SUM ( FactAccessReview[RLSExceptions] ) + SUM ( FactAccessReview[OrphanedUsers] ) + SUM ( FactAccessReview[UnauthorizedSharingEvents] )",
+            "formatString": "#,0",
+            "displayFolder": "Controls"
+          },
+          {
+            "name": "RLS Exceptions",
+            "expression": "SUM ( FactAccessReview[RLSExceptions] )",
+            "formatString": "#,0",
+            "displayFolder": "Controls"
+          },
+          {
+            "name": "Pending Access Reviews",
+            "expression": "SUM ( FactAccessReview[PendingAccessReviews] )",
+            "formatString": "#,0",
+            "displayFolder": "Controls"
+          },
+          {
+            "name": "Deployment Control Score",
+            "expression": "AVERAGE ( FactAccessReview[DeploymentControlScore] )",
+            "formatString": "0.0",
+            "displayFolder": "Controls"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "FactDatasetDaily_DateKey_DimDate_DateKey",
+        "fromTable": "FactDatasetDaily",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactDatasetDaily_DatasetKey_DimDataset_DatasetKey",
+        "fromTable": "FactDatasetDaily",
+        "fromColumn": "DatasetKey",
+        "toTable": "DimDataset",
+        "toColumn": "DatasetKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactRefreshRuns_DateKey_DimDate_DateKey",
+        "fromTable": "FactRefreshRuns",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactRefreshRuns_DatasetKey_DimDataset_DatasetKey",
+        "fromTable": "FactRefreshRuns",
+        "fromColumn": "DatasetKey",
+        "toTable": "DimDataset",
+        "toColumn": "DatasetKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactReconciliation_DateKey_DimDate_DateKey",
+        "fromTable": "FactReconciliation",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactReconciliation_DatasetKey_DimDataset_DatasetKey",
+        "fromTable": "FactReconciliation",
+        "fromColumn": "DatasetKey",
+        "toTable": "DimDataset",
+        "toColumn": "DatasetKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactIncidents_DateKey_DimDate_DateKey",
+        "fromTable": "FactIncidents",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactIncidents_DatasetKey_DimDataset_DatasetKey",
+        "fromTable": "FactIncidents",
+        "fromColumn": "DatasetKey",
+        "toTable": "DimDataset",
+        "toColumn": "DatasetKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactReconciliation_DeptKey_DimDepartment_DeptKey",
+        "fromTable": "FactReconciliation",
+        "fromColumn": "DeptKey",
+        "toTable": "DimDepartment",
+        "toColumn": "DeptKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactUsage_DateKey_DimDate_DateKey",
+        "fromTable": "FactUsage",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactUsage_ReportKey_DimReport_ReportKey",
+        "fromTable": "FactUsage",
+        "fromColumn": "ReportKey",
+        "toTable": "DimReport",
+        "toColumn": "ReportKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactUsage_DeptKey_DimDepartment_DeptKey",
+        "fromTable": "FactUsage",
+        "fromColumn": "DeptKey",
+        "toTable": "DimDepartment",
+        "toColumn": "DeptKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactAccessReview_DateKey_DimDate_DateKey",
+        "fromTable": "FactAccessReview",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactAccessReview_ReportKey_DimReport_ReportKey",
+        "fromTable": "FactAccessReview",
+        "fromColumn": "ReportKey",
+        "toTable": "DimReport",
+        "toColumn": "ReportKey",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "FactAccessReview_DeptKey_DimDepartment_DeptKey",
+        "fromTable": "FactAccessReview",
+        "fromColumn": "DeptKey",
+        "toTable": "DimDepartment",
+        "toColumn": "DeptKey",
+        "crossFilteringBehavior": "oneDirection"
+      }
+    ]
+  }
+}

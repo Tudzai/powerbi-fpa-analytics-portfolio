@@ -1,0 +1,49 @@
+{
+  "pages": [
+    {
+      "page": "ESG Finance Overview",
+      "question": "Are emissions and carbon cost exposure moving in the right direction?",
+      "visuals": [
+        "KPI strip",
+        "emissions and carbon cost trend",
+        "scope mix stacked column",
+        "business unit ranking"
+      ],
+      "slicers": [
+        "Year",
+        "Region",
+        "Carbon price scenario"
+      ]
+    },
+    {
+      "page": "Emissions & Supplier Intensity",
+      "question": "Which scopes, sources, suppliers, and facilities drive the footprint?",
+      "visuals": [
+        "scope/source waterfall",
+        "supplier intensity ranking",
+        "business unit by activity heatmap",
+        "supplier detail table"
+      ],
+      "slicers": [
+        "Year",
+        "Scope",
+        "Supplier risk tier"
+      ]
+    },
+    {
+      "page": "Carbon Scenario & Abatement ROI",
+      "question": "Which carbon price and abatement options change the finance decision?",
+      "visuals": [
+        "scenario exposure line",
+        "MACC ranking",
+        "ROI/payback matrix",
+        "initiative action table"
+      ],
+      "slicers": [
+        "Scenario",
+        "Scope",
+        "Implementation status"
+      ]
+    }
+  ]
+}

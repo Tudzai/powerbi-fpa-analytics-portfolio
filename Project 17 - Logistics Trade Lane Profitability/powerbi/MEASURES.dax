@@ -1,0 +1,74 @@
+Net Revenue =
+SUM(FactShipmentProfitability[net_revenue_usd])
+
+Freight Cost =
+SUM(FactShipmentProfitability[freight_cost_usd])
+
+Fuel Cost =
+SUM(FactShipmentProfitability[fuel_cost_usd])
+
+Demurrage Cost =
+SUM(FactShipmentProfitability[demurrage_cost_usd])
+
+Claims Cost =
+SUM(FactShipmentProfitability[claims_cost_usd])
+
+Total Cost =
+SUM(FactShipmentProfitability[total_cost_usd])
+
+Gross Profit =
+SUM(FactShipmentProfitability[gross_profit_usd])
+
+GP Margin % =
+DIVIDE([Gross Profit], [Net Revenue])
+
+Shipment Count =
+SUM(FactShipmentProfitability[shipment_count])
+
+TEU =
+SUM(FactShipmentProfitability[teu])
+
+CBM =
+SUM(FactShipmentProfitability[cbm])
+
+Revenue per Shipment =
+DIVIDE([Net Revenue], [Shipment Count])
+
+Cost per Shipment =
+DIVIDE([Total Cost], [Shipment Count])
+
+Target Gross Profit =
+SUMX(FactShipmentProfitability, FactShipmentProfitability[net_revenue_usd] * FactShipmentProfitability[target_margin_pct])
+
+Margin Gap vs Target =
+[Gross Profit] - [Target Gross Profit]
+
+Target Margin % =
+DIVIDE([Target Gross Profit], [Net Revenue])
+
+Margin Gap % =
+[GP Margin %] - [Target Margin %]
+
+On-Time % =
+DIVIDE(SUM(FactShipmentProfitability[on_time_count]), [Shipment Count])
+
+Utilization % =
+AVERAGE(FactShipmentProfitability[utilization_pct])
+
+Negative Margin Shipments =
+CALCULATE([Shipment Count], FILTER(FactShipmentProfitability, FactShipmentProfitability[gross_profit_usd] < 0))
+
+Reprice Opportunity =
+SUMX(FILTER(FactShipmentProfitability, FactShipmentProfitability[gross_profit_usd] < 0), -FactShipmentProfitability[gross_profit_usd])
+
+Bridge Amount =
+SUM(FactCostDriverBridge[amount_usd])
+
+Open Actions =
+CALCULATE(COUNTROWS(FactActionQueue), FILTER(FactActionQueue, FactActionQueue[status] <> "Closed"))
+
+Action Risk Value =
+SUM(FactActionQueue[risk_value_usd])
+
+Recovery Value =
+SUM(FactActionQueue[target_margin_recovery_usd])

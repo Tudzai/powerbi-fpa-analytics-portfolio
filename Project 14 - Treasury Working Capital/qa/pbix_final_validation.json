@@ -1,0 +1,38 @@
+﻿{
+    "status":  "pass",
+    "checked_at":  "2026-06-15 03:51:54 +07:00",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_final.pbix",
+    "final_pbix_bytes":  4150244,
+    "seed_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_model_seed_ch07.pbix",
+    "route":  "SCRIPTED_DESKTOP_PBIX",
+    "technical_seed":  "Template\\\\01_Core_Financial_Statements\\\\Packt_Ch07_Group_Reporting.pbix",
+    "domain_reference":  "Template\\\\02_AR_Working_Capital\\\\Prodata_Finance-AR_Receivables.pbix",
+    "package_validation":  "PowerBIPackager.Validate passed",
+    "pbi_tools_export_data":  "pass",
+    "pbi_tools_extract":  "pass",
+    "power_bi_desktop_open_check":  "pass",
+    "pages":  [
+                  "Treasury Command Center",
+                  "Working Capital Control",
+                  "Forecast, FX \u0026 Risk"
+              ],
+    "visual_containers":  57,
+    "visual_type_counts":  {
+                               "barChart":  12,
+                               "shape":  6,
+                               "waterfallChart":  1,
+                               "textbox":  9,
+                               "slicer":  9,
+                               "cardVisual":  18,
+                               "columnChart":  2
+                           },
+    "model_tables":  18,
+    "relationships":  17,
+    "measures":  30,
+    "screenshots":  [
+                        "output/screenshots/pbix_final_treasury_command_center.png",
+                        "output/screenshots/pbix_final_working_capital_control.png",
+                        "output/screenshots/pbix_final_forecast_fx_risk.png",
+                        "output/screenshots/pbix_final_desktop_verified.png"
+                    ]
+}

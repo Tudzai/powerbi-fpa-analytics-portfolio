@@ -1,0 +1,32 @@
+[
+  {
+    "page": "Treasury Command Center",
+    "visuals": [
+      "KPI cards",
+      "13-week closing cash line",
+      "Liquidity by region bar",
+      "Cash movement columns",
+      "Action queue table"
+    ]
+  },
+  {
+    "page": "Working Capital Control",
+    "visuals": [
+      "KPI cards",
+      "AR aging bar",
+      "AP due bar",
+      "DSO/DPO trend line",
+      "Top customer/vendor tables"
+    ]
+  },
+  {
+    "page": "Forecast, FX & Risk",
+    "visuals": [
+      "KPI cards",
+      "Net cash flow columns",
+      "Unhedged FX bar",
+      "Facility maturity table",
+      "Risk queue table"
+    ]
+  }
+]

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finance Data Quality BI Governance</title>
+<style>
+body { margin:0; font-family: Segoe UI, Arial, sans-serif; background:#f7f8fa; color:#17202a; }
+header { padding:24px 32px 8px; border-bottom:1px solid #d8ded8; background:#fff; }
+h1 { margin:0; font-size:25px; font-weight:700; }
+h2 { font-size:16px; margin:0 0 14px; }
+.sub { color:#5d6875; margin-top:6px; }
+.grid { display:grid; grid-template-columns: repeat(12, 1fr); gap:16px; padding:20px 32px 34px; }
+.card { background:#fff; border:1px solid #d8ded8; border-radius:8px; padding:16px; }
+.kpi { grid-column: span 2; min-height:86px; }
+.kpi b { display:block; font-size:25px; margin-top:12px; color:#1b4d89; }
+.wide { grid-column: span 7; }
+.mid { grid-column: span 5; }
+.full { grid-column: span 12; }
+.bar-row { display:grid; grid-template-columns: 210px 1fr 70px; gap:10px; align-items:center; margin:9px 0; font-size:12px; }
+.bar-row div { height:14px; background:#edf1f3; border-radius:999px; overflow:hidden; }
+.bar-row i { display:block; height:14px; background:#2a9d8f; }
+svg { width:100%; height:240px; }
+table { width:100%; border-collapse:collapse; font-size:12px; }
+td, th { padding:7px 8px; border-bottom:1px solid #e4e8eb; text-align:left; }
+@media(max-width:900px) { .kpi,.wide,.mid,.full { grid-column: span 12; } .bar-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Finance Data Quality BI Governance</h1>
+  <div class="sub">Supplemental HTML preview. Final Power BI target remains output/dashboard_final.pbix.</div>
+</header>
+<section class="grid">
+  <div class="card kpi"><span>DQ Score</span><b>90.6</b></div>
+  <div class="card kpi"><span>Freshness SLA</span><b>91.7%</b></div>
+  <div class="card kpi"><span>Refresh Success</span><b>96.9%</b></div>
+  <div class="card kpi"><span>Open Incidents</span><b>43</b></div>
+  <div class="card kpi"><span>Access Risk</span><b>863</b></div>
+  <div class="card wide"><h2>Quality Trend</h2><svg viewBox="0 0 760 240"><polyline fill="none" stroke="#1b4d89" stroke-width="4" points="40.0,115.1 81.2,82.0 122.5,60.0 163.8,62.7 205.0,84.0 246.2,121.2 287.5,152.7 328.8,178.5 370.0,210.0 411.2,198.3 452.5,187.0 493.8,155.9 535.0,112.1 576.2,89.2 617.5,67.7 658.8,67.5 700.0,83.6"/><line x1="40" y1="210" x2="720" y2="210" stroke="#d8ded8"/></svg></div>
+  <div class="card mid"><h2>Quality by Domain</h2><div class='bar-row'><span>Tax</span><div><i style='width:93.8%'></i></div><b>87</b></div>
+<div class='bar-row'><span>People Cost</span><div><i style='width:94.2%'></i></div><b>87</b></div>
+<div class='bar-row'><span>FP&A</span><div><i style='width:96.7%'></i></div><b>90</b></div>
+<div class='bar-row'><span>Treasury</span><div><i style='width:98.2%'></i></div><b>91</b></div>
+<div class='bar-row'><span>Record to Report</span><div><i style='width:98.4%'></i></div><b>91</b></div>
+<div class='bar-row'><span>Consolidation</span><div><i style='width:99.9%'></i></div><b>93</b></div>
+<div class='bar-row'><span>Procure to Pay</span><div><i style='width:100.0%'></i></div><b>93</b></div>
+<div class='bar-row'><span>Revenue</span><div><i style='width:100.0%'></i></div><b>93</b></div>
+<div class='bar-row'><span>Order to Cash</span><div><i style='width:100.0%'></i></div><b>93</b></div></div>
+  <div class="card mid"><h2>Top Report Adoption</h2><div class='bar-row'><span>Revenue Waterfall</span><div><i style='width:100.0%'></i></div><b>57,140</b></div>
+<div class='bar-row'><span>CFO Flash</span><div><i style='width:99.9%'></i></div><b>57,093</b></div>
+<div class='bar-row'><span>Finance Data Quality Monitor</span><div><i style='width:99.6%'></i></div><b>56,886</b></div>
+<div class='bar-row'><span>Monthly Close Cockpit</span><div><i style='width:99.4%'></i></div><b>56,803</b></div>
+<div class='bar-row'><span>Treasury Liquidity Monitor</span><div><i style='width:98.8%'></i></div><b>56,431</b></div>
+<div class='bar-row'><span>Cost Center Review</span><div><i style='width:68.4%'></i></div><b>39,083</b></div>
+<div class='bar-row'><span>AR Cash Collections</span><div><i style='width:67.8%'></i></div><b>38,769</b></div>
+<div class='bar-row'><span>AP Spend Control</span><div><i style='width:66.7%'></i></div><b>38,133</b></div></div>
+  <div class="card mid"><h2>Access Controls by Department</h2><div class='bar-row'><span>Corporate FP&A</span><div><i style='width:100.0%'></i></div><b>66</b></div>
+<div class='bar-row'><span>Treasury</span><div><i style='width:97.0%'></i></div><b>64</b></div>
+<div class='bar-row'><span>Revenue Operations</span><div><i style='width:93.9%'></i></div><b>62</b></div>
+<div class='bar-row'><span>Procurement Finance</span><div><i style='width:89.4%'></i></div><b>59</b></div>
+<div class='bar-row'><span>Tax</span><div><i style='width:89.4%'></i></div><b>59</b></div>
+<div class='bar-row'><span>BI Governance</span><div><i style='width:86.4%'></i></div><b>57</b></div>
+<div class='bar-row'><span>Internal Audit</span><div><i style='width:86.4%'></i></div><b>57</b></div>
+<div class='bar-row'><span>Controllership</span><div><i style='width:68.2%'></i></div><b>45</b></div></div>
+  <div class="card full"><h2>Dataset Watchlist</h2><table border="1" class="dataframe watch">
+  <thead>
+    <tr style="text-align: right;">
+      <th>DatasetName</th>
+      <th>Domain</th>
+      <th>OwnerTeam</th>
+      <th>dq</th>
+      <th>freshness</th>
+      <th>issues</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tax Provision Inputs</td>
+      <td>Tax</td>
+      <td>Tax Ops</td>
+      <td>86.869322</td>
+      <td>0.937984</td>
+      <td>1828</td>
+    </tr>
+    <tr>
+      <td>Payroll Accrual Feed</td>
+      <td>People Cost</td>
+      <td>People Finance</td>
+      <td>87.256434</td>
+      <td>0.910853</td>
+      <td>1785</td>
+    </tr>
+    <tr>
+      <td>Budget Forecast Snapshot</td>
+      <td>FP&amp;A</td>
+      <td>FP&amp;A Systems</td>
+      <td>89.560659</td>
+      <td>0.924419</td>
+      <td>1508</td>
+    </tr>
+    <tr>
+      <td>Cost Center Actuals</td>
+      <td>FP&amp;A</td>
+      <td>FP&amp;A Systems</td>
+      <td>89.570717</td>
+      <td>0.899225</td>
+      <td>1518</td>
+    </tr>
+    <tr>
+      <td>Fixed Asset Register</td>
+      <td>Record to Report</td>
+      <td>Controllership</td>
+      <td>89.650136</td>
+      <td>0.932171</td>
+      <td>1512</td>
+    </tr>
+    <tr>
+      <td>Bank Statement Feed</td>
+      <td>Treasury</td>
+      <td>Treasury Ops</td>
+      <td>90.892229</td>
+      <td>0.920543</td>
+      <td>1317</td>
+    </tr>
+    <tr>
+      <td>Treasury Cash Position</td>
+      <td>Treasury</td>
+      <td>Treasury Ops</td>
+      <td>90.896337</td>
+      <td>0.918605</td>
+      <td>1346</td>
+    </tr>
+    <tr>
+      <td>Intercompany Elimination</td>
+      <td>Consolidation</td>
+      <td>Consolidation COE</td>
+      <td>92.500116</td>
+      <td>0.920543</td>
+      <td>1114</td>
+    </tr>
+    <tr>
+      <td>General Ledger Daily Balance</td>
+      <td>Record to Report</td>
+      <td>R2R Data Product</td>
+      <td>92.517829</td>
+      <td>0.918605</td>
+      <td>1141</td>
+    </tr>
+    <tr>
+      <td>Accounts Payable Invoice</td>
+      <td>Procure to Pay</td>
+      <td>P2P Analytics</td>
+      <td>92.585930</td>
+      <td>0.918605</td>
+      <td>1081</td>
+    </tr>
+    <tr>
+      <td>Revenue Recognition Entries</td>
+      <td>Revenue</td>
+      <td>Revenue Ops</td>
+      <td>92.587364</td>
+      <td>0.903101</td>
+      <td>1138</td>
+    </tr>
+    <tr>
+      <td>Accounts Receivable Aging</td>
+      <td>Order to Cash</td>
+      <td>O2C Analytics</td>
+      <td>92.595620</td>
+      <td>0.905039</td>
+      <td>1114</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+</body>
+</html>

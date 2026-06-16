@@ -1,0 +1,14 @@
+[
+  {
+    "page": "Treasury Command Center",
+    "purpose": "Executive liquidity, runway, forecast, and action queue."
+  },
+  {
+    "page": "Working Capital Control",
+    "purpose": "AR/AP aging, DSO/DPO, collection and payment focus."
+  },
+  {
+    "page": "Forecast, FX & Risk",
+    "purpose": "13-week forecast, FX exposure, debt/facility maturity, and risk actions."
+  }
+]

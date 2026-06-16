@@ -1,0 +1,26 @@
+{
+  "Governance Overview": [
+    "5 KPI cards",
+    "quality/freshness line",
+    "domain bar",
+    "dataset table",
+    "incident columns",
+    "reconciliation donut"
+  ],
+  "Reliability & Quality": [
+    "5 KPI cards",
+    "refresh/completeness line",
+    "failure bar",
+    "variance bar",
+    "incident table",
+    "aging columns"
+  ],
+  "Adoption & Controls": [
+    "5 KPI cards",
+    "adoption bar",
+    "performance line",
+    "access columns",
+    "access detail table",
+    "export columns"
+  ]
+}

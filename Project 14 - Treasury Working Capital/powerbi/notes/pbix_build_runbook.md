@@ -1,0 +1,1 @@
+Run `python tools/build_native_pbix_assets.py`, `powerbi/prepare_seed_pbix.ps1`, open the seed PBIX, run TOM push, save the seed in Desktop, then run `powerbi/apply_native_layout_to_pbix.ps1` and open-check `output/dashboard_final.pbix`.

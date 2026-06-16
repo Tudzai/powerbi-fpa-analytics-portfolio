@@ -1,0 +1,27 @@
+{
+  "project_name": "Project 18 - ESG Carbon Finance",
+  "project_path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance",
+  "bi_topic": "ESG Carbon Finance",
+  "delivery_level": "executive-ready portfolio demo",
+  "audience": "CFO, ESG finance lead, procurement lead, operations leadership",
+  "primary_decision": "Prioritize decarbonization and supplier actions by carbon cost exposure and ROI.",
+  "data_mode": "synthetic",
+  "target_output": "Power BI PBIX",
+  "final_pbix_path": "output/dashboard_final.pbix",
+  "current_phase": 3,
+  "phase_status": "build_package_ready_pbix_pending",
+  "critical_kpis": [
+    "Total Emissions tCO2e",
+    "Carbon Cost USD",
+    "Supplier Intensity",
+    "Abatement ROI",
+    "MACC"
+  ],
+  "assumptions": [
+    "Synthetic demo data because no production source was provided.",
+    "Latest complete month is 2026-05."
+  ],
+  "risks": [
+    "Final PBIX requires Desktop save/open validation."
+  ]
+}

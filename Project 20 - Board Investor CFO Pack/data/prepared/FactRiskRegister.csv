@@ -1,0 +1,31 @@
+ScenarioID,RiskID,RiskCategory,Risk,Severity,Probability,ExposureUSD,Owner,MitigationStatus,BoardAsk
+Base,R01,Cash,Downside runway drops below 18 months,Critical,0.42,18000000.0,CFO,Funding plan drafted,Approve financing trigger
+Base,R02,Growth,Enterprise pipeline slips two quarters,High,0.36,15500000.0,CRO,Pipeline recovery sprint,Review GTM investment
+Base,R03,Margin,Cloud infrastructure savings delayed,High,0.31,9200000.0,CTO,Vendor renegotiation,Track margin bridge
+Base,R04,Covenant,Leverage headroom tightens under downside,Critical,0.28,22000000.0,Treasury,Bank waiver playbook,Confirm covenant action plan
+Base,R05,Working Capital,Collections DSO rises in EMEA,Watch,0.44,6800000.0,Controller,AR task force active,Monitor DSO trend
+Base,R06,Valuation,Comps multiple compresses,High,0.38,31000000.0,CFO,Sensitivity included,Align investor narrative
+Base,R07,Operations,Hiring plan outpaces productivity,Watch,0.27,5100000.0,COO,Headcount gate in place,Review hiring freeze gate
+Base,R08,Product,Data product launch delay,Watch,0.25,7600000.0,CPO,Revised milestone plan,Confirm launch date
+Base,R09,Tax,International tax exposure,Watch,0.18,3900000.0,Tax,Advisor review,No board ask
+Base,R10,Security,Enterprise security audit delay,High,0.21,8400000.0,CISO,SOC2 remediation,Monitor deal blockers
+Upside,R01,Cash,Downside runway drops below 18 months,Critical,0.34,14760000.0,CFO,Funding plan drafted,Approve financing trigger
+Upside,R02,Growth,Enterprise pipeline slips two quarters,High,0.3,12710000.0,CRO,Pipeline recovery sprint,Review GTM investment
+Upside,R03,Margin,Cloud infrastructure savings delayed,High,0.25,7544000.0,CTO,Vendor renegotiation,Track margin bridge
+Upside,R04,Covenant,Leverage headroom tightens under downside,Critical,0.23,18040000.0,Treasury,Bank waiver playbook,Confirm covenant action plan
+Upside,R05,Working Capital,Collections DSO rises in EMEA,Watch,0.36,5576000.0,Controller,AR task force active,Monitor DSO trend
+Upside,R06,Valuation,Comps multiple compresses,High,0.31,25420000.0,CFO,Sensitivity included,Align investor narrative
+Upside,R07,Operations,Hiring plan outpaces productivity,Watch,0.22,4182000.0,COO,Headcount gate in place,Review hiring freeze gate
+Upside,R08,Product,Data product launch delay,Watch,0.2,6232000.0,CPO,Revised milestone plan,Confirm launch date
+Upside,R09,Tax,International tax exposure,Watch,0.15,3198000.0,Tax,Advisor review,No board ask
+Upside,R10,Security,Enterprise security audit delay,High,0.17,6888000.0,CISO,SOC2 remediation,Monitor deal blockers
+Downside,R01,Cash,Downside runway drops below 18 months,Critical,0.51,21960000.0,CFO,Funding plan drafted,Approve financing trigger
+Downside,R02,Growth,Enterprise pipeline slips two quarters,High,0.44,18910000.0,CRO,Pipeline recovery sprint,Review GTM investment
+Downside,R03,Margin,Cloud infrastructure savings delayed,High,0.38,11224000.0,CTO,Vendor renegotiation,Track margin bridge
+Downside,R04,Covenant,Leverage headroom tightens under downside,Critical,0.34,26840000.0,Treasury,Bank waiver playbook,Confirm covenant action plan
+Downside,R05,Working Capital,Collections DSO rises in EMEA,Watch,0.54,8296000.0,Controller,AR task force active,Monitor DSO trend
+Downside,R06,Valuation,Comps multiple compresses,High,0.46,37820000.0,CFO,Sensitivity included,Align investor narrative
+Downside,R07,Operations,Hiring plan outpaces productivity,Watch,0.33,6222000.0,COO,Headcount gate in place,Review hiring freeze gate
+Downside,R08,Product,Data product launch delay,Watch,0.3,9272000.0,CPO,Revised milestone plan,Confirm launch date
+Downside,R09,Tax,International tax exposure,Watch,0.22,4758000.0,Tax,Advisor review,No board ask
+Downside,R10,Security,Enterprise security audit delay,High,0.26,10248000.0,CISO,SOC2 remediation,Monitor deal blockers

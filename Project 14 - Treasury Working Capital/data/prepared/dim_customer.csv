@@ -1,0 +1,21 @@
+customer_id,customer,sector,entity_id,region,credit_terms_days,risk_rating
+C001,Northstar Retail,Healthcare,DE01,Europe,60,Medium
+C002,Helio Foods,Automotive,GB01,Europe,75,Low
+C003,Arcadia Medical,Technology,SG01,APAC,45,Medium
+C004,Pioneer Auto,Industrial,VN01,APAC,60,Low
+C005,BluePeak Electronics,Consumer,BR01,LATAM,30,Medium
+C006,UrbanHome Group,Energy,US01,North America,75,Medium
+C007,Apex Pharmacies,Retail,DE01,Europe,60,Medium
+C008,Global Mining Co,Healthcare,GB01,Europe,30,Medium
+C009,Nova Telecom,Automotive,SG01,APAC,75,Low
+C010,Evergreen Apparel,Technology,VN01,APAC,45,Medium
+C011,Summit Industrial,Industrial,BR01,LATAM,75,Medium
+C012,Nimbus Cloud Services,Consumer,US01,North America,30,Low
+C013,Atlas Grocery,Energy,DE01,Europe,45,Medium
+C014,Riverside Energy,Retail,GB01,Europe,75,Medium
+C015,Orion Components,Healthcare,SG01,APAC,30,Low
+C016,Pacific Marketplace,Automotive,VN01,APAC,75,Medium
+C017,Lion City Trading,Technology,BR01,LATAM,45,Low
+C018,Mekong Consumer,Industrial,US01,North America,45,High
+C019,Sao Paulo Motors,Consumer,DE01,Europe,75,Medium
+C020,Continental Labs,Energy,GB01,Europe,60,Medium

@@ -1,0 +1,25 @@
+{
+  "Executive Overview": [
+    "6 KPI cards",
+    "Revenue/GP trend",
+    "GP by lane cluster",
+    "service mix donut",
+    "customer-lane watchlist",
+    "lane gap table"
+  ],
+  "Trade Lane Margin": [
+    "6 KPI cards",
+    "GP margin by lane",
+    "mode revenue/GP bars",
+    "margin gap waterfall",
+    "lane-customer detail",
+    "service/carrier cost table"
+  ],
+  "Cost Drivers & Action Queue": [
+    "6 KPI cards",
+    "cost driver waterfall",
+    "cost by carrier",
+    "risk by issue type donut",
+    "pricing/action queue"
+  ]
+}

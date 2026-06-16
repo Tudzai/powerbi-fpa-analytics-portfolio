@@ -1,0 +1,117 @@
+{
+  "status": "pass",
+  "checked_at": "2026-06-14T20:50:20.473Z",
+  "html": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_final.html",
+  "results": [
+    {
+      "viewport": {
+        "name": "desktop",
+        "width": 1366,
+        "height": 768
+      },
+      "errors": [],
+      "initial": {
+        "title": "Project 14 - Treasury Working Capital",
+        "qa": {
+          "activePage": "overview",
+          "period": "W13",
+          "kpiCards": 18,
+          "panels": 13,
+          "tables": 5,
+          "svgs": 8
+        },
+        "overflowX": false,
+        "hasBadText": false
+      },
+      "filtered": {
+        "activePage": "overview",
+        "period": "W06",
+        "kpiCards": 18,
+        "panels": 13,
+        "tables": 5,
+        "svgs": 8
+      },
+      "pages": [
+        {
+          "expected": "overview",
+          "active": "overview",
+          "visible": true,
+          "hasBadText": false,
+          "cards": 18,
+          "charts": 8
+        },
+        {
+          "expected": "wc",
+          "active": "wc",
+          "visible": true,
+          "hasBadText": false,
+          "cards": 18,
+          "charts": 8
+        },
+        {
+          "expected": "risk",
+          "active": "risk",
+          "visible": true,
+          "hasBadText": false,
+          "cards": 18,
+          "charts": 8
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "errors": [],
+      "initial": {
+        "title": "Project 14 - Treasury Working Capital",
+        "qa": {
+          "activePage": "overview",
+          "period": "W13",
+          "kpiCards": 18,
+          "panels": 13,
+          "tables": 5,
+          "svgs": 8
+        },
+        "overflowX": false,
+        "hasBadText": false
+      },
+      "filtered": {
+        "activePage": "overview",
+        "period": "W06",
+        "kpiCards": 18,
+        "panels": 13,
+        "tables": 5,
+        "svgs": 8
+      },
+      "pages": [
+        {
+          "expected": "overview",
+          "active": "overview",
+          "visible": true,
+          "hasBadText": false,
+          "cards": 18,
+          "charts": 8
+        },
+        {
+          "expected": "wc",
+          "active": "wc",
+          "visible": true,
+          "hasBadText": false,
+          "cards": 18,
+          "charts": 8
+        },
+        {
+          "expected": "risk",
+          "active": "risk",
+          "visible": true,
+          "hasBadText": false,
+          "cards": 18,
+          "charts": 8
+        }
+      ]
+    }
+  ]
+}

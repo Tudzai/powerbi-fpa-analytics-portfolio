@@ -1,0 +1,7 @@
+reconciliation,status,detail,tolerance
+Shipment profitability grain uniqueness,pass,0 duplicate composite keys,$2 where applicable
+Critical fields populated,pass,0 bad rows,$2 where applicable
+Date coverage,pass,2025-01 to 2026-05,$2 where applicable
+Negative margin population exists,pass,1119 records below zero gross profit,$2 where applicable
+Cost driver bridge tie-out,pass,Max driver gap $0.03,$2 where applicable
+Action queue risk value,pass,"$1,299,254 in action risk",$2 where applicable

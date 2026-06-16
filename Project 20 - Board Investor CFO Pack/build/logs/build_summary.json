@@ -1,0 +1,24 @@
+{
+  "status": "source_build_complete",
+  "project_root": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack",
+  "data_qa": "pass",
+  "tables": {
+    "DimDate": 29,
+    "DimScenario": 3,
+    "DimBusinessUnit": 4,
+    "DimRegion": 4,
+    "DimCostCategory": 4,
+    "FactPnlMonthly": 1392,
+    "FactOpexMonthly": 348,
+    "FactCashMonthly": 87,
+    "FactStatementLines": 957,
+    "FactCovenantMonthly": 87,
+    "FactValuation": 15,
+    "FactSensitivity": 36,
+    "FactRiskRegister": 30,
+    "FactKpiScorecard": 8
+  },
+  "measures": 51,
+  "relationships": 16,
+  "pbix_exists": false
+}

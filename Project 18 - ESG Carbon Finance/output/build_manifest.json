@@ -1,0 +1,19 @@
+﻿{
+    "status":  "delivered",
+    "build_route":  "SCRIPTED_DESKTOP_PBIX",
+    "model_bim":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\model\\model.bim",
+    "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\build\\native_report_layout_project18.json",
+    "target_seed_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_model_seed.pbix",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_final.pbix",
+    "final_pbix_size_bytes":  4116065,
+    "final_sha256":  "F4E62FA7478981A9C2AC971FE2AB1E56F7F5BD8A5BD2D6C877454394B7C0B9C2",
+    "pages":  [
+                  "ESG Finance Overview",
+                  "Emissions \u0026 Supplier Intensity",
+                  "Carbon Scenario \u0026 Abatement ROI"
+              ],
+    "visual_containers":  337,
+    "desktop_open_check":  "passed",
+    "screenshot":  "output/screenshots/powerbi_desktop_static_opencheck_page1.png",
+    "updated_at_local":  "2026-06-15 03:23:44 +07:00"
+}

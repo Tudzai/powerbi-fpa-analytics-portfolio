@@ -1,0 +1,152 @@
+[
+  {
+    "measure_name": "Net Revenue",
+    "dax": "SUM(FactShipmentProfitability[net_revenue_usd])",
+    "format_string": "$#,0",
+    "definition": "Total billed revenue after rebates and credits."
+  },
+  {
+    "measure_name": "Freight Cost",
+    "dax": "SUM(FactShipmentProfitability[freight_cost_usd])",
+    "format_string": "$#,0",
+    "definition": "Carrier buy rate and main freight cost."
+  },
+  {
+    "measure_name": "Fuel Cost",
+    "dax": "SUM(FactShipmentProfitability[fuel_cost_usd])",
+    "format_string": "$#,0",
+    "definition": "Fuel surcharge cost charged by carriers."
+  },
+  {
+    "measure_name": "Demurrage Cost",
+    "dax": "SUM(FactShipmentProfitability[demurrage_cost_usd])",
+    "format_string": "$#,0",
+    "definition": "Demurrage and detention leakage."
+  },
+  {
+    "measure_name": "Claims Cost",
+    "dax": "SUM(FactShipmentProfitability[claims_cost_usd])",
+    "format_string": "$#,0",
+    "definition": "Claims and service failure cost."
+  },
+  {
+    "measure_name": "Total Cost",
+    "dax": "SUM(FactShipmentProfitability[total_cost_usd])",
+    "format_string": "$#,0",
+    "definition": "Total cost-to-serve for shipments."
+  },
+  {
+    "measure_name": "Gross Profit",
+    "dax": "SUM(FactShipmentProfitability[gross_profit_usd])",
+    "format_string": "$#,0",
+    "definition": "Net revenue less total shipment cost."
+  },
+  {
+    "measure_name": "GP Margin %",
+    "dax": "DIVIDE([Gross Profit], [Net Revenue])",
+    "format_string": "0.0%",
+    "definition": "Gross profit divided by net revenue."
+  },
+  {
+    "measure_name": "Shipment Count",
+    "dax": "SUM(FactShipmentProfitability[shipment_count])",
+    "format_string": "#,0",
+    "definition": "Total shipment records weighted by shipment count."
+  },
+  {
+    "measure_name": "TEU",
+    "dax": "SUM(FactShipmentProfitability[teu])",
+    "format_string": "#,0.0",
+    "definition": "Twenty-foot equivalent units for ocean lanes."
+  },
+  {
+    "measure_name": "CBM",
+    "dax": "SUM(FactShipmentProfitability[cbm])",
+    "format_string": "#,0.0",
+    "definition": "Cubic meter volume handled."
+  },
+  {
+    "measure_name": "Revenue per Shipment",
+    "dax": "DIVIDE([Net Revenue], [Shipment Count])",
+    "format_string": "$#,0",
+    "definition": "Net revenue per shipment."
+  },
+  {
+    "measure_name": "Cost per Shipment",
+    "dax": "DIVIDE([Total Cost], [Shipment Count])",
+    "format_string": "$#,0",
+    "definition": "Cost-to-serve per shipment."
+  },
+  {
+    "measure_name": "Target Gross Profit",
+    "dax": "SUMX(FactShipmentProfitability, FactShipmentProfitability[net_revenue_usd] * FactShipmentProfitability[target_margin_pct])",
+    "format_string": "$#,0",
+    "definition": "Target gross profit using lane/service margin targets."
+  },
+  {
+    "measure_name": "Margin Gap vs Target",
+    "dax": "[Gross Profit] - [Target Gross Profit]",
+    "format_string": "$#,0",
+    "definition": "Actual gross profit less target gross profit."
+  },
+  {
+    "measure_name": "Target Margin %",
+    "dax": "DIVIDE([Target Gross Profit], [Net Revenue])",
+    "format_string": "0.0%",
+    "definition": "Weighted target margin for selected scope."
+  },
+  {
+    "measure_name": "Margin Gap %",
+    "dax": "[GP Margin %] - [Target Margin %]",
+    "format_string": "0.0%",
+    "definition": "Percentage point gap versus target margin."
+  },
+  {
+    "measure_name": "On-Time %",
+    "dax": "DIVIDE(SUM(FactShipmentProfitability[on_time_count]), [Shipment Count])",
+    "format_string": "0.0%",
+    "definition": "On-time shipments divided by shipments."
+  },
+  {
+    "measure_name": "Utilization %",
+    "dax": "AVERAGE(FactShipmentProfitability[utilization_pct])",
+    "format_string": "0.0%",
+    "definition": "Average equipment/consolidation utilization."
+  },
+  {
+    "measure_name": "Negative Margin Shipments",
+    "dax": "CALCULATE([Shipment Count], FILTER(FactShipmentProfitability, FactShipmentProfitability[gross_profit_usd] < 0))",
+    "format_string": "#,0",
+    "definition": "Shipments with negative gross profit."
+  },
+  {
+    "measure_name": "Reprice Opportunity",
+    "dax": "SUMX(FILTER(FactShipmentProfitability, FactShipmentProfitability[gross_profit_usd] < 0), -FactShipmentProfitability[gross_profit_usd])",
+    "format_string": "$#,0",
+    "definition": "Gross profit required to bring negative shipments to zero."
+  },
+  {
+    "measure_name": "Bridge Amount",
+    "dax": "SUM(FactCostDriverBridge[amount_usd])",
+    "format_string": "$#,0",
+    "definition": "Driver bridge amount for margin gap explanation."
+  },
+  {
+    "measure_name": "Open Actions",
+    "dax": "CALCULATE(COUNTROWS(FactActionQueue), FILTER(FactActionQueue, FactActionQueue[status] <> \"Closed\"))",
+    "format_string": "#,0",
+    "definition": "Non-closed commercial/procurement/ops actions."
+  },
+  {
+    "measure_name": "Action Risk Value",
+    "dax": "SUM(FactActionQueue[risk_value_usd])",
+    "format_string": "$#,0",
+    "definition": "Margin value at risk in the action queue."
+  },
+  {
+    "measure_name": "Recovery Value",
+    "dax": "SUM(FactActionQueue[target_margin_recovery_usd])",
+    "format_string": "$#,0",
+    "definition": "Expected recoverable margin from action queue."
+  }
+]

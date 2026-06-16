@@ -1,0 +1,13 @@
+initiative_id,initiative,scope,business_unit,implementation_status,start_year,capex_usd,annual_reduction_tco2e,annual_opex_savings_usd,avoided_carbon_cost_usd_at_90,net_annual_benefit_usd_at_90,payback_years_at_90,roi_at_90,macc_usd_per_tco2e
+I01,Solar PPA expansion,Scope 2,Procurement,Committed,2025,4800000,9200,680000,828000,1508000,3.18,0.314,0.62
+I02,Fleet electrification phase 1,Scope 1,Logistics,Planned,2026,7600000,6300,910000,567000,1477000,5.15,0.194,27.89
+I03,Supplier recycled aluminum switch,Scope 3,Procurement,In flight,2025,2900000,8100,260000,729000,989000,2.93,0.341,19.05
+I04,Heat recovery at Hai Phong,Scope 1,Manufacturing,In flight,2025,3400000,5400,540000,486000,1026000,3.31,0.302,-10.05
+I05,LED and controls retrofit,Scope 2,Retail Operations,Implemented,2024,1100000,2500,230000,225000,455000,2.42,0.414,-29.14
+I06,Modal shift to rail,Scope 3,Logistics,Planned,2026,2200000,4700,185000,423000,608000,3.62,0.276,27.51
+I07,Refrigerant replacement,Scope 1,Manufacturing,Committed,2025,1600000,1900,90000,171000,261000,6.13,0.163,72.93
+I08,Supplier renewable heat program,Scope 3,Procurement,Planned,2026,5500000,7200,320000,648000,968000,5.68,0.176,64.68
+I09,Packaging lightweighting,Scope 3,Retail Operations,In flight,2025,2450000,3900,410000,351000,761000,3.22,0.311,-15.38
+I10,Green travel policy,Scope 3,Corporate,Implemented,2024,620000,1150,175000,103500,278500,2.23,0.449,-75.16
+I11,Battery storage peak shaving,Scope 2,Manufacturing,Planned,2026,3850000,2850,360000,256500,616500,6.24,0.16,66.67
+I12,Waste-to-resource program,Scope 3,Manufacturing,Committed,2025,980000,1650,125000,148500,273500,3.58,0.279,9.09

@@ -1,0 +1,182 @@
+[
+  {
+    "measure_name": "Cash Balance",
+    "definition": "Total book cash balance across bank accounts.",
+    "dax": "SUM(FactCashPosition[balance_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Available Cash",
+    "definition": "Cash balance net of restricted cash.",
+    "dax": "SUM(FactCashPosition[available_cash_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Restricted Cash",
+    "definition": "Restricted bank cash not available for operating liquidity.",
+    "dax": "SUM(FactCashPosition[restricted_cash_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Credit Available",
+    "definition": "Undrawn committed liquidity facilities.",
+    "dax": "SUM(FactLiquidityFacility[available_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Available Liquidity",
+    "definition": "Available cash plus undrawn credit facilities.",
+    "dax": "[Available Cash] + [Credit Available]",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Minimum Cash Buffer",
+    "definition": "Entity minimum cash covenant or operating buffer.",
+    "dax": "SUM(FactLiquidityFacility[min_cash_buffer_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Liquidity Headroom",
+    "definition": "Available liquidity above minimum cash buffer.",
+    "dax": "[Available Liquidity] - [Minimum Cash Buffer]",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "AR Outstanding",
+    "definition": "Open customer receivable balance.",
+    "dax": "SUM(FactARInvoice[outstanding_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Overdue AR",
+    "definition": "Open AR balance past due date.",
+    "dax": "CALCULATE([AR Outstanding], FactARInvoice[is_overdue] = TRUE())",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Overdue AR %",
+    "definition": "Overdue AR as a percentage of total AR outstanding.",
+    "dax": "DIVIDE([Overdue AR], [AR Outstanding])",
+    "format_string": "0.0%"
+  },
+  {
+    "measure_name": "AP Outstanding",
+    "definition": "Open vendor payable balance.",
+    "dax": "SUM(FactAPInvoice[outstanding_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "AP Due 14 Days",
+    "definition": "AP outstanding due in the next 14 days.",
+    "dax": "CALCULATE([AP Outstanding], FactAPInvoice[due_window] = \"0-14 days\")",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Revenue",
+    "definition": "Monthly revenue used for DSO denominator.",
+    "dax": "SUM(FactWorkingCapital[revenue_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "COGS",
+    "definition": "Monthly cost of goods sold used for DPO and DIO denominators.",
+    "dax": "SUM(FactWorkingCapital[cogs_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Working Capital",
+    "definition": "AR plus inventory less AP.",
+    "dax": "SUM(FactWorkingCapital[working_capital_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "DSO",
+    "definition": "Days sales outstanding, based on AR balance over revenue.",
+    "dax": "DIVIDE(SUM(FactWorkingCapital[ar_balance_usd]), [Revenue]) * 30",
+    "format_string": "0.0"
+  },
+  {
+    "measure_name": "DPO",
+    "definition": "Days payable outstanding, based on AP balance over COGS.",
+    "dax": "DIVIDE(SUM(FactWorkingCapital[ap_balance_usd]), [COGS]) * 30",
+    "format_string": "0.0"
+  },
+  {
+    "measure_name": "DIO",
+    "definition": "Days inventory outstanding, based on inventory balance over COGS.",
+    "dax": "DIVIDE(SUM(FactWorkingCapital[inventory_balance_usd]), [COGS]) * 30",
+    "format_string": "0.0"
+  },
+  {
+    "measure_name": "Cash Conversion Cycle",
+    "definition": "DSO plus DIO minus DPO.",
+    "dax": "[DSO] + [DIO] - [DPO]",
+    "format_string": "0.0"
+  },
+  {
+    "measure_name": "Forecast Closing Cash",
+    "definition": "Projected closing cash over the selected 13-week forecast scenario.",
+    "dax": "SUM(FactCashForecast[closing_cash_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Forecast Net Cash Flow",
+    "definition": "Projected cash inflows less outflows.",
+    "dax": "SUM(FactCashForecast[net_cash_flow_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Forecast Receipts",
+    "definition": "Forecast customer and other receipts.",
+    "dax": "SUM(FactCashForecast[customer_receipts_usd]) + SUM(FactCashForecast[other_receipts_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Forecast Payments",
+    "definition": "Forecast supplier, payroll, capex, and debt payments.",
+    "dax": "SUM(FactCashForecast[supplier_payments_usd]) + SUM(FactCashForecast[payroll_tax_usd]) + SUM(FactCashForecast[capex_usd]) + SUM(FactCashForecast[debt_service_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Cash Runway Weeks",
+    "definition": "Available liquidity divided by average weekly cash burn when net flow is negative.",
+    "dax": "DIVIDE([Available Liquidity], ABS(AVERAGE(FactCashForecast[net_cash_flow_usd])))",
+    "format_string": "0.0"
+  },
+  {
+    "measure_name": "Forecast Error %",
+    "definition": "Absolute forecast error divided by absolute actual net cash flow.",
+    "dax": "DIVIDE(SUM(FactForecastAccuracy[abs_error_usd]), SUMX(FactForecastAccuracy, ABS(FactForecastAccuracy[actual_net_cash_flow_usd])))",
+    "format_string": "0.0%"
+  },
+  {
+    "measure_name": "FX Net Exposure",
+    "definition": "Gross net FX exposure in USD equivalent.",
+    "dax": "SUM(FactFXExposure[net_exposure_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Unhedged FX Exposure",
+    "definition": "FX exposure remaining after hedge coverage.",
+    "dax": "SUM(FactFXExposure[unhedged_exposure_usd])",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Unhedged FX %",
+    "definition": "Unhedged exposure divided by total net FX exposure.",
+    "dax": "DIVIDE([Unhedged FX Exposure], [FX Net Exposure])",
+    "format_string": "0.0%"
+  },
+  {
+    "measure_name": "Open Risk Value",
+    "definition": "Value attached to non-closed treasury action items.",
+    "dax": "CALCULATE(SUM(FactTreasuryRiskAction[amount_usd]), FactTreasuryRiskAction[status] <> \"Closed\")",
+    "format_string": "$#,0"
+  },
+  {
+    "measure_name": "Open Risk Count",
+    "definition": "Count of non-closed treasury risk action items.",
+    "dax": "CALCULATE(COUNTROWS(FactTreasuryRiskAction), FactTreasuryRiskAction[status] <> \"Closed\")",
+    "format_string": "#,0"
+  }
+]

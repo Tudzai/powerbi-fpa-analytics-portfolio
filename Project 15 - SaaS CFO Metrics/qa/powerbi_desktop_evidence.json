@@ -1,0 +1,37 @@
+{
+  "status": "pass",
+  "checked_at_local": "2026-06-15 03:03:46",
+  "method": "Power BI Desktop session opened through pbi-tools, then verified by process/window metadata and saved through Computer Use.",
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 15 - SaaS CFO Metrics\\output\\dashboard_final.pbix",
+  "desktop_session": {
+    "process_id": 41448,
+    "port": 49932,
+    "window_handle": 1051452,
+    "window_title": "dashboard_final",
+    "responding": true
+  },
+  "ignored_power_bi_sessions": [
+    {
+      "process_id": 40124,
+      "reason": "Project 15 model seed, not final PBIX"
+    },
+    {
+      "process_id": 51240,
+      "reason": "Project 16 final PBIX"
+    },
+    {
+      "process_id": 32804,
+      "reason": "Project 17 model seed"
+    },
+    {
+      "process_id": 49600,
+      "reason": "Project 14 model seed"
+    }
+  ],
+  "desktop_save": {
+    "ctrl_s_sent": true,
+    "last_write_time_local": "2026-06-15 03:03:46",
+    "pbix_size_bytes": 4405994
+  },
+  "closed_after_qa_to_release_file_locks": true
+}

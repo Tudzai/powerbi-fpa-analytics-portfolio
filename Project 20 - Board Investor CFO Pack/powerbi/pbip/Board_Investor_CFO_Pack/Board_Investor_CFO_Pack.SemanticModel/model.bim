@@ -1,0 +1,1512 @@
+{
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimDate",
+        "lineageTag": "360f31a8-b5ac-48b7-8d9e-2eaf801053c0",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthLabel",
+            "dataType": "string",
+            "sourceColumn": "MonthLabel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthIndex",
+            "dataType": "int64",
+            "sourceColumn": "MonthIndex",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "formatString": "0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsLatestCompleteMonth",
+            "dataType": "int64",
+            "sourceColumn": "IsLatestCompleteMonth",
+            "formatString": "0",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimDate",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\DimDate.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"MonthLabel\", type text}, {\"MonthIndex\", Int64.Type}, {\"Year\", Int64.Type}, {\"Quarter\", type text}, {\"IsLatestCompleteMonth\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimScenario",
+        "lineageTag": "5c655823-ee47-476a-b492-ad7478576f65",
+        "columns": [
+          {
+            "name": "ScenarioID",
+            "dataType": "string",
+            "sourceColumn": "ScenarioID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioName",
+            "dataType": "string",
+            "sourceColumn": "ScenarioName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RevenueIndex",
+            "dataType": "double",
+            "sourceColumn": "RevenueIndex",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "MarginIndex",
+            "dataType": "double",
+            "sourceColumn": "MarginIndex",
+            "formatString": "0.0%",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "BurnIndex",
+            "dataType": "double",
+            "sourceColumn": "BurnIndex",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ScenarioSort",
+            "dataType": "int64",
+            "sourceColumn": "ScenarioSort",
+            "formatString": "0",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimScenario",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\DimScenario.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"ScenarioID\", type text}, {\"ScenarioName\", type text}, {\"RevenueIndex\", type number}, {\"MarginIndex\", type number}, {\"BurnIndex\", type number}, {\"ScenarioSort\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimBusinessUnit",
+        "lineageTag": "18490c71-8c40-4651-a111-a95ce989d233",
+        "columns": [
+          {
+            "name": "BusinessUnitID",
+            "dataType": "string",
+            "sourceColumn": "BusinessUnitID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BusinessUnit",
+            "dataType": "string",
+            "sourceColumn": "BusinessUnit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RevenueFamily",
+            "dataType": "string",
+            "sourceColumn": "RevenueFamily",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MixWeight",
+            "dataType": "double",
+            "sourceColumn": "MixWeight",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "TargetGrossMargin",
+            "dataType": "double",
+            "sourceColumn": "TargetGrossMargin",
+            "formatString": "0.0%",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "GrowthIndex",
+            "dataType": "double",
+            "sourceColumn": "GrowthIndex",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimBusinessUnit",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\DimBusinessUnit.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"BusinessUnitID\", type text}, {\"BusinessUnit\", type text}, {\"RevenueFamily\", type text}, {\"MixWeight\", type number}, {\"TargetGrossMargin\", type number}, {\"GrowthIndex\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimRegion",
+        "lineageTag": "3d5b5e1b-bf05-4e76-8d54-d4b83e4132a5",
+        "columns": [
+          {
+            "name": "RegionID",
+            "dataType": "string",
+            "sourceColumn": "RegionID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionMaturity",
+            "dataType": "string",
+            "sourceColumn": "RegionMaturity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MixWeight",
+            "dataType": "double",
+            "sourceColumn": "MixWeight",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DemandIndex",
+            "dataType": "double",
+            "sourceColumn": "DemandIndex",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimRegion",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\DimRegion.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"RegionID\", type text}, {\"Region\", type text}, {\"RegionMaturity\", type text}, {\"MixWeight\", type number}, {\"DemandIndex\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimCostCategory",
+        "lineageTag": "7c6cdf31-4c5f-46cd-bb42-daa669be8a16",
+        "columns": [
+          {
+            "name": "CostCategoryID",
+            "dataType": "string",
+            "sourceColumn": "CostCategoryID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CostCategory",
+            "dataType": "string",
+            "sourceColumn": "CostCategory",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RevenueLoad",
+            "dataType": "double",
+            "sourceColumn": "RevenueLoad",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_DimCostCategory",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\DimCostCategory.csv\"), [Delimiter=\",\", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"CostCategoryID\", type text}, {\"CostCategory\", type text}, {\"RevenueLoad\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactPnlMonthly",
+        "lineageTag": "7e2af411-5bf7-473b-bb9f-8c9a9acdcbd7",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioID",
+            "dataType": "string",
+            "sourceColumn": "ScenarioID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BusinessUnitID",
+            "dataType": "string",
+            "sourceColumn": "BusinessUnitID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RegionID",
+            "dataType": "string",
+            "sourceColumn": "RegionID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Revenue",
+            "dataType": "double",
+            "sourceColumn": "Revenue",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "PlanRevenue",
+            "dataType": "double",
+            "sourceColumn": "PlanRevenue",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ForecastRevenue",
+            "dataType": "double",
+            "sourceColumn": "ForecastRevenue",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "COGS",
+            "dataType": "double",
+            "sourceColumn": "COGS",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "GrossProfit",
+            "dataType": "double",
+            "sourceColumn": "GrossProfit",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "OperatingExpense",
+            "dataType": "double",
+            "sourceColumn": "OperatingExpense",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "EBITDA",
+            "dataType": "double",
+            "sourceColumn": "EBITDA",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "PlanEBITDA",
+            "dataType": "double",
+            "sourceColumn": "PlanEBITDA",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ForecastEBITDA",
+            "dataType": "double",
+            "sourceColumn": "ForecastEBITDA",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "NetIncome",
+            "dataType": "double",
+            "sourceColumn": "NetIncome",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "IsSynthetic",
+            "dataType": "string",
+            "sourceColumn": "IsSynthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactPnlMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\FactPnlMonthly.csv\"), [Delimiter=\",\", Columns=15, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"ScenarioID\", type text}, {\"BusinessUnitID\", type text}, {\"RegionID\", type text}, {\"Revenue\", type number}, {\"PlanRevenue\", type number}, {\"ForecastRevenue\", type number}, {\"COGS\", type number}, {\"GrossProfit\", type number}, {\"OperatingExpense\", type number}, {\"EBITDA\", type number}, {\"PlanEBITDA\", type number}, {\"ForecastEBITDA\", type number}, {\"NetIncome\", type number}, {\"IsSynthetic\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactOpexMonthly",
+        "lineageTag": "022061ae-5a4a-4b93-9998-fb44c47660d5",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioID",
+            "dataType": "string",
+            "sourceColumn": "ScenarioID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CostCategoryID",
+            "dataType": "string",
+            "sourceColumn": "CostCategoryID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OperatingExpense",
+            "dataType": "double",
+            "sourceColumn": "OperatingExpense",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "PlanOperatingExpense",
+            "dataType": "double",
+            "sourceColumn": "PlanOperatingExpense",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ForecastOperatingExpense",
+            "dataType": "double",
+            "sourceColumn": "ForecastOperatingExpense",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactOpexMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\FactOpexMonthly.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"ScenarioID\", type text}, {\"CostCategoryID\", type text}, {\"OperatingExpense\", type number}, {\"PlanOperatingExpense\", type number}, {\"ForecastOperatingExpense\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCashMonthly",
+        "lineageTag": "c0174fe4-e358-4991-85ba-1e785d582a4d",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioID",
+            "dataType": "string",
+            "sourceColumn": "ScenarioID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CashBalance",
+            "dataType": "double",
+            "sourceColumn": "CashBalance",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "OperatingCashFlow",
+            "dataType": "double",
+            "sourceColumn": "OperatingCashFlow",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Capex",
+            "dataType": "double",
+            "sourceColumn": "Capex",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FreeCashFlow",
+            "dataType": "double",
+            "sourceColumn": "FreeCashFlow",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "NetBurn",
+            "dataType": "double",
+            "sourceColumn": "NetBurn",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "RunwayMonths",
+            "dataType": "double",
+            "sourceColumn": "RunwayMonths",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FundingNeed",
+            "dataType": "double",
+            "sourceColumn": "FundingNeed",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Debt",
+            "dataType": "double",
+            "sourceColumn": "Debt",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "WorkingCapital",
+            "dataType": "double",
+            "sourceColumn": "WorkingCapital",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FinancingInflow",
+            "dataType": "double",
+            "sourceColumn": "FinancingInflow",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactCashMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\FactCashMonthly.csv\"), [Delimiter=\",\", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"ScenarioID\", type text}, {\"CashBalance\", type number}, {\"OperatingCashFlow\", type number}, {\"Capex\", type number}, {\"FreeCashFlow\", type number}, {\"NetBurn\", type number}, {\"RunwayMonths\", type number}, {\"FundingNeed\", type number}, {\"Debt\", type number}, {\"WorkingCapital\", type number}, {\"FinancingInflow\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactStatementLines",
+        "lineageTag": "50ab7618-4fd1-4af7-8f72-499b1b7229b4",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioID",
+            "dataType": "string",
+            "sourceColumn": "ScenarioID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Statement",
+            "dataType": "string",
+            "sourceColumn": "Statement",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LineItem",
+            "dataType": "string",
+            "sourceColumn": "LineItem",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LineSort",
+            "dataType": "int64",
+            "sourceColumn": "LineSort",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ValueActual",
+            "dataType": "double",
+            "sourceColumn": "ValueActual",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ValuePlan",
+            "dataType": "double",
+            "sourceColumn": "ValuePlan",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ValueForecast",
+            "dataType": "double",
+            "sourceColumn": "ValueForecast",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactStatementLines",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\FactStatementLines.csv\"), [Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"ScenarioID\", type text}, {\"Statement\", type text}, {\"LineItem\", type text}, {\"LineSort\", Int64.Type}, {\"ValueActual\", type number}, {\"ValuePlan\", type number}, {\"ValueForecast\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCovenantMonthly",
+        "lineageTag": "21916f58-8cce-4f92-acc3-b51630af03ed",
+        "columns": [
+          {
+            "name": "MonthStart",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthStart",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioID",
+            "dataType": "string",
+            "sourceColumn": "ScenarioID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RevenueLTM",
+            "dataType": "double",
+            "sourceColumn": "RevenueLTM",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "EBITDALTM",
+            "dataType": "double",
+            "sourceColumn": "EBITDALTM",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "NetDebt",
+            "dataType": "double",
+            "sourceColumn": "NetDebt",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "LeverageRatio",
+            "dataType": "double",
+            "sourceColumn": "LeverageRatio",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "LeverageLimit",
+            "dataType": "double",
+            "sourceColumn": "LeverageLimit",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "LeverageHeadroom",
+            "dataType": "double",
+            "sourceColumn": "LeverageHeadroom",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "InterestCoverage",
+            "dataType": "double",
+            "sourceColumn": "InterestCoverage",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "InterestCoverageLimit",
+            "dataType": "double",
+            "sourceColumn": "InterestCoverageLimit",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Liquidity",
+            "dataType": "double",
+            "sourceColumn": "Liquidity",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "LiquidityMinimum",
+            "dataType": "int64",
+            "sourceColumn": "LiquidityMinimum",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "LiquidityHeadroom",
+            "dataType": "double",
+            "sourceColumn": "LiquidityHeadroom",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "CovenantStatus",
+            "dataType": "string",
+            "sourceColumn": "CovenantStatus",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RiskScore",
+            "dataType": "double",
+            "sourceColumn": "RiskScore",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactCovenantMonthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\FactCovenantMonthly.csv\"), [Delimiter=\",\", Columns=15, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MonthStart\", type date}, {\"ScenarioID\", type text}, {\"RevenueLTM\", type number}, {\"EBITDALTM\", type number}, {\"NetDebt\", type number}, {\"LeverageRatio\", type number}, {\"LeverageLimit\", type number}, {\"LeverageHeadroom\", type number}, {\"InterestCoverage\", type number}, {\"InterestCoverageLimit\", type number}, {\"Liquidity\", type number}, {\"LiquidityMinimum\", Int64.Type}, {\"LiquidityHeadroom\", type number}, {\"CovenantStatus\", type text}, {\"RiskScore\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactValuation",
+        "lineageTag": "e84bd67b-5850-45f4-8718-3bcc5a34c9f2",
+        "columns": [
+          {
+            "name": "ScenarioID",
+            "dataType": "string",
+            "sourceColumn": "ScenarioID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Method",
+            "dataType": "string",
+            "sourceColumn": "Method",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MethodSort",
+            "dataType": "int64",
+            "sourceColumn": "MethodSort",
+            "formatString": "0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Multiple",
+            "dataType": "double",
+            "sourceColumn": "Multiple",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "EnterpriseValue",
+            "dataType": "double",
+            "sourceColumn": "EnterpriseValue",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "EquityValue",
+            "dataType": "double",
+            "sourceColumn": "EquityValue",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "LowValue",
+            "dataType": "double",
+            "sourceColumn": "LowValue",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "HighValue",
+            "dataType": "double",
+            "sourceColumn": "HighValue",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactValuation",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\FactValuation.csv\"), [Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"ScenarioID\", type text}, {\"Method\", type text}, {\"MethodSort\", Int64.Type}, {\"Multiple\", type number}, {\"EnterpriseValue\", type number}, {\"EquityValue\", type number}, {\"LowValue\", type number}, {\"HighValue\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactSensitivity",
+        "lineageTag": "c65e3cd1-0644-46d1-8fc2-2d8926a74697",
+        "columns": [
+          {
+            "name": "ScenarioID",
+            "dataType": "string",
+            "sourceColumn": "ScenarioID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Driver",
+            "dataType": "string",
+            "sourceColumn": "Driver",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CaseLabel",
+            "dataType": "string",
+            "sourceColumn": "CaseLabel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DriverCase",
+            "dataType": "string",
+            "sourceColumn": "DriverCase",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EquityValueDelta",
+            "dataType": "double",
+            "sourceColumn": "EquityValueDelta",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "EquityValue",
+            "dataType": "double",
+            "sourceColumn": "EquityValue",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactSensitivity",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\FactSensitivity.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"ScenarioID\", type text}, {\"Driver\", type text}, {\"CaseLabel\", type text}, {\"DriverCase\", type text}, {\"EquityValueDelta\", type number}, {\"EquityValue\", type number}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactRiskRegister",
+        "lineageTag": "5ecc16fe-1b27-4a03-8971-457e9a1db6fd",
+        "columns": [
+          {
+            "name": "ScenarioID",
+            "dataType": "string",
+            "sourceColumn": "ScenarioID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RiskID",
+            "dataType": "string",
+            "sourceColumn": "RiskID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RiskCategory",
+            "dataType": "string",
+            "sourceColumn": "RiskCategory",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Risk",
+            "dataType": "string",
+            "sourceColumn": "Risk",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Severity",
+            "dataType": "string",
+            "sourceColumn": "Severity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Probability",
+            "dataType": "double",
+            "sourceColumn": "Probability",
+            "formatString": "0.0%",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ExposureUSD",
+            "dataType": "double",
+            "sourceColumn": "ExposureUSD",
+            "formatString": "$#,0;($#,0);$0",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Owner",
+            "dataType": "string",
+            "sourceColumn": "Owner",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MitigationStatus",
+            "dataType": "string",
+            "sourceColumn": "MitigationStatus",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BoardAsk",
+            "dataType": "string",
+            "sourceColumn": "BoardAsk",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactRiskRegister",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\FactRiskRegister.csv\"), [Delimiter=\",\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"ScenarioID\", type text}, {\"RiskID\", type text}, {\"RiskCategory\", type text}, {\"Risk\", type text}, {\"Severity\", type text}, {\"Probability\", type number}, {\"ExposureUSD\", type number}, {\"Owner\", type text}, {\"MitigationStatus\", type text}, {\"BoardAsk\", type text}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactKpiScorecard",
+        "lineageTag": "2165d5c4-16f4-4cfc-8f29-c47d030a9939",
+        "columns": [
+          {
+            "name": "MetricName",
+            "dataType": "string",
+            "sourceColumn": "MetricName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MetricFamily",
+            "dataType": "string",
+            "sourceColumn": "MetricFamily",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ActualDisplay",
+            "dataType": "string",
+            "sourceColumn": "ActualDisplay",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlanDisplay",
+            "dataType": "string",
+            "sourceColumn": "PlanDisplay",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "VarianceDisplay",
+            "dataType": "string",
+            "sourceColumn": "VarianceDisplay",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BoardNarrative",
+            "dataType": "string",
+            "sourceColumn": "BoardNarrative",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SortOrder",
+            "dataType": "int64",
+            "sourceColumn": "SortOrder",
+            "formatString": "0",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_FactKpiScorecard",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\Win\\\\OneDrive\\\\Codex\\\\Portfolio\\\\BI\\\\Project 20 - Board Investor CFO Pack\\\\data\\\\prepared\\\\FactKpiScorecard.csv\"), [Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{\"MetricName\", type text}, {\"MetricFamily\", type text}, {\"ActualDisplay\", type text}, {\"PlanDisplay\", type text}, {\"VarianceDisplay\", type text}, {\"Status\", type text}, {\"BoardNarrative\", type text}, {\"SortOrder\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    ChangedType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI_Measures",
+        "lineageTag": "f0307817-c602-4585-b3d8-cd3bf7260c49",
+        "columns": [
+          {
+            "name": "MeasureName",
+            "dataType": "string",
+            "sourceColumn": "MeasureName",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "p_KPI_Measures",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [MeasureName = text], {{\"KPI\"}}) in Source"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Revenue",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[Revenue]), FactPnlMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "ae554a01-2e96-4f14-887f-6c7a0c747b57",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Plan Revenue",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[PlanRevenue]), FactPnlMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "dc52b56f-6cdc-436e-82fa-37a3e2776a31",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Forecast Revenue",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[ForecastRevenue]), FactPnlMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "30751b23-5a17-4300-a1b2-90879c15f7fc",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Revenue vs Plan",
+            "expression": "[Revenue] - [Plan Revenue]",
+            "lineageTag": "8175e371-b4a6-4c40-ac86-c54fe27ce639",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Revenue vs Plan %",
+            "expression": "DIVIDE([Revenue vs Plan], [Plan Revenue])",
+            "lineageTag": "743891e4-c8c5-42cc-be1f-15502e00c409",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Gross Profit",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[GrossProfit]), FactPnlMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "34475000-c366-4b55-af81-f433b5cf1537",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Gross Margin %",
+            "expression": "DIVIDE([Gross Profit], [Revenue])",
+            "lineageTag": "b7726873-e8b2-4463-8b42-183d67c8dcce",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "EBITDA",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[EBITDA]), FactPnlMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "cb731cbd-0df5-4384-9f7c-945e90df9723",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Plan EBITDA",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[PlanEBITDA]), FactPnlMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "a2982d7c-7140-41fc-86f6-9f4582909970",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "EBITDA vs Plan",
+            "expression": "[EBITDA] - [Plan EBITDA]",
+            "lineageTag": "e68ee048-6b61-4617-b0a9-2a96a1a577cb",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "EBITDA Margin %",
+            "expression": "DIVIDE([EBITDA], [Revenue])",
+            "lineageTag": "d8f57ad4-043e-4218-9e88-7c50c2828dc9",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Net Income",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[NetIncome]), FactPnlMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "32e9a26f-82e1-4787-8607-8db30bb1f45b",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Operating Expense",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactOpexMonthly[OperatingExpense]), FactOpexMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "64397781-1d49-4076-837e-bbcb7c0d1984",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Latest Revenue",
+            "expression": "CALCULATE([Revenue], DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "798ee545-6dd9-4dba-9884-1da54516e8ba",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Latest Gross Margin %",
+            "expression": "CALCULATE([Gross Margin %], DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "bbc88134-bd48-4969-ae76-55b9f3df640d",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Latest EBITDA",
+            "expression": "CALCULATE([EBITDA], DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "8d51b200-3300-4adc-8aaf-a7f21806fb7f",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Latest EBITDA Margin %",
+            "expression": "CALCULATE([EBITDA Margin %], DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "bda1caaa-f72e-4427-b4f1-12d162ff5723",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Latest Cash Balance",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[CashBalance]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "c990591b-1dec-4198-91eb-33db93f99612",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Cash Balance",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[CashBalance]), FactCashMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "87c9447a-f2f6-4d7e-aa31-6da231021269",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Operating Cash Flow",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactCashMonthly[OperatingCashFlow]), FactCashMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "482ac576-9550-444c-899b-4995bfb81a43",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Free Cash Flow",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactCashMonthly[FreeCashFlow]), FactCashMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "7c7495db-801c-47ac-baf9-325974c683f8",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Latest Free Cash Flow",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[FreeCashFlow]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "3765de84-209d-43e4-a8a2-80e5cc393fbd",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Net Burn",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[NetBurn]), FactCashMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "123ae901-05a1-441e-a387-c0f51683b39f",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Latest Net Burn",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[NetBurn]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "8639209c-2aaa-463c-b042-d0eddc9d62df",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Runway Months",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[RunwayMonths]), FactCashMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "67ee6e88-f83c-4f4c-9686-cdf1f259fadd",
+            "formatString": "0.0x"
+          },
+          {
+            "name": "Latest Runway Months",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[RunwayMonths]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "e8fd4095-4b47-4647-b964-8b61e7e0ade6",
+            "formatString": "0.0x"
+          },
+          {
+            "name": "Funding Need",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[FundingNeed]), FactCashMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "9b8b7b8d-ca75-4377-97f2-caeaafe07e5b",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Latest Funding Need",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[FundingNeed]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "ccc135e3-8a05-4f29-8e5d-46f63979d34f",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Statement Actual",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactStatementLines[ValueActual]), FactStatementLines[ScenarioID] = ScenarioID)",
+            "lineageTag": "8e9c2381-a887-48bd-9ec4-acb5ac8d8730",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Statement Plan",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactStatementLines[ValuePlan]), FactStatementLines[ScenarioID] = ScenarioID)",
+            "lineageTag": "52ec5ee4-07f6-4fd5-8b49-15a8f150fc4c",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Statement Forecast",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactStatementLines[ValueForecast]), FactStatementLines[ScenarioID] = ScenarioID)",
+            "lineageTag": "b7589a0e-c10c-4920-b255-262341de8a5d",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Statement Variance %",
+            "expression": "DIVIDE([Statement Actual] - [Statement Plan], [Statement Plan])",
+            "lineageTag": "aea9a712-3db5-4d7b-8711-23c91e1a2db1",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Enterprise Value",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(AVERAGE(FactValuation[EnterpriseValue]), FactValuation[ScenarioID] = ScenarioID)",
+            "lineageTag": "303d43b7-5b11-4c07-b5c9-e6fb460b52d3",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Equity Value",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(AVERAGE(FactValuation[EquityValue]), FactValuation[ScenarioID] = ScenarioID)",
+            "lineageTag": "506c60d1-6148-4078-917c-e8987eb966dc",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Valuation Low",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(AVERAGE(FactValuation[LowValue]), FactValuation[ScenarioID] = ScenarioID)",
+            "lineageTag": "bcb4b669-71d6-45d2-9170-9a979a48f592",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Valuation High",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(AVERAGE(FactValuation[HighValue]), FactValuation[ScenarioID] = ScenarioID)",
+            "lineageTag": "90bb913f-f682-44c2-9f59-da0cd48d1f47",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Sensitivity Delta",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactSensitivity[EquityValueDelta]), FactSensitivity[ScenarioID] = ScenarioID)",
+            "lineageTag": "97d13452-b19c-439c-880c-975991049a4c",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Leverage Ratio",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCovenantMonthly[LeverageRatio]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "3eaee93d-5e66-423c-b8b4-5583048161d0",
+            "formatString": "0.0x"
+          },
+          {
+            "name": "Leverage Limit",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCovenantMonthly[LeverageLimit]), FactCovenantMonthly[ScenarioID] = ScenarioID)",
+            "lineageTag": "0841d060-10ce-4440-b865-135f17d88aed",
+            "formatString": "0.0x"
+          },
+          {
+            "name": "Leverage Headroom",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCovenantMonthly[LeverageHeadroom]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "c946cee3-0834-40a8-8787-f593f8117f41",
+            "formatString": "0.0x"
+          },
+          {
+            "name": "Interest Coverage",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCovenantMonthly[InterestCoverage]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "7264a7aa-972f-4767-8060-4dbc5d9bda6f",
+            "formatString": "0.0x"
+          },
+          {
+            "name": "Liquidity Headroom",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCovenantMonthly[LiquidityHeadroom]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)",
+            "lineageTag": "79d1a69b-3568-440d-97ce-a28915574d61",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Risk Exposure",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactRiskRegister[ExposureUSD]), FactRiskRegister[ScenarioID] = ScenarioID)",
+            "lineageTag": "0e18859a-8b4c-4df1-930b-b7044e65572b",
+            "formatString": "$#,0;($#,0);$0"
+          },
+          {
+            "name": "Critical Risk Count",
+            "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(COUNTROWS(FactRiskRegister), FactRiskRegister[ScenarioID] = ScenarioID, FactRiskRegister[Severity] = \"Critical\")",
+            "lineageTag": "36f5c662-f3cd-47fd-94a9-62d7f9aee3f9",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Revenue Sparkline SVG",
+            "expression": "VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Revenue]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 38 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 32\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23D8CDEE'/><polyline points='\" & Points & \"' fill='none' stroke='%234F87F5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='114' cy='10' r='3.2' fill='%23111827'/></svg>\"",
+            "lineageTag": "016d5d8b-d317-4a03-a363-d8d55d22d0c6",
+            "dataCategory": "ImageUrl"
+          },
+          {
+            "name": "Gross Margin Sparkline SVG",
+            "expression": "VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Gross Margin %]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 38 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 32\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23D8CDEE'/><polyline points='\" & Points & \"' fill='none' stroke='%230F9F95' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='114' cy='10' r='3.2' fill='%23111827'/></svg>\"",
+            "lineageTag": "7c05a0bb-8518-4270-9f9d-888056c6fe3a",
+            "dataCategory": "ImageUrl"
+          },
+          {
+            "name": "EBITDA Sparkline SVG",
+            "expression": "VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [EBITDA]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 38 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 32\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23D8CDEE'/><polyline points='\" & Points & \"' fill='none' stroke='%231F8E45' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='114' cy='10' r='3.2' fill='%23111827'/></svg>\"",
+            "lineageTag": "d14d13f6-dd0b-47e0-8980-af7c9091a228",
+            "dataCategory": "ImageUrl"
+          },
+          {
+            "name": "Cash Sparkline SVG",
+            "expression": "VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Cash Balance]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 38 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 32\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23D8CDEE'/><polyline points='\" & Points & \"' fill='none' stroke='%23BE7C10' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='114' cy='10' r='3.2' fill='%23111827'/></svg>\"",
+            "lineageTag": "238e7bc1-879e-45d3-b94b-6e2bf6a4edbc",
+            "dataCategory": "ImageUrl"
+          },
+          {
+            "name": "Runway Sparkline SVG",
+            "expression": "VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Runway Months]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 38 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 32\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23D8CDEE'/><polyline points='\" & Points & \"' fill='none' stroke='%23B73535' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='114' cy='10' r='3.2' fill='%23111827'/></svg>\"",
+            "lineageTag": "b1f69eac-a49a-46ef-a199-f17d8c3e8e6c",
+            "dataCategory": "ImageUrl"
+          },
+          {
+            "name": "Board Status Icon",
+            "expression": "SWITCH(TRUE(), [Revenue vs Plan %] >= 0.03, UNICHAR(9650), [Revenue vs Plan %] >= -0.02, UNICHAR(8212), UNICHAR(9660))",
+            "lineageTag": "92a36d6c-f666-425c-88f7-245d10d720a1"
+          },
+          {
+            "name": "Board Status Color",
+            "expression": "SWITCH(TRUE(), [Revenue vs Plan %] >= 0.03, \"#2FA66A\", [Revenue vs Plan %] >= -0.02, \"#C58A18\", \"#C94A4A\")",
+            "lineageTag": "fd9ddbf9-b373-4a5d-b853-0600df769c7c"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "Rel_FactPnlMonthly_MonthStart_DimDate_MonthStart",
+        "fromTable": "FactPnlMonthly",
+        "fromColumn": "MonthStart",
+        "toTable": "DimDate",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactPnlMonthly_ScenarioID_DimScenario_ScenarioID",
+        "fromTable": "FactPnlMonthly",
+        "fromColumn": "ScenarioID",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioID"
+      },
+      {
+        "name": "Rel_FactPnlMonthly_BusinessUnitID_DimBusinessUnit_BusinessUnitID",
+        "fromTable": "FactPnlMonthly",
+        "fromColumn": "BusinessUnitID",
+        "toTable": "DimBusinessUnit",
+        "toColumn": "BusinessUnitID"
+      },
+      {
+        "name": "Rel_FactPnlMonthly_RegionID_DimRegion_RegionID",
+        "fromTable": "FactPnlMonthly",
+        "fromColumn": "RegionID",
+        "toTable": "DimRegion",
+        "toColumn": "RegionID"
+      },
+      {
+        "name": "Rel_FactOpexMonthly_MonthStart_DimDate_MonthStart",
+        "fromTable": "FactOpexMonthly",
+        "fromColumn": "MonthStart",
+        "toTable": "DimDate",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactOpexMonthly_ScenarioID_DimScenario_ScenarioID",
+        "fromTable": "FactOpexMonthly",
+        "fromColumn": "ScenarioID",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioID"
+      },
+      {
+        "name": "Rel_FactOpexMonthly_CostCategoryID_DimCostCategory_CostCategoryID",
+        "fromTable": "FactOpexMonthly",
+        "fromColumn": "CostCategoryID",
+        "toTable": "DimCostCategory",
+        "toColumn": "CostCategoryID"
+      },
+      {
+        "name": "Rel_FactCashMonthly_MonthStart_DimDate_MonthStart",
+        "fromTable": "FactCashMonthly",
+        "fromColumn": "MonthStart",
+        "toTable": "DimDate",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactCashMonthly_ScenarioID_DimScenario_ScenarioID",
+        "fromTable": "FactCashMonthly",
+        "fromColumn": "ScenarioID",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioID"
+      },
+      {
+        "name": "Rel_FactStatementLines_MonthStart_DimDate_MonthStart",
+        "fromTable": "FactStatementLines",
+        "fromColumn": "MonthStart",
+        "toTable": "DimDate",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactStatementLines_ScenarioID_DimScenario_ScenarioID",
+        "fromTable": "FactStatementLines",
+        "fromColumn": "ScenarioID",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioID"
+      },
+      {
+        "name": "Rel_FactCovenantMonthly_MonthStart_DimDate_MonthStart",
+        "fromTable": "FactCovenantMonthly",
+        "fromColumn": "MonthStart",
+        "toTable": "DimDate",
+        "toColumn": "MonthStart"
+      },
+      {
+        "name": "Rel_FactCovenantMonthly_ScenarioID_DimScenario_ScenarioID",
+        "fromTable": "FactCovenantMonthly",
+        "fromColumn": "ScenarioID",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioID"
+      },
+      {
+        "name": "Rel_FactValuation_ScenarioID_DimScenario_ScenarioID",
+        "fromTable": "FactValuation",
+        "fromColumn": "ScenarioID",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioID"
+      },
+      {
+        "name": "Rel_FactSensitivity_ScenarioID_DimScenario_ScenarioID",
+        "fromTable": "FactSensitivity",
+        "fromColumn": "ScenarioID",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioID"
+      },
+      {
+        "name": "Rel_FactRiskRegister_ScenarioID_DimScenario_ScenarioID",
+        "fromTable": "FactRiskRegister",
+        "fromColumn": "ScenarioID",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioID"
+      }
+    ]
+  }
+}

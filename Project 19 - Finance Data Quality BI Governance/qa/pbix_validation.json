@@ -1,0 +1,11 @@
+{
+  "status": "pending_desktop_build",
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 19 - Finance Data Quality BI Governance\\output\\dashboard_final.pbix",
+  "pbip_seed": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 19 - Finance Data Quality BI Governance\\output\\powerbi_project\\Finance_Data_Quality_BI_Governance.pbip",
+  "pages": [
+    "Governance Overview",
+    "Reliability & Quality",
+    "Adoption & Controls"
+  ],
+  "visual_count": 37
+}

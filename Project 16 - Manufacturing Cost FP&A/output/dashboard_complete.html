@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manufacturing Cost FP&A</title>
+  <style>
+    :root { --bg:#F6F7F9; --panel:#fff; --ink:#111827; --muted:#667085; --line:#D9DEE7; --steel:#2563EB; --teal:#0F766E; --amber:#D97706; --red:#DC2626; --violet:#7C3AED; }
+    body { margin:0; font-family:Segoe UI, Arial, sans-serif; background:var(--bg); color:var(--ink); }
+    main { max-width:1320px; margin:0 auto; padding:28px; }
+    header { display:flex; justify-content:space-between; gap:24px; align-items:flex-end; margin-bottom:18px; }
+    h1 { margin:0; font-size:30px; }
+    .sub { color:var(--muted); margin-top:6px; }
+    .tabs { display:flex; gap:8px; margin:18px 0; }
+    .tabs button { border:1px solid var(--line); background:#fff; padding:9px 14px; border-radius:6px; cursor:pointer; font-weight:600; }
+    .tabs button.active { background:var(--steel); color:#fff; border-color:var(--steel); }
+    .grid { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px; min-height:82px; box-sizing:border-box; }
+    .label { color:var(--muted); font-size:12px; }
+    .value { font-size:24px; font-weight:750; margin-top:10px; }
+    .section { display:none; }
+    .section.active { display:block; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px; }
+    .two { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px; }
+    img { width:100%; border-radius:6px; border:1px solid var(--line); }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th,td { padding:9px; border-bottom:1px solid var(--line); text-align:left; }
+    th { color:#334155; font-size:12px; }
+    @media (max-width:900px) { .grid,.two { grid-template-columns:1fr; } header { display:block; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Manufacturing Cost FP&A</h1>
+      <div class="sub">Executive-ready BI preview. Final target: Power BI PBIX with 3 native tabs.</div>
+    </div>
+    <div class="sub">Synthetic fixed-seed data | Latest complete month: 2026-05</div>
+  </header>
+  <nav class="tabs">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="variance">Cost Variance</button>
+    <button data-tab="ops">Yield & WC</button>
+  </nav>
+  <section id="overview" class="section active">
+    <div class="grid">
+      <div class="card"><div class="label">Revenue</div><div class="value" style="color:var(--steel)">$46.1M</div></div>
+      <div class="card"><div class="label">Gross Margin</div><div class="value" style="color:var(--teal)">$18.8M</div></div>
+      <div class="card"><div class="label">GM %</div><div class="value" style="color:var(--teal)">40.8%</div></div>
+      <div class="card"><div class="label">Cost Variance</div><div class="value" style="color:var(--amber)">$1.7M</div></div>
+      <div class="card"><div class="label">Unit Cost</div><div class="value" style="color:var(--violet)">$42</div></div>
+      <div class="card"><div class="label">Yield</div><div class="value" style="color:var(--teal)">96.8%</div></div>
+    </div>
+    <div class="two"><div class="panel"><img src="screenshots/tab1_overview.png" alt="Overview screenshot"></div><div class="panel"><table><thead><tr><th>Product</th><th>Line</th><th>Revenue</th><th>GM</th><th>GM %</th><th>Inventory</th></tr></thead><tbody><tr><td>Sensor Module B</td><td>Electronics Assembly</td><td>$3.9M</td><td>$2.0M</td><td>50.6%</td><td>$1.3M</td></tr>
+<tr><td>Label Applicator C</td><td>Packaging Systems</td><td>$5.0M</td><td>$1.6M</td><td>32.4%</td><td>$2.9M</td></tr>
+<tr><td>Label Applicator B</td><td>Packaging Systems</td><td>$4.6M</td><td>$1.4M</td><td>30.6%</td><td>$2.8M</td></tr>
+<tr><td>Controller C</td><td>Electronics Assembly</td><td>$3.0M</td><td>$1.3M</td><td>44.9%</td><td>$1.6M</td></tr>
+<tr><td>Controller A</td><td>Electronics Assembly</td><td>$2.1M</td><td>$1.0M</td><td>48.5%</td><td>$798.1K</td></tr>
+<tr><td>Controller B</td><td>Electronics Assembly</td><td>$2.3M</td><td>$952.1K</td><td>40.7%</td><td>$1.4M</td></tr>
+<tr><td>Machined Shaft A</td><td>Precision Parts</td><td>$2.4M</td><td>$945.4K</td><td>40.1%</td><td>$1.2M</td></tr>
+<tr><td>Film Cartridge C</td><td>Packaging Systems</td><td>$1.7M</td><td>$839.7K</td><td>50.2%</td><td>$853.5K</td></tr></tbody></table></div></div>
+  </section>
+  <section id="variance" class="section">
+    <div class="grid">
+      <div class="card"><div class="label">Material Variance</div><div class="value" style="color:var(--amber)">$909.5K</div></div>
+      <div class="card"><div class="label">Labor Variance</div><div class="value" style="color:var(--red)">$98.4K</div></div>
+      <div class="card"><div class="label">OH Variance</div><div class="value" style="color:var(--violet)">$47.7K</div></div>
+      <div class="card"><div class="label">Yield Loss</div><div class="value" style="color:var(--red)">$693.8K</div></div>
+      <div class="card"><div class="label">Actual COGS</div><div class="value">$27.3M</div></div>
+      <div class="card"><div class="label">Standard COGS</div><div class="value">$25.6M</div></div>
+    </div>
+    <div class="panel" style="margin-top:14px"><img src="screenshots/tab2_variance.png" alt="Variance screenshot"></div>
+  </section>
+  <section id="ops" class="section">
+    <div class="grid">
+      <div class="card"><div class="label">Utilization</div><div class="value" style="color:var(--steel)">61.3%</div></div>
+      <div class="card"><div class="label">Scrap Rate</div><div class="value" style="color:var(--red)">3.2%</div></div>
+      <div class="card"><div class="label">Inventory Value</div><div class="value" style="color:var(--violet)">$24.3M</div></div>
+      <div class="card"><div class="label">Inventory Days</div><div class="value">26.7</div></div>
+      <div class="card"><div class="label">Capacity Gap</div><div class="value" style="color:var(--amber)">2.8K</div></div>
+      <div class="card"><div class="label">Slow Moving Inv.</div><div class="value" style="color:var(--red)">$2.8M</div></div>
+    </div>
+    <div class="two"><div class="panel"><img src="screenshots/tab3_yield_capacity_wc.png" alt="Yield capacity screenshot"></div><div class="panel"><table><thead><tr><th>Plant</th><th>Line</th><th>Product Line</th><th>Yield</th><th>Scrap</th><th>Utilization</th><th>Inv Days</th></tr></thead><tbody><tr><td>Johor Packaging Systems</td><td>Packaging Line 1</td><td>Packaging Systems</td><td>97.0%</td><td>3.0%</td><td>95.6%</td><td>32.4</td></tr>
+<tr><td>Rayong Components</td><td>Machining Cell</td><td>Precision Parts</td><td>96.1%</td><td>3.9%</td><td>46.4%</td><td>29.1</td></tr>
+<tr><td>HCMC Precision</td><td>Assembly Cell</td><td>Industrial Components</td><td>96.5%</td><td>3.5%</td><td>47.8%</td><td>30.3</td></tr>
+<tr><td>HCMC Precision</td><td>CNC Cell 1</td><td>Precision Parts</td><td>96.4%</td><td>3.6%</td><td>54.8%</td><td>27.6</td></tr>
+<tr><td>Johor Packaging Systems</td><td>Packaging Line 2</td><td>Packaging Systems</td><td>96.7%</td><td>3.3%</td><td>94.7%</td><td>23.0</td></tr>
+<tr><td>Bac Ninh Electronics</td><td>SMT Line 2</td><td>Electronics Assembly</td><td>96.9%</td><td>3.1%</td><td>64.7%</td><td>29.9</td></tr>
+<tr><td>Rayong Components</td><td>Foundry Cell</td><td>Industrial Components</td><td>96.8%</td><td>3.2%</td><td>30.6%</td><td>28.7</td></tr>
+<tr><td>Johor Packaging Systems</td><td>Final Assembly</td><td>Industrial Components</td><td>97.0%</td><td>3.0%</td><td>44.5%</td><td>26.2</td></tr></tbody></table></div></div>
+  </section>
+</main>
+<script>
+  document.querySelectorAll('.tabs button').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  }));
+</script>
+</body>
+</html>

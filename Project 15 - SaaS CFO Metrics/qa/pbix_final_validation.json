@@ -1,0 +1,32 @@
+{
+  "status": "pass",
+  "pbix_exists": true,
+  "pbix_size_bytes": 4405994,
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 15 - SaaS CFO Metrics\\output\\dashboard_final.pbix",
+  "last_saved_local": "2026-06-15 03:03:46",
+  "opened_in_power_bi_desktop": true,
+  "desktop_session": {
+    "process_id": 41448,
+    "port": 49932,
+    "window_handle": 1051452,
+    "window_title": "dashboard_final",
+    "pbix_path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 15 - SaaS CFO Metrics\\output\\dashboard_final.pbix"
+  },
+  "native_report": {
+    "pages": [
+      "Executive Overview",
+      "Revenue & Retention",
+      "Efficiency & Forecast"
+    ],
+    "visual_containers": 47
+  },
+  "pbi_tools_extract": {
+    "status": "pass",
+    "folder": "qa\\pbix_extract_final_after_save"
+  },
+  "pbi_tools_export_data": {
+    "status": "pass",
+    "folder": "qa\\export_data_final_after_save",
+    "tables_exported": 14
+  }
+}

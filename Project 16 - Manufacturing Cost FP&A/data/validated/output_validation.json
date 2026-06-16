@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "fact key uniqueness",
+      "status": "PASS",
+      "value": 0
+    },
+    {
+      "check": "critical missing values",
+      "status": "PASS",
+      "value": 0
+    },
+    {
+      "check": "latest month exists",
+      "status": "PASS",
+      "value": 72
+    },
+    {
+      "check": "variance tie-out",
+      "status": "PASS",
+      "value": 0.12
+    },
+    {
+      "check": "bridge actual cogs tie-out",
+      "status": "PASS",
+      "value": 0.0
+    }
+  ],
+  "row_counts": {
+    "dim_date": 29,
+    "dim_plant": 5,
+    "dim_product": 24,
+    "dim_line": 12,
+    "dim_scenario": 6,
+    "fact_manufacturing_month": 2088,
+    "fact_cost_variance_bridge": 6
+  },
+  "date_range": {
+    "start": "2024-01-01",
+    "end": "2026-05-01",
+    "latest_complete_month": "2026-05"
+  }
+}

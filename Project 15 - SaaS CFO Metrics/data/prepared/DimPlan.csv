@@ -1,0 +1,6 @@
+﻿PlanID,PlanName,Segment,BaseMRR,GrossMarginTarget,MonthlyChurnTarget,TargetCAC,BenchmarkPaybackMonths
+starter,Starter,SMB,690,0.76,0.052,1450,12
+growth,Growth,SMB,1480,0.79,0.041,2700,14
+business,Business,Mid-Market,4200,0.81,0.031,7600,15
+scale,Scale,Mid-Market,8600,0.82,0.024,14400,16
+enterprise,Enterprise,Enterprise,18800,0.84,0.018,33000,18

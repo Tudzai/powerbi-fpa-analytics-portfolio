@@ -1,0 +1,6 @@
+plant_id,plant_name,region,country,productivity_index,labor_rate_usd,fixed_overhead_rate_usd,material_price_index
+P01,Bac Ninh Electronics,Vietnam North,Vietnam,0.96,4.9,18.0,1.05
+P02,HCMC Precision,Vietnam South,Vietnam,1.0,5.4,20.0,1.0
+P03,Da Nang Assembly,Vietnam Central,Vietnam,0.92,4.7,17.5,1.1
+P04,Rayong Components,Thailand,Thailand,1.08,6.1,22.0,0.95
+P05,Johor Packaging Systems,Malaysia,Malaysia,1.03,5.8,21.0,1.02

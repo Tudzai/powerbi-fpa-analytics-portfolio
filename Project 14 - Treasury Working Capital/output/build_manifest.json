@@ -1,0 +1,47 @@
+﻿{
+    "status":  "pass",
+    "generated_at":  "2026-06-15 03:51:54 +07:00",
+    "project":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_final.pbix",
+    "final_pbix_bytes":  4150244,
+    "seed_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_model_seed_ch07.pbix",
+    "html":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_final.html",
+    "page_count":  3,
+    "pages":  [
+                  "Treasury Command Center",
+                  "Working Capital Control",
+                  "Forecast, FX \u0026 Risk"
+              ],
+    "data_validation":  "pass",
+    "html_validation":  "pass",
+    "pbix_validation":  "pass",
+    "visual_containers":  57,
+    "visual_type_counts":  {
+                               "barChart":  12,
+                               "shape":  6,
+                               "waterfallChart":  1,
+                               "textbox":  9,
+                               "slicer":  9,
+                               "cardVisual":  18,
+                               "columnChart":  2
+                           },
+    "row_counts":  {
+                       "dim_date":  17,
+                       "dim_week":  13,
+                       "dim_entity":  6,
+                       "dim_customer":  20,
+                       "dim_vendor":  16,
+                       "dim_bank":  6,
+                       "dim_scenario":  3,
+                       "dim_cash_category":  6,
+                       "fact_cash_position":  18,
+                       "fact_liquidity_facility":  6,
+                       "fact_working_capital":  102,
+                       "fact_ar_invoice":  1250,
+                       "fact_ap_invoice":  900,
+                       "fact_cash_forecast":  234,
+                       "fact_forecast_accuracy":  48,
+                       "fact_fx_exposure":  24,
+                       "fact_treasury_risk_action":  75
+                   }
+}

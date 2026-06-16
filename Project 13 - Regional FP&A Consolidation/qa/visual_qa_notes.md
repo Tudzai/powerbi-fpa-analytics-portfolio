@@ -1,0 +1,1 @@
+HTML visual QA passed at 2026-06-14T19:42:21.318Z. Desktop and mobile screenshots were captured under `output/screenshots/`; all 3 dashboard tabs rendered with no console errors, overflow, NaN, or undefined text. PBIX native visual QA passed for `output/dashboard_final.pbix`.

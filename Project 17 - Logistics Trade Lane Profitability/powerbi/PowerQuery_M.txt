@@ -1,0 +1,164 @@
+// DimDate
+let
+    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_date.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"date_id", type text},
+        {"date", type date},
+        {"year", Int64.Type},
+        {"quarter", type text},
+        {"quarter_number", Int64.Type},
+        {"month_number", Int64.Type},
+        {"month_label", type text},
+        {"month_index", Int64.Type},
+        {"is_latest_complete", type text}
+    }, "en-US")
+in
+    Typed
+
+// DimCustomer
+let
+    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_customer.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"customer_id", type text},
+        {"customer_name", type text},
+        {"industry", type text},
+        {"segment", type text},
+        {"tier", type text},
+        {"account_manager", type text},
+        {"credit_risk_band", type text}
+    }, "en-US")
+in
+    Typed
+
+// DimTradeLane
+let
+    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_trade_lane.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"lane_id", type text},
+        {"lane_name", type text},
+        {"origin_country", type text},
+        {"origin_node", type text},
+        {"destination_country", type text},
+        {"destination_node", type text},
+        {"mode", type text},
+        {"distance_km", type number},
+        {"lane_cluster", type text},
+        {"strategic_lane", type text}
+    }, "en-US")
+in
+    Typed
+
+// DimService
+let
+    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_service.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"service_id", type text},
+        {"service", type text},
+        {"service_family", type text},
+        {"mode", type text}
+    }, "en-US")
+in
+    Typed
+
+// DimOffice
+let
+    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_office.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"office_id", type text},
+        {"office", type text},
+        {"country", type text},
+        {"region", type text}
+    }, "en-US")
+in
+    Typed
+
+// DimCarrier
+let
+    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/dim_carrier.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"carrier_id", type text},
+        {"carrier", type text},
+        {"carrier_type", type text}
+    }, "en-US")
+in
+    Typed
+
+// FactShipmentProfitability
+let
+    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/fact_shipment_profitability.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"date_id", type text},
+        {"customer_id", type text},
+        {"lane_id", type text},
+        {"service_id", type text},
+        {"office_id", type text},
+        {"carrier_id", type text},
+        {"shipment_count", Int64.Type},
+        {"teu", type number},
+        {"cbm", type number},
+        {"chargeable_weight_kg", type number},
+        {"net_revenue_usd", type number},
+        {"freight_cost_usd", type number},
+        {"fuel_cost_usd", type number},
+        {"handling_cost_usd", type number},
+        {"customs_cost_usd", type number},
+        {"demurrage_cost_usd", type number},
+        {"claims_cost_usd", type number},
+        {"last_mile_cost_usd", type number},
+        {"total_cost_usd", type number},
+        {"gross_profit_usd", type number},
+        {"target_margin_pct", type number},
+        {"on_time_count", Int64.Type},
+        {"delayed_count", Int64.Type},
+        {"utilization_pct", type number},
+        {"is_synthetic", type logical}
+    }, "en-US")
+in
+    Typed
+
+// FactCostDriverBridge
+let
+    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/fact_cost_driver_bridge.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"date_id", type text},
+        {"customer_id", type text},
+        {"lane_id", type text},
+        {"driver", type text},
+        {"driver_sort", Int64.Type},
+        {"amount_usd", type number},
+        {"driver_type", type text},
+        {"is_synthetic", type logical}
+    }, "en-US")
+in
+    Typed
+
+// FactActionQueue
+let
+    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 17 - Logistics Trade Lane Profitability/data/prepared/fact_action_queue.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"action_id", type text},
+        {"date_id", type text},
+        {"customer_id", type text},
+        {"lane_id", type text},
+        {"office_id", type text},
+        {"issue_type", type text},
+        {"priority", type text},
+        {"status", type text},
+        {"owner", type text},
+        {"risk_value_usd", type number},
+        {"target_margin_recovery_usd", type number},
+        {"recommended_action", type text},
+        {"due_date", type date},
+        {"is_synthetic", type logical}
+    }, "en-US")
+in
+    Typed

@@ -1,0 +1,1070 @@
+{
+  "compatibilityLevel": 1550,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimDate",
+        "columns": [
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "quarter",
+            "dataType": "string",
+            "sourceColumn": "quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_number",
+            "dataType": "int64",
+            "sourceColumn": "month_number",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_label",
+            "dataType": "string",
+            "sourceColumn": "month_label",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_latest_complete",
+            "dataType": "boolean",
+            "sourceColumn": "is_latest_complete",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_index",
+            "dataType": "int64",
+            "sourceColumn": "month_index",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/dim_date.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"date_id\", type text},\n        {\"date\", type date},\n        {\"year\", Int64.Type},\n        {\"quarter\", type text},\n        {\"month_number\", Int64.Type},\n        {\"month_label\", type text},\n        {\"is_latest_complete\", type logical},\n        {\"month_index\", Int64.Type}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimEntity",
+        "columns": [
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity",
+            "dataType": "string",
+            "sourceColumn": "entity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "country",
+            "dataType": "string",
+            "sourceColumn": "country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "currency",
+            "dataType": "string",
+            "sourceColumn": "currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ownership",
+            "dataType": "double",
+            "sourceColumn": "ownership",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimEntity-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/dim_entity.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"entity_id\", type text},\n        {\"entity\", type text},\n        {\"country\", type text},\n        {\"region\", type text},\n        {\"currency\", type text},\n        {\"ownership\", type number}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimBusinessUnit",
+        "columns": [
+          {
+            "name": "business_unit_id",
+            "dataType": "string",
+            "sourceColumn": "business_unit_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "business_unit",
+            "dataType": "string",
+            "sourceColumn": "business_unit",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimBusinessUnit-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/dim_business_unit.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"business_unit_id\", type text},\n        {\"business_unit\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimAccount",
+        "columns": [
+          {
+            "name": "account_id",
+            "dataType": "string",
+            "sourceColumn": "account_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "account",
+            "dataType": "string",
+            "sourceColumn": "account",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "account_group",
+            "dataType": "string",
+            "sourceColumn": "account_group",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sort_order",
+            "dataType": "int64",
+            "sourceColumn": "sort_order",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "statement",
+            "dataType": "string",
+            "sourceColumn": "statement",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimAccount-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/dim_account.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"account_id\", type text},\n        {\"account\", type text},\n        {\"account_group\", type text},\n        {\"sort_order\", Int64.Type},\n        {\"statement\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimScenario",
+        "columns": [
+          {
+            "name": "scenario_id",
+            "dataType": "string",
+            "sourceColumn": "scenario_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario",
+            "dataType": "string",
+            "sourceColumn": "scenario",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario_type",
+            "dataType": "string",
+            "sourceColumn": "scenario_type",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimScenario-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/dim_scenario.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"scenario_id\", type text},\n        {\"scenario\", type text},\n        {\"scenario_type\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactFinancials",
+        "columns": [
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "business_unit_id",
+            "dataType": "string",
+            "sourceColumn": "business_unit_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario_id",
+            "dataType": "string",
+            "sourceColumn": "scenario_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "account_id",
+            "dataType": "string",
+            "sourceColumn": "account_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "currency",
+            "dataType": "string",
+            "sourceColumn": "currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "amount_local",
+            "dataType": "double",
+            "sourceColumn": "amount_local",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "amount_usd",
+            "dataType": "double",
+            "sourceColumn": "amount_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fx_rate_to_usd",
+            "dataType": "double",
+            "sourceColumn": "fx_rate_to_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "quantity_teu_or_orders",
+            "dataType": "double",
+            "sourceColumn": "quantity_teu_or_orders",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactFinancials-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/fact_financials.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"date_id\", type text},\n        {\"entity_id\", type text},\n        {\"business_unit_id\", type text},\n        {\"scenario_id\", type text},\n        {\"account_id\", type text},\n        {\"currency\", type text},\n        {\"amount_local\", type number},\n        {\"amount_usd\", type number},\n        {\"fx_rate_to_usd\", type number},\n        {\"quantity_teu_or_orders\", type number},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactFinancialSummary",
+        "columns": [
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "business_unit_id",
+            "dataType": "string",
+            "sourceColumn": "business_unit_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario_id",
+            "dataType": "string",
+            "sourceColumn": "scenario_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario",
+            "dataType": "string",
+            "sourceColumn": "scenario",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "country",
+            "dataType": "string",
+            "sourceColumn": "country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "business_unit",
+            "dataType": "string",
+            "sourceColumn": "business_unit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "currency",
+            "dataType": "string",
+            "sourceColumn": "currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "gross_revenue_usd",
+            "dataType": "double",
+            "sourceColumn": "gross_revenue_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "external_revenue_usd",
+            "dataType": "double",
+            "sourceColumn": "external_revenue_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "intercompany_revenue_usd",
+            "dataType": "double",
+            "sourceColumn": "intercompany_revenue_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "intercompany_cost_usd",
+            "dataType": "double",
+            "sourceColumn": "intercompany_cost_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "intercompany_elimination_usd",
+            "dataType": "double",
+            "sourceColumn": "intercompany_elimination_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "cogs_usd",
+            "dataType": "double",
+            "sourceColumn": "cogs_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "gross_profit_usd",
+            "dataType": "double",
+            "sourceColumn": "gross_profit_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "opex_usd",
+            "dataType": "double",
+            "sourceColumn": "opex_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ebitda_pre_elim_usd",
+            "dataType": "double",
+            "sourceColumn": "ebitda_pre_elim_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ebitda_usd",
+            "dataType": "double",
+            "sourceColumn": "ebitda_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ebitda_margin",
+            "dataType": "double",
+            "sourceColumn": "ebitda_margin",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "operating_income_usd",
+            "dataType": "double",
+            "sourceColumn": "operating_income_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "net_income_usd",
+            "dataType": "double",
+            "sourceColumn": "net_income_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "cash_position_usd",
+            "dataType": "double",
+            "sourceColumn": "cash_position_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "operating_cash_flow_usd",
+            "dataType": "double",
+            "sourceColumn": "operating_cash_flow_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "working_capital_usd",
+            "dataType": "double",
+            "sourceColumn": "working_capital_usd",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactFinancialSummary-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/fact_financial_summary.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"date_id\", type text},\n        {\"entity_id\", type text},\n        {\"business_unit_id\", type text},\n        {\"scenario_id\", type text},\n        {\"scenario\", type text},\n        {\"country\", type text},\n        {\"region\", type text},\n        {\"business_unit\", type text},\n        {\"currency\", type text},\n        {\"gross_revenue_usd\", type number},\n        {\"external_revenue_usd\", type number},\n        {\"intercompany_revenue_usd\", type number},\n        {\"intercompany_cost_usd\", type number},\n        {\"intercompany_elimination_usd\", type number},\n        {\"cogs_usd\", type number},\n        {\"gross_profit_usd\", type number},\n        {\"opex_usd\", type number},\n        {\"ebitda_pre_elim_usd\", type number},\n        {\"ebitda_usd\", type number},\n        {\"ebitda_margin\", type number},\n        {\"operating_income_usd\", type number},\n        {\"net_income_usd\", type number},\n        {\"cash_position_usd\", type number},\n        {\"operating_cash_flow_usd\", type number},\n        {\"working_capital_usd\", type number}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactVarianceDriverBridge",
+        "columns": [
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "business_unit_id",
+            "dataType": "string",
+            "sourceColumn": "business_unit_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "country",
+            "dataType": "string",
+            "sourceColumn": "country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "business_unit",
+            "dataType": "string",
+            "sourceColumn": "business_unit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "driver",
+            "dataType": "string",
+            "sourceColumn": "driver",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "driver_sort",
+            "dataType": "int64",
+            "sourceColumn": "driver_sort",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "amount_usd",
+            "dataType": "double",
+            "sourceColumn": "amount_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "variance_sign",
+            "dataType": "string",
+            "sourceColumn": "variance_sign",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactVarianceDriverBridge-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/fact_variance_driver_bridge.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"date_id\", type text},\n        {\"entity_id\", type text},\n        {\"business_unit_id\", type text},\n        {\"country\", type text},\n        {\"region\", type text},\n        {\"business_unit\", type text},\n        {\"driver\", type text},\n        {\"driver_sort\", Int64.Type},\n        {\"amount_usd\", type number},\n        {\"variance_sign\", type text}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactCloseExceptions",
+        "columns": [
+          {
+            "name": "exception_id",
+            "dataType": "string",
+            "sourceColumn": "exception_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "entity_id",
+            "dataType": "string",
+            "sourceColumn": "entity_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "country",
+            "dataType": "string",
+            "sourceColumn": "country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region",
+            "dataType": "string",
+            "sourceColumn": "region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "exception_type",
+            "dataType": "string",
+            "sourceColumn": "exception_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "owner_team",
+            "dataType": "string",
+            "sourceColumn": "owner_team",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "severity",
+            "dataType": "string",
+            "sourceColumn": "severity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "amount_usd",
+            "dataType": "double",
+            "sourceColumn": "amount_usd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "due_date",
+            "dataType": "dateTime",
+            "sourceColumn": "due_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "commentary",
+            "dataType": "string",
+            "sourceColumn": "commentary",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_synthetic",
+            "dataType": "boolean",
+            "sourceColumn": "is_synthetic",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactCloseExceptions-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/fact_close_exceptions.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"exception_id\", type text},\n        {\"date_id\", type text},\n        {\"entity_id\", type text},\n        {\"country\", type text},\n        {\"region\", type text},\n        {\"exception_type\", type text},\n        {\"owner_team\", type text},\n        {\"severity\", type text},\n        {\"status\", type text},\n        {\"amount_usd\", type number},\n        {\"due_date\", type date},\n        {\"commentary\", type text},\n        {\"is_synthetic\", type logical}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactFXRate",
+        "columns": [
+          {
+            "name": "date_id",
+            "dataType": "string",
+            "sourceColumn": "date_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "currency",
+            "dataType": "string",
+            "sourceColumn": "currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "to_currency",
+            "dataType": "string",
+            "sourceColumn": "to_currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "rate_type",
+            "dataType": "string",
+            "sourceColumn": "rate_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "rate_to_usd",
+            "dataType": "double",
+            "sourceColumn": "rate_to_usd",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactFXRate-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/fact_fx_rate.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {",
+                "        {\"date_id\", type text},\n        {\"currency\", type text},\n        {\"to_currency\", type text},\n        {\"rate_type\", type text},\n        {\"rate_to_usd\", type number}",
+                "    }, \"en-US\")",
+                "in",
+                "    TypedColumns"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI Measures",
+        "columns": [
+          {
+            "name": "Measure Group",
+            "dataType": "string",
+            "sourceColumn": "Measure Group",
+            "isHidden": true,
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "KPI Measures-Import",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #table(type table [Measure Group = text], {{\"Regional FP&A Consolidation\"}})",
+                "in",
+                "    Source"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Revenue",
+            "expression": "SUM ( FactFinancialSummary[external_revenue_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Consolidated external revenue after excluding intercompany revenue."
+          },
+          {
+            "name": "Gross Revenue",
+            "expression": "SUM ( FactFinancialSummary[gross_revenue_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "External plus intercompany revenue before elimination."
+          },
+          {
+            "name": "Intercompany Revenue",
+            "expression": "SUM ( FactFinancialSummary[intercompany_revenue_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Intercompany revenue requiring elimination."
+          },
+          {
+            "name": "Intercompany Elimination",
+            "expression": "SUM ( FactFinancialSummary[intercompany_elimination_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Net intercompany elimination impact."
+          },
+          {
+            "name": "Gross Profit",
+            "expression": "SUM ( FactFinancialSummary[gross_profit_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Revenue minus cost of services."
+          },
+          {
+            "name": "Gross Margin %",
+            "expression": "DIVIDE ( [Gross Profit], [Total Revenue] )",
+            "formatString": "0.0%",
+            "description": "Gross profit divided by consolidated external revenue."
+          },
+          {
+            "name": "OPEX",
+            "expression": "SUM ( FactFinancialSummary[opex_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Personnel, facilities, sales and marketing, and G&A."
+          },
+          {
+            "name": "EBITDA",
+            "expression": "SUM ( FactFinancialSummary[ebitda_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Gross profit plus OPEX after intercompany elimination."
+          },
+          {
+            "name": "EBITDA Margin %",
+            "expression": "DIVIDE ( [EBITDA], [Total Revenue] )",
+            "formatString": "0.0%",
+            "description": "EBITDA divided by consolidated external revenue."
+          },
+          {
+            "name": "Operating Income",
+            "expression": "SUM ( FactFinancialSummary[operating_income_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "EBITDA less depreciation."
+          },
+          {
+            "name": "Net Income",
+            "expression": "SUM ( FactFinancialSummary[net_income_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Operating income less interest and tax."
+          },
+          {
+            "name": "Cash Position",
+            "expression": "SUM ( FactFinancialSummary[cash_position_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Period-end cash position by entity and BU allocation."
+          },
+          {
+            "name": "Operating Cash Flow",
+            "expression": "SUM ( FactFinancialSummary[operating_cash_flow_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Operating cash flow proxy tied to EBITDA conversion."
+          },
+          {
+            "name": "Working Capital",
+            "expression": "SUM ( FactFinancialSummary[working_capital_usd] )",
+            "formatString": "$#,0,,.0M",
+            "description": "Working capital proxy for close review."
+          },
+          {
+            "name": "Actual Revenue",
+            "expression": "CALCULATE ( [Total Revenue], DimScenario[scenario] = \"Actual\" )",
+            "formatString": "$#,0,,.0M",
+            "description": "Actual consolidated revenue."
+          },
+          {
+            "name": "Budget Revenue",
+            "expression": "CALCULATE ( [Total Revenue], DimScenario[scenario] = \"Budget\" )",
+            "formatString": "$#,0,,.0M",
+            "description": "Budget consolidated revenue."
+          },
+          {
+            "name": "Revenue Var vs Budget",
+            "expression": "[Actual Revenue] - [Budget Revenue]",
+            "formatString": "$#,0,,.0M",
+            "description": "Actual revenue less budget revenue."
+          },
+          {
+            "name": "Revenue Var %",
+            "expression": "DIVIDE ( [Revenue Var vs Budget], [Budget Revenue] )",
+            "formatString": "0.0%",
+            "description": "Revenue variance divided by budget revenue."
+          },
+          {
+            "name": "Actual EBITDA",
+            "expression": "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Actual\" )",
+            "formatString": "$#,0,,.0M",
+            "description": "Actual EBITDA."
+          },
+          {
+            "name": "Budget EBITDA",
+            "expression": "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Budget\" )",
+            "formatString": "$#,0,,.0M",
+            "description": "Budget EBITDA."
+          },
+          {
+            "name": "EBITDA Var vs Budget",
+            "expression": "[Actual EBITDA] - [Budget EBITDA]",
+            "formatString": "$#,0,,.0M",
+            "description": "Actual EBITDA less budget EBITDA."
+          },
+          {
+            "name": "EBITDA Var %",
+            "expression": "DIVIDE ( [EBITDA Var vs Budget], [Budget EBITDA] )",
+            "formatString": "0.0%",
+            "description": "EBITDA variance divided by budget EBITDA."
+          },
+          {
+            "name": "Forecast EBITDA",
+            "expression": "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Forecast\" )",
+            "formatString": "$#,0,,.0M",
+            "description": "Forecast EBITDA."
+          },
+          {
+            "name": "Forecast Accuracy %",
+            "expression": "1 - ABS ( DIVIDE ( [Actual EBITDA] - [Forecast EBITDA], [Actual EBITDA] ) )",
+            "formatString": "0.0%",
+            "description": "Directional forecast accuracy for EBITDA."
+          },
+          {
+            "name": "Open Exception Count",
+            "expression": "CALCULATE ( COUNTROWS ( FactCloseExceptions ), FactCloseExceptions[status] <> \"Closed\" )",
+            "formatString": "#,0",
+            "description": "Open or in-progress close exceptions."
+          },
+          {
+            "name": "Open Exception Value",
+            "expression": "CALCULATE ( SUM ( FactCloseExceptions[amount_usd] ), FactCloseExceptions[status] <> \"Closed\" )",
+            "formatString": "$#,0,,.0M",
+            "description": "Value attached to unresolved close exceptions."
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "rel_FactFinancials_date_id_DimDate_date_id",
+        "fromTable": "FactFinancials",
+        "fromColumn": "date_id",
+        "toTable": "DimDate",
+        "toColumn": "date_id"
+      },
+      {
+        "name": "rel_FactFinancialSummary_date_id_DimDate_date_id",
+        "fromTable": "FactFinancialSummary",
+        "fromColumn": "date_id",
+        "toTable": "DimDate",
+        "toColumn": "date_id"
+      },
+      {
+        "name": "rel_FactVarianceDriverBridge_date_id_DimDate_date_id",
+        "fromTable": "FactVarianceDriverBridge",
+        "fromColumn": "date_id",
+        "toTable": "DimDate",
+        "toColumn": "date_id"
+      },
+      {
+        "name": "rel_FactCloseExceptions_date_id_DimDate_date_id",
+        "fromTable": "FactCloseExceptions",
+        "fromColumn": "date_id",
+        "toTable": "DimDate",
+        "toColumn": "date_id"
+      },
+      {
+        "name": "rel_FactFXRate_date_id_DimDate_date_id",
+        "fromTable": "FactFXRate",
+        "fromColumn": "date_id",
+        "toTable": "DimDate",
+        "toColumn": "date_id"
+      },
+      {
+        "name": "rel_FactFinancials_entity_id_DimEntity_entity_id",
+        "fromTable": "FactFinancials",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactFinancialSummary_entity_id_DimEntity_entity_id",
+        "fromTable": "FactFinancialSummary",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactVarianceDriverBridge_entity_id_DimEntity_entity_id",
+        "fromTable": "FactVarianceDriverBridge",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactCloseExceptions_entity_id_DimEntity_entity_id",
+        "fromTable": "FactCloseExceptions",
+        "fromColumn": "entity_id",
+        "toTable": "DimEntity",
+        "toColumn": "entity_id"
+      },
+      {
+        "name": "rel_FactFinancials_business_unit_id_DimBusinessUnit_business_unit_id",
+        "fromTable": "FactFinancials",
+        "fromColumn": "business_unit_id",
+        "toTable": "DimBusinessUnit",
+        "toColumn": "business_unit_id"
+      },
+      {
+        "name": "rel_FactFinancialSummary_business_unit_id_DimBusinessUnit_business_unit_id",
+        "fromTable": "FactFinancialSummary",
+        "fromColumn": "business_unit_id",
+        "toTable": "DimBusinessUnit",
+        "toColumn": "business_unit_id"
+      },
+      {
+        "name": "rel_FactVarianceDriverBridge_business_unit_id_DimBusinessUnit_business_unit_id",
+        "fromTable": "FactVarianceDriverBridge",
+        "fromColumn": "business_unit_id",
+        "toTable": "DimBusinessUnit",
+        "toColumn": "business_unit_id"
+      },
+      {
+        "name": "rel_FactFinancials_scenario_id_DimScenario_scenario_id",
+        "fromTable": "FactFinancials",
+        "fromColumn": "scenario_id",
+        "toTable": "DimScenario",
+        "toColumn": "scenario_id"
+      },
+      {
+        "name": "rel_FactFinancialSummary_scenario_id_DimScenario_scenario_id",
+        "fromTable": "FactFinancialSummary",
+        "fromColumn": "scenario_id",
+        "toTable": "DimScenario",
+        "toColumn": "scenario_id"
+      },
+      {
+        "name": "rel_FactFinancials_account_id_DimAccount_account_id",
+        "fromTable": "FactFinancials",
+        "fromColumn": "account_id",
+        "toTable": "DimAccount",
+        "toColumn": "account_id"
+      }
+    ]
+  }
+}

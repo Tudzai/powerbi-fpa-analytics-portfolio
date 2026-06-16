@@ -1,0 +1,94 @@
+{
+  "metrics": {
+    "current": {
+      "actual_revenue": 46084829.56,
+      "actual_cogs": 27300829.560000002,
+      "standard_cogs": 25551467.32,
+      "cost_variance": 1749362.240000002,
+      "gross_margin": 18784000.0,
+      "gross_margin_pct": 0.4075961694844554,
+      "good_units": 645110.0,
+      "produced_units": 666238.0,
+      "yield_pct": 0.9682876089325436,
+      "scrap_rate": 0.031706387206974086,
+      "unit_cost": 42.319650230193304,
+      "utilization_pct": 0.6129424675445969,
+      "inventory_value": 24341039.77,
+      "inventory_days": 26.747582577853358,
+      "material_variance": 909460.27,
+      "labor_variance": 98415.37,
+      "overhead_variance": 47667.780000000006,
+      "yield_loss_cost": 693818.7,
+      "capacity_gap_units": 2763.0,
+      "slow_moving_inventory_value": 2800971.84,
+      "mom_gross_margin_growth": -0.022077810621804927,
+      "mom_cost_variance_growth": 0.11647433001685886
+    },
+    "previous": {
+      "actual_revenue": 46007204.36,
+      "actual_cogs": 26799132.1,
+      "standard_cogs": 25232269.17,
+      "cost_variance": 1566862.9299999997,
+      "gross_margin": 19208072.18,
+      "gross_margin_pct": 0.4175013989048214,
+      "good_units": 650174.0,
+      "produced_units": 671069.0,
+      "yield_pct": 0.9688631124370222,
+      "scrap_rate": 0.031133907243517434,
+      "unit_cost": 41.218400151344106,
+      "utilization_pct": 0.6061902649357118,
+      "inventory_value": 23241366.53,
+      "inventory_days": 26.01729762360476,
+      "material_variance": 802533.69,
+      "labor_variance": 98723.47,
+      "overhead_variance": 13494.499999999998,
+      "yield_loss_cost": 652111.3300000001,
+      "capacity_gap_units": -2068.0,
+      "slow_moving_inventory_value": 2893358.26
+    }
+  },
+  "validation": {
+    "status": "PASS",
+    "checks": [
+      {
+        "check": "fact key uniqueness",
+        "status": "PASS",
+        "value": 0
+      },
+      {
+        "check": "critical missing values",
+        "status": "PASS",
+        "value": 0
+      },
+      {
+        "check": "latest month exists",
+        "status": "PASS",
+        "value": 72
+      },
+      {
+        "check": "variance tie-out",
+        "status": "PASS",
+        "value": 0.12
+      },
+      {
+        "check": "bridge actual cogs tie-out",
+        "status": "PASS",
+        "value": 0.0
+      }
+    ],
+    "row_counts": {
+      "dim_date": 29,
+      "dim_plant": 5,
+      "dim_product": 24,
+      "dim_line": 12,
+      "dim_scenario": 6,
+      "fact_manufacturing_month": 2088,
+      "fact_cost_variance_bridge": 6
+    },
+    "date_range": {
+      "start": "2024-01-01",
+      "end": "2026-05-01",
+      "latest_complete_month": "2026-05"
+    }
+  }
+}

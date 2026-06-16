@@ -1,0 +1,15 @@
+{
+  "name": "SaaS CFO Board Cockpit",
+  "dataColors": [
+    "#2563EB",
+    "#0F766E",
+    "#16A34A",
+    "#F59E0B",
+    "#DC2626",
+    "#7C3AED",
+    "#0EA5E9"
+  ],
+  "background": "#F6F8FB",
+  "foreground": "#111827",
+  "tableAccent": "#2563EB"
+}

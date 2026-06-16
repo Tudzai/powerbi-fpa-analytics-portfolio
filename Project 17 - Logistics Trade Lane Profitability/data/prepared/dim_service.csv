@@ -1,0 +1,6 @@
+service_id,service,service_family,mode
+S001,Ocean FCL Door-to-Port,Ocean,Ocean FCL
+S002,Ocean LCL Consolidation,Ocean,Ocean LCL
+S003,Air Priority,Air,Air
+S004,Road Cross-Border,Road,Road
+S005,Customs & Brokerage,Brokerage,All

@@ -1,0 +1,29 @@
+{
+  "global_slicers": [
+    {
+      "label": "Month",
+      "field": "dim_date[year_month]",
+      "type": "dropdown"
+    },
+    {
+      "label": "Plant",
+      "field": "dim_plant[plant_name]",
+      "type": "dropdown"
+    },
+    {
+      "label": "Product Line",
+      "field": "dim_product[product_line]",
+      "type": "dropdown"
+    },
+    {
+      "label": "Line",
+      "field": "dim_line[line_name]",
+      "type": "dropdown"
+    }
+  ],
+  "scenario_slicer": {
+    "label": "Scenario",
+    "field": "dim_scenario[scenario_name]",
+    "type": "dropdown"
+  }
+}

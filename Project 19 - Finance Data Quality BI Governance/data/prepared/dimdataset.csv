@@ -1,0 +1,13 @@
+DatasetKey,DatasetName,Domain,SourceSystem,Criticality,OwnerTeam,SLAHours,RefreshFrequency,RLSRequired,Certified
+DS001,General Ledger Daily Balance,Record to Report,SAP S/4HANA,Tier 1,R2R Data Product,6,Daily,Y,Y
+DS002,Accounts Payable Invoice,Procure to Pay,Coupa,Tier 1,P2P Analytics,8,Daily,N,Y
+DS003,Accounts Receivable Aging,Order to Cash,Oracle AR,Tier 1,O2C Analytics,8,Daily,Y,Y
+DS004,Treasury Cash Position,Treasury,Kyriba,Tier 1,Treasury Ops,4,Intraday,Y,Y
+DS005,Bank Statement Feed,Treasury,SWIFT MT940,Tier 1,Treasury Ops,4,Intraday,Y,N
+DS006,Revenue Recognition Entries,Revenue,Zuora RevPro,Tier 1,Revenue Ops,10,Daily,Y,Y
+DS007,Cost Center Actuals,FP&A,Workday Adaptive,Tier 2,FP&A Systems,12,Daily,N,Y
+DS008,Budget Forecast Snapshot,FP&A,Workday Adaptive,Tier 2,FP&A Systems,24,Daily,N,Y
+DS009,Fixed Asset Register,Record to Report,SAP AA,Tier 2,Controllership,24,Daily,N,Y
+DS010,Intercompany Elimination,Consolidation,OneStream,Tier 1,Consolidation COE,10,Daily,Y,Y
+DS011,Tax Provision Inputs,Tax,ONESOURCE,Tier 2,Tax Ops,24,Weekly,Y,N
+DS012,Payroll Accrual Feed,People Cost,Workday HCM,Tier 2,People Finance,24,Daily,Y,N

@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "artifacts": [
+    {
+      "report": {
+        "path": "powerbi_project/Finance_Data_Quality_BI_Governance.Report"
+      }
+    }
+  ]
+}

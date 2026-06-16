@@ -1,0 +1,33 @@
+{
+  "status": "BLOCKED_PBIX_PERSISTENCE",
+  "opened_exact_file": true,
+  "live_desktop_model_pushed": true,
+  "live_desktop_model_port": 56532,
+  "live_model_tables": [
+    "dim_date",
+    "dim_plant",
+    "dim_product",
+    "dim_line",
+    "dim_scenario",
+    "fact_manufacturing_month",
+    "fact_cost_variance_bridge",
+    "KPI Measures"
+  ],
+  "live_model_relationship_count": 5,
+  "live_model_measure_count": 61,
+  "offline_pbix_saved_reopened": false,
+  "offline_pbix_export_tables": [
+    "Calendar",
+    "Prices",
+    "Products",
+    "Sales",
+    "Year"
+  ],
+  "blocker": "Power BI Desktop live session contains the Project 16 model and 3-page report layout, but Desktop did not persist the live DataModel into output/dashboard_final.pbix. Offline export-data still returns the Packt seed model tables.",
+  "supplemental_pass_artifacts": [
+    "output/dashboard_final.html",
+    "output/dashboard_project16_model_schema.pbit",
+    "qa/live_pbixproj_from_session",
+    "qa/live_export_after_model_push"
+  ]
+}

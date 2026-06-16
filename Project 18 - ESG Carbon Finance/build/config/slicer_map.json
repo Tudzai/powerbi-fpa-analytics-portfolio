@@ -1,0 +1,10 @@
+{
+  "global_slicers": [
+    "Year",
+    "Region",
+    "Business Unit",
+    "Scope",
+    "Carbon price scenario"
+  ],
+  "notes": "Use few high-signal slicers; avoid high-cardinality supplier slicers on overview page."
+}

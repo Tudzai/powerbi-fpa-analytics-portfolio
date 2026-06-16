@@ -1,0 +1,9 @@
+{
+  "name": "SaaS CFO Metrics",
+  "tabs": [
+    "Executive Overview",
+    "Revenue & Retention",
+    "Efficiency & Forecast"
+  ],
+  "page_count": 3
+}

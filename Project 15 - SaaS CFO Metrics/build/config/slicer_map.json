@@ -1,0 +1,8 @@
+{
+  "global": [
+    "Year",
+    "Segment",
+    "Motion",
+    "Region"
+  ]
+}

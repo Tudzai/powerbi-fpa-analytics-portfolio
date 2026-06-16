@@ -1,0 +1,11 @@
+{
+  "title": "Manufacturing Cost FP&A",
+  "prompt_version": "BI_A2Z_Master_Prompt_v3",
+  "latest_complete_month": "2026-05",
+  "data_source": "synthetic_demo",
+  "seed": 160416,
+  "audience": "CFO, Plant Finance, Operations, Supply Chain, and Manufacturing leadership",
+  "business_goal": "Protect EBITDA by diagnosing standard cost variance, yield loss, capacity pressure, and inventory working capital.",
+  "page_count": 3,
+  "technical_seed": "Template/04_Profitability_Margin/Packt_Ch10_PVM.pbix"
+}

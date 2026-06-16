@@ -1,24 +1,17 @@
 # Project 15 - SaaS CFO Metrics
 
-Planned Power BI product for SaaS finance metrics, recurring revenue analytics, cohort economics, and CFO operating review.
+Final target: `output/dashboard_final.pbix`
 
-## Intended Business Questions
+Tabs:
+- Executive Overview
+- Revenue & Retention
+- Efficiency & Forecast
 
-- Are ARR, MRR, NRR, GRR, churn, and expansion trending toward plan?
-- Which cohorts, plans, and channels create the best unit economics?
-- Is CAC payback acceptable by customer segment and acquisition motion?
+Latest complete month: May 2026
+ARR: $25.3M
+Net New ARR: $-24.8K
+NRR: 99.5%
+GRR: 96.8%
+Logo churn: 2.9%
 
-## Planned Dashboard Pages
-
-- SaaS CFO Overview
-- ARR Movement Waterfall
-- Retention and Expansion Cohorts
-- CAC Payback and LTV
-- Revenue Quality and Forecast
-
-## Skill Signals
-
-- Subscription finance modeling
-- Revenue bridge and cohort analysis
-- SaaS KPI design
-- Finance-ready growth analytics
+Data is synthetic portfolio/demo data generated with seed `20260615`.

@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "template_seed": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Template\\04_Profitability_Margin\\Packt_Ch10_PVM.pbix",
+  "project_seed_copy": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\powerbi\\seed\\Packt_Ch10_PVM_seed.pbix",
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\output\\dashboard_final.pbix",
+  "layout_json": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\build\\native_report_layout_project16.json",
+  "backup": null,
+  "page_count": 3,
+  "pages": [
+    "01 Manufacturing FP&A Overview",
+    "02 Standard Cost Variance",
+    "03 Yield Capacity & WC"
+  ],
+  "visual_count": 45,
+  "visual_types": {
+    "textbox": 3,
+    "slicer": 12,
+    "cardVisual": 18,
+    "columnChart": 2,
+    "barChart": 6,
+    "tableEx": 3,
+    "waterfallChart": 1
+  },
+  "security_bindings_removed": true,
+  "theme_path": "Report/StaticResources/SharedResources/BaseThemes/CY23SU04.json"
+}

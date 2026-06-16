@@ -1,0 +1,122 @@
+[
+  {
+    "name": "FactDatasetDaily_DateKey_DimDate_DateKey",
+    "fromTable": "FactDatasetDaily",
+    "fromColumn": "DateKey",
+    "toTable": "DimDate",
+    "toColumn": "DateKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactDatasetDaily_DatasetKey_DimDataset_DatasetKey",
+    "fromTable": "FactDatasetDaily",
+    "fromColumn": "DatasetKey",
+    "toTable": "DimDataset",
+    "toColumn": "DatasetKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactRefreshRuns_DateKey_DimDate_DateKey",
+    "fromTable": "FactRefreshRuns",
+    "fromColumn": "DateKey",
+    "toTable": "DimDate",
+    "toColumn": "DateKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactRefreshRuns_DatasetKey_DimDataset_DatasetKey",
+    "fromTable": "FactRefreshRuns",
+    "fromColumn": "DatasetKey",
+    "toTable": "DimDataset",
+    "toColumn": "DatasetKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactReconciliation_DateKey_DimDate_DateKey",
+    "fromTable": "FactReconciliation",
+    "fromColumn": "DateKey",
+    "toTable": "DimDate",
+    "toColumn": "DateKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactReconciliation_DatasetKey_DimDataset_DatasetKey",
+    "fromTable": "FactReconciliation",
+    "fromColumn": "DatasetKey",
+    "toTable": "DimDataset",
+    "toColumn": "DatasetKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactIncidents_DateKey_DimDate_DateKey",
+    "fromTable": "FactIncidents",
+    "fromColumn": "DateKey",
+    "toTable": "DimDate",
+    "toColumn": "DateKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactIncidents_DatasetKey_DimDataset_DatasetKey",
+    "fromTable": "FactIncidents",
+    "fromColumn": "DatasetKey",
+    "toTable": "DimDataset",
+    "toColumn": "DatasetKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactReconciliation_DeptKey_DimDepartment_DeptKey",
+    "fromTable": "FactReconciliation",
+    "fromColumn": "DeptKey",
+    "toTable": "DimDepartment",
+    "toColumn": "DeptKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactUsage_DateKey_DimDate_DateKey",
+    "fromTable": "FactUsage",
+    "fromColumn": "DateKey",
+    "toTable": "DimDate",
+    "toColumn": "DateKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactUsage_ReportKey_DimReport_ReportKey",
+    "fromTable": "FactUsage",
+    "fromColumn": "ReportKey",
+    "toTable": "DimReport",
+    "toColumn": "ReportKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactUsage_DeptKey_DimDepartment_DeptKey",
+    "fromTable": "FactUsage",
+    "fromColumn": "DeptKey",
+    "toTable": "DimDepartment",
+    "toColumn": "DeptKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactAccessReview_DateKey_DimDate_DateKey",
+    "fromTable": "FactAccessReview",
+    "fromColumn": "DateKey",
+    "toTable": "DimDate",
+    "toColumn": "DateKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactAccessReview_ReportKey_DimReport_ReportKey",
+    "fromTable": "FactAccessReview",
+    "fromColumn": "ReportKey",
+    "toTable": "DimReport",
+    "toColumn": "ReportKey",
+    "crossFilteringBehavior": "oneDirection"
+  },
+  {
+    "name": "FactAccessReview_DeptKey_DimDepartment_DeptKey",
+    "fromTable": "FactAccessReview",
+    "fromColumn": "DeptKey",
+    "toTable": "DimDepartment",
+    "toColumn": "DeptKey",
+    "crossFilteringBehavior": "oneDirection"
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "status": "pass",
+  "checked_at": "2026-06-15T02:01:15",
+  "row_counts": {
+    "dim_date": 17,
+    "dim_entity": 7,
+    "dim_business_unit": 5,
+    "dim_account": 10,
+    "dim_scenario": 4,
+    "fact_fx_rate": 357,
+    "fact_financials": 23800,
+    "fact_financial_summary": 2380,
+    "fact_variance_driver_bridge": 4165,
+    "fact_close_exceptions": 75
+  },
+  "period_range": [
+    "2025-01",
+    "2026-05"
+  ],
+  "checks": [
+    {
+      "check": "Fact financials grain uniqueness",
+      "status": "pass",
+      "detail": "0 duplicate composite keys"
+    },
+    {
+      "check": "Critical field completeness",
+      "status": "pass",
+      "detail": "0 missing critical values"
+    },
+    {
+      "check": "Foreign key integrity",
+      "status": "pass",
+      "detail": "0 bad FK rows"
+    },
+    {
+      "check": "Bridge tie-out to EBITDA variance",
+      "status": "pass",
+      "detail": "0 groups outside $1 tolerance; max abs diff $0.02"
+    },
+    {
+      "check": "Synthetic seed recorded",
+      "status": "pass",
+      "detail": "seed=13042"
+    }
+  ]
+}

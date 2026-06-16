@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Rel_fact_emissions_date_key_dim_date_date_key",
+    "fromTable": "fact_emissions",
+    "fromColumn": "date_key",
+    "toTable": "dim_date",
+    "toColumn": "date_key"
+  },
+  {
+    "name": "Rel_fact_supplier_month_date_key_dim_date_date_key",
+    "fromTable": "fact_supplier_month",
+    "fromColumn": "date_key",
+    "toTable": "dim_date",
+    "toColumn": "date_key"
+  },
+  {
+    "name": "Rel_fact_carbon_exposure_date_key_dim_date_date_key",
+    "fromTable": "fact_carbon_exposure",
+    "fromColumn": "date_key",
+    "toTable": "dim_date",
+    "toColumn": "date_key"
+  },
+  {
+    "name": "Rel_fact_emissions_business_unit_id_dim_business_unit_business_unit_id",
+    "fromTable": "fact_emissions",
+    "fromColumn": "business_unit_id",
+    "toTable": "dim_business_unit",
+    "toColumn": "business_unit_id"
+  },
+  {
+    "name": "Rel_fact_emissions_facility_id_dim_facility_facility_id",
+    "fromTable": "fact_emissions",
+    "fromColumn": "facility_id",
+    "toTable": "dim_facility",
+    "toColumn": "facility_id"
+  },
+  {
+    "name": "Rel_fact_emissions_activity_id_dim_activity_activity_id",
+    "fromTable": "fact_emissions",
+    "fromColumn": "activity_id",
+    "toTable": "dim_activity",
+    "toColumn": "activity_id"
+  },
+  {
+    "name": "Rel_fact_emissions_supplier_id_dim_supplier_supplier_id",
+    "fromTable": "fact_emissions",
+    "fromColumn": "supplier_id",
+    "toTable": "dim_supplier",
+    "toColumn": "supplier_id"
+  },
+  {
+    "name": "Rel_fact_supplier_month_supplier_id_dim_supplier_supplier_id",
+    "fromTable": "fact_supplier_month",
+    "fromColumn": "supplier_id",
+    "toTable": "dim_supplier",
+    "toColumn": "supplier_id"
+  },
+  {
+    "name": "Rel_fact_carbon_exposure_scenario_id_dim_carbon_scenario_scenario_id",
+    "fromTable": "fact_carbon_exposure",
+    "fromColumn": "scenario_id",
+    "toTable": "dim_carbon_scenario",
+    "toColumn": "scenario_id"
+  }
+]

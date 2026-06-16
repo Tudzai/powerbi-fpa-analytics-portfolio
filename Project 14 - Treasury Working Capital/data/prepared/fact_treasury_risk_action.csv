@@ -1,0 +1,76 @@
+action_id,entity_id,risk_type,risk_level,status,owner_team,amount_usd,due_date,recommended_action,is_synthetic
+TR001,SG01,Bank reconciliation delay,High,Action Agreed,Procurement,2064088.65,2026-07-12,Clear unreconciled bank items before forecast refresh.,TRUE
+TR002,DE01,Bank reconciliation delay,Medium,Action Agreed,FP&A,1450884.87,2026-06-25,Clear unreconciled bank items before forecast refresh.,TRUE
+TR003,GB01,Bank reconciliation delay,Medium,Open,Treasury,1995661.55,2026-06-20,Clear unreconciled bank items before forecast refresh.,TRUE
+TR004,DE01,AP payment hold,Low,In Review,Credit Control,328665.77,2026-07-11,Confirm supplier criticality before delaying disbursement.,TRUE
+TR005,GB01,Forecast variance spike,High,Open,FP&A,3949691.07,2026-06-18,Re-baseline short-term receipts and payment timing.,TRUE
+TR006,US01,Low cash buffer,Medium,Action Agreed,Regional Finance,1759482.09,2026-07-05,Review facility draw timing and defer non-critical payments.,TRUE
+TR007,GB01,Overdue AR concentration,Low,In Review,Treasury,1439620.54,2026-06-21,Escalate top customers and lock weekly collection promises.,TRUE
+TR008,VN01,Unhedged FX exposure,Medium,In Review,Regional Finance,1249373.87,2026-07-12,Propose hedge top-up or natural offset review.,TRUE
+TR009,GB01,AP payment hold,Medium,In Review,Procurement,1226018.44,2026-06-23,Confirm supplier criticality before delaying disbursement.,TRUE
+TR010,GB01,Forecast variance spike,Medium,Action Agreed,Credit Control,784707.29,2026-07-27,Re-baseline short-term receipts and payment timing.,TRUE
+TR011,VN01,AP payment hold,Medium,Closed,Credit Control,2083127.36,2026-07-07,Confirm supplier criticality before delaying disbursement.,TRUE
+TR012,US01,Bank reconciliation delay,Medium,In Review,Regional Finance,379270.82,2026-07-21,Clear unreconciled bank items before forecast refresh.,TRUE
+TR013,GB01,Unhedged FX exposure,High,Action Agreed,Credit Control,339155.33,2026-07-09,Propose hedge top-up or natural offset review.,TRUE
+TR014,GB01,Low cash buffer,Low,Closed,Procurement,987225.14,2026-07-14,Review facility draw timing and defer non-critical payments.,TRUE
+TR015,GB01,Forecast variance spike,Low,Open,FP&A,2134308.82,2026-07-20,Re-baseline short-term receipts and payment timing.,TRUE
+TR016,SG01,Overdue AR concentration,High,Open,Treasury,3236955.81,2026-06-21,Escalate top customers and lock weekly collection promises.,TRUE
+TR017,SG01,AP payment hold,Low,Open,FP&A,741441.39,2026-07-06,Confirm supplier criticality before delaying disbursement.,TRUE
+TR018,DE01,Forecast variance spike,High,Action Agreed,FP&A,681914.5,2026-07-15,Re-baseline short-term receipts and payment timing.,TRUE
+TR019,SG01,AP payment hold,High,Action Agreed,Treasury,344470.24,2026-07-10,Confirm supplier criticality before delaying disbursement.,TRUE
+TR020,GB01,Bank reconciliation delay,Medium,In Review,Treasury,1967665.59,2026-07-05,Clear unreconciled bank items before forecast refresh.,TRUE
+TR021,BR01,Overdue AR concentration,High,Closed,Procurement,1324442.81,2026-07-11,Escalate top customers and lock weekly collection promises.,TRUE
+TR022,BR01,Overdue AR concentration,Low,In Review,Treasury,1287644.63,2026-07-20,Escalate top customers and lock weekly collection promises.,TRUE
+TR023,BR01,Low cash buffer,Medium,Open,Treasury,550284.35,2026-06-17,Review facility draw timing and defer non-critical payments.,TRUE
+TR024,VN01,Forecast variance spike,Medium,In Review,Procurement,712492.61,2026-06-18,Re-baseline short-term receipts and payment timing.,TRUE
+TR025,SG01,Unhedged FX exposure,High,Closed,Regional Finance,3907455.16,2026-07-24,Propose hedge top-up or natural offset review.,TRUE
+TR026,GB01,Bank reconciliation delay,Low,In Review,Regional Finance,1993003.1,2026-07-12,Clear unreconciled bank items before forecast refresh.,TRUE
+TR027,GB01,Bank reconciliation delay,High,Open,Credit Control,3172139.29,2026-07-09,Clear unreconciled bank items before forecast refresh.,TRUE
+TR028,US01,Debt maturity watch,Low,Open,Regional Finance,1753506.28,2026-07-08,Confirm refinancing plan and covenant headroom.,TRUE
+TR029,VN01,Bank reconciliation delay,Low,Closed,Treasury,1201312.89,2026-07-15,Clear unreconciled bank items before forecast refresh.,TRUE
+TR030,BR01,Debt maturity watch,Medium,Action Agreed,Procurement,338102.0,2026-07-09,Confirm refinancing plan and covenant headroom.,TRUE
+TR031,DE01,AP payment hold,Low,Action Agreed,Regional Finance,2101415.63,2026-07-09,Confirm supplier criticality before delaying disbursement.,TRUE
+TR032,BR01,AP payment hold,Medium,Action Agreed,Regional Finance,1927272.9,2026-07-23,Confirm supplier criticality before delaying disbursement.,TRUE
+TR033,VN01,AP payment hold,High,Open,Credit Control,1226680.98,2026-07-03,Confirm supplier criticality before delaying disbursement.,TRUE
+TR034,VN01,AP payment hold,Low,In Review,Credit Control,632472.68,2026-07-17,Confirm supplier criticality before delaying disbursement.,TRUE
+TR035,BR01,Unhedged FX exposure,Medium,Action Agreed,Credit Control,1023603.96,2026-06-24,Propose hedge top-up or natural offset review.,TRUE
+TR036,BR01,Debt maturity watch,High,Open,Regional Finance,3175819.07,2026-06-26,Confirm refinancing plan and covenant headroom.,TRUE
+TR037,BR01,Low cash buffer,High,In Review,FP&A,3572032.2,2026-06-22,Review facility draw timing and defer non-critical payments.,TRUE
+TR038,GB01,Bank reconciliation delay,Medium,Open,Credit Control,1680782.68,2026-07-13,Clear unreconciled bank items before forecast refresh.,TRUE
+TR039,DE01,AP payment hold,Low,In Review,Procurement,487226.28,2026-07-10,Confirm supplier criticality before delaying disbursement.,TRUE
+TR040,US01,AP payment hold,Medium,Action Agreed,FP&A,980451.09,2026-07-04,Confirm supplier criticality before delaying disbursement.,TRUE
+TR041,DE01,Unhedged FX exposure,Medium,In Review,Treasury,304259.4,2026-06-27,Propose hedge top-up or natural offset review.,TRUE
+TR042,SG01,Unhedged FX exposure,Medium,In Review,Treasury,188262.35,2026-07-22,Propose hedge top-up or natural offset review.,TRUE
+TR043,VN01,Debt maturity watch,High,Open,Treasury,1881264.8,2026-07-13,Confirm refinancing plan and covenant headroom.,TRUE
+TR044,DE01,Low cash buffer,Low,Closed,Regional Finance,1162971.14,2026-07-18,Review facility draw timing and defer non-critical payments.,TRUE
+TR045,BR01,Overdue AR concentration,Low,Closed,Credit Control,2361448.47,2026-06-22,Escalate top customers and lock weekly collection promises.,TRUE
+TR046,SG01,Low cash buffer,Low,Action Agreed,FP&A,2316409.87,2026-07-21,Review facility draw timing and defer non-critical payments.,TRUE
+TR047,US01,Overdue AR concentration,High,Open,FP&A,3657965.11,2026-07-06,Escalate top customers and lock weekly collection promises.,TRUE
+TR048,SG01,Overdue AR concentration,Medium,Closed,Treasury,1687170.28,2026-06-27,Escalate top customers and lock weekly collection promises.,TRUE
+TR049,GB01,Debt maturity watch,Low,Open,Credit Control,688883.68,2026-07-19,Confirm refinancing plan and covenant headroom.,TRUE
+TR050,US01,Unhedged FX exposure,High,In Review,Treasury,1696095.1,2026-06-18,Propose hedge top-up or natural offset review.,TRUE
+TR051,US01,Forecast variance spike,Medium,Action Agreed,Treasury,2280342.72,2026-07-15,Re-baseline short-term receipts and payment timing.,TRUE
+TR052,SG01,Overdue AR concentration,Medium,In Review,FP&A,1521674.49,2026-06-22,Escalate top customers and lock weekly collection promises.,TRUE
+TR053,VN01,Forecast variance spike,Medium,Action Agreed,Procurement,2260587.63,2026-07-15,Re-baseline short-term receipts and payment timing.,TRUE
+TR054,VN01,Unhedged FX exposure,Low,Closed,Regional Finance,1531936.42,2026-06-22,Propose hedge top-up or natural offset review.,TRUE
+TR055,GB01,AP payment hold,Medium,In Review,Regional Finance,1843700.27,2026-07-09,Confirm supplier criticality before delaying disbursement.,TRUE
+TR056,GB01,Overdue AR concentration,Medium,Action Agreed,Procurement,2142032.16,2026-06-19,Escalate top customers and lock weekly collection promises.,TRUE
+TR057,GB01,Unhedged FX exposure,High,Action Agreed,FP&A,1530509.32,2026-06-22,Propose hedge top-up or natural offset review.,TRUE
+TR058,GB01,AP payment hold,High,In Review,Credit Control,2490800.01,2026-07-08,Confirm supplier criticality before delaying disbursement.,TRUE
+TR059,VN01,Debt maturity watch,Medium,Action Agreed,Treasury,2198104.4,2026-06-26,Confirm refinancing plan and covenant headroom.,TRUE
+TR060,SG01,Bank reconciliation delay,Low,In Review,Procurement,1164056.18,2026-07-25,Clear unreconciled bank items before forecast refresh.,TRUE
+TR061,SG01,Low cash buffer,Medium,Closed,Procurement,1178858.41,2026-06-24,Review facility draw timing and defer non-critical payments.,TRUE
+TR062,SG01,Overdue AR concentration,Medium,In Review,Credit Control,1027976.84,2026-07-24,Escalate top customers and lock weekly collection promises.,TRUE
+TR063,DE01,Forecast variance spike,Medium,In Review,Treasury,2245814.99,2026-06-24,Re-baseline short-term receipts and payment timing.,TRUE
+TR064,US01,Low cash buffer,Medium,Closed,Regional Finance,2157302.74,2026-07-18,Review facility draw timing and defer non-critical payments.,TRUE
+TR065,BR01,Debt maturity watch,Medium,In Review,Treasury,1687978.06,2026-07-03,Confirm refinancing plan and covenant headroom.,TRUE
+TR066,BR01,Unhedged FX exposure,Medium,In Review,Treasury,1076527.16,2026-06-20,Propose hedge top-up or natural offset review.,TRUE
+TR067,DE01,Low cash buffer,Medium,In Review,Procurement,308889.53,2026-07-17,Review facility draw timing and defer non-critical payments.,TRUE
+TR068,SG01,Overdue AR concentration,Low,Open,FP&A,678183.81,2026-07-08,Escalate top customers and lock weekly collection promises.,TRUE
+TR069,VN01,Debt maturity watch,Low,Open,Credit Control,2099536.54,2026-07-17,Confirm refinancing plan and covenant headroom.,TRUE
+TR070,GB01,Forecast variance spike,High,Open,Treasury,1994238.15,2026-07-13,Re-baseline short-term receipts and payment timing.,TRUE
+TR071,SG01,Low cash buffer,High,Closed,Procurement,523197.1,2026-07-26,Review facility draw timing and defer non-critical payments.,TRUE
+TR072,BR01,Forecast variance spike,Low,Closed,Treasury,997298.17,2026-07-19,Re-baseline short-term receipts and payment timing.,TRUE
+TR073,US01,Low cash buffer,Medium,Closed,FP&A,1410201.02,2026-07-16,Review facility draw timing and defer non-critical payments.,TRUE
+TR074,BR01,Low cash buffer,Medium,Open,FP&A,1108151.09,2026-06-17,Review facility draw timing and defer non-critical payments.,TRUE
+TR075,DE01,Unhedged FX exposure,Medium,Open,Treasury,551638.14,2026-07-21,Propose hedge top-up or natural offset review.,TRUE

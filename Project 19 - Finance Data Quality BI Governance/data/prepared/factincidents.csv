@@ -1,0 +1,241 @@
+IncidentKey,DateKey,DatasetKey,Severity,IncidentStatus,RootCause,MTTRHours,SLAOverdueFlag,BusinessImpact
+INC00001,20260202,DS012,High,Closed,Null critical field,22.6,0,Wrong KPI
+INC00002,20251211,DS010,Medium,Closed,Duplicate key,33.9,0,Wrong KPI
+INC00003,20260218,DS001,Critical,Closed,Mapping break,10.3,0,Wrong KPI
+INC00004,20260113,DS008,Critical,Closed,Null critical field,9.5,0,Manual rework
+INC00005,20250615,DS002,Medium,Open,Late source extract,66.7,0,Manual rework
+INC00006,20260104,DS008,High,Closed,Duplicate key,10.2,0,Wrong KPI
+INC00007,20250827,DS003,Medium,Closed,Duplicate key,2.0,0,Close delay
+INC00008,20260509,DS005,Medium,Open,Report performance,46.3,0,Manual rework
+INC00009,20250614,DS006,High,Closed,Late source extract,21.8,0,Wrong KPI
+INC00010,20250729,DS003,High,Closed,Failed refresh,19.1,0,Access risk
+INC00011,20260415,DS003,Medium,Closed,Mapping break,61.3,0,Manual rework
+INC00012,20251117,DS005,Medium,Open,Null critical field,46.4,0,Wrong KPI
+INC00013,20250910,DS010,Medium,Open,Late source extract,43.5,0,Stakeholder trust
+INC00014,20251124,DS004,Medium,Closed,Report performance,30.8,0,Manual rework
+INC00015,20251202,DS001,Medium,Closed,Duplicate key,16.8,0,Access risk
+INC00016,20250208,DS001,Critical,Closed,Duplicate key,13.0,0,Wrong KPI
+INC00017,20250416,DS010,Low,Open,Report performance,89.1,0,Wrong KPI
+INC00018,20250425,DS012,High,Closed,Report performance,10.0,0,Close delay
+INC00019,20250526,DS001,Critical,Closed,Duplicate key,11.4,0,Manual rework
+INC00020,20260508,DS010,Low,Open,Null critical field,97.5,1,Stakeholder trust
+INC00021,20260324,DS009,Medium,Closed,Duplicate key,10.7,0,Close delay
+INC00022,20250525,DS008,Low,Closed,Late source extract,54.5,0,Close delay
+INC00023,20260420,DS006,Medium,Closed,Late source extract,21.8,0,Access risk
+INC00024,20251230,DS003,Low,Open,Mapping break,118.5,1,Wrong KPI
+INC00025,20251209,DS011,Medium,Closed,Duplicate key,71.0,0,Wrong KPI
+INC00026,20250122,DS001,Low,Closed,Late source extract,93.7,1,Close delay
+INC00027,20250314,DS012,Medium,Open,Late source extract,97.5,1,Access risk
+INC00028,20250428,DS012,Low,Closed,Duplicate key,79.1,1,Manual rework
+INC00029,20250212,DS010,Low,Closed,Null critical field,70.2,0,Wrong KPI
+INC00030,20250815,DS012,Low,Open,Late source extract,115.8,1,Access risk
+INC00031,20260523,DS004,Medium,Open,Late source extract,45.6,0,Manual rework
+INC00032,20260209,DS006,Medium,Closed,Null critical field,41.0,0,Wrong KPI
+INC00033,20260410,DS003,Medium,Closed,Late source extract,41.3,0,Manual rework
+INC00034,20250726,DS011,Medium,Closed,Late source extract,30.5,0,Stakeholder trust
+INC00035,20250708,DS007,High,Open,RLS misconfiguration,26.7,0,Access risk
+INC00036,20250418,DS007,Medium,Closed,Late source extract,48.6,0,Wrong KPI
+INC00037,20251208,DS002,Medium,Open,Late source extract,67.8,0,Manual rework
+INC00038,20250606,DS005,High,Closed,Failed refresh,18.6,0,Stakeholder trust
+INC00039,20260516,DS012,Medium,Open,Mapping break,76.5,0,Manual rework
+INC00040,20251016,DS007,Medium,Closed,Failed refresh,59.2,0,Close delay
+INC00041,20251225,DS008,Low,Closed,RLS misconfiguration,80.0,1,Manual rework
+INC00042,20260129,DS012,Medium,Closed,Mapping break,41.4,0,Close delay
+INC00043,20250614,DS001,High,Closed,Duplicate key,19.6,0,Stakeholder trust
+INC00044,20260112,DS008,Medium,Closed,RLS misconfiguration,51.4,0,Wrong KPI
+INC00045,20250724,DS011,Low,Closed,Report performance,57.2,0,Access risk
+INC00046,20250519,DS002,Medium,Closed,Late source extract,68.4,0,Close delay
+INC00047,20260322,DS011,Medium,Closed,Failed refresh,40.9,0,Manual rework
+INC00048,20260320,DS008,Medium,Closed,Mapping break,61.0,0,Close delay
+INC00049,20250115,DS004,High,Open,Report performance,36.8,1,Wrong KPI
+INC00050,20250208,DS011,High,Closed,Report performance,17.7,0,Close delay
+INC00051,20260201,DS009,High,Closed,Late source extract,19.5,0,Manual rework
+INC00052,20250527,DS012,High,Closed,Duplicate key,29.7,1,Manual rework
+INC00053,20260408,DS010,Low,Closed,Mapping break,73.8,1,Manual rework
+INC00054,20260511,DS011,Medium,Closed,Report performance,52.0,0,Close delay
+INC00055,20250626,DS008,High,Closed,Duplicate key,19.1,0,Manual rework
+INC00056,20250526,DS007,Medium,Closed,RLS misconfiguration,44.7,0,Manual rework
+INC00057,20250602,DS001,Low,Closed,Mapping break,46.8,0,Manual rework
+INC00058,20260211,DS005,Medium,Closed,Null critical field,34.4,0,Manual rework
+INC00059,20251208,DS009,Medium,Closed,Report performance,30.1,0,Stakeholder trust
+INC00060,20250606,DS010,Low,Open,Report performance,157.7,1,Manual rework
+INC00061,20250218,DS003,Medium,Closed,RLS misconfiguration,58.9,0,Access risk
+INC00062,20250507,DS009,Medium,Closed,Late source extract,33.5,0,Stakeholder trust
+INC00063,20250223,DS009,Medium,Closed,RLS misconfiguration,58.4,0,Stakeholder trust
+INC00064,20251203,DS012,Medium,Closed,Report performance,32.4,0,Manual rework
+INC00065,20250204,DS004,Medium,Closed,Failed refresh,55.7,0,Wrong KPI
+INC00066,20250816,DS005,Medium,Closed,Mapping break,53.9,0,Access risk
+INC00067,20260510,DS006,Medium,Closed,RLS misconfiguration,51.5,0,Manual rework
+INC00068,20260301,DS004,Low,Closed,RLS misconfiguration,78.6,1,Stakeholder trust
+INC00069,20250401,DS010,Medium,Closed,Late source extract,57.5,0,Manual rework
+INC00070,20250513,DS005,Low,Closed,Mapping break,85.9,1,Stakeholder trust
+INC00071,20251110,DS003,Medium,Closed,Late source extract,21.8,0,Manual rework
+INC00072,20260406,DS010,Critical,Closed,Failed refresh,11.7,0,Manual rework
+INC00073,20251029,DS005,High,Closed,Mapping break,19.1,0,Wrong KPI
+INC00074,20260102,DS001,Medium,Closed,Null critical field,54.5,0,Manual rework
+INC00075,20250722,DS009,Low,Closed,Late source extract,73.2,1,Wrong KPI
+INC00076,20250328,DS011,Medium,Closed,Report performance,20.3,0,Access risk
+INC00077,20250918,DS007,High,Open,Mapping break,28.9,0,Manual rework
+INC00078,20250629,DS003,Low,Closed,Mapping break,68.3,0,Manual rework
+INC00079,20260201,DS012,Medium,Closed,Failed refresh,46.6,0,Close delay
+INC00080,20250605,DS008,Medium,Closed,RLS misconfiguration,43.5,0,Stakeholder trust
+INC00081,20251117,DS009,Medium,Closed,Duplicate key,47.7,0,Access risk
+INC00082,20250115,DS010,Medium,Closed,Null critical field,46.6,0,Access risk
+INC00083,20251219,DS007,Medium,Open,Late source extract,69.9,0,Manual rework
+INC00084,20250627,DS008,Medium,Closed,Report performance,29.7,0,Stakeholder trust
+INC00085,20250202,DS004,High,Closed,Mapping break,19.0,0,Wrong KPI
+INC00086,20250915,DS006,Low,Closed,RLS misconfiguration,57.5,0,Wrong KPI
+INC00087,20260511,DS008,High,Closed,Report performance,9.7,0,Close delay
+INC00088,20251220,DS007,High,Closed,Late source extract,34.0,1,Manual rework
+INC00089,20251228,DS010,Medium,Closed,Failed refresh,67.2,0,Close delay
+INC00090,20260208,DS007,High,Closed,RLS misconfiguration,30.9,1,Stakeholder trust
+INC00091,20251202,DS011,High,Closed,Null critical field,23.8,0,Manual rework
+INC00092,20251117,DS004,Low,Open,Report performance,72.9,0,Wrong KPI
+INC00093,20250326,DS006,Medium,Closed,Failed refresh,64.3,0,Access risk
+INC00094,20260420,DS010,Low,Open,Duplicate key,73.1,0,Wrong KPI
+INC00095,20260320,DS005,Medium,Closed,Duplicate key,72.7,1,Close delay
+INC00096,20251011,DS007,Low,Open,Mapping break,97.5,1,Close delay
+INC00097,20250317,DS005,Low,Open,Duplicate key,95.5,0,Close delay
+INC00098,20250717,DS010,Low,Closed,Report performance,66.2,0,Close delay
+INC00099,20260408,DS001,Low,Closed,Late source extract,66.0,0,Manual rework
+INC00100,20260309,DS004,High,Closed,Duplicate key,38.9,1,Manual rework
+INC00101,20250319,DS009,Medium,Closed,Late source extract,56.1,0,Manual rework
+INC00102,20260307,DS005,High,Open,Mapping break,20.0,0,Access risk
+INC00103,20250719,DS007,High,Closed,RLS misconfiguration,19.9,0,Close delay
+INC00104,20250725,DS008,Medium,Closed,Failed refresh,48.3,0,Wrong KPI
+INC00105,20250525,DS002,High,Closed,Mapping break,34.6,1,Close delay
+INC00106,20250602,DS008,High,Closed,Report performance,12.7,0,Manual rework
+INC00107,20250216,DS005,Low,Closed,Null critical field,65.7,0,Wrong KPI
+INC00108,20250605,DS005,High,Closed,Report performance,19.8,0,Stakeholder trust
+INC00109,20250101,DS003,High,Closed,RLS misconfiguration,14.4,0,Manual rework
+INC00110,20250504,DS003,High,Closed,Null critical field,22.8,0,Manual rework
+INC00111,20260107,DS011,High,Closed,Failed refresh,27.4,1,Access risk
+INC00112,20251123,DS008,Low,Closed,Duplicate key,83.6,1,Manual rework
+INC00113,20260305,DS011,High,Closed,Mapping break,28.7,1,Manual rework
+INC00114,20251121,DS010,Medium,Closed,RLS misconfiguration,47.1,0,Manual rework
+INC00115,20251009,DS004,High,Closed,Late source extract,16.4,0,Stakeholder trust
+INC00116,20251021,DS003,Medium,Closed,Late source extract,61.5,0,Access risk
+INC00117,20251201,DS002,Medium,Closed,Report performance,30.3,0,Access risk
+INC00118,20250527,DS002,Medium,Open,Null critical field,62.9,0,Manual rework
+INC00119,20250211,DS011,High,Closed,Late source extract,17.5,0,Manual rework
+INC00120,20250102,DS001,Low,Open,Mapping break,46.9,0,Close delay
+INC00121,20260526,DS009,Medium,Closed,Duplicate key,46.1,0,Close delay
+INC00122,20251109,DS009,Medium,Closed,RLS misconfiguration,57.9,0,Close delay
+INC00123,20260113,DS002,High,Open,Report performance,30.3,0,Wrong KPI
+INC00124,20260118,DS012,Low,Closed,Late source extract,71.8,0,Close delay
+INC00125,20250709,DS010,Medium,Closed,RLS misconfiguration,30.6,0,Manual rework
+INC00126,20250322,DS010,Medium,Closed,Mapping break,48.7,0,Close delay
+INC00127,20260504,DS003,Critical,Closed,Report performance,10.7,0,Close delay
+INC00128,20250713,DS008,Low,Closed,RLS misconfiguration,27.0,0,Close delay
+INC00129,20251103,DS002,Low,Closed,Failed refresh,76.1,1,Manual rework
+INC00130,20250510,DS011,Medium,Open,Duplicate key,36.8,0,Wrong KPI
+INC00131,20250531,DS001,Medium,Closed,Report performance,55.5,0,Manual rework
+INC00132,20250208,DS010,High,Closed,Duplicate key,10.3,0,Manual rework
+INC00133,20250610,DS011,High,Open,Report performance,15.8,0,Manual rework
+INC00134,20250423,DS006,Medium,Closed,Null critical field,51.5,0,Access risk
+INC00135,20260321,DS004,Low,Open,Mapping break,162.5,1,Close delay
+INC00136,20260331,DS012,Medium,Open,Report performance,52.5,0,Manual rework
+INC00137,20251129,DS001,Medium,Open,Mapping break,69.0,0,Wrong KPI
+INC00138,20260205,DS004,Medium,Closed,Failed refresh,56.1,0,Access risk
+INC00139,20250908,DS006,Medium,Closed,Report performance,48.6,0,Stakeholder trust
+INC00140,20260426,DS002,Medium,Closed,Late source extract,54.7,0,Close delay
+INC00141,20251121,DS011,High,Closed,Mapping break,33.6,1,Wrong KPI
+INC00142,20260128,DS005,Critical,Closed,Failed refresh,8.1,0,Wrong KPI
+INC00143,20260501,DS003,Low,Closed,Mapping break,73.8,1,Wrong KPI
+INC00144,20251118,DS012,High,Open,RLS misconfiguration,33.3,1,Wrong KPI
+INC00145,20250812,DS001,Medium,Closed,Report performance,72.0,1,Wrong KPI
+INC00146,20260328,DS009,High,Closed,Report performance,31.7,1,Manual rework
+INC00147,20250516,DS001,Critical,Closed,Failed refresh,11.7,0,Stakeholder trust
+INC00148,20260301,DS010,Low,Open,Failed refresh,101.4,1,Close delay
+INC00149,20250801,DS010,Medium,Closed,Report performance,49.5,0,Close delay
+INC00150,20250413,DS005,Medium,Closed,Report performance,53.7,0,Manual rework
+INC00151,20250825,DS003,Medium,Closed,Null critical field,33.4,0,Wrong KPI
+INC00152,20250124,DS004,Critical,Closed,Late source extract,11.5,0,Wrong KPI
+INC00153,20250703,DS012,Low,Open,Failed refresh,104.2,1,Wrong KPI
+INC00154,20250304,DS002,Medium,Closed,Failed refresh,53.9,0,Manual rework
+INC00155,20250730,DS005,Low,Open,Failed refresh,92.8,0,Close delay
+INC00156,20260306,DS005,High,Closed,Failed refresh,26.7,1,Manual rework
+INC00157,20260531,DS005,Medium,Open,Failed refresh,71.8,0,Close delay
+INC00158,20250526,DS006,Medium,Open,Failed refresh,36.7,0,Stakeholder trust
+INC00159,20260110,DS004,Medium,Closed,Late source extract,75.0,1,Manual rework
+INC00160,20250831,DS010,High,Closed,Null critical field,19.3,0,Manual rework
+INC00161,20260510,DS009,Medium,Closed,Report performance,47.9,0,Wrong KPI
+INC00162,20250913,DS012,High,Closed,Report performance,15.3,0,Wrong KPI
+INC00163,20260523,DS003,High,Closed,Mapping break,37.6,1,Wrong KPI
+INC00164,20251020,DS008,Low,Closed,Late source extract,75.2,1,Wrong KPI
+INC00165,20250513,DS010,Medium,Closed,Mapping break,70.7,0,Access risk
+INC00166,20260119,DS004,High,Closed,RLS misconfiguration,35.4,1,Stakeholder trust
+INC00167,20250513,DS004,Medium,Closed,RLS misconfiguration,51.1,0,Manual rework
+INC00168,20251003,DS010,Medium,Closed,Mapping break,35.7,0,Manual rework
+INC00169,20251023,DS010,High,Closed,Mapping break,9.5,0,Manual rework
+INC00170,20260415,DS003,Medium,Closed,Null critical field,40.2,0,Close delay
+INC00171,20260202,DS008,Medium,Closed,RLS misconfiguration,44.9,0,Wrong KPI
+INC00172,20251222,DS005,High,Closed,Late source extract,34.7,1,Stakeholder trust
+INC00173,20250526,DS010,Medium,Closed,Late source extract,60.2,0,Access risk
+INC00174,20260428,DS008,High,Closed,Duplicate key,14.9,0,Close delay
+INC00175,20250814,DS009,Medium,Closed,Failed refresh,45.0,0,Access risk
+INC00176,20250421,DS006,High,Closed,Duplicate key,25.2,1,Access risk
+INC00177,20260414,DS011,High,Closed,Report performance,21.2,0,Close delay
+INC00178,20250921,DS009,Medium,Closed,Report performance,9.0,0,Close delay
+INC00179,20251015,DS008,Medium,Closed,Failed refresh,58.5,0,Close delay
+INC00180,20250618,DS012,Medium,Closed,Report performance,50.3,0,Manual rework
+INC00181,20260226,DS009,Medium,Closed,Mapping break,13.5,0,Wrong KPI
+INC00182,20260426,DS011,Critical,Closed,Report performance,7.9,0,Close delay
+INC00183,20250905,DS008,Medium,Closed,Late source extract,43.1,0,Wrong KPI
+INC00184,20250825,DS010,Medium,Closed,Null critical field,46.7,0,Close delay
+INC00185,20260523,DS010,High,Closed,RLS misconfiguration,22.1,0,Manual rework
+INC00186,20251130,DS002,Medium,Closed,Mapping break,2.0,0,Manual rework
+INC00187,20250904,DS012,High,Closed,Duplicate key,12.6,0,Access risk
+INC00188,20251115,DS002,High,Closed,Report performance,25.5,1,Close delay
+INC00189,20251006,DS002,Medium,Closed,RLS misconfiguration,46.7,0,Manual rework
+INC00190,20251027,DS003,Medium,Open,Mapping break,61.8,0,Wrong KPI
+INC00191,20250928,DS001,Critical,Closed,Duplicate key,9.8,0,Manual rework
+INC00192,20260216,DS008,High,Closed,Report performance,14.9,0,Manual rework
+INC00193,20250620,DS002,Low,Closed,Report performance,95.6,1,Manual rework
+INC00194,20251009,DS011,Critical,Closed,Null critical field,11.5,0,Stakeholder trust
+INC00195,20251031,DS008,Low,Closed,Mapping break,94.2,1,Manual rework
+INC00196,20250629,DS005,High,Closed,Late source extract,8.4,0,Wrong KPI
+INC00197,20250212,DS004,Medium,Closed,Late source extract,28.6,0,Close delay
+INC00198,20251006,DS005,High,Open,Mapping break,45.4,1,Manual rework
+INC00199,20250823,DS005,Medium,Open,Failed refresh,11.9,0,Stakeholder trust
+INC00200,20251009,DS009,Medium,Closed,Report performance,52.1,0,Close delay
+INC00201,20260112,DS001,Low,Closed,Null critical field,38.2,0,Wrong KPI
+INC00202,20260112,DS011,Medium,Closed,Report performance,75.0,1,Manual rework
+INC00203,20250122,DS006,Medium,Closed,Mapping break,53.0,0,Manual rework
+INC00204,20260212,DS008,Low,Closed,Late source extract,72.2,1,Close delay
+INC00205,20250617,DS007,Medium,Closed,Null critical field,38.9,0,Access risk
+INC00206,20250302,DS011,Medium,Closed,RLS misconfiguration,30.2,0,Close delay
+INC00207,20260312,DS004,Medium,Closed,Late source extract,44.2,0,Wrong KPI
+INC00208,20251006,DS005,High,Closed,Null critical field,12.9,0,Manual rework
+INC00209,20250923,DS004,High,Closed,Late source extract,27.8,1,Wrong KPI
+INC00210,20250719,DS009,High,Closed,Null critical field,15.9,0,Stakeholder trust
+INC00211,20250719,DS012,Medium,Closed,Mapping break,59.6,0,Access risk
+INC00212,20250709,DS007,Medium,Closed,Null critical field,58.1,0,Manual rework
+INC00213,20250116,DS008,Medium,Closed,Duplicate key,51.4,0,Wrong KPI
+INC00214,20251024,DS001,Critical,Closed,Report performance,12.4,0,Wrong KPI
+INC00215,20260503,DS003,Medium,Open,Report performance,82.4,0,Manual rework
+INC00216,20260427,DS009,Critical,Closed,Failed refresh,6.7,0,Access risk
+INC00217,20250521,DS005,Medium,Closed,RLS misconfiguration,20.9,0,Wrong KPI
+INC00218,20250529,DS012,High,Closed,Report performance,29.6,1,Stakeholder trust
+INC00219,20250916,DS003,Low,Closed,Failed refresh,77.7,1,Manual rework
+INC00220,20250503,DS003,Low,Closed,Failed refresh,79.6,1,Wrong KPI
+INC00221,20250624,DS009,Medium,Closed,RLS misconfiguration,39.0,0,Stakeholder trust
+INC00222,20250604,DS001,Medium,Closed,Late source extract,43.4,0,Manual rework
+INC00223,20250627,DS005,Low,Open,Late source extract,136.9,1,Stakeholder trust
+INC00224,20250105,DS001,High,Closed,Report performance,33.2,1,Manual rework
+INC00225,20250224,DS004,Medium,Closed,Null critical field,25.8,0,Manual rework
+INC00226,20250225,DS002,High,Closed,Mapping break,26.8,1,Close delay
+INC00227,20250821,DS007,High,Open,Duplicate key,21.1,0,Access risk
+INC00228,20251208,DS002,Medium,Closed,Failed refresh,56.8,0,Close delay
+INC00229,20260315,DS004,Medium,Closed,Failed refresh,23.6,0,Manual rework
+INC00230,20251208,DS012,High,Closed,Null critical field,9.2,0,Wrong KPI
+INC00231,20251006,DS011,High,Closed,Mapping break,22.3,0,Close delay
+INC00232,20250721,DS008,Medium,Closed,Failed refresh,37.1,0,Manual rework
+INC00233,20250517,DS009,Medium,Closed,Late source extract,46.8,0,Manual rework
+INC00234,20250628,DS010,Low,Closed,Report performance,62.3,0,Wrong KPI
+INC00235,20250227,DS009,Medium,Closed,RLS misconfiguration,44.9,0,Access risk
+INC00236,20250517,DS011,High,Closed,Late source extract,52.4,1,Manual rework
+INC00237,20260322,DS002,Low,Closed,Late source extract,100.4,1,Access risk
+INC00238,20260122,DS002,High,Closed,Late source extract,18.0,0,Wrong KPI
+INC00239,20250702,DS006,Medium,Closed,Duplicate key,54.0,0,Stakeholder trust
+INC00240,20260227,DS005,High,Open,Null critical field,29.5,0,Close delay

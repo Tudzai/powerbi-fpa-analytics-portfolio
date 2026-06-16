@@ -1,0 +1,30 @@
+{
+  "name": "Finance Governance Light",
+  "dataColors": [
+    "#1B4D89",
+    "#2A9D8F",
+    "#D99A2B",
+    "#8E5572",
+    "#44546A",
+    "#C44E52"
+  ],
+  "background": "#F7F8FA",
+  "foreground": "#17202A",
+  "tableAccent": "#1B4D89",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontFace": "Segoe UI",
+            "color": {
+              "solid": {
+                "color": "#17202A"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

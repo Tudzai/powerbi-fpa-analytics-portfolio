@@ -1,0 +1,7 @@
+year_month,bridge_order,bridge_step,bridge_amount,bridge_type
+2026-05,1,Standard COGS,25551467.32,start
+2026-05,2,Material price / usage,909460.27,increase
+2026-05,3,Labor efficiency,98415.37,increase
+2026-05,4,OH absorption,47667.780000000006,increase
+2026-05,5,Yield / scrap loss,693818.7,increase
+2026-05,6,Actual COGS,27300829.560000002,total

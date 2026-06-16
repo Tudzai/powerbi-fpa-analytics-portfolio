@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Rel_FactPnlMonthly_MonthStart_DimDate_MonthStart",
+    "fromTable": "FactPnlMonthly",
+    "fromColumn": "MonthStart",
+    "toTable": "DimDate",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactPnlMonthly_ScenarioID_DimScenario_ScenarioID",
+    "fromTable": "FactPnlMonthly",
+    "fromColumn": "ScenarioID",
+    "toTable": "DimScenario",
+    "toColumn": "ScenarioID"
+  },
+  {
+    "name": "Rel_FactPnlMonthly_BusinessUnitID_DimBusinessUnit_BusinessUnitID",
+    "fromTable": "FactPnlMonthly",
+    "fromColumn": "BusinessUnitID",
+    "toTable": "DimBusinessUnit",
+    "toColumn": "BusinessUnitID"
+  },
+  {
+    "name": "Rel_FactPnlMonthly_RegionID_DimRegion_RegionID",
+    "fromTable": "FactPnlMonthly",
+    "fromColumn": "RegionID",
+    "toTable": "DimRegion",
+    "toColumn": "RegionID"
+  },
+  {
+    "name": "Rel_FactOpexMonthly_MonthStart_DimDate_MonthStart",
+    "fromTable": "FactOpexMonthly",
+    "fromColumn": "MonthStart",
+    "toTable": "DimDate",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactOpexMonthly_ScenarioID_DimScenario_ScenarioID",
+    "fromTable": "FactOpexMonthly",
+    "fromColumn": "ScenarioID",
+    "toTable": "DimScenario",
+    "toColumn": "ScenarioID"
+  },
+  {
+    "name": "Rel_FactOpexMonthly_CostCategoryID_DimCostCategory_CostCategoryID",
+    "fromTable": "FactOpexMonthly",
+    "fromColumn": "CostCategoryID",
+    "toTable": "DimCostCategory",
+    "toColumn": "CostCategoryID"
+  },
+  {
+    "name": "Rel_FactCashMonthly_MonthStart_DimDate_MonthStart",
+    "fromTable": "FactCashMonthly",
+    "fromColumn": "MonthStart",
+    "toTable": "DimDate",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactCashMonthly_ScenarioID_DimScenario_ScenarioID",
+    "fromTable": "FactCashMonthly",
+    "fromColumn": "ScenarioID",
+    "toTable": "DimScenario",
+    "toColumn": "ScenarioID"
+  },
+  {
+    "name": "Rel_FactStatementLines_MonthStart_DimDate_MonthStart",
+    "fromTable": "FactStatementLines",
+    "fromColumn": "MonthStart",
+    "toTable": "DimDate",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactStatementLines_ScenarioID_DimScenario_ScenarioID",
+    "fromTable": "FactStatementLines",
+    "fromColumn": "ScenarioID",
+    "toTable": "DimScenario",
+    "toColumn": "ScenarioID"
+  },
+  {
+    "name": "Rel_FactCovenantMonthly_MonthStart_DimDate_MonthStart",
+    "fromTable": "FactCovenantMonthly",
+    "fromColumn": "MonthStart",
+    "toTable": "DimDate",
+    "toColumn": "MonthStart"
+  },
+  {
+    "name": "Rel_FactCovenantMonthly_ScenarioID_DimScenario_ScenarioID",
+    "fromTable": "FactCovenantMonthly",
+    "fromColumn": "ScenarioID",
+    "toTable": "DimScenario",
+    "toColumn": "ScenarioID"
+  },
+  {
+    "name": "Rel_FactValuation_ScenarioID_DimScenario_ScenarioID",
+    "fromTable": "FactValuation",
+    "fromColumn": "ScenarioID",
+    "toTable": "DimScenario",
+    "toColumn": "ScenarioID"
+  },
+  {
+    "name": "Rel_FactSensitivity_ScenarioID_DimScenario_ScenarioID",
+    "fromTable": "FactSensitivity",
+    "fromColumn": "ScenarioID",
+    "toTable": "DimScenario",
+    "toColumn": "ScenarioID"
+  },
+  {
+    "name": "Rel_FactRiskRegister_ScenarioID_DimScenario_ScenarioID",
+    "fromTable": "FactRiskRegister",
+    "fromColumn": "ScenarioID",
+    "toTable": "DimScenario",
+    "toColumn": "ScenarioID"
+  }
+]

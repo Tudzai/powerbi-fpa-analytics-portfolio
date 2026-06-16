@@ -1,0 +1,6 @@
+business_unit_id,business_unit,portfolio,annual_revenue_usd
+BU01,Manufacturing,Industrial Operations,420000000
+BU02,Logistics,Transport Network,260000000
+BU03,Procurement,Supplier & Materials,210000000
+BU04,Retail Operations,Commercial Sites,180000000
+BU05,Corporate,Offices & Shared Services,95000000

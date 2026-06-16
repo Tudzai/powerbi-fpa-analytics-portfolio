@@ -1,0 +1,11 @@
+account_id,account,account_group,sort_order,statement
+REV_EXT,External Revenue,Revenue,10,P&L
+REV_IC,Intercompany Revenue,Revenue,20,P&L
+COGS,Cost of Services,COGS,30,P&L
+PERS,Personnel Cost,OPEX,40,P&L
+FAC,Facilities Cost,OPEX,50,P&L
+SM,Sales & Marketing,OPEX,60,P&L
+GA,G&A,OPEX,70,P&L
+DEP,Depreciation,Below EBITDA,80,P&L
+INT,Interest Expense,Below EBITDA,90,P&L
+TAX,Tax Expense,Below EBITDA,100,P&L

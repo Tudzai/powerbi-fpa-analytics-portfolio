@@ -1,0 +1,42 @@
+{
+  "name": "ESG Carbon Finance Executive",
+  "dataColors": [
+    "#12372A",
+    "#2A9D8F",
+    "#B7D968",
+    "#F4A261",
+    "#E76F51",
+    "#5B6C5D",
+    "#59656F",
+    "#8AB17D"
+  ],
+  "background": "#F7F9F8",
+  "foreground": "#202A25",
+  "tableAccent": "#2A9D8F",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontFace": "Segoe UI Semibold",
+            "fontSize": 11,
+            "color": {
+              "solid": {
+                "color": "#202A25"
+              }
+            }
+          }
+        ],
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#202A25"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

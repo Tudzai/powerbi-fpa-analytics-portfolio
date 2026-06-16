@@ -1,0 +1,75 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "table": "DimDate",
+      "rows": 516,
+      "columns": 11,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "DimDataset",
+      "rows": 12,
+      "columns": 10,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "DimReport",
+      "rows": 9,
+      "columns": 8,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "DimDepartment",
+      "rows": 8,
+      "columns": 4,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "FactDatasetDaily",
+      "rows": 6192,
+      "columns": 13,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "FactRefreshRuns",
+      "rows": 6192,
+      "columns": 8,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "FactReconciliation",
+      "rows": 612,
+      "columns": 9,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "FactUsage",
+      "rows": 4644,
+      "columns": 9,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "FactAccessReview",
+      "rows": 1224,
+      "columns": 10,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    },
+    {
+      "table": "FactIncidents",
+      "rows": 240,
+      "columns": 9,
+      "duplicate_rows": 0,
+      "null_cells": 0
+    }
+  ]
+}

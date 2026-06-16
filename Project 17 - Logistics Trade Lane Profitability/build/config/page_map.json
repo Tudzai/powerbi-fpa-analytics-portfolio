@@ -1,0 +1,14 @@
+[
+  {
+    "page": "Executive Overview",
+    "purpose": "Default scan of revenue, GP, margin, volume, and reprice opportunity."
+  },
+  {
+    "page": "Trade Lane Margin",
+    "purpose": "Diagnose lane/customer/service economics and margin gap drivers."
+  },
+  {
+    "page": "Cost Drivers & Action Queue",
+    "purpose": "Prioritize cost leakage, owner actions, and margin recovery."
+  }
+]

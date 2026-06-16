@@ -1,0 +1,29 @@
+{
+  "status": "final_pbix_pass",
+  "generated_at": "2026-06-15T03:01:18",
+  "main_expected_artifact": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix",
+  "supplemental_html": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.html",
+  "validation": "pass",
+  "row_counts": {
+    "dim_date": 17,
+    "dim_customer": 18,
+    "dim_trade_lane": 12,
+    "dim_service": 5,
+    "dim_office": 6,
+    "dim_carrier": 6,
+    "fact_shipment_profitability": 2618,
+    "fact_cost_driver_bridge": 10843,
+    "fact_action_queue": 84
+  },
+  "pages": [
+    "Executive Overview",
+    "Trade Lane Margin",
+    "Cost Drivers & Action Queue"
+  ],
+  "visual_count": 56
+  ,
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix",
+  "final_pbix_bytes_after_desktop_save": 703756,
+  "desktop_open_check": "pass",
+  "visual_error_count": 0
+}

@@ -1,24 +1,27 @@
 # Project 14 - Treasury Working Capital
 
-Planned Power BI treasury dashboard for cash forecasting, working capital control, liquidity monitoring, and FX exposure.
+Executive-ready treasury BI product for cash forecasting, working capital control, liquidity monitoring, and FX exposure.
 
-## Intended Business Questions
+## Main Artifacts
 
-- How much cash runway does the business have under base, downside, and upside scenarios?
-- Which customers, vendors, or regions are driving DSO, DPO, and overdue exposure?
-- What are the biggest cash risks over the next 13 weeks?
+- Expected final Power BI report: `output/dashboard_final.pbix`
+- Supplemental HTML preview: `output/dashboard_final.html`
+- Data and model package: `data/`, `model/`, `build/config/`, `powerbi/`
 
-## Planned Dashboard Pages
+## Dashboard Tabs
 
-- Treasury Command Center
-- AR Aging and Collections
-- AP and Vendor Payment Plan
-- 13-Week Cash Forecast
-- FX Exposure and Liquidity Risk
+1. Treasury Command Center
+2. Working Capital Control
+3. Forecast, FX & Risk
 
-## Skill Signals
+## Data
 
-- Treasury and working capital analytics
-- Scenario-based cash forecasting
-- AR/AP aging logic
-- Executive liquidity storytelling
+Synthetic portfolio/demo data with fixed seed 14042. Do not use as production financial data.
+
+## Rebuild
+
+```powershell
+python tools/build_project14.py
+python tools/validate_dashboard.py
+python tools/build_native_pbix_assets.py
+```

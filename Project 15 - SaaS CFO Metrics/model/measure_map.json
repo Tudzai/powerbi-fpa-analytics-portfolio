@@ -1,0 +1,262 @@
+[
+  {
+    "measure": "Beginning MRR",
+    "expression": "SUM ( FactSubscriptionMonthly[BeginningMRR] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Ending MRR",
+    "expression": "SUM ( FactSubscriptionMonthly[EndingMRR] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "ARR",
+    "expression": "[Ending MRR] * 12",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "New ARR",
+    "expression": "SUM ( FactSubscriptionMonthly[NewMRR] ) * 12",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Expansion ARR",
+    "expression": "SUM ( FactSubscriptionMonthly[ExpansionMRR] ) * 12",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Contraction ARR",
+    "expression": "ABS ( SUM ( FactSubscriptionMonthly[ContractionMRR] ) ) * 12",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Churn ARR",
+    "expression": "ABS ( SUM ( FactSubscriptionMonthly[ChurnMRR] ) ) * 12",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Net New ARR",
+    "expression": "[New ARR] + [Expansion ARR] - [Contraction ARR] - [Churn ARR]",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "ARR Movement",
+    "expression": "SUM ( FactMRRMovement[ARRMovement] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Revenue",
+    "expression": "SUM ( FactSubscriptionMonthly[RecognizedRevenue] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Gross Margin",
+    "expression": "SUM ( FactSubscriptionMonthly[GrossMargin] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Gross Margin %",
+    "expression": "DIVIDE ( [Gross Margin], [Revenue] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Starting Customers",
+    "expression": "SUM ( FactSubscriptionMonthly[StartingLogo] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Active Customers",
+    "expression": "SUM ( FactSubscriptionMonthly[ActiveLogo] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "New Customers",
+    "expression": "SUM ( FactSubscriptionMonthly[NewLogo] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Churned Customers",
+    "expression": "SUM ( FactSubscriptionMonthly[ChurnedLogo] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "NRR",
+    "expression": "DIVIDE ( [Ending MRR] - SUM ( FactSubscriptionMonthly[NewMRR] ), [Beginning MRR] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "GRR",
+    "expression": "DIVIDE ( [Beginning MRR] - [Contraction ARR] / 12 - [Churn ARR] / 12, [Beginning MRR] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Revenue Churn Rate",
+    "expression": "DIVIDE ( [Churn ARR], [Beginning MRR] * 12 )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Logo Churn Rate",
+    "expression": "DIVIDE ( [Churned Customers], [Starting Customers] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "S&M Spend",
+    "expression": "SUM ( FactAcquisitionMonthly[SalesMarketingSpend] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "New ARR Booked",
+    "expression": "SUM ( FactAcquisitionMonthly[NewARRBooked] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "CAC",
+    "expression": "DIVIDE ( [S&M Spend], SUM ( FactAcquisitionMonthly[NewCustomers] ) )",
+    "format": "$#,0"
+  },
+  {
+    "measure": "ARPA",
+    "expression": "DIVIDE ( [Ending MRR], [Active Customers] )",
+    "format": "$#,0"
+  },
+  {
+    "measure": "LTV",
+    "expression": "DIVIDE ( [ARPA] * 12 * [Gross Margin %], [Revenue Churn Rate] )",
+    "format": "$#,0"
+  },
+  {
+    "measure": "LTV CAC Ratio",
+    "expression": "DIVIDE ( [LTV], [CAC] )",
+    "format": "0.0x"
+  },
+  {
+    "measure": "CAC Payback Months",
+    "expression": "DIVIDE ( [CAC], DIVIDE ( [Gross Margin], [Active Customers] ) )",
+    "format": "0.0"
+  },
+  {
+    "measure": "Magic Number",
+    "expression": "DIVIDE ( [Net New ARR], [S&M Spend] )",
+    "format": "0.0x"
+  },
+  {
+    "measure": "EBITDA",
+    "expression": "SUM ( FactFinanceMonthly[EBITDA] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "EBITDA Margin",
+    "expression": "DIVIDE ( [EBITDA], SUM ( FactFinanceMonthly[Revenue] ) )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "ARR Growth %",
+    "expression": "AVERAGE ( FactFinanceMonthly[ARRGrowthPct] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Rule of 40",
+    "expression": "[ARR Growth %] + [EBITDA Margin]",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Net Burn",
+    "expression": "SUM ( FactFinanceMonthly[NetBurn] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Cash Balance",
+    "expression": "SUM ( FactFinanceMonthly[CashBalance] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Burn Multiple",
+    "expression": "DIVIDE ( [Net Burn], DIVIDE ( [Net New ARR], 12 ) )",
+    "format": "0.0x"
+  },
+  {
+    "measure": "Forecast ARR",
+    "expression": "SUM ( FactFinanceMonthly[ForecastARR] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Plan ARR",
+    "expression": "SUM ( FactFinanceMonthly[PlanARR] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Forecast Accuracy",
+    "expression": "1 - DIVIDE ( ABS ( [ARR] - [Forecast ARR] ), [ARR] )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Cohort NRR",
+    "expression": "DIVIDE ( SUM ( FactCohortRetention[RetainedMRR] ), SUM ( FactCohortRetention[CohortStartMRR] ) )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Cohort GRR",
+    "expression": "DIVIDE ( SUM ( FactCohortRetention[RetainedMRR] ) - SUM ( FactCohortRetention[ExpansionMRR] ), SUM ( FactCohortRetention[CohortStartMRR] ) )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Cohort Active Logos",
+    "expression": "SUM ( FactCohortRetention[ActiveLogos] )",
+    "format": "#,0"
+  },
+  {
+    "measure": "Cohort LTV",
+    "expression": "DIVIDE ( SUM ( FactCohortRetention[RetainedMRR] ) * 12, SUM ( FactCohortRetention[StartLogos] ) )",
+    "format": "$#,0"
+  },
+  {
+    "measure": "Scenario ARR",
+    "expression": "SUM ( FactForecast[ARRValue] )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Account Health Score",
+    "expression": "AVERAGE ( FactAccountHealth[HealthScore] )",
+    "format": "0.0"
+  },
+  {
+    "measure": "Latest ARR",
+    "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [ARR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Latest Net New ARR",
+    "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [Net New ARR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+    "format": "$#,0,,.0M"
+  },
+  {
+    "measure": "Latest NRR",
+    "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [NRR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Latest GRR",
+    "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [GRR], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Latest CAC Payback",
+    "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [CAC Payback Months], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+    "format": "0.0"
+  },
+  {
+    "measure": "Latest LTV CAC Ratio",
+    "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [LTV CAC Ratio], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+    "format": "0.0x"
+  },
+  {
+    "measure": "Latest Rule of 40",
+    "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [Rule of 40], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+    "format": "0.0%"
+  },
+  {
+    "measure": "Latest Forecast Accuracy",
+    "expression": "VAR m = MAX ( DimDate[MonthStart] ) RETURN CALCULATE ( [Forecast Accuracy], FILTER ( ALLSELECTED ( DimDate ), DimDate[MonthStart] = m ) )",
+    "format": "0.0%"
+  }
+]

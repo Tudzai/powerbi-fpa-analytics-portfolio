@@ -1,0 +1,92 @@
+[
+  {
+    "from": "DimDate[date_id]",
+    "to": "FactFinancials[date_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimDate[date_id]",
+    "to": "FactFinancialSummary[date_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimDate[date_id]",
+    "to": "FactVarianceDriverBridge[date_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimDate[date_id]",
+    "to": "FactCloseExceptions[date_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimDate[date_id]",
+    "to": "FactFXRate[date_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimEntity[entity_id]",
+    "to": "FactFinancials[entity_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimEntity[entity_id]",
+    "to": "FactFinancialSummary[entity_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimEntity[entity_id]",
+    "to": "FactVarianceDriverBridge[entity_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimEntity[entity_id]",
+    "to": "FactCloseExceptions[entity_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimBusinessUnit[business_unit_id]",
+    "to": "FactFinancials[business_unit_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimBusinessUnit[business_unit_id]",
+    "to": "FactFinancialSummary[business_unit_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimBusinessUnit[business_unit_id]",
+    "to": "FactVarianceDriverBridge[business_unit_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimScenario[scenario_id]",
+    "to": "FactFinancials[scenario_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimScenario[scenario_id]",
+    "to": "FactFinancialSummary[scenario_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
+    "from": "DimAccount[account_id]",
+    "to": "FactFinancials[account_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  }
+]

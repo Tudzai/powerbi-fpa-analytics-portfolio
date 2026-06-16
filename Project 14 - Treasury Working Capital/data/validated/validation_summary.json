@@ -1,0 +1,81 @@
+{
+  "status": "pass",
+  "checked_at": "2026-06-15T03:49:33",
+  "row_counts": {
+    "dim_date": 17,
+    "dim_week": 13,
+    "dim_entity": 6,
+    "dim_customer": 20,
+    "dim_vendor": 16,
+    "dim_bank": 6,
+    "dim_scenario": 3,
+    "dim_cash_category": 6,
+    "fact_cash_position": 18,
+    "fact_liquidity_facility": 6,
+    "fact_working_capital": 102,
+    "fact_ar_invoice": 1250,
+    "fact_ap_invoice": 900,
+    "fact_cash_forecast": 234,
+    "fact_forecast_accuracy": 48,
+    "fact_fx_exposure": 24,
+    "fact_treasury_risk_action": 75
+  },
+  "date_coverage": {
+    "working_capital_months": [
+      "2025-01",
+      "2026-05"
+    ],
+    "forecast_weeks": [
+      "2026-06-15",
+      "2026-09-13"
+    ],
+    "as_of_date": "2026-06-15"
+  },
+  "checks": [
+    {
+      "check": "FactCashForecast grain uniqueness",
+      "status": "pass",
+      "detail": "0 duplicate keys on week_id, entity_id, scenario_id"
+    },
+    {
+      "check": "FactCashPosition grain uniqueness",
+      "status": "pass",
+      "detail": "0 duplicate keys on snapshot_date, entity_id, bank_id"
+    },
+    {
+      "check": "FactWorkingCapital grain uniqueness",
+      "status": "pass",
+      "detail": "0 duplicate keys on date_id, entity_id"
+    },
+    {
+      "check": "FactFXExposure grain uniqueness",
+      "status": "pass",
+      "detail": "0 duplicate keys on exposure_id"
+    },
+    {
+      "check": "13-week forecast cash continuity",
+      "status": "pass",
+      "detail": "0 opening-to-prior-closing mismatches"
+    },
+    {
+      "check": "AR/AP outstanding non-negative",
+      "status": "pass",
+      "detail": "0 invoices with negative outstanding balance"
+    },
+    {
+      "check": "Working capital days within realistic portfolio band",
+      "status": "pass",
+      "detail": "DSO outliers=0, DPO outliers=0"
+    },
+    {
+      "check": "FX hedge ratios bounded",
+      "status": "pass",
+      "detail": "0 rows outside 0-1 hedge ratio range"
+    },
+    {
+      "check": "Entity foreign keys valid",
+      "status": "pass",
+      "detail": "0 invalid entity references"
+    }
+  ]
+}

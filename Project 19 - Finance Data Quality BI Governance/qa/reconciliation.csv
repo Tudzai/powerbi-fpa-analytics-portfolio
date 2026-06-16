@@ -1,0 +1,6 @@
+Metric,PreparedDataValue
+Data Quality Score,90.62
+Freshness SLA %,0.9175
+Refresh Success %,0.9685
+Completeness %,0.9905
+Abs Reconciliation Variance,31820452.39

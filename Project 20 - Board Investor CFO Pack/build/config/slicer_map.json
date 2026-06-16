@@ -1,0 +1,9 @@
+{
+  "position": "left sidebar",
+  "global": [
+    "Year",
+    "Scenario",
+    "Business Unit",
+    "Region"
+  ]
+}

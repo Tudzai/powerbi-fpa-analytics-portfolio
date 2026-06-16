@@ -1,0 +1,22 @@
+[
+  {
+    "slicer": "Region",
+    "field": "DimEntity[region]",
+    "scope": "All pages"
+  },
+  {
+    "slicer": "Entity",
+    "field": "DimEntity[entity_id]",
+    "scope": "All pages"
+  },
+  {
+    "slicer": "Scenario",
+    "field": "DimScenario[scenario]",
+    "scope": "Forecast pages"
+  },
+  {
+    "slicer": "Forecast Week",
+    "field": "DimWeek[week_label]",
+    "scope": "Forecast and executive pages"
+  }
+]

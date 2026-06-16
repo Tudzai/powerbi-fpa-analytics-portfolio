@@ -1,24 +1,27 @@
 # Project 18 - ESG Carbon Finance
 
-Planned Power BI dashboard for ESG and carbon finance analytics, connecting emissions, cost, suppliers, operations, and abatement ROI.
+Executive-ready portfolio BI build connecting emissions, carbon cost exposure, supplier intensity, and abatement ROI.
 
-## Intended Business Questions
+## Current Build Status
 
-- What are Scope 1, Scope 2, and Scope 3 emissions by business unit, supplier, and activity?
-- What is the financial exposure under different carbon price scenarios?
-- Which abatement initiatives deliver the highest ROI?
+- Data/model/report source package: ready.
+- Supplemental HTML preview: `output/dashboard_preview.html`.
+- Final PBIX target: `output/dashboard_final.pbix`.
+- Final PBIX status: delivered and opened in Power BI Desktop.
+- Build route: `SCRIPTED_DESKTOP_PBIX` with TOM model push, native static report layout, and preserved Desktop theme metadata.
 
-## Planned Dashboard Pages
+## Dashboard Pages
 
-- ESG Finance Overview
-- Emissions by Scope and Source
-- Supplier Carbon Intensity
-- Carbon Cost Scenario
-- Abatement Investment ROI
+1. ESG Finance Overview
+2. Emissions & Supplier Intensity
+3. Carbon Scenario & Abatement ROI
 
-## Skill Signals
+## Rebuild
 
-- ESG finance analytics
-- Scenario modeling
-- Supplier and operational intensity metrics
-- Executive sustainability reporting
+```powershell
+python build/scripts/build_project18_assets.py
+python build/scripts/build_powerbi_native_assets.py
+powershell -NoProfile -ExecutionPolicy Bypass -File build/scripts/03_apply_native_layout_to_pbix.ps1
+```
+
+See `docs/rebuild_guide.md`, `docs/handoff_notes.md`, and `powerbi/notes/pbix_build_runbook.md`.

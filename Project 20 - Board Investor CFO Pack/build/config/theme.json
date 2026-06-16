@@ -1,0 +1,14 @@
+{
+  "name": "Board Investor CFO Pack",
+  "dataColors": [
+    "#4F87F5",
+    "#0F9F95",
+    "#1F8E45",
+    "#BE7C10",
+    "#B73535",
+    "#6C2DBE"
+  ],
+  "background": "#463793",
+  "foreground": "#211A32",
+  "tableAccent": "#4F87F5"
+}

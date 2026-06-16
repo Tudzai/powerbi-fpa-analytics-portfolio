@@ -1,0 +1,211 @@
+Revenue = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactPnlMonthly[Revenue]), FactPnlMonthly[ScenarioID] = ScenarioID)
+
+Plan Revenue = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactPnlMonthly[PlanRevenue]), FactPnlMonthly[ScenarioID] = ScenarioID)
+
+Forecast Revenue = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactPnlMonthly[ForecastRevenue]), FactPnlMonthly[ScenarioID] = ScenarioID)
+
+Revenue vs Plan = [Revenue] - [Plan Revenue]
+
+Revenue vs Plan % = DIVIDE([Revenue vs Plan], [Plan Revenue])
+
+Gross Profit = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactPnlMonthly[GrossProfit]), FactPnlMonthly[ScenarioID] = ScenarioID)
+
+Gross Margin % = DIVIDE([Gross Profit], [Revenue])
+
+EBITDA = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactPnlMonthly[EBITDA]), FactPnlMonthly[ScenarioID] = ScenarioID)
+
+Plan EBITDA = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactPnlMonthly[PlanEBITDA]), FactPnlMonthly[ScenarioID] = ScenarioID)
+
+EBITDA vs Plan = [EBITDA] - [Plan EBITDA]
+
+EBITDA Margin % = DIVIDE([EBITDA], [Revenue])
+
+Net Income = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactPnlMonthly[NetIncome]), FactPnlMonthly[ScenarioID] = ScenarioID)
+
+Operating Expense = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactOpexMonthly[OperatingExpense]), FactOpexMonthly[ScenarioID] = ScenarioID)
+
+Latest Revenue = CALCULATE([Revenue], DimDate[IsLatestCompleteMonth] = 1)
+
+Latest Gross Margin % = CALCULATE([Gross Margin %], DimDate[IsLatestCompleteMonth] = 1)
+
+Latest EBITDA = CALCULATE([EBITDA], DimDate[IsLatestCompleteMonth] = 1)
+
+Latest EBITDA Margin % = CALCULATE([EBITDA Margin %], DimDate[IsLatestCompleteMonth] = 1)
+
+Latest Cash Balance = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[CashBalance]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)
+
+Cash Balance = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[CashBalance]), FactCashMonthly[ScenarioID] = ScenarioID)
+
+Operating Cash Flow = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactCashMonthly[OperatingCashFlow]), FactCashMonthly[ScenarioID] = ScenarioID)
+
+Free Cash Flow = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactCashMonthly[FreeCashFlow]), FactCashMonthly[ScenarioID] = ScenarioID)
+
+Latest Free Cash Flow = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[FreeCashFlow]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)
+
+Net Burn = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[NetBurn]), FactCashMonthly[ScenarioID] = ScenarioID)
+
+Latest Net Burn = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[NetBurn]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)
+
+Runway Months = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[RunwayMonths]), FactCashMonthly[ScenarioID] = ScenarioID)
+
+Latest Runway Months = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[RunwayMonths]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)
+
+Funding Need = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[FundingNeed]), FactCashMonthly[ScenarioID] = ScenarioID)
+
+Latest Funding Need = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[FundingNeed]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)
+
+Statement Actual = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactStatementLines[ValueActual]), FactStatementLines[ScenarioID] = ScenarioID)
+
+Statement Plan = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactStatementLines[ValuePlan]), FactStatementLines[ScenarioID] = ScenarioID)
+
+Statement Forecast = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactStatementLines[ValueForecast]), FactStatementLines[ScenarioID] = ScenarioID)
+
+Statement Variance % = DIVIDE([Statement Actual] - [Statement Plan], [Statement Plan])
+
+Enterprise Value = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(AVERAGE(FactValuation[EnterpriseValue]), FactValuation[ScenarioID] = ScenarioID)
+
+Equity Value = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(AVERAGE(FactValuation[EquityValue]), FactValuation[ScenarioID] = ScenarioID)
+
+Valuation Low = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(AVERAGE(FactValuation[LowValue]), FactValuation[ScenarioID] = ScenarioID)
+
+Valuation High = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(AVERAGE(FactValuation[HighValue]), FactValuation[ScenarioID] = ScenarioID)
+
+Sensitivity Delta = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactSensitivity[EquityValueDelta]), FactSensitivity[ScenarioID] = ScenarioID)
+
+Leverage Ratio = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCovenantMonthly[LeverageRatio]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)
+
+Leverage Limit = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCovenantMonthly[LeverageLimit]), FactCovenantMonthly[ScenarioID] = ScenarioID)
+
+Leverage Headroom = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCovenantMonthly[LeverageHeadroom]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)
+
+Interest Coverage = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCovenantMonthly[InterestCoverage]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)
+
+Liquidity Headroom = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCovenantMonthly[LiquidityHeadroom]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)
+
+Risk Exposure = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(SUM(FactRiskRegister[ExposureUSD]), FactRiskRegister[ScenarioID] = ScenarioID)
+
+Critical Risk Count = VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(COUNTROWS(FactRiskRegister), FactRiskRegister[ScenarioID] = ScenarioID, FactRiskRegister[Severity] = "Critical")
+
+Revenue Sparkline SVG = VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)
+VAR MonthTable =
+    ADDCOLUMNS(
+        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),
+        "__Value", [Revenue]
+    )
+VAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))
+VAR RowCount = COUNTROWS(CleanTable)
+VAR MinValue = MINX(CleanTable, [__Value])
+VAR MaxValue = MAXX(CleanTable, [__Value])
+VAR Points =
+    CONCATENATEX(
+        CleanTable,
+        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1
+        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116
+        VAR YValue = 38 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 32
+        RETURN FORMAT(XValue, "0.0") & "," & FORMAT(YValue, "0.0"),
+        " ",
+        DimDate[MonthStart],
+        ASC
+    )
+RETURN
+    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23D8CDEE'/><polyline points='" & Points & "' fill='none' stroke='%234F87F5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='114' cy='10' r='3.2' fill='%23111827'/></svg>"
+
+Gross Margin Sparkline SVG = VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)
+VAR MonthTable =
+    ADDCOLUMNS(
+        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),
+        "__Value", [Gross Margin %]
+    )
+VAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))
+VAR RowCount = COUNTROWS(CleanTable)
+VAR MinValue = MINX(CleanTable, [__Value])
+VAR MaxValue = MAXX(CleanTable, [__Value])
+VAR Points =
+    CONCATENATEX(
+        CleanTable,
+        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1
+        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116
+        VAR YValue = 38 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 32
+        RETURN FORMAT(XValue, "0.0") & "," & FORMAT(YValue, "0.0"),
+        " ",
+        DimDate[MonthStart],
+        ASC
+    )
+RETURN
+    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23D8CDEE'/><polyline points='" & Points & "' fill='none' stroke='%230F9F95' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='114' cy='10' r='3.2' fill='%23111827'/></svg>"
+
+EBITDA Sparkline SVG = VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)
+VAR MonthTable =
+    ADDCOLUMNS(
+        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),
+        "__Value", [EBITDA]
+    )
+VAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))
+VAR RowCount = COUNTROWS(CleanTable)
+VAR MinValue = MINX(CleanTable, [__Value])
+VAR MaxValue = MAXX(CleanTable, [__Value])
+VAR Points =
+    CONCATENATEX(
+        CleanTable,
+        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1
+        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116
+        VAR YValue = 38 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 32
+        RETURN FORMAT(XValue, "0.0") & "," & FORMAT(YValue, "0.0"),
+        " ",
+        DimDate[MonthStart],
+        ASC
+    )
+RETURN
+    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23D8CDEE'/><polyline points='" & Points & "' fill='none' stroke='%231F8E45' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='114' cy='10' r='3.2' fill='%23111827'/></svg>"
+
+Cash Sparkline SVG = VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)
+VAR MonthTable =
+    ADDCOLUMNS(
+        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),
+        "__Value", [Cash Balance]
+    )
+VAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))
+VAR RowCount = COUNTROWS(CleanTable)
+VAR MinValue = MINX(CleanTable, [__Value])
+VAR MaxValue = MAXX(CleanTable, [__Value])
+VAR Points =
+    CONCATENATEX(
+        CleanTable,
+        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1
+        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116
+        VAR YValue = 38 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 32
+        RETURN FORMAT(XValue, "0.0") & "," & FORMAT(YValue, "0.0"),
+        " ",
+        DimDate[MonthStart],
+        ASC
+    )
+RETURN
+    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23D8CDEE'/><polyline points='" & Points & "' fill='none' stroke='%23BE7C10' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='114' cy='10' r='3.2' fill='%23111827'/></svg>"
+
+Runway Sparkline SVG = VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)
+VAR MonthTable =
+    ADDCOLUMNS(
+        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),
+        "__Value", [Runway Months]
+    )
+VAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))
+VAR RowCount = COUNTROWS(CleanTable)
+VAR MinValue = MINX(CleanTable, [__Value])
+VAR MaxValue = MAXX(CleanTable, [__Value])
+VAR Points =
+    CONCATENATEX(
+        CleanTable,
+        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1
+        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116
+        VAR YValue = 38 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 32
+        RETURN FORMAT(XValue, "0.0") & "," & FORMAT(YValue, "0.0"),
+        " ",
+        DimDate[MonthStart],
+        ASC
+    )
+RETURN
+    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23D8CDEE'/><polyline points='" & Points & "' fill='none' stroke='%23B73535' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='114' cy='10' r='3.2' fill='%23111827'/></svg>"
+
+Board Status Icon = SWITCH(TRUE(), [Revenue vs Plan %] >= 0.03, UNICHAR(9650), [Revenue vs Plan %] >= -0.02, UNICHAR(8212), UNICHAR(9660))
+
+Board Status Color = SWITCH(TRUE(), [Revenue vs Plan %] >= 0.03, "#2FA66A", [Revenue vs Plan %] >= -0.02, "#C58A18", "#C94A4A")

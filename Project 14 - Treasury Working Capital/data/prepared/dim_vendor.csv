@@ -1,0 +1,17 @@
+vendor_id,vendor,category,entity_id,region,payment_terms_days,criticality
+V001,Prime Materials,Freight,GB01,Europe,45,Standard
+V002,Ocean Freight Partners,Warehousing,SG01,APAC,15,Critical
+V003,Metro Warehousing,IT,VN01,APAC,15,Standard
+V004,Vertex IT Services,Utilities,BR01,LATAM,45,Critical
+V005,Keystone Packaging,Leasing,US01,North America,60,Standard
+V006,BrightGrid Utilities,Professional Services,DE01,Europe,30,Standard
+V007,Atlas Equipment Lease,Labor,GB01,Europe,30,Standard
+V008,Golden Tax Advisors,Materials,SG01,APAC,15,Standard
+V009,RouteOne Logistics,Freight,VN01,APAC,15,Standard
+V010,Helios Components,Warehousing,BR01,LATAM,15,Standard
+V011,BlueSteel Suppliers,IT,US01,North America,60,Critical
+V012,Summit Staffing,Utilities,DE01,Europe,60,Flexible
+V013,Local Port Services,Leasing,GB01,Europe,30,Critical
+V014,Mercury Insurers,Professional Services,SG01,APAC,45,Standard
+V015,CloudOps Platform,Labor,VN01,APAC,30,Standard
+V016,Regional Customs Brokers,Materials,BR01,LATAM,15,Critical

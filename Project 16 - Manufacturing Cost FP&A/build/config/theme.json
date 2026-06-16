@@ -1,0 +1,18 @@
+{
+  "name": "Manufacturing Cost FP&A Light",
+  "dataColors": [
+    "#2563EB",
+    "#0F766E",
+    "#D97706",
+    "#DC2626",
+    "#7C3AED",
+    "#475569",
+    "#16A34A"
+  ],
+  "background": "#F6F7F9",
+  "foreground": "#111827",
+  "tableAccent": "#2563EB",
+  "good": "#16A34A",
+  "neutral": "#D97706",
+  "bad": "#DC2626"
+}

@@ -1,0 +1,114 @@
+[
+  {
+    "page": "Executive Overview",
+    "visual": "KPI strip",
+    "type": "cards",
+    "fields": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Cash",
+      "Forecast",
+      "Exceptions"
+    ]
+  },
+  {
+    "page": "Executive Overview",
+    "visual": "Revenue and EBITDA Trend",
+    "type": "line",
+    "fields": [
+      "date_id",
+      "scenario",
+      "ebitda_usd"
+    ]
+  },
+  {
+    "page": "Executive Overview",
+    "visual": "EBITDA Variance Bridge",
+    "type": "waterfall",
+    "fields": [
+      "driver",
+      "amount_usd"
+    ]
+  },
+  {
+    "page": "Entity & Country P&L",
+    "visual": "Country P&L Matrix",
+    "type": "matrix",
+    "fields": [
+      "country",
+      "revenue",
+      "gross_profit",
+      "opex",
+      "ebitda"
+    ]
+  },
+  {
+    "page": "FX & Intercompany",
+    "visual": "FX Exposure",
+    "type": "bar",
+    "fields": [
+      "currency",
+      "external_revenue_usd"
+    ]
+  },
+  {
+    "page": "BU Drilldown",
+    "visual": "Growth vs Margin",
+    "type": "scatter",
+    "fields": [
+      "revenue_variance_pct",
+      "ebitda_margin"
+    ]
+  },
+  {
+    "page": "Close Exceptions",
+    "visual": "Exception Log",
+    "type": "table",
+    "fields": [
+      "exception_type",
+      "owner_team",
+      "severity",
+      "status",
+      "amount_usd"
+    ]
+  },
+  {
+    "page": "Board Storyboard",
+    "visual": "Board Narrative Bridge",
+    "type": "waterfall",
+    "fields": [
+      "Budget EBITDA",
+      "driver",
+      "Actual EBITDA"
+    ]
+  },
+  {
+    "page": "Board Storyboard",
+    "visual": "Target Pacing",
+    "type": "bullet",
+    "fields": [
+      "Actual",
+      "Budget",
+      "Forecast"
+    ]
+  },
+  {
+    "page": "Board Storyboard",
+    "visual": "Country Revenue Treemap",
+    "type": "treemap",
+    "fields": [
+      "country",
+      "external_revenue_usd"
+    ]
+  },
+  {
+    "page": "Board Storyboard",
+    "visual": "Close Risk Funnel",
+    "type": "funnel",
+    "fields": [
+      "severity",
+      "open_exception_value"
+    ]
+  }
+]

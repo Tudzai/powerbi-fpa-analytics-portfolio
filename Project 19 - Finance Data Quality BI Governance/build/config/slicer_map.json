@@ -1,0 +1,14 @@
+{
+  "Governance Overview": [
+    "Domain",
+    "Month"
+  ],
+  "Reliability & Quality": [
+    "Owner",
+    "Criticality"
+  ],
+  "Adoption & Controls": [
+    "Workspace",
+    "Sensitivity"
+  ]
+}
