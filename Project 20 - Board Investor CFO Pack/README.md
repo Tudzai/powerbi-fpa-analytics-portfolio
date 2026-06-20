@@ -12,10 +12,10 @@ Template: ZoomCharts Inventory-style Finance Control Tower v24 KPI interaction r
 Design: deep purple canvas, light neutral Power BI outspace, dark left sidebar, compact dropdown slicers, 4-card KPI strip per page, native latest-month KPI measures, metric icon badges, compact mini sparklines with target band and markers, PY/YoY footers, rounded chart/table panels, and no note boxes. The main grid was rescaled from the official ZoomCharts preview asset after the PBIX download endpoint returned account-gated HTML.
 
 Latest complete month: May 2026
-Revenue: $36.5M
+Revenue: $36.7M
 Gross margin: 77.8%
-EBITDA: $15.3M
-Cash balance: $376.3M
+EBITDA: $14.3M
+Cash balance: $376.7M
 Runway: 99.0x
 Leverage: 0.2x
 

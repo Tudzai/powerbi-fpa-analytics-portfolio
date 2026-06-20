@@ -1,0 +1,238 @@
+{
+  "status": "pass",
+  "latest_month": "2026-05-01",
+  "checks": {
+    "scenario_latest_revenue_spread_pct": {
+      "value": 0.4938,
+      "threshold": 0.3,
+      "pass": true
+    },
+    "scenario_latest_cash_spread_pct": {
+      "value": 1.4951,
+      "threshold": 0.2,
+      "pass": true
+    },
+    "scenario_latest_runway_spread_pct": {
+      "value": 1.1155,
+      "threshold": 0.35,
+      "pass": true
+    },
+    "downside_latest_funding_need_positive": {
+      "value": 13889990.44,
+      "threshold": 1000000,
+      "pass": true
+    },
+    "base_latest_bu_revenue_max_min": {
+      "value": 3.548,
+      "threshold": 2.5,
+      "pass": true
+    },
+    "base_latest_region_revenue_max_min": {
+      "value": 8.094,
+      "threshold": 2.25,
+      "pass": true
+    },
+    "base_avg_monthly_revenue_growth_2024_to_2026_pct": {
+      "value": 0.5712,
+      "threshold": 0.35,
+      "pass": true
+    },
+    "minimum_bu_sparkline_revenue_range_pct_of_mean": {
+      "value": 0.5177,
+      "threshold": 0.25,
+      "pass": true
+    },
+    "maximum_bu_sparkline_revenue_range_pct_of_mean": {
+      "value": 0.8019,
+      "threshold": 0.35,
+      "pass": true
+    }
+  },
+  "scenario_latest": {
+    "pnl": [
+      {
+        "ScenarioID": "Base",
+        "Revenue": 36695726.18,
+        "GrossProfit": 28530928.85,
+        "EBITDA": 14261904.93,
+        "GrossMarginPct": 0.7775
+      },
+      {
+        "ScenarioID": "Downside",
+        "Revenue": 27563149.79,
+        "GrossProfit": 19363203.7,
+        "EBITDA": 5977799.12,
+        "GrossMarginPct": 0.7025
+      },
+      {
+        "ScenarioID": "Upside",
+        "Revenue": 45656011.53,
+        "GrossProfit": 37777041.24,
+        "EBITDA": 23192420.45,
+        "GrossMarginPct": 0.8274
+      }
+    ],
+    "cash": [
+      {
+        "ScenarioID": "Base",
+        "CashBalance": 376740521.62,
+        "FreeCashFlow": 13484322.5,
+        "NetBurn": 0.0,
+        "RunwayMonths": 99.0,
+        "FundingNeed": 0.0
+      },
+      {
+        "ScenarioID": "Upside",
+        "CashBalance": 514234798.71,
+        "FreeCashFlow": 22476762.46,
+        "NetBurn": 0.0,
+        "RunwayMonths": 99.0,
+        "FundingNeed": 0.0
+      },
+      {
+        "ScenarioID": "Downside",
+        "CashBalance": 46852694.95,
+        "FreeCashFlow": -2530945.22,
+        "NetBurn": 2530945.22,
+        "RunwayMonths": 18.5,
+        "FundingNeed": 13889990.44
+      }
+    ]
+  },
+  "base_latest_by_business_unit": [
+    {
+      "BusinessUnitID": "enterprise",
+      "Revenue": 13829505.98,
+      "GrossProfit": 11577801.38,
+      "EBITDA": 6411269.52,
+      "BusinessUnit": "Enterprise SaaS",
+      "GrossMarginPct": 0.8372
+    },
+    {
+      "BusinessUnitID": "smb",
+      "Revenue": 11148066.61,
+      "GrossProfit": 8397639.57,
+      "EBITDA": 3897879.02,
+      "BusinessUnit": "SMB Platform",
+      "GrossMarginPct": 0.7533
+    },
+    {
+      "BusinessUnitID": "data",
+      "Revenue": 7819803.2,
+      "GrossProfit": 6956635.2,
+      "EBITDA": 4030635.03,
+      "BusinessUnit": "Data Products",
+      "GrossMarginPct": 0.8896
+    },
+    {
+      "BusinessUnitID": "services",
+      "Revenue": 3898350.39,
+      "GrossProfit": 1598852.7,
+      "EBITDA": -77878.64,
+      "BusinessUnit": "Professional Services",
+      "GrossMarginPct": 0.4101
+    }
+  ],
+  "base_latest_by_region": [
+    {
+      "RegionID": "americas",
+      "Revenue": 19883378.86,
+      "GrossProfit": 15710197.59,
+      "EBITDA": 8145079.7,
+      "Region": "Americas",
+      "GrossMarginPct": 0.7901
+    },
+    {
+      "RegionID": "emea",
+      "Revenue": 7630560.56,
+      "GrossProfit": 5831539.99,
+      "EBITDA": 2852640.21,
+      "Region": "EMEA",
+      "GrossMarginPct": 0.7642
+    },
+    {
+      "RegionID": "apac",
+      "Revenue": 6725154.37,
+      "GrossProfit": 5293069.87,
+      "EBITDA": 2575967.11,
+      "Region": "APAC",
+      "GrossMarginPct": 0.7871
+    },
+    {
+      "RegionID": "latam",
+      "Revenue": 2456632.39,
+      "GrossProfit": 1696121.4,
+      "EBITDA": 688217.91,
+      "Region": "LATAM",
+      "GrossMarginPct": 0.6904
+    }
+  ],
+  "base_year_totals_and_monthly_average": [
+    {
+      "Year": 2024,
+      "Revenue": 260704419.21,
+      "EBITDA": 83723239.34,
+      "Months": 12,
+      "AvgMonthlyRevenue": 21725368.2675,
+      "AvgMonthlyEBITDA": 6976936.6117
+    },
+    {
+      "Year": 2025,
+      "Revenue": 339588533.58,
+      "EBITDA": 121670029.63,
+      "Months": 12,
+      "AvgMonthlyRevenue": 28299044.465,
+      "AvgMonthlyEBITDA": 10139169.1358
+    },
+    {
+      "Year": 2026,
+      "Revenue": 170674521.3,
+      "EBITDA": 65684053.45,
+      "Months": 5,
+      "AvgMonthlyRevenue": 34134904.26,
+      "AvgMonthlyEBITDA": 13136810.69
+    }
+  ],
+  "base_bu_sparkline_stats": [
+    {
+      "BusinessUnitID": "data",
+      "RevenueMin": 3531690.88,
+      "RevenueMax": 7819803.2,
+      "RevenueMean": 5347126.7307,
+      "EBITDA_Min": 1502618.76,
+      "EBITDA_Max": 4030635.03,
+      "BusinessUnit": "Data Products",
+      "RevenueRangePctOfMean": 0.8019
+    },
+    {
+      "BusinessUnitID": "smb",
+      "RevenueMin": 5043105.44,
+      "RevenueMax": 11148066.61,
+      "RevenueMean": 7719185.1069,
+      "EBITDA_Min": 1351880.0,
+      "EBITDA_Max": 3897879.02,
+      "BusinessUnit": "SMB Platform",
+      "RevenueRangePctOfMean": 0.7909
+    },
+    {
+      "BusinessUnitID": "enterprise",
+      "RevenueMin": 7205798.48,
+      "RevenueMax": 13829505.98,
+      "RevenueMean": 10477680.6403,
+      "EBITDA_Min": 2626637.91,
+      "EBITDA_Max": 6427072.5,
+      "BusinessUnit": "Enterprise SaaS",
+      "RevenueRangePctOfMean": 0.6322
+    },
+    {
+      "BusinessUnitID": "services",
+      "RevenueMin": 2323919.98,
+      "RevenueMax": 3898350.39,
+      "RevenueMean": 3041092.8355,
+      "EBITDA_Min": -167087.92,
+      "EBITDA_Max": -76130.86,
+      "BusinessUnit": "Professional Services",
+      "RevenueRangePctOfMean": 0.5177
+    }
+  ]
+}

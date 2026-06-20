@@ -1,5 +1,5 @@
 {
-  "visual_containers": 150,
+  "visual_containers": 174,
   "visual_style": "ZoomCharts Inventory-style Finance Control Tower v24 KPI interaction refresh: deep purple canvas, light neutral outspace, ordered dark purple sidebar navigation, Board Lens slicer group, compact dropdown slicers, page-level decision chips, four native KPI dashboard cards per page with latest-month numeric compact KPI measures, compact mini sparklines with target band and markers, semantic YoY colors, metric icons, compact lens subtitles, stronger slicer/chart/table typography, balanced gutters, six rounded chart/table panels, and Playwright/Desktop-checked KPI render guards",
   "interaction_affordances": [
     "Global slicers stay in the left Board Lens rail on every page.",

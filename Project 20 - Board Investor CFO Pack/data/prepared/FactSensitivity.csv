@@ -1,37 +1,37 @@
 ScenarioID,Driver,CaseLabel,DriverCase,EquityValueDelta,EquityValue
-Base,Revenue Growth,Downside,Revenue Growth - Downside,-294458241.86,2650124176.76
-Base,Revenue Growth,Upside,Revenue Growth - Upside,353349890.24,3297932308.86
-Base,Gross Margin,Downside,Gross Margin - Downside,-117783296.75,2826799121.88
-Base,Gross Margin,Upside,Gross Margin - Upside,147229120.93,3091811539.56
-Base,WACC,Downside,WACC - Downside,206120769.3,3150703187.93
-Base,WACC,Upside,WACC - Upside,-176674945.12,2767907473.51
-Base,Terminal Growth,Downside,Terminal Growth - Downside,-147229120.93,2797353297.69
-Base,Terminal Growth,Upside,Terminal Growth - Upside,206120769.3,3150703187.93
-Base,Exit Multiple,Downside,Exit Multiple - Downside,-353349890.24,2591232528.39
-Base,Exit Multiple,Upside,Exit Multiple - Upside,412241538.61,3356823957.23
-Base,Burn Reduction,Downside,Burn Reduction - Downside,-117783296.75,2826799121.88
-Base,Burn Reduction,Upside,Burn Reduction - Upside,235566593.49,3180149012.12
-Upside,Revenue Growth,Downside,Revenue Growth - Downside,-382825821.5,3445432393.48
-Upside,Revenue Growth,Upside,Revenue Growth - Upside,459390985.8,4287649200.78
-Upside,Gross Margin,Downside,Gross Margin - Downside,-153130328.6,3675127886.38
-Upside,Gross Margin,Upside,Gross Margin - Upside,191412910.75,4019671125.73
-Upside,WACC,Downside,WACC - Downside,267978075.05,4096236290.03
-Upside,WACC,Upside,WACC - Upside,-229695492.9,3598562722.08
-Upside,Terminal Growth,Downside,Terminal Growth - Downside,-191412910.75,3636845304.23
-Upside,Terminal Growth,Upside,Terminal Growth - Upside,267978075.05,4096236290.03
-Upside,Exit Multiple,Downside,Exit Multiple - Downside,-459390985.8,3368867229.18
-Upside,Exit Multiple,Upside,Exit Multiple - Upside,535956150.1,4364214365.08
-Upside,Burn Reduction,Downside,Burn Reduction - Downside,-153130328.6,3675127886.38
-Upside,Burn Reduction,Upside,Burn Reduction - Upside,306260657.2,4134518872.18
-Downside,Revenue Growth,Downside,Revenue Growth - Downside,-214740957.35,1932668616.18
-Downside,Revenue Growth,Upside,Revenue Growth - Upside,257689148.82,2405098722.35
-Downside,Gross Margin,Downside,Gross Margin - Downside,-85896382.94,2061513190.59
-Downside,Gross Margin,Upside,Gross Margin - Upside,107370478.68,2254780052.21
-Downside,WACC,Downside,WACC - Downside,150318670.15,2297728243.68
-Downside,WACC,Upside,WACC - Upside,-128844574.41,2018564999.12
-Downside,Terminal Growth,Downside,Terminal Growth - Downside,-107370478.68,2040039094.85
-Downside,Terminal Growth,Upside,Terminal Growth - Upside,150318670.15,2297728243.68
-Downside,Exit Multiple,Downside,Exit Multiple - Downside,-257689148.82,1889720424.71
-Downside,Exit Multiple,Upside,Exit Multiple - Upside,300637340.29,2448046913.82
-Downside,Burn Reduction,Downside,Burn Reduction - Downside,-85896382.94,2061513190.59
-Downside,Burn Reduction,Upside,Burn Reduction - Upside,171792765.88,2319202339.41
+Base,Revenue Growth,Downside,Revenue Growth - Downside,-283055026.62,2547495239.54
+Base,Revenue Growth,Upside,Revenue Growth - Upside,339666031.94,3170216298.09
+Base,Gross Margin,Downside,Gross Margin - Downside,-113222010.65,2717328255.51
+Base,Gross Margin,Upside,Gross Margin - Upside,141527513.31,2972077779.46
+Base,WACC,Downside,WACC - Downside,198138518.63,3028688784.79
+Base,WACC,Upside,WACC - Upside,-169833015.97,2660717250.19
+Base,Terminal Growth,Downside,Terminal Growth - Downside,-141527513.31,2689022752.85
+Base,Terminal Growth,Upside,Terminal Growth - Upside,198138518.63,3028688784.79
+Base,Exit Multiple,Downside,Exit Multiple - Downside,-339666031.94,2490884234.22
+Base,Exit Multiple,Upside,Exit Multiple - Upside,396277037.26,3226827303.42
+Base,Burn Reduction,Downside,Burn Reduction - Downside,-113222010.65,2717328255.51
+Base,Burn Reduction,Upside,Burn Reduction - Upside,226444021.29,3056994287.45
+Upside,Revenue Growth,Downside,Revenue Growth - Downside,-430090179.29,3870811613.59
+Upside,Revenue Growth,Upside,Revenue Growth - Upside,516108215.15,4817010008.03
+Upside,Gross Margin,Downside,Gross Margin - Downside,-172036071.72,4128865721.17
+Upside,Gross Margin,Upside,Gross Margin - Upside,215045089.64,4515946882.53
+Upside,WACC,Downside,WACC - Downside,301063125.5,4601964918.38
+Upside,WACC,Upside,WACC - Upside,-258054107.57,4042847685.31
+Upside,Terminal Growth,Downside,Terminal Growth - Downside,-215045089.64,4085856703.24
+Upside,Terminal Growth,Upside,Terminal Growth - Upside,301063125.5,4601964918.38
+Upside,Exit Multiple,Downside,Exit Multiple - Downside,-516108215.15,3784793577.74
+Upside,Exit Multiple,Upside,Exit Multiple - Upside,602126251.0,4903028043.89
+Upside,Burn Reduction,Downside,Burn Reduction - Downside,-172036071.72,4128865721.17
+Upside,Burn Reduction,Upside,Burn Reduction - Upside,344072143.43,4644973936.31
+Downside,Revenue Growth,Downside,Revenue Growth - Downside,-118340824.69,1065067422.21
+Downside,Revenue Growth,Upside,Revenue Growth - Upside,142008989.63,1325417236.53
+Downside,Gross Margin,Downside,Gross Margin - Downside,-47336329.88,1136071917.02
+Downside,Gross Margin,Upside,Gross Margin - Upside,59170412.35,1242578659.25
+Downside,WACC,Downside,WACC - Downside,82838577.28,1266246824.18
+Downside,WACC,Upside,WACC - Upside,-71004494.81,1112403752.09
+Downside,Terminal Growth,Downside,Terminal Growth - Downside,-59170412.35,1124237834.56
+Downside,Terminal Growth,Upside,Terminal Growth - Upside,82838577.28,1266246824.18
+Downside,Exit Multiple,Downside,Exit Multiple - Downside,-142008989.63,1041399257.27
+Downside,Exit Multiple,Upside,Exit Multiple - Upside,165677154.57,1349085401.47
+Downside,Burn Reduction,Downside,Burn Reduction - Downside,-47336329.88,1136071917.02
+Downside,Burn Reduction,Upside,Burn Reduction - Upside,94672659.75,1278080906.65

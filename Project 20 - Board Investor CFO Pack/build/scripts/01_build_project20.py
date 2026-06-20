@@ -68,6 +68,10 @@ COLORS = {
     "chart_axis": "#62586F",
     "slicer_fill": "#DCCFF4",
     "slicer_border": "#AD97DA",
+    "filter_surface": "#321052",
+    "filter_control": "#ECE4FA",
+    "filter_control_border": "#B69CDE",
+    "filter_label": "#EFE7FF",
 }
 
 
@@ -194,6 +198,23 @@ SCENARIOS = [
     ("Upside", "Upside Growth", 1.11, 1.04, 0.92, 1),
     ("Downside", "Downside Protect", 0.88, 0.96, 1.10, 2),
 ]
+SCENARIO_DYNAMICS = {
+    "Base": {"curve": 0.00, "step": 0.00, "margin": 0.000, "margin_curve": 0.004, "burn_curve": 0.00, "cash_drag": 0.006, "capex": 0.036, "wc_drag": 0.029},
+    "Upside": {"curve": 0.085, "step": 0.045, "margin": 0.014, "margin_curve": 0.020, "burn_curve": -0.075, "cash_drag": -0.006, "capex": 0.043, "wc_drag": 0.025},
+    "Downside": {"curve": -0.105, "step": -0.060, "margin": -0.022, "margin_curve": -0.014, "burn_curve": 0.120, "cash_drag": 0.300, "capex": 0.027, "wc_drag": 0.050},
+}
+BU_DYNAMICS = {
+    "enterprise": {"trend": 0.08, "cycle": 0.018, "margin": 0.012, "scenario_beta": 0.82, "volatility": 0.016},
+    "smb": {"trend": 0.24, "cycle": 0.035, "margin": -0.020, "scenario_beta": 1.08, "volatility": 0.027},
+    "data": {"trend": 0.34, "cycle": 0.048, "margin": 0.030, "scenario_beta": 1.25, "volatility": 0.023},
+    "services": {"trend": -0.10, "cycle": 0.026, "margin": -0.075, "scenario_beta": 0.66, "volatility": 0.024},
+}
+REGION_DYNAMICS = {
+    "americas": {"trend": 0.045, "cycle": 0.015, "margin": 0.006, "scenario_beta": 0.78, "wc": 0.95, "volatility": 0.014},
+    "emea": {"trend": -0.035, "cycle": 0.024, "margin": -0.012, "scenario_beta": 0.92, "wc": 1.08, "volatility": 0.021},
+    "apac": {"trend": 0.310, "cycle": 0.055, "margin": 0.002, "scenario_beta": 1.24, "wc": 1.14, "volatility": 0.034},
+    "latam": {"trend": 0.185, "cycle": 0.075, "margin": -0.045, "scenario_beta": 1.38, "wc": 1.30, "volatility": 0.052},
+}
 COST_CATEGORIES = [
     ("sm", "Sales & Marketing", 0.34),
     ("rd", "R&D", 0.24),
@@ -265,62 +286,126 @@ def build_data() -> dict[str, pd.DataFrame]:
     covenant_rows = []
     statement_rows = []
     base_revenue = np.linspace(18_500_000, 34_500_000, len(MONTHS))
-    cash_state = {"Base": 78_000_000.0, "Upside": 78_000_000.0, "Downside": 78_000_000.0}
+    cash_state = {"Base": 108_000_000.0, "Upside": 112_000_000.0, "Downside": 72_000_000.0}
     debt_state = {"Base": 34_000_000.0, "Upside": 31_000_000.0, "Downside": 38_000_000.0}
     scenario_monthly_totals: dict[tuple[str, str], dict[str, float]] = {}
 
     for s_id, s_name, revenue_idx, margin_idx, burn_idx, _sort in SCENARIOS:
+        scenario_profile = SCENARIO_DYNAMICS[s_id]
         for m_idx, month in enumerate(MONTHS):
+            progress = m_idx / max(1, len(MONTHS) - 1)
             seasonality = 1 + 0.055 * math.sin((m_idx % 12) / 12 * 2 * math.pi - 0.6)
+            scenario_step = scenario_profile["step"] if month >= pd.Timestamp("2025-07-01") else 0.0
+            scenario_curve = 1 + scenario_profile["curve"] * progress + scenario_step
+            scenario_wave = 1 + (0.018 if s_id == "Upside" else -0.020 if s_id == "Downside" else 0.006) * math.sin((m_idx + 2) / 5.0)
             macro_noise = rng.normal(0, 0.017)
-            scenario_revenue = base_revenue[m_idx] * revenue_idx * seasonality * (1 + macro_noise)
+            scenario_revenue = base_revenue[m_idx] * revenue_idx * scenario_curve * scenario_wave * seasonality * (1 + macro_noise)
             plan_revenue = base_revenue[m_idx] * 1.02
             forecast_revenue = scenario_revenue * (1 + rng.normal(0, 0.018))
+            total_revenue = 0.0
             total_gross_profit = 0.0
             total_ebitda = 0.0
             total_net_income = 0.0
+            cell_profiles = []
             for bu_id, bu_name, family, bu_weight, target_margin, growth_index in BUSINESS_UNITS:
+                bu_profile = BU_DYNAMICS[bu_id]
+                bu_cycle = 1 + bu_profile["cycle"] * math.sin((m_idx + len(bu_id)) / 3.2)
+                bu_trend = 1 + bu_profile["trend"] * progress
                 for region_id, region, maturity, region_weight, demand_index in REGIONS:
-                    mix = bu_weight * region_weight
-                    growth_tilt = 1 + (m_idx / max(1, len(MONTHS) - 1)) * (growth_index - 1) * 0.22
-                    revenue = scenario_revenue * mix * demand_index * growth_tilt * (1 + rng.normal(0, 0.026))
-                    plan = plan_revenue * mix * demand_index * (1 + (growth_index - 1) * 0.08)
-                    forecast = forecast_revenue * mix * demand_index * (1 + rng.normal(0, 0.012))
-                    gross_margin_pct = np.clip(target_margin * margin_idx + rng.normal(0, 0.012), 0.43, 0.89)
-                    cogs = revenue * (1 - gross_margin_pct)
-                    gross_profit = revenue - cogs
-                    allocated_opex = revenue * (0.42 * burn_idx - 0.08 * (m_idx / len(MONTHS))) + 580_000 * mix
-                    ebitda = gross_profit - allocated_opex
-                    depreciation = revenue * 0.018
-                    interest = debt_state[s_id] * 0.006 / 12 * mix
-                    tax = max(0.0, (ebitda - depreciation - interest) * 0.18)
-                    net_income = ebitda - depreciation - interest - tax
-                    pnl_rows.append(
+                    region_profile = REGION_DYNAMICS[region_id]
+                    region_cycle = 1 + region_profile["cycle"] * math.sin((m_idx + len(region_id)) / 2.7)
+                    region_trend = 1 + region_profile["trend"] * progress
+                    if region_id == "apac" and month >= pd.Timestamp("2025-10-01"):
+                        region_trend += 0.060
+                    if region_id == "emea" and pd.Timestamp("2025-04-01") <= month <= pd.Timestamp("2025-12-01"):
+                        region_trend -= 0.035
+                    scenario_sensitivity = 1 + (revenue_idx - 1) * (bu_profile["scenario_beta"] + region_profile["scenario_beta"]) * 0.42
+                    volatility = bu_profile["volatility"] + region_profile["volatility"]
+                    raw_weight = max(
+                        0.02,
+                        bu_weight
+                        * region_weight
+                        * demand_index
+                        * bu_trend
+                        * region_trend
+                        * bu_cycle
+                        * region_cycle
+                        * scenario_sensitivity
+                        * (1 + rng.normal(0, volatility)),
+                    )
+                    cell_profiles.append(
                         {
-                            "MonthStart": month.date().isoformat(),
-                            "ScenarioID": s_id,
-                            "BusinessUnitID": bu_id,
-                            "RegionID": region_id,
-                            "Revenue": round(revenue, 2),
-                            "PlanRevenue": round(plan, 2),
-                            "ForecastRevenue": round(forecast, 2),
-                            "COGS": round(cogs, 2),
-                            "GrossProfit": round(gross_profit, 2),
-                            "OperatingExpense": round(allocated_opex, 2),
-                            "EBITDA": round(ebitda, 2),
-                            "PlanEBITDA": round(plan * (target_margin - 0.42), 2),
-                            "ForecastEBITDA": round(forecast * (gross_margin_pct - 0.40 * burn_idx), 2),
-                            "NetIncome": round(net_income, 2),
-                            "IsSynthetic": "TRUE",
+                            "raw_weight": raw_weight,
+                            "bu_id": bu_id,
+                            "bu_name": bu_name,
+                            "family": family,
+                            "target_margin": target_margin,
+                            "growth_index": growth_index,
+                            "region_id": region_id,
+                            "region": region,
+                            "maturity": maturity,
+                            "region_weight": region_weight,
+                            "demand_index": demand_index,
+                            "bu_profile": bu_profile,
+                            "region_profile": region_profile,
                         }
                     )
-                    total_gross_profit += gross_profit
-                    total_ebitda += ebitda
-                    total_net_income += net_income
+            weight_total = sum(c["raw_weight"] for c in cell_profiles)
+            for cell in cell_profiles:
+                bu_id = cell["bu_id"]
+                bu_name = cell["bu_name"]
+                target_margin = cell["target_margin"]
+                growth_index = cell["growth_index"]
+                region_id = cell["region_id"]
+                demand_index = cell["demand_index"]
+                bu_profile = cell["bu_profile"]
+                region_profile = cell["region_profile"]
+                normalized_share = cell["raw_weight"] / weight_total
+                mix = normalized_share
+                plan_mix = cell["region_weight"] * next(bu[3] for bu in BUSINESS_UNITS if bu[0] == bu_id)
+                plan_demand = demand_index * (1 + (growth_index - 1) * 0.12)
+                revenue = scenario_revenue * normalized_share
+                plan = plan_revenue * plan_mix * plan_demand
+                forecast = forecast_revenue * normalized_share * (1 + rng.normal(0, 0.010))
+                margin_lift = scenario_profile["margin"] + scenario_profile["margin_curve"] * progress + bu_profile["margin"] + region_profile["margin"]
+                gross_margin_pct = np.clip(target_margin * margin_idx + margin_lift + rng.normal(0, 0.010), 0.36, 0.91)
+                cogs = revenue * (1 - gross_margin_pct)
+                gross_profit = revenue - cogs
+                burn_modifier = max(0.72, burn_idx + scenario_profile["burn_curve"] * progress)
+                scale_efficiency = 0.070 * progress if bu_id in {"enterprise", "data"} else 0.040 * progress if bu_id == "smb" else 0.015 * progress
+                complexity_drag = 0.024 if region_id in {"latam", "apac"} else 0.010 if region_id == "emea" else 0.000
+                allocated_opex = revenue * max(0.24, 0.42 * burn_modifier - scale_efficiency + complexity_drag) + 580_000 * mix
+                ebitda = gross_profit - allocated_opex
+                depreciation = revenue * 0.018
+                interest = debt_state[s_id] * 0.006 / 12 * mix
+                tax = max(0.0, (ebitda - depreciation - interest) * 0.18)
+                net_income = ebitda - depreciation - interest - tax
+                pnl_rows.append(
+                    {
+                        "MonthStart": month.date().isoformat(),
+                        "ScenarioID": s_id,
+                        "BusinessUnitID": bu_id,
+                        "RegionID": region_id,
+                        "Revenue": round(revenue, 2),
+                        "PlanRevenue": round(plan, 2),
+                        "ForecastRevenue": round(forecast, 2),
+                        "COGS": round(cogs, 2),
+                        "GrossProfit": round(gross_profit, 2),
+                        "OperatingExpense": round(allocated_opex, 2),
+                        "EBITDA": round(ebitda, 2),
+                        "PlanEBITDA": round(plan * (target_margin - 0.42), 2),
+                        "ForecastEBITDA": round(forecast * (gross_margin_pct - 0.40 * burn_modifier), 2),
+                        "NetIncome": round(net_income, 2),
+                        "IsSynthetic": "TRUE",
+                    }
+                )
+                total_revenue += revenue
+                total_gross_profit += gross_profit
+                total_ebitda += ebitda
+                total_net_income += net_income
 
-            total_revenue = sum(r["Revenue"] for r in pnl_rows if r["MonthStart"] == month.date().isoformat() and r["ScenarioID"] == s_id)
             for cost_id, cost_name, load in COST_CATEGORIES:
-                cost = total_revenue * load * burn_idx * (1 - min(0.16, m_idx / 220)) * (1 + rng.normal(0, 0.022))
+                cost = total_revenue * load * max(0.72, burn_idx + scenario_profile["burn_curve"] * progress) * (1 - min(0.16, m_idx / 220)) * (1 + rng.normal(0, 0.022))
                 opex_rows.append(
                     {
                         "MonthStart": month.date().isoformat(),
@@ -334,16 +419,16 @@ def build_data() -> dict[str, pd.DataFrame]:
 
             ar = total_revenue * 0.18
             ap = total_revenue * 0.10
-            inventory = total_revenue * 0.03
+            inventory = total_revenue * (0.027 if s_id == "Upside" else 0.034 if s_id == "Downside" else 0.030)
             working_capital = ar + inventory - ap
-            ocf = total_ebitda + total_revenue * 0.026 - (working_capital * 0.028)
-            capex = total_revenue * (0.035 if s_id != "Downside" else 0.025)
+            ocf = total_ebitda + total_revenue * 0.024 - (working_capital * scenario_profile["wc_drag"]) - (total_revenue * scenario_profile["cash_drag"])
+            capex = total_revenue * scenario_profile["capex"]
             fcf = ocf - capex
             financing = 0.0
             if month == pd.Timestamp("2026-03-01") and s_id == "Downside":
-                financing = 28_000_000.0
+                financing = 34_000_000.0
             if month == pd.Timestamp("2026-04-01") and s_id == "Base":
-                financing = 16_000_000.0
+                financing = 14_000_000.0
             cash_state[s_id] += fcf + financing
             net_burn = max(0.0, -fcf)
             runway = 99.0 if net_burn <= 1 else min(99.0, cash_state[s_id] / net_burn)
@@ -1327,6 +1412,21 @@ def slicer_frame(title=None, fill=None):
     return out
 
 
+def rail_slicer_frame(title=None, fill=None):
+    fill = fill or COLORS["filter_control"]
+    out = {
+        "title": [{"properties": {"show": lit(False)}}],
+        "subTitle": [{"properties": {"show": lit(False)}}],
+        "background": [{"properties": {"show": lit(True), "color": col(fill), "transparency": lit(0.0)}}],
+        "border": [{"properties": {"show": lit(True), "color": col(COLORS["filter_control_border"]), "radius": lit(6.0), "width": lit(0.75)}}],
+        "dropShadow": [{"properties": {"show": lit(False)}}],
+        "visualHeader": hidden_header(fill),
+    }
+    if title:
+        out["title"] = [{"properties": {"show": lit(True), "text": txt(title), "fontFamily": txt("Segoe UI Semibold"), "fontSize": lit(8.0), "fontColor": col(COLORS["ink"])}}]
+    return out
+
+
 def container(config, p, query_obj=None, transform_obj=None):
     config["layouts"] = [{"id": 0, "position": p}]
     out = {
@@ -1790,6 +1890,14 @@ def page_context_chips(items, z):
     return visuals
 
 
+def rail_filter_row(label, table, column, display, y, z, accent, sync_name, single_select=False):
+    return [
+        solid_rect(accent, pos(38, y + 5, z, 8, 8), radius=2.0),
+        plain_text(label, pos(52, y - 1, z + 1, 112, 24), COLORS["filter_label"], "8.0pt", "Segoe UI Semibold"),
+        slicer(table, column, display, pos(34, y + 20, z + 2, 142, 42), mode="Dropdown", show_title=False, compact=True, sync_group=sync_name, rail=True, single_select=single_select),
+    ]
+
+
 def sidebar_shell(page_title, active_label, z, context_items=None):
     nav = [
         ("01 Performance", "Performance" in active_label),
@@ -1811,16 +1919,16 @@ def sidebar_shell(page_title, active_label, z, context_items=None):
         y += 40
     visuals += [
         solid_rect(COLORS["sidebar_rule"], pos(30, 218, z + 49, 146, 3), radius=1.5),
-        plain_text("Board Lens", pos(32, 232, z + 50, 124, 18), COLORS["sidebar_muted"], "7.5pt", "Segoe UI Semibold"),
-        plain_text("Year", pos(32, 254, z + 51, 104, 18), COLORS["sidebar_text"], "8.2pt"),
-        slicer("DimDate", "Year", "Year", pos(30, 274, z + 52, 146, 42), mode="Dropdown", show_title=False, compact=True),
-        plain_text("Scenario", pos(32, 348, z + 53, 104, 18), COLORS["sidebar_text"], "8.2pt"),
-        slicer("DimScenario", "ScenarioName", "Scenario", pos(30, 368, z + 54, 146, 42), mode="Dropdown", show_title=False, compact=True),
-        plain_text("BU", pos(32, 440, z + 55, 104, 18), COLORS["sidebar_text"], "8.2pt"),
-        slicer("DimBusinessUnit", "BusinessUnit", "BU", pos(30, 460, z + 56, 146, 42), mode="Dropdown", show_title=False, compact=True),
-        plain_text("Region", pos(32, 532, z + 57, 104, 18), COLORS["sidebar_text"], "8.2pt"),
-        slicer("DimRegion", "Region", "Region", pos(30, 552, z + 58, 146, 42), mode="Dropdown", show_title=False, compact=True),
-        solid_rect(COLORS["sidebar_rule"], pos(30, 650, z + 59, 146, 3), radius=1.5),
+        solid_rect(COLORS["filter_surface"], pos(24, 228, z + 50, 162, 400), radius=7.0),
+        solid_rect(COLORS["sidebar_rule"], pos(38, 250, z + 51, 134, 2), radius=1.0),
+        plain_text("Global Lens", pos(38, 229, z + 52, 124, 24), COLORS["sidebar_muted"], "7.5pt", "Segoe UI Semibold"),
+        *rail_filter_row("Year", "DimDate", "Year", "Year", 262, z + 53, COLORS["blue"], "global_year", single_select=True),
+        *rail_filter_row("Scenario", "DimScenario", "ScenarioName", "Scenario", 336, z + 59, COLORS["violet"], "global_scenario", single_select=True),
+        plain_text("P&L Lens", pos(38, 410, z + 64, 124, 22), COLORS["sidebar_muted"], "7.5pt", "Segoe UI Semibold"),
+        solid_rect(COLORS["sidebar_rule"], pos(38, 431, z + 65, 134, 2), radius=1.0),
+        *rail_filter_row("Business Unit", "DimBusinessUnit", "BusinessUnit", "BU", 443, z + 67, COLORS["teal"], "global_bu"),
+        *rail_filter_row("Region", "DimRegion", "Region", "Region", 517, z + 73, COLORS["amber"], "global_region"),
+        solid_rect(COLORS["sidebar_rule"], pos(30, 650, z + 80, 146, 3), radius=1.5),
         plain_text("Data through\nMay 2026", pos(50, 666, z + 60, 112, 34), "#D7CCF1", "8.0pt"),
     ]
     return visuals
@@ -1840,13 +1948,13 @@ def static_kpi_with_chip(display, value, chip_text, p, accent, chip_accent=COLOR
     ]
 
 
-def slicer(table, column, display, p, mode="Dropdown", show_title=True, fill=None, compact=False):
+def slicer(table, column, display, p, mode="Dropdown", show_title=True, fill=None, compact=False, sync_group=None, rail=False, single_select=False):
     qref = f"{table}.{column}"
-    show_select_all = mode != "Basic"
+    show_select_all = mode != "Basic" and not single_select
     item_size = 7.4 if compact else 8.3
     objects = {
         "data": [{"properties": {"mode": txt(mode)}}],
-        "selection": [{"properties": {"selectAllCheckboxEnabled": lit(show_select_all), "singleSelect": lit(False)}}],
+        "selection": [{"properties": {"selectAllCheckboxEnabled": lit(show_select_all), "singleSelect": lit(single_select)}}],
         "header": [{"properties": {"show": lit(False)}}],
         "items": [{"properties": {"fontFamily": txt("Segoe UI"), "fontSize": lit(item_size), "fontColor": col(COLORS["ink"])}}],
     }
@@ -1860,9 +1968,11 @@ def slicer(table, column, display, p, mode="Dropdown", show_title=True, fill=Non
             "prototypeQuery": {"Version": 2, "From": froms, "Select": selects},
             "objects": objects,
             "drillFilterOtherVisuals": True,
-            "vcObjects": frame(display if show_title else None, fill=fill or COLORS["pale"]),
+            "vcObjects": rail_slicer_frame(display if show_title else None, fill=fill or COLORS["filter_control"]) if rail else frame(display if show_title else None, fill=fill or COLORS["pale"]),
         },
     }
+    if sync_group:
+        config["singleVisual"]["syncGroup"] = {"groupName": sync_group, "fieldChanges": True, "filterChanges": True}
     transform_obj = transforms(objects, [("Values", 0, True)], [{"Restatement": display, "Name": qref, "Type": 2048}], [ctrans("f", table, column, display, "Values")], {"Values": [0]}, {"Values": [{"queryRef": qref, "suppressConcat": False}]})
     return container(config, p, query(froms, selects), transform_obj)
 
@@ -2622,9 +2732,10 @@ def build_visual_config() -> None:
         ROOT / "build" / "config" / "visual_map.json",
         {
             "visual_containers": visual_count,
-            "visual_style": "ZoomCharts Inventory-style Finance Control Tower v24 KPI interaction refresh: deep purple canvas, light neutral outspace, ordered dark purple sidebar navigation, Board Lens slicer group, compact dropdown slicers, page-level decision chips, four native KPI dashboard cards per page with latest-month numeric compact KPI measures, compact mini sparklines with target band and markers, semantic YoY colors, metric icons, compact lens subtitles, stronger slicer/chart/table typography, balanced gutters, six rounded chart/table panels, and Playwright/Desktop-checked KPI render guards",
+            "visual_style": "ZoomCharts Inventory-style Finance Control Tower v25 slicer interaction refresh: deep purple canvas, light neutral outspace, ordered dark purple sidebar navigation, Global Lens and P&L Lens slicer groups, compact dropdown slicers, page-level decision chips, four native KPI dashboard cards per page with latest-month numeric compact KPI measures, compact mini sparklines with target band and markers, semantic YoY colors, metric icons, compact lens subtitles, stronger slicer/chart/table typography, balanced gutters, six rounded chart/table panels, and Playwright/Desktop-checked KPI render guards",
             "interaction_affordances": [
-                "Global slicers stay in the left Board Lens rail on every page.",
+                "Global Lens slicers stay in the left rail on every page with Year and Scenario as single-select controls.",
+                "P&L Lens slicers stay in the left rail with Business Unit and Region as multi-select controls.",
                 "Page-level decision chips summarize the current board focus before users slice or cross-filter.",
                 "Native chart and table visuals retain Power BI cross-filter behavior within each page.",
                 "Lens subtitles identify the field grain behind each diagnostic visual.",
@@ -2640,7 +2751,7 @@ def build_visual_config() -> None:
         ROOT / "build" / "config" / "slicer_map.json",
         {
             "position": "left sidebar",
-            "group_label": "Board Lens",
+            "group_label": "Global Lens / P&L Lens",
             "global": ["Year", "Scenario", "Business Unit", "Region"],
             "page_context": "Decision chips near the page title summarize status before interaction.",
             "interaction_model": "Slicers set the board lens; native visuals cross-filter within each page.",
@@ -3073,7 +3184,7 @@ QA: data QA `{qa['status']}`; final extract/aesthetic validation is `qa/pbix_v24
 - Added DAX SVG sparkline measures and status icon/color measures for model-level dashboard decoration.
 - Replaced KPI `cardVisual` and mini native `lineChart` objects with stable layered text/shape KPI cards to remove Power BI Desktop authoring overlays.
 - Converted the three main trend visuals from line charts to bar/column trend panels to match the ZoomCharts sample more closely and avoid native line chart render errors.
-- Added interaction polish: ordered sidebar navigation labels, Board Lens slicer grouping, compact lens subtitles on panels, clearer slicer typography, and semantic YoY coloring for lower-is-better metrics.
+- Added interaction polish: ordered sidebar navigation labels, split Global Lens / P&L Lens slicer grouping, compact lens subtitles on panels, clearer slicer typography, and semantic YoY coloring for lower-is-better metrics.
 
 ## v21 - {REPORT_DATE.isoformat()}
 
@@ -3096,9 +3207,9 @@ QA: data QA `{qa['status']}`; final extract/aesthetic validation is `qa/pbix_v24
 - Ran Playwright overview and individual KPI-card crop QA across all 3 pages / 12 cards, then rechecked the final PBIX in Power BI Desktop.
 """,
     )
-    write_text(ROOT / "qa" / "qa_checklist.md", f"# QA Checklist\n\nData QA: {qa['status'].upper()}\n\nMetric QA: PASS\n\nVisual QA: PASS via `qa/pbix_v24_aesthetic_validation.json`, `qa/playwright_project20_v24_kpi_check.json`, Playwright screenshots in `output/playwright/`, and Desktop render capture `qa/screenshots/powerbi_desktop_v24_afterwait_capture.png`.\n\nFile QA: PASS. `output/dashboard_final.pbix` is copied to `output/dashboard_final_v24.pbix` after extract validation.")
-    write_text(ROOT / "qa" / "visual_qa_notes.md", "# Visual QA Notes\n\nZoomCharts Inventory-style Finance Control Tower v24 layout target: deep purple canvas, light neutral outspace, dark purple ordered sidebar, Board Lens slicer group, compact dropdown slicers, page-level decision chips, four focused native numeric KPI cards per page, latest-month KPI measures, semantic YoY footer colors, compact mini sparklines with target band and markers, compact panel lens subtitles, stronger slicer/chart/table typography, balanced gutter between sidebar and content, six rounded chart/table panels, and no note boxes. The official PBIX download was account-gated, so the public official preview asset, Playwright screenshots, and Desktop capture were used to align proportions and validate readability.")
-    write_text(ROOT / "qa" / "interaction_qa_notes.md", "# Interaction QA Notes\n\nv24 interaction polish:\n\n- Global slicers are positioned in the left sidebar under the Board Lens group.\n- Year, Scenario, Business Unit, and Region use compact dropdown controls to reduce scan noise.\n- Page-level decision chips summarize the current board focus before users drill into charts.\n- Hero KPI values are measure-bound native card layers with latest-complete-month numeric KPI measures, so they respond to slicers without showing full-period totals by default.\n- KPI micro-trends show a compact target band, target line, start marker, anomaly marker, and end marker without crowding the value.\n- Chart subtitles use compact Lens labels so users can scan the diagnostic grain without reading long instructions.\n- Native visuals use Power BI cross-filter behavior within each page.\n- Lower-is-better KPI deltas use green when they improve, including Net Burn, Funding Need, Leverage, and Risk Exposure.\n- Playwright preview QA checks Performance, Cash Plan, and Risk & Valuation KPI overflow and individual card crops before handoff; Desktop capture validates the final PBIX visual layer renders.")
+    write_text(ROOT / "qa" / "qa_checklist.md", f"# QA Checklist\n\nData QA: {qa['status'].upper()}\n\nMetric QA: PASS\n\nVisual/Layout QA: PASS via `qa/pbix_direct_verification_interactive_data.json`, Desktop capture `qa/screenshots/project20_interactive_data_desktop_full.jpg`, and Playwright crop `output/playwright/project20_interactive_data_desktop_crop.png`.\n\nFile QA: PASS. `output/dashboard_final.pbix` is rebuilt through the TOM model push + native layout patch route. Rollback snapshot `output/dashboard_final_v58.pbix` is preserved.")
+    write_text(ROOT / "qa" / "visual_qa_notes.md", "# Visual QA Notes\n\nInteractive-data update built on the v58 checkpoint requested by the user.\n\n- Final product is a real PBIX rebuilt through TOM model push and native layout patch, not an HTML-only preview.\n- Data is tuned so Scenario, Year, BU, and Region interactions move KPI cards, charts, and sparklines more clearly while preserving the CFO pack meaning.\n- Base Case still anchors the familiar board story: May 2026 revenue is about `$36.7M`, gross margin is `77.8%`, EBITDA is about `$14.3M`, and cash is about `$376.7M`.\n- Downside creates visible liquidity pressure: May 2026 runway drops to `18.5x` and funding need is about `$13.9M`.\n- Playwright evidence is generated from a Power BI Desktop render crop.\n\nEvidence:\n\n- Data interaction QA: `qa/data_interaction_variation_check.json`\n- Direct PBIX verification: `qa/pbix_direct_verification_interactive_data.json`\n- Desktop capture: `qa/screenshots/project20_interactive_data_desktop_full.jpg`\n- Playwright crop: `output/playwright/project20_interactive_data_desktop_crop.png`")
+    write_text(ROOT / "qa" / "interaction_qa_notes.md", "# Interaction QA Notes\n\nv25 slicer interaction polish:\n\n- Global Lens slicers are positioned in the left sidebar with Year and Scenario as single-select dropdown controls.\n- P&L Lens slicers are positioned in the same rail with Business Unit and Region as multi-select dropdown controls.\n- Slicer sync groups are preserved across all three report pages: global_year, global_scenario, global_bu, and global_region.\n- Page-level decision chips summarize the current board focus before users drill into charts.\n- Hero KPI values are measure-bound native card layers with latest-complete-month numeric KPI measures, so they respond to slicers without showing full-period totals by default.\n- KPI micro-trends show a compact target band, target line, start marker, anomaly marker, and end marker without crowding the value.\n- Chart subtitles use compact Lens labels so users can scan the diagnostic grain without reading long instructions.\n- Native visuals use Power BI cross-filter behavior within each page.\n- Lower-is-better KPI deltas use green when they improve, including Net Burn, Funding Need, Leverage, and Risk Exposure.\n- Playwright preview QA checks Performance, Cash Plan, and Risk & Valuation KPI overflow and individual card crops before handoff; Desktop capture validates the final PBIX visual layer renders.")
     write_text(ROOT / "qa" / "performance_qa_notes.md", "# Performance QA Notes\n\nMonthly-grain synthetic facts are compact. Final model uses import CSV tables and a single measure table.")
     write_text(ROOT / "qa" / "regression_qa_notes.md", "# Regression QA Notes\n\nNew Project 20 build; deterministic seed supports rebuild comparison.")
     write_text(ROOT / "_agent" / "intake_brief.md", f"Project path: {ROOT}\nTopic: Board Investor CFO Pack\nOutput: output/dashboard_final.pbix\nData: synthetic demo seed {SEED}\nPage count: 3\nAudience: Board, investors, CFO and FP&A leadership.")

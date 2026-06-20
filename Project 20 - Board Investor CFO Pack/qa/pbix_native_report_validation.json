@@ -2,11 +2,11 @@
     "status":  "passed",
     "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
     "final_pbix_created":  true,
-    "final_pbix_size":  4222365,
+    "final_pbix_size":  4214107,
     "pages":  [
                   "Performance",
                   "Cash Plan",
                   "Risk \u0026 Valuation"
               ],
-    "visual_containers":  150
+    "visual_containers":  174
 }

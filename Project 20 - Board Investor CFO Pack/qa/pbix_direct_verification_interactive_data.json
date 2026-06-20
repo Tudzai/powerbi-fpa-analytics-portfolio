@@ -1,0 +1,78 @@
+{
+  "status": "pass",
+  "pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+  "pbix_size": 4219365,
+  "pages": [
+    {
+      "name": "Performance",
+      "visual_containers": 58
+    },
+    {
+      "name": "Cash Plan",
+      "visual_containers": 58
+    },
+    {
+      "name": "Risk & Valuation",
+      "visual_containers": 58
+    }
+  ],
+  "visual_containers": 174,
+  "checks": {
+    "pbix_exists": true,
+    "pbix_size_gt_4mb": true,
+    "has_report_layout": true,
+    "page_count_is_3": true,
+    "visual_containers_gt_150": true,
+    "data_interaction_checks_pass": true
+  },
+  "data_interaction_check_file": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\qa\\data_interaction_variation_check.json",
+  "scenario_latest_cash": [
+    {
+      "ScenarioID": "Base",
+      "CashBalance": 376740521.62,
+      "FreeCashFlow": 13484322.5,
+      "NetBurn": 0.0,
+      "RunwayMonths": 99.0,
+      "FundingNeed": 0.0
+    },
+    {
+      "ScenarioID": "Upside",
+      "CashBalance": 514234798.71,
+      "FreeCashFlow": 22476762.46,
+      "NetBurn": 0.0,
+      "RunwayMonths": 99.0,
+      "FundingNeed": 0.0
+    },
+    {
+      "ScenarioID": "Downside",
+      "CashBalance": 46852694.95,
+      "FreeCashFlow": -2530945.22,
+      "NetBurn": 2530945.22,
+      "RunwayMonths": 18.5,
+      "FundingNeed": 13889990.44
+    }
+  ],
+  "scenario_latest_pnl": [
+    {
+      "ScenarioID": "Base",
+      "Revenue": 36695726.18,
+      "GrossProfit": 28530928.85,
+      "EBITDA": 14261904.93,
+      "GrossMarginPct": 0.7775
+    },
+    {
+      "ScenarioID": "Downside",
+      "Revenue": 27563149.79,
+      "GrossProfit": 19363203.7,
+      "EBITDA": 5977799.12,
+      "GrossMarginPct": 0.7025
+    },
+    {
+      "ScenarioID": "Upside",
+      "Revenue": 45656011.53,
+      "GrossProfit": 37777041.24,
+      "EBITDA": 23192420.45,
+      "GrossMarginPct": 0.8274
+    }
+  ]
+}
