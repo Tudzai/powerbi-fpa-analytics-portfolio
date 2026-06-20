@@ -7,9 +7,9 @@ Tabs:
 - Cash Plan
 - Risk & Valuation
 
-Template: ZoomCharts Inventory-style Finance Control Tower v10 official-preview aligned.
+Template: ZoomCharts Inventory-style Finance Control Tower v24 KPI interaction refresh / Playwright + Desktop checked.
 
-Design: deep purple canvas, light neutral Power BI outspace, dark left sidebar, visible Year/Scenario list slicers, BU/Region dropdown slicers, KPI dashboard cards with metric icon badges, DAX SVG decoration measures in the semantic model, stable drawn mini sparklines on the canvas, progress bars, colored high/low/current markers, PY/YoY footers, rounded chart/table panels, and no note boxes. The main grid was rescaled from the official ZoomCharts preview asset after the PBIX download endpoint returned account-gated HTML.
+Design: deep purple canvas, light neutral Power BI outspace, dark left sidebar, compact dropdown slicers, 4-card KPI strip per page, native latest-month KPI measures, metric icon badges, compact mini sparklines with target band and markers, PY/YoY footers, rounded chart/table panels, and no note boxes. The main grid was rescaled from the official ZoomCharts preview asset after the PBIX download endpoint returned account-gated HTML.
 
 Latest complete month: May 2026
 Revenue: $36.5M

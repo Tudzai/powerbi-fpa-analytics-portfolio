@@ -1,6 +1,12 @@
 {
-  "visual_containers": 711,
-  "visual_style": "ZoomCharts Inventory-style Finance Control Tower v14 aesthetic pass: deep purple canvas, light neutral outspace, dark purple left sidebar, Year/Scenario visible list slicers, BU/Region dropdown slicers, KPI dashboard cards with metric icons, DAX SVG decoration measures in the model, stable drawn mini sparklines on the canvas, progress bars, colored markers, PY/YoY footers, balanced gutters, six rounded chart/table panels, and no memo note boxes",
+  "visual_containers": 150,
+  "visual_style": "ZoomCharts Inventory-style Finance Control Tower v24 KPI interaction refresh: deep purple canvas, light neutral outspace, ordered dark purple sidebar navigation, Board Lens slicer group, compact dropdown slicers, page-level decision chips, four native KPI dashboard cards per page with latest-month numeric compact KPI measures, compact mini sparklines with target band and markers, semantic YoY colors, metric icons, compact lens subtitles, stronger slicer/chart/table typography, balanced gutters, six rounded chart/table panels, and Playwright/Desktop-checked KPI render guards",
+  "interaction_affordances": [
+    "Global slicers stay in the left Board Lens rail on every page.",
+    "Page-level decision chips summarize the current board focus before users slice or cross-filter.",
+    "Native chart and table visuals retain Power BI cross-filter behavior within each page.",
+    "Lens subtitles identify the field grain behind each diagnostic visual."
+  ],
   "chart_contracts": [
     {
       "page": "Performance",

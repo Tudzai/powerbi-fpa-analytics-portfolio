@@ -1,0 +1,272 @@
+{
+  "status": "pass",
+  "pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+  "pbix_size": 4222365,
+  "visual_containers": 150,
+  "target_tables": [
+    {
+      "page": "Performance",
+      "title": "'Board KPI Details'",
+      "qrefs": [
+        "FactKpiScorecard.MetricName",
+        "FactKpiScorecard.ActualDisplay",
+        "FactKpiScorecard.VarianceDisplay",
+        "FactKpiScorecard.Status",
+        "KPI_Measures.Board KPI Trend SVG"
+      ],
+      "has_svg_column": true,
+      "column_width_count": 5,
+      "alignment_count": 5,
+      "header_fill_set": true,
+      "banded_rows_set": true,
+      "row_padding": "5L",
+      "image_height": "24L",
+      "image_width": "66L"
+    },
+    {
+      "page": "Cash Plan",
+      "title": "'3-Statement Summary'",
+      "qrefs": [
+        "FactStatementLines.Statement",
+        "FactStatementLines.LineItem",
+        "KPI_Measures.Statement Actual",
+        "KPI_Measures.Statement Plan",
+        "KPI_Measures.Statement Variance %",
+        "KPI_Measures.Statement Trend SVG"
+      ],
+      "has_svg_column": true,
+      "column_width_count": 6,
+      "alignment_count": 6,
+      "header_fill_set": true,
+      "banded_rows_set": true,
+      "row_padding": "5L",
+      "image_height": "24L",
+      "image_width": "66L"
+    },
+    {
+      "page": "Risk & Valuation",
+      "title": "'Risk Register'",
+      "qrefs": [
+        "FactRiskRegister.Risk",
+        "FactRiskRegister.Severity",
+        "FactRiskRegister.BoardAsk",
+        "KPI_Measures.Risk Exposure",
+        "KPI_Measures.Risk Signal SVG"
+      ],
+      "has_svg_column": true,
+      "column_width_count": 5,
+      "alignment_count": 5,
+      "header_fill_set": true,
+      "banded_rows_set": true,
+      "row_padding": "5L",
+      "image_height": "24L",
+      "image_width": "66L"
+    }
+  ],
+  "charts": [
+    {
+      "page": "Performance",
+      "title": "'Revenue vs Plan + EBITDA Trend'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Performance",
+      "title": "'Revenue Mix by Region'",
+      "type": "donutChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Performance",
+      "title": "'Revenue by Business Unit'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Performance",
+      "title": "'Revenue vs Plan by BU'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Performance",
+      "title": "'EBITDA by BU'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Cash Plan",
+      "title": "'Cash Balance + Funding Need Trend'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Cash Plan",
+      "title": "'Funding Need by Scenario'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Cash Plan",
+      "title": "'Runway by Scenario'",
+      "type": "barChart",
+      "label_units": 0.0,
+      "axis_units": 0.0
+    },
+    {
+      "page": "Cash Plan",
+      "title": "'Opex by Cost Category'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Cash Plan",
+      "title": "'Free Cash Flow by Scenario'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Risk & Valuation",
+      "title": "'Valuation Range by Method'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Risk & Valuation",
+      "title": "'Risk Exposure by Severity'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Risk & Valuation",
+      "title": "'Covenant Headroom Trend'",
+      "type": "barChart",
+      "label_units": 0.0,
+      "axis_units": 0.0
+    },
+    {
+      "page": "Risk & Valuation",
+      "title": "'Sensitivity Impact'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    },
+    {
+      "page": "Risk & Valuation",
+      "title": "'Risk Exposure by Owner'",
+      "type": "barChart",
+      "label_units": 1000000.0,
+      "axis_units": 1000000.0
+    }
+  ],
+  "sidebar_slicers": [
+    {
+      "page": "Performance",
+      "x": 30,
+      "y": 274,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    },
+    {
+      "page": "Performance",
+      "x": 30,
+      "y": 368,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    },
+    {
+      "page": "Performance",
+      "x": 30,
+      "y": 460,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    },
+    {
+      "page": "Performance",
+      "x": 30,
+      "y": 552,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    },
+    {
+      "page": "Cash Plan",
+      "x": 30,
+      "y": 274,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    },
+    {
+      "page": "Cash Plan",
+      "x": 30,
+      "y": 368,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    },
+    {
+      "page": "Cash Plan",
+      "x": 30,
+      "y": 460,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    },
+    {
+      "page": "Cash Plan",
+      "x": 30,
+      "y": 552,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    },
+    {
+      "page": "Risk & Valuation",
+      "x": 30,
+      "y": 274,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    },
+    {
+      "page": "Risk & Valuation",
+      "x": 30,
+      "y": 368,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    },
+    {
+      "page": "Risk & Valuation",
+      "x": 30,
+      "y": 460,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    },
+    {
+      "page": "Risk & Valuation",
+      "x": 30,
+      "y": 552,
+      "w": 146,
+      "h": 42,
+      "mode": "'Dropdown'"
+    }
+  ],
+  "issues": []
+}

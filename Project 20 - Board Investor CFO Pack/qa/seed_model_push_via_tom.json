@@ -1,8 +1,8 @@
 ﻿{
     "status":  "model_pushed_via_tom",
-    "target_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_model_seed_v18.pbix",
-    "port":  51579,
-    "process_id":  29912,
+    "target_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_model_seed.pbix",
+    "port":  64076,
+    "process_id":  14840,
     "table_count":  15,
     "relationship_count":  16
 }

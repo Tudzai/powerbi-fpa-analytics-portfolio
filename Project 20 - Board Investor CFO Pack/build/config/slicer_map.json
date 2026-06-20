@@ -1,9 +1,12 @@
 {
   "position": "left sidebar",
+  "group_label": "Board Lens",
   "global": [
     "Year",
     "Scenario",
     "Business Unit",
     "Region"
-  ]
+  ],
+  "page_context": "Decision chips near the page title summarize status before interaction.",
+  "interaction_model": "Slicers set the board lens; native visuals cross-filter within each page."
 }
