@@ -1,0 +1,104 @@
+{
+  "status": "pass",
+  "pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+  "size": 4219365,
+  "pages": [
+    "Performance",
+    "Cash Plan",
+    "Risk & Valuation"
+  ],
+  "visual_containers": 174,
+  "sidebar_slicers": 12,
+  "sync_group_counts": {
+    "global_year": 3,
+    "global_scenario": 3,
+    "global_bu": 3,
+    "global_region": 3
+  },
+  "rail_label_keys_seen": [
+    "Business Unit",
+    "Data through",
+    "Global Lens",
+    "P&L Lens",
+    "Region",
+    "Scenario",
+    "Year"
+  ],
+  "selection_policy": {
+    "Year": "single-select",
+    "Scenario": "single-select",
+    "Business Unit": "multi-select",
+    "Region": "multi-select"
+  },
+  "sample_slicers": [
+    {
+      "page": "Performance",
+      "field": "DimDate.Year",
+      "x": 34,
+      "y": 282,
+      "z": 56,
+      "width": 142,
+      "height": 42,
+      "mode": "'Dropdown'",
+      "singleSelect": "true",
+      "selectAllCheckboxEnabled": "false",
+      "syncGroup": "global_year",
+      "syncFieldChanges": true,
+      "syncFilterChanges": true,
+      "fill": "'#ECE4FA'",
+      "borderRadius": "6.0D"
+    },
+    {
+      "page": "Performance",
+      "field": "DimScenario.ScenarioName",
+      "x": 34,
+      "y": 356,
+      "z": 62,
+      "width": 142,
+      "height": 42,
+      "mode": "'Dropdown'",
+      "singleSelect": "true",
+      "selectAllCheckboxEnabled": "false",
+      "syncGroup": "global_scenario",
+      "syncFieldChanges": true,
+      "syncFilterChanges": true,
+      "fill": "'#ECE4FA'",
+      "borderRadius": "6.0D"
+    },
+    {
+      "page": "Performance",
+      "field": "DimBusinessUnit.BusinessUnit",
+      "x": 34,
+      "y": 463,
+      "z": 70,
+      "width": 142,
+      "height": 42,
+      "mode": "'Dropdown'",
+      "singleSelect": "false",
+      "selectAllCheckboxEnabled": "true",
+      "syncGroup": "global_bu",
+      "syncFieldChanges": true,
+      "syncFilterChanges": true,
+      "fill": "'#ECE4FA'",
+      "borderRadius": "6.0D"
+    },
+    {
+      "page": "Performance",
+      "field": "DimRegion.Region",
+      "x": 34,
+      "y": 537,
+      "z": 76,
+      "width": 142,
+      "height": 42,
+      "mode": "'Dropdown'",
+      "singleSelect": "false",
+      "selectAllCheckboxEnabled": "true",
+      "syncGroup": "global_region",
+      "syncFieldChanges": true,
+      "syncFilterChanges": true,
+      "fill": "'#ECE4FA'",
+      "borderRadius": "6.0D"
+    }
+  ],
+  "issues": []
+}

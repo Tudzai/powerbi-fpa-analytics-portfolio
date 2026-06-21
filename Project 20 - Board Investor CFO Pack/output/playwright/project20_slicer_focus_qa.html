@@ -1,0 +1,164 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Project 20 Slicer Focus QA</title>
+<style>
+  body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: #241044; color: #f4efff; }
+  .wrap { width: 1360px; padding: 24px; display: grid; grid-template-columns: 820px 1fr; gap: 22px; }
+  .panel { background: #f2edf8; color: #211a32; border-radius: 8px; box-shadow: 0 14px 32px rgba(0,0,0,.32); overflow: hidden; }
+  .panel h2 { margin: 0; padding: 14px 16px 8px; font-size: 18px; letter-spacing: 0; }
+  .panel p { margin: 0; padding: 0 16px 12px; color: #615870; font-size: 13px; }
+  .overview img { width: 100%; display: block; }
+  .crop { height: 560px; background-image: url('../../qa/screenshots/project20_slicer_focus_desktop_full.jpg'); background-size: 1445px 857px; background-position: -84px -468px; background-repeat: no-repeat; border-top: 1px solid #d8cdec; }
+  .meta { padding: 0 16px 16px; display: grid; gap: 10px; }
+  .status { display: inline-block; padding: 6px 10px; border-radius: 6px; background: #e8f5ed; color: #1c6b3d; font-weight: 700; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .card { background: #fff; border: 1px solid #d8cdec; border-radius: 7px; padding: 10px; min-height: 58px; }
+  .card b { display:block; font-size: 12px; color:#625574; margin-bottom:4px; }
+  .card span { font-size: 18px; font-weight: 700; color:#211a32; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #d8cdec; border-radius: 7px; overflow: hidden; }
+  th, td { text-align: left; padding: 8px 9px; border-bottom: 1px solid #eee8f7; font-size: 12px; }
+  th { color:#5c4c72; background:#eee7f8; }
+  tr:last-child td { border-bottom: 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="panel overview">
+    <h2>Desktop Overview Render</h2>
+    <p>Captured from the final PBIX opened in Power BI Desktop.</p>
+    <img src="../../qa/screenshots/project20_slicer_focus_desktop_full.jpg" alt="Power BI Desktop overview" />
+  </section>
+  <section class="panel">
+    <h2>Slicer Rail Focus + PBIX Metadata</h2>
+    <p>Viewport crop plus direct /Report/Layout verification from dashboard_final.pbix.</p>
+    <div class="crop"></div>
+    <div class="meta" id="meta"></div>
+  </section>
+</div>
+<script id="qa" type="application/json">
+{
+  "status": "pass",
+  "pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+  "size": 4219365,
+  "pages": [
+    "Performance",
+    "Cash Plan",
+    "Risk & Valuation"
+  ],
+  "visual_containers": 174,
+  "sidebar_slicers": 12,
+  "sync_group_counts": {
+    "global_year": 3,
+    "global_scenario": 3,
+    "global_bu": 3,
+    "global_region": 3
+  },
+  "rail_label_keys_seen": [
+    "Business Unit",
+    "Data through",
+    "Global Lens",
+    "P&L Lens",
+    "Region",
+    "Scenario",
+    "Year"
+  ],
+  "selection_policy": {
+    "Year": "single-select",
+    "Scenario": "single-select",
+    "Business Unit": "multi-select",
+    "Region": "multi-select"
+  },
+  "sample_slicers": [
+    {
+      "page": "Performance",
+      "field": "DimDate.Year",
+      "x": 34,
+      "y": 282,
+      "z": 56,
+      "width": 142,
+      "height": 42,
+      "mode": "'Dropdown'",
+      "singleSelect": "true",
+      "selectAllCheckboxEnabled": "false",
+      "syncGroup": "global_year",
+      "syncFieldChanges": true,
+      "syncFilterChanges": true,
+      "fill": "'#ECE4FA'",
+      "borderRadius": "6.0D"
+    },
+    {
+      "page": "Performance",
+      "field": "DimScenario.ScenarioName",
+      "x": 34,
+      "y": 356,
+      "z": 62,
+      "width": 142,
+      "height": 42,
+      "mode": "'Dropdown'",
+      "singleSelect": "true",
+      "selectAllCheckboxEnabled": "false",
+      "syncGroup": "global_scenario",
+      "syncFieldChanges": true,
+      "syncFilterChanges": true,
+      "fill": "'#ECE4FA'",
+      "borderRadius": "6.0D"
+    },
+    {
+      "page": "Performance",
+      "field": "DimBusinessUnit.BusinessUnit",
+      "x": 34,
+      "y": 463,
+      "z": 70,
+      "width": 142,
+      "height": 42,
+      "mode": "'Dropdown'",
+      "singleSelect": "false",
+      "selectAllCheckboxEnabled": "true",
+      "syncGroup": "global_bu",
+      "syncFieldChanges": true,
+      "syncFilterChanges": true,
+      "fill": "'#ECE4FA'",
+      "borderRadius": "6.0D"
+    },
+    {
+      "page": "Performance",
+      "field": "DimRegion.Region",
+      "x": 34,
+      "y": 537,
+      "z": 76,
+      "width": 142,
+      "height": 42,
+      "mode": "'Dropdown'",
+      "singleSelect": "false",
+      "selectAllCheckboxEnabled": "true",
+      "syncGroup": "global_region",
+      "syncFieldChanges": true,
+      "syncFilterChanges": true,
+      "fill": "'#ECE4FA'",
+      "borderRadius": "6.0D"
+    }
+  ],
+  "issues": []
+}
+</script>
+<script>
+const qa = JSON.parse(document.getElementById('qa').textContent);
+const rows = qa.sample_slicers || [];
+document.getElementById('meta').innerHTML = `
+  <div><span class="status">${qa.status.toUpperCase()}</span></div>
+  <div class="grid">
+    <div class="card"><b>Sidebar slicers</b><span>${qa.sidebar_slicers}</span></div>
+    <div class="card"><b>Visual containers</b><span>${qa.visual_containers}</span></div>
+    <div class="card"><b>Sync groups</b><span>${Object.keys(qa.sync_group_counts).length}</span></div>
+    <div class="card"><b>Issues</b><span>${qa.issues.length}</span></div>
+  </div>
+  <table>
+    <thead><tr><th>Field</th><th>Mode</th><th>Select</th><th>Sync</th></tr></thead>
+    <tbody>${rows.map(r => `<tr><td>${r.field.replace('Dim','')}</td><td>${r.mode}</td><td>${r.singleSelect === 'true' ? 'single' : 'multi'}</td><td>${r.syncGroup}</td></tr>`).join('')}</tbody>
+  </table>
+`;
+</script>
+</body>
+</html>
