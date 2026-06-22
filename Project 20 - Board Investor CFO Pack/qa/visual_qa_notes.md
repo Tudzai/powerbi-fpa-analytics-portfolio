@@ -1,16 +1,16 @@
 # Visual QA Notes
 
-v66 focuses on the sidebar slicer alignment and the Current Lens card fit.
+v67 fixes the visible signature issue after the user reported that the v66 change was hard to see in Power BI Desktop.
 
-- Final product is a real PBIX rebuilt through the TOM model push and native layout patch route, not an HTML-only preview.
-- All 12 global sidebar slicers across the 3 pages now use a `150x40` dropdown container, centered item alignment, and `8.1` pt item typography.
-- Current Lens is enlarged to a `164x62` visual frame with a `154x52` SVG image, so the lens content has more breathing room inside the lower sidebar.
-- Sidebar signature remains the compact `FC` / `Finance Control` mark; the previous `TDAT`, `AT Signature`, and Portfolio Signature visual artifacts are absent from the final PBIX layout.
-- The final PBIX model was re-saved through TOM before the final layout patch, and the extracted PBIX model confirms `Lens Summary SVG` now uses `width='154' height='52' viewBox='0 0 154 52'`.
+- Final product is a real PBIX patched through the native layout route, not an HTML-only preview.
+- The sidebar signature now uses a larger `58x52` logo block, wider `FC` text box, and `15.5pt` `FC` typography so the mark no longer renders like a clipped single letter.
+- The `Finance Control` label was shifted right to avoid crowding the larger mark.
+- The v66 slicer and Current Lens improvements are preserved: all 12 sidebar slicers are `150x40` with centered item alignment, and Current Lens remains `164x62` with a `154x52` SVG.
+- File Explorer can be misleading because old snapshots such as `dashboard_final_v65_alignment_lens.pbix` may sit near the final file; use `output/dashboard_final.pbix` or the v67 snapshot for review.
 
 Evidence:
 
-- Direct PBIX verification: `qa/pbix_direct_verification_v66_slicer_lens_fit.json`
-- Model push verification: `qa/seed_model_push_via_tom.json`
-- Playwright visual crop: `output/playwright/project20_v66_slicer_lens_preview.png`
-- Snapshot PBIX: `output/dashboard_final_v66_slicer_lens_fit.pbix`
+- Direct PBIX verification: `qa/pbix_direct_verification_v67_signature_visible.json`
+- Desktop render crop: `output/playwright/project20_v67_signature_crop.jpg`
+- Playwright QA crop: `output/playwright/project20_v67_signature_slicer_preview.png`
+- Snapshot PBIX: `output/dashboard_final_v67_signature_visible.pbix`

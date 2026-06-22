@@ -2141,10 +2141,10 @@ def rail_filter_row(label, table, column, display, y, z, accent, sync_name, sing
 
 def sidebar_signature(z):
     return [
-        solid_rect("#1B0A30", pos(32, 21, z + 1, 44, 44), radius=9.0),
-        solid_rect("#6EE4CF", pos(40, 51, z + 2, 26, 3), radius=1.5),
-        solid_rect("#E9BF72", pos(62, 48, z + 3, 6, 6), radius=3.0),
-        plain_text("FC", pos(41, 30, z + 4, 34, 28), "#F8FBFF", "13.0pt", "Segoe UI Semibold"),
+        solid_rect("#1B0A30", pos(28, 18, z + 1, 58, 52), radius=11.0),
+        solid_rect("#6EE4CF", pos(39, 57, z + 2, 34, 3.5), radius=1.8),
+        solid_rect("#E9BF72", pos(69, 52, z + 3, 8, 8), radius=4.0),
+        plain_text("FC", pos(38, 29, z + 4, 48, 32), "#F8FBFF", "15.5pt", "Segoe UI Semibold"),
     ]
 
 
@@ -2157,7 +2157,7 @@ def sidebar_shell(page_title, active_label, z, context_items=None):
     visuals = [
         shape(COLORS["sidebar"], pos(14, 8, z, 176, 700)),
         *sidebar_signature(z),
-        plain_text("Finance\nControl", pos(82, 28, z + 6, 88, 46), "#F8FBFF", "8.1pt", "Segoe UI Semibold"),
+        plain_text("Finance\nControl", pos(96, 29, z + 6, 78, 46), "#F8FBFF", "8.1pt", "Segoe UI Semibold"),
         plain_text("FP20", pos(1132, 11, z + 3, 48, 24), "#E6DDF8", "9pt"),
         plain_text("Board CFO Pack", pos(1178, 11, z + 4, 98, 24), "#E6DDF8", "8pt"),
         textbox(page_title, "", pos(204, 16, z + 5, 400, 30)),
