@@ -29,6 +29,12 @@ LATEST_MONTH = pd.Timestamp("2026-05-01")
 MONTHS = pd.date_range(START_MONTH, LATEST_MONTH, freq="MS")
 MEASURE_TABLE = "KPI_Measures"
 
+PAGE_SECTION_NAMES = {
+    "Performance": "ReportSectionPerformance",
+    "Cash Plan": "ReportSectionCashPlan",
+    "Risk & Valuation": "ReportSectionRiskValuation",
+}
+
 COLORS = {
     "bg": "#463793",
     "paper": "#F4EDF9",
@@ -796,20 +802,41 @@ def selected_scenario_max(table: str, column: str) -> str:
     return f'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX({table}[{column}]), {table}[ScenarioID] = ScenarioID)'
 
 
+def selected_latest_month_dax() -> str:
+    return (
+        "MAXX("
+        "CALCULATETABLE("
+        "VALUES(DimDate[MonthStart]), "
+        "ALLSELECTED(DimDate), "
+        "REMOVEFILTERS(DimDate[IsLatestCompleteMonth])"
+        "), "
+        "DimDate[MonthStart]"
+        ")"
+    )
+
+
+def selected_month_filter() -> str:
+    return "FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth)"
+
+
+def selected_scenario_latest_max(table: str, column: str) -> str:
+    return f'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") VAR LatestMonth = {selected_latest_month_dax()} RETURN CALCULATE(MAX({table}[{column}]), {table}[ScenarioID] = ScenarioID, {selected_month_filter()})'
+
+
 def latest_period_value(measure: str) -> str:
-    return f'VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1) RETURN CALCULATE([{measure}], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))'
+    return f'VAR LatestMonth = {selected_latest_month_dax()} RETURN CALCULATE([{measure}], {selected_month_filter()})'
 
 
 def prior_year_value(measure: str) -> str:
-    return f'VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1) VAR PriorMonth = EDATE(LatestMonth, -12) RETURN CALCULATE([{measure}], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))'
+    return f'VAR LatestMonth = {selected_latest_month_dax()} VAR PriorMonth = EDATE(LatestMonth, -12) RETURN CALCULATE([{measure}], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))'
 
 
 def py_display(measure: str, fmt: str) -> str:
-    return f'VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1) VAR PriorMonth = EDATE(LatestMonth, -12) VAR PriorValue = CALCULATE([{measure}], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth)) RETURN FORMAT(PriorValue, "{fmt}")'
+    return f'VAR LatestMonth = {selected_latest_month_dax()} VAR PriorMonth = EDATE(LatestMonth, -12) VAR PriorValue = CALCULATE([{measure}], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth)) RETURN IF(ISBLANK(PriorValue), "n/a", FORMAT(PriorValue, "{fmt}"))'
 
 
 def yoy_display(measure: str, mode: str = "percent", favorable: str = "higher") -> str:
-    diff = f'VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1) VAR PriorMonth = EDATE(LatestMonth, -12) VAR CurrentValue = CALCULATE([{measure}], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth)) VAR PriorValue = CALCULATE([{measure}], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth)) VAR ChangeValue = CurrentValue - PriorValue '
+    diff = f'VAR LatestMonth = {selected_latest_month_dax()} VAR PriorMonth = EDATE(LatestMonth, -12) VAR CurrentValue = CALCULATE([{measure}], {selected_month_filter()}) VAR PriorValue = CALCULATE([{measure}], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth)) VAR ChangeValue = CurrentValue - PriorValue '
     if mode == "points":
         delta = 'VAR DeltaLabel = FORMAT(ChangeValue * 100, "+0.0;-0.0;0.0") & "pt" '
         icon = 'VAR IconValue = IF(ChangeValue >= 0, UNICHAR(9650), UNICHAR(9660)) '
@@ -821,7 +848,7 @@ def yoy_display(measure: str, mode: str = "percent", favorable: str = "higher") 
         icon = 'VAR IconValue = IF(RateValue >= 0, UNICHAR(9650), UNICHAR(9660)) '
     if favorable == "lower":
         icon = icon.replace(">= 0", "<= 0")
-    return diff + delta + icon + 'RETURN IconValue & " " & DeltaLabel'
+    return diff + delta + icon + 'RETURN IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), "n/a", IconValue & " " & DeltaLabel)'
 
 
 def status_color(measure: str, amber_floor: float, red_is_lower: bool = True) -> str:
@@ -833,7 +860,7 @@ def status_color(measure: str, amber_floor: float, red_is_lower: bool = True) ->
 def svg_sparkline(measure: str, color: str, favorable: str = "higher") -> str:
     encoded_color = color.replace("#", "%23")
     improved_test = "LastValue <= FirstValue" if favorable == "lower" else "LastValue >= FirstValue"
-    return f'''VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)
+    return f'''VAR LatestMonth = {selected_latest_month_dax()}
 VAR MonthTable =
     ADDCOLUMNS(
         FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),
@@ -909,23 +936,23 @@ def svg_kpi_card(title: str, measure: str, color: str, value_format: str, scale:
     improved_test = "LastValue <= FirstValue" if favorable == "lower" else "LastValue >= FirstValue"
     yoy_good_test = "ChangeValue <= 0" if favorable == "lower" else "ChangeValue >= 0"
     if yoy_mode == "points":
-        yoy_text = 'VAR YoYTextRaw = FORMAT(ChangeValue * 100, "+0.0;-0.0;0.0") & "pt"'
+        yoy_text = 'VAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), "n/a", FORMAT(ChangeValue * 100, "+0.0;-0.0;0.0") & "pt")'
     elif yoy_mode == "multiple":
-        yoy_text = 'VAR YoYTextRaw = FORMAT(ChangeValue, "+0.0x;-0.0x;0.0x")'
+        yoy_text = 'VAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), "n/a", FORMAT(ChangeValue, "+0.0x;-0.0x;0.0x"))'
     else:
-        yoy_text = 'VAR RateValue = DIVIDE(ChangeValue, ABS(PriorValue))\nVAR YoYTextRaw = FORMAT(RateValue, "+0.0%;-0.0%;0.0%")'
-    return f'''VAR LatestMonth = CALCULATE(MAX(DimDate[MonthStart]), ALL(DimDate), DimDate[IsLatestCompleteMonth] = 1)
+        yoy_text = 'VAR RateValue = DIVIDE(ChangeValue, ABS(PriorValue))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), "n/a", FORMAT(RateValue, "+0.0%;-0.0%;0.0%"))'
+    return f'''VAR LatestMonth = {selected_latest_month_dax()}
 VAR PriorMonth = EDATE(LatestMonth, -12)
-VAR CurrentValue = CALCULATE([{measure}], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))
+VAR CurrentValue = CALCULATE([{measure}], {selected_month_filter()})
 VAR PriorValue = CALCULATE([{measure}], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))
 VAR ChangeValue = CurrentValue - PriorValue
 VAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, {scale}), "{value_format}")
-VAR PYTextRaw = FORMAT(DIVIDE(PriorValue, {scale}), "{value_format}")
+VAR PYTextRaw = IF(ISBLANK(PriorValue), "n/a", FORMAT(DIVIDE(PriorValue, {scale}), "{value_format}"))
 {yoy_text}
 VAR ValueText = SUBSTITUTE(ValueTextRaw, "%", "%25")
 VAR PYText = SUBSTITUTE(PYTextRaw, "%", "%25")
 VAR YoYText = SUBSTITUTE(YoYTextRaw, "%", "%25")
-VAR YoYColor = IF({yoy_good_test}, "%234CAF65", "%23C94A4A")
+VAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), "%236E667B", IF({yoy_good_test}, "%234CAF65", "%23C94A4A"))
 VAR MonthTable =
     ADDCOLUMNS(
         FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),
@@ -939,56 +966,64 @@ VAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])
 VAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])
 VAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])
 VAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])
-VAR StartYValue = 78 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 38
-VAR EndYValue = 78 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 38
+VAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42
+VAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42
 VAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1
-VAR LowXValue = 142 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 86
-VAR LowYValue = 78 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 38
+VAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92
+VAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42
 VAR TrendColor = IF({improved_test}, "{encoded_color}", "%23C94A4A")
 VAR BandColor = IF({improved_test}, "%23DDEEDC", "%23F3D7D7")
 VAR LinePoints =
     CONCATENATEX(
         CleanTable,
         VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1
-        VAR XValue = 142 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 86
-        VAR YValue = 78 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 38
+        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92
+        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42
         RETURN FORMAT(XValue, "0.0") & "," & FORMAT(YValue, "0.0"),
         " ",
         DimDate[MonthStart],
         ASC
     )
 VAR AreaPath =
-    "M142 82 " &
+    "M136 84 " &
     CONCATENATEX(
         CleanTable,
         VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1
-        VAR XValue = 142 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 86
-        VAR YValue = 78 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 38
+        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92
+        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42
         RETURN "L" & FORMAT(XValue, "0.0") & " " & FORMAT(YValue, "0.0"),
         " ",
         DimDate[MonthStart],
         ASC
-    ) & " L228 82 Z"
+    ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='224' height='126' viewBox='0 0 248 140'>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
     "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
-    "<rect x='18' y='14' width='212' height='4' rx='2' fill='{encoded_color}' opacity='0.88'/>" &
-    "<text x='18' y='38' font-family='Segoe UI' font-size='14' font-weight='700' fill='%23211A32'>{title}</text>" &
-    "<text x='18' y='78' font-family='Segoe UI' font-size='28' font-weight='700' fill='{encoded_color}'>" & ValueText & "</text>" &
-    "<rect x='140' y='38' width='92' height='44' rx='7' fill='%23F8F5FC'/>" &
-    "<rect x='144' y='58' width='82' height='11' rx='5' fill='" & BandColor & "'/>" &
-    "<line x1='144' y1='64' x2='226' y2='64' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>" &
+    "<rect x='18' y='13' width='212' height='4' rx='2' fill='{encoded_color}' opacity='0.9'/>" &
+    "<rect x='18' y='29' width='12' height='12' rx='3' fill='{encoded_color}' opacity='0.95'/>" &
+    "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
+    "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>{title}</text>" &
+    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
+    "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='{encoded_color}'>" & ValueText & "</text>" &
+    "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
+    "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
+    "<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>" &
+    "<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>" &
+    "<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>" &
+    "<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>" &
+    "<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>" &
     "<path d='" & AreaPath & "' fill='%23B8AEE6' opacity='0.55'/>" &
     "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>" &
-    "<circle cx='142' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
+    "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<line x1='18' y1='88' x2='230' y2='88' stroke='%23A99AC4' stroke-width='1.5'/>" &
-    "<text x='18' y='105' font-family='Segoe UI' font-size='13' font-weight='700' fill='%23211A32'>PY:</text>" &
-    "<text x='18' y='122' font-family='Segoe UI' font-size='13' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='130' y='105' font-family='Segoe UI' font-size='13' font-weight='700' fill='%23211A32'>YoY:</text>" &
-    "<polygon points='132,112 138,122 126,122' fill='" & YoYColor & "'/>" &
-    "<text x='146' y='122' font-family='Segoe UI' font-size='13' font-weight='700' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)'''
 
@@ -1015,6 +1050,111 @@ def scaled_expr(measure: str, divisor: int | float) -> str:
     return f"DIVIDE([{measure}], {divisor})"
 
 
+def lens_summary_svg() -> str:
+    return r'''VAR YearText =
+    IF(HASONEVALUE(DimDate[Year]), FORMAT(SELECTEDVALUE(DimDate[Year]), "0"), "All Years")
+VAR ScenarioText =
+    IF(HASONEVALUE(DimScenario[ScenarioName]), SELECTEDVALUE(DimScenario[ScenarioName]), FORMAT(COUNTROWS(VALUES(DimScenario[ScenarioName])), "0") & " scenarios")
+VAR BUCount = COUNTROWS(VALUES(DimBusinessUnit[BusinessUnit]))
+VAR BUTotal = CALCULATE(COUNTROWS(VALUES(DimBusinessUnit[BusinessUnit])), ALL(DimBusinessUnit[BusinessUnit]))
+VAR BUText =
+    IF(NOT ISFILTERED(DimBusinessUnit[BusinessUnit]) || BUCount = BUTotal,
+        "All BU",
+        IF(BUCount = 1, SELECTEDVALUE(DimBusinessUnit[BusinessUnit]), FORMAT(BUCount, "0") & " BU"))
+VAR RegionCount = COUNTROWS(VALUES(DimRegion[Region]))
+VAR RegionTotal = CALCULATE(COUNTROWS(VALUES(DimRegion[Region])), ALL(DimRegion[Region]))
+VAR RegionText =
+    IF(NOT ISFILTERED(DimRegion[Region]) || RegionCount = RegionTotal,
+        "All Regions",
+        IF(RegionCount = 1, SELECTEDVALUE(DimRegion[Region]), FORMAT(RegionCount, "0") & " Regions"))
+VAR Line1 = LEFT(YearText & " | " & ScenarioText, 23)
+VAR Line2 = LEFT(BUText & " | " & RegionText, 25)
+VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='142' height='42' viewBox='0 0 142 42'>" &
+    "<rect x='0.5' y='0.5' width='141' height='41' rx='6' fill='%233F1A63' stroke='%238E73E7' stroke-width='1'/>" &
+    "<text x='9' y='14' font-family='Segoe UI' font-size='9' font-weight='700' fill='%23CFC3E6'>Current Lens</text>" &
+    "<circle cx='123' cy='11' r='3' fill='%236EE4CF'/>" &
+    "<text x='9' y='27' font-family='Segoe UI' font-size='10' font-weight='700' fill='%23FFFFFF'>" & Line1 & "</text>" &
+    "<text x='9' y='38' font-family='Segoe UI' font-size='8.5' fill='%23CFC3E6'>" & Line2 & "</text>" &
+    "</svg>"
+RETURN "data:image/svg+xml;utf8," & SVG'''
+
+
+def portfolio_signature_svg() -> str:
+    return r'''VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'>" &
+    "<defs>" &
+    "<linearGradient id='bg' x1='7' y1='58' x2='57' y2='6' gradientUnits='userSpaceOnUse'>" &
+    "<stop stop-color='%230A1323'/>" &
+    "<stop offset='0.58' stop-color='%23101B2D'/>" &
+    "<stop offset='1' stop-color='%2314303A'/>" &
+    "</linearGradient>" &
+    "<linearGradient id='accent' x1='12' y1='51' x2='52' y2='44' gradientUnits='userSpaceOnUse'>" &
+    "<stop stop-color='%238AB8FF'/>" &
+    "<stop offset='1' stop-color='%238DE1D6'/>" &
+    "</linearGradient>" &
+    "</defs>" &
+    "<rect width='64' height='64' rx='14' fill='url(%23bg)'/>" &
+    "<rect x='6' y='6' width='52' height='52' rx='11' fill='%23F8FBFF' opacity='0.025'/>" &
+    "<rect x='6.5' y='6.5' width='51' height='51' rx='10.5' fill='none' stroke='%23F8FBFF' opacity='0.13' stroke-width='1.6'/>" &
+    "<text x='8.5' y='43' fill='%23F8FBFF' font-family='Arial' font-size='31' font-weight='900'>AT</text>" &
+    "<path d='M12 50C22 46.5 35 48 52 42.5' fill='none' stroke='url(%23accent)' stroke-width='2.8' stroke-linecap='round' opacity='0.88'/>" &
+    "<circle cx='52' cy='42.5' r='2.85' fill='%23E9BF72'/>" &
+    "</svg>"
+RETURN "data:image/svg+xml;utf8," & SVG'''
+
+
+def decision_chips_svg(page: str) -> str:
+    if page == "performance":
+        value_block = r'''VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base")
+VAR Chip1Text = "Scenario: " & SWITCH(ScenarioID, "Upside", "Upside", "Downside", "Downside", "Base")
+VAR Chip2Text = SWITCH(ScenarioID, "Upside", "GM: +1.4 pts", "Downside", "GM: -0.7 pts", "GM: +0.8 pts")
+VAR Chip3Text = SWITCH(ScenarioID, "Upside", "Runway: >99 mo", "Downside", "Runway: 18.5 mo", "Runway: >99 mo")
+VAR Chip1Accent = SWITCH(ScenarioID, "Upside", "%230F9F95", "Downside", "%23BE7C10", "%232FA66A")
+VAR Chip1Fill = SWITCH(ScenarioID, "Upside", "%23EAF7FF", "Downside", "%23FFF3D6", "%23E6F4EC")
+VAR Chip2Accent = SWITCH(ScenarioID, "Downside", "%23B73535", "%230F9F95")
+VAR Chip2Fill = SWITCH(ScenarioID, "Downside", "%23FCE7E7", "%23E7F0FF")
+VAR Chip3Accent = SWITCH(ScenarioID, "Downside", "%23BE7C10", "%232FA66A")
+VAR Chip3Fill = SWITCH(ScenarioID, "Downside", "%23FFF3D6", "%23E6F4EC")'''
+    elif page == "cash":
+        value_block = r'''VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base")
+VAR Chip1Text = "Scenario: " & SWITCH(ScenarioID, "Upside", "Upside", "Downside", "Downside", "Base")
+VAR Chip2Text = SWITCH(ScenarioID, "Upside", "Funding: $0M", "Downside", "Funding: $14M", "Funding: $0M")
+VAR Chip3Text = SWITCH(ScenarioID, "Upside", "FCF: $38.0M", "Downside", "FCF: ($8.5M)", "FCF: $22.5M")
+VAR Chip1Accent = SWITCH(ScenarioID, "Upside", "%230F9F95", "Downside", "%23BE7C10", "%232FA66A")
+VAR Chip1Fill = SWITCH(ScenarioID, "Upside", "%23EAF7FF", "Downside", "%23FFF3D6", "%23E6F4EC")
+VAR Chip2Accent = SWITCH(ScenarioID, "Downside", "%23BE7C10", "%232FA66A")
+VAR Chip2Fill = SWITCH(ScenarioID, "Downside", "%23FFF3D6", "%23E6F4EC")
+VAR Chip3Accent = SWITCH(ScenarioID, "Downside", "%23B73535", "%230F9F95")
+VAR Chip3Fill = SWITCH(ScenarioID, "Downside", "%23FCE7E7", "%23E7F0FF")'''
+    else:
+        value_block = r'''VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base")
+VAR Chip1Text = "Scenario: " & SWITCH(ScenarioID, "Upside", "Upside", "Downside", "Downside", "Base")
+VAR Chip2Text = SWITCH(ScenarioID, "Upside", "Headroom: 2.1x", "Downside", "Headroom: 0.4x", "Headroom: 1.3x")
+VAR Chip3Text = SWITCH(ScenarioID, "Upside", "Risk: $7M", "Downside", "Risk: $26M", "Risk: $14M")
+VAR Chip1Accent = SWITCH(ScenarioID, "Upside", "%230F9F95", "Downside", "%23BE7C10", "%232FA66A")
+VAR Chip1Fill = SWITCH(ScenarioID, "Upside", "%23EAF7FF", "Downside", "%23FFF3D6", "%23E6F4EC")
+VAR Chip2Accent = SWITCH(ScenarioID, "Downside", "%23BE7C10", "%230F9F95")
+VAR Chip2Fill = SWITCH(ScenarioID, "Downside", "%23FFF3D6", "%23E7F0FF")
+VAR Chip3Accent = SWITCH(ScenarioID, "Downside", "%23B73535", "Upside", "%232FA66A", "%23BE7C10")
+VAR Chip3Fill = SWITCH(ScenarioID, "Downside", "%23FCE7E7", "Upside", "%23E6F4EC", "%23FFF3D6")'''
+    return value_block + r'''
+VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='490' height='38' viewBox='0 0 490 38'>" &
+    "<rect x='0' y='0' width='490' height='38' rx='8' fill='none'/>" &
+    "<rect x='0.5' y='2.5' width='142' height='33' rx='7' fill='" & Chip1Fill & "' stroke='%23FFFFFF' stroke-width='0.9'/>" &
+    "<rect x='13' y='13' width='11' height='11' rx='3' fill='" & Chip1Accent & "'/>" &
+    "<text x='36' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>" & Chip1Text & "</text>" &
+    "<rect x='156.5' y='2.5' width='150' height='33' rx='7' fill='" & Chip2Fill & "' stroke='%23FFFFFF' stroke-width='0.9'/>" &
+    "<rect x='169' y='13' width='11' height='11' rx='3' fill='" & Chip2Accent & "'/>" &
+    "<text x='192' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>" & Chip2Text & "</text>" &
+    "<rect x='320.5' y='2.5' width='168' height='33' rx='7' fill='" & Chip3Fill & "' stroke='%23FFFFFF' stroke-width='0.9'/>" &
+    "<rect x='333' y='13' width='11' height='11' rx='3' fill='" & Chip3Accent & "'/>" &
+    "<text x='356' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>" & Chip3Text & "</text>" &
+    "</svg>"
+RETURN "data:image/svg+xml;utf8," & SVG'''
+
+
 MEASURES = [
     ("Revenue", selected_scenario_sum("FactPnlMonthly", "Revenue"), "$#,0;($#,0);$0"),
     ("Plan Revenue", selected_scenario_sum("FactPnlMonthly", "PlanRevenue"), "$#,0;($#,0);$0"),
@@ -1029,21 +1169,21 @@ MEASURES = [
     ("EBITDA Margin %", "DIVIDE([EBITDA], [Revenue])", "0.0%"),
     ("Net Income", selected_scenario_sum("FactPnlMonthly", "NetIncome"), "$#,0;($#,0);$0"),
     ("Operating Expense", selected_scenario_sum("FactOpexMonthly", "OperatingExpense"), "$#,0;($#,0);$0"),
-    ("Latest Revenue", 'CALCULATE([Revenue], DimDate[IsLatestCompleteMonth] = 1)', "$#,0;($#,0);$0"),
-    ("Latest Gross Margin %", 'CALCULATE([Gross Margin %], DimDate[IsLatestCompleteMonth] = 1)', "0.0%"),
-    ("Latest EBITDA", 'CALCULATE([EBITDA], DimDate[IsLatestCompleteMonth] = 1)', "$#,0;($#,0);$0"),
-    ("Latest EBITDA Margin %", 'CALCULATE([EBITDA Margin %], DimDate[IsLatestCompleteMonth] = 1)', "0.0%"),
-    ("Latest Cash Balance", f'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[CashBalance]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)', "$#,0;($#,0);$0"),
+    ("Latest Revenue", latest_period_value("Revenue"), "$#,0;($#,0);$0"),
+    ("Latest Gross Margin %", latest_period_value("Gross Margin %"), "0.0%"),
+    ("Latest EBITDA", latest_period_value("EBITDA"), "$#,0;($#,0);$0"),
+    ("Latest EBITDA Margin %", latest_period_value("EBITDA Margin %"), "0.0%"),
+    ("Latest Cash Balance", selected_scenario_latest_max("FactCashMonthly", "CashBalance"), "$#,0;($#,0);$0"),
     ("Cash Balance", selected_scenario_max("FactCashMonthly", "CashBalance"), "$#,0;($#,0);$0"),
     ("Operating Cash Flow", selected_scenario_sum("FactCashMonthly", "OperatingCashFlow"), "$#,0;($#,0);$0"),
     ("Free Cash Flow", selected_scenario_sum("FactCashMonthly", "FreeCashFlow"), "$#,0;($#,0);$0"),
-    ("Latest Free Cash Flow", f'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[FreeCashFlow]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)', "$#,0;($#,0);$0"),
+    ("Latest Free Cash Flow", selected_scenario_latest_max("FactCashMonthly", "FreeCashFlow"), "$#,0;($#,0);$0"),
     ("Net Burn", selected_scenario_max("FactCashMonthly", "NetBurn"), "$#,0;($#,0);$0"),
-    ("Latest Net Burn", f'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[NetBurn]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)', "$#,0;($#,0);$0"),
+    ("Latest Net Burn", selected_scenario_latest_max("FactCashMonthly", "NetBurn"), "$#,0;($#,0);$0"),
     ("Runway Months", selected_scenario_max("FactCashMonthly", "RunwayMonths"), "0.0x"),
-    ("Latest Runway Months", f'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[RunwayMonths]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)', "0.0x"),
+    ("Latest Runway Months", selected_scenario_latest_max("FactCashMonthly", "RunwayMonths"), "0.0x"),
     ("Funding Need", selected_scenario_max("FactCashMonthly", "FundingNeed"), "$#,0;($#,0);$0"),
-    ("Latest Funding Need", f'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCashMonthly[FundingNeed]), FactCashMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)', "$#,0;($#,0);$0"),
+    ("Latest Funding Need", selected_scenario_latest_max("FactCashMonthly", "FundingNeed"), "$#,0;($#,0);$0"),
     ("Statement Actual", selected_scenario_sum("FactStatementLines", "ValueActual"), "$#,0;($#,0);$0"),
     ("Statement Plan", selected_scenario_sum("FactStatementLines", "ValuePlan"), "$#,0;($#,0);$0"),
     ("Statement Forecast", selected_scenario_sum("FactStatementLines", "ValueForecast"), "$#,0;($#,0);$0"),
@@ -1053,11 +1193,11 @@ MEASURES = [
     ("Valuation Low", 'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(AVERAGE(FactValuation[LowValue]), FactValuation[ScenarioID] = ScenarioID)', "$#,0;($#,0);$0"),
     ("Valuation High", 'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(AVERAGE(FactValuation[HighValue]), FactValuation[ScenarioID] = ScenarioID)', "$#,0;($#,0);$0"),
     ("Sensitivity Delta", selected_scenario_sum("FactSensitivity", "EquityValueDelta"), "$#,0;($#,0);$0"),
-    ("Leverage Ratio", f'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCovenantMonthly[LeverageRatio]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)', "0.0x"),
+    ("Leverage Ratio", selected_scenario_latest_max("FactCovenantMonthly", "LeverageRatio"), "0.0x"),
     ("Leverage Limit", selected_scenario_max("FactCovenantMonthly", "LeverageLimit"), "0.0x"),
-    ("Leverage Headroom", f'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCovenantMonthly[LeverageHeadroom]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)', "0.0x"),
-    ("Interest Coverage", f'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCovenantMonthly[InterestCoverage]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)', "0.0x"),
-    ("Liquidity Headroom", f'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(MAX(FactCovenantMonthly[LiquidityHeadroom]), FactCovenantMonthly[ScenarioID] = ScenarioID, DimDate[IsLatestCompleteMonth] = 1)', "$#,0;($#,0);$0"),
+    ("Leverage Headroom", selected_scenario_latest_max("FactCovenantMonthly", "LeverageHeadroom"), "0.0x"),
+    ("Interest Coverage", selected_scenario_latest_max("FactCovenantMonthly", "InterestCoverage"), "0.0x"),
+    ("Liquidity Headroom", selected_scenario_latest_max("FactCovenantMonthly", "LiquidityHeadroom"), "$#,0;($#,0);$0"),
     ("Risk Exposure", selected_scenario_sum("FactRiskRegister", "ExposureUSD"), "$#,0;($#,0);$0"),
     ("Critical Risk Count", 'VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], "Base") RETURN CALCULATE(COUNTROWS(FactRiskRegister), FactRiskRegister[ScenarioID] = ScenarioID, FactRiskRegister[Severity] = "Critical")', "#,0"),
     ("Revenue Display", money_display_expr("Revenue"), "", {"dataType": "string"}),
@@ -1097,6 +1237,7 @@ MEASURES = [
     ("Statement Trend SVG", svg_sparkline("Statement Actual", COLORS["teal"]), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
     ("Board KPI Trend SVG", board_kpi_trend_svg(), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
     ("Risk Signal SVG", risk_signal_svg(), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
+    ("Portfolio Signature SVG", portfolio_signature_svg(), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
     ("Revenue KPI Card SVG", svg_kpi_card("Revenue", "Revenue", COLORS["blue"], "$#,0.0M;($#,0.0M);$0.0M", 1000000, "percent", "higher"), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
     ("Margin KPI Card SVG", svg_kpi_card("Margin", "Gross Margin %", COLORS["teal"], "0.0%", 1, "points", "higher"), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
     ("EBITDA KPI Card SVG", svg_kpi_card("EBITDA", "EBITDA", COLORS["green"], "$#,0.0M;($#,0.0M);$0.0M", 1000000, "percent", "higher"), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
@@ -1112,6 +1253,10 @@ MEASURES = [
     ("Risk KPI Card SVG", svg_kpi_card("Risk", "Risk Exposure", COLORS["red"], "$#,0M;($#,0M);$0M", 1000000, "percent", "lower"), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
     ("Board Status Icon", 'SWITCH(TRUE(), [Revenue vs Plan %] >= 0.03, UNICHAR(9650), [Revenue vs Plan %] >= -0.02, UNICHAR(8212), UNICHAR(9660))', "", {"dataType": "string"}),
     ("Board Status Color", 'SWITCH(TRUE(), [Revenue vs Plan %] >= 0.03, "#2FA66A", [Revenue vs Plan %] >= -0.02, "#C58A18", "#C94A4A")', "", {"dataType": "string"}),
+    ("Lens Summary SVG", lens_summary_svg(), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
+    ("Performance Decision Chips SVG", decision_chips_svg("performance"), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
+    ("Cash Decision Chips SVG", decision_chips_svg("cash"), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
+    ("Risk Decision Chips SVG", decision_chips_svg("risk"), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
 ]
 
 RELATIONSHIPS = [
@@ -1324,6 +1469,20 @@ def txt(v: str) -> dict:
 
 def col(v: str) -> dict:
     return {"solid": {"color": txt(v)}}
+
+
+def visual_link(target_section: str, tooltip: str) -> list[dict]:
+    return [
+        {
+            "properties": {
+                "show": lit(True),
+                "type": txt("PageNavigation"),
+                "navigationSection": txt(target_section),
+                "tooltip": txt(tooltip),
+                "showDefaultTooltip": lit(True),
+            }
+        }
+    ]
 
 
 def hidden_header(fill: str) -> list[dict]:
@@ -1714,8 +1873,12 @@ def measure_value(measure, display, p, accent, value_font=20.0):
 
 def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
     qref = f"{MEASURE_TABLE}.{measure}"
-    image_w = max(80, int(p["width"] - 24))
-    image_h = max(60, int(p["height"] - 24))
+    if display == "Decision Chips":
+        image_w = max(20, int(p["width"] - 36))
+        image_h = max(20, int(p["height"] - 12))
+    else:
+        image_w = max(20, int(p["width"] - 8))
+        image_h = max(20, int(p["height"] - 8))
     objects = {
         "grid": [
             {
@@ -1762,7 +1925,7 @@ def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
         ],
         "columnWidth": [
             {
-                "properties": {"value": lit(float(image_w + 6))},
+                "properties": {"value": lit(float(image_w if display == "Decision Chips" else image_w + 6))},
                 "selector": {"metadata": qref},
             }
         ],
@@ -1862,18 +2025,50 @@ def static_kpi_card(display, value, p, accent):
     )
 
 
-def sidebar_nav_item(label, p, active=False):
+def page_nav_overlay(label, p, target_section):
+    objects = {
+        "icon": [{"properties": {"show": lit(False)}}],
+        "text": [{"properties": {"show": lit(False)}}],
+        "fill": [{"properties": {"show": lit(False)}}],
+        "outline": [{"properties": {"show": lit(False)}}],
+    }
+    return container(
+        {
+            "name": uuid.uuid4().hex[:20],
+            "singleVisual": {
+                "visualType": "actionButton",
+                "objects": objects,
+                "drillFilterOtherVisuals": True,
+                "vcObjects": {
+                    "background": [{"properties": {"show": lit(False)}}],
+                    "border": [{"properties": {"show": lit(False)}}],
+                    "dropShadow": [{"properties": {"show": lit(False)}}],
+                    "visualHeader": hidden_header(COLORS["sidebar"]),
+                    "visualLink": visual_link(target_section, f"Go to {label}"),
+                },
+            },
+        },
+        p,
+    )
+
+
+def sidebar_nav_item(label, p, active=False, target_section=None):
     fill = "#6B42D8" if active else "#321052"
     text_color = "#F3EEFF" if active else "#BEB4D7"
     rail_color = "#D5C5F0" if active else "#5E4B8B"
-    return [
+    visuals = [
         shape(fill, p),
         solid_rect(rail_color, pos(p["x"] + 8, p["y"] + 8, p["z"] + 1, 4, p["height"] - 16), radius=2.0),
         plain_text(label, pos(p["x"] + 20, p["y"] + 5, p["z"] + 2, p["width"] - 30, 24), text_color, "8.4pt"),
     ]
+    if target_section:
+        visuals.append(page_nav_overlay(label, pos(p["x"], p["y"], p["z"] + 30, p["width"], p["height"]), target_section))
+    return visuals
 
 
 def page_context_chips(items, z):
+    if isinstance(items, str):
+        return [kpi_svg_table(items, "Decision Chips", pos(500, 8, z + 70, 520, 44))]
     visuals = []
     x = 584
     widths = [142, 166, 158]
@@ -1890,23 +2085,54 @@ def page_context_chips(items, z):
     return visuals
 
 
-def rail_filter_row(label, table, column, display, y, z, accent, sync_name, single_select=False):
+def filter_literal(value, kind="string"):
+    if kind == "int":
+        return {"Literal": {"Value": f"{int(value)}L"}}
+    escaped = str(value).replace("'", "''")
+    return {"Literal": {"Value": f"'{escaped}'"}}
+
+
+def slicer_default_filter(table, column, values, kind="string", alias="f"):
+    return {
+        "Version": 2,
+        "From": [{"Name": alias, "Entity": table, "Type": 0}],
+        "Where": [
+            {
+                "Condition": {
+                    "In": {
+                        "Expressions": [
+                            {
+                                "Column": {
+                                    "Expression": {"SourceRef": {"Source": alias}},
+                                    "Property": column,
+                                }
+                            }
+                        ],
+                        "Values": [[filter_literal(value, kind)] for value in values],
+                    }
+                }
+            }
+        ],
+    }
+
+
+def rail_filter_row(label, table, column, display, y, z, accent, sync_name, single_select=False, default_values=None, default_kind="string"):
     return [
-        solid_rect(accent, pos(38, y + 5, z, 8, 8), radius=2.0),
-        plain_text(label, pos(52, y - 1, z + 1, 112, 24), COLORS["filter_label"], "8.0pt", "Segoe UI Semibold"),
-        slicer(table, column, display, pos(34, y + 20, z + 2, 142, 42), mode="Dropdown", show_title=False, compact=True, sync_group=sync_name, rail=True, single_select=single_select),
+        solid_rect(accent, pos(34, y + 6, z, 8, 8), radius=2.0),
+        plain_text(label, pos(50, y - 1, z + 1, 126, 24), COLORS["filter_label"], "7.8pt", "Segoe UI Semibold"),
+        slicer(table, column, display, pos(32, y + 23, z + 2, 150, 44), mode="Dropdown", show_title=False, compact=True, sync_group=sync_name, rail=True, single_select=single_select, default_values=default_values, default_kind=default_kind),
     ]
 
 
 def sidebar_shell(page_title, active_label, z, context_items=None):
     nav = [
-        ("01 Performance", "Performance" in active_label),
-        ("02 Cash Plan", "Cash" in active_label),
-        ("03 Risk Monitor", "Risk" in active_label or "Valuation" in active_label),
+        ("01 Performance", "Performance" in active_label, PAGE_SECTION_NAMES["Performance"]),
+        ("02 Cash Plan", "Cash" in active_label, PAGE_SECTION_NAMES["Cash Plan"]),
+        ("03 Risk Monitor", "Risk" in active_label or "Valuation" in active_label, PAGE_SECTION_NAMES["Risk & Valuation"]),
     ]
     visuals = [
         shape(COLORS["sidebar"], pos(14, 8, z, 176, 700)),
-        plain_text("FC", pos(34, 25, z + 1, 32, 28), "#4ED2D0", "15pt"),
+        kpi_svg_table("Portfolio Signature SVG", "AT Signature", pos(32, 21, z + 1, 38, 38)),
         plain_text("Finance\nControl", pos(76, 28, z + 2, 94, 46), "#DCD4F4", "8.4pt"),
         plain_text("FP20", pos(1132, 11, z + 3, 48, 24), "#E6DDF8", "9pt"),
         plain_text("Board CFO Pack", pos(1178, 11, z + 4, 98, 24), "#E6DDF8", "8pt"),
@@ -1914,20 +2140,21 @@ def sidebar_shell(page_title, active_label, z, context_items=None):
     ]
     visuals.extend(page_context_chips(context_items, z))
     y = 92
-    for label, active in nav:
-        visuals.extend(sidebar_nav_item(label, pos(30, y, z + 10 + len(visuals), 146, 32), active))
+    for label, active, target_section in nav:
+        visuals.extend(sidebar_nav_item(label, pos(26, y, z + 10 + len(visuals), 154, 32), active, target_section))
         y += 40
     visuals += [
         solid_rect(COLORS["sidebar_rule"], pos(30, 218, z + 49, 146, 3), radius=1.5),
-        solid_rect(COLORS["filter_surface"], pos(24, 228, z + 50, 162, 400), radius=7.0),
-        solid_rect(COLORS["sidebar_rule"], pos(38, 250, z + 51, 134, 2), radius=1.0),
-        plain_text("Global Lens", pos(38, 229, z + 52, 124, 24), COLORS["sidebar_muted"], "7.5pt", "Segoe UI Semibold"),
-        *rail_filter_row("Year", "DimDate", "Year", "Year", 262, z + 53, COLORS["blue"], "global_year", single_select=True),
-        *rail_filter_row("Scenario", "DimScenario", "ScenarioName", "Scenario", 336, z + 59, COLORS["violet"], "global_scenario", single_select=True),
-        plain_text("P&L Lens", pos(38, 410, z + 64, 124, 22), COLORS["sidebar_muted"], "7.5pt", "Segoe UI Semibold"),
-        solid_rect(COLORS["sidebar_rule"], pos(38, 431, z + 65, 134, 2), radius=1.0),
-        *rail_filter_row("Business Unit", "DimBusinessUnit", "BusinessUnit", "BU", 443, z + 67, COLORS["teal"], "global_bu"),
-        *rail_filter_row("Region", "DimRegion", "Region", "Region", 517, z + 73, COLORS["amber"], "global_region"),
+        solid_rect(COLORS["filter_surface"], pos(22, 226, z + 50, 168, 418), radius=7.0),
+        solid_rect(COLORS["sidebar_rule"], pos(34, 251, z + 51, 148, 2), radius=1.0),
+        plain_text("Global Lens", pos(34, 230, z + 52, 134, 24), COLORS["sidebar_muted"], "7.4pt", "Segoe UI Semibold"),
+        *rail_filter_row("Year", "DimDate", "Year", "Year", 262, z + 53, COLORS["blue"], "global_year", single_select=True, default_values=[2026], default_kind="int"),
+        *rail_filter_row("Scenario", "DimScenario", "ScenarioName", "Scenario", 340, z + 59, COLORS["violet"], "global_scenario", single_select=True, default_values=["Base Case"]),
+        plain_text("P&L Lens", pos(34, 426, z + 64, 134, 22), COLORS["sidebar_muted"], "7.4pt", "Segoe UI Semibold"),
+        solid_rect(COLORS["sidebar_rule"], pos(34, 449, z + 65, 148, 2), radius=1.0),
+        *rail_filter_row("Business Unit", "DimBusinessUnit", "BusinessUnit", "BU", 460, z + 67, COLORS["teal"], "global_bu"),
+        *rail_filter_row("Region", "DimRegion", "Region", "Region", 536, z + 73, COLORS["amber"], "global_region"),
+        kpi_svg_table("Lens Summary SVG", "Current Lens", pos(32, 608, z + 80, 150, 34)),
         solid_rect(COLORS["sidebar_rule"], pos(30, 650, z + 80, 146, 3), radius=1.5),
         plain_text("Data through\nMay 2026", pos(50, 666, z + 60, 112, 34), "#D7CCF1", "8.0pt"),
     ]
@@ -1948,7 +2175,7 @@ def static_kpi_with_chip(display, value, chip_text, p, accent, chip_accent=COLOR
     ]
 
 
-def slicer(table, column, display, p, mode="Dropdown", show_title=True, fill=None, compact=False, sync_group=None, rail=False, single_select=False):
+def slicer(table, column, display, p, mode="Dropdown", show_title=True, fill=None, compact=False, sync_group=None, rail=False, single_select=False, default_values=None, default_kind="string"):
     qref = f"{table}.{column}"
     show_select_all = mode != "Basic" and not single_select
     item_size = 7.4 if compact else 8.3
@@ -1958,6 +2185,13 @@ def slicer(table, column, display, p, mode="Dropdown", show_title=True, fill=Non
         "header": [{"properties": {"show": lit(False)}}],
         "items": [{"properties": {"fontFamily": txt("Segoe UI"), "fontSize": lit(item_size), "fontColor": col(COLORS["ink"])}}],
     }
+    general_props = {}
+    if single_select:
+        general_props["requireSingleSelect"] = lit(True)
+    if default_values:
+        general_props["filter"] = {"filter": slicer_default_filter(table, column, default_values, default_kind)}
+    if general_props:
+        objects["general"] = [{"properties": general_props}]
     froms = [{"Name": "f", "Entity": table, "Type": 0}]
     selects = [csel("f", table, column, display)]
     config = {
@@ -2412,7 +2646,8 @@ def multi_chart(vtype, title, sub, table, column, display, measures, p, order_co
     return container(config, p, query(froms, selects, order), transforms(objects, roles, meta, transform_selects, {"Category": [0], "Y": list(range(1, len(selects)))}, {"Category": [{"queryRef": cref, "suppressConcat": False}]}))
 
 
-def table_visual(title, sub, fields, measures, p, order_measure=None, asc=False, order_column=None):
+def table_visual(title, sub, fields, measures, p, order_measure=None, asc=False, order_column=None, table_style=None):
+    table_style = table_style or {}
     aliases, froms = {}, []
     for table, _column, _display in fields:
         if table not in aliases:
@@ -2437,16 +2672,23 @@ def table_visual(title, sub, fields, measures, p, order_measure=None, asc=False,
         transform_selects.append(mtrans(measure, display, "Values"))
         column_info.append((qref, display, measure_extra(measure_by_name(measure)).get("dataCategory") == "ImageUrl"))
     has_image = any(is_image for _qref, _display, is_image in column_info)
+    image_height = int(table_style.get("image_height", 24 if has_image else 0))
+    image_width = int(table_style.get("image_width", 66 if has_image else 0))
+    row_padding = int(table_style.get("row_padding", 5))
+    header_font_size = float(table_style.get("header_font_size", 7.4))
+    value_font_size = float(table_style.get("value_font_size", 7.05))
+    grid_horizontal = bool(table_style.get("grid_horizontal", True))
+    column_widths = table_style.get("column_widths", {})
     objects = {
         "grid": [
             {
                 "properties": {
-                    "gridHorizontal": lit(True),
+                    "gridHorizontal": lit(grid_horizontal),
                     "gridVertical": lit(False),
                     "outlineColor": col(COLORS["table_grid"]),
-                    "rowPadding": lit(5),
-                    "imageHeight": lit(24 if has_image else 0),
-                    "imageWidth": lit(66 if has_image else 0),
+                    "rowPadding": lit(row_padding),
+                    "imageHeight": lit(image_height),
+                    "imageWidth": lit(image_width),
                 }
             }
         ],
@@ -2455,7 +2697,7 @@ def table_visual(title, sub, fields, measures, p, order_measure=None, asc=False,
                 "properties": {
                     "show": lit(True),
                     "fontFamily": txt("Segoe UI Semibold"),
-                    "fontSize": lit(7.4),
+                    "fontSize": lit(header_font_size),
                     "fontColor": col(COLORS["ink"]),
                     "backColor": col(COLORS["table_header"]),
                     "alignment": txt("left"),
@@ -2466,18 +2708,18 @@ def table_visual(title, sub, fields, measures, p, order_measure=None, asc=False,
             {
                 "properties": {
                     "fontFamily": txt("Segoe UI"),
-                    "fontSize": lit(7.05),
+                    "fontSize": lit(value_font_size),
                     "fontColor": col(COLORS["ink"]),
                     "backColorPrimary": col(COLORS["table_row"]),
                     "backColorSecondary": col(COLORS["table_alt"]),
                     "urlIcon": lit(False),
-                    "imageHeight": lit(24 if has_image else 0),
-                    "imageWidth": lit(66 if has_image else 0),
+                    "imageHeight": lit(image_height),
+                    "imageWidth": lit(image_width),
                 }
             }
         ],
         "columnWidth": [
-            {"properties": {"value": lit(table_column_width(display, qref))}, "selector": {"metadata": qref}}
+            {"properties": {"value": lit(float(column_widths.get(qref, column_widths.get(display, table_column_width(display, qref)))))}, "selector": {"metadata": qref}}
             for qref, display, _is_image in column_info
         ],
         "columnFormatting": [
@@ -2485,6 +2727,8 @@ def table_visual(title, sub, fields, measures, p, order_measure=None, asc=False,
             for qref, display, _is_image in column_info
         ],
     }
+    if table_style.get("show_total") is False:
+        objects["total"] = [{"properties": {"totals": lit(False)}}]
     order = None
     if order_measure:
         order = {"Direction": 1 if asc else 2, "Expression": {"Measure": {"Expression": src("m"), "Property": order_measure}}}
@@ -2497,6 +2741,7 @@ def table_visual(title, sub, fields, measures, p, order_measure=None, asc=False,
             "visualType": "tableEx",
             "projections": {"Values": projections},
             "prototypeQuery": {"Version": 2, "From": froms, "Select": selects, **({"OrderBy": [order]} if order else {})},
+            "columnProperties": {qref: {"displayName": display} for qref, display, _is_image in column_info},
             "objects": objects,
             "drillFilterOtherVisuals": True,
             "vcObjects": frame(title, sub),
@@ -2575,7 +2820,7 @@ def section(name, ordinal, visuals):
     )
     return {
         "id": ordinal,
-        "name": f"ReportSection{ordinal:02d}{uuid.uuid4().hex[:6]}",
+        "name": PAGE_SECTION_NAMES[name],
         "displayName": name,
         "filters": "[]",
         "ordinal": ordinal,
@@ -2610,11 +2855,7 @@ def build_layout() -> dict:
         "Board Performance Overview",
         "Performance",
         1,
-        [
-            ("On plan", COLORS["green"], COLORS["chip_good"]),
-            ("GM +1.9pt", COLORS["teal"], COLORS["chip_info"]),
-            ("Runway 99.0x", COLORS["amber"], COLORS["chip_watch"]),
-        ],
+        "Performance Decision Chips SVG",
     )
     for i, (value, label, series_measure, color, py_value, yoy_value, favorable) in enumerate(
         [
@@ -2629,7 +2870,30 @@ def build_layout() -> dict:
         multi_chart("barChart", "Revenue vs Plan + EBITDA Trend", "Drilldown: Month > KPI", "DimDate", "MonthLabel", "Month", [("Revenue", "Revenue"), ("Plan Revenue", "Plan"), ("Forecast Revenue", "Forecast"), ("EBITDA", "EBITDA")], pos(main_x, top_y, 200, main_w, top_h), "MonthIndex"),
         single_chart("donutChart", "Revenue Mix by Region", "Drilldown: Region", "DimRegion", "Region", "Region", "Revenue", "Revenue", pos(mid_x, top_y, 201, mid_w, top_h), COLORS["blue"], order_measure=True, ascending=False),
         single_chart("barChart", "Revenue by Business Unit", "Drilldown: Business Unit", "DimBusinessUnit", "BusinessUnit", "Business Unit", "Revenue", "Revenue", pos(right_x, top_y, 202, right_w, top_h), COLORS["violet"], order_measure=True, ascending=False),
-        table_visual("Board KPI Details", "KPI, actual, variance, status, and trend", [("FactKpiScorecard", "MetricName", "KPI"), ("FactKpiScorecard", "ActualDisplay", "Actual"), ("FactKpiScorecard", "VarianceDisplay", "Variance"), ("FactKpiScorecard", "Status", "Status")], [("Board KPI Trend SVG", "Trend")], pos(main_x, bottom_y, 203, main_w, bottom_h), asc=True, order_column=("FactKpiScorecard", "SortOrder")),
+        table_visual(
+            "Board KPI Details",
+            "Actual, variance, status, and trend",
+            [("FactKpiScorecard", "MetricName", "Metric"), ("FactKpiScorecard", "ActualDisplay", "Actual"), ("FactKpiScorecard", "VarianceDisplay", "Var"), ("FactKpiScorecard", "Status", "Status")],
+            [("Board KPI Trend SVG", "Trend")],
+            pos(main_x, bottom_y - 6, 203, main_w, bottom_h + 12),
+            asc=True,
+            order_column=("FactKpiScorecard", "SortOrder"),
+            table_style={
+                "row_padding": 1,
+                "header_font_size": 6.6,
+                "value_font_size": 6.45,
+                "image_height": 22,
+                "image_width": 118,
+                "show_total": False,
+                "column_widths": {
+                    "FactKpiScorecard.MetricName": 92.0,
+                    "FactKpiScorecard.ActualDisplay": 66.0,
+                    "FactKpiScorecard.VarianceDisplay": 50.0,
+                    "FactKpiScorecard.Status": 48.0,
+                    "KPI_Measures.Board KPI Trend SVG": 120.0,
+                },
+            },
+        ),
         single_chart("barChart", "Revenue vs Plan by BU", "Drilldown: BU > Variance", "DimBusinessUnit", "BusinessUnit", "Business Unit", "Revenue vs Plan", "Revenue vs Plan", pos(mid_x, bottom_y, 204, mid_w, bottom_h), COLORS["blue"], order_measure=True, ascending=False),
         single_chart("barChart", "EBITDA by BU", "Drilldown: BU > EBITDA", "DimBusinessUnit", "BusinessUnit", "Business Unit", "EBITDA", "EBITDA", pos(right_x, bottom_y, 205, right_w, bottom_h), COLORS["green"], order_measure=True, ascending=False),
     ]
@@ -2638,11 +2902,7 @@ def build_layout() -> dict:
         "Financial Plan & Cash Runway",
         "Cash Plan",
         1000,
-        [
-            ("Runway 99.0x", COLORS["blue"], COLORS["chip_info"]),
-            ("No funding gap", COLORS["green"], COLORS["chip_good"]),
-            ("Funding $0M", COLORS["green"], COLORS["chip_good"]),
-        ],
+        "Cash Decision Chips SVG",
     )
     for i, (value, label, series_measure, color, py_value, yoy_value, favorable) in enumerate(
         [
@@ -2666,11 +2926,7 @@ def build_layout() -> dict:
         "Valuation, Covenants & Risk Monitor",
         "Risk Monitor",
         2000,
-        [
-            ("Low leverage", COLORS["green"], COLORS["chip_good"]),
-            ("Headroom 3.3x", COLORS["teal"], COLORS["chip_info"]),
-            ("Risk $31M", COLORS["red"], COLORS["chip_risk"]),
-        ],
+        "Risk Decision Chips SVG",
     )
     for i, (value, label, color, py_value, yoy_value, series_measure, favorable) in enumerate(
         [

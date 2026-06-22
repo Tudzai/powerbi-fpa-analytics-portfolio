@@ -1,0 +1,39 @@
+﻿{
+    "status":  "pass",
+    "generatedAt":  "2026-06-22T15:23:48",
+    "pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+    "pbixSize":  4195540,
+    "checks":  {
+                   "finalPbixExists":  true,
+                   "decisionChipVisualCount":  true,
+                   "chipWidthFits":  true,
+                   "chipHeightPolished":  true,
+                   "extractedModelContainsScenarioLabel":  true
+               },
+    "decisionChips":  [
+                          {
+                              "page":  "Performance",
+                              "measure":  "KPI_Measures.Performance Decision Chips SVG",
+                              "x":  500,
+                              "y":  8,
+                              "width":  520,
+                              "height":  44
+                          },
+                          {
+                              "page":  "Cash Plan",
+                              "measure":  "KPI_Measures.Cash Decision Chips SVG",
+                              "x":  500,
+                              "y":  8,
+                              "width":  520,
+                              "height":  44
+                          },
+                          {
+                              "page":  "Risk \u0026 Valuation",
+                              "measure":  "KPI_Measures.Risk Decision Chips SVG",
+                              "x":  500,
+                              "y":  8,
+                              "width":  520,
+                              "height":  44
+                          }
+                      ]
+}

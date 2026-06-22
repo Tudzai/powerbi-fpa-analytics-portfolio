@@ -46,7 +46,7 @@
 - Added DAX SVG sparkline measures and status icon/color measures for model-level dashboard decoration.
 - Replaced KPI `cardVisual` and mini native `lineChart` objects with stable layered text/shape KPI cards to remove Power BI Desktop authoring overlays.
 - Converted the three main trend visuals from line charts to bar/column trend panels to match the ZoomCharts sample more closely and avoid native line chart render errors.
-- Added interaction polish: ordered sidebar navigation labels, Board Lens slicer grouping, compact lens subtitles on panels, clearer slicer typography, and semantic YoY coloring for lower-is-better metrics.
+- Added interaction polish: ordered sidebar navigation labels, split Global Lens / P&L Lens slicer grouping, compact lens subtitles on panels, clearer slicer typography, and semantic YoY coloring for lower-is-better metrics.
 
 ## v21 - 2026-06-20
 
