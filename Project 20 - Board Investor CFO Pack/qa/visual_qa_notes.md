@@ -1,20 +1,16 @@
 # Visual QA Notes
 
-## v65 Alignment + Current Lens QA
+v66 focuses on the sidebar slicer alignment and the Current Lens card fit.
 
-Follow-up polish for the user-reported sidebar rectangles, missing Current Lens, and uneven KPI distribution.
-
-- Removed the separate action button overlay from sidebar navigation; the nav shape itself now carries the page link.
-- Restored `Current Lens` as a larger `154x58` dynamic SVG card with `16px` horizontal and vertical render budget.
-- Widened the four KPI cards to `255px` and reduced the gap to `12px`; the KPI strip now runs from `x=204` to `x=1260`.
-- Increased sidebar label textbox heights to avoid internal text clipping/scroll artifacts.
-- Restored the native `FC / Finance Control` signature and removed `TDAT`/Portfolio Signature canvas artifacts from the final PBIX layout.
+- Final product is a real PBIX rebuilt through the TOM model push and native layout patch route, not an HTML-only preview.
+- All 12 global sidebar slicers across the 3 pages now use a `150x40` dropdown container, centered item alignment, and `8.1` pt item typography.
+- Current Lens is enlarged to a `164x62` visual frame with a `154x52` SVG image, so the lens content has more breathing room inside the lower sidebar.
+- Sidebar signature remains the compact `FC` / `Finance Control` mark; the previous `TDAT`, `AT Signature`, and Portfolio Signature visual artifacts are absent from the final PBIX layout.
+- The final PBIX model was re-saved through TOM before the final layout patch, and the extracted PBIX model confirms `Lens Summary SVG` now uses `width='154' height='52' viewBox='0 0 154 52'`.
 
 Evidence:
 
-- Final PBIX direct verification: `qa/pbix_direct_verification_v65_alignment_lens.json`
-- Playwright sanity screenshot from generated preview: `output/playwright/project20_v65_preview_full.png`
-
-Note:
-
-- Final acceptance is based on direct inspection of `Report/Layout` inside `output/dashboard_final.pbix`. Power BI Desktop was used during QA, but the final PBIX was patched after Desktop save because Desktop rewrote the sidebar signature textbox back to `TDAT`; the final direct verification confirms the shipped PBIX layout is clean.
+- Direct PBIX verification: `qa/pbix_direct_verification_v66_slicer_lens_fit.json`
+- Model push verification: `qa/seed_model_push_via_tom.json`
+- Playwright visual crop: `output/playwright/project20_v66_slicer_lens_preview.png`
+- Snapshot PBIX: `output/dashboard_final_v66_slicer_lens_fit.pbix`

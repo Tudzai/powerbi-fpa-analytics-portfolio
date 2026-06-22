@@ -1,0 +1,172 @@
+﻿{
+    "status":  "pass",
+    "generatedAt":  "2026-06-22T17:52:39",
+    "pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+    "snapshot":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final_v66_slicer_lens_fit.pbix",
+    "pbixSize":  4198293,
+    "checks":  {
+                   "slicerCount":  12,
+                   "slicerAlignedAndCentered":  true,
+                   "currentLensCount":  3,
+                   "currentLensFit":  true,
+                   "seedModelPushed":  true,
+                   "containsTDAT":  false,
+                   "containsATSignature":  false,
+                   "containsPortfolioSignatureVisual":  false,
+                   "containsFinanceControl":  true,
+                   "containsCurrentLens":  true,
+                   "modelExtractLensSvg154x52":  true
+               },
+    "slicers":  [
+                    {
+                        "page":  "ReportSectionPerformance",
+                        "native":  "Year",
+                        "x":  32,
+                        "y":  276,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    },
+                    {
+                        "page":  "ReportSectionPerformance",
+                        "native":  "Scenario",
+                        "x":  32,
+                        "y":  344,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    },
+                    {
+                        "page":  "ReportSectionPerformance",
+                        "native":  "BU",
+                        "x":  32,
+                        "y":  450,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    },
+                    {
+                        "page":  "ReportSectionPerformance",
+                        "native":  "Region",
+                        "x":  32,
+                        "y":  518,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    },
+                    {
+                        "page":  "ReportSectionCashPlan",
+                        "native":  "Year",
+                        "x":  32,
+                        "y":  276,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    },
+                    {
+                        "page":  "ReportSectionCashPlan",
+                        "native":  "Scenario",
+                        "x":  32,
+                        "y":  344,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    },
+                    {
+                        "page":  "ReportSectionCashPlan",
+                        "native":  "BU",
+                        "x":  32,
+                        "y":  450,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    },
+                    {
+                        "page":  "ReportSectionCashPlan",
+                        "native":  "Region",
+                        "x":  32,
+                        "y":  518,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    },
+                    {
+                        "page":  "ReportSectionRiskValuation",
+                        "native":  "Year",
+                        "x":  32,
+                        "y":  276,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    },
+                    {
+                        "page":  "ReportSectionRiskValuation",
+                        "native":  "Scenario",
+                        "x":  32,
+                        "y":  344,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    },
+                    {
+                        "page":  "ReportSectionRiskValuation",
+                        "native":  "BU",
+                        "x":  32,
+                        "y":  450,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    },
+                    {
+                        "page":  "ReportSectionRiskValuation",
+                        "native":  "Region",
+                        "x":  32,
+                        "y":  518,
+                        "width":  150,
+                        "height":  40,
+                        "fontSize":  "8.1D",
+                        "alignment":  "\u0027center\u0027"
+                    }
+                ],
+    "currentLens":  [
+                        {
+                            "page":  "ReportSectionPerformance",
+                            "x":  24,
+                            "y":  570,
+                            "width":  164,
+                            "height":  62,
+                            "imageWidth":  "154L",
+                            "imageHeight":  "52L"
+                        },
+                        {
+                            "page":  "ReportSectionCashPlan",
+                            "x":  24,
+                            "y":  570,
+                            "width":  164,
+                            "height":  62,
+                            "imageWidth":  "154L",
+                            "imageHeight":  "52L"
+                        },
+                        {
+                            "page":  "ReportSectionRiskValuation",
+                            "x":  24,
+                            "y":  570,
+                            "width":  164,
+                            "height":  62,
+                            "imageWidth":  "154L",
+                            "imageHeight":  "52L"
+                        }
+                    ],
+    "modelExtractPath":  "tmp/verify_v66_model/Model/database.json"
+}

@@ -1066,15 +1066,15 @@ VAR RegionText =
     IF(NOT ISFILTERED(DimRegion[Region]) || RegionCount = RegionTotal,
         "All Regions",
         IF(RegionCount = 1, SELECTEDVALUE(DimRegion[Region]), FORMAT(RegionCount, "0") & " Regions"))
-VAR Line1 = LEFT(YearText & " | " & ScenarioText, 23)
-VAR Line2 = LEFT(BUText & " | " & RegionText, 25)
+VAR Line1 = LEFT(YearText & " | " & ScenarioText, 25)
+VAR Line2 = LEFT(BUText & " | " & RegionText, 28)
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='142' height='42' viewBox='0 0 142 42'>" &
-    "<rect x='0.5' y='0.5' width='141' height='41' rx='6' fill='%233F1A63' stroke='%238E73E7' stroke-width='1'/>" &
-    "<text x='9' y='14' font-family='Segoe UI' font-size='9' font-weight='700' fill='%23CFC3E6'>Current Lens</text>" &
-    "<circle cx='123' cy='11' r='3' fill='%236EE4CF'/>" &
-    "<text x='9' y='27' font-family='Segoe UI' font-size='10' font-weight='700' fill='%23FFFFFF'>" & Line1 & "</text>" &
-    "<text x='9' y='38' font-family='Segoe UI' font-size='8.5' fill='%23CFC3E6'>" & Line2 & "</text>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='154' height='52' viewBox='0 0 154 52'>" &
+    "<rect x='0.5' y='0.5' width='153' height='51' rx='7' fill='%233F1A63' stroke='%238E73E7' stroke-width='1'/>" &
+    "<text x='10' y='16' font-family='Segoe UI' font-size='9.5' font-weight='700' fill='%23CFC3E6'>Current Lens</text>" &
+    "<circle cx='136' cy='13' r='3.4' fill='%236EE4CF'/>" &
+    "<text x='10' y='33' font-family='Segoe UI' font-size='10.5' font-weight='700' fill='%23FFFFFF'>" & Line1 & "</text>" &
+    "<text x='10' y='46' font-family='Segoe UI' font-size='8.7' fill='%23CFC3E6'>" & Line2 & "</text>" &
     "</svg>"
 RETURN "data:image/svg+xml;utf8," & SVG'''
 
@@ -1887,8 +1887,8 @@ def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
         image_w = max(20, int(p["width"] - 8))
         image_h = max(20, int(p["height"] - 8))
     elif measure == "Lens Summary SVG":
-        image_w = max(20, int(p["width"] - 16))
-        image_h = 42
+        image_w = max(20, int(p["width"] - 10))
+        image_h = max(20, int(p["height"] - 10))
     elif measure.endswith("KPI Card SVG"):
         image_w = max(20, int(p["width"] - 32))
         image_h = max(20, int(p["height"] - 28))
@@ -2134,8 +2134,8 @@ def slicer_default_filter(table, column, values, kind="string", alias="f"):
 def rail_filter_row(label, table, column, display, y, z, accent, sync_name, single_select=False, default_values=None, default_kind="string"):
     return [
         solid_rect(accent, pos(34, y + 5, z, 7, 7), radius=1.8),
-        plain_text(label, pos(50, y - 5, z + 1, 128, 30), COLORS["filter_label"], "7.2pt", "Segoe UI Semibold"),
-        slicer(table, column, display, pos(32, y + 18, z + 2, 150, 38), mode="Dropdown", show_title=False, compact=True, sync_group=sync_name, rail=True, single_select=single_select, default_values=default_values, default_kind=default_kind),
+        plain_text(label, pos(50, y - 6, z + 1, 128, 30), COLORS["filter_label"], "7.2pt", "Segoe UI Semibold"),
+        slicer(table, column, display, pos(32, y + 18, z + 2, 150, 40), mode="Dropdown", show_title=False, compact=True, sync_group=sync_name, rail=True, single_select=single_select, default_values=default_values, default_kind=default_kind),
     ]
 
 
@@ -2178,7 +2178,7 @@ def sidebar_shell(page_title, active_label, z, context_items=None):
         solid_rect(COLORS["sidebar_rule"], pos(34, 423, z + 65, 148, 2), radius=1.0),
         *rail_filter_row("Business Unit", "DimBusinessUnit", "BusinessUnit", "BU", 432, z + 67, COLORS["teal"], "global_bu"),
         *rail_filter_row("Region", "DimRegion", "Region", "Region", 500, z + 73, COLORS["amber"], "global_region"),
-        kpi_svg_table("Lens Summary SVG", "Current Lens", pos(30, 576, z + 80, 154, 58)),
+        kpi_svg_table("Lens Summary SVG", "Current Lens", pos(24, 570, z + 80, 164, 62)),
         solid_rect(COLORS["sidebar_rule"], pos(30, 642, z + 86, 146, 3), radius=1.5),
         plain_text("Data through\nMay 2026", pos(50, 652, z + 60, 112, 42), "#D7CCF1", "8.0pt"),
     ]
@@ -2202,12 +2202,12 @@ def static_kpi_with_chip(display, value, chip_text, p, accent, chip_accent=COLOR
 def slicer(table, column, display, p, mode="Dropdown", show_title=True, fill=None, compact=False, sync_group=None, rail=False, single_select=False, default_values=None, default_kind="string"):
     qref = f"{table}.{column}"
     show_select_all = mode != "Basic" and not single_select
-    item_size = 7.4 if compact else 8.3
+    item_size = 8.1 if compact else 8.6
     objects = {
         "data": [{"properties": {"mode": txt(mode)}}],
         "selection": [{"properties": {"selectAllCheckboxEnabled": lit(show_select_all), "singleSelect": lit(single_select)}}],
         "header": [{"properties": {"show": lit(False)}}],
-        "items": [{"properties": {"fontFamily": txt("Segoe UI"), "fontSize": lit(item_size), "fontColor": col(COLORS["ink"])}}],
+        "items": [{"properties": {"fontFamily": txt("Segoe UI"), "fontSize": lit(item_size), "fontColor": col(COLORS["ink"]), "alignment": txt("center")}}],
     }
     general_props = {}
     if single_select:
