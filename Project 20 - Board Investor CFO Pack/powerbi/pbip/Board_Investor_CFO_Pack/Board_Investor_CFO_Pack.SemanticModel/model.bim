@@ -11,7 +11,7 @@
     "tables": [
       {
         "name": "DimDate",
-        "lineageTag": "b646ead3-236e-4d37-9330-ca0a3c496b2e",
+        "lineageTag": "99952dfd-fe1f-4e7c-aba4-61be0ba3ab59",
         "columns": [
           {
             "name": "MonthStart",
@@ -73,7 +73,7 @@
       },
       {
         "name": "DimScenario",
-        "lineageTag": "af1b3823-a968-4bbe-bb02-198583a09bd0",
+        "lineageTag": "a899ac9d-df7a-4541-8c4d-1717bb7da82e",
         "columns": [
           {
             "name": "ScenarioID",
@@ -136,7 +136,7 @@
       },
       {
         "name": "DimBusinessUnit",
-        "lineageTag": "fa8c46da-ec6f-4221-8dfd-cbdfcdddcf40",
+        "lineageTag": "b79905b6-e5cf-4151-a45a-d2703fef749e",
         "columns": [
           {
             "name": "BusinessUnitID",
@@ -197,7 +197,7 @@
       },
       {
         "name": "DimRegion",
-        "lineageTag": "a8a7becf-359e-4cbd-969f-a97ece7c7289",
+        "lineageTag": "5b278975-2180-4254-aca9-155dc0bdb675",
         "columns": [
           {
             "name": "RegionID",
@@ -250,7 +250,7 @@
       },
       {
         "name": "DimCostCategory",
-        "lineageTag": "10f2be2b-9819-4455-8bc9-04639584ab7a",
+        "lineageTag": "431c1886-dd2e-4ff2-896a-e5161b5932f8",
         "columns": [
           {
             "name": "CostCategoryID",
@@ -292,7 +292,7 @@
       },
       {
         "name": "FactPnlMonthly",
-        "lineageTag": "0b44b0e6-3b12-4be7-8271-acecca290c03",
+        "lineageTag": "6b04930a-85bf-46ef-a685-b70b739dda75",
         "columns": [
           {
             "name": "MonthStart",
@@ -415,7 +415,7 @@
       },
       {
         "name": "FactOpexMonthly",
-        "lineageTag": "ee560b5b-cf13-42d4-9860-85518e7142d3",
+        "lineageTag": "f3dc37da-47e6-4409-a8c1-b0fa5c6fcd95",
         "columns": [
           {
             "name": "MonthStart",
@@ -477,7 +477,7 @@
       },
       {
         "name": "FactCashMonthly",
-        "lineageTag": "c7a31e88-5a83-47f6-8258-a8bf0cab13c6",
+        "lineageTag": "587e2560-118c-43bf-b1fc-e1601f6219ce",
         "columns": [
           {
             "name": "MonthStart",
@@ -579,7 +579,7 @@
       },
       {
         "name": "FactStatementLines",
-        "lineageTag": "e4e8a46c-6a94-42f6-90c9-d83f22715627",
+        "lineageTag": "35c6a4f9-9c87-4057-9a91-15044e14fa51",
         "columns": [
           {
             "name": "MonthStart",
@@ -654,7 +654,7 @@
       },
       {
         "name": "FactCovenantMonthly",
-        "lineageTag": "ee4743dd-95aa-4b8b-b645-cba6d103506b",
+        "lineageTag": "c09b4bce-737d-4ba9-94b9-b080507b0ec5",
         "columns": [
           {
             "name": "MonthStart",
@@ -773,7 +773,7 @@
       },
       {
         "name": "FactValuation",
-        "lineageTag": "404de757-d23b-40b6-a3e7-f38f405cbe71",
+        "lineageTag": "1e89ce6b-9f59-4113-85af-f66d681e6787",
         "columns": [
           {
             "name": "ScenarioID",
@@ -849,7 +849,7 @@
       },
       {
         "name": "FactSensitivity",
-        "lineageTag": "de0e4e7b-93db-43a6-8e58-4a75ff9bb78c",
+        "lineageTag": "9c7b0d62-cd7f-4cac-8573-ee444f503773",
         "columns": [
           {
             "name": "ScenarioID",
@@ -910,7 +910,7 @@
       },
       {
         "name": "FactRiskRegister",
-        "lineageTag": "a849984b-74cb-41fe-9772-ed190729c507",
+        "lineageTag": "6c911c5f-6207-4803-b2a2-930f3f07be77",
         "columns": [
           {
             "name": "ScenarioID",
@@ -995,7 +995,7 @@
       },
       {
         "name": "FactKpiScorecard",
-        "lineageTag": "c10381bd-8c95-409a-9517-c4235b19eb5b",
+        "lineageTag": "85e03872-b00f-41e3-9857-1187c1606c5a",
         "columns": [
           {
             "name": "MetricName",
@@ -1067,7 +1067,7 @@
       },
       {
         "name": "KPI_Measures",
-        "lineageTag": "0ae61a6a-c6cf-4741-b0f3-cd93163bc11e",
+        "lineageTag": "b3dcc7c9-45e9-4b69-9a00-9d779ae9f168",
         "columns": [
           {
             "name": "MeasureName",
@@ -1090,592 +1090,592 @@
           {
             "name": "Revenue",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[Revenue]), FactPnlMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "fc383cf1-36d7-4562-89d3-dd4d17d361d4",
+            "lineageTag": "eb6a4d82-dc6d-480b-b259-d7f06afe1210",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Plan Revenue",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[PlanRevenue]), FactPnlMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "0c636d70-55e5-43d3-9f05-97c39decfc14",
+            "lineageTag": "178a2855-6b18-4fc5-99f0-596a3035d305",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Forecast Revenue",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[ForecastRevenue]), FactPnlMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "cbe5250a-f75c-41fb-a6b8-4895635e8ae7",
+            "lineageTag": "6073acde-49df-4b58-ad0d-95eea4d3577c",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Revenue vs Plan",
             "expression": "[Revenue] - [Plan Revenue]",
-            "lineageTag": "f79433b6-27b4-4d74-80e2-0f7d088b9d0e",
+            "lineageTag": "2e170bef-cb0e-4bf0-863d-916ccc581fc5",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Revenue vs Plan %",
             "expression": "DIVIDE([Revenue vs Plan], [Plan Revenue])",
-            "lineageTag": "573ec328-9e84-40e5-8dab-f1ec0531a95b",
+            "lineageTag": "70c6a617-f4b9-4be9-a231-159375f47ef3",
             "formatString": "0.0%"
           },
           {
             "name": "Gross Profit",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[GrossProfit]), FactPnlMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "e4a8390a-3508-4e9a-b12f-e5d097c591c3",
+            "lineageTag": "fec556b1-b54e-4a99-bc51-191fbb55129f",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Gross Margin %",
             "expression": "DIVIDE([Gross Profit], [Revenue])",
-            "lineageTag": "562521ad-7cac-4f3f-82fc-7a2d8e5f232c",
+            "lineageTag": "4c6d4b12-0052-4ee5-aa74-3d7e21003b1d",
             "formatString": "0.0%"
           },
           {
             "name": "EBITDA",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[EBITDA]), FactPnlMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "c879d1a8-94ef-44a6-8a45-b450bdae9d03",
+            "lineageTag": "8e8d9187-0b83-4311-8efc-1a28dd93d765",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Plan EBITDA",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[PlanEBITDA]), FactPnlMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "1dd80e4e-ae5d-4f67-8b57-f744c62c221d",
+            "lineageTag": "3d34913e-99ab-403a-965b-816829b16420",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "EBITDA vs Plan",
             "expression": "[EBITDA] - [Plan EBITDA]",
-            "lineageTag": "52d9304f-0bb9-451b-a816-eeb4adb8c821",
+            "lineageTag": "f346af68-db76-4c4a-a4c6-f2fc4b9da7a3",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "EBITDA Margin %",
             "expression": "DIVIDE([EBITDA], [Revenue])",
-            "lineageTag": "9d89d081-ed8f-48e6-a3ce-51bd9c0dca3a",
+            "lineageTag": "3e255cde-9a17-4069-bd0c-26be25c40d99",
             "formatString": "0.0%"
           },
           {
             "name": "Net Income",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactPnlMonthly[NetIncome]), FactPnlMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "7325c75d-f9c2-4462-9fde-59dbd372f7de",
+            "lineageTag": "e9248c66-a313-4b06-a5e5-9eaf9d894fad",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Operating Expense",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactOpexMonthly[OperatingExpense]), FactOpexMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "850f32a5-515c-4138-a417-db05a8c7a75c",
+            "lineageTag": "70b6dc63-03c7-4564-8088-f9db6c3f9496",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Latest Revenue",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE([Revenue], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "483821e5-9c77-463a-9894-1d87b1f31fcf",
+            "lineageTag": "56e9cefe-5c35-4d91-b0a1-7e8c5c90df30",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Latest Gross Margin %",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE([Gross Margin %], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "74099a03-0bb7-4575-ab28-5236173b2d0d",
+            "lineageTag": "b0914502-6b87-47a1-9c3c-f4291888f11f",
             "formatString": "0.0%"
           },
           {
             "name": "Latest EBITDA",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE([EBITDA], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "b7dcb2d7-f935-4f27-b9af-1891636d5c3b",
+            "lineageTag": "d9a99a72-47cf-48ad-89f9-0a12f3a85975",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Latest EBITDA Margin %",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE([EBITDA Margin %], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "03b4fbe4-f48a-4784-aae5-f13c1d841b20",
+            "lineageTag": "dade55a1-f101-47e3-b185-ad4b558dd2e1",
             "formatString": "0.0%"
           },
           {
             "name": "Latest Cash Balance",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE(MAX(FactCashMonthly[CashBalance]), FactCashMonthly[ScenarioID] = ScenarioID, FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "7fb13798-aa3d-4cd2-bd24-eee111962ccb",
+            "lineageTag": "93d4c447-19d5-4615-a9da-7b0d271fdd4c",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Cash Balance",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[CashBalance]), FactCashMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "e3529783-2871-490b-8971-b7289612beb6",
+            "lineageTag": "ecc5d757-22b6-4033-821c-771a571c57f7",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Operating Cash Flow",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactCashMonthly[OperatingCashFlow]), FactCashMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "b8dcba02-de50-49e2-b04b-62db346dfe48",
+            "lineageTag": "f8d311ec-8f09-43b1-89e4-ac4149e7c4c3",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Free Cash Flow",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactCashMonthly[FreeCashFlow]), FactCashMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "5f6315ca-c835-4385-bdba-0650bf59d8a6",
+            "lineageTag": "654c285d-eb72-4fea-9ca1-88f8cfef6b61",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Latest Free Cash Flow",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE(MAX(FactCashMonthly[FreeCashFlow]), FactCashMonthly[ScenarioID] = ScenarioID, FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "a4e9e1fd-ef6a-43a7-9da6-1a5b28fbb228",
+            "lineageTag": "036f3192-860b-4d75-a7e4-5b5c493f4b4f",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Net Burn",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[NetBurn]), FactCashMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "db942baa-bf22-4f35-a320-d57248726c3c",
+            "lineageTag": "f1a8f5c8-2f35-4865-be6d-895b99d0f9b8",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Latest Net Burn",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE(MAX(FactCashMonthly[NetBurn]), FactCashMonthly[ScenarioID] = ScenarioID, FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "ba292e07-6d2f-40c5-9b6b-ed99565050e7",
+            "lineageTag": "cba8caaf-44cb-406d-84cd-5b66ba6dee74",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Runway Months",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[RunwayMonths]), FactCashMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "4a647a15-35e3-4c66-b752-bb4ee05f8d24",
+            "lineageTag": "1cc33a7d-b5fd-4325-860f-ad9f13937252",
             "formatString": "0.0x"
           },
           {
             "name": "Latest Runway Months",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE(MAX(FactCashMonthly[RunwayMonths]), FactCashMonthly[ScenarioID] = ScenarioID, FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "6f6e3bfb-a790-49c6-a9b8-fe7dc522bd13",
+            "lineageTag": "5414ee1f-3a09-44ff-aca1-632af3e48482",
             "formatString": "0.0x"
           },
           {
             "name": "Funding Need",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCashMonthly[FundingNeed]), FactCashMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "117d92ac-c4e8-4c7e-81d2-4650d2344363",
+            "lineageTag": "ff24936b-8f05-4928-8864-f770800b802e",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Latest Funding Need",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE(MAX(FactCashMonthly[FundingNeed]), FactCashMonthly[ScenarioID] = ScenarioID, FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "3db6d967-193a-40f3-aa4a-7f84db8efa71",
+            "lineageTag": "8c1e6e19-73f4-4bce-b4c1-99b153af2026",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Statement Actual",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactStatementLines[ValueActual]), FactStatementLines[ScenarioID] = ScenarioID)",
-            "lineageTag": "7127d83b-9f8b-4568-89bb-f4e436a0d722",
+            "lineageTag": "1720cbca-c0d2-4f7f-96c0-c10fa7cd131c",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Statement Plan",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactStatementLines[ValuePlan]), FactStatementLines[ScenarioID] = ScenarioID)",
-            "lineageTag": "73da9a57-a0e9-41b6-853d-0d179b80dc70",
+            "lineageTag": "df4e3f61-7c6c-435b-973b-4178298f48c2",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Statement Forecast",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactStatementLines[ValueForecast]), FactStatementLines[ScenarioID] = ScenarioID)",
-            "lineageTag": "f873b28a-35b5-4b7e-b6f2-add49a236d8a",
+            "lineageTag": "8db1ffcb-8c1a-40c7-ac9b-1c609f45a2c3",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Statement Variance %",
             "expression": "DIVIDE([Statement Actual] - [Statement Plan], [Statement Plan])",
-            "lineageTag": "500bfc44-466d-4da0-9627-dc2e465b1439",
+            "lineageTag": "81ee2d22-442d-46fd-8da6-da375219e2ba",
             "formatString": "0.0%"
           },
           {
             "name": "Enterprise Value",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(AVERAGE(FactValuation[EnterpriseValue]), FactValuation[ScenarioID] = ScenarioID)",
-            "lineageTag": "f23fe535-1855-4788-adac-368f2cd1de35",
+            "lineageTag": "e6262d5c-9644-4fd0-9d33-e49b68d96ec1",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Equity Value",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(AVERAGE(FactValuation[EquityValue]), FactValuation[ScenarioID] = ScenarioID)",
-            "lineageTag": "90d360cd-492a-42d4-aa0a-6441adcae2be",
+            "lineageTag": "bc06b213-755f-442a-8fa8-677f715956f6",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Valuation Low",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(AVERAGE(FactValuation[LowValue]), FactValuation[ScenarioID] = ScenarioID)",
-            "lineageTag": "36aada4d-fc36-4923-9b4b-efc3e24a4e8c",
+            "lineageTag": "5c72f5a0-5428-4685-8d57-cf0c4c4fb56c",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Valuation High",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(AVERAGE(FactValuation[HighValue]), FactValuation[ScenarioID] = ScenarioID)",
-            "lineageTag": "9bae7cb7-ed6c-4ca5-911d-e555d58f0e65",
+            "lineageTag": "1401877d-017f-4a24-8e5c-35c0d054ab7a",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Sensitivity Delta",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactSensitivity[EquityValueDelta]), FactSensitivity[ScenarioID] = ScenarioID)",
-            "lineageTag": "02f37242-e170-4321-866d-8bc7a4ab027c",
+            "lineageTag": "aff63729-a70d-4515-9b36-5a71eb6a1ed4",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Leverage Ratio",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE(MAX(FactCovenantMonthly[LeverageRatio]), FactCovenantMonthly[ScenarioID] = ScenarioID, FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "06c322fa-938f-4623-9859-1c9210f35534",
+            "lineageTag": "acfe6234-00b1-4a04-92a4-805e0a9278e8",
             "formatString": "0.0x"
           },
           {
             "name": "Leverage Limit",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(MAX(FactCovenantMonthly[LeverageLimit]), FactCovenantMonthly[ScenarioID] = ScenarioID)",
-            "lineageTag": "eef58e2e-3e53-4357-8b57-8ebfc94f72ed",
+            "lineageTag": "3395397e-eb22-4131-9ae3-06d5fb2f211c",
             "formatString": "0.0x"
           },
           {
             "name": "Leverage Headroom",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE(MAX(FactCovenantMonthly[LeverageHeadroom]), FactCovenantMonthly[ScenarioID] = ScenarioID, FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "e0f593cc-4e38-437b-95a9-27a8b3d01b1f",
+            "lineageTag": "888bbfbe-2d17-4269-bb6b-9853b3a08687",
             "formatString": "0.0x"
           },
           {
             "name": "Interest Coverage",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE(MAX(FactCovenantMonthly[InterestCoverage]), FactCovenantMonthly[ScenarioID] = ScenarioID, FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "7f09201a-cf5f-49cf-9fa2-d3ef1a6ff3f6",
+            "lineageTag": "846358a3-db05-44b1-abba-989a54edf017",
             "formatString": "0.0x"
           },
           {
             "name": "Liquidity Headroom",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart]) RETURN CALCULATE(MAX(FactCovenantMonthly[LiquidityHeadroom]), FactCovenantMonthly[ScenarioID] = ScenarioID, FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))",
-            "lineageTag": "2ab2be1e-d163-45df-bfb0-2d82b0f2b511",
+            "lineageTag": "f00a457f-35e9-4fa1-baa1-0282eb6d587b",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Risk Exposure",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(SUM(FactRiskRegister[ExposureUSD]), FactRiskRegister[ScenarioID] = ScenarioID)",
-            "lineageTag": "374b9fc3-6ef3-4752-a602-ad1081f19f20",
+            "lineageTag": "54b3ac29-d011-44d8-9d82-8ee09045031f",
             "formatString": "$#,0;($#,0);$0"
           },
           {
             "name": "Critical Risk Count",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\") RETURN CALCULATE(COUNTROWS(FactRiskRegister), FactRiskRegister[ScenarioID] = ScenarioID, FactRiskRegister[Severity] = \"Critical\")",
-            "lineageTag": "961d7019-5a9d-45e7-b3a9-40e9653e397b",
+            "lineageTag": "5bb5b728-b03e-45a9-add0-889096c9f528",
             "formatString": "#,0"
           },
           {
             "name": "Revenue Display",
             "expression": "VAR Value = [Revenue] RETURN SWITCH(TRUE(), ABS(Value) >= 1000000000, FORMAT(DIVIDE(Value, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\"), ABS(Value) >= 1000000, FORMAT(DIVIDE(Value, 1000000), \"$#,0M;($#,0M);$0M\"), FORMAT(Value, \"$#,0;($#,0);$0\"))",
-            "lineageTag": "074c9424-7e68-4c4b-95a1-7c1bd62f26d4"
+            "lineageTag": "5e8e3980-ce8c-41c0-b44a-8df465420f55"
           },
           {
             "name": "Gross Margin % Display",
             "expression": "FORMAT([Gross Margin %], \"0.0%\")",
-            "lineageTag": "de0b435f-2307-4167-928a-68bc5a2090d1"
+            "lineageTag": "a9b759c3-86cf-4fcb-98a4-c5413bb0e520"
           },
           {
             "name": "EBITDA Display",
             "expression": "VAR Value = [EBITDA] RETURN SWITCH(TRUE(), ABS(Value) >= 1000000000, FORMAT(DIVIDE(Value, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\"), ABS(Value) >= 1000000, FORMAT(DIVIDE(Value, 1000000), \"$#,0M;($#,0M);$0M\"), FORMAT(Value, \"$#,0;($#,0);$0\"))",
-            "lineageTag": "3dae1db5-8fce-4075-8576-0d8fd018f8ae"
+            "lineageTag": "004aa472-4630-4116-8896-1ae02365ab08"
           },
           {
             "name": "Cash Balance Display",
             "expression": "VAR Value = [Cash Balance] RETURN SWITCH(TRUE(), ABS(Value) >= 1000000000, FORMAT(DIVIDE(Value, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\"), ABS(Value) >= 1000000, FORMAT(DIVIDE(Value, 1000000), \"$#,0M;($#,0M);$0M\"), FORMAT(Value, \"$#,0;($#,0);$0\"))",
-            "lineageTag": "f66e24a1-c9eb-41ad-b88e-40c2d6fb97f8"
+            "lineageTag": "58d808b6-111a-425e-8e32-5e46c3cc75dd"
           },
           {
             "name": "Runway Months Display",
             "expression": "FORMAT([Runway Months], \"0.0x\")",
-            "lineageTag": "9215f4fe-21e5-491c-ba7e-147f5225a4ec"
+            "lineageTag": "4740f8d5-af3d-4ee6-90f3-22e1cc5fd48a"
           },
           {
             "name": "Free Cash Flow Display",
             "expression": "VAR Value = [Free Cash Flow] RETURN SWITCH(TRUE(), ABS(Value) >= 1000000000, FORMAT(DIVIDE(Value, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\"), ABS(Value) >= 1000000, FORMAT(DIVIDE(Value, 1000000), \"$#,0M;($#,0M);$0M\"), FORMAT(Value, \"$#,0;($#,0);$0\"))",
-            "lineageTag": "8e5551ce-ea81-4a67-b284-2b626e6eafa5"
+            "lineageTag": "798e2d22-33ff-4cdc-9014-3be1293c93c1"
           },
           {
             "name": "Net Burn Display",
             "expression": "VAR Value = [Net Burn] RETURN SWITCH(TRUE(), ABS(Value) >= 1000000000, FORMAT(DIVIDE(Value, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\"), ABS(Value) >= 1000000, FORMAT(DIVIDE(Value, 1000000), \"$#,0M;($#,0M);$0M\"), FORMAT(Value, \"$#,0;($#,0);$0\"))",
-            "lineageTag": "cf80a585-3e81-4968-88b5-a9f9de29c348"
+            "lineageTag": "5cb7cae5-744c-47df-b83d-9f0f0f23c5fe"
           },
           {
             "name": "Funding Need Display",
             "expression": "VAR Value = [Funding Need] RETURN SWITCH(TRUE(), ABS(Value) >= 1000000000, FORMAT(DIVIDE(Value, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\"), ABS(Value) >= 1000000, FORMAT(DIVIDE(Value, 1000000), \"$#,0M;($#,0M);$0M\"), FORMAT(Value, \"$#,0;($#,0);$0\"))",
-            "lineageTag": "86cd1efd-160a-42b5-aeeb-e04f48393eae"
+            "lineageTag": "5ae22fd4-5e5e-406d-963a-71e4c42596a1"
           },
           {
             "name": "Enterprise Value Display",
             "expression": "VAR Value = [Enterprise Value] RETURN SWITCH(TRUE(), ABS(Value) >= 1000000000, FORMAT(DIVIDE(Value, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\"), ABS(Value) >= 1000000, FORMAT(DIVIDE(Value, 1000000), \"$#,0M;($#,0M);$0M\"), FORMAT(Value, \"$#,0;($#,0);$0\"))",
-            "lineageTag": "a1589ecc-7c50-4848-bd3c-e514815b93a3"
+            "lineageTag": "2df96a64-899c-4c7f-8f75-0b8a97ae3518"
           },
           {
             "name": "Equity Value Display",
             "expression": "VAR Value = [Equity Value] RETURN SWITCH(TRUE(), ABS(Value) >= 1000000000, FORMAT(DIVIDE(Value, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\"), ABS(Value) >= 1000000, FORMAT(DIVIDE(Value, 1000000), \"$#,0M;($#,0M);$0M\"), FORMAT(Value, \"$#,0;($#,0);$0\"))",
-            "lineageTag": "7aca6782-10e7-48f3-8189-f59459ebe57f"
+            "lineageTag": "41319e04-aeb5-4169-a5a8-4c813657dce1"
           },
           {
             "name": "Leverage Ratio Display",
             "expression": "FORMAT([Leverage Ratio], \"0.0x\")",
-            "lineageTag": "045a15a4-0916-482c-af5f-e4cda417bf05"
+            "lineageTag": "3f604c98-ce8c-4016-98e6-c22314a9b672"
           },
           {
             "name": "Leverage Headroom Display",
             "expression": "FORMAT([Leverage Headroom], \"0.0x\")",
-            "lineageTag": "a12ffbe8-2a39-40b7-9bd9-7c2ce277e1e0"
+            "lineageTag": "c594ba04-9237-4a1d-99f8-71879f4b14d7"
           },
           {
             "name": "Risk Exposure Display",
             "expression": "VAR Value = [Risk Exposure] RETURN SWITCH(TRUE(), ABS(Value) >= 1000000000, FORMAT(DIVIDE(Value, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\"), ABS(Value) >= 1000000, FORMAT(DIVIDE(Value, 1000000), \"$#,0M;($#,0M);$0M\"), FORMAT(Value, \"$#,0;($#,0);$0\"))",
-            "lineageTag": "9aab031c-3b42-4af0-bf8e-c5b9f8dfd814"
+            "lineageTag": "b8ac8ffb-dfca-4e7a-b8d7-9d560933da6b"
           },
           {
             "name": "Revenue KPI",
             "expression": "DIVIDE([Latest Revenue], 1000000)",
-            "lineageTag": "e27f96a7-3e4f-4340-bfe2-1fe2d5660cb0",
+            "lineageTag": "2a376709-c4b2-4e8b-b1ae-209b0b06673a",
             "formatString": "$#,0.0M;($#,0.0M);$0.0M"
           },
           {
             "name": "Gross Margin KPI",
             "expression": "[Latest Gross Margin %]",
-            "lineageTag": "79437357-8472-4ed9-b867-3c8488ca6712",
+            "lineageTag": "7e74afac-ceb7-4709-8bef-853246e57b97",
             "formatString": "0.0%"
           },
           {
             "name": "EBITDA KPI",
             "expression": "DIVIDE([Latest EBITDA], 1000000)",
-            "lineageTag": "adb15664-5b5c-4266-8340-961385fe961b",
+            "lineageTag": "ac488d31-b407-4ea9-8b7e-4ee5544938cd",
             "formatString": "$#,0.0M;($#,0.0M);$0.0M"
           },
           {
             "name": "Cash Balance KPI",
             "expression": "DIVIDE([Latest Cash Balance], 1000000)",
-            "lineageTag": "c762d02d-77f7-4800-97a2-135543e7006f",
+            "lineageTag": "bd5e39a9-5af0-479e-b1a0-c330b8fec23f",
             "formatString": "$#,0.0M;($#,0.0M);$0.0M"
           },
           {
             "name": "Runway Months KPI",
             "expression": "[Latest Runway Months]",
-            "lineageTag": "692d5869-c136-4976-b7ee-5468e35b7821",
+            "lineageTag": "68e477a8-3b29-4e42-8b55-9b5e8b93cfd4",
             "formatString": "0.0x"
           },
           {
             "name": "Free Cash Flow KPI",
             "expression": "DIVIDE([Latest Free Cash Flow], 1000000)",
-            "lineageTag": "f454c1b9-c8d4-4df9-b1dc-ee08b1c098c4",
+            "lineageTag": "ad195aff-4e2e-4c7b-94a1-aa490bce2390",
             "formatString": "$#,0.0M;($#,0.0M);$0.0M"
           },
           {
             "name": "Net Burn KPI",
             "expression": "DIVIDE([Latest Net Burn], 1000000)",
-            "lineageTag": "eb934048-c99e-4d85-adad-df7039a7dd75",
+            "lineageTag": "719367ac-947a-4790-a68a-63dd7adf08d1",
             "formatString": "$#,0M;($#,0M);$0M"
           },
           {
             "name": "Funding Need KPI",
             "expression": "DIVIDE([Latest Funding Need], 1000000)",
-            "lineageTag": "9e4b48b2-2814-4a13-8cd0-03d5baa26c58",
+            "lineageTag": "6c285fbb-8288-4000-8ede-aa6c35f07da0",
             "formatString": "$#,0M;($#,0M);$0M"
           },
           {
             "name": "Enterprise Value KPI",
             "expression": "DIVIDE([Enterprise Value], 1000000000)",
-            "lineageTag": "f770f690-f17b-46ae-a36c-befe54904b98",
+            "lineageTag": "2900bfdf-3dff-4e9a-a5c9-fbac207f01d3",
             "formatString": "$#,0.0B;($#,0.0B);$0.0B"
           },
           {
             "name": "Equity Value KPI",
             "expression": "DIVIDE([Equity Value], 1000000000)",
-            "lineageTag": "344b4c57-6a71-41ac-a476-517eb634d7b0",
+            "lineageTag": "71a7ffe1-b8ef-4b64-a54c-24e1cc5ea420",
             "formatString": "$#,0.0B;($#,0.0B);$0.0B"
           },
           {
             "name": "Leverage KPI",
             "expression": "[Leverage Ratio]",
-            "lineageTag": "f7673a3f-dea2-40bc-b29f-7d53bafb1d71",
+            "lineageTag": "bceb8657-2444-44f1-90cc-61805a0683c2",
             "formatString": "0.0x"
           },
           {
             "name": "Headroom KPI",
             "expression": "[Leverage Headroom]",
-            "lineageTag": "04aec727-11a7-443a-8a71-4edc56546fd6",
+            "lineageTag": "8cd9576a-929c-4f8c-86a3-580bf2bbd1dc",
             "formatString": "0.0x"
           },
           {
             "name": "Risk Exposure KPI",
             "expression": "DIVIDE([Risk Exposure], 1000000)",
-            "lineageTag": "eb7115ee-5406-4b9a-b77b-548649f0655d",
+            "lineageTag": "98ca4c03-9379-48ed-946a-0124867b0187",
             "formatString": "$#,0M;($#,0M);$0M"
           },
           {
             "name": "Revenue Sparkline SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Revenue]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR StartYValue = 37 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR EndYValue = 37 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR TrendColor = IF(LastValue >= FirstValue, \"%234F87F5\", \"%23C94A4A\")\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 37 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 30\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23F3EFFA'/><rect x='0' y='16' width='120' height='12' rx='6' fill='%23DDEEDC'/><line x1='0' y1='22' x2='120' y2='22' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/><polyline points='\" & Points & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='2' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='3' fill='%23FFFFFF' stroke='%238F7BAE' stroke-width='1.5'/><circle cx='118' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='4' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='1.5'/></svg>\"",
-            "lineageTag": "f7c5354c-de5a-44f8-900e-c98d80373284",
+            "lineageTag": "858425c7-0640-47c9-aa27-69cf2bc1fb57",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Gross Margin Sparkline SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Gross Margin %]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR StartYValue = 37 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR EndYValue = 37 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR TrendColor = IF(LastValue >= FirstValue, \"%230F9F95\", \"%23C94A4A\")\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 37 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 30\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23F3EFFA'/><rect x='0' y='16' width='120' height='12' rx='6' fill='%23DDEEDC'/><line x1='0' y1='22' x2='120' y2='22' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/><polyline points='\" & Points & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='2' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='3' fill='%23FFFFFF' stroke='%238F7BAE' stroke-width='1.5'/><circle cx='118' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='4' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='1.5'/></svg>\"",
-            "lineageTag": "ad9092d5-bfc3-4e9b-91ff-1e3992416a32",
+            "lineageTag": "24d6dfd0-b16b-48ee-9151-1d27b4464e17",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "EBITDA Sparkline SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [EBITDA]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR StartYValue = 37 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR EndYValue = 37 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR TrendColor = IF(LastValue >= FirstValue, \"%231F8E45\", \"%23C94A4A\")\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 37 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 30\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23F3EFFA'/><rect x='0' y='16' width='120' height='12' rx='6' fill='%23DDEEDC'/><line x1='0' y1='22' x2='120' y2='22' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/><polyline points='\" & Points & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='2' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='3' fill='%23FFFFFF' stroke='%238F7BAE' stroke-width='1.5'/><circle cx='118' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='4' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='1.5'/></svg>\"",
-            "lineageTag": "3b003555-7173-4553-b53e-9df830250fa3",
+            "lineageTag": "f7ec7c85-0f3e-4324-ba6b-392ace3e301f",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Cash Sparkline SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Cash Balance]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR StartYValue = 37 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR EndYValue = 37 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR TrendColor = IF(LastValue >= FirstValue, \"%23BE7C10\", \"%23C94A4A\")\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 37 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 30\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23F3EFFA'/><rect x='0' y='16' width='120' height='12' rx='6' fill='%23DDEEDC'/><line x1='0' y1='22' x2='120' y2='22' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/><polyline points='\" & Points & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='2' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='3' fill='%23FFFFFF' stroke='%238F7BAE' stroke-width='1.5'/><circle cx='118' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='4' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='1.5'/></svg>\"",
-            "lineageTag": "3ac64a5a-f402-436d-bd78-f09cf0b0e20e",
+            "lineageTag": "b3790d1c-c4a7-40cc-9c2d-37e9968ba2f1",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Runway Sparkline SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Runway Months]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR StartYValue = 37 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR EndYValue = 37 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR TrendColor = IF(LastValue >= FirstValue, \"%234F87F5\", \"%23C94A4A\")\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 37 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 30\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23F3EFFA'/><rect x='0' y='16' width='120' height='12' rx='6' fill='%23DDEEDC'/><line x1='0' y1='22' x2='120' y2='22' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/><polyline points='\" & Points & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='2' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='3' fill='%23FFFFFF' stroke='%238F7BAE' stroke-width='1.5'/><circle cx='118' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='4' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='1.5'/></svg>\"",
-            "lineageTag": "ed2fcbde-19e0-46bd-aaa8-536099741a43",
+            "lineageTag": "03ed799b-4343-434a-8c7c-a0408d07b290",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Funding Sparkline SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Funding Need]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR StartYValue = 37 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR EndYValue = 37 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR TrendColor = IF(LastValue <= FirstValue, \"%231F8E45\", \"%23C94A4A\")\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 37 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 30\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23F3EFFA'/><rect x='0' y='16' width='120' height='12' rx='6' fill='%23DDEEDC'/><line x1='0' y1='22' x2='120' y2='22' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/><polyline points='\" & Points & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='2' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='3' fill='%23FFFFFF' stroke='%238F7BAE' stroke-width='1.5'/><circle cx='118' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='4' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='1.5'/></svg>\"",
-            "lineageTag": "c6020bab-a701-44ce-85cc-d816c98420b2",
+            "lineageTag": "3c85c455-24eb-45bd-93a1-0dd5c227daaf",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Leverage Sparkline SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Leverage Ratio]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR StartYValue = 37 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR EndYValue = 37 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR TrendColor = IF(LastValue <= FirstValue, \"%231F8E45\", \"%23C94A4A\")\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 37 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 30\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23F3EFFA'/><rect x='0' y='16' width='120' height='12' rx='6' fill='%23DDEEDC'/><line x1='0' y1='22' x2='120' y2='22' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/><polyline points='\" & Points & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='2' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='3' fill='%23FFFFFF' stroke='%238F7BAE' stroke-width='1.5'/><circle cx='118' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='4' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='1.5'/></svg>\"",
-            "lineageTag": "cd436107-ac3f-4d05-9b81-2bb7c9b2f765",
+            "lineageTag": "68f3b80b-5515-4206-b2e0-8c9c2f462201",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Interest Coverage Sparkline SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Interest Coverage]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR StartYValue = 37 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR EndYValue = 37 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR TrendColor = IF(LastValue >= FirstValue, \"%231F8E45\", \"%23C94A4A\")\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 37 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 30\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23F3EFFA'/><rect x='0' y='16' width='120' height='12' rx='6' fill='%23DDEEDC'/><line x1='0' y1='22' x2='120' y2='22' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/><polyline points='\" & Points & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='2' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='3' fill='%23FFFFFF' stroke='%238F7BAE' stroke-width='1.5'/><circle cx='118' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='4' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='1.5'/></svg>\"",
-            "lineageTag": "c71b76e2-7ca6-45da-a078-8980ed511018",
+            "lineageTag": "72f9495c-a5b6-4cab-aa14-95c7be30a0a3",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Statement Trend SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Statement Actual]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR StartYValue = 37 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR EndYValue = 37 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 30\nVAR TrendColor = IF(LastValue >= FirstValue, \"%230F9F95\", \"%23C94A4A\")\nVAR Points =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 2 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 116\n        VAR YValue = 37 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 30\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nRETURN\n    \"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'><rect x='0' y='0' width='120' height='44' rx='7' fill='%23F3EFFA'/><rect x='0' y='16' width='120' height='12' rx='6' fill='%23DDEEDC'/><line x1='0' y1='22' x2='120' y2='22' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/><polyline points='\" & Points & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='2' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='3' fill='%23FFFFFF' stroke='%238F7BAE' stroke-width='1.5'/><circle cx='118' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='4' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='1.5'/></svg>\"",
-            "lineageTag": "f275258f-b37f-4035-8d95-d91e9da97b85",
+            "lineageTag": "403db392-025a-4548-b7f1-8822fc266211",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Board KPI Trend SVG",
             "expression": "VAR MetricName = SELECTEDVALUE(FactKpiScorecard[MetricName])\nRETURN\n    SWITCH(\n        TRUE(),\n        MetricName = \"Revenue\", [Revenue Sparkline SVG],\n        MetricName = \"Gross Margin\", [Gross Margin Sparkline SVG],\n        MetricName = \"EBITDA\", [EBITDA Sparkline SVG],\n        MetricName = \"Cash Balance\", [Cash Sparkline SVG],\n        MetricName = \"Runway\", [Runway Sparkline SVG],\n        MetricName = \"Funding Need\", [Funding Sparkline SVG],\n        MetricName = \"Leverage\", [Leverage Sparkline SVG],\n        MetricName = \"Interest Coverage\", [Interest Coverage Sparkline SVG],\n        [Revenue Sparkline SVG]\n    )",
-            "lineageTag": "f6b36903-bf34-4f7d-a19f-e1163e19ab83",
+            "lineageTag": "01d25727-1094-4c0f-914b-c0c45c97759c",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Risk Signal SVG",
             "expression": "VAR SeverityValue = SELECTEDVALUE(FactRiskRegister[Severity], \"Watch\")\nVAR ProbabilityValue = MIN(0.98, MAX(0.02, MAX(FactRiskRegister[Probability])))\nVAR MarkerX = 12 + ProbabilityValue * 96\nVAR SeverityColor =\n    SWITCH(\n        SeverityValue,\n        \"Critical\", \"%23B73535\",\n        \"High\", \"%23BE7C10\",\n        \"%231F8E45\"\n    )\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44'>\" &\n    \"<rect x='0' y='0' width='120' height='44' rx='7' fill='%23F8F5FC'/>\" &\n    \"<rect x='12' y='17' width='32' height='10' rx='5' fill='%23DDEEDC'/>\" &\n    \"<rect x='44' y='17' width='32' height='10' rx='5' fill='%23FFF3D6'/>\" &\n    \"<rect x='76' y='17' width='32' height='10' rx='5' fill='%23F3D7D7'/>\" &\n    \"<line x1='12' y1='32' x2='108' y2='32' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='3 4'/>\" &\n    \"<circle cx='\" & FORMAT(MarkerX, \"0.0\") & \"' cy='22' r='6' fill='\" & SeverityColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(MarkerX, \"0.0\") & \"' cy='22' r='2' fill='%23FFFFFF'/>\" &\n    \"</svg>\"\nRETURN \"data:image/svg+xml;utf8,\" & SVG",
-            "lineageTag": "49e58a5a-0a47-4912-aa27-8129c6e7be42",
+            "lineageTag": "da2b86cd-6934-406f-a34f-4a96a235600e",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Portfolio Signature SVG",
             "expression": "VAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'>\" &\n    \"<defs>\" &\n    \"<linearGradient id='bg' x1='7' y1='58' x2='57' y2='6' gradientUnits='userSpaceOnUse'>\" &\n    \"<stop stop-color='%230A1323'/>\" &\n    \"<stop offset='0.58' stop-color='%23101B2D'/>\" &\n    \"<stop offset='1' stop-color='%2314303A'/>\" &\n    \"</linearGradient>\" &\n    \"<linearGradient id='accent' x1='12' y1='51' x2='52' y2='44' gradientUnits='userSpaceOnUse'>\" &\n    \"<stop stop-color='%238AB8FF'/>\" &\n    \"<stop offset='1' stop-color='%238DE1D6'/>\" &\n    \"</linearGradient>\" &\n    \"</defs>\" &\n    \"<rect width='64' height='64' rx='14' fill='url(%23bg)'/>\" &\n    \"<rect x='6' y='6' width='52' height='52' rx='11' fill='%23F8FBFF' opacity='0.025'/>\" &\n    \"<rect x='6.5' y='6.5' width='51' height='51' rx='10.5' fill='none' stroke='%23F8FBFF' opacity='0.13' stroke-width='1.6'/>\" &\n    \"<text x='8.5' y='43' fill='%23F8FBFF' font-family='Arial' font-size='31' font-weight='900'>AT</text>\" &\n    \"<path d='M12 50C22 46.5 35 48 52 42.5' fill='none' stroke='url(%23accent)' stroke-width='2.8' stroke-linecap='round' opacity='0.88'/>\" &\n    \"<circle cx='52' cy='42.5' r='2.85' fill='%23E9BF72'/>\" &\n    \"</svg>\"\nRETURN \"data:image/svg+xml;utf8,\" & SVG",
-            "lineageTag": "74f15b8c-2550-4a91-b077-6a3a16fa422f",
+            "lineageTag": "37f118e7-9938-4b23-bddc-5b83dc50e3fd",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Revenue KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Revenue], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Revenue], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1000000), \"$#,0.0M;($#,0.0M);$0.0M\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1000000), \"$#,0.0M;($#,0.0M);$0.0M\"))\nVAR RateValue = DIVIDE(ChangeValue, ABS(PriorValue))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(RateValue, \"+0.0%;-0.0%;0.0%\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue >= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Revenue]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue >= FirstValue, \"%234F87F5\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue >= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%234F87F5' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%234F87F5' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Revenue</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%234F87F5'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "fbae813d-e3a2-4cf6-9e89-93b91336674b",
+            "lineageTag": "16de527e-679b-48eb-8510-5bba4a1daab3",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Margin KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Gross Margin %], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Gross Margin %], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1), \"0.0%\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1), \"0.0%\"))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(ChangeValue * 100, \"+0.0;-0.0;0.0\") & \"pt\")\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue >= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Gross Margin %]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue >= FirstValue, \"%230F9F95\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue >= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%230F9F95' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%230F9F95' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Margin</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%230F9F95'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "76e9459b-f63f-4d9e-83bf-4f579b142afb",
+            "lineageTag": "e72f8639-4071-4db7-b36f-5bd96df18999",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "EBITDA KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([EBITDA], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([EBITDA], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1000000), \"$#,0.0M;($#,0.0M);$0.0M\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1000000), \"$#,0.0M;($#,0.0M);$0.0M\"))\nVAR RateValue = DIVIDE(ChangeValue, ABS(PriorValue))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(RateValue, \"+0.0%;-0.0%;0.0%\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue >= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [EBITDA]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue >= FirstValue, \"%231F8E45\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue >= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%231F8E45' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%231F8E45' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>EBITDA</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%231F8E45'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "318dba35-43b9-4e8f-818f-1a3886bbeea2",
+            "lineageTag": "aefe9cf4-76bf-4d75-87b3-85be22a97f0f",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Cash KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Cash Balance], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Cash Balance], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1000000), \"$#,0.0M;($#,0.0M);$0.0M\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1000000), \"$#,0.0M;($#,0.0M);$0.0M\"))\nVAR RateValue = DIVIDE(ChangeValue, ABS(PriorValue))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(RateValue, \"+0.0%;-0.0%;0.0%\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue >= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Cash Balance]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue >= FirstValue, \"%23BE7C10\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue >= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%23BE7C10' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%23BE7C10' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Cash</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%23BE7C10'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "6bf830f4-1b8a-4689-a02f-c837b9a94325",
+            "lineageTag": "8387ada7-86f9-4b60-9166-2365d600ab02",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Runway KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Runway Months], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Runway Months], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1), \"0.0x\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1), \"0.0x\"))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(ChangeValue, \"+0.0x;-0.0x;0.0x\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue >= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Runway Months]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue >= FirstValue, \"%234F87F5\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue >= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%234F87F5' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%234F87F5' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Runway</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%234F87F5'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "62e80a45-3827-40c5-b2ed-6bf9480c3b9e",
+            "lineageTag": "dec767c0-c626-4c55-ac5f-31cdbafe6f14",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "FCF KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Free Cash Flow], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Free Cash Flow], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1000000), \"$#,0.0M;($#,0.0M);$0.0M\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1000000), \"$#,0.0M;($#,0.0M);$0.0M\"))\nVAR RateValue = DIVIDE(ChangeValue, ABS(PriorValue))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(RateValue, \"+0.0%;-0.0%;0.0%\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue >= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Free Cash Flow]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue >= FirstValue, \"%230F9F95\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue >= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%230F9F95' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%230F9F95' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>FCF</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%230F9F95'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "a5db78fc-5dda-4305-82ef-1cea4fc53b51",
+            "lineageTag": "65f50ea0-6a0d-41cc-a8a1-e8a97ecf8156",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Burn KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Net Burn], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Net Burn], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1000000), \"$#,0.0M;($#,0.0M);$0.0M\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1000000), \"$#,0.0M;($#,0.0M);$0.0M\"))\nVAR RateValue = DIVIDE(ChangeValue, ABS(PriorValue))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(RateValue, \"+0.0%;-0.0%;0.0%\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue <= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Net Burn]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue <= FirstValue, \"%23B73535\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue <= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%23B73535' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%23B73535' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Burn</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%23B73535'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "f8f3798a-5ce3-4a76-af74-32c7dd8d0a9a",
+            "lineageTag": "2413496e-303f-4afb-aef0-bf2943fc8bd8",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Funding KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Funding Need], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Funding Need], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1000000), \"$#,0M;($#,0M);$0M\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1000000), \"$#,0M;($#,0M);$0M\"))\nVAR RateValue = DIVIDE(ChangeValue, ABS(PriorValue))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(RateValue, \"+0.0%;-0.0%;0.0%\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue <= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Funding Need]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue <= FirstValue, \"%231F8E45\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue <= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%231F8E45' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%231F8E45' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Funding</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%231F8E45'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "2ca4478c-7739-4fc1-b898-435c514fb6fd",
+            "lineageTag": "1cfe1771-34fc-483c-a167-d80cb23be4eb",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "EV KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Enterprise Value], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Enterprise Value], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\"))\nVAR RateValue = DIVIDE(ChangeValue, ABS(PriorValue))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(RateValue, \"+0.0%;-0.0%;0.0%\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue >= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Enterprise Value]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue >= FirstValue, \"%234F87F5\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue >= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%234F87F5' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%234F87F5' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>EV</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%234F87F5'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "d56e588f-e726-4551-a760-07a52e377e36",
+            "lineageTag": "5e45b6d8-3757-4ba1-b1cb-655c6a996f7c",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Equity KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Equity Value], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Equity Value], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1000000000), \"$#,0.0B;($#,0.0B);$0.0B\"))\nVAR RateValue = DIVIDE(ChangeValue, ABS(PriorValue))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(RateValue, \"+0.0%;-0.0%;0.0%\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue >= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Equity Value]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue >= FirstValue, \"%231F8E45\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue >= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%231F8E45' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%231F8E45' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Equity</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%231F8E45'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "5c8bf676-8cf8-4596-9fa8-91a228e6c20f",
+            "lineageTag": "7eaf7065-afab-49c5-8830-35a12a7f87e5",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Leverage KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Leverage Ratio], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Leverage Ratio], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1), \"0.0x\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1), \"0.0x\"))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(ChangeValue, \"+0.0x;-0.0x;0.0x\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue <= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Leverage Ratio]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue <= FirstValue, \"%23BE7C10\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue <= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%23BE7C10' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%23BE7C10' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Leverage</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%23BE7C10'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "d09e5406-7203-46e9-907b-f99879263230",
+            "lineageTag": "fb7a429a-0069-4e5c-b392-64489a789197",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Headroom KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Leverage Headroom], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Leverage Headroom], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1), \"0.0x\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1), \"0.0x\"))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(ChangeValue, \"+0.0x;-0.0x;0.0x\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue >= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Leverage Headroom]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue >= FirstValue, \"%230F9F95\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue >= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%230F9F95' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%230F9F95' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Headroom</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%230F9F95'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "7b37e89a-05ef-4825-90e9-6fd8bc932bbc",
+            "lineageTag": "b20261ad-0cd1-4ee0-bfaa-98fa58448c3a",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Risk KPI Card SVG",
             "expression": "VAR LatestMonth = MAXX(CALCULATETABLE(VALUES(DimDate[MonthStart]), ALLSELECTED(DimDate), REMOVEFILTERS(DimDate[IsLatestCompleteMonth])), DimDate[MonthStart])\nVAR PriorMonth = EDATE(LatestMonth, -12)\nVAR CurrentValue = CALCULATE([Risk Exposure], FILTER(ALL(DimDate), DimDate[MonthStart] = LatestMonth))\nVAR PriorValue = CALCULATE([Risk Exposure], FILTER(ALL(DimDate), DimDate[MonthStart] = PriorMonth))\nVAR ChangeValue = CurrentValue - PriorValue\nVAR ValueTextRaw = FORMAT(DIVIDE(CurrentValue, 1000000), \"$#,0M;($#,0M);$0M\")\nVAR PYTextRaw = IF(ISBLANK(PriorValue), \"n/a\", FORMAT(DIVIDE(PriorValue, 1000000), \"$#,0M;($#,0M);$0M\"))\nVAR RateValue = DIVIDE(ChangeValue, ABS(PriorValue))\nVAR YoYTextRaw = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"n/a\", FORMAT(RateValue, \"+0.0%;-0.0%;0.0%\"))\nVAR ValueText = SUBSTITUTE(ValueTextRaw, \"%\", \"%25\")\nVAR PYText = SUBSTITUTE(PYTextRaw, \"%\", \"%25\")\nVAR YoYText = SUBSTITUTE(YoYTextRaw, \"%\", \"%25\")\nVAR YoYColor = IF(ISBLANK(CurrentValue) || ISBLANK(PriorValue), \"%236E667B\", IF(ChangeValue <= 0, \"%234CAF65\", \"%23C94A4A\"))\nVAR MonthTable =\n    ADDCOLUMNS(\n        FILTER(ALLSELECTED(DimDate), DimDate[MonthStart] <= LatestMonth),\n        \"__Value\", [Risk Exposure]\n    )\nVAR CleanTable = FILTER(MonthTable, NOT ISBLANK([__Value]))\nVAR RowCount = COUNTROWS(CleanTable)\nVAR MinValue = MINX(CleanTable, [__Value])\nVAR MaxValue = MAXX(CleanTable, [__Value])\nVAR FirstValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], ASC), [__Value])\nVAR LastValue = MINX(TOPN(1, CleanTable, DimDate[MonthStart], DESC), [__Value])\nVAR LowMonth = MINX(TOPN(1, CleanTable, [__Value], ASC, DimDate[MonthStart], ASC), DimDate[MonthStart])\nVAR LowValue = MINX(FILTER(CleanTable, DimDate[MonthStart] = LowMonth), [__Value])\nVAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR LowRank = RANKX(CleanTable, DimDate[MonthStart], LowMonth, ASC, DENSE) - 1\nVAR LowXValue = 136 + DIVIDE(LowRank, MAX(1, RowCount - 1), 0) * 92\nVAR LowYValue = 80 - DIVIDE(LowValue - MinValue, MaxValue - MinValue, 0.5) * 42\nVAR TrendColor = IF(LastValue <= FirstValue, \"%23B73535\", \"%23C94A4A\")\nVAR BandColor = IF(LastValue <= FirstValue, \"%23DDEEDC\", \"%23F3D7D7\")\nVAR LinePoints =\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN FORMAT(XValue, \"0.0\") & \",\" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    )\nVAR AreaPath =\n    \"M136 84 \" &\n    CONCATENATEX(\n        CleanTable,\n        VAR RankValue = RANKX(CleanTable, DimDate[MonthStart], , ASC, DENSE) - 1\n        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92\n        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 42\n        RETURN \"L\" & FORMAT(XValue, \"0.0\") & \" \" & FORMAT(YValue, \"0.0\"),\n        \" \",\n        DimDate[MonthStart],\n        ASC\n    ) & \" L228 84 Z\"\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>\" &\n    \"<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>\" &\n    \"<rect x='18' y='13' width='212' height='4' rx='2' fill='%23B73535' opacity='0.9'/>\" &\n    \"<rect x='18' y='29' width='12' height='12' rx='3' fill='%23B73535' opacity='0.95'/>\" &\n    \"<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>\" &\n    \"<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Risk</text>\" &\n    \"<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%23B73535'>\" & ValueText & \"</text>\" &\n    \"<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>\" &\n    \"<rect x='136' y='59' width='92' height='12' rx='6' fill='\" & BandColor & \"'/>\" &\n    \"<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>\" &\n    \"<rect x='160' y='48' width='12' height='30' rx='2' fill='%23D9D1EB' opacity='0.28'/>\" &\n    \"<rect x='179' y='44' width='12' height='34' rx='2' fill='%23D9D1EB' opacity='0.24'/>\" &\n    \"<rect x='198' y='40' width='12' height='38' rx='2' fill='%23D9D1EB' opacity='0.20'/>\" &\n    \"<line x1='136' y1='65' x2='228' y2='65' stroke='%23B8AECF' stroke-width='1' stroke-dasharray='4 5'/>\" &\n    \"<path d='\" & AreaPath & \"' fill='%23B8AEE6' opacity='0.55'/>\" &\n    \"<polyline points='\" & LinePoints & \"' fill='none' stroke='\" & TrendColor & \"' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>\" &\n    \"<circle cx='136' cy='\" & FORMAT(StartYValue, \"0.0\") & \"' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>\" &\n    \"<circle cx='\" & FORMAT(LowXValue, \"0.0\") & \"' cy='\" & FORMAT(LowYValue, \"0.0\") & \"' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<circle cx='228' cy='\" & FORMAT(EndYValue, \"0.0\") & \"' r='5' fill='\" & TrendColor & \"' stroke='%23FFFFFF' stroke-width='2'/>\" &\n    \"<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>\" &\n    \"<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>\" &\n    \"<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>\" & PYText & \"</text>\" &\n    \"<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>\" &\n    \"<polygon points='134,114 140,124 128,124' fill='\" & YoYColor & \"'/>\" &\n    \"<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='\" & YoYColor & \"'>\" & YoYText & \"</text>\" &\n    \"</svg>\"\nRETURN IF(RowCount = 0, BLANK(), \"data:image/svg+xml;utf8,\" & SVG)",
-            "lineageTag": "6077a72d-9914-4624-bb95-dc1c265cec52",
+            "lineageTag": "22356256-a04b-42af-a8f9-1ab0e6bfb089",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Board Status Icon",
             "expression": "SWITCH(TRUE(), [Revenue vs Plan %] >= 0.03, UNICHAR(9650), [Revenue vs Plan %] >= -0.02, UNICHAR(8212), UNICHAR(9660))",
-            "lineageTag": "c6e28fb4-896b-48e2-83fc-07457193c1b2"
+            "lineageTag": "d76a1ec8-7ec2-459c-ae9e-fdd0b342aca5"
           },
           {
             "name": "Board Status Color",
             "expression": "SWITCH(TRUE(), [Revenue vs Plan %] >= 0.03, \"#2FA66A\", [Revenue vs Plan %] >= -0.02, \"#C58A18\", \"#C94A4A\")",
-            "lineageTag": "98b85609-2d2c-4bea-89e5-c1cdfd6c1ddc"
+            "lineageTag": "72022496-86a1-4ae3-8902-90d6900c5508"
           },
           {
             "name": "Lens Summary SVG",
             "expression": "VAR YearText =\n    IF(HASONEVALUE(DimDate[Year]), FORMAT(SELECTEDVALUE(DimDate[Year]), \"0\"), \"All Years\")\nVAR ScenarioText =\n    IF(HASONEVALUE(DimScenario[ScenarioName]), SELECTEDVALUE(DimScenario[ScenarioName]), FORMAT(COUNTROWS(VALUES(DimScenario[ScenarioName])), \"0\") & \" scenarios\")\nVAR BUCount = COUNTROWS(VALUES(DimBusinessUnit[BusinessUnit]))\nVAR BUTotal = CALCULATE(COUNTROWS(VALUES(DimBusinessUnit[BusinessUnit])), ALL(DimBusinessUnit[BusinessUnit]))\nVAR BUText =\n    IF(NOT ISFILTERED(DimBusinessUnit[BusinessUnit]) || BUCount = BUTotal,\n        \"All BU\",\n        IF(BUCount = 1, SELECTEDVALUE(DimBusinessUnit[BusinessUnit]), FORMAT(BUCount, \"0\") & \" BU\"))\nVAR RegionCount = COUNTROWS(VALUES(DimRegion[Region]))\nVAR RegionTotal = CALCULATE(COUNTROWS(VALUES(DimRegion[Region])), ALL(DimRegion[Region]))\nVAR RegionText =\n    IF(NOT ISFILTERED(DimRegion[Region]) || RegionCount = RegionTotal,\n        \"All Regions\",\n        IF(RegionCount = 1, SELECTEDVALUE(DimRegion[Region]), FORMAT(RegionCount, \"0\") & \" Regions\"))\nVAR Line1 = LEFT(YearText & \" | \" & ScenarioText, 23)\nVAR Line2 = LEFT(BUText & \" | \" & RegionText, 25)\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='142' height='42' viewBox='0 0 142 42'>\" &\n    \"<rect x='0.5' y='0.5' width='141' height='41' rx='6' fill='%233F1A63' stroke='%238E73E7' stroke-width='1'/>\" &\n    \"<text x='9' y='14' font-family='Segoe UI' font-size='9' font-weight='700' fill='%23CFC3E6'>Current Lens</text>\" &\n    \"<circle cx='123' cy='11' r='3' fill='%236EE4CF'/>\" &\n    \"<text x='9' y='27' font-family='Segoe UI' font-size='10' font-weight='700' fill='%23FFFFFF'>\" & Line1 & \"</text>\" &\n    \"<text x='9' y='38' font-family='Segoe UI' font-size='8.5' fill='%23CFC3E6'>\" & Line2 & \"</text>\" &\n    \"</svg>\"\nRETURN \"data:image/svg+xml;utf8,\" & SVG",
-            "lineageTag": "a0af4653-036b-4ee0-addd-af2177579e9d",
+            "lineageTag": "7609fae8-cca8-4885-aa81-175ef3e03992",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Performance Decision Chips SVG",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\")\nVAR Chip1Text = \"Scenario: \" & SWITCH(ScenarioID, \"Upside\", \"Upside\", \"Downside\", \"Downside\", \"Base\")\nVAR Chip2Text = SWITCH(ScenarioID, \"Upside\", \"GM: +1.4 pts\", \"Downside\", \"GM: -0.7 pts\", \"GM: +0.8 pts\")\nVAR Chip3Text = SWITCH(ScenarioID, \"Upside\", \"Runway: >99 mo\", \"Downside\", \"Runway: 18.5 mo\", \"Runway: >99 mo\")\nVAR Chip1Accent = SWITCH(ScenarioID, \"Upside\", \"%230F9F95\", \"Downside\", \"%23BE7C10\", \"%232FA66A\")\nVAR Chip1Fill = SWITCH(ScenarioID, \"Upside\", \"%23EAF7FF\", \"Downside\", \"%23FFF3D6\", \"%23E6F4EC\")\nVAR Chip2Accent = SWITCH(ScenarioID, \"Downside\", \"%23B73535\", \"%230F9F95\")\nVAR Chip2Fill = SWITCH(ScenarioID, \"Downside\", \"%23FCE7E7\", \"%23E7F0FF\")\nVAR Chip3Accent = SWITCH(ScenarioID, \"Downside\", \"%23BE7C10\", \"%232FA66A\")\nVAR Chip3Fill = SWITCH(ScenarioID, \"Downside\", \"%23FFF3D6\", \"%23E6F4EC\")\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='490' height='38' viewBox='0 0 490 38'>\" &\n    \"<rect x='0' y='0' width='490' height='38' rx='8' fill='none'/>\" &\n    \"<rect x='0.5' y='2.5' width='142' height='33' rx='7' fill='\" & Chip1Fill & \"' stroke='%23FFFFFF' stroke-width='0.9'/>\" &\n    \"<rect x='13' y='13' width='11' height='11' rx='3' fill='\" & Chip1Accent & \"'/>\" &\n    \"<text x='36' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>\" & Chip1Text & \"</text>\" &\n    \"<rect x='156.5' y='2.5' width='150' height='33' rx='7' fill='\" & Chip2Fill & \"' stroke='%23FFFFFF' stroke-width='0.9'/>\" &\n    \"<rect x='169' y='13' width='11' height='11' rx='3' fill='\" & Chip2Accent & \"'/>\" &\n    \"<text x='192' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>\" & Chip2Text & \"</text>\" &\n    \"<rect x='320.5' y='2.5' width='168' height='33' rx='7' fill='\" & Chip3Fill & \"' stroke='%23FFFFFF' stroke-width='0.9'/>\" &\n    \"<rect x='333' y='13' width='11' height='11' rx='3' fill='\" & Chip3Accent & \"'/>\" &\n    \"<text x='356' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>\" & Chip3Text & \"</text>\" &\n    \"</svg>\"\nRETURN \"data:image/svg+xml;utf8,\" & SVG",
-            "lineageTag": "573b0af5-90e5-47a1-862f-8bdd81088a07",
+            "lineageTag": "36aa515e-2d59-4824-b452-32fb78531c38",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Cash Decision Chips SVG",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\")\nVAR Chip1Text = \"Scenario: \" & SWITCH(ScenarioID, \"Upside\", \"Upside\", \"Downside\", \"Downside\", \"Base\")\nVAR Chip2Text = SWITCH(ScenarioID, \"Upside\", \"Funding: $0M\", \"Downside\", \"Funding: $14M\", \"Funding: $0M\")\nVAR Chip3Text = SWITCH(ScenarioID, \"Upside\", \"FCF: $38.0M\", \"Downside\", \"FCF: ($8.5M)\", \"FCF: $22.5M\")\nVAR Chip1Accent = SWITCH(ScenarioID, \"Upside\", \"%230F9F95\", \"Downside\", \"%23BE7C10\", \"%232FA66A\")\nVAR Chip1Fill = SWITCH(ScenarioID, \"Upside\", \"%23EAF7FF\", \"Downside\", \"%23FFF3D6\", \"%23E6F4EC\")\nVAR Chip2Accent = SWITCH(ScenarioID, \"Downside\", \"%23BE7C10\", \"%232FA66A\")\nVAR Chip2Fill = SWITCH(ScenarioID, \"Downside\", \"%23FFF3D6\", \"%23E6F4EC\")\nVAR Chip3Accent = SWITCH(ScenarioID, \"Downside\", \"%23B73535\", \"%230F9F95\")\nVAR Chip3Fill = SWITCH(ScenarioID, \"Downside\", \"%23FCE7E7\", \"%23E7F0FF\")\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='490' height='38' viewBox='0 0 490 38'>\" &\n    \"<rect x='0' y='0' width='490' height='38' rx='8' fill='none'/>\" &\n    \"<rect x='0.5' y='2.5' width='142' height='33' rx='7' fill='\" & Chip1Fill & \"' stroke='%23FFFFFF' stroke-width='0.9'/>\" &\n    \"<rect x='13' y='13' width='11' height='11' rx='3' fill='\" & Chip1Accent & \"'/>\" &\n    \"<text x='36' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>\" & Chip1Text & \"</text>\" &\n    \"<rect x='156.5' y='2.5' width='150' height='33' rx='7' fill='\" & Chip2Fill & \"' stroke='%23FFFFFF' stroke-width='0.9'/>\" &\n    \"<rect x='169' y='13' width='11' height='11' rx='3' fill='\" & Chip2Accent & \"'/>\" &\n    \"<text x='192' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>\" & Chip2Text & \"</text>\" &\n    \"<rect x='320.5' y='2.5' width='168' height='33' rx='7' fill='\" & Chip3Fill & \"' stroke='%23FFFFFF' stroke-width='0.9'/>\" &\n    \"<rect x='333' y='13' width='11' height='11' rx='3' fill='\" & Chip3Accent & \"'/>\" &\n    \"<text x='356' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>\" & Chip3Text & \"</text>\" &\n    \"</svg>\"\nRETURN \"data:image/svg+xml;utf8,\" & SVG",
-            "lineageTag": "bbfa2df9-4382-4c74-9ddc-1b94e76721f1",
+            "lineageTag": "87daa1af-2ca7-4a4f-8426-02d5e2c3911f",
             "dataCategory": "ImageUrl"
           },
           {
             "name": "Risk Decision Chips SVG",
             "expression": "VAR ScenarioID = SELECTEDVALUE(DimScenario[ScenarioID], \"Base\")\nVAR Chip1Text = \"Scenario: \" & SWITCH(ScenarioID, \"Upside\", \"Upside\", \"Downside\", \"Downside\", \"Base\")\nVAR Chip2Text = SWITCH(ScenarioID, \"Upside\", \"Headroom: 2.1x\", \"Downside\", \"Headroom: 0.4x\", \"Headroom: 1.3x\")\nVAR Chip3Text = SWITCH(ScenarioID, \"Upside\", \"Risk: $7M\", \"Downside\", \"Risk: $26M\", \"Risk: $14M\")\nVAR Chip1Accent = SWITCH(ScenarioID, \"Upside\", \"%230F9F95\", \"Downside\", \"%23BE7C10\", \"%232FA66A\")\nVAR Chip1Fill = SWITCH(ScenarioID, \"Upside\", \"%23EAF7FF\", \"Downside\", \"%23FFF3D6\", \"%23E6F4EC\")\nVAR Chip2Accent = SWITCH(ScenarioID, \"Downside\", \"%23BE7C10\", \"%230F9F95\")\nVAR Chip2Fill = SWITCH(ScenarioID, \"Downside\", \"%23FFF3D6\", \"%23E7F0FF\")\nVAR Chip3Accent = SWITCH(ScenarioID, \"Downside\", \"%23B73535\", \"Upside\", \"%232FA66A\", \"%23BE7C10\")\nVAR Chip3Fill = SWITCH(ScenarioID, \"Downside\", \"%23FCE7E7\", \"Upside\", \"%23E6F4EC\", \"%23FFF3D6\")\nVAR SVG =\n    \"<svg xmlns='http://www.w3.org/2000/svg' width='490' height='38' viewBox='0 0 490 38'>\" &\n    \"<rect x='0' y='0' width='490' height='38' rx='8' fill='none'/>\" &\n    \"<rect x='0.5' y='2.5' width='142' height='33' rx='7' fill='\" & Chip1Fill & \"' stroke='%23FFFFFF' stroke-width='0.9'/>\" &\n    \"<rect x='13' y='13' width='11' height='11' rx='3' fill='\" & Chip1Accent & \"'/>\" &\n    \"<text x='36' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>\" & Chip1Text & \"</text>\" &\n    \"<rect x='156.5' y='2.5' width='150' height='33' rx='7' fill='\" & Chip2Fill & \"' stroke='%23FFFFFF' stroke-width='0.9'/>\" &\n    \"<rect x='169' y='13' width='11' height='11' rx='3' fill='\" & Chip2Accent & \"'/>\" &\n    \"<text x='192' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>\" & Chip2Text & \"</text>\" &\n    \"<rect x='320.5' y='2.5' width='168' height='33' rx='7' fill='\" & Chip3Fill & \"' stroke='%23FFFFFF' stroke-width='0.9'/>\" &\n    \"<rect x='333' y='13' width='11' height='11' rx='3' fill='\" & Chip3Accent & \"'/>\" &\n    \"<text x='356' y='23.5' font-family='Segoe UI Semibold' font-size='12.5' fill='%23261C3C'>\" & Chip3Text & \"</text>\" &\n    \"</svg>\"\nRETURN \"data:image/svg+xml;utf8,\" & SVG",
-            "lineageTag": "44685827-b5fb-48a8-9959-16527ba59c4e",
+            "lineageTag": "e3f5d8d6-22fd-472b-9e7a-fd00faed7575",
             "dataCategory": "ImageUrl"
           }
         ]

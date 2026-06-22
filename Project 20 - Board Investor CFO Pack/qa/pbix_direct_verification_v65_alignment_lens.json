@@ -1,0 +1,309 @@
+﻿{
+    "status":  "pass",
+    "generatedAt":  "2026-06-22T17:16:40",
+    "pbix":  "output/dashboard_final.pbix",
+    "snapshot":  "output/dashboard_final_v65_alignment_lens.pbix",
+    "visualContainers":  159,
+    "pages":  [
+                  "Performance",
+                  "Cash Plan",
+                  "Risk \u0026 Valuation"
+              ],
+    "checks":  {
+                   "noActionButtonOverlays":  true,
+                   "navShapesKeepVisualLinks":  true,
+                   "noSignatureTableArtifacts":  true,
+                   "visualHeadersHidden":  true,
+                   "currentLensCount":  true,
+                   "currentLensSizing":  true,
+                   "decisionChipCount":  true,
+                   "decisionChipSizing":  true,
+                   "kpiCardCount":  true,
+                   "kpiCardDistribution":  true,
+                   "slicerCompactAligned":  true
+               },
+    "details":  {
+                    "kpiCardsByPage":  [
+                                           {
+                                               "page":  "Performance",
+                                               "count":  4,
+                                               "measures":  [
+                                                                "Revenue KPI Card SVG",
+                                                                "Margin KPI Card SVG",
+                                                                "EBITDA KPI Card SVG",
+                                                                "Cash KPI Card SVG"
+                                                            ],
+                                               "xs":  [
+                                                          204,
+                                                          471,
+                                                          738,
+                                                          1005
+                                                      ],
+                                               "gaps":  [
+                                                            12,
+                                                            12,
+                                                            12
+                                                        ],
+                                               "left":  204,
+                                               "right":  1260,
+                                               "cardWidth":  255,
+                                               "cardHeight":  150,
+                                               "y":  54,
+                                               "imageWidth":  [
+                                                                  223,
+                                                                  223,
+                                                                  223,
+                                                                  223
+                                                              ],
+                                               "imageHeight":  [
+                                                                   122,
+                                                                   122,
+                                                                   122,
+                                                                   122
+                                                               ],
+                                               "pass":  true
+                                           },
+                                           {
+                                               "page":  "Cash Plan",
+                                               "count":  4,
+                                               "measures":  [
+                                                                "Cash KPI Card SVG",
+                                                                "Runway KPI Card SVG",
+                                                                "FCF KPI Card SVG",
+                                                                "Burn KPI Card SVG"
+                                                            ],
+                                               "xs":  [
+                                                          204,
+                                                          471,
+                                                          738,
+                                                          1005
+                                                      ],
+                                               "gaps":  [
+                                                            12,
+                                                            12,
+                                                            12
+                                                        ],
+                                               "left":  204,
+                                               "right":  1260,
+                                               "cardWidth":  255,
+                                               "cardHeight":  150,
+                                               "y":  54,
+                                               "imageWidth":  [
+                                                                  223,
+                                                                  223,
+                                                                  223,
+                                                                  223
+                                                              ],
+                                               "imageHeight":  [
+                                                                   122,
+                                                                   122,
+                                                                   122,
+                                                                   122
+                                                               ],
+                                               "pass":  true
+                                           },
+                                           {
+                                               "page":  "Risk \u0026 Valuation",
+                                               "count":  4,
+                                               "measures":  [
+                                                                "EV KPI Card SVG",
+                                                                "Equity KPI Card SVG",
+                                                                "Leverage KPI Card SVG",
+                                                                "Risk KPI Card SVG"
+                                                            ],
+                                               "xs":  [
+                                                          204,
+                                                          471,
+                                                          738,
+                                                          1005
+                                                      ],
+                                               "gaps":  [
+                                                            12,
+                                                            12,
+                                                            12
+                                                        ],
+                                               "left":  204,
+                                               "right":  1260,
+                                               "cardWidth":  255,
+                                               "cardHeight":  150,
+                                               "y":  54,
+                                               "imageWidth":  [
+                                                                  223,
+                                                                  223,
+                                                                  223,
+                                                                  223
+                                                              ],
+                                               "imageHeight":  [
+                                                                   122,
+                                                                   122,
+                                                                   122,
+                                                                   122
+                                                               ],
+                                               "pass":  true
+                                           }
+                                       ],
+                    "currentLens":  [
+                                        {
+                                            "page":  "Cash Plan",
+                                            "x":  30,
+                                            "y":  576,
+                                            "width":  154,
+                                            "height":  58,
+                                            "imageWidth":  138,
+                                            "imageHeight":  42,
+                                            "horizontalBudget":  16,
+                                            "verticalBudget":  16,
+                                            "nativeReferenceName":  "Current Lens"
+                                        },
+                                        {
+                                            "page":  "Performance",
+                                            "x":  30,
+                                            "y":  576,
+                                            "width":  154,
+                                            "height":  58,
+                                            "imageWidth":  138,
+                                            "imageHeight":  42,
+                                            "horizontalBudget":  16,
+                                            "verticalBudget":  16,
+                                            "nativeReferenceName":  "Current Lens"
+                                        },
+                                        {
+                                            "page":  "Risk \u0026 Valuation",
+                                            "x":  30,
+                                            "y":  576,
+                                            "width":  154,
+                                            "height":  58,
+                                            "imageWidth":  138,
+                                            "imageHeight":  42,
+                                            "horizontalBudget":  16,
+                                            "verticalBudget":  16,
+                                            "nativeReferenceName":  "Current Lens"
+                                        }
+                                    ],
+                    "decisionChips":  [
+                                          {
+                                              "page":  "Cash Plan",
+                                              "measure":  "Cash Decision Chips SVG",
+                                              "x":  500,
+                                              "y":  6,
+                                              "width":  544,
+                                              "height":  60,
+                                              "imageWidth":  500,
+                                              "imageHeight":  32,
+                                              "columnWidth":  500
+                                          },
+                                          {
+                                              "page":  "Performance",
+                                              "measure":  "Performance Decision Chips SVG",
+                                              "x":  500,
+                                              "y":  6,
+                                              "width":  544,
+                                              "height":  60,
+                                              "imageWidth":  500,
+                                              "imageHeight":  32,
+                                              "columnWidth":  500
+                                          },
+                                          {
+                                              "page":  "Risk \u0026 Valuation",
+                                              "measure":  "Risk Decision Chips SVG",
+                                              "x":  500,
+                                              "y":  6,
+                                              "width":  544,
+                                              "height":  60,
+                                              "imageWidth":  500,
+                                              "imageHeight":  32,
+                                              "columnWidth":  500
+                                          }
+                                      ],
+                    "slicers":  [
+                                    {
+                                        "page":  "Cash Plan",
+                                        "x":  32,
+                                        "y":  276,
+                                        "width":  150,
+                                        "height":  38
+                                    },
+                                    {
+                                        "page":  "Cash Plan",
+                                        "x":  32,
+                                        "y":  344,
+                                        "width":  150,
+                                        "height":  38
+                                    },
+                                    {
+                                        "page":  "Cash Plan",
+                                        "x":  32,
+                                        "y":  450,
+                                        "width":  150,
+                                        "height":  38
+                                    },
+                                    {
+                                        "page":  "Cash Plan",
+                                        "x":  32,
+                                        "y":  518,
+                                        "width":  150,
+                                        "height":  38
+                                    },
+                                    {
+                                        "page":  "Performance",
+                                        "x":  32,
+                                        "y":  276,
+                                        "width":  150,
+                                        "height":  38
+                                    },
+                                    {
+                                        "page":  "Performance",
+                                        "x":  32,
+                                        "y":  344,
+                                        "width":  150,
+                                        "height":  38
+                                    },
+                                    {
+                                        "page":  "Performance",
+                                        "x":  32,
+                                        "y":  450,
+                                        "width":  150,
+                                        "height":  38
+                                    },
+                                    {
+                                        "page":  "Performance",
+                                        "x":  32,
+                                        "y":  518,
+                                        "width":  150,
+                                        "height":  38
+                                    },
+                                    {
+                                        "page":  "Risk \u0026 Valuation",
+                                        "x":  32,
+                                        "y":  276,
+                                        "width":  150,
+                                        "height":  38
+                                    },
+                                    {
+                                        "page":  "Risk \u0026 Valuation",
+                                        "x":  32,
+                                        "y":  344,
+                                        "width":  150,
+                                        "height":  38
+                                    },
+                                    {
+                                        "page":  "Risk \u0026 Valuation",
+                                        "x":  32,
+                                        "y":  450,
+                                        "width":  150,
+                                        "height":  38
+                                    },
+                                    {
+                                        "page":  "Risk \u0026 Valuation",
+                                        "x":  32,
+                                        "y":  518,
+                                        "width":  150,
+                                        "height":  38
+                                    }
+                                ],
+                    "navLinkedShapeCount":  9,
+                    "actionButtonOverlayCount":  0,
+                    "signatureArtifactCount":  0,
+                    "visualHeaderShowTrueCount":  0
+                }
+}

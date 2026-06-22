@@ -1489,6 +1489,11 @@ def hidden_header(fill: str) -> list[dict]:
         {
             "properties": {
                 "show": lit(False),
+                "showOptionsMenu": lit(False),
+                "showVisualInformationButton": lit(False),
+                "showVisualErrorButton": lit(False),
+                "showTooltipButton": lit(False),
+                "showPersonalizeVisualButton": lit(False),
                 "background": col(fill),
                 "border": col(fill),
             }
@@ -1784,16 +1789,19 @@ def filled_text(label, p, fill, text_color, size="8.2pt", family="Segoe UI Semib
     )
 
 
-def shape(fill, p):
+def shape(fill, p, target_section=None, tooltip=None):
     objects = {
         "shape": [{"properties": {"tileShape": txt("rectangle")}}],
         "fill": [{"properties": {"show": lit(False)}}],
         "outline": [{"properties": {"show": lit(False)}}],
     }
+    vc_objects = frame(fill=fill)
+    if target_section:
+        vc_objects["visualLink"] = visual_link(target_section, tooltip or "Open page")
     return container(
         {
             "name": uuid.uuid4().hex[:20],
-            "singleVisual": {"visualType": "shape", "objects": objects, "drillFilterOtherVisuals": True, "vcObjects": frame(fill=fill)},
+            "singleVisual": {"visualType": "shape", "objects": objects, "drillFilterOtherVisuals": True, "vcObjects": vc_objects},
         },
         p,
     )
@@ -1875,6 +1883,12 @@ def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
     if display == "Decision Chips":
         image_w = max(20, int(p["width"] - 44))
         image_h = 32
+    elif measure == "Portfolio Signature SVG":
+        image_w = max(20, int(p["width"] - 8))
+        image_h = max(20, int(p["height"] - 8))
+    elif measure == "Lens Summary SVG":
+        image_w = max(20, int(p["width"] - 16))
+        image_h = 42
     elif measure.endswith("KPI Card SVG"):
         image_w = max(20, int(p["width"] - 32))
         image_h = max(20, int(p["height"] - 28))
@@ -1927,7 +1941,7 @@ def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
         ],
         "columnWidth": [
             {
-                "properties": {"value": lit(float(image_w if display == "Decision Chips" or measure.endswith("KPI Card SVG") else image_w + 6))},
+                "properties": {"value": lit(float(image_w if display == "Decision Chips" or measure == "Portfolio Signature SVG" or measure == "Lens Summary SVG" or measure.endswith("KPI Card SVG") else image_w + 6))},
                 "selector": {"metadata": qref},
             }
         ],
@@ -2059,12 +2073,11 @@ def sidebar_nav_item(label, p, active=False, target_section=None):
     text_color = "#F3EEFF" if active else "#BEB4D7"
     rail_color = "#D5C5F0" if active else "#5E4B8B"
     visuals = [
-        shape(fill, p),
+        shape(fill, p, target_section, f"Go to {label}" if target_section else None),
         solid_rect(rail_color, pos(p["x"] + 8, p["y"] + 8, p["z"] + 1, 4, p["height"] - 16), radius=2.0),
+        solid_rect(fill, pos(p["x"] + p["width"] - 24, p["y"] + 5, p["z"] + 3, 18, p["height"] - 10), radius=3.0),
         plain_text(label, pos(p["x"] + 20, p["y"] + 5, p["z"] + 2, p["width"] - 30, 24), text_color, "8.4pt"),
     ]
-    if target_section:
-        visuals.append(page_nav_overlay(label, pos(p["x"], p["y"], p["z"] + 30, p["width"], p["height"]), target_section))
     return visuals
 
 
@@ -2121,7 +2134,7 @@ def slicer_default_filter(table, column, values, kind="string", alias="f"):
 def rail_filter_row(label, table, column, display, y, z, accent, sync_name, single_select=False, default_values=None, default_kind="string"):
     return [
         solid_rect(accent, pos(34, y + 5, z, 7, 7), radius=1.8),
-        plain_text(label, pos(50, y - 2, z + 1, 128, 22), COLORS["filter_label"], "7.2pt", "Segoe UI Semibold"),
+        plain_text(label, pos(50, y - 5, z + 1, 128, 30), COLORS["filter_label"], "7.2pt", "Segoe UI Semibold"),
         slicer(table, column, display, pos(32, y + 18, z + 2, 150, 38), mode="Dropdown", show_title=False, compact=True, sync_group=sync_name, rail=True, single_select=single_select, default_values=default_values, default_kind=default_kind),
     ]
 
@@ -2131,7 +2144,7 @@ def sidebar_signature(z):
         solid_rect("#1B0A30", pos(32, 21, z + 1, 44, 44), radius=9.0),
         solid_rect("#6EE4CF", pos(40, 51, z + 2, 26, 3), radius=1.5),
         solid_rect("#E9BF72", pos(62, 48, z + 3, 6, 6), radius=3.0),
-        plain_text("FC", pos(41, 30, z + 4, 34, 28), "#F8FBFF", "15pt", "Segoe UI Semibold"),
+        plain_text("FC", pos(41, 30, z + 4, 34, 28), "#F8FBFF", "13.0pt", "Segoe UI Semibold"),
     ]
 
 
@@ -2144,7 +2157,7 @@ def sidebar_shell(page_title, active_label, z, context_items=None):
     visuals = [
         shape(COLORS["sidebar"], pos(14, 8, z, 176, 700)),
         *sidebar_signature(z),
-        plain_text("Finance\nControl", pos(82, 28, z + 5, 88, 46), "#DCD4F4", "8.4pt"),
+        plain_text("Finance\nControl", pos(82, 28, z + 6, 88, 46), "#F8FBFF", "8.1pt", "Segoe UI Semibold"),
         plain_text("FP20", pos(1132, 11, z + 3, 48, 24), "#E6DDF8", "9pt"),
         plain_text("Board CFO Pack", pos(1178, 11, z + 4, 98, 24), "#E6DDF8", "8pt"),
         textbox(page_title, "", pos(204, 16, z + 5, 400, 30)),
@@ -2156,17 +2169,18 @@ def sidebar_shell(page_title, active_label, z, context_items=None):
         y += 40
     visuals += [
         solid_rect(COLORS["sidebar_rule"], pos(30, 218, z + 49, 146, 3), radius=1.5),
-        solid_rect(COLORS["filter_surface"], pos(22, 226, z + 50, 168, 366), radius=7.0),
+        solid_rect(COLORS["filter_surface"], pos(22, 226, z + 50, 168, 340), radius=7.0),
         solid_rect(COLORS["sidebar_rule"], pos(34, 248, z + 51, 148, 2), radius=1.0),
-        plain_text("Global Lens", pos(34, 229, z + 52, 134, 22), COLORS["sidebar_muted"], "7.1pt", "Segoe UI Semibold"),
+        plain_text("Global Lens", pos(34, 226, z + 52, 134, 30), COLORS["sidebar_muted"], "7.1pt", "Segoe UI Semibold"),
         *rail_filter_row("Year", "DimDate", "Year", "Year", 258, z + 53, COLORS["blue"], "global_year", single_select=True, default_values=[2026], default_kind="int"),
         *rail_filter_row("Scenario", "DimScenario", "ScenarioName", "Scenario", 326, z + 59, COLORS["violet"], "global_scenario", single_select=True, default_values=["Base Case"]),
-        plain_text("P&L Lens", pos(34, 400, z + 64, 134, 22), COLORS["sidebar_muted"], "7.1pt", "Segoe UI Semibold"),
+        plain_text("P&L Lens", pos(34, 397, z + 64, 134, 30), COLORS["sidebar_muted"], "7.1pt", "Segoe UI Semibold"),
         solid_rect(COLORS["sidebar_rule"], pos(34, 423, z + 65, 148, 2), radius=1.0),
         *rail_filter_row("Business Unit", "DimBusinessUnit", "BusinessUnit", "BU", 432, z + 67, COLORS["teal"], "global_bu"),
         *rail_filter_row("Region", "DimRegion", "Region", "Region", 500, z + 73, COLORS["amber"], "global_region"),
-        solid_rect(COLORS["sidebar_rule"], pos(30, 610, z + 80, 146, 3), radius=1.5),
-        plain_text("Data through\nMay 2026", pos(50, 628, z + 60, 112, 34), "#D7CCF1", "8.0pt"),
+        kpi_svg_table("Lens Summary SVG", "Current Lens", pos(30, 576, z + 80, 154, 58)),
+        solid_rect(COLORS["sidebar_rule"], pos(30, 642, z + 86, 146, 3), radius=1.5),
+        plain_text("Data through\nMay 2026", pos(50, 652, z + 60, 112, 42), "#D7CCF1", "8.0pt"),
     ]
     return visuals
 
@@ -2865,8 +2879,8 @@ def build_layout() -> dict:
     mid_w = 304
     right_x = 966
     right_w = 294
-    card_w = 248
-    card_gap = 16
+    card_w = 255
+    card_gap = 12
     card_x = [main_x + i * (card_w + card_gap) for i in range(4)]
     card_y = 54
     card_h = 150
