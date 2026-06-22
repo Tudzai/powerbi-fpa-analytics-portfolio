@@ -1,16 +1,17 @@
 # Visual QA Notes
 
-v67 fixes the visible signature issue after the user reported that the v66 change was hard to see in Power BI Desktop.
+v68 fixes the "khong thay thay doi" issue by patching the actual `output/dashboard_final.pbix` while the old PBIX was closed and unlocked.
 
 - Final product is a real PBIX patched through the native layout route, not an HTML-only preview.
-- The sidebar signature now uses a larger `58x52` logo block, wider `FC` text box, and `15.5pt` `FC` typography so the mark no longer renders like a clipped single letter.
-- The `Finance Control` label was shifted right to avoid crowding the larger mark.
-- The v66 slicer and Current Lens improvements are preserved: all 12 sidebar slicers are `150x40` with centered item alignment, and Current Lens remains `164x62` with a `154x52` SVG.
-- File Explorer can be misleading because old snapshots such as `dashboard_final_v65_alignment_lens.pbix` may sit near the final file; use `output/dashboard_final.pbix` or the v67 snapshot for review.
+- Sidebar signature now uses the portfolio `AT` SVG mark plus `TDAT` and `Finance Control`; the old `FC` text run is removed.
+- The sidebar slicers are tightened to `146x36`, remain center-aligned in PBIX metadata, and leave more room for Current Lens.
+- Current Lens is enlarged to a `170x80` visual container with `152x62` image sizing so it renders without its own scrollbar.
+- KPI card containers are expanded to `255x164`, starting at `y=50`, leaving a tighter `12px` gap before the chart row.
+- Playwright evidence is generated from a Power BI Desktop render captured from the actual PBIX.
 
 Evidence:
 
-- Direct PBIX verification: `qa/pbix_direct_verification_v67_signature_visible.json`
-- Desktop render crop: `output/playwright/project20_v67_signature_crop.jpg`
-- Playwright QA crop: `output/playwright/project20_v67_signature_slicer_preview.png`
-- Snapshot PBIX: `output/dashboard_final_v67_signature_visible.pbix`
+- Direct PBIX verification: `qa/pbix_direct_verification_v68_signature_tdat_lens_kpi.json`
+- Desktop render capture: `output/playwright/project20_v68_computer_use_full.png`
+- Playwright QA evidence: `output/playwright/project20_v68_pbix_qa_evidence.png`
+- Snapshot PBIX: `output/dashboard_final_v68_signature_tdat_lens_kpi.pbix`
