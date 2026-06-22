@@ -1,0 +1,27 @@
+﻿### Page
+- Page URL: http://127.0.0.1:8791/project20_v71_pbix_qa_evidence.html
+- Page Title: Project 20 PBIX QA Evidence v71
+### Snapshot
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - heading "Project 20 PBIX Final Render QA v71" [level=1] [ref=e3]
+    - paragraph [ref=e4]: "Source: dashboard_final.pbix | Direct PBIX verification: pass | Generated: 2026-06-22T20:23:47"
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - strong [ref=e7]: PASS
+      - text: "KPI cards 260x190: 4"
+    - generic [ref=e8]:
+      - strong [ref=e9]: PASS
+      - text: "KPI tableEx scroll: 0"
+    - generic [ref=e10]:
+      - strong [ref=e11]: PASS
+      - text: "Slicer bad heights: 0"
+    - generic [ref=e12]:
+      - strong [ref=e13]: PASS
+      - text: "Current Lens tableEx: 0"
+    - generic [ref=e14]:
+      - strong [ref=e15]: PASS
+      - text: "Signature tableEx: 0"
+  - img "Power BI Desktop render of Project 20 dashboard final PBIX" [ref=e17]
+```

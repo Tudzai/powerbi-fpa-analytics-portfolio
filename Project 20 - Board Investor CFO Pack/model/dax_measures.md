@@ -1012,8 +1012,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%234F87F5' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%234F87F5' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1031,13 +1031,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -1103,8 +1103,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%230F9F95' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%230F9F95' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1122,13 +1122,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -1195,8 +1195,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%231F8E45' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%231F8E45' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1214,13 +1214,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -1287,8 +1287,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%23BE7C10' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%23BE7C10' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1306,13 +1306,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -1378,8 +1378,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%234F87F5' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%234F87F5' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1397,13 +1397,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -1470,8 +1470,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%230F9F95' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%230F9F95' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1489,13 +1489,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -1562,8 +1562,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%23B73535' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%23B73535' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1581,13 +1581,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -1654,8 +1654,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%231F8E45' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%231F8E45' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1673,13 +1673,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -1746,8 +1746,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%234F87F5' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%234F87F5' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1765,13 +1765,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -1838,8 +1838,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%231F8E45' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%231F8E45' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1857,13 +1857,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -1929,8 +1929,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%23BE7C10' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%23BE7C10' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1948,13 +1948,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -2020,8 +2020,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%230F9F95' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%230F9F95' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -2039,13 +2039,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -2112,8 +2112,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='%23B73535' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%23B73535' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -2131,13 +2131,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)
 ```
@@ -2156,6 +2156,38 @@ Format: `text/image`
 
 ```DAX
 Board Status Color = SWITCH(TRUE(), [Revenue vs Plan %] >= 0.03, "#2FA66A", [Revenue vs Plan %] >= -0.02, "#C58A18", "#C94A4A")
+```
+
+Format: `text/image`
+
+## Current Lens Primary
+
+```DAX
+Current Lens Primary = VAR YearText =
+    IF(HASONEVALUE(DimDate[Year]), FORMAT(SELECTEDVALUE(DimDate[Year]), "0"), "All Years")
+VAR ScenarioText =
+    IF(HASONEVALUE(DimScenario[ScenarioName]), SELECTEDVALUE(DimScenario[ScenarioName]), FORMAT(COUNTROWS(VALUES(DimScenario[ScenarioName])), "0") & " scenarios")
+RETURN LEFT(YearText & " | " & ScenarioText, 25)
+```
+
+Format: `text/image`
+
+## Current Lens Secondary
+
+```DAX
+Current Lens Secondary = VAR BUCount = COUNTROWS(VALUES(DimBusinessUnit[BusinessUnit]))
+VAR BUTotal = CALCULATE(COUNTROWS(VALUES(DimBusinessUnit[BusinessUnit])), ALL(DimBusinessUnit[BusinessUnit]))
+VAR BUText =
+    IF(NOT ISFILTERED(DimBusinessUnit[BusinessUnit]) || BUCount = BUTotal,
+        "All BU",
+        IF(BUCount = 1, SELECTEDVALUE(DimBusinessUnit[BusinessUnit]), FORMAT(BUCount, "0") & " BU"))
+VAR RegionCount = COUNTROWS(VALUES(DimRegion[Region]))
+VAR RegionTotal = CALCULATE(COUNTROWS(VALUES(DimRegion[Region])), ALL(DimRegion[Region]))
+VAR RegionText =
+    IF(NOT ISFILTERED(DimRegion[Region]) || RegionCount = RegionTotal,
+        "All Regions",
+        IF(RegionCount = 1, SELECTEDVALUE(DimRegion[Region]), FORMAT(RegionCount, "0") & " Regions"))
+RETURN LEFT(BUText & " | " & RegionText, 28)
 ```
 
 Format: `text/image`
@@ -2182,12 +2214,12 @@ VAR RegionText =
 VAR Line1 = LEFT(YearText & " | " & ScenarioText, 25)
 VAR Line2 = LEFT(BUText & " | " & RegionText, 28)
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='154' height='52' viewBox='0 0 154 52'>" &
-    "<rect x='0.5' y='0.5' width='153' height='51' rx='7' fill='%233F1A63' stroke='%238E73E7' stroke-width='1'/>" &
-    "<text x='10' y='16' font-family='Segoe UI' font-size='9.5' font-weight='700' fill='%23CFC3E6'>Current Lens</text>" &
-    "<circle cx='136' cy='13' r='3.4' fill='%236EE4CF'/>" &
-    "<text x='10' y='33' font-family='Segoe UI' font-size='10.5' font-weight='700' fill='%23FFFFFF'>" & Line1 & "</text>" &
-    "<text x='10' y='46' font-family='Segoe UI' font-size='8.7' fill='%23CFC3E6'>" & Line2 & "</text>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='170' height='62' viewBox='0 0 170 62'>" &
+    "<rect x='1' y='1' width='168' height='60' rx='7' fill='%233F1A63' stroke='%238E73E7' stroke-width='1.2'/>" &
+    "<text x='12' y='18' font-family='Segoe UI' font-size='10' font-weight='700' fill='%23CFC3E6'>Current Lens</text>" &
+    "<circle cx='151' cy='15' r='4' fill='%236EE4CF'/>" &
+    "<text x='12' y='38' font-family='Segoe UI' font-size='11' font-weight='700' fill='%23FFFFFF'>" & Line1 & "</text>" &
+    "<text x='12' y='53' font-family='Segoe UI' font-size='9.3' fill='%23CFC3E6'>" & Line2 & "</text>" &
     "</svg>"
 RETURN "data:image/svg+xml;utf8," & SVG
 ```

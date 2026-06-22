@@ -997,8 +997,8 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='248' height='156' viewBox='0 0 248 156'>" &
+    "<rect x='5' y='5' width='238' height='146' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
     "<rect x='18' y='13' width='212' height='4' rx='2' fill='{encoded_color}' opacity='0.9'/>" &
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='{encoded_color}' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
@@ -1016,13 +1016,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='108' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='122' y='108' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='137' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='132' y='122' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='134,128 140,138 128,138' fill='" & YoYColor & "'/>" &
+    "<text x='148' y='137' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)'''
 
@@ -1069,14 +1069,38 @@ VAR RegionText =
 VAR Line1 = LEFT(YearText & " | " & ScenarioText, 25)
 VAR Line2 = LEFT(BUText & " | " & RegionText, 28)
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='154' height='52' viewBox='0 0 154 52'>" &
-    "<rect x='0.5' y='0.5' width='153' height='51' rx='7' fill='%233F1A63' stroke='%238E73E7' stroke-width='1'/>" &
-    "<text x='10' y='16' font-family='Segoe UI' font-size='9.5' font-weight='700' fill='%23CFC3E6'>Current Lens</text>" &
-    "<circle cx='136' cy='13' r='3.4' fill='%236EE4CF'/>" &
-    "<text x='10' y='33' font-family='Segoe UI' font-size='10.5' font-weight='700' fill='%23FFFFFF'>" & Line1 & "</text>" &
-    "<text x='10' y='46' font-family='Segoe UI' font-size='8.7' fill='%23CFC3E6'>" & Line2 & "</text>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='170' height='62' viewBox='0 0 170 62'>" &
+    "<rect x='1' y='1' width='168' height='60' rx='7' fill='%233F1A63' stroke='%238E73E7' stroke-width='1.2'/>" &
+    "<text x='12' y='18' font-family='Segoe UI' font-size='10' font-weight='700' fill='%23CFC3E6'>Current Lens</text>" &
+    "<circle cx='151' cy='15' r='4' fill='%236EE4CF'/>" &
+    "<text x='12' y='38' font-family='Segoe UI' font-size='11' font-weight='700' fill='%23FFFFFF'>" & Line1 & "</text>" &
+    "<text x='12' y='53' font-family='Segoe UI' font-size='9.3' fill='%23CFC3E6'>" & Line2 & "</text>" &
     "</svg>"
 RETURN "data:image/svg+xml;utf8," & SVG'''
+
+
+def current_lens_primary_expr() -> str:
+    return r'''VAR YearText =
+    IF(HASONEVALUE(DimDate[Year]), FORMAT(SELECTEDVALUE(DimDate[Year]), "0"), "All Years")
+VAR ScenarioText =
+    IF(HASONEVALUE(DimScenario[ScenarioName]), SELECTEDVALUE(DimScenario[ScenarioName]), FORMAT(COUNTROWS(VALUES(DimScenario[ScenarioName])), "0") & " scenarios")
+RETURN LEFT(YearText & " | " & ScenarioText, 25)'''
+
+
+def current_lens_secondary_expr() -> str:
+    return r'''VAR BUCount = COUNTROWS(VALUES(DimBusinessUnit[BusinessUnit]))
+VAR BUTotal = CALCULATE(COUNTROWS(VALUES(DimBusinessUnit[BusinessUnit])), ALL(DimBusinessUnit[BusinessUnit]))
+VAR BUText =
+    IF(NOT ISFILTERED(DimBusinessUnit[BusinessUnit]) || BUCount = BUTotal,
+        "All BU",
+        IF(BUCount = 1, SELECTEDVALUE(DimBusinessUnit[BusinessUnit]), FORMAT(BUCount, "0") & " BU"))
+VAR RegionCount = COUNTROWS(VALUES(DimRegion[Region]))
+VAR RegionTotal = CALCULATE(COUNTROWS(VALUES(DimRegion[Region])), ALL(DimRegion[Region]))
+VAR RegionText =
+    IF(NOT ISFILTERED(DimRegion[Region]) || RegionCount = RegionTotal,
+        "All Regions",
+        IF(RegionCount = 1, SELECTEDVALUE(DimRegion[Region]), FORMAT(RegionCount, "0") & " Regions"))
+RETURN LEFT(BUText & " | " & RegionText, 28)'''
 
 
 def portfolio_signature_svg() -> str:
@@ -1252,6 +1276,8 @@ MEASURES = [
     ("Risk KPI Card SVG", svg_kpi_card("Risk", "Risk Exposure", COLORS["red"], "$#,0M;($#,0M);$0M", 1000000, "percent", "lower"), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
     ("Board Status Icon", 'SWITCH(TRUE(), [Revenue vs Plan %] >= 0.03, UNICHAR(9650), [Revenue vs Plan %] >= -0.02, UNICHAR(8212), UNICHAR(9660))', "", {"dataType": "string"}),
     ("Board Status Color", 'SWITCH(TRUE(), [Revenue vs Plan %] >= 0.03, "#2FA66A", [Revenue vs Plan %] >= -0.02, "#C58A18", "#C94A4A")', "", {"dataType": "string"}),
+    ("Current Lens Primary", current_lens_primary_expr(), "", {"dataType": "string"}),
+    ("Current Lens Secondary", current_lens_secondary_expr(), "", {"dataType": "string"}),
     ("Lens Summary SVG", lens_summary_svg(), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
     ("Performance Decision Chips SVG", decision_chips_svg("performance"), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
     ("Cash Decision Chips SVG", decision_chips_svg("cash"), "", {"dataType": "string", "dataCategory": "ImageUrl"}),
@@ -1887,11 +1913,11 @@ def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
         image_w = max(20, int(p["width"] - 8))
         image_h = max(20, int(p["height"] - 8))
     elif measure == "Lens Summary SVG":
-        image_w = max(20, int(p["width"] - 18))
-        image_h = max(20, int(p["height"] - 18))
+        image_w = max(20, int(p["width"] - 6))
+        image_h = max(20, int(p["height"] - 4))
     elif measure.endswith("KPI Card SVG"):
-        image_w = max(20, int(p["width"] - 32))
-        image_h = max(20, int(p["height"] - 28))
+        image_w = max(20, int(p["width"] - 8))
+        image_h = max(20, int(p["height"] - 8))
     else:
         image_w = max(20, int(p["width"] - 8))
         image_h = max(20, int(p["height"] - 8))
@@ -2134,14 +2160,31 @@ def slicer_default_filter(table, column, values, kind="string", alias="f"):
 def rail_filter_row(label, table, column, display, y, z, accent, sync_name, single_select=False, default_values=None, default_kind="string"):
     return [
         solid_rect(accent, pos(36, y + 5, z, 7, 7), radius=1.8),
-        plain_text(label, pos(52, y - 6, z + 1, 124, 28), COLORS["filter_label"], "7.1pt", "Segoe UI Semibold"),
-        slicer(table, column, display, pos(34, y + 18, z + 2, 146, 36), mode="Dropdown", show_title=False, compact=True, sync_group=sync_name, rail=True, single_select=single_select, default_values=default_values, default_kind=default_kind),
+        plain_text(label, pos(52, y - 5, z + 1, 124, 26), COLORS["filter_label"], "7.1pt", "Segoe UI Semibold"),
+        slicer(table, column, display, pos(34, y + 19, z + 2, 146, 43), mode="Dropdown", show_title=False, compact=True, sync_group=sync_name, rail=True, single_select=single_select, default_values=default_values, default_kind=default_kind),
     ]
 
 
 def sidebar_signature(z):
     return [
-        kpi_svg_table("Portfolio Signature SVG", "Portfolio Signature", pos(28, 16, z + 1, 60, 60)),
+        solid_rect("#172035", pos(28, 22, z + 1, 52, 48), radius=8.0),
+        solid_rect("#F8FBFF", pos(34, 28, z + 2, 38, 3), radius=1.5),
+        plain_text("AT", pos(38, 32, z + 3, 44, 32), "#F8FBFF", "17pt", "Segoe UI Black"),
+        solid_rect("#8AB8FF", pos(38, 58, z + 4, 20, 3), radius=1.5),
+        solid_rect("#8DE1D6", pos(54, 60, z + 5, 22, 3), radius=1.5),
+        solid_rect("#D7D1E2", pos(178, 27, z + 6, 8, 20), radius=1.4),
+        solid_rect("#D7D1E2", pos(178, 55, z + 7, 8, 20), radius=1.4),
+    ]
+
+
+def current_lens_card(z):
+    return [
+        solid_rect("#8E73E7", pos(18, 552, z, 172, 66), radius=6.0),
+        solid_rect("#3F1A63", pos(20, 554, z + 1, 168, 62), radius=5.5),
+        plain_text("Current Lens", pos(28, 556, z + 2, 106, 24), "#CFC3E6", "6.9pt", "Segoe UI Semibold"),
+        solid_rect("#6EE4CF", pos(160, 561, z + 3, 7, 7), radius=3.5),
+        measure_value("Current Lens Primary", "Current Lens", pos(28, 574, z + 4, 126, 20), "#FFFFFF", 7.8),
+        measure_value("Current Lens Secondary", "Current Lens Detail", pos(28, 592, z + 5, 138, 18), "#CFC3E6", 6.8),
     ]
 
 
@@ -2154,8 +2197,8 @@ def sidebar_shell(page_title, active_label, z, context_items=None):
     visuals = [
         shape(COLORS["sidebar"], pos(14, 8, z, 176, 700)),
         *sidebar_signature(z),
-        plain_text("TDAT", pos(94, 28, z + 6, 82, 24), "#F8FBFF", "8.7pt", "Segoe UI Semibold"),
-        plain_text("Finance Control", pos(94, 47, z + 7, 88, 24), "#D7CCF1", "7.5pt", "Segoe UI Semibold"),
+        plain_text("TDAT", pos(94, 30, z + 16, 78, 24), "#F8FBFF", "8.8pt", "Segoe UI Semibold"),
+        plain_text("Finance Control", pos(94, 49, z + 17, 80, 24), "#D7CCF1", "6.9pt", "Segoe UI Semibold"),
         plain_text("FP20", pos(1132, 11, z + 3, 48, 24), "#E6DDF8", "9pt"),
         plain_text("Board CFO Pack", pos(1178, 11, z + 4, 98, 24), "#E6DDF8", "8pt"),
         textbox(page_title, "", pos(204, 16, z + 5, 400, 30)),
@@ -2176,7 +2219,7 @@ def sidebar_shell(page_title, active_label, z, context_items=None):
         solid_rect(COLORS["sidebar_rule"], pos(34, 410, z + 65, 148, 2), radius=1.0),
         *rail_filter_row("Business Unit", "DimBusinessUnit", "BusinessUnit", "BU", 416, z + 67, COLORS["teal"], "global_bu"),
         *rail_filter_row("Region", "DimRegion", "Region", "Region", 476, z + 73, COLORS["amber"], "global_region"),
-        kpi_svg_table("Lens Summary SVG", "Current Lens", pos(20, 552, z + 80, 170, 80)),
+        *current_lens_card(z + 80),
         solid_rect(COLORS["sidebar_rule"], pos(30, 642, z + 86, 146, 3), radius=1.5),
         plain_text("Data through\nMay 2026", pos(50, 652, z + 60, 112, 42), "#D7CCF1", "8.0pt"),
     ]
@@ -2578,32 +2621,28 @@ def kpi_progress_bar(p, accent, variant=0):
 
 def safe_sparkline(series_measure, label, p, accent, variant=0, favorable="higher"):
     return [
-        sparkline_area_chart(series_measure, f"{kpi_card_label(label)} Trend", pos(p["x"] + p["width"] - 108, p["y"] + 34, p["z"] + 520, 100, 64), accent)
+        sparkline_area_chart(series_measure, f"{kpi_card_label(label)} Trend", pos(p["x"] + p["width"] - 108, p["y"] + 37, p["z"] + 520, 100, 70), accent)
     ]
 
 
 def polished_kpi_card(value, label, series_measure, p, accent, py_value, yoy_value, variant=0, favorable="higher"):
     label_text = kpi_card_label(label)
-    svg_measure = KPI_CARD_SVG_MEASURES.get(label)
-    if svg_measure:
-        return [
-            kpi_svg_table(svg_measure, label_text, p),
-        ]
     value_measure = kpi_value_measure(label, series_measure)
     yoy_color = semantic_delta_color(yoy_value, favorable)
+    footer_y = p["y"] + p["height"] - 46
     return [
         solid_rect(COLORS["card"], p, radius=10.0),
         solid_rect(accent, pos(p["x"] + 14, p["y"] + 13, p["z"] + 1, p["width"] - 28, 4), radius=2.0),
         solid_rect(accent, pos(p["x"] + 16, p["y"] + 31, p["z"] + 2, 12, 12), radius=3.0),
         plain_text(label_text, pos(p["x"] + 34, p["y"] + 26, p["z"] + 3, 104, 26), COLORS["ink"], "11pt", "Segoe UI Semibold"),
-        measure_value(value_measure, label_text, pos(p["x"] + 14, p["y"] + 58, p["z"] + 4, 116, 42), accent, 19.0),
+        measure_value(value_measure, label_text, pos(p["x"] + 14, p["y"] + 59, p["z"] + 4, 136, 44), accent, 17.2),
         *safe_sparkline(series_measure, label, p, accent, variant, favorable),
-        solid_rect("#F9F6FE", pos(p["x"] + 14, p["y"] + 106, p["z"] + 6, 96, 27), radius=6.0),
-        solid_rect("#F9F6FE", pos(p["x"] + 118, p["y"] + 106, p["z"] + 7, 112, 27), radius=6.0),
-        plain_text("PY", pos(p["x"] + 22, p["y"] + 106, p["z"] + 8, 42, 18), COLORS["ink"], "7.2pt", "Segoe UI Semibold"),
-        plain_text(py_value, pos(p["x"] + 22, p["y"] + 119, p["z"] + 9, 76, 18), COLORS["muted"], "7.2pt", "Segoe UI"),
-        plain_text("YoY", pos(p["x"] + 128, p["y"] + 106, p["z"] + 10, 42, 18), COLORS["ink"], "7.2pt", "Segoe UI Semibold"),
-        plain_text(f"{yoy_value}", pos(p["x"] + 128, p["y"] + 119, p["z"] + 11, 86, 18), yoy_color, "7.2pt", "Segoe UI Semibold"),
+        solid_rect("#F9F6FE", pos(p["x"] + 14, footer_y, p["z"] + 6, 106, 34), radius=6.0),
+        solid_rect("#F9F6FE", pos(p["x"] + 128, footer_y, p["z"] + 7, 118, 34), radius=6.0),
+        plain_text("PY", pos(p["x"] + 22, footer_y + 3, p["z"] + 8, 42, 18), COLORS["ink"], "7.2pt", "Segoe UI Semibold"),
+        plain_text(py_value, pos(p["x"] + 22, footer_y + 17, p["z"] + 9, 88, 18), COLORS["muted"], "7.2pt", "Segoe UI"),
+        plain_text("YoY", pos(p["x"] + 138, footer_y + 3, p["z"] + 10, 42, 18), COLORS["ink"], "7.2pt", "Segoe UI Semibold"),
+        plain_text(f"{yoy_value}", pos(p["x"] + 138, footer_y + 17, p["z"] + 11, 96, 18), yoy_color, "7.2pt", "Segoe UI Semibold"),
     ]
 
 
@@ -2877,15 +2916,15 @@ def build_layout() -> dict:
     mid_w = 304
     right_x = 966
     right_w = 294
-    card_w = 255
-    card_gap = 12
+    card_w = 260
+    card_gap = 5
     card_x = [main_x + i * (card_w + card_gap) for i in range(4)]
     card_y = 50
-    card_h = 164
-    top_y = 226
-    bottom_y = 444
-    top_h = 210
-    bottom_h = 248
+    card_h = 190
+    top_y = 240
+    bottom_y = 456
+    top_h = 206
+    bottom_h = 236
     p1 = sidebar_shell(
         "Board Performance Overview",
         "Performance",
