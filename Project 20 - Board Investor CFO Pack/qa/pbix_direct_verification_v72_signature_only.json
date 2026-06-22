@@ -1,0 +1,22 @@
+﻿{
+    "status":  "pass",
+    "pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+    "generatedAt":  "2026-06-22T20:48:45",
+    "counts":  {
+                   "visual_containers":  53,
+                   "signature_zone_visuals":  5,
+                   "signature_tableEx":  0,
+                   "right_side_signature_visuals":  0,
+                   "favicon_box":  1,
+                   "favicon_at_text":  1,
+                   "brand_textboxes":  0,
+                   "v71_kpi_geometry_260x190":  0
+               },
+    "checks":  {
+                   "signature_uses_centered_native_favicon":  true,
+                   "no_signature_tableEx_scroll":  true,
+                   "no_adjacent_right_visuals":  true,
+                   "no_brand_textbox_overflow":  true,
+                   "v71_geometry_rolled_back":  true
+               }
+}

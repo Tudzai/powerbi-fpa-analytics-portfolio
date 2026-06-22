@@ -1,18 +1,17 @@
 # Visual QA Notes
 
-v71 fixes the PBIX-rendered spacing and scrollbar issues called out by the user.
+v72 rolls back the v71 KPI enlargement pass and focuses only on the sidebar Signature.
 
-- Final product is a real PBIX rebuilt through TOM model push and native layout patch, not an HTML-only preview.
-- KPI cards are expanded to `260x190`, use native layered visuals, and no longer use top-row tableEx SVG containers that caused internal scrollbars.
-- KPI value cards have a wider numeric area and slightly smaller value font so `$36.7M`, `77.8%`, `$14.3M`, and `$376.7M` render without ellipses in Power BI Desktop.
-- Sidebar signature is native shape/text, so the `AT` mark, `TDAT`, and `Finance Control` render without a nested scrollbar. The two right-side gray bars share the same x-axis and dimensions.
-- Sidebar slicers remain compact `146x43` containers with no bad-height records in PBIX metadata.
-- Current Lens is rebuilt from native shape/text/card visuals and no longer uses a tableEx SVG container.
+- Final product is a real PBIX patched through the native layout route, not an HTML-only preview.
+- The Signature now uses a centered native favicon-style mark: dark navy rounded square, white `AT`, and two small blue/teal accent strokes.
+- The adjacent `TDAT` / `Finance Control` text boxes were removed because they rendered as small overflow rectangles in Power BI Desktop.
+- The old `Portfolio Signature SVG` tableEx visual is no longer used in the Signature area, so the logo does not create its own scrollbar.
+- Direct PBIX verification confirms `signature_tableEx = 0`, `right_side_signature_visuals = 0`, `brand_textboxes = 0`, and `v71_kpi_geometry_260x190 = 0`.
 - Playwright evidence is generated from a Power BI Desktop render captured from the actual `output/dashboard_final.pbix`.
 
 Evidence:
 
-- Direct PBIX verification: `qa/pbix_direct_verification_v71_kpi_fit_no_scroll.json`
-- Desktop render capture: `output/playwright/project20_v71_pbix_final_full.png`
-- Playwright QA evidence: `output/playwright/project20_v71_pbix_qa_evidence.png`
-- Snapshot PBIX: `output/dashboard_final_v71_kpi_fit_no_scroll.pbix`
+- Direct PBIX verification: `qa/pbix_direct_verification_v72_signature_only.json`
+- Desktop render capture: `output/playwright/project20_v72_signature_favicon_only_full.png`
+- Playwright QA evidence: `output/playwright/project20_v72_signature_favicon_only_qa.png`
+- Snapshot PBIX: `output/dashboard_final_v72_signature_favicon_only.pbix`

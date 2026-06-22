@@ -18,7 +18,7 @@
     "FactRiskRegister": 30,
     "FactKpiScorecard": 8
   },
-  "measures": 103,
+  "measures": 101,
   "relationships": 16,
   "pbix_exists": false
 }
