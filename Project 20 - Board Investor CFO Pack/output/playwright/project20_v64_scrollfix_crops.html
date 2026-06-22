@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #ffffff;
+      }
+
+      img {
+        position: absolute;
+        width: 1445px;
+        height: 857px;
+        max-width: none;
+        transform-origin: top left;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="source" src="../../qa/screenshots/project20_v64_scrollfix_desktop_full.jpg" />
+    <script>
+      const crops = {
+        sidebar: { x: 86, y: 520 },
+        chips: { x: 700, y: 520 },
+        kpi: { x: 340, y: 585 },
+        table: { x: 330, y: 780 }
+      };
+      const name = new URLSearchParams(location.search).get("crop") || "kpi";
+      const crop = crops[name] || crops.kpi;
+      document.getElementById("source").style.transform = `translate(${-crop.x}px, ${-crop.y}px)`;
+    </script>
+  </body>
+</html>

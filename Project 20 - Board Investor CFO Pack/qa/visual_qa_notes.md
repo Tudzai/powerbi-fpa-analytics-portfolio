@@ -12,8 +12,24 @@ Evidence:
 
 - Data interaction QA: `qa/data_interaction_variation_check.json`
 - Direct PBIX verification: `qa/pbix_direct_verification_interactive_data.json`
-- Decision chip PBIX verification: `qa/pbix_direct_verification_decision_chips_v62.json`
 - Desktop capture: `qa/screenshots/project20_interactive_data_desktop_full.jpg`
-- Decision chip Desktop capture: `qa/screenshots/project20_decision_chips_v62_desktop_full.jpg`
 - Playwright crop: `output/playwright/project20_interactive_data_desktop_crop.png`
-- Decision chip Playwright crop: `output/playwright/project20_decision_chips_v62_crop.png`
+
+## v64 Scroll-Fix QA
+
+Focused fix for the user-reported visual polish issues: uneven rectangles, internal scrollbars in chips/KPI cards/slicers, unclear signature, oversized slicer frames, and the Board KPI Details table not fitting its panel.
+
+- Replaced the signature SVG table visual with native shapes/text so the logo is crisp and cannot produce a scrollbar.
+- Removed the Lens Summary mini table from the sidebar because its container was too small and added visual clutter.
+- Reduced slicer dropdown height to `38px` and tightened the sidebar lens grouping so the filter rail feels balanced.
+- Removed the rectangular value backplate behind KPI main values, then resized KPI SVG table images to keep `32px` width and `28px` height breathing room inside each KPI card.
+- Enlarged decision-chip visual containers to `544x60` while keeping chip SVG image content at `500x32`, leaving `44px` horizontal and `28px` vertical budget to avoid internal scrollbars.
+- Increased the Board KPI Details table panel height and tuned table row padding, header size, value size, and sparkline column width so the table fits the shape more deliberately.
+
+Evidence:
+
+- Direct PBIX verification: `qa/pbix_direct_verification_v64_scrollfix.json`
+- Desktop full capture: `qa/screenshots/project20_v64_scrollfix_desktop_full.jpg`
+- Playwright chip crop: `output/playwright/project20_v64_chips_crop.png`
+- Playwright KPI crop: `output/playwright/project20_v64_kpi_crop.png`
+- Playwright sidebar crop: `output/playwright/project20_v64_sidebar_crop.png`

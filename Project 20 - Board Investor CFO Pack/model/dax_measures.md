@@ -1018,7 +1018,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%234F87F5' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Revenue</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%234F87F5'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -1110,7 +1109,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%230F9F95' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Margin</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%230F9F95'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -1203,7 +1201,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%231F8E45' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>EBITDA</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%231F8E45'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -1296,7 +1293,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%23BE7C10' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Cash</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%23BE7C10'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -1388,7 +1384,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%234F87F5' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Runway</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%234F87F5'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -1481,7 +1476,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%230F9F95' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>FCF</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%230F9F95'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -1574,7 +1568,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%23B73535' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Burn</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%23B73535'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -1667,7 +1660,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%231F8E45' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Funding</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%231F8E45'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -1760,7 +1752,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%234F87F5' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>EV</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%234F87F5'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -1853,7 +1844,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%231F8E45' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Equity</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%231F8E45'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -1945,7 +1935,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%23BE7C10' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Leverage</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%23BE7C10'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -2037,7 +2026,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%230F9F95' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Headroom</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%230F9F95'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
@@ -2130,7 +2118,6 @@ VAR SVG =
     "<rect x='18' y='29' width='12' height='12' rx='3' fill='%23B73535' opacity='0.95'/>" &
     "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
     "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>Risk</text>" &
-    "<rect x='16' y='50' width='112' height='38' rx='8' fill='%23FFFFFF' opacity='0.68'/>" &
     "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='%23B73535'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &

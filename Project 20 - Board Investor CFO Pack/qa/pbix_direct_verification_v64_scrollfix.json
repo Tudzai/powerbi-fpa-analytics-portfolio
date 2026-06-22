@@ -1,0 +1,134 @@
+﻿{
+    "status":  "pass",
+    "verifiedAt":  "2026-06-22T16:06:24",
+    "pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+    "pages":  [
+                  "Performance",
+                  "Cash Plan",
+                  "Risk \u0026 Valuation"
+              ],
+    "visualContainers":  156,
+    "nonChartTableScrollPolicy":  "Only analytical charts/tables may scroll; signature, lens, chips, slicers, and KPI cards must fit their visual containers.",
+    "checks":  {
+                   "noSignatureOrLensTableEx":  true,
+                   "decisionChipCount":  true,
+                   "decisionChipNoScrollBudget":  true,
+                   "kpiCardCount":  true,
+                   "kpiCardNoScrollBudget":  true,
+                   "slicerCount":  true,
+                   "slicerCompactHeight":  true,
+                   "boardKpiTablePresent":  true
+               },
+    "decisionChips":  [
+                          {
+                              "page":  "Performance",
+                              "width":  544,
+                              "height":  60,
+                              "imageWidth":  500,
+                              "imageHeight":  32,
+                              "widthBudget":  44,
+                              "heightBudget":  28,
+                              "pass":  true
+                          },
+                          {
+                              "page":  "Cash Plan",
+                              "width":  544,
+                              "height":  60,
+                              "imageWidth":  500,
+                              "imageHeight":  32,
+                              "widthBudget":  44,
+                              "heightBudget":  28,
+                              "pass":  true
+                          },
+                          {
+                              "page":  "Risk \u0026 Valuation",
+                              "width":  544,
+                              "height":  60,
+                              "imageWidth":  500,
+                              "imageHeight":  32,
+                              "widthBudget":  44,
+                              "heightBudget":  28,
+                              "pass":  true
+                          }
+                      ],
+    "kpiCardsSample":  [
+                           {
+                               "page":  "Performance",
+                               "ref":  "KPI_Measures.Revenue KPI Card SVG",
+                               "width":  248,
+                               "height":  150,
+                               "imageWidth":  216,
+                               "imageHeight":  122,
+                               "widthBudget":  32,
+                               "heightBudget":  28,
+                               "pass":  true
+                           },
+                           {
+                               "page":  "Performance",
+                               "ref":  "KPI_Measures.Margin KPI Card SVG",
+                               "width":  248,
+                               "height":  150,
+                               "imageWidth":  216,
+                               "imageHeight":  122,
+                               "widthBudget":  32,
+                               "heightBudget":  28,
+                               "pass":  true
+                           },
+                           {
+                               "page":  "Performance",
+                               "ref":  "KPI_Measures.EBITDA KPI Card SVG",
+                               "width":  248,
+                               "height":  150,
+                               "imageWidth":  216,
+                               "imageHeight":  122,
+                               "widthBudget":  32,
+                               "heightBudget":  28,
+                               "pass":  true
+                           },
+                           {
+                               "page":  "Performance",
+                               "ref":  "KPI_Measures.Cash KPI Card SVG",
+                               "width":  248,
+                               "height":  150,
+                               "imageWidth":  216,
+                               "imageHeight":  122,
+                               "widthBudget":  32,
+                               "heightBudget":  28,
+                               "pass":  true
+                           }
+                       ],
+    "slicersSample":  [
+                          {
+                              "page":  "Performance",
+                              "x":  32,
+                              "y":  276,
+                              "width":  150,
+                              "height":  38,
+                              "pass":  true
+                          },
+                          {
+                              "page":  "Performance",
+                              "x":  32,
+                              "y":  344,
+                              "width":  150,
+                              "height":  38,
+                              "pass":  true
+                          },
+                          {
+                              "page":  "Performance",
+                              "x":  32,
+                              "y":  450,
+                              "width":  150,
+                              "height":  38,
+                              "pass":  true
+                          },
+                          {
+                              "page":  "Performance",
+                              "x":  32,
+                              "y":  518,
+                              "width":  150,
+                              "height":  38,
+                              "pass":  true
+                          }
+                      ]
+}
