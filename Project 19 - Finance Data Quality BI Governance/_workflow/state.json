@@ -1,10 +1,16 @@
-{
-  "status": "pbip_seed_ready_pbix_pending",
-  "final_pbix_path": "output/dashboard_final.pbix",
-  "pages": [
-    "Governance Overview",
-    "Reliability & Quality",
-    "Adoption & Controls"
-  ],
-  "seed": 20260615
+﻿{
+    "status":  "final_pbix_desktop_verified",
+    "final_pbix_target":  "output/dashboard_final.pbix",
+    "versioned_snapshot":  "output/dashboard_final_v5_project20_sparklines.pbix",
+    "html_qa_preview":  "output/dashboard_final.html",
+    "pages":  [
+                  "Governance Overview",
+                  "Reliability \u0026 Quality",
+                  "Adoption \u0026 Controls",
+                  "Risk \u0026 Action Queue"
+              ],
+    "visual_count":  117,
+    "native_sparkline_visual_count":  16,
+    "seed":  20260615,
+    "desktop_verified_at":  "2026-06-23T22:34:00+07:00"
 }

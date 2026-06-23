@@ -2,21 +2,36 @@
   {
     "slicer": "Region",
     "field": "DimEntity[region]",
-    "scope": "All pages"
+    "scope": "All pages in left rail"
   },
   {
     "slicer": "Entity",
-    "field": "DimEntity[entity_id]",
-    "scope": "All pages"
+    "field": "DimEntity[entity]",
+    "scope": "All pages in left rail"
   },
   {
     "slicer": "Scenario",
     "field": "DimScenario[scenario]",
-    "scope": "Forecast pages"
+    "scope": "Treasury and forecast pages"
   },
   {
     "slicer": "Forecast Week",
     "field": "DimWeek[week_label]",
-    "scope": "Forecast and executive pages"
+    "scope": "Treasury command center"
+  },
+  {
+    "slicer": "Customer Risk",
+    "field": "DimCustomer[risk_rating]",
+    "scope": "Working capital page"
+  },
+  {
+    "slicer": "Vendor Criticality",
+    "field": "DimVendor[criticality]",
+    "scope": "Working capital page"
+  },
+  {
+    "slicer": "Currency",
+    "field": "FactFXExposure[exposure_currency]",
+    "scope": "Forecast, FX & Risk page"
   }
 ]

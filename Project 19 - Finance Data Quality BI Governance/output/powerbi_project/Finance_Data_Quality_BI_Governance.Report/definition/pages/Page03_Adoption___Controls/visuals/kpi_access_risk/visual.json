@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "kpi_access_risk",
   "position": {
-    "x": 624,
-    "y": 84,
-    "z": 103,
-    "height": 88,
-    "width": 180,
-    "tabOrder": 103
+    "x": 732,
+    "y": 80,
+    "z": 122,
+    "height": 86,
+    "width": 240,
+    "tabOrder": 122
   },
   "visual": {
     "visualType": "card",
@@ -34,6 +34,19 @@
       }
     },
     "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Shows filtered dashboard evidence for Access Risk.'"
+                }
+              }
+            }
+          }
+        }
+      ],
       "title": [
         {
           "properties": {
@@ -53,7 +66,7 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#17202A"
+                "color": "#247A5A"
               }
             },
             "fontSize": {
@@ -92,7 +105,7 @@
             },
             "color": {
               "solid": {
-                "color": "#FFFFFF"
+                "color": "#FBFDFE"
               }
             },
             "transparency": {
@@ -117,13 +130,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8DED8"
+                "color": "#D8E5E8"
               }
             },
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6L"
+                  "Value": "9L"
                 }
               }
             }

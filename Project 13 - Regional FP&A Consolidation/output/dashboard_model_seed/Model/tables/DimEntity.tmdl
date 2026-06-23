@@ -1,0 +1,49 @@
+﻿table DimEntity
+
+	column entity_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: entity_id
+
+	column entity
+		dataType: string
+		summarizeBy: none
+		sourceColumn: entity
+
+	column country
+		dataType: string
+		summarizeBy: none
+		sourceColumn: country
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column currency
+		dataType: string
+		summarizeBy: none
+		sourceColumn: currency
+
+	column ownership
+		dataType: double
+		summarizeBy: none
+		sourceColumn: ownership
+
+	partition DimEntity-Import = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/dim_entity.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {
+				        {"entity_id", type text},
+				        {"entity", type text},
+				        {"country", type text},
+				        {"region", type text},
+				        {"currency", type text},
+				        {"ownership", type number}
+				    }, "en-US")
+				in
+				    TypedColumns
+

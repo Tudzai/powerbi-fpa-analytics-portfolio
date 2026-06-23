@@ -28,6 +28,15 @@ SELECTEDVALUE ( dim_carbon_scenario[carbon_price_usd_per_t], 50 )
 Carbon Cost USD =
 [Total Emissions tCO2e] * [Selected Carbon Price USD/t]
 
+Scenario Carbon Cost USD =
+SUM ( fact_carbon_exposure[carbon_cost_usd] )
+
+Probability Weighted Carbon Cost USD =
+SUM ( fact_carbon_exposure[probability_weighted_cost_usd] )
+
+Stress Scenario Carbon Cost USD =
+CALCULATE ( [Scenario Carbon Cost USD], dim_carbon_scenario[scenario] = "Stress price shock" )
+
 Supplier Emissions tCO2e =
 SUM ( fact_supplier_month[emissions_tco2e] )
 
@@ -37,11 +46,26 @@ SUM ( fact_supplier_month[spend_usd] )
 Supplier Intensity tCO2e per $M Spend =
 DIVIDE ( [Supplier Emissions tCO2e], [Supplier Spend USD] ) * 1000000
 
+High Risk Supplier Emissions tCO2e =
+CALCULATE ( [Supplier Emissions tCO2e], fact_supplier_month[carbon_risk_tier] = "High" )
+
+Average Data Quality Score =
+AVERAGE ( fact_supplier_month[data_quality_score] )
+
 Abatement Annual Reduction tCO2e =
 SUM ( fact_abatement_initiatives[annual_reduction_tco2e] )
 
 Abatement Capex USD =
 SUM ( fact_abatement_initiatives[capex_usd] )
+
+Planned Abatement Capex USD =
+CALCULATE ( [Abatement Capex USD], fact_abatement_initiatives[implementation_status] = "Planned" )
+
+Committed and In Flight Reduction tCO2e =
+CALCULATE (
+    [Abatement Annual Reduction tCO2e],
+    fact_abatement_initiatives[implementation_status] IN { "Committed", "In flight", "Implemented" }
+)
 
 Avoided Carbon Cost USD at Selected Price =
 [Abatement Annual Reduction tCO2e] * [Selected Carbon Price USD/t]

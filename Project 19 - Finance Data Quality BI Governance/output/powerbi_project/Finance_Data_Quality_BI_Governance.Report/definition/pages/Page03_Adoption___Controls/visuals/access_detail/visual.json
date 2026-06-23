@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "access_detail",
   "position": {
-    "x": 24,
-    "y": 515,
-    "z": 300,
-    "height": 170,
-    "width": 760,
-    "tabOrder": 300
+    "x": 204,
+    "y": 514,
+    "z": 303,
+    "height": 172,
+    "width": 680,
+    "tabOrder": 303
   },
   "visual": {
     "visualType": "tableEx",
@@ -101,9 +101,40 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "KPI Measures"
+                  }
+                },
+                "Property": "RLS Exceptions"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Shows filtered dashboard evidence for Access Review Detail.'"
+                }
+              }
+            }
+          }
+        }
+      ],
       "title": [
         {
           "properties": {
@@ -123,13 +154,13 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#17202A"
+                "color": "#13212B"
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10L"
+                  "Value": "9L"
                 }
               }
             },
@@ -187,13 +218,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8DED8"
+                "color": "#D8E5E8"
               }
             },
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6L"
+                  "Value": "8L"
                 }
               }
             }

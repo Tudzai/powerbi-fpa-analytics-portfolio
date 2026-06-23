@@ -1,24 +1,25 @@
 ﻿{
-    "generated_at":  "2026-06-15 03:46:36",
+    "generated_at":  "2026-06-23 21:46:54",
     "project_root":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital",
     "source_model_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_model_seed_ch07.pbix",
     "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\build\\native_report_layout_project14.json",
+    "resource_dir":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\assets\\kpi_cards_project20_upgrade",
     "output_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_v01.pbix",
     "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_final.pbix",
-    "final_pbix_bytes":  4150244,
+    "final_pbix_bytes":  4167351,
     "pages":  [
                   "Treasury Command Center",
                   "Working Capital Control",
                   "Forecast, FX \u0026 Risk"
               ],
-    "visual_containers":  57,
+    "visual_containers":  111,
     "visual_type_counts":  {
+                               "tableEx":  21,
                                "barChart":  12,
-                               "shape":  6,
+                               "shape":  24,
                                "waterfallChart":  1,
-                               "textbox":  9,
-                               "slicer":  9,
-                               "cardVisual":  18,
+                               "textbox":  39,
+                               "slicer":  12,
                                "columnChart":  2
                            },
     "validation":  "PowerBIPackager.Validate passed for output and final PBIX",

@@ -14,6 +14,20 @@
 | month_index | int64 | 29 | 1 |
 | is_latest_complete_month | int64 | 29 | 0 |
 
+## dim_spark_date
+
+| Column | Type | Non-null | Example |
+|---|---|---:|---|
+| date_key | int64 | 29 | 20240101 |
+| month_start_date | str | 29 | 2024-01-01 |
+| year_month | str | 29 | 2024-01 |
+| year | int32 | 29 | 2024 |
+| quarter | str | 29 | Q1 |
+| month_no | int32 | 29 | 1 |
+| month_name | str | 29 | Jan |
+| month_index | int64 | 29 | 1 |
+| is_latest_complete_month | int64 | 29 | 0 |
+
 ## dim_plant
 
 | Column | Type | Non-null | Example |

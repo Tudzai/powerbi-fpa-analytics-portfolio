@@ -1,0 +1,266 @@
+{
+  "status": "source_layout_pass",
+  "generated_at": "2026-06-23T21:46:51",
+  "project20_patterns_applied": [
+    "left_sidebar_lens_system",
+    "four_svg_kpi_cards_per_page",
+    "current_lens_svg",
+    "decision_chips_svg",
+    "synced_chart_slots",
+    "metric_aware_chart_units",
+    "polished_table_banding",
+    "page_navigation_action_buttons",
+    "explicit_table_column_widths"
+  ],
+  "pages": [
+    "Executive Overview",
+    "Revenue & Retention",
+    "Efficiency & Forecast"
+  ],
+  "navigation_action_count": 9,
+  "navigation_actions": [
+    {
+      "source_page": "Executive Overview",
+      "target_section": "ReportSectionExecutiveOverview",
+      "tooltip": "Go to Executive Overview"
+    },
+    {
+      "source_page": "Executive Overview",
+      "target_section": "ReportSectionRevenueRetention",
+      "tooltip": "Go to Revenue & Retention"
+    },
+    {
+      "source_page": "Executive Overview",
+      "target_section": "ReportSectionEfficiencyForecast",
+      "tooltip": "Go to Efficiency & Forecast"
+    },
+    {
+      "source_page": "Revenue & Retention",
+      "target_section": "ReportSectionExecutiveOverview",
+      "tooltip": "Go to Executive Overview"
+    },
+    {
+      "source_page": "Revenue & Retention",
+      "target_section": "ReportSectionRevenueRetention",
+      "tooltip": "Go to Revenue & Retention"
+    },
+    {
+      "source_page": "Revenue & Retention",
+      "target_section": "ReportSectionEfficiencyForecast",
+      "tooltip": "Go to Efficiency & Forecast"
+    },
+    {
+      "source_page": "Efficiency & Forecast",
+      "target_section": "ReportSectionExecutiveOverview",
+      "tooltip": "Go to Executive Overview"
+    },
+    {
+      "source_page": "Efficiency & Forecast",
+      "target_section": "ReportSectionRevenueRetention",
+      "tooltip": "Go to Revenue & Retention"
+    },
+    {
+      "source_page": "Efficiency & Forecast",
+      "target_section": "ReportSectionEfficiencyForecast",
+      "tooltip": "Go to Efficiency & Forecast"
+    }
+  ],
+  "table_column_width_rules": 32,
+  "table_column_alignment_rules": 32,
+  "section_stats": [
+    {
+      "page": "Executive Overview",
+      "sidebar_action_buttons": 3,
+      "table_visuals": 8,
+      "table_column_width_rules": 7,
+      "table_column_alignment_rules": 7
+    },
+    {
+      "page": "Revenue & Retention",
+      "sidebar_action_buttons": 3,
+      "table_visuals": 9,
+      "table_column_width_rules": 12,
+      "table_column_alignment_rules": 12
+    },
+    {
+      "page": "Efficiency & Forecast",
+      "sidebar_action_buttons": 3,
+      "table_visuals": 9,
+      "table_column_width_rules": 13,
+      "table_column_alignment_rules": 13
+    }
+  ],
+  "checks": [
+    {
+      "page": "Executive Overview",
+      "lens_pass": true,
+      "kpi_slots_pass": true,
+      "kpi_slots": [
+        {
+          "x": 204,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        },
+        {
+          "x": 472,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        },
+        {
+          "x": 740,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        },
+        {
+          "x": 1008,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        }
+      ],
+      "top_chart_slots_pass": true,
+      "sidebar_navigation_pass": true,
+      "sidebar_action_buttons": 3,
+      "table_column_widths_pass": true,
+      "table_column_width_rules": 7,
+      "table_alignment_rules": 7,
+      "top_chart_slots": [
+        {
+          "x": 204,
+          "y": 252,
+          "w": 424,
+          "h": 184
+        },
+        {
+          "x": 646,
+          "y": 252,
+          "w": 300,
+          "h": 184
+        },
+        {
+          "x": 964,
+          "y": 252,
+          "w": 292,
+          "h": 184
+        }
+      ]
+    },
+    {
+      "page": "Revenue & Retention",
+      "lens_pass": true,
+      "kpi_slots_pass": true,
+      "kpi_slots": [
+        {
+          "x": 204,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        },
+        {
+          "x": 472,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        },
+        {
+          "x": 740,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        },
+        {
+          "x": 1008,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        }
+      ],
+      "top_chart_slots_pass": true,
+      "sidebar_navigation_pass": true,
+      "sidebar_action_buttons": 3,
+      "table_column_widths_pass": true,
+      "table_column_width_rules": 12,
+      "table_alignment_rules": 12,
+      "top_chart_slots": [
+        {
+          "x": 204,
+          "y": 252,
+          "w": 424,
+          "h": 184
+        },
+        {
+          "x": 646,
+          "y": 252,
+          "w": 300,
+          "h": 184
+        },
+        {
+          "x": 964,
+          "y": 252,
+          "w": 292,
+          "h": 184
+        }
+      ]
+    },
+    {
+      "page": "Efficiency & Forecast",
+      "lens_pass": true,
+      "kpi_slots_pass": true,
+      "kpi_slots": [
+        {
+          "x": 204,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        },
+        {
+          "x": 472,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        },
+        {
+          "x": 740,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        },
+        {
+          "x": 1008,
+          "y": 72,
+          "w": 252,
+          "h": 158
+        }
+      ],
+      "top_chart_slots_pass": true,
+      "sidebar_navigation_pass": true,
+      "sidebar_action_buttons": 3,
+      "table_column_widths_pass": true,
+      "table_column_width_rules": 13,
+      "table_alignment_rules": 13,
+      "top_chart_slots": [
+        {
+          "x": 204,
+          "y": 252,
+          "w": 424,
+          "h": 184
+        },
+        {
+          "x": 646,
+          "y": 252,
+          "w": 300,
+          "h": 184
+        },
+        {
+          "x": 964,
+          "y": 252,
+          "w": 292,
+          "h": 184
+        }
+      ]
+    }
+  ]
+}

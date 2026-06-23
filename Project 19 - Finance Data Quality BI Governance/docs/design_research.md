@@ -15,3 +15,4 @@ Applied choices:
 - Page 1 emphasizes executive status and trust: DQ score, freshness, refresh success, incidents, reconciliation exposure.
 - Page 2 diagnoses reliability and quality drivers: refresh causes, completeness, reconciliation aging, incidents.
 - Page 3 covers adoption and controls: report usage, performance, access risk, RLS exceptions, deployment control.
+- Page 4 converts monitoring into action: incident queue, access-review queue, aged reconciliation exposure, and sensitive export risk.

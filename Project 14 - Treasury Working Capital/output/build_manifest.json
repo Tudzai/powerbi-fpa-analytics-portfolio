@@ -1,30 +1,10 @@
 ﻿{
-    "status":  "pass",
-    "generated_at":  "2026-06-15 03:51:54 +07:00",
+    "status":  "final_validated",
+    "generated_at":  "2026-06-23T21:46:54+07:00",
     "project":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital",
-    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_final.pbix",
-    "final_pbix_bytes":  4150244,
-    "seed_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_model_seed_ch07.pbix",
     "html":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_final.html",
-    "page_count":  3,
-    "pages":  [
-                  "Treasury Command Center",
-                  "Working Capital Control",
-                  "Forecast, FX \u0026 Risk"
-              ],
-    "data_validation":  "pass",
-    "html_validation":  "pass",
-    "pbix_validation":  "pass",
-    "visual_containers":  57,
-    "visual_type_counts":  {
-                               "barChart":  12,
-                               "shape":  6,
-                               "waterfallChart":  1,
-                               "textbox":  9,
-                               "slicer":  9,
-                               "cardVisual":  18,
-                               "columnChart":  2
-                           },
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_final.pbix",
+    "validation":  "pass",
     "row_counts":  {
                        "dim_date":  17,
                        "dim_week":  13,

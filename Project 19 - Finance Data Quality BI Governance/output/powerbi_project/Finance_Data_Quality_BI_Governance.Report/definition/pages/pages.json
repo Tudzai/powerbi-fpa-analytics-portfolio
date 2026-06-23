@@ -1,8 +1,10 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
   "pageOrder": [
     "Page01_Governance_Overview",
     "Page02_Reliability___Quality",
-    "Page03_Adoption___Controls"
+    "Page03_Adoption___Controls",
+    "Page04_Risk___Action_Queue"
   ],
   "activePageName": "Page01_Governance_Overview"
 }

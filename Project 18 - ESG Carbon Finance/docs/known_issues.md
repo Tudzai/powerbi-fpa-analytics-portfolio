@@ -1,3 +1,3 @@
-No blocking known issues.
+No open issues after the 2026-06-23 Desktop QA pass.
 
-Design note: the delivered PBIX uses static native report visuals for the chart/table surfaces, backed by a full imported semantic model and DAX measure layer. This avoids automated PBIX package compatibility issues in Power BI Desktop May 2026 while keeping the model available for further interactive authoring.
+Validation evidence is stored in `qa/desktop_open_check.json`, `qa/pbix_final_validation.json`, and `output/screenshots/desktop_qa_contact_sheet.png`.

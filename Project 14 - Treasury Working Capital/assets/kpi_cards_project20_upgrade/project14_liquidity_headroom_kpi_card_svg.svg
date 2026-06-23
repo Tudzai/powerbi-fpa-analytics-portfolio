@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="252" height="158" viewBox="0 0 252 158">
+<rect x="1" y="1" width="250" height="156" rx="10" fill="#FFFFFF" stroke="#D8E0E7" stroke-width="1.2"/>
+<rect x="12" y="11" width="228" height="4" rx="2" fill="#2F5F9E"/>
+<rect x="14" y="30" width="12" height="12" rx="3" fill="#2F5F9E"/>
+<text x="34" y="41" font-family="Segoe UI Semibold" font-size="12.5" fill="#15202B">Headroom</text>
+<text x="14" y="82" font-family="Segoe UI Semibold" font-size="25" fill="#2F5F9E">$82.3M</text>
+<rect x="130" y="32" width="108" height="74" rx="8" fill="#F3F6F8"/>
+<rect x="136" y="67" width="92" height="12" rx="6" fill="#E6F4EC"/>
+<line x1="136" y1="73" x2="228" y2="73" stroke="#AAB7C4" stroke-width="1" stroke-dasharray="4 5"/>
+<polyline points="138,74 160,74 182,74 204,74 226,74" fill="none" stroke="#0F766E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="138" cy="74" r="3.6" fill="#FFFFFF" stroke="#607081" stroke-width="1.4"/>
+<circle cx="226" cy="74" r="4.8" fill="#0F766E" stroke="#FFFFFF" stroke-width="1.8"/>
+<rect x="14" y="126" width="98" height="20" rx="6" fill="#F8FAFB"/>
+<rect x="120" y="126" width="118" height="20" rx="6" fill="#F8FAFB"/>
+<text x="22" y="140" font-family="Segoe UI" font-size="9.4" fill="#607081">PY $82.3M</text>
+<text x="130" y="140" font-family="Segoe UI Semibold" font-size="9.4" fill="#0F766E">Delta 0.0%</text>
+</svg>

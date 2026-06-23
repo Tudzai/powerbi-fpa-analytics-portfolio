@@ -17,6 +17,20 @@
         "is_latest_complete_month"
       ]
     },
+    "dim_spark_date": {
+      "rows": 29,
+      "columns": [
+        "date_key",
+        "month_start_date",
+        "year_month",
+        "year",
+        "quarter",
+        "month_no",
+        "month_name",
+        "month_index",
+        "is_latest_complete_month"
+      ]
+    },
     "dim_plant": {
       "rows": 5,
       "columns": [

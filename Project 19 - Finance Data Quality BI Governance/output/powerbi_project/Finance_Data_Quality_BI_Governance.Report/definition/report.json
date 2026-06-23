@@ -1,5 +1,94 @@
-{
+﻿{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY26SU05",
+      "reportVersionAtImport": {
+        "visual": "2.9.0",
+        "report": "3.3.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "FinanceGovernanceLight.json",
+      "reportVersionAtImport": {
+        "visual": "2.9.0",
+        "report": "3.3.0",
+        "page": "2.3.1"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY26SU05",
+          "path": "BaseThemes/CY26SU05.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "FinanceGovernanceLight.json",
+          "path": "FinanceGovernanceLight.json",
+          "type": "CustomTheme"
+        }
+      ]
+    }
+  ],
+  "filterConfig": {
+    "filters": []
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
   "settings": {
-    "useEnhancedTooltips": true
-  }
+    "useStylableVisualContainerHeader": true,
+    "defaultFilterActionIsDataFilter": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "exportDataMode": "AllowSummarized"
+  },
+  "annotations": [
+    {
+      "name": "defaultPage",
+      "value": "Page01_Governance_Overview"
+    },
+    {
+      "name": "project",
+      "value": "Project 19 - Finance Data Quality BI Governance"
+    },
+    {
+      "name": "enhancementVersion",
+      "value": "v5_20260623_project20_sparklines"
+    }
+  ]
 }

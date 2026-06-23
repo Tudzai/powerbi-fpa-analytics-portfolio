@@ -1,1 +1,1 @@
-Slicers are page-scoped and should cross-filter all visuals on their page. No drillthrough is required for the 3-tab portfolio version.
+Rail slicers are generated as dropdown slicers with hidden headers and high z-order. They are page-scoped in PBIR and should cross-filter all data visuals on their page. Current Lens and Decision Chip card measures respond to the same filter context.

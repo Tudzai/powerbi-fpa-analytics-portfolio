@@ -44,6 +44,23 @@
         "Scope",
         "Implementation status"
       ]
+    },
+    {
+      "page": "Risk & Action Control Tower",
+      "question": "Which supplier, target, and capex risks need executive follow-up?",
+      "visuals": [
+        "supplier risk exposure",
+        "target status exposure",
+        "capex by action status",
+        "risk action queue",
+        "guardrail summary"
+      ],
+      "slicers": [
+        "Year",
+        "Supplier risk tier",
+        "Target status",
+        "Implementation status"
+      ]
     }
   ]
 }

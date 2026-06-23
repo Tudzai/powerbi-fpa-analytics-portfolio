@@ -1,0 +1,43 @@
+﻿table FactFXRate
+
+	column date_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: date_id
+
+	column currency
+		dataType: string
+		summarizeBy: none
+		sourceColumn: currency
+
+	column to_currency
+		dataType: string
+		summarizeBy: none
+		sourceColumn: to_currency
+
+	column rate_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: rate_type
+
+	column rate_to_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: rate_to_usd
+
+	partition FactFXRate-Import = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/fact_fx_rate.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {
+				        {"date_id", type text},
+				        {"currency", type text},
+				        {"to_currency", type text},
+				        {"rate_type", type text},
+				        {"rate_to_usd", type number}
+				    }, "en-US")
+				in
+				    TypedColumns
+

@@ -1,0 +1,41 @@
+{
+  "name": "5ae8b93750700c5a39b3",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 16.964285714285712,
+        "y": 15.178571428571427,
+        "z": 1000,
+        "width": 424.10714285714283,
+        "height": 51.785714285714278,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Balanced Scorecard",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

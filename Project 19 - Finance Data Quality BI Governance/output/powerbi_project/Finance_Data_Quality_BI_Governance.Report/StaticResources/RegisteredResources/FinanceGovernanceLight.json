@@ -1,0 +1,111 @@
+{
+  "name": "Finance Governance Control Room",
+  "dataColors": [
+    "#1B4D89",
+    "#2A9D8F",
+    "#D99A2B",
+    "#8E5572",
+    "#44546A",
+    "#C44E52",
+    "#247A5A"
+  ],
+  "background": "#EEF3F5",
+  "foreground": "#13212B",
+  "tableAccent": "#1B4D89",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontFace": "Segoe UI",
+            "fontSize": 10,
+            "color": {
+              "solid": {
+                "color": "#13212B"
+              }
+            }
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#C9D5D8"
+              }
+            },
+            "radius": 8
+          }
+        ]
+      }
+    },
+    "textbox": {
+      "*": {
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "background": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "shape": {
+      "*": {
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#EEF3F5"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#EEF3F5"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

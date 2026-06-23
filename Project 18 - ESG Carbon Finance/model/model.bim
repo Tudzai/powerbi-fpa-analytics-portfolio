@@ -11,7 +11,7 @@
     "tables": [
       {
         "name": "dim_date",
-        "lineageTag": "7165ab51-3ee2-4bd4-89df-a45ac4e8a529",
+        "lineageTag": "93a235e6-8b62-4573-9249-0d78d0950183",
         "columns": [
           {
             "name": "date_key",
@@ -93,7 +93,7 @@
       },
       {
         "name": "dim_business_unit",
-        "lineageTag": "86a19c04-6e53-483b-87fb-cbe1fda3265c",
+        "lineageTag": "57c37f77-cebd-40a0-aca2-8c222f5ec5b5",
         "columns": [
           {
             "name": "business_unit_id",
@@ -148,7 +148,7 @@
       },
       {
         "name": "dim_facility",
-        "lineageTag": "43a802e9-a41d-4ca0-bd90-317d9ba23771",
+        "lineageTag": "648ba499-ed1b-4415-9a0b-e22d0cc79c43",
         "columns": [
           {
             "name": "facility_id",
@@ -222,7 +222,7 @@
       },
       {
         "name": "dim_activity",
-        "lineageTag": "5f8f826b-9d2f-4a3b-a263-230b80282a88",
+        "lineageTag": "69a56444-7af7-461a-8571-48f38cc8bf3b",
         "columns": [
           {
             "name": "activity_id",
@@ -289,7 +289,7 @@
       },
       {
         "name": "dim_supplier",
-        "lineageTag": "59ac4610-3ac6-48b7-889d-453dff874609",
+        "lineageTag": "6856018c-58c3-4fde-8c65-71d593fa6695",
         "columns": [
           {
             "name": "supplier_id",
@@ -362,7 +362,7 @@
       },
       {
         "name": "dim_carbon_scenario",
-        "lineageTag": "d8b63957-bd53-4755-a482-90c44588f4b6",
+        "lineageTag": "8f2d2c9f-b33d-4df2-9849-e25385b32d9d",
         "columns": [
           {
             "name": "scenario_id",
@@ -418,7 +418,7 @@
       },
       {
         "name": "fact_emissions",
-        "lineageTag": "7d552ec7-e4e8-44c9-98c6-c36ac55abb2d",
+        "lineageTag": "c97d9228-74ab-4ce8-bb2d-8b913b1fc535",
         "columns": [
           {
             "name": "emission_record_id",
@@ -548,7 +548,7 @@
       },
       {
         "name": "fact_supplier_month",
-        "lineageTag": "9f6cdd90-6f03-43d4-97d0-0078ccd724a5",
+        "lineageTag": "ba026d33-c0ba-4fc5-8344-463a5fb50695",
         "columns": [
           {
             "name": "date_key",
@@ -648,7 +648,7 @@
       },
       {
         "name": "fact_carbon_exposure",
-        "lineageTag": "0b8d49d2-e0a6-43cd-a686-12fa1bf1e91e",
+        "lineageTag": "531b2120-afd1-40dd-bb4f-90ea1b07aff9",
         "columns": [
           {
             "name": "date_key",
@@ -695,7 +695,7 @@
             "dataType": "double",
             "sourceColumn": "probability_weighted_cost_usd",
             "summarizeBy": "sum",
-            "formatString": "0.0%"
+            "formatString": "$#,0"
           }
         ],
         "partitions": [
@@ -724,7 +724,7 @@
       },
       {
         "name": "fact_abatement_initiatives",
-        "lineageTag": "5644be21-de78-468f-a581-297a7287b376",
+        "lineageTag": "8b4c4d9c-5caa-4968-8729-675ab26eb24e",
         "columns": [
           {
             "name": "initiative_id",
@@ -847,7 +847,7 @@
       },
       {
         "name": "KPI_Measures",
-        "lineageTag": "576ae6a0-37fd-48ef-9132-3936ab1a63e3",
+        "lineageTag": "979b1f0b-403c-401d-a97b-7c42bc85740c",
         "columns": [
           {
             "name": "MeasureName",
@@ -871,139 +871,169 @@
             "name": "Total Emissions tCO2e",
             "expression": "SUM ( fact_emissions[emissions_tco2e] )",
             "formatString": "#,0.0",
-            "lineageTag": "f84176c5-f795-4f2b-86ad-6d7a3efed932"
+            "lineageTag": "88e48bf2-957d-44c4-9b24-0f3f017af89a"
           },
           {
             "name": "Scope 1 Emissions tCO2e",
             "expression": "CALCULATE ( [Total Emissions tCO2e], fact_emissions[scope] = \"Scope 1\" )",
             "formatString": "#,0.0",
-            "lineageTag": "50d088eb-fa6d-4b6a-981d-87b18de0c5d5"
+            "lineageTag": "9aad4c4b-ff06-45f5-9b77-289db0eaaeb2"
           },
           {
             "name": "Scope 2 Emissions tCO2e",
             "expression": "CALCULATE ( [Total Emissions tCO2e], fact_emissions[scope] = \"Scope 2\" )",
             "formatString": "#,0.0",
-            "lineageTag": "1c97655e-244e-455f-bc48-a98dbe3c190a"
+            "lineageTag": "f055013d-340e-4f99-bda8-7a4b571fa648"
           },
           {
             "name": "Scope 3 Emissions tCO2e",
             "expression": "CALCULATE ( [Total Emissions tCO2e], fact_emissions[scope] = \"Scope 3\" )",
             "formatString": "#,0.0",
-            "lineageTag": "70accc8c-eefc-4d2b-9d23-b352324689de"
+            "lineageTag": "9cf25fe4-6ade-4ad3-8d05-cd9c5ae2479b"
           },
           {
             "name": "Total Spend USD",
             "expression": "SUM ( fact_emissions[spend_usd] )",
             "formatString": "$#,0",
-            "lineageTag": "e09292f3-85fd-4ffd-9bda-cc4bc6b629ce"
+            "lineageTag": "6da97efc-e7d3-47f2-aaf7-22893f35f9a0"
           },
           {
             "name": "Revenue USD",
             "expression": "SUM ( fact_emissions[revenue_usd] )",
             "formatString": "$#,0",
-            "lineageTag": "5508ca8b-6067-451c-a29c-d7e1e9ad7385"
+            "lineageTag": "1b6f67f7-ad30-451a-a7ba-528612123db8"
           },
           {
             "name": "Emissions Intensity tCO2e per $M Revenue",
             "expression": "DIVIDE ( [Total Emissions tCO2e], [Revenue USD] ) * 1000000",
             "formatString": "#,0.0",
-            "lineageTag": "c8544dbb-0fae-4df5-96e8-f17d81604538"
+            "lineageTag": "e49bab3f-67b5-4ae6-a534-25816c82b49b"
           },
           {
             "name": "Selected Carbon Price USD/t",
             "expression": "SELECTEDVALUE ( dim_carbon_scenario[carbon_price_usd_per_t], 50 )",
             "formatString": "$#,0",
-            "lineageTag": "a59470cf-57e4-416d-acfa-0ca75cbc1f55"
+            "lineageTag": "a70f9019-93b2-4a17-9187-e3942c86b978"
           },
           {
             "name": "Carbon Cost USD",
             "expression": "[Total Emissions tCO2e] * [Selected Carbon Price USD/t]",
             "formatString": "$#,0",
-            "lineageTag": "8a497053-7fda-498f-9ca9-5f05fa6ed0d0"
+            "lineageTag": "2eb897f6-5615-49c4-970c-5d962fce3748"
           },
           {
             "name": "Scenario Carbon Cost USD",
             "expression": "SUM ( fact_carbon_exposure[carbon_cost_usd] )",
             "formatString": "$#,0",
-            "lineageTag": "8fdc400b-3a06-4cae-8e04-84d89ec760cc"
+            "lineageTag": "f9f7fa4e-8070-4aa9-9562-60002f1b1483"
+          },
+          {
+            "name": "Probability Weighted Carbon Cost USD",
+            "expression": "SUM ( fact_carbon_exposure[probability_weighted_cost_usd] )",
+            "formatString": "$#,0",
+            "lineageTag": "a9e2fe6f-23d4-4c55-8f2b-00bc6b00d555"
+          },
+          {
+            "name": "Stress Scenario Carbon Cost USD",
+            "expression": "CALCULATE ( [Scenario Carbon Cost USD], dim_carbon_scenario[scenario] = \"Stress price shock\" )",
+            "formatString": "$#,0",
+            "lineageTag": "a7eff2df-1e6b-436f-bf3d-56391f727622"
           },
           {
             "name": "Supplier Emissions tCO2e",
             "expression": "SUM ( fact_supplier_month[emissions_tco2e] )",
             "formatString": "#,0.0",
-            "lineageTag": "b6c27f59-65ab-427d-bf42-2e7259d23968"
+            "lineageTag": "5e5d3700-5b6e-46df-9cb1-1c5f5e96aa13"
           },
           {
             "name": "Supplier Spend USD",
             "expression": "SUM ( fact_supplier_month[spend_usd] )",
             "formatString": "$#,0",
-            "lineageTag": "6fb4f629-0498-4844-8f78-4b893175c0c3"
+            "lineageTag": "17c154c3-0b7b-4555-a2ca-2c64985bf19e"
           },
           {
             "name": "Supplier Intensity tCO2e per $M Spend",
             "expression": "DIVIDE ( [Supplier Emissions tCO2e], [Supplier Spend USD] ) * 1000000",
             "formatString": "#,0.0",
-            "lineageTag": "0181ec70-f43b-4269-9163-7fce2b80c16d"
+            "lineageTag": "af4a7aed-d428-4805-9e4f-444bb4c86929"
+          },
+          {
+            "name": "High Risk Supplier Emissions tCO2e",
+            "expression": "CALCULATE ( [Supplier Emissions tCO2e], fact_supplier_month[carbon_risk_tier] = \"High\" )",
+            "formatString": "#,0.0",
+            "lineageTag": "a97eb67c-1878-4f8a-905f-4a6792c2cde4"
           },
           {
             "name": "Average Data Quality Score",
             "expression": "AVERAGE ( fact_supplier_month[data_quality_score] )",
             "formatString": "0.0%",
-            "lineageTag": "6d707451-e5eb-41d3-9f8f-59075ebf5b02"
+            "lineageTag": "bb0ddcba-e61e-4626-8f54-80cf2afb0a3d"
           },
           {
             "name": "Abatement Annual Reduction tCO2e",
             "expression": "SUM ( fact_abatement_initiatives[annual_reduction_tco2e] )",
             "formatString": "#,0",
-            "lineageTag": "7f942077-f3b3-4a53-92ee-5681276d516f"
+            "lineageTag": "2e3709b2-897a-471c-b162-a762919f9d21"
           },
           {
             "name": "Abatement Capex USD",
             "expression": "SUM ( fact_abatement_initiatives[capex_usd] )",
             "formatString": "$#,0",
-            "lineageTag": "5d55996e-6dbd-42b7-9cc3-706c3aff09b3"
+            "lineageTag": "111697f4-7874-46bd-a61a-4dc5fe28e95e"
+          },
+          {
+            "name": "Planned Abatement Capex USD",
+            "expression": "CALCULATE ( [Abatement Capex USD], fact_abatement_initiatives[implementation_status] = \"Planned\" )",
+            "formatString": "$#,0",
+            "lineageTag": "aeade363-c76a-41ff-b78e-2dca8933942d"
+          },
+          {
+            "name": "Committed and In Flight Reduction tCO2e",
+            "expression": "CALCULATE ( [Abatement Annual Reduction tCO2e], fact_abatement_initiatives[implementation_status] IN { \"Committed\", \"In flight\", \"Implemented\" } )",
+            "formatString": "#,0",
+            "lineageTag": "48930a67-07f2-407a-8e9c-02882d8fcba4"
           },
           {
             "name": "Avoided Carbon Cost USD at Selected Price",
             "expression": "[Abatement Annual Reduction tCO2e] * [Selected Carbon Price USD/t]",
             "formatString": "$#,0",
-            "lineageTag": "b8f6fb31-0623-41ce-a37f-8af664832a40"
+            "lineageTag": "63c61bf2-8e4b-4db3-8822-23fe9c7f8aea"
           },
           {
             "name": "Abatement Annual Benefit USD",
             "expression": "SUM ( fact_abatement_initiatives[annual_opex_savings_usd] ) + [Avoided Carbon Cost USD at Selected Price]",
             "formatString": "$#,0",
-            "lineageTag": "8cb7cc79-995e-4c87-9b73-73a18cc93759"
+            "lineageTag": "d2245c91-24c6-44bb-a903-de041de13d16"
           },
           {
             "name": "Abatement ROI",
             "expression": "DIVIDE ( [Abatement Annual Benefit USD], [Abatement Capex USD] )",
             "formatString": "0.0%",
-            "lineageTag": "5cbae872-e07e-475a-961e-918470260e9e"
+            "lineageTag": "744ff27c-db51-4624-a587-20a1ce0b763a"
           },
           {
             "name": "Payback Years",
             "expression": "DIVIDE ( [Abatement Capex USD], [Abatement Annual Benefit USD] )",
             "formatString": "0.0",
-            "lineageTag": "9913d5b5-5c1e-4843-a2d7-768361a04971"
+            "lineageTag": "b5b63ce5-e7d1-417f-86b2-4bca171d5f3e"
           },
           {
             "name": "MACC USD per tCO2e",
             "expression": "DIVIDE ( DIVIDE ( [Abatement Capex USD], 7 ) - SUM ( fact_abatement_initiatives[annual_opex_savings_usd] ), [Abatement Annual Reduction tCO2e] )",
             "formatString": "$#,0.0",
-            "lineageTag": "a57f2987-04c3-4900-8c7b-0a76e959b1ee"
+            "lineageTag": "89ce03ab-c12c-4fe9-8932-9a3fa1c187b9"
           },
           {
             "name": "Latest Month Emissions tCO2e",
             "expression": "VAR LatestMonth = MAX ( dim_date[date_key] ) RETURN CALCULATE ( [Total Emissions tCO2e], dim_date[date_key] = LatestMonth )",
             "formatString": "#,0.0",
-            "lineageTag": "b519e254-b9a9-4b76-8701-de48b3e2cdd7"
+            "lineageTag": "5a0c3929-de30-4b79-8e4d-9a7fc74224cd"
           },
           {
             "name": "YoY Emissions Change %",
             "expression": "VAR CurrentEmissions = [Total Emissions tCO2e] VAR PriorEmissions = CALCULATE ( [Total Emissions tCO2e], DATEADD ( dim_date[month_start], -1, YEAR ) ) RETURN DIVIDE ( CurrentEmissions - PriorEmissions, PriorEmissions )",
             "formatString": "0.0%",
-            "lineageTag": "255134b3-2424-4294-a2af-83f9a7a5f49b"
+            "lineageTag": "119ea95e-268d-4d08-951d-a51620fe7d74"
           }
         ]
       }

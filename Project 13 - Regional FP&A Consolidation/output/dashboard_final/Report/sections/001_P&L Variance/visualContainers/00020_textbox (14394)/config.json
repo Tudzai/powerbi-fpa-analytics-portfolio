@@ -1,0 +1,42 @@
+{
+  "name": "1439405a11e682477a6c",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 38,
+        "y": 18,
+        "z": 20,
+        "width": 260,
+        "height": 14,
+        "tabOrder": 20
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "REGIONAL FP&A CONSOLIDATION",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "7.2pt",
+                      "color": "#2B6F75"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

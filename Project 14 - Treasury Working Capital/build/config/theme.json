@@ -10,5 +10,7 @@
   ],
   "background": "#F3F6F8",
   "foreground": "#15202B",
+  "sidebar": "#22313F",
+  "panel": "#FFFFFF",
   "tableAccent": "#0F766E"
 }

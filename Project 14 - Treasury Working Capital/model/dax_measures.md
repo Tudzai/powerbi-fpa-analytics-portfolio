@@ -32,3 +32,20 @@
 | Unhedged FX % | Unhedged exposure divided by total net FX exposure. | `0.0%` |
 | Open Risk Value | Value attached to non-closed treasury action items. | `$#,0` |
 | Open Risk Count | Count of non-closed treasury risk action items. | `#,0` |
+| Latest Complete Month | Latest complete monthly period used by Project 20-style KPI cards. | `mmm yyyy` |
+| Available Liquidity KPI Card SVG | Project 20-style SVG KPI card for Available Liquidity; includes current value, prior comparison, delta, and mini trend. | `` |
+| Liquidity Headroom KPI Card SVG | Project 20-style SVG KPI card for Liquidity Headroom; includes current value, prior comparison, delta, and mini trend. | `` |
+| Forecast Net Flow KPI Card SVG | Project 20-style SVG KPI card for 13W Net Flow; includes current value, prior comparison, delta, and mini trend. | `` |
+| Cash Runway KPI Card SVG | Project 20-style SVG KPI card for Cash Runway; includes current value, prior comparison, delta, and mini trend. | `` |
+| AR Outstanding KPI Card SVG | Project 20-style SVG KPI card for AR Outstanding; includes current value, prior comparison, delta, and mini trend. | `` |
+| Overdue AR KPI Card SVG | Project 20-style SVG KPI card for Overdue AR %; includes current value, prior comparison, delta, and mini trend. | `` |
+| AP Due 14 Days KPI Card SVG | Project 20-style SVG KPI card for AP Due 14d; includes current value, prior comparison, delta, and mini trend. | `` |
+| Cash Conversion KPI Card SVG | Project 20-style SVG KPI card for Cash Conversion; includes current value, prior comparison, delta, and mini trend. | `` |
+| Forecast Closing Cash KPI Card SVG | Project 20-style SVG KPI card for Closing Cash; includes current value, prior comparison, delta, and mini trend. | `` |
+| Forecast Error KPI Card SVG | Project 20-style SVG KPI card for Forecast Error; includes current value, prior comparison, delta, and mini trend. | `` |
+| Unhedged FX KPI Card SVG | Project 20-style SVG KPI card for Unhedged FX %; includes current value, prior comparison, delta, and mini trend. | `` |
+| Open Risk KPI Card SVG | Project 20-style SVG KPI card for Open Risks; includes current value, prior comparison, delta, and mini trend. | `` |
+| Current Lens SVG | Compact Project 20-style lens showing selected region, entity count, and scenario. | `` |
+| Treasury Decision Chips SVG | Decision chips for the Treasury Command Center page. | `` |
+| Working Capital Decision Chips SVG | Decision chips for the Working Capital Control page. | `` |
+| Risk Decision Chips SVG | Decision chips for the Forecast, FX and Risk page. | `` |

@@ -14,5 +14,8 @@ Research references:
 
 Applied layout:
 - 3 tabs only, as requested.
-- Each tab starts with a KPI strip and then moves from trend or bridge to driver breakdown and action table.
+- Each tab starts with a dedicated top filter bar, then four focused KPI cards, then trend/bridge, driver breakdown, and action table.
+- Slicers use compact dropdown visuals in four equal-width top slots so controls are visible without a sidebar or scroll.
+- KPI cards use native card visuals plus native mini line-chart sparklines driven by a disconnected spark date table, so selecting Month does not collapse the trend.
+- Tables use stronger header fills, row banding, row padding, and measure alignment for faster scanning.
 - Visual palette is industrial FP&A light: steel blue for primary measures, teal for margin/yield, amber/red for cost pressure and risk, violet for working capital.

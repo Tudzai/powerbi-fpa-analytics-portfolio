@@ -1,31 +1,14 @@
 # PBIX Build Runbook
 
-Delivered route: `SCRIPTED_DESKTOP_PBIX`.
-
-1. Generate data, docs, and validation artifacts:
-
-```powershell
-python build/scripts/build_project18_assets.py
-```
-
-2. Generate the static native report layout:
-
-```powershell
-python build/scripts/build_powerbi_native_assets.py
-```
-
-3. Patch the layout into the saved PBIX seed while preserving Desktop theme metadata:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File build/scripts/03_apply_native_layout_to_pbix.ps1
-```
-
-4. Validate output:
-
-```powershell
-python build/scripts/04_validate_output.py
-```
-
-Final file: `output/dashboard_final.pbix`.
-
-Manual authoring references remain available in `model/relationship_map.md`, `model/MEASURES.dax`, `build/config/theme.json`, and `report/report_spec.md`.
+1. Open Power BI Desktop.
+2. Import prepared CSVs from `data/prepared`.
+3. Set datatypes:
+   - keys as text
+   - dates as date
+   - emissions/spend/revenue/capex as decimal numbers
+4. Create star-schema relationships from `model/relationship_map.md`.
+5. Add DAX measures from `model/MEASURES.dax`.
+6. Import theme from `build/config/theme.json`.
+7. Build the 4 pages from `report/report_spec.md`.
+8. Save as `output/dashboard_final.pbix`.
+9. Reopen exact file and complete `qa/pbix_final_validation.json`.

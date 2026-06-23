@@ -1,0 +1,63 @@
+{
+  "version": "5.66",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY18SU07",
+      "type": 2,
+      "version": {
+        "visual": "1.8.23",
+        "report": "2.0.23",
+        "page": "1.3.23"
+      }
+    },
+    "customTheme": {
+      "name": "Custom5215988708742156.json",
+      "type": 1,
+      "version": {
+        "visual": "1.8.76",
+        "report": "2.0.76",
+        "page": "1.3.76"
+      }
+    }
+  },
+  "activeSectionIndex": 5,
+  "defaultDrillFilterOtherVisuals": true,
+  "linguisticSchemaSyncVersion": 2,
+  "settings": {
+    "useNewFilterPaneExperience": true,
+    "allowChangeFilterTypes": true,
+    "useStylableVisualContainerHeader": true,
+    "useEnhancedTooltips": true,
+    "exportDataMode": 1,
+    "useDefaultAggregateDisplayName": true,
+    "pauseQueries": false
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

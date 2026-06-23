@@ -1,1 +1,1 @@
-No performance tuning required for this compact synthetic dataset.
+No performance tuning required for this compact synthetic dataset. The v3 layout keeps each page visually dense but compact, with static native canvas elements and fewer than 6 analytical panels per page.

@@ -1,0 +1,28 @@
+{
+  "status": "pass",
+  "table_column_width_rules": 32,
+  "table_column_alignment_rules": 32,
+  "section_stats": [
+    {
+      "page": "Executive Overview",
+      "sidebar_action_buttons": 3,
+      "table_visuals": 8,
+      "table_column_width_rules": 7,
+      "table_column_alignment_rules": 7
+    },
+    {
+      "page": "Revenue & Retention",
+      "sidebar_action_buttons": 3,
+      "table_visuals": 9,
+      "table_column_width_rules": 12,
+      "table_column_alignment_rules": 12
+    },
+    {
+      "page": "Efficiency & Forecast",
+      "sidebar_action_buttons": 3,
+      "table_visuals": 9,
+      "table_column_width_rules": 13,
+      "table_column_alignment_rules": 13
+    }
+  ]
+}

@@ -1,12 +1,47 @@
-﻿{
-    "status":  "passed",
-    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 15 - SaaS CFO Metrics\\output\\dashboard_final.pbix",
-    "final_pbix_created":  true,
-    "final_pbix_size":  4397447,
-    "pages":  [
-                  "Executive Overview",
-                  "Revenue \u0026 Retention",
-                  "Efficiency \u0026 Forecast"
-              ],
-    "visual_containers":  47
+{
+  "status": "passed",
+  "validated_at": "2026-06-23T22:41:34+07:00",
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 15 - SaaS CFO Metrics\\output\\dashboard_final.pbix",
+  "final_pbix_created": true,
+  "final_pbix_size": 4394046,
+  "sha256": "80F3678A5BF741101913CFF02AE471504185AC4C5D5AE91AD7C0806531A95B45",
+  "pages": [
+    "Executive Overview",
+    "Revenue & Retention",
+    "Efficiency & Forecast"
+  ],
+  "visual_containers": 89,
+  "page_navigation_actions": 9,
+  "table_column_width_rules": 32,
+  "table_column_alignment_rules": 32,
+  "section_stats": [
+    {
+      "page": "Executive Overview",
+      "sidebar_action_buttons": 3,
+      "table_visuals": 8,
+      "table_column_width_rules": 7,
+      "table_column_alignment_rules": 7
+    },
+    {
+      "page": "Revenue & Retention",
+      "sidebar_action_buttons": 3,
+      "table_visuals": 9,
+      "table_column_width_rules": 12,
+      "table_column_alignment_rules": 12
+    },
+    {
+      "page": "Efficiency & Forecast",
+      "sidebar_action_buttons": 3,
+      "table_visuals": 9,
+      "table_column_width_rules": 13,
+      "table_column_alignment_rules": 13
+    }
+  ],
+  "package_readback": {
+    "status": "passed",
+    "contains_saas_cfo_layout": true,
+    "contains_esg_layout_text": false,
+    "page_navigation_mentions": 9,
+    "column_width_object_mentions": 10
+  }
 }

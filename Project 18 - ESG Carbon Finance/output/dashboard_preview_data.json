@@ -3,151 +3,161 @@
     "Total emissions": "719.5k tCO2e",
     "Carbon cost @ $90/t": "$64.8M",
     "Intensity": "123.1 tCO2e/$M",
-    "Latest YoY": "-12.8%"
+    "Latest YoY": "-12.8%",
+    "High-risk emissions": "162.0k tCO2e",
+    "Target gap": "29.1k tCO2e"
+  },
+  "sparkline": {
+    "Total emissions": "\u2588\u2586\u2584\u2581\u2582\u2584\u2583\u2582\u2584\u2584\u2586\u2582",
+    "Carbon cost @ $90/t": "\u2588\u2586\u2584\u2581\u2582\u2584\u2583\u2582\u2584\u2584\u2586\u2582",
+    "Intensity": "\u2588\u2586\u2583\u2581\u2581\u2583\u2583\u2582\u2584\u2584\u2585\u2582",
+    "Latest YoY": "\u2588\u2586\u2584\u2581\u2582\u2584\u2583\u2582\u2584\u2584\u2586\u2582",
+    "High-risk emissions": "\u2585\u2584\u2584\u2585\u2583\u2584\u2588\u2585\u2583\u2584\u2584\u2581",
+    "Target gap": "\u2588\u2586\u2584\u2581\u2582\u2584\u2583\u2582\u2584\u2584\u2586\u2582"
   },
   "months": [
     {
-      "month": "2024--01-01",
+      "month": "2024-01",
       "emissions": 25264.6,
       "cost": 2.27
     },
     {
-      "month": "2024--02-01",
+      "month": "2024-02",
       "emissions": 29718.2,
       "cost": 2.67
     },
     {
-      "month": "2024--03-01",
+      "month": "2024-03",
       "emissions": 26563.5,
       "cost": 2.39
     },
     {
-      "month": "2024--04-01",
+      "month": "2024-04",
       "emissions": 26124.0,
       "cost": 2.35
     },
     {
-      "month": "2024--05-01",
+      "month": "2024-05",
       "emissions": 26439.6,
       "cost": 2.38
     },
     {
-      "month": "2024--06-01",
+      "month": "2024-06",
       "emissions": 35493.6,
       "cost": 3.19
     },
     {
-      "month": "2024--07-01",
+      "month": "2024-07",
       "emissions": 28140.0,
       "cost": 2.53
     },
     {
-      "month": "2024--08-01",
+      "month": "2024-08",
       "emissions": 27076.9,
       "cost": 2.44
     },
     {
-      "month": "2024--09-01",
+      "month": "2024-09",
       "emissions": 22383.7,
       "cost": 2.01
     },
     {
-      "month": "2024--10-01",
+      "month": "2024-10",
       "emissions": 20833.4,
       "cost": 1.88
     },
     {
-      "month": "2024--11-01",
+      "month": "2024-11",
       "emissions": 20905.1,
       "cost": 1.88
     },
     {
-      "month": "2024--12-01",
+      "month": "2024-12",
       "emissions": 24760.6,
       "cost": 2.23
     },
     {
-      "month": "2025--01-01",
+      "month": "2025-01",
       "emissions": 23268.2,
       "cost": 2.09
     },
     {
-      "month": "2025--02-01",
+      "month": "2025-02",
       "emissions": 20874.2,
       "cost": 1.88
     },
     {
-      "month": "2025--03-01",
+      "month": "2025-03",
       "emissions": 22783.7,
       "cost": 2.05
     },
     {
-      "month": "2025--04-01",
+      "month": "2025-04",
       "emissions": 26348.9,
       "cost": 2.37
     },
     {
-      "month": "2025--05-01",
+      "month": "2025-05",
       "emissions": 25207.5,
       "cost": 2.27
     },
     {
-      "month": "2025--06-01",
+      "month": "2025-06",
       "emissions": 29561.5,
       "cost": 2.66
     },
     {
-      "month": "2025--07-01",
+      "month": "2025-07",
       "emissions": 26469.6,
       "cost": 2.38
     },
     {
-      "month": "2025--08-01",
+      "month": "2025-08",
       "emissions": 23990.6,
       "cost": 2.16
     },
     {
-      "month": "2025--09-01",
+      "month": "2025-09",
       "emissions": 20485.5,
       "cost": 1.84
     },
     {
-      "month": "2025--10-01",
+      "month": "2025-10",
       "emissions": 21257.6,
       "cost": 1.91
     },
     {
-      "month": "2025--11-01",
+      "month": "2025-11",
       "emissions": 23770.6,
       "cost": 2.14
     },
     {
-      "month": "2025--12-01",
+      "month": "2025-12",
       "emissions": 22931.9,
       "cost": 2.06
     },
     {
-      "month": "2026--01-01",
+      "month": "2026-01",
       "emissions": 21351.2,
       "cost": 1.92
     },
     {
-      "month": "2026--02-01",
+      "month": "2026-02",
       "emissions": 24042.9,
       "cost": 2.16
     },
     {
-      "month": "2026--03-01",
+      "month": "2026-03",
       "emissions": 24722.0,
       "cost": 2.22
     },
     {
-      "month": "2026--04-01",
+      "month": "2026-04",
       "emissions": 26714.8,
       "cost": 2.4
     },
     {
-      "month": "2026--05-01",
+      "month": "2026-05",
       "emissions": 21968.6,
       "cost": 1.98
     }
@@ -477,5 +487,62 @@
       "roi_at_90": 0.176,
       "macc_usd_per_tco2e": 64.68
     }
-  ]
+  ],
+  "risk": [
+    {
+      "tier": "Medium",
+      "emissions": 229163.6
+    },
+    {
+      "tier": "High",
+      "emissions": 161952.8
+    },
+    {
+      "tier": "Low",
+      "emissions": 68086.9
+    }
+  ],
+  "targets": [
+    {
+      "target": "Renewable PPA",
+      "emissions": 175883.1
+    },
+    {
+      "target": "Supplier target",
+      "emissions": 114643.8
+    },
+    {
+      "target": "No verified target",
+      "emissions": 102338.2
+    },
+    {
+      "target": "SBTi committed",
+      "emissions": 66338.3
+    }
+  ],
+  "capex_status": [
+    {
+      "status": "Planned",
+      "capex": 19150000.0
+    },
+    {
+      "status": "In flight",
+      "capex": 8750000.0
+    },
+    {
+      "status": "Committed",
+      "capex": 7380000.0
+    },
+    {
+      "status": "Implemented",
+      "capex": 1720000.0
+    }
+  ],
+  "guardrails": {
+    "supplier_data_quality": "82.0%",
+    "suppliers_without_target": 5,
+    "planned_capex": "$19.1M",
+    "weighted_carbon_cost": "$59.0M",
+    "secured_reduction": "33.8k tCO2e"
+  }
 }

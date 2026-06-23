@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "slicer_sensitivity",
   "position": {
-    "x": 1148,
-    "y": 20,
-    "z": 111,
-    "height": 58,
-    "width": 108,
-    "tabOrder": 111
+    "x": 16,
+    "y": 508,
+    "z": 1201,
+    "height": 54,
+    "width": 150,
+    "tabOrder": 1201
   },
   "visual": {
     "visualType": "slicer",
@@ -34,6 +34,19 @@
       }
     },
     "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Shows filtered dashboard evidence for Sensitivity.'"
+                }
+              }
+            }
+          }
+        }
+      ],
       "title": [
         {
           "properties": {
@@ -53,13 +66,13 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#17202A"
+                "color": "#E8F4F6"
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10L"
+                  "Value": "8L"
                 }
               }
             },
@@ -73,7 +86,7 @@
             "titleWrap": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -92,7 +105,7 @@
             },
             "color": {
               "solid": {
-                "color": "#FFFFFF"
+                "color": "#173E55"
               }
             },
             "transparency": {
@@ -117,13 +130,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8DED8"
+                "color": "#3F7180"
               }
             },
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6L"
+                  "Value": "7L"
                 }
               }
             }
@@ -131,6 +144,47 @@
         }
       ],
       "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "selection": [
+        {
+          "properties": {
+            "singleSelect": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "header": [
         {
           "properties": {
             "show": {

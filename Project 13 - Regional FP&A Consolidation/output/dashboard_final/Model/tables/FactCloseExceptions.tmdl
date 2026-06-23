@@ -1,0 +1,91 @@
+﻿table FactCloseExceptions
+
+	column exception_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: exception_id
+
+	column date_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: date_id
+
+	column entity_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: entity_id
+
+	column country
+		dataType: string
+		summarizeBy: none
+		sourceColumn: country
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column exception_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: exception_type
+
+	column owner_team
+		dataType: string
+		summarizeBy: none
+		sourceColumn: owner_team
+
+	column severity
+		dataType: string
+		summarizeBy: none
+		sourceColumn: severity
+
+	column status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: status
+
+	column amount_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: amount_usd
+
+	column due_date
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: due_date
+
+	column commentary
+		dataType: string
+		summarizeBy: none
+		sourceColumn: commentary
+
+	column is_synthetic
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: is_synthetic
+
+	partition FactCloseExceptions-Import = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/fact_close_exceptions.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {
+				        {"exception_id", type text},
+				        {"date_id", type text},
+				        {"entity_id", type text},
+				        {"country", type text},
+				        {"region", type text},
+				        {"exception_type", type text},
+				        {"owner_team", type text},
+				        {"severity", type text},
+				        {"status", type text},
+				        {"amount_usd", type number},
+				        {"due_date", type date},
+				        {"commentary", type text},
+				        {"is_synthetic", type logical}
+				    }, "en-US")
+				in
+				    TypedColumns
+

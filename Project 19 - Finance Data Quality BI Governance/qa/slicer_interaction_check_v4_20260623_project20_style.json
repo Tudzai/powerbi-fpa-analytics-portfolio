@@ -1,0 +1,33 @@
+{
+  "status": "pass_static",
+  "filters": [
+    {
+      "name": "Year",
+      "mode": "dropdown",
+      "scope": "all pages"
+    },
+    {
+      "name": "Domain",
+      "mode": "dropdown",
+      "scope": "governance and reliability pages"
+    },
+    {
+      "name": "Criticality",
+      "mode": "dropdown",
+      "scope": "governance and reliability pages"
+    },
+    {
+      "name": "Workspace",
+      "mode": "dropdown",
+      "scope": "adoption page"
+    },
+    {
+      "name": "Sensitivity",
+      "mode": "dropdown",
+      "scope": "adoption page"
+    }
+  ],
+  "current_lens_visible": true,
+  "no_scroll_required_for_primary_filters": true,
+  "html_client_side_filtering": true
+}

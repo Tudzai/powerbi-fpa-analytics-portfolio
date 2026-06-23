@@ -1,0 +1,29 @@
+{
+  "version": "1.0.2",
+  "author": {
+    "name": "Managility",
+    "email": "Martin.kratky@managility.com.au"
+  },
+  "resources": [
+    {
+      "resourceId": "rId0",
+      "sourceType": 5,
+      "file": "resources/PBI_CV_32852E50B30D4D70ACC1C55C87F71ED0.pbiviz.json"
+    }
+  ],
+  "visual": {
+    "guid": "PBI_CV_32852E50B30D4D70ACC1C55C87F71ED0",
+    "name": "Acterys Matrix Light 1.0.2",
+    "displayName": "Acterys Matrix Light V1.0.2",
+    "version": "1.0.2",
+    "description": "Acterys Matrix Light 1.0.2",
+    "supportUrl": "https://managility.freshdesk.com",
+    "gitHubUrl": "",
+    "visualClassName": "Visual"
+  },
+  "metadata": {
+    "pbivizjson": {
+      "resourceId": "rId0"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+﻿{
+    "status":  "pass_file_level_desktop_render_not_rerun_after_latest_patch",
+    "generated_at":  "2026-06-23T21:44:41+07:00",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix",
+    "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\build\\native_report_layout_project17.json",
+    "upgrades":  [
+                     "Top slicer row with 56px height",
+                     "Slicer duplicate container titles hidden",
+                     "Current Lens",
+                     "Decision Chip",
+                     "KPI sparkline micro-trends",
+                     "Header overlap polish"
+                 ],
+    "counts":  {
+                   "pages":  3,
+                   "slicers":  9,
+                   "cards":  18,
+                   "kpi_sparklines":  18,
+                   "current_lens":  3,
+                   "decision_chips":  3,
+                   "visual_containers":  92
+               },
+    "slicer_boxes":  [
+                         {
+                             "page":  "Executive Overview",
+                             "boxes":  [
+                                           "Year 160x56 at y=82",
+                                           "Mode 190x56 at y=82",
+                                           "Segment 220x56 at y=82"
+                                       ]
+                         },
+                         {
+                             "page":  "Trade Lane Margin",
+                             "boxes":  [
+                                           "Origin 180x56 at y=82",
+                                           "Destination 220x56 at y=82",
+                                           "Office 190x56 at y=82"
+                                       ]
+                         },
+                         {
+                             "page":  "Cost Drivers \u0026 Action Queue",
+                             "boxes":  [
+                                           "Priority 180x56 at y=82",
+                                           "Status 190x56 at y=82",
+                                           "Owner 220x56 at y=82"
+                                       ]
+                         }
+                     ],
+    "verification":  {
+                         "package_validation":  "pass",
+                         "embedded_layout_matches_build_json":  true,
+                         "slicer_container_title_count":  0,
+                         "missing_visual_refs":  0,
+                         "desktop_render_recheck_after_latest_patch":  "not completed - pbi-tools showed no open Project 17 final session"
+                     },
+    "notes":  [
+                  "Project 20 was used as a quality benchmark, not copied visually.",
+                  "Current Lens and Decision Chip remain static native textboxes; KPI sparklines are native columnChart micro-visuals bound to existing Date and KPI measures.",
+                  "The latest patch improves slicer readability by increasing top-row slicers from 44px to 56px and hiding duplicate visual container titles.",
+                  "Live Desktop recheck after the latest slicer-polish patch was attempted with Computer Use and pbi-tools. Power BI Desktop exposed open windows named dashboard_model_seed and dashboard_final, but pbi-tools info showed the open dashboard_final session belonged to Project 18 and the seed session was not Project 17 final. No final-file Project 17 Desktop screenshot was accepted as evidence."
+              ]
+}

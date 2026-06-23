@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "validated_at": "2026-06-23T22:41:34+07:00",
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 15 - SaaS CFO Metrics\\output\\dashboard_final.pbix",
+  "exact_path_verified": true,
+  "pbix_exists": true,
+  "final_pbix_size": 4394046,
+  "sha256": "80F3678A5BF741101913CFF02AE471504185AC4C5D5AE91AD7C0806531A95B45",
+  "native_layout_status": "passed",
+  "pages": [
+    "Executive Overview",
+    "Revenue & Retention",
+    "Efficiency & Forecast"
+  ],
+  "visual_containers": 89,
+  "desktop_open_check": "passed_via_unique_verify_copy_and_copyback",
+  "desktop_save": "passed",
+  "visual_error_count": 0,
+  "navigation_action_buttons": 9,
+  "table_column_width_rules": 32,
+  "notes": [
+    "Exact Project 15 final package readback confirms SaaS CFO layout and no ESG layout text.",
+    "A Desktop-saved verify copy rendered all three Project 15 pages and was copied back to the exact final PBIX path.",
+    "Unrelated Project 18 dashboard_final window was excluded by command-line process inspection."
+  ]
+}

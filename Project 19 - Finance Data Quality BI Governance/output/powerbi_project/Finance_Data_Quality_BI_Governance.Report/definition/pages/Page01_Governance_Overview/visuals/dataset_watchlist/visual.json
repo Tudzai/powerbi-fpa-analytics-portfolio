@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "dataset_watchlist",
   "position": {
-    "x": 970,
-    "y": 205,
-    "z": 202,
+    "x": 1016,
+    "y": 212,
+    "z": 302,
     "height": 278,
-    "width": 286,
-    "tabOrder": 202
+    "width": 240,
+    "tabOrder": 302
   },
   "visual": {
     "visualType": "tableEx",
@@ -87,9 +87,40 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "KPI Measures"
+                  }
+                },
+                "Property": "Data Quality Score"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Shows filtered dashboard evidence for Dataset Watchlist.'"
+                }
+              }
+            }
+          }
+        }
+      ],
       "title": [
         {
           "properties": {
@@ -109,13 +140,13 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#17202A"
+                "color": "#13212B"
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10L"
+                  "Value": "9L"
                 }
               }
             },
@@ -173,13 +204,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8DED8"
+                "color": "#D8E5E8"
               }
             },
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6L"
+                  "Value": "8L"
                 }
               }
             }

@@ -10,5 +10,9 @@
   {
     "page": "Adoption & Controls",
     "purpose": "Report adoption, load performance, access review risk, RLS exceptions, and deployment control."
+  },
+  {
+    "page": "Risk & Action Queue",
+    "purpose": "Prioritized action queue for open incidents, access exceptions, reconciliation aging, and sensitive export exposure."
   }
 ]

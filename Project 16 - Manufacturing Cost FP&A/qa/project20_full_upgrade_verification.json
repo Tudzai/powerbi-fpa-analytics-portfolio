@@ -1,0 +1,459 @@
+{
+  "status": "PASS",
+  "generated_at": "2026-06-23T21:53:48",
+  "scope": "Project 20 style upgrade: top slicers, 4-card KPI strip, native sparklines, chart/table polish",
+  "layout": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\build\\native_report_layout_project16.json",
+  "pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\output\\dashboard_final.pbix",
+  "checks": [
+    {
+      "check": "layout_visual_types",
+      "status": "PASS",
+      "value": {
+        "textbox": 3,
+        "slicer": 12,
+        "cardVisual": 12,
+        "lineChart": 14,
+        "barChart": 6,
+        "tableEx": 3,
+        "waterfallChart": 1
+      },
+      "expected": {
+        "textbox": 3,
+        "slicer": 12,
+        "cardVisual": 12,
+        "lineChart": 14,
+        "barChart": 6,
+        "tableEx": 3,
+        "waterfallChart": 1
+      }
+    },
+    {
+      "check": "page_count",
+      "status": "PASS",
+      "value": 3
+    },
+    {
+      "check": "01 Manufacturing FP&A Overview_top_slicer_slots",
+      "status": "PASS",
+      "value": [
+        [
+          24,
+          72,
+          296,
+          52
+        ],
+        [
+          336,
+          72,
+          296,
+          52
+        ],
+        [
+          648,
+          72,
+          296,
+          52
+        ],
+        [
+          960,
+          72,
+          296,
+          52
+        ]
+      ]
+    },
+    {
+      "check": "01 Manufacturing FP&A Overview_kpi_cards",
+      "status": "PASS",
+      "value": [
+        [
+          24,
+          142,
+          296,
+          94
+        ],
+        [
+          336,
+          142,
+          296,
+          94
+        ],
+        [
+          648,
+          142,
+          296,
+          94
+        ],
+        [
+          960,
+          142,
+          296,
+          94
+        ]
+      ]
+    },
+    {
+      "check": "01 Manufacturing FP&A Overview_sparkline_slots",
+      "status": "PASS",
+      "value": [
+        [
+          38,
+          202,
+          268,
+          28
+        ],
+        [
+          350,
+          202,
+          268,
+          28
+        ],
+        [
+          662,
+          202,
+          268,
+          28
+        ],
+        [
+          974,
+          202,
+          268,
+          28
+        ]
+      ],
+      "expected": [
+        [
+          38,
+          202,
+          268,
+          28
+        ],
+        [
+          350,
+          202,
+          268,
+          28
+        ],
+        [
+          662,
+          202,
+          268,
+          28
+        ],
+        [
+          974,
+          202,
+          268,
+          28
+        ]
+      ]
+    },
+    {
+      "check": "02 Standard Cost Variance_top_slicer_slots",
+      "status": "PASS",
+      "value": [
+        [
+          24,
+          72,
+          296,
+          52
+        ],
+        [
+          336,
+          72,
+          296,
+          52
+        ],
+        [
+          648,
+          72,
+          296,
+          52
+        ],
+        [
+          960,
+          72,
+          296,
+          52
+        ]
+      ]
+    },
+    {
+      "check": "02 Standard Cost Variance_kpi_cards",
+      "status": "PASS",
+      "value": [
+        [
+          24,
+          142,
+          296,
+          94
+        ],
+        [
+          336,
+          142,
+          296,
+          94
+        ],
+        [
+          648,
+          142,
+          296,
+          94
+        ],
+        [
+          960,
+          142,
+          296,
+          94
+        ]
+      ]
+    },
+    {
+      "check": "02 Standard Cost Variance_sparkline_slots",
+      "status": "PASS",
+      "value": [
+        [
+          38,
+          202,
+          268,
+          28
+        ],
+        [
+          350,
+          202,
+          268,
+          28
+        ],
+        [
+          662,
+          202,
+          268,
+          28
+        ],
+        [
+          974,
+          202,
+          268,
+          28
+        ]
+      ],
+      "expected": [
+        [
+          38,
+          202,
+          268,
+          28
+        ],
+        [
+          350,
+          202,
+          268,
+          28
+        ],
+        [
+          662,
+          202,
+          268,
+          28
+        ],
+        [
+          974,
+          202,
+          268,
+          28
+        ]
+      ]
+    },
+    {
+      "check": "03 Yield Capacity & WC_top_slicer_slots",
+      "status": "PASS",
+      "value": [
+        [
+          24,
+          72,
+          296,
+          52
+        ],
+        [
+          336,
+          72,
+          296,
+          52
+        ],
+        [
+          648,
+          72,
+          296,
+          52
+        ],
+        [
+          960,
+          72,
+          296,
+          52
+        ]
+      ]
+    },
+    {
+      "check": "03 Yield Capacity & WC_kpi_cards",
+      "status": "PASS",
+      "value": [
+        [
+          24,
+          142,
+          296,
+          94
+        ],
+        [
+          336,
+          142,
+          296,
+          94
+        ],
+        [
+          648,
+          142,
+          296,
+          94
+        ],
+        [
+          960,
+          142,
+          296,
+          94
+        ]
+      ]
+    },
+    {
+      "check": "03 Yield Capacity & WC_sparkline_slots",
+      "status": "PASS",
+      "value": [
+        [
+          38,
+          202,
+          268,
+          28
+        ],
+        [
+          350,
+          202,
+          268,
+          28
+        ],
+        [
+          662,
+          202,
+          268,
+          28
+        ],
+        [
+          974,
+          202,
+          268,
+          28
+        ]
+      ],
+      "expected": [
+        [
+          38,
+          202,
+          268,
+          28
+        ],
+        [
+          350,
+          202,
+          268,
+          28
+        ],
+        [
+          662,
+          202,
+          268,
+          28
+        ],
+        [
+          974,
+          202,
+          268,
+          28
+        ]
+      ]
+    },
+    {
+      "check": "table_banding_and_alignment_objects",
+      "status": "PASS",
+      "value": [
+        "grid",
+        "columnHeaders",
+        "values",
+        "columnWidth",
+        "columnFormatting"
+      ]
+    },
+    {
+      "check": "slicer_sync_group",
+      "status": "PASS",
+      "value": {
+        "groupName": "p16_month",
+        "fieldChanges": true,
+        "filterChanges": true
+      }
+    },
+    {
+      "check": "pbix_embedded_layout_visual_types",
+      "status": "PASS",
+      "value": {
+        "textbox": 3,
+        "slicer": 12,
+        "cardVisual": 12,
+        "lineChart": 14,
+        "barChart": 6,
+        "tableEx": 3,
+        "waterfallChart": 1
+      },
+      "expected": {
+        "textbox": 3,
+        "slicer": 12,
+        "cardVisual": 12,
+        "lineChart": 14,
+        "barChart": 6,
+        "tableEx": 3,
+        "waterfallChart": 1
+      }
+    },
+    {
+      "check": "pbix_embedded_page_count",
+      "status": "PASS",
+      "value": 3
+    },
+    {
+      "check": "pbit_embedded_layout_visual_types",
+      "status": "PASS",
+      "value": {
+        "textbox": 3,
+        "slicer": 12,
+        "cardVisual": 12,
+        "lineChart": 14,
+        "barChart": 6,
+        "tableEx": 3,
+        "waterfallChart": 1
+      },
+      "expected": {
+        "textbox": 3,
+        "slicer": 12,
+        "cardVisual": 12,
+        "lineChart": 14,
+        "barChart": 6,
+        "tableEx": 3,
+        "waterfallChart": 1
+      }
+    },
+    {
+      "check": "pbit_embedded_page_count",
+      "status": "PASS",
+      "value": 3
+    }
+  ],
+  "pbit": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\output\\dashboard_project16_model_schema.pbit"
+}

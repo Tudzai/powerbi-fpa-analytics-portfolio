@@ -1,19 +1,28 @@
-﻿{
-    "status":  "pass",
-    "pbix_exists":  true,
-    "pbix_size_bytes":  4116065,
-    "sha256":  "F4E62FA7478981A9C2AC971FE2AB1E56F7F5BD8A5BD2D6C877454394B7C0B9C2",
-    "opened_exact_file":  true,
-    "powerbi_process_id":  3736,
-    "powerbi_hwnd":  268138,
-    "desktop_open_check":  "passed",
-    "visual_error_count":  0,
-    "pages":  [
-                  "ESG Finance Overview",
-                  "Emissions \u0026 Supplier Intensity",
-                  "Carbon Scenario \u0026 Abatement ROI"
-              ],
-    "visual_containers":  337,
-    "screenshot":  "output/screenshots/powerbi_desktop_static_opencheck_page1.png",
-    "validation_time_local":  "2026-06-15 03:23:28 +07:00"
+{
+  "status": "desktop_open_check_passed",
+  "pbix_exists": true,
+  "pbix_size_bytes": 4109354,
+  "sha256": "644011EB707D39FD8A9F13B8E4BCE32156E45E943AD3A7F69F4FDE1565A95923",
+  "build_route": "SCRIPTED_DESKTOP_PBIX",
+  "native_package_validation_status": "passed",
+  "pages": [
+    "ESG Finance Overview",
+    "Emissions & Supplier Intensity",
+    "Carbon Scenario & Abatement ROI",
+    "Risk & Action Control Tower"
+  ],
+  "visual_containers": 79,
+  "desktop_open_check": "passed",
+  "desktop_checked_at": "2026-06-23T22:39:42.1630437+07:00",
+  "visual_error_count": 0,
+  "screenshots": [
+    "output/screenshots/desktop_page1_overview.png",
+    "output/screenshots/desktop_page2_supplier.png",
+    "output/screenshots/desktop_page3_roi.png",
+    "output/screenshots/desktop_page4_risk.png",
+    "output/screenshots/desktop_qa_contact_sheet.png",
+    "output/screenshots/desktop_page3_roi_canvas_crop.png",
+    "output/screenshots/desktop_page4_risk_canvas_crop.png"
+  ],
+  "known_gap": null
 }

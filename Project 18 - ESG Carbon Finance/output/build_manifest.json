@@ -1,19 +1,19 @@
-﻿{
-    "status":  "delivered",
-    "build_route":  "SCRIPTED_DESKTOP_PBIX",
-    "model_bim":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\model\\model.bim",
-    "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\build\\native_report_layout_project18.json",
-    "target_seed_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_model_seed.pbix",
-    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_final.pbix",
-    "final_pbix_size_bytes":  4116065,
-    "final_sha256":  "F4E62FA7478981A9C2AC971FE2AB1E56F7F5BD8A5BD2D6C877454394B7C0B9C2",
-    "pages":  [
-                  "ESG Finance Overview",
-                  "Emissions \u0026 Supplier Intensity",
-                  "Carbon Scenario \u0026 Abatement ROI"
-              ],
-    "visual_containers":  337,
-    "desktop_open_check":  "passed",
-    "screenshot":  "output/screenshots/powerbi_desktop_static_opencheck_page1.png",
-    "updated_at_local":  "2026-06-15 03:23:44 +07:00"
+{
+  "status": "native_powerbi_assets_created",
+  "version": "v3_upgrade_2026-06-23",
+  "model_bim": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\model\\model.bim",
+  "layout_json": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\build\\native_report_layout_project18.json",
+  "target_seed_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_model_seed.pbix",
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_final.pbix",
+  "pages": [
+    "ESG Finance Overview",
+    "Emissions & Supplier Intensity",
+    "Carbon Scenario & Abatement ROI",
+    "Risk & Action Control Tower"
+  ],
+  "desktop_open_check": "passed",
+  "desktop_checked_at": "2026-06-23T22:39:42.1630437+07:00",
+  "final_pbix_sha256": "644011EB707D39FD8A9F13B8E4BCE32156E45E943AD3A7F69F4FDE1565A95923",
+  "visual_error_count": 0,
+  "desktop_qa_contact_sheet": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\screenshots\\desktop_qa_contact_sheet.png"
 }

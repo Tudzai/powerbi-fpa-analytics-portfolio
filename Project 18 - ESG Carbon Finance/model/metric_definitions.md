@@ -16,6 +16,10 @@ Supplier Intensity tCO2e per $M Spend: supplier emissions divided by supplier sp
 
 Supplier Risk Tier: synthetic tier based on category, emission profile, target status, and data quality score.
 
+High Risk Supplier Emissions tCO2e: emissions from suppliers classified as high carbon risk.
+
+Average Data Quality Score: average supplier data quality score used as a governance guardrail.
+
 ## Abatement
 
 Abatement Annual Reduction tCO2e: annual reduction potential of the selected initiative set.
@@ -23,3 +27,7 @@ Abatement Annual Reduction tCO2e: annual reduction potential of the selected ini
 Abatement ROI: annual opex savings plus avoided carbon cost divided by capex.
 
 MACC USD per tCO2e: annualized net cost divided by annual reduction potential.
+
+Planned Abatement Capex USD: abatement capital still in planned status and requiring CFO/ESG approval.
+
+Probability Weighted Carbon Cost USD: carbon cost exposure weighted by scenario probability.

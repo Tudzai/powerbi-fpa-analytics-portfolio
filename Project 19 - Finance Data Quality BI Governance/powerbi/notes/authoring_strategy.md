@@ -1,1 +1,1 @@
-PBIP_PBIT seed route selected because session-bound Desktop automation is unsafe while several unrelated Power BI files are open and pbi-tools info times out.
+PBIP_PBIT seed route selected, followed by Power BI Desktop Save As PBIX. Session-bound automation must target only the exact Project 19 Desktop window because several unrelated Power BI files may be open.

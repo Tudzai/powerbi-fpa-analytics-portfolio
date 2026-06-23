@@ -1,20 +1,20 @@
 # Project 18 - ESG Carbon Finance
 
-Executive-ready portfolio BI build connecting emissions, carbon cost exposure, supplier intensity, and abatement ROI.
+Executive-ready portfolio BI build connecting emissions, carbon cost exposure, supplier intensity, abatement ROI, and risk/action governance.
 
 ## Current Build Status
 
 - Data/model/report source package: ready.
 - Supplemental HTML preview: `output/dashboard_preview.html`.
 - Final PBIX target: `output/dashboard_final.pbix`.
-- Final PBIX status: delivered and opened in Power BI Desktop.
-- Build route: `SCRIPTED_DESKTOP_PBIX` with TOM model push, native static report layout, and preserved Desktop theme metadata.
+- Final PBIX status: v3 source/layout package refreshed; run fresh Power BI Desktop open-check after PBIX patch.
 
 ## Dashboard Pages
 
 1. ESG Finance Overview
 2. Emissions & Supplier Intensity
 3. Carbon Scenario & Abatement ROI
+4. Risk & Action Control Tower
 
 ## Rebuild
 

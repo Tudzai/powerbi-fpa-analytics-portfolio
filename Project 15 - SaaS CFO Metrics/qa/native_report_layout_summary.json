@@ -1,9 +1,12 @@
 {
   "status": "layout_json_generated",
+  "validated_at": "2026-06-23T22:41:34+07:00",
   "pages": [
     "Executive Overview",
     "Revenue & Retention",
     "Efficiency & Forecast"
   ],
-  "visual_containers": 47
+  "visual_containers": 89,
+  "page_navigation_actions": 9,
+  "table_column_width_rules": 32
 }

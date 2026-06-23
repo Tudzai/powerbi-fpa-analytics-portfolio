@@ -18,8 +18,9 @@ Secondary reference: `Template/03_FPnA_Budget_Spend/Packt_Ch12_Planning_Case_Stu
 
 Reason: scenario planning pattern is relevant for carbon price scenarios and investment decisions.
 
-## Final 3-Tab Layout
+## Final 4-Page Layout
 
 1. ESG Finance Overview
 2. Emissions & Supplier Intensity
 3. Carbon Scenario & Abatement ROI
+4. Risk & Action Control Tower

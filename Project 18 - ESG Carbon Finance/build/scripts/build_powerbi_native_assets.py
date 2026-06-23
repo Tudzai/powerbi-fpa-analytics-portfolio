@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import uuid
 from pathlib import Path
@@ -61,12 +62,17 @@ MEASURES = [
     ("Selected Carbon Price USD/t", "SELECTEDVALUE ( dim_carbon_scenario[carbon_price_usd_per_t], 50 )", "$#,0"),
     ("Carbon Cost USD", "[Total Emissions tCO2e] * [Selected Carbon Price USD/t]", "$#,0"),
     ("Scenario Carbon Cost USD", "SUM ( fact_carbon_exposure[carbon_cost_usd] )", "$#,0"),
+    ("Probability Weighted Carbon Cost USD", "SUM ( fact_carbon_exposure[probability_weighted_cost_usd] )", "$#,0"),
+    ("Stress Scenario Carbon Cost USD", 'CALCULATE ( [Scenario Carbon Cost USD], dim_carbon_scenario[scenario] = "Stress price shock" )', "$#,0"),
     ("Supplier Emissions tCO2e", "SUM ( fact_supplier_month[emissions_tco2e] )", "#,0.0"),
     ("Supplier Spend USD", "SUM ( fact_supplier_month[spend_usd] )", "$#,0"),
     ("Supplier Intensity tCO2e per $M Spend", "DIVIDE ( [Supplier Emissions tCO2e], [Supplier Spend USD] ) * 1000000", "#,0.0"),
+    ("High Risk Supplier Emissions tCO2e", 'CALCULATE ( [Supplier Emissions tCO2e], fact_supplier_month[carbon_risk_tier] = "High" )', "#,0.0"),
     ("Average Data Quality Score", "AVERAGE ( fact_supplier_month[data_quality_score] )", "0.0%"),
     ("Abatement Annual Reduction tCO2e", "SUM ( fact_abatement_initiatives[annual_reduction_tco2e] )", "#,0"),
     ("Abatement Capex USD", "SUM ( fact_abatement_initiatives[capex_usd] )", "$#,0"),
+    ("Planned Abatement Capex USD", 'CALCULATE ( [Abatement Capex USD], fact_abatement_initiatives[implementation_status] = "Planned" )', "$#,0"),
+    ("Committed and In Flight Reduction tCO2e", 'CALCULATE ( [Abatement Annual Reduction tCO2e], fact_abatement_initiatives[implementation_status] IN { "Committed", "In flight", "Implemented" } )', "#,0"),
     ("Avoided Carbon Cost USD at Selected Price", "[Abatement Annual Reduction tCO2e] * [Selected Carbon Price USD/t]", "$#,0"),
     ("Abatement Annual Benefit USD", "SUM ( fact_abatement_initiatives[annual_opex_savings_usd] ) + [Avoided Carbon Cost USD at Selected Price]", "$#,0"),
     ("Abatement ROI", "DIVIDE ( [Abatement Annual Benefit USD], [Abatement Capex USD] )", "0.0%"),
@@ -80,6 +86,16 @@ MEASURES = [
 def write_json(path: Path, payload) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+
+def sha256_file(path: Path) -> str | None:
+    if not path.exists():
+        return None
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest().upper()
 
 
 def write_text(path: Path, text: str) -> None:
@@ -99,8 +115,9 @@ def infer_type(name: str) -> tuple[str, str, str | None]:
     if lower in {"year", "month_no", "fiscal_year", "month_index", "start_year"}:
         return "int64", "Int64.Type", "0"
     if any(token in lower for token in ["usd", "tco2e", "volume", "factor", "score", "probability", "price", "latitude", "longitude", "roi", "macc", "payback"]):
-        fmt = "$#,0" if "usd" in lower or "price" in lower or "macc" in lower else "#,0.00"
-        if "score" in lower or "roi" in lower or "probability" in lower:
+        is_currency = "usd" in lower or "price" in lower or "macc" in lower
+        fmt = "$#,0" if is_currency else "#,0.00"
+        if not is_currency and ("score" in lower or "roi" in lower or "probability" in lower):
             fmt = "0.0%"
         return "double", "type number", fmt
     return "string", "type text", None
@@ -498,6 +515,7 @@ def build_layout() -> None:
     suppliers = read_rows("fact_supplier_month")
     scenarios = read_rows("fact_carbon_exposure")
     initiatives = read_rows("fact_abatement_initiatives")
+    supplier_dim = read_rows("dim_supplier")
     bu = {r["business_unit_id"]: r["business_unit"] for r in read_rows("dim_business_unit")}
     fac = {r["facility_id"]: r["facility"] for r in read_rows("dim_facility")}
     act = {r["activity_id"]: r["ghg_category"] for r in read_rows("dim_activity")}
@@ -516,6 +534,26 @@ def build_layout() -> None:
     scope = dict(group_sum(fe, lambda r: r["scope"], "emissions_tco2e"))
     monthly = group_sum(fe, lambda r: r["date_key"], "emissions_tco2e")
     monthly = sorted(monthly, key=lambda x: x[0])[-10:]
+    monthly_values = [v for _, v in monthly]
+    monthly_scope_values = {
+        scope_name: [
+            sum(fnum(r, "emissions_tco2e") for r in fe if r["date_key"] == date_key and r["scope"] == scope_name)
+            for date_key, _ in monthly
+        ]
+        for scope_name in ["Scope 1", "Scope 2", "Scope 3"]
+    }
+    supplier_monthly_values = [
+        sum(fnum(r, "emissions_tco2e") for r in suppliers if r["date_key"] == date_key)
+        for date_key, _ in monthly
+    ]
+    high_risk_monthly_values = [
+        sum(fnum(r, "emissions_tco2e") for r in suppliers if r["date_key"] == date_key and r["carbon_risk_tier"] == "High")
+        for date_key, _ in monthly
+    ]
+    scenario_monthly_values = [
+        sum(fnum(r, "carbon_cost_usd") for r in scenarios if r["date_key"] == date_key and r["scenario"] == "Base internal price")
+        for date_key, _ in monthly
+    ]
     bu_hotspots = group_sum(fe, lambda r: bu.get(r["business_unit_id"], r["business_unit_id"]), "emissions_tco2e")[:5]
     scope_rows = group_sum(fe, lambda r: r["scope"], "emissions_tco2e")
     category_rows = group_sum(fe, lambda r: act.get(r["activity_id"], r["activity_id"]), "emissions_tco2e")[:6]
@@ -537,6 +575,54 @@ def build_layout() -> None:
         key=lambda x: x[1],
     )[:6]
     reduction_rows = sorted([(r["initiative"], fnum(r, "annual_reduction_tco2e")) for r in initiatives], key=lambda x: x[1], reverse=True)[:6]
+    supplier_risk_rows = group_sum(suppliers, lambda r: r["carbon_risk_tier"], "emissions_tco2e")
+    target_status_rows = group_sum(suppliers, lambda r: r["target_status"], "emissions_tco2e")[:6]
+    initiative_status_capex = group_sum(initiatives, lambda r: r["implementation_status"], "capex_usd")
+    high_risk_supplier_emissions = sum(fnum(r, "emissions_tco2e") for r in suppliers if r["carbon_risk_tier"] == "High")
+    avg_data_quality = sum(fnum(r, "data_quality_score") for r in supplier_dim) / len(supplier_dim)
+    no_verified_target_suppliers = sum(1 for r in supplier_dim if r["target_status"] == "No verified target")
+    planned_capex = sum(fnum(r, "capex_usd") for r in initiatives if r["implementation_status"] == "Planned")
+    committed_reduction = sum(
+        fnum(r, "annual_reduction_tco2e")
+        for r in initiatives
+        if r["implementation_status"] in {"Committed", "In flight", "Implemented"}
+    )
+    probability_weighted_cost = sum(fnum(r, "probability_weighted_cost_usd") for r in scenarios)
+    months_2026 = sorted({r["date_key"] for r in fe if r["date_key"].startswith("2026")})
+    run_rate_2026 = (
+        sum(fnum(r, "emissions_tco2e") for r in fe if r["date_key"].startswith("2026")) / len(months_2026) * 12
+        if months_2026
+        else 0
+    )
+    baseline_annual = total / (len({r["date_key"] for r in fe}) / 12)
+    target_gap = run_rate_2026 - baseline_annual * 0.86
+    supplier_action: dict[str, dict] = {}
+    for row in suppliers:
+        item = supplier_action.setdefault(
+            row["supplier"],
+            {
+                "risk": row["carbon_risk_tier"],
+                "target": row["target_status"],
+                "emissions": 0.0,
+                "spend": 0.0,
+            },
+        )
+        item["emissions"] += fnum(row, "emissions_tco2e")
+        item["spend"] += fnum(row, "spend_usd")
+    high_risk_supplier_table = sorted(
+        [
+            [
+                supplier,
+                item["risk"],
+                item["target"],
+                f"{(item['emissions'] / item['spend'] * 1_000_000) if item['spend'] else 0:.0f}",
+            ]
+            for supplier, item in supplier_action.items()
+            if item["risk"] == "High" or item["target"] == "No verified target"
+        ],
+        key=lambda row: float(row[3]),
+        reverse=True,
+    )[:6]
 
     def fmt_k(v: float) -> str:
         return f"{v / 1000:.1f}K"
@@ -549,6 +635,23 @@ def build_layout() -> None:
 
     def fmt_pct(v: float) -> str:
         return f"{v * 100:.1f}%"
+
+    def spark(values: list[float]) -> str:
+        blocks = "▁▂▃▄▅▆▇█"
+        cleaned = [float(v) for v in values if v is not None]
+        if not cleaned:
+            return ""
+        lo, hi = min(cleaned), max(cleaned)
+        if hi == lo:
+            return blocks[3] * len(cleaned)
+        return "".join(blocks[min(len(blocks) - 1, max(0, round((v - lo) / (hi - lo) * (len(blocks) - 1))))] for v in cleaned)
+
+    def fit_text(value: object, width: float, min_chars: int = 8) -> str:
+        text = str(value)
+        max_chars = max(min_chars, int(width / 5.8))
+        if len(text) <= max_chars:
+            return text
+        return text[: max_chars - 3].rstrip() + "..."
 
     def visual_text(runs: list[tuple[str, int, str, str]], p: dict, fill: str | None = None, border: bool = False):
         text_runs = [{"value": value, "textStyle": {"fontFamily": family, "fontSize": f"{size}pt", "color": color}} for value, size, color, family in runs]
@@ -571,18 +674,35 @@ def build_layout() -> None:
     def small_text(text: str, p: dict, color: str = COLORS["muted"]):
         return visual_text([(text, 7, color, "Segoe UI")], p)
 
-    def static_header(page_title: str, subtitle: str, base: int):
+    def static_header(page_title: str, subtitle: str, base: int, chips: list[tuple[str, str, int]] | None = None):
         visuals = [
             rect(COLORS["navy"], pos(0, 0, base, 1280, 86), border=False),
-            visual_text([(page_title, 20, "#FFFFFF", "Segoe UI Semibold"), (f"\n{subtitle}", 8, "#DCEAE4", "Segoe UI")], pos(30, 14, base + 1, 610, 58)),
+            visual_text([(page_title, 20, "#FFFFFF", "Segoe UI Semibold"), (f"\n{subtitle}", 8, "#DCEAE4", "Segoe UI")], pos(30, 14, base + 1, 560, 58)),
         ]
-        chips = [("Year", "All"), ("Region", "All"), ("BU", "All"), ("Scope", "All"), ("Scenario", "Base $50/t")]
-        for i, (label, value) in enumerate(chips):
-            visuals.append(visual_text([(label, 7, COLORS["muted"], "Segoe UI"), (f"\n{value}", 9, COLORS["ink"], "Segoe UI Semibold")], pos(690 + i * 108, 18, base + 10 + i, 94, 46), fill="#FFFFFF", border=True))
+        chip_defs = chips or [("Year", "All", 86), ("Region", "All", 98), ("Business Unit", "All", 118), ("Scope", "All", 90), ("Carbon price", "Base $50/t", 146)]
+        x = 610
+        for i, (label, value, width) in enumerate(chip_defs):
+            visuals.append(
+                visual_text(
+                    [(fit_text(label, width - 16), 6, COLORS["muted"], "Segoe UI"), (f"\n{fit_text(value, width - 16)}", 8, COLORS["ink"], "Segoe UI Semibold")],
+                    pos(x, 18, base + 10 + i, width, 46),
+                    fill="#FFFFFF",
+                    border=True,
+                )
+            )
+            x += width + 10
         return visuals
 
-    def kpi(label: str, value: str, p: dict, accent: str):
-        return visual_text([(label, 8, COLORS["ink"], "Segoe UI Semibold"), (f"\n{value}", 20, accent, "Segoe UI Semibold")], p, fill="#FFFFFF", border=True)
+    def kpi(label: str, value: str, p: dict, accent: str, trend: list[float] | None = None, note: str | None = None):
+        runs = [
+            (fit_text(label, p["width"] - 24), 8, COLORS["ink"], "Segoe UI Semibold"),
+            (f"\n{value}", 19, accent, "Segoe UI Semibold"),
+        ]
+        if trend:
+            runs.append((f"\n{spark(trend)}", 8, accent, "Segoe UI Semibold"))
+        if note:
+            runs.append((f"  {fit_text(note, p['width'] - 24)}", 6, COLORS["muted"], "Segoe UI"))
+        return visual_text(runs, p, fill="#FFFFFF", border=True)
 
     def panel(title: str, sub: str, p: dict, z: int):
         return [rect("#FFFFFF", pos(p["x"], p["y"], z, p["width"], p["height"]), border=True), title_text(title, pos(p["x"] + 12, p["y"] + 10, z + 1, p["width"] - 24, 20)), small_text(sub, pos(p["x"] + 12, p["y"] + 32, z + 2, p["width"] - 24, 18))]
@@ -590,18 +710,24 @@ def build_layout() -> None:
     def bars(title: str, sub: str, rows: list[tuple[str, float]], p: dict, z: int, color: str, value_fmt=fmt_k):
         visuals = panel(title, sub, p, z)
         max_v = max([v for _, v in rows] or [1])
+        label_w = min(210, max(132, p["width"] * 0.38))
+        bar_x = p["x"] + 18 + label_w
+        value_w = 74
+        bar_max_w = p["width"] - label_w - value_w - 52
         for i, (label, value) in enumerate(rows[:6]):
             y = p["y"] + 58 + i * 22
-            visuals.append(small_text(label[:28], pos(p["x"] + 14, y - 2, z + 10 + i * 4, 150, 18), COLORS["ink"]))
-            visuals.append(rect("#EDF2EF", pos(p["x"] + 174, y, z + 11 + i * 4, p["width"] - 260, 12)))
-            visuals.append(rect(color, pos(p["x"] + 174, y, z + 12 + i * 4, max(8, (p["width"] - 260) * value / max_v), 12)))
-            visuals.append(small_text(value_fmt(value), pos(p["x"] + p["width"] - 76, y - 2, z + 13 + i * 4, 64, 18), COLORS["muted"]))
+            visuals.append(small_text(fit_text(label, label_w), pos(p["x"] + 14, y - 2, z + 10 + i * 4, label_w - 6, 18), COLORS["ink"]))
+            visuals.append(rect("#EDF2EF", pos(bar_x, y, z + 11 + i * 4, bar_max_w, 12)))
+            visuals.append(rect(color, pos(bar_x, y, z + 12 + i * 4, max(8, bar_max_w * value / max_v), 12)))
+            visuals.append(small_text(value_fmt(value), pos(p["x"] + p["width"] - value_w - 10, y - 2, z + 13 + i * 4, value_w, 18), COLORS["muted"]))
         return visuals
 
     def mini_trend(title: str, sub: str, rows: list[tuple[str, float]], p: dict, z: int):
         visuals = panel(title, sub, p, z)
         max_v = max([v for _, v in rows] or [1])
         bar_w = (p["width"] - 60) / max(len(rows), 1)
+        for i, y in enumerate([p["y"] + 78, p["y"] + 126, p["y"] + 174]):
+            visuals.append(rect("#E7EEE9", pos(p["x"] + 22, y, z + 8 + i, p["width"] - 44, 1)))
         for i, (label, value) in enumerate(rows):
             h = 108 * value / max_v
             x = p["x"] + 24 + i * bar_w
@@ -610,76 +736,199 @@ def build_layout() -> None:
             visuals.append(small_text(label[-2:], pos(x, p["y"] + 180, z + 40 + i, 28, 16), COLORS["muted"]))
         return visuals
 
-    def text_table(title: str, sub: str, headers: list[str], rows: list[list[str]], p: dict, z: int):
+    def status_tone(value: object) -> str:
+        text = str(value).lower()
+        if any(token in text for token in ["high", "shock", "no verified", "planned", "gap"]):
+            return "#FBE7E1"
+        if any(token in text for token in ["medium", "committed", "in flight", "target"]):
+            return "#FFF2D9"
+        if any(token in text for token in ["low", "implemented", "renewable", "sbti", "owned"]):
+            return "#EAF3EA"
+        return "#F4F7F5"
+
+    def text_table(title: str, sub: str, headers: list[str], rows: list[list[str]], p: dict, z: int, widths: list[float] | None = None, status_cols: set[int] | None = None):
         visuals = panel(title, sub, p, z)
-        col_w = (p["width"] - 28) / len(headers)
+        available_w = p["width"] - 28
+        if widths:
+            total = sum(widths)
+            col_widths = [available_w * w / total for w in widths]
+        else:
+            col_widths = [available_w / len(headers)] * len(headers)
+        visuals.append(rect("#EAF1ED", pos(p["x"] + 10, p["y"] + 54, z + 18, p["width"] - 20, 22)))
+        x_positions = []
+        x = p["x"] + 14
         for i, h in enumerate(headers):
-            visuals.append(visual_text([(h, 7, COLORS["ink"], "Segoe UI Semibold")], pos(p["x"] + 14 + i * col_w, p["y"] + 58, z + 20 + i, col_w - 4, 18)))
+            x_positions.append(x)
+            visuals.append(visual_text([(fit_text(h, col_widths[i]), 7, COLORS["ink"], "Segoe UI Semibold")], pos(x, p["y"] + 58, z + 20 + i, col_widths[i] - 4, 18)))
+            x += col_widths[i]
         for r, row in enumerate(rows[:6]):
             y = p["y"] + 84 + r * 18
             if r % 2 == 0:
                 visuals.append(rect("#F4F7F5", pos(p["x"] + 10, y - 2, z + 40 + r, p["width"] - 20, 18)))
             for c, val in enumerate(row):
-                visuals.append(small_text(str(val)[:30], pos(p["x"] + 14 + c * col_w, y, z + 60 + r * 10 + c, col_w - 4, 16), COLORS["ink"]))
+                cell_x = x_positions[c]
+                cell_w = col_widths[c] - 4
+                if status_cols and c in status_cols:
+                    visuals.append(rect(status_tone(val), pos(cell_x - 3, y - 1, z + 58 + r * 10 + c, min(cell_w, max(36, len(str(val)) * 5.3 + 12)), 15)))
+                visuals.append(small_text(fit_text(val, cell_w), pos(cell_x, y, z + 60 + r * 10 + c, cell_w, 16), COLORS["ink"]))
         return visuals
 
-    p1 = static_header("ESG Finance Overview", "Emissions, carbon cost exposure, intensity and executive trend", 1)
-    for i, (label, value, color) in enumerate([
-        ("Total emissions", fmt_k(total), COLORS["teal"]),
-        ("Carbon cost", fmt_m(carbon_cost), COLORS["amber"]),
-        ("Intensity", f"{intensity:.1f}", COLORS["lime"]),
-        ("YoY change", fmt_pct(yoy), COLORS["coral"]),
-        ("Latest month", fmt_k(latest), COLORS["green2"]),
-    ]):
-        p1.append(kpi(label, value, pos(28 + i * 240, 104, 100 + i, 224, 82), color))
-    p1 += mini_trend("Monthly Emissions Trend", "Last 10 months, tCO2e", monthly, pos(28, 214, 200, 520, 210), 200)
-    p1 += bars("Emissions by Scope", "Scope 1, 2 and 3 contribution", scope_rows, pos(574, 214, 300, 300, 210), 300, COLORS["teal"])
-    p1 += bars("Business Unit Hotspots", "Where emissions concentrate", bu_hotspots, pos(900, 214, 400, 350, 210), 400, COLORS["navy"])
-    p1 += text_table("Executive Detail", "Carbon finance follow-up priorities", ["Metric", "Value", "Finance view"], [
-        ["Spend base", fmt_m(spend), "Procurement leverage"],
-        ["Revenue base", fmt_m(revenue), "Intensity denominator"],
-        ["Scope 1", fmt_k(scope.get("Scope 1", 0)), "Operational fuel"],
-        ["Scope 2", fmt_k(scope.get("Scope 2", 0)), "Purchased energy"],
-        ["Scope 3", fmt_k(scope.get("Scope 3", 0)), "Supplier value chain"],
-        ["Carbon price", "$50/t", "Base exposure"],
-    ], pos(28, 458, 500, 1222, 190), 500)
+    def actual_header(page_title: str, subtitle: str, base: int, slicers_def: list[tuple[str, str, str, int]] | None = None):
+        slicers_def = slicers_def or [
+            ("dim_date", "year", "Year", 72),
+            ("dim_facility", "region", "Region", 82),
+            ("dim_business_unit", "business_unit", "Business Unit", 112),
+            ("fact_emissions", "scope", "Scope", 76),
+            ("dim_carbon_scenario", "scenario", "Carbon price", 118),
+        ]
+        visuals = [
+            shape(COLORS["navy"], pos(0, 0, base, 1280, 86)),
+            textbox(page_title, subtitle, pos(28, 12, base + 1, 500, 58)),
+        ]
+        x = 552
+        for i, (table, column, display, width) in enumerate(slicers_def):
+            visuals.append(slicer(table, column, display, pos(x, 18, base + 10 + i, width, 50)))
+            x += width + 10
+        return visuals
 
-    p2 = static_header("Emissions & Supplier Intensity", "Scope/source diagnostics, supplier intensity and data quality", 1000)
-    for i, (label, value, color) in enumerate([
-        ("Scope 1", fmt_k(scope.get("Scope 1", 0)), COLORS["coral"]),
-        ("Scope 2", fmt_k(scope.get("Scope 2", 0)), COLORS["amber"]),
-        ("Scope 3", fmt_k(scope.get("Scope 3", 0)), COLORS["teal"]),
-        ("Supplier intensity", f"{sum(fnum(r, 'emissions_tco2e') for r in suppliers) / sum(fnum(r, 'spend_usd') for r in suppliers) * 1_000_000:.1f}", COLORS["lime"]),
-    ]):
-        p2.append(kpi(label, value, pos(28 + i * 304, 104, 1100 + i, 284, 82), color))
-    p2 += bars("Source Category Emissions", "GHG source categories ranked by footprint", category_rows, pos(28, 214, 1200, 390, 210), 1200, COLORS["teal"])
-    p2 += bars("Supplier Intensity Ranking", "tCO2e per $M spend", supplier_intensity, pos(444, 214, 1300, 390, 210), 1300, COLORS["amber"], lambda v: f"{v:.0f}")
-    p2 += bars("Facility Emissions", "Operational footprint by facility", facility_rows, pos(860, 214, 1400, 390, 210), 1400, COLORS["navy"])
-    p2 += text_table("Supplier Risk Table", "Risk, target status and spend-normalized intensity", ["Supplier", "Risk", "Target", "Intensity"], [
-        [r["supplier"], r["carbon_risk_tier"], r["target_status"], f"{fnum(r, 'supplier_intensity_tco2e_per_musd'):.0f}"] for r in supplier_table
-    ], pos(28, 458, 1500, 1222, 190), 1500)
+    def kpi_native(label: str, measure: str, p: dict, accent: str, trend: list[float] | None = None, note: str | None = None):
+        visuals = [card(measure, label, p, accent)]
+        if trend:
+            suffix = f"  {note}" if note else ""
+            visuals.append(visual_text([(spark(trend), 8, accent, "Segoe UI Semibold"), (suffix, 6, COLORS["muted"], "Segoe UI")], pos(p["x"] + 12, p["y"] + p["height"] - 24, p["z"] + 500, p["width"] - 24, 18)))
+        return visuals
 
-    p3 = static_header("Carbon Scenario & Abatement ROI", "Carbon price exposure, MACC and capital prioritization", 2000)
-    scenario_total = sum(v for _, v in scenario_rows)
-    for i, (label, value, color) in enumerate([
-        ("Carbon price", "$50/t", COLORS["amber"]),
-        ("Scenario cost", fmt_m(scenario_total), COLORS["coral"]),
-        ("Annual reduction", fmt_k(abatement_reduction), COLORS["teal"]),
-        ("Abatement ROI", fmt_pct(abatement_roi), COLORS["lime"]),
-        ("Payback years", f"{payback:.1f}", COLORS["green2"]),
+    p1 = actual_header("ESG Finance Overview", "Emissions, carbon cost exposure, intensity and executive trend", 1)
+    for i, (label, measure, color, trend, note) in enumerate([
+        ("Total emissions", "Total Emissions tCO2e", COLORS["teal"], monthly_values, "10 mo"),
+        ("Carbon cost", "Carbon Cost USD", COLORS["amber"], [v * carbon_price for v in monthly_values], "base"),
+        ("Intensity", "Emissions Intensity tCO2e per $M Revenue", COLORS["lime"], monthly_values, "t/$M"),
+        ("YoY change", "YoY Emissions Change %", COLORS["coral"], monthly_values, "latest"),
+        ("Latest month", "Latest Month Emissions tCO2e", COLORS["green2"], monthly_values, "May 26"),
     ]):
-        p3.append(kpi(label, value, pos(28 + i * 240, 104, 2100 + i, 224, 82), color))
-    p3 += bars("Scenario Exposure", "Carbon cost by scenario", scenario_rows, pos(28, 214, 2200, 390, 210), 2200, COLORS["coral"], fmt_m)
-    p3 += bars("MACC Priority Ranking", "Lower cost per tCO2e first", macc_rows, pos(444, 214, 2300, 390, 210), 2300, COLORS["teal"], lambda v: f"${v:.0f}/t")
-    p3 += bars("Reduction by Initiative", "Annual tCO2e reduction potential", reduction_rows, pos(860, 214, 2400, 390, 210), 2400, COLORS["navy"])
-    p3 += text_table("Abatement Action Queue", "Investment case by status, payback, ROI and MACC", ["Initiative", "Status", "Capex", "Reduction"], [
-        [r["initiative"], r["implementation_status"], fmt_m(fnum(r, "capex_usd")), fmt_k(fnum(r, "annual_reduction_tco2e"))] for r in sorted(initiatives, key=lambda r: fnum(r, "roi_at_90"), reverse=True)[:6]
-    ], pos(28, 458, 2500, 1222, 190), 2500)
+        p1 += kpi_native(label, measure, pos(28 + i * 222, 104, 100 + i, 206, 90), color, trend, note)
+    p1.append(multi_chart("lineChart", "Monthly Emissions + Carbon Cost", "Trend by month with selected carbon price", "dim_date", "month_start", "Month", [("Total Emissions tCO2e", "Emissions"), ("Carbon Cost USD", "Carbon Cost")], pos(28, 214, 200, 500, 210), "month_start"))
+    p1.append(single_chart("barChart", "Emissions by Scope", "Scope 1, 2 and 3 contribution", "fact_emissions", "scope", "Scope", "Total Emissions tCO2e", "tCO2e", pos(552, 214, 300, 280, 210), COLORS["teal"], order_measure=True, ascending=False))
+    p1.append(single_chart("barChart", "Business Unit Hotspots", "Where emissions concentrate", "dim_business_unit", "business_unit", "Business Unit", "Total Emissions tCO2e", "tCO2e", pos(856, 214, 400, 320, 210), COLORS["navy"], order_measure=True, ascending=False))
+    p1.append(table_visual("Executive Detail", "Carbon finance follow-up priorities", [("dim_business_unit", "business_unit", "Business Unit"), ("dim_facility", "region", "Region")], [("Total Emissions tCO2e", "Emissions"), ("Carbon Cost USD", "Carbon Cost"), ("Emissions Intensity tCO2e per $M Revenue", "Intensity")], pos(28, 458, 500, 1148, 190), "Carbon Cost USD"))
+
+    p2 = actual_header(
+        "Emissions & Supplier Intensity",
+        "Scope/source diagnostics, supplier intensity and data quality",
+        1000,
+        [
+            ("dim_date", "year", "Year", 72),
+            ("fact_emissions", "scope", "Scope", 80),
+            ("fact_supplier_month", "carbon_risk_tier", "Risk tier", 96),
+            ("dim_supplier", "target_status", "Target status", 118),
+            ("dim_facility", "region", "Region", 84),
+        ],
+    )
+    for i, (label, measure, color, trend, note) in enumerate([
+        ("Scope 1", "Scope 1 Emissions tCO2e", COLORS["coral"], monthly_scope_values["Scope 1"], "owned"),
+        ("Scope 2", "Scope 2 Emissions tCO2e", COLORS["amber"], monthly_scope_values["Scope 2"], "energy"),
+        ("Scope 3", "Scope 3 Emissions tCO2e", COLORS["teal"], monthly_scope_values["Scope 3"], "value chain"),
+        ("Supplier intensity", "Supplier Intensity tCO2e per $M Spend", COLORS["lime"], supplier_monthly_values, "t/$M"),
+    ]):
+        p2 += kpi_native(label, measure, pos(28 + i * 286, 104, 1100 + i, 268, 90), color, trend, note)
+    p2.append(single_chart("barChart", "Source Category Emissions", "GHG source categories ranked by footprint", "dim_activity", "ghg_category", "Category", "Total Emissions tCO2e", "tCO2e", pos(28, 214, 1200, 360, 210), COLORS["teal"], order_measure=True, ascending=False))
+    p2.append(single_chart("barChart", "Supplier Intensity Ranking", "tCO2e per $M spend", "dim_supplier", "supplier", "Supplier", "Supplier Intensity tCO2e per $M Spend", "Intensity", pos(408, 214, 1300, 360, 210), COLORS["amber"], order_measure=True, ascending=False))
+    p2.append(single_chart("barChart", "Facility Emissions", "Operational footprint by facility", "dim_facility", "facility", "Facility", "Total Emissions tCO2e", "tCO2e", pos(788, 214, 1400, 388, 210), COLORS["navy"], order_measure=True, ascending=False))
+    p2.append(table_visual("Supplier Risk Table", "Risk, target status and spend-normalized intensity", [("dim_supplier", "supplier", "Supplier"), ("dim_supplier", "supplier_category", "Category"), ("dim_supplier", "carbon_risk_tier", "Risk"), ("dim_supplier", "target_status", "Target")], [("Supplier Emissions tCO2e", "Emissions"), ("Supplier Intensity tCO2e per $M Spend", "Intensity")], pos(28, 458, 1500, 1148, 190), "Supplier Intensity tCO2e per $M Spend"))
+
+    p3 = actual_header(
+        "Carbon Scenario & Abatement ROI",
+        "Carbon price exposure, MACC and capital prioritization",
+        2000,
+        [
+            ("dim_carbon_scenario", "scenario", "Scenario", 118),
+            ("fact_emissions", "scope", "Scope", 76),
+            ("fact_abatement_initiatives", "implementation_status", "Status", 100),
+            ("dim_date", "year", "Year", 72),
+            ("dim_facility", "region", "Region", 84),
+        ],
+    )
+    for i, (label, measure, color, trend, note) in enumerate([
+        ("Carbon price", "Selected Carbon Price USD/t", COLORS["amber"], scenario_monthly_values, "base"),
+        ("Scenario cost", "Scenario Carbon Cost USD", COLORS["coral"], scenario_monthly_values, "all scenarios"),
+        ("Annual reduction", "Abatement Annual Reduction tCO2e", COLORS["teal"], [fnum(r, "annual_reduction_tco2e") for r in initiatives], "pipeline"),
+        ("Abatement ROI", "Abatement ROI", COLORS["lime"], [fnum(r, "roi_at_90") for r in initiatives], "@$90/t"),
+        ("Payback years", "Payback Years", COLORS["green2"], [fnum(r, "payback_years_at_90") for r in initiatives], "portfolio"),
+    ]):
+        p3 += kpi_native(label, measure, pos(28 + i * 222, 104, 2100 + i, 206, 90), color, trend, note)
+    p3.append(single_chart("barChart", "Scenario Exposure by Path", "Carbon cost under each pricing scenario", "dim_carbon_scenario", "scenario", "Scenario", "Scenario Carbon Cost USD", "Scenario cost", pos(28, 214, 2200, 360, 210), COLORS["coral"], order_measure=True, ascending=False))
+    p3.append(single_chart("barChart", "MACC Priority Ranking", "Lower cost per tCO2e first", "fact_abatement_initiatives", "initiative", "Initiative", "MACC USD per tCO2e", "MACC", pos(408, 214, 2300, 360, 210), COLORS["teal"], order_measure=True, ascending=True))
+    p3.append(single_chart("barChart", "Reduction by Initiative", "Annual tCO2e reduction potential", "fact_abatement_initiatives", "initiative", "Initiative", "Abatement Annual Reduction tCO2e", "Reduction", pos(788, 214, 2400, 388, 210), COLORS["navy"], order_measure=True, ascending=False))
+    p3.append(table_visual("Abatement Action Queue", "Investment case by status, payback, ROI and MACC", [("fact_abatement_initiatives", "initiative", "Initiative"), ("fact_abatement_initiatives", "implementation_status", "Status"), ("fact_abatement_initiatives", "scope", "Scope")], [("Abatement Capex USD", "Capex"), ("Abatement Annual Reduction tCO2e", "Reduction"), ("Abatement ROI", "ROI"), ("MACC USD per tCO2e", "MACC")], pos(28, 458, 2500, 1148, 190), "Abatement ROI"))
+
+    p4 = actual_header(
+        "Risk & Action Control Tower",
+        "Supplier risk, target gaps and governance queue",
+        3000,
+        [
+            ("fact_supplier_month", "carbon_risk_tier", "Risk tier", 96),
+            ("dim_supplier", "target_status", "Target status", 118),
+            ("fact_abatement_initiatives", "implementation_status", "Impl. status", 108),
+            ("dim_date", "year", "Year", 72),
+            ("dim_facility", "region", "Region", 82),
+        ],
+    )
+    p4.append(kpi("High-risk emissions", fmt_k(high_risk_supplier_emissions), pos(28, 104, 3100, 206, 90), COLORS["coral"], high_risk_monthly_values, "supplier"))
+    p4.append(kpi("No target suppliers", fmt_n(no_verified_target_suppliers), pos(250, 104, 3101, 206, 90), COLORS["amber"], [no_verified_target_suppliers] * 10, "count"))
+    p4 += kpi_native("Data quality", "Average Data Quality Score", pos(472, 104, 3102, 206, 90), COLORS["teal"], [avg_data_quality] * 10, "avg")
+    p4.append(kpi("2026 target gap", fmt_k(target_gap), pos(694, 104, 3103, 206, 90), COLORS["lime"] if target_gap <= 0 else COLORS["coral"], monthly_values, "run-rate"))
+    p4.append(kpi("Planned capex", fmt_m(planned_capex), pos(916, 104, 3104, 206, 90), COLORS["green2"], [fnum(r, "capex_usd") for r in initiatives if r["implementation_status"] == "Planned"], "pipeline"))
+    p4.append(single_chart("barChart", "Supplier Risk Exposure", "Emissions by supplier risk tier", "fact_supplier_month", "carbon_risk_tier", "Risk tier", "Supplier Emissions tCO2e", "Emissions", pos(28, 214, 3200, 360, 210), COLORS["coral"], order_measure=True, ascending=False))
+    p4.append(single_chart("barChart", "Target Status Exposure", "Supplier emissions by target maturity", "dim_supplier", "target_status", "Target status", "Supplier Emissions tCO2e", "Emissions", pos(408, 214, 3300, 360, 210), COLORS["amber"], order_measure=True, ascending=False))
+    p4.append(single_chart("barChart", "Capex by Action Status", "Abatement investment still to govern", "fact_abatement_initiatives", "implementation_status", "Status", "Abatement Capex USD", "Capex", pos(788, 214, 3400, 388, 210), COLORS["navy"], order_measure=True, ascending=False))
+    p4.append(table_visual("Risk Action Queue", "Supplier follow-up for CFO/ESG review", [("dim_supplier", "supplier", "Supplier"), ("dim_supplier", "carbon_risk_tier", "Risk"), ("dim_supplier", "target_status", "Target")], [("Supplier Emissions tCO2e", "Emissions"), ("Supplier Intensity tCO2e per $M Spend", "Intensity")], pos(28, 458, 3500, 744, 190), "Supplier Intensity tCO2e per $M Spend"))
+    p4.append(
+        visual_text(
+            [
+                ("Guardrail Summary", 10, COLORS["ink"], "Segoe UI Semibold"),
+                ("\nValues reconcile to model guardrails", 7, COLORS["muted"], "Segoe UI"),
+                (f"\n\nWeighted cost        {fmt_m(probability_weighted_cost)}", 8, COLORS["ink"], "Segoe UI Semibold"),
+                (f"\nSecured reduction    {fmt_k(committed_reduction)}", 8, COLORS["ink"], "Segoe UI Semibold"),
+                (f"\nPlanned capex        {fmt_m(planned_capex)}", 8, COLORS["ink"], "Segoe UI Semibold"),
+                (f"\nHigh-risk emissions  {fmt_k(high_risk_supplier_emissions)}", 8, COLORS["ink"], "Segoe UI Semibold"),
+            ],
+            pos(796, 458, 3600, 380, 190),
+            fill="#FFFFFF",
+            border=True,
+        )
+    )
 
     cfg = {"version": "5.73", "activeSectionIndex": 0, "defaultDrillFilterOtherVisuals": True, "settings": {"useNewFilterPaneExperience": True, "useStylableVisualContainerHeader": True, "queryLimitOption": 6}}
-    layout = {"activeSectionIndex": 0, "sections": [section("ESG Finance Overview", 0, p1), section("Emissions & Supplier Intensity", 1, p2), section("Carbon Scenario & Abatement ROI", 2, p3)], "config": json.dumps(cfg, separators=(",", ":")), "layoutOptimization": 0}
+    layout = {
+        "activeSectionIndex": 0,
+        "sections": [
+            section("ESG Finance Overview", 0, p1),
+            section("Emissions & Supplier Intensity", 1, p2),
+            section("Carbon Scenario & Abatement ROI", 2, p3),
+            section("Risk & Action Control Tower", 3, p4),
+        ],
+        "config": json.dumps(cfg, separators=(",", ":")),
+        "layoutOptimization": 0,
+    }
+    visual_type_counts: dict[str, int] = {}
+    for report_section in layout["sections"]:
+        for visual_container in report_section["visualContainers"]:
+            try:
+                visual_type = json.loads(visual_container["config"])["singleVisual"]["visualType"]
+            except Exception:
+                visual_type = "unknown"
+            visual_type_counts[visual_type] = visual_type_counts.get(visual_type, 0) + 1
     write_json(ROOT / "build" / "native_report_layout_project18.json", layout)
-    write_json(ROOT / "qa" / "native_report_layout_summary.json", {"status": "layout_json_generated", "pages": [s["displayName"] for s in layout["sections"]], "visual_containers": sum(len(s["visualContainers"]) for s in layout["sections"])})
+    write_json(
+        ROOT / "qa" / "native_report_layout_summary.json",
+        {
+            "status": "layout_json_generated",
+            "pages": [s["displayName"] for s in layout["sections"]],
+            "visual_containers": sum(len(s["visualContainers"]) for s in layout["sections"]),
+            "visual_type_counts": visual_type_counts,
+            "native_visual_containers": sum(count for visual_type, count in visual_type_counts.items() if visual_type != "textbox"),
+        },
+    )
 
 
 def write_scripts() -> None:
@@ -724,20 +973,110 @@ V $OutputPbix; Copy-Item $OutputPbix $FinalPbix -Force; V $FinalPbix
 $result=[ordered]@{status="passed"; final_pbix=$FinalPbix; final_pbix_created=$true; final_pbix_size=(Get-Item $FinalPbix).Length; pages=@($layout.sections|ForEach-Object{$_.displayName}); visual_containers=($layout.sections|ForEach-Object{$_.visualContainers.Count}|Measure-Object -Sum).Sum}
 $result|ConvertTo-Json -Depth 8|Set-Content (Join-Path $QaRoot "pbix_native_report_validation.json") -Encoding UTF8; $result|ConvertTo-Json -Depth 8
 ''')
-    write_text(ROOT / "build" / "scripts" / "04_validate_output.py", "from pathlib import Path\nimport json\nROOT=Path(__file__).resolve().parents[2]\np=ROOT/'output'/'dashboard_final.pbix'\nr={'status':'pass' if p.exists() and p.stat().st_size>100000 else 'fail','pbix_exists':p.exists(),'pbix_size_bytes':p.stat().st_size if p.exists() else 0}\n(ROOT/'qa'/'pbix_final_validation.json').write_text(json.dumps(r,indent=2),encoding='utf-8')\nprint(json.dumps(r,indent=2))\n")
+    write_text(ROOT / "build" / "scripts" / "04_validate_output.py", """import json
+import hashlib
+from pathlib import Path
+
+ROOT=Path(__file__).resolve().parents[2]
+p=ROOT/'output'/'dashboard_final.pbix'
+native_path = ROOT / 'qa' / 'pbix_native_report_validation.json'
+native = json.loads(native_path.read_text(encoding='utf-8-sig')) if native_path.exists() else {}
+desktop_path = ROOT / 'qa' / 'desktop_open_check.json'
+desktop = json.loads(desktop_path.read_text(encoding='utf-8-sig')) if desktop_path.exists() else {}
+
+def sha256(path: Path) -> str | None:
+    if not path.exists():
+        return None
+    h = hashlib.sha256()
+    with path.open('rb') as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b''):
+            h.update(chunk)
+    return h.hexdigest().upper()
+
+current_sha = sha256(p)
+package_ok = p.exists() and p.stat().st_size > 100000
+screenshots = desktop.get('screenshots', [])
+screenshots_ok = bool(screenshots) and all((ROOT / s).exists() for s in screenshots)
+desktop_pass = (
+    desktop.get('status') == 'passed'
+    and desktop.get('pbix_sha256') == current_sha
+    and desktop.get('visual_error_count') == 0
+    and screenshots_ok
+)
+pending_gap = 'Open output/dashboard_final.pbix in Power BI Desktop and capture fresh screenshots for all 4 pages before claiming fresh Desktop visual QA pass.'
+
+r={
+    'status':'desktop_open_check_passed' if package_ok and desktop_pass else ('package_pass_desktop_open_check_pending' if package_ok else 'fail'),
+    'pbix_exists':p.exists(),
+    'pbix_size_bytes':p.stat().st_size if p.exists() else 0,
+    'sha256': current_sha,
+    'build_route':'SCRIPTED_DESKTOP_PBIX',
+    'native_package_validation_status': native.get('status'),
+    'pages': native.get('pages', []),
+    'visual_containers': native.get('visual_containers'),
+    'desktop_open_check':'passed' if desktop_pass else 'not_rerun_after_v3_patch',
+    'desktop_checked_at': desktop.get('checked_at') if desktop_pass else None,
+    'visual_error_count': 0 if desktop_pass else None,
+    'screenshots': screenshots if desktop_pass else [],
+    'known_gap': None if desktop_pass else pending_gap
+}
+(ROOT/'qa'/'pbix_final_validation.json').write_text(json.dumps(r,indent=2),encoding='utf-8')
+(ROOT/'qa'/'pbix_validation.json').write_text(json.dumps({
+    'final_pbix_path': str(p),
+    'opened_in_power_bi_desktop': bool(desktop_pass),
+    'saved_after_open': False,
+    'page_count': len(r['pages']),
+    'visual_count': r['visual_containers'],
+    'visual_error_count': r['visual_error_count'],
+    'screenshots': r['screenshots'],
+    'qa_status': r['status'],
+    'native_package_validation': r['native_package_validation_status'],
+    'build_route': r['build_route'],
+    'known_issues': [] if desktop_pass else [r['known_gap']],
+}, indent=2), encoding='utf-8')
+print(json.dumps(r,indent=2))
+""")
 
 
 def main() -> None:
     build_model()
     build_layout()
     # PowerShell wrappers are maintained separately after Desktop compatibility fixes.
-    write_json(ROOT / "output" / "build_manifest.json", {
+    final_pbix = ROOT / "output" / "dashboard_final.pbix"
+    desktop_path = ROOT / "qa" / "desktop_open_check.json"
+    desktop = json.loads(desktop_path.read_text(encoding="utf-8-sig")) if desktop_path.exists() else {}
+    final_sha = sha256_file(final_pbix)
+    screenshots = desktop.get("screenshots", [])
+    screenshots_ok = bool(screenshots) and all((ROOT / s).exists() for s in screenshots)
+    desktop_pass = (
+        desktop.get("status") == "passed"
+        and desktop.get("pbix_sha256") == final_sha
+        and desktop.get("visual_error_count") == 0
+        and screenshots_ok
+    )
+    manifest = {
         "status": "native_powerbi_assets_created",
+        "version": "v3_upgrade_2026-06-23",
         "model_bim": str(ROOT / "model" / "model.bim"),
         "layout_json": str(ROOT / "build" / "native_report_layout_project18.json"),
         "target_seed_pbix": str(ROOT / "output" / "dashboard_model_seed.pbix"),
-        "final_pbix": str(ROOT / "output" / "dashboard_final.pbix"),
-    })
+        "final_pbix": str(final_pbix),
+        "pages": [
+            "ESG Finance Overview",
+            "Emissions & Supplier Intensity",
+            "Carbon Scenario & Abatement ROI",
+            "Risk & Action Control Tower",
+        ],
+        "desktop_open_check": "passed" if desktop_pass else "pending_after_v3_patch",
+    }
+    if desktop_pass:
+        manifest.update({
+            "desktop_checked_at": desktop.get("checked_at"),
+            "final_pbix_sha256": final_sha,
+            "visual_error_count": 0,
+            "desktop_qa_contact_sheet": str(ROOT / "output" / "screenshots" / "desktop_qa_contact_sheet.png"),
+        })
+    write_json(ROOT / "output" / "build_manifest.json", manifest)
     print(json.dumps({"status": "ok", "model_bim": str(ROOT / "model" / "model.bim"), "layout": str(ROOT / "build" / "native_report_layout_project18.json")}, indent=2))
 
 

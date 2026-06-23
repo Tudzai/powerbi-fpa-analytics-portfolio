@@ -1,27 +1,27 @@
 ﻿{
-    "generated_at":  "2026-06-15 03:01:51",
+    "generated_at":  "2026-06-23 21:30:52",
     "project_root":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability",
     "source_model_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_model_seed.pbix",
     "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\build\\native_report_layout_project17.json",
     "output_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_v01.pbix",
     "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix",
-    "final_pbix_bytes":  765915,
+    "final_pbix_bytes":  770575,
     "pages":  [
                   "Executive Overview",
                   "Trade Lane Margin",
                   "Cost Drivers \u0026 Action Queue"
               ],
-    "visual_containers":  56,
+    "visual_containers":  92,
     "visual_type_counts":  {
                                "tableEx":  5,
                                "barChart":  3,
-                               "shape":  6,
+                               "shape":  12,
                                "waterfallChart":  2,
-                               "textbox":  9,
+                               "textbox":  21,
                                "donutChart":  2,
                                "slicer":  9,
                                "cardVisual":  18,
-                               "columnChart":  2
+                               "columnChart":  20
                            },
     "validation":  "PowerBIPackager.Validate passed for output and final PBIX",
     "security_bindings_removed":  true

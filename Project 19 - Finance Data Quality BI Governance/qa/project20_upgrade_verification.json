@@ -1,0 +1,65 @@
+﻿{
+    "status":  "pass_final_pbix_desktop_verified",
+    "enhancement_version":  "v5_20260623_project20_sparklines",
+    "source_prompts":  [
+                           "7. BI_A2Z_Master_Prompt_v3.md",
+                           "Enhance DB.md",
+                           "PROJECT_20_STYLE_UPGRADE_PROMPT.md"
+                       ],
+    "style_transfer_policy":  "Project 20 quality standard applied while preserving Project 19 finance governance identity.",
+    "pages":  4,
+    "visual_count":  117,
+    "native_visuals":  {
+                           "kpi_cards":  16,
+                           "kpi_sparklines":  16,
+                           "slicers":  8,
+                           "lens_and_decision_textboxes":  8,
+                           "textboxes":  44,
+                           "shapes":  12
+                       },
+    "checks":  {
+                   "final_pbix_exists":  true,
+                   "final_pbix_desktop_saved":  true,
+                   "desktop_reopen_validation":  true,
+                   "left_navigation_rail":  true,
+                   "four_kpi_strip_per_page":  true,
+                   "native_kpi_sparklines":  true,
+                   "current_lens_textbox_fit":  true,
+                   "decision_chip_textbox_fit":  true,
+                   "dropdown_slicer_objects":  true,
+                   "dropdown_slicer_interaction_verified":  true,
+                   "chart_units_and_sorting_checked":  true,
+                   "table_layout_polished":  true,
+                   "registered_theme":  "FinanceGovernanceLight.json",
+                   "project19_domain_preserved":  true,
+                   "visual_error_count_observed":  0
+               },
+    "screenshots":  [
+                        {
+                            "file":  "output/screenshots/desktop_final_page1_governance_v5.png",
+                            "bytes":  176660,
+                            "last_write_time":  "2026-06-23T22:26:38+07:00"
+                        },
+                        {
+                            "file":  "output/screenshots/desktop_final_page2_reliability_v5.png",
+                            "bytes":  175880,
+                            "last_write_time":  "2026-06-23T22:27:28+07:00"
+                        },
+                        {
+                            "file":  "output/screenshots/desktop_final_page3_adoption_v5.png",
+                            "bytes":  180137,
+                            "last_write_time":  "2026-06-23T22:27:33+07:00"
+                        },
+                        {
+                            "file":  "output/screenshots/desktop_final_page4_actions_v5.png",
+                            "bytes":  182276,
+                            "last_write_time":  "2026-06-23T22:28:24+07:00"
+                        },
+                        {
+                            "file":  "output/screenshots/desktop_interaction_page4_department_dropdown_v5.png",
+                            "bytes":  185415,
+                            "last_write_time":  "2026-06-23T22:33:29+07:00"
+                        }
+                    ],
+    "requires_desktop_reopen_validation":  false
+}

@@ -1,32 +1,42 @@
 {
-  "status": "pass",
-  "pbix_exists": true,
-  "pbix_size_bytes": 4405994,
+  "status": "passed",
+  "validated_at": "2026-06-23T22:41:34+07:00",
   "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 15 - SaaS CFO Metrics\\output\\dashboard_final.pbix",
-  "last_saved_local": "2026-06-15 03:03:46",
-  "opened_in_power_bi_desktop": true,
-  "desktop_session": {
-    "process_id": 41448,
-    "port": 49932,
-    "window_handle": 1051452,
-    "window_title": "dashboard_final",
-    "pbix_path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 15 - SaaS CFO Metrics\\output\\dashboard_final.pbix"
+  "pbix_exists": true,
+  "pbix_is_upgraded_final": true,
+  "pbix_restored_from_pre_upgrade_backup": false,
+  "final_pbix_size": 4394046,
+  "sha256": "80F3678A5BF741101913CFF02AE471504185AC4C5D5AE91AD7C0806531A95B45",
+  "model_push": {
+    "status": "model_pushed_via_tom",
+    "target_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 15 - SaaS CFO Metrics\\output\\dashboard_model_seed.pbix",
+    "port": 58188,
+    "process_id": 24340,
+    "session_source": "direct_port",
+    "table_count": 14,
+    "relationship_count": 17
   },
-  "native_report": {
-    "pages": [
+  "native_layout_validation": "qa\\pbix_native_report_validation.json",
+  "source_layout_validation": "qa\\project20_upgrade_verification.json",
+  "desktop_render_walkthrough": "qa\\desktop_render_walkthrough_20260623.json",
+  "desktop_open_check": {
+    "status": "passed",
+    "pages_checked": [
       "Executive Overview",
       "Revenue & Retention",
       "Efficiency & Forecast"
     ],
-    "visual_containers": 47
+    "render_result": "All 3 pages rendered in Power BI Desktop using a uniquely named copy of the exact final PBIX, then that Desktop-saved PBIX was copied back to output/dashboard_final.pbix.",
+    "visual_error_count": 0,
+    "navigation_action_buttons": 9,
+    "table_column_width_rules": 32,
+    "title_collision_handled": "An unrelated Project 18 report named dashboard_final.pbix was open; validation selected the Project 15 command-line process and then used dashboard_final_project15_verify.pbix to avoid screenshoting the wrong report."
   },
-  "pbi_tools_extract": {
-    "status": "pass",
-    "folder": "qa\\pbix_extract_final_after_save"
-  },
-  "pbi_tools_export_data": {
-    "status": "pass",
-    "folder": "qa\\export_data_final_after_save",
-    "tables_exported": 14
+  "package_readback": {
+    "status": "passed",
+    "contains_saas_cfo_layout": true,
+    "contains_esg_layout_text": false,
+    "page_navigation_mentions": 9,
+    "column_width_object_mentions": 10
   }
 }

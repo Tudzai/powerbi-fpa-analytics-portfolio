@@ -1,0 +1,62 @@
+{
+  "status": "pass",
+  "mode": "left-sidebar transparent actionButton overlays",
+  "pages": [
+    "Executive Overview",
+    "Revenue & Retention",
+    "Efficiency & Forecast"
+  ],
+  "targets": {
+    "Executive Overview": "ReportSectionExecutiveOverview",
+    "Revenue & Retention": "ReportSectionRevenueRetention",
+    "Efficiency & Forecast": "ReportSectionEfficiencyForecast"
+  },
+  "action_count": 9,
+  "actions": [
+    {
+      "source_page": "Executive Overview",
+      "target_section": "ReportSectionExecutiveOverview",
+      "tooltip": "Go to Executive Overview"
+    },
+    {
+      "source_page": "Executive Overview",
+      "target_section": "ReportSectionRevenueRetention",
+      "tooltip": "Go to Revenue & Retention"
+    },
+    {
+      "source_page": "Executive Overview",
+      "target_section": "ReportSectionEfficiencyForecast",
+      "tooltip": "Go to Efficiency & Forecast"
+    },
+    {
+      "source_page": "Revenue & Retention",
+      "target_section": "ReportSectionExecutiveOverview",
+      "tooltip": "Go to Executive Overview"
+    },
+    {
+      "source_page": "Revenue & Retention",
+      "target_section": "ReportSectionRevenueRetention",
+      "tooltip": "Go to Revenue & Retention"
+    },
+    {
+      "source_page": "Revenue & Retention",
+      "target_section": "ReportSectionEfficiencyForecast",
+      "tooltip": "Go to Efficiency & Forecast"
+    },
+    {
+      "source_page": "Efficiency & Forecast",
+      "target_section": "ReportSectionExecutiveOverview",
+      "tooltip": "Go to Executive Overview"
+    },
+    {
+      "source_page": "Efficiency & Forecast",
+      "target_section": "ReportSectionRevenueRetention",
+      "tooltip": "Go to Revenue & Retention"
+    },
+    {
+      "source_page": "Efficiency & Forecast",
+      "target_section": "ReportSectionEfficiencyForecast",
+      "tooltip": "Go to Efficiency & Forecast"
+    }
+  ]
+}

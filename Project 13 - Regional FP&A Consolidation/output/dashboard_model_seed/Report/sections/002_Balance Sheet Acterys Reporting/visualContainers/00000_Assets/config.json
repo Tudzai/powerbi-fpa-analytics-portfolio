@@ -1,0 +1,156 @@
+{
+  "name": "7b1cf354426946f34723",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 15.381400208986415,
+        "y": 163.8453500522466,
+        "z": 0,
+        "width": 432.01671891327061,
+        "height": 555.73667711598739
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "acterysReportingVisual",
+    "projections": {
+      "Rows": [
+        {
+          "queryRef": "Accounts.Type",
+          "active": true
+        },
+        {
+          "queryRef": "Accounts.Name",
+          "active": true
+        }
+      ],
+      "Measure": [
+        {
+          "queryRef": "Transactions.Balance sheet"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "a",
+          "Entity": "Accounts",
+          "Type": 0
+        },
+        {
+          "Name": "t",
+          "Entity": "Transactions",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "a"
+              }
+            },
+            "Property": "Type"
+          },
+          "Name": "Accounts.Type"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "a"
+              }
+            },
+            "Property": "Name"
+          },
+          "Name": "Accounts.Name"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "Balance sheet"
+          },
+          "Name": "Transactions.Balance sheet"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "saveGroup": [
+        {
+          "properties": {
+            "navigationState": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[\"Expense\",\"Overheads\",\"OtherIncome\"]'"
+                }
+              }
+            },
+            "rowCalc": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[]'"
+                }
+              }
+            },
+            "customStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[{\"uid\":\"DirectCosts|Purchases\",\"isDouble\":false,\"addToHeader\":false,\"color\":\"#000000\",\"isUnderline\":true},{\"uid\":\"OtherIncome\",\"isDouble\":false,\"addToHeader\":false,\"color\":\"#000000\",\"isUnderline\":true}]'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "variance": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowTotal": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Assets'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

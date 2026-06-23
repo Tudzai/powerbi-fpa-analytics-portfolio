@@ -4,51 +4,109 @@
   "latest_complete_period": "2026-05",
   "pages": [
     {
-      "page": "Executive Overview",
-      "purpose": "Regional KPI status, trend, variance bridge, and action list."
+      "page": "Executive Summary",
+      "purpose": "Regional KPI status, trend, variance bridge, country gaps, and action list."
     },
     {
-      "page": "Entity & Country P&L",
-      "purpose": "Country/entity P&L matrix, margin heatmap, and detail rows."
+      "page": "P&L Variance",
+      "purpose": "Country/entity P&L matrix, margin heatmap, scenario variance, and detail rows."
     },
     {
-      "page": "FX & Intercompany",
-      "purpose": "Currency exposure, local-to-reporting impacts, and elimination control."
-    },
-    {
-      "page": "BU Drilldown",
-      "purpose": "Business unit performance, growth vs margin, and driver table."
-    },
-    {
-      "page": "Close Exceptions",
-      "purpose": "Exception monitoring by severity, owner, status, and value."
-    },
-    {
-      "page": "Board Storyboard",
-      "purpose": "CFO narrative view combining bridge, target pacing, treemap, risk funnel, and board-pack extract."
+      "page": "Controls & Storyboard",
+      "purpose": "FX, intercompany, close-risk controls, and board-ready finance narrative."
     }
   ],
-  "visual_count": 11,
+  "visual_count": 9,
+  "native_visual_container_count": 64,
   "filters": [
     {
+      "page": "Executive Summary",
       "slicer": "Period",
-      "field": "DimDate[date_id]",
-      "default": "2026-05"
+      "field": "DimDate[month_label]",
+      "default": "May 2026",
+      "placement": "top_filter_bar",
+      "x": 188,
+      "y": 84,
+      "width": 148,
+      "height": 42
     },
     {
+      "page": "Executive Summary",
       "slicer": "Region",
       "field": "DimEntity[region]",
-      "default": "All"
+      "default": "All",
+      "placement": "top_filter_bar",
+      "x": 348,
+      "y": 84,
+      "width": 148,
+      "height": 42
     },
     {
-      "slicer": "Entity",
-      "field": "DimEntity[entity_id]",
-      "default": "All"
-    },
-    {
-      "slicer": "Business Unit",
+      "page": "Executive Summary",
+      "slicer": "BU",
       "field": "DimBusinessUnit[business_unit]",
-      "default": "All"
+      "default": "All",
+      "placement": "top_filter_bar",
+      "x": 508,
+      "y": 84,
+      "width": 166,
+      "height": 42
+    },
+    {
+      "page": "P&L Variance",
+      "slicer": "Country",
+      "field": "DimEntity[country]",
+      "default": "All",
+      "placement": "top_filter_bar",
+      "x": 188,
+      "y": 84,
+      "width": 180,
+      "height": 42
+    },
+    {
+      "page": "P&L Variance",
+      "slicer": "Scenario",
+      "field": "DimScenario[scenario]",
+      "default": "All",
+      "placement": "top_filter_bar",
+      "x": 380,
+      "y": 84,
+      "width": 180,
+      "height": 42
+    },
+    {
+      "page": "Controls & Storyboard",
+      "slicer": "Currency",
+      "field": "FactFXRate[currency]",
+      "default": "All",
+      "placement": "top_filter_bar",
+      "x": 188,
+      "y": 84,
+      "width": 154,
+      "height": 42
+    },
+    {
+      "page": "Controls & Storyboard",
+      "slicer": "Severity",
+      "field": "FactCloseExceptions[severity]",
+      "default": "All",
+      "placement": "top_filter_bar",
+      "x": 354,
+      "y": 84,
+      "width": 154,
+      "height": 42
+    },
+    {
+      "page": "Controls & Storyboard",
+      "slicer": "Status",
+      "field": "FactCloseExceptions[status]",
+      "default": "All",
+      "placement": "top_filter_bar",
+      "x": 520,
+      "y": 84,
+      "width": 154,
+      "height": 42
     }
-  ]
+  ],
+  "layout_upgrade": "2026-06-23 top filter bar; slicers moved above KPI strip on all native PBIX pages."
 }

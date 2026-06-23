@@ -111,6 +111,7 @@ foreach ($tableDef in $modelDefinition.model.tables) {
       $measure.Expression = [string]($measureDef.expression)
       if ($measureDef.formatString) { $measure.FormatString = [string]$measureDef.formatString }
       if ($measureDef.description) { $measure.Description = [string]$measureDef.description }
+      if ($measureDef.dataCategory) { try { $measure.DataCategory = [string]$measureDef.dataCategory } catch {} }
       $table.Measures.Add($measure)
     }
   }

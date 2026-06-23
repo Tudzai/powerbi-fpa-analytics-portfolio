@@ -1,0 +1,42 @@
+{
+  "name": "adacc79c904a39b3e95c",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 38,
+        "y": 36,
+        "z": 30,
+        "width": 520,
+        "height": 30,
+        "tabOrder": 30
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Executive Summary",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "14pt",
+                      "color": "#0F172A"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

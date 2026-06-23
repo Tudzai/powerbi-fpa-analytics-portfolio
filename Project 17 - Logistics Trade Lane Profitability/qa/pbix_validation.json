@@ -1,26 +1,30 @@
-{
-  "status": "pass",
-  "final_output": "output/dashboard_final.pbix",
-  "route": "SCRIPTED_DESKTOP_PBIX",
-  "seed_template": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Template\\04_Profitability_Margin\\Microsoft_Customer_Profitability.pbix",
-  "model_push": {
-    "status": "pass",
-    "desktop_process_id": 32804,
-    "tables": 10,
-    "relationships": 13,
-    "measures": 25
-  },
-  "native_layout_patch": {
-    "status": "pass",
-    "visual_containers": 56,
-    "security_bindings_removed": true,
-    "package_validation": "PowerBIPackager.Validate passed"
-  },
-  "desktop_open_check": {
-    "status": "pass",
-    "desktop_process_id": 52512,
-    "opened_exact_file": true,
-    "saved_final": true,
-    "visual_error_count": 0
-  }
+﻿{
+    "status":  "pass_file_level_desktop_render_not_rerun_after_latest_patch",
+    "final_output":  "output/dashboard_final.pbix",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix",
+    "route":  "SCRIPTED_DESKTOP_PBIX + native layout patch",
+    "generated_at":  "2026-06-23T21:45:56+07:00",
+    "package_validation":  "PowerBIPackager.Validate passed",
+    "embedded_layout_validation":  {
+                                       "matches_build_json":  true,
+                                       "sha256":  "d0fb927fabed6c30138e18547ca9def2641c1fa9807f673017152b0e8c618c13",
+                                       "visual_containers":  92
+                                   },
+    "project20_style_validation":  {
+                                       "slicers":  9,
+                                       "slicer_height":  56,
+                                       "slicer_container_title_count":  0,
+                                       "current_lens":  3,
+                                       "decision_chip":  3,
+                                       "kpi_sparklines":  18
+                                   },
+    "field_reference_validation":  {
+                                       "field_refs_checked":  112,
+                                       "missing_ref_count":  0
+                                   },
+    "desktop_open_check":  {
+                               "earlier_final_build_opened_exact_file":  true,
+                               "latest_patch_render_recheck":  false,
+                               "note":  "Live Desktop recheck after the latest slicer-polish patch was attempted with Computer Use and pbi-tools. Power BI Desktop exposed open windows named dashboard_model_seed and dashboard_final, but pbi-tools info showed the open dashboard_final session belonged to Project 18 and the seed session was not Project 17 final. No final-file Project 17 Desktop screenshot was accepted as evidence."
+                           }
 }

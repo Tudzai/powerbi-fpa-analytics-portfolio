@@ -1,0 +1,73 @@
+﻿table FactVarianceDriverBridge
+
+	column date_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: date_id
+
+	column entity_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: entity_id
+
+	column business_unit_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: business_unit_id
+
+	column country
+		dataType: string
+		summarizeBy: none
+		sourceColumn: country
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column business_unit
+		dataType: string
+		summarizeBy: none
+		sourceColumn: business_unit
+
+	column driver
+		dataType: string
+		summarizeBy: none
+		sourceColumn: driver
+
+	column driver_sort
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: driver_sort
+
+	column amount_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: amount_usd
+
+	column variance_sign
+		dataType: string
+		summarizeBy: none
+		sourceColumn: variance_sign
+
+	partition FactVarianceDriverBridge-Import = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/fact_variance_driver_bridge.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {
+				        {"date_id", type text},
+				        {"entity_id", type text},
+				        {"business_unit_id", type text},
+				        {"country", type text},
+				        {"region", type text},
+				        {"business_unit", type text},
+				        {"driver", type text},
+				        {"driver_sort", Int64.Type},
+				        {"amount_usd", type number},
+				        {"variance_sign", type text}
+				    }, "en-US")
+				in
+				    TypedColumns
+

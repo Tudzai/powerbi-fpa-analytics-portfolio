@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "incident_exception_table",
   "position": {
-    "x": 24,
-    "y": 515,
-    "z": 300,
-    "height": 170,
-    "width": 716,
-    "tabOrder": 300
+    "x": 204,
+    "y": 514,
+    "z": 303,
+    "height": 172,
+    "width": 652,
+    "tabOrder": 303
   },
   "visual": {
     "visualType": "tableEx",
@@ -87,9 +87,40 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "FactIncidents"
+                  }
+                },
+                "Property": "MTTRHours"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Shows filtered dashboard evidence for Incident Exception Queue.'"
+                }
+              }
+            }
+          }
+        }
+      ],
       "title": [
         {
           "properties": {
@@ -109,13 +140,13 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#17202A"
+                "color": "#13212B"
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10L"
+                  "Value": "9L"
                 }
               }
             },
@@ -173,13 +204,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8DED8"
+                "color": "#D8E5E8"
               }
             },
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6L"
+                  "Value": "8L"
                 }
               }
             }

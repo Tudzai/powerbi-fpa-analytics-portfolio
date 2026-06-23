@@ -4,8 +4,8 @@
       "name": "01 Manufacturing FP&A Overview",
       "purpose": "Monitor margin, standard cost variance, yield, utilization, unit cost, and working capital.",
       "visuals": [
-        "KPI strip",
-        "Revenue/COGS trend",
+        "4 KPI cards with mini sparklines",
+        "Revenue/COGS line trend",
         "Variance by plant",
         "Margin by product line",
         "Margin action list"
@@ -15,7 +15,7 @@
       "name": "02 Standard Cost Variance",
       "purpose": "Explain cost variance through material, labor, overhead, and yield loss drivers.",
       "visuals": [
-        "Variance KPI strip",
+        "4 variance KPI cards with mini sparklines",
         "COGS waterfall",
         "Material variance by product line",
         "Labor variance by plant",
@@ -26,8 +26,8 @@
       "name": "03 Yield Capacity & WC",
       "purpose": "Tie yield, scrap, utilization, capacity gaps, inventory days, and scenario savings to EBITDA protection.",
       "visuals": [
-        "Operations KPI strip",
-        "Yield/scrap trend",
+        "4 operations KPI cards with mini sparklines",
+        "Yield/scrap line trend",
         "Utilization by line",
         "Inventory days",
         "Scenario and bottleneck table"

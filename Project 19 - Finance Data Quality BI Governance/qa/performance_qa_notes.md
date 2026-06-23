@@ -1,1 +1,1 @@
-Prepared data is compact for Desktop import. Performance QA pending final PBIX open-check.
+Prepared data is compact for Desktop import and embedded HTML interaction. Final dashboard uses bounded local JSON and no external runtime.

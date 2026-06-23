@@ -1,0 +1,31 @@
+﻿table DimScenario
+
+	column scenario_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+	column scenario
+		dataType: string
+		summarizeBy: none
+		sourceColumn: scenario
+
+	column scenario_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: scenario_type
+
+	partition DimScenario-Import = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/dim_scenario.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {
+				        {"scenario_id", type text},
+				        {"scenario", type text},
+				        {"scenario_type", type text}
+				    }, "en-US")
+				in
+				    TypedColumns
+

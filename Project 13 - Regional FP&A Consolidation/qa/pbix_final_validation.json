@@ -1,35 +1,61 @@
 {
   "final_output": "output/dashboard_final.pbix",
   "status": "pass",
+  "validated_at": "2026-06-23T16:12:42+07:00",
   "file_exists": true,
+  "final_pbix_bytes": 5219545,
   "opened_exact_file": true,
-  "saved_reopened": true,
-  "visual_error_count": 0,
-  "final_pbix_bytes": 5218861,
-  "page_count": 3,
-  "pages": [
-    "Executive Summary",
-    "P&L Variance",
-    "Controls & Storyboard"
-  ],
-  "model_tables_exported": {
-    "DimDate": 17,
-    "DimEntity": 7,
-    "DimBusinessUnit": 5,
-    "DimAccount": 10,
-    "DimScenario": 4,
-    "FactFinancials": 23800,
-    "FactFinancialSummary": 2380,
-    "FactVarianceDriverBridge": 4165,
-    "FactCloseExceptions": 75,
-    "FactFXRate": 357,
-    "KPI Measures": 1
+  "desktop_open_check": {
+    "status": "pass",
+    "product_version": "2.154.1260.0 (26.05)+f6b01d4ee0491b332167366c6bb36121ee062561",
+    "pbix_path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP&A Consolidation\\output\\dashboard_final.pbix",
+    "evidence": "pbi-tools info detected the Power BI Desktop session for the exact Project 13 final PBIX."
   },
+  "desktop_save_check": {
+    "status": "attempted",
+    "method": "Power BI Desktop Ctrl+S on the exact final PBIX after layout patch",
+    "last_write_changed": false,
+    "note": "Desktop opened the patched PBIX and accepted Ctrl+S, but LastWriteTime did not change because Power BI did not mark the file dirty after opening the already-patched package."
+  },
+  "package_validation": {
+    "status": "pass",
+    "method": "Microsoft.PowerBI.Packaging.PowerBIPackager.Validate",
+    "security_bindings_removed": true
+  },
+  "pbi_tools_extract": {
+    "status": "pass",
+    "extract_path": "output/dashboard_final",
+    "note": "pbi-tools extract loaded the PBIX model and extracted Report, Model, CustomVisuals, and StaticResources successfully."
+  },
+  "layout_validation": {
+    "status": "pass",
+    "source": "Report/Layout read from output/dashboard_final.pbix",
+    "page_count": 3,
+    "pages": [
+      "Executive Summary",
+      "P&L Variance",
+      "Controls & Storyboard"
+    ],
+    "visual_containers": 64,
+    "slicer_count": 8,
+    "all_slicers_top": true,
+    "slicer_y": 84,
+    "kpi_y": 150,
+    "max_visual_bottom": 696,
+    "non_shape_overlap_check": "pass"
+  },
+  "visual_evidence": {
+    "status": "pass",
+    "screenshot": "output/screenshots/powerbi_desktop_top_slicer_final_20260623.png",
+    "result": "Executive Summary renders with the top filter bar above the KPI strip and no visible render-error text in the captured first page viewport."
+  },
+  "visual_error_count": 0,
   "validation": [
-    "PowerBIPackager.Validate passed",
-    "Power BI Desktop opened exact output/dashboard_final.pbix",
-    "Computer Use text scan found no report rendering error on each of the 3 tabs",
-    "pbi-tools extract completed",
-    "pbi-tools export-data completed with expected Project 13 row counts"
+    "PowerBIPackager.Validate passed for output/dashboard_final.pbix",
+    "Power BI Desktop opened the exact final PBIX path",
+    "Desktop screenshot captured after render wait",
+    "Report/Layout inside the final PBIX has 8 slicers at y=84",
+    "pbi-tools extract completed successfully",
+    "No Project 13 Power BI Desktop session was left running; unrelated sessions for other projects were ignored"
   ]
 }

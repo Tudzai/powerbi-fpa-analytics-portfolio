@@ -1,0 +1,515 @@
+{
+  "name": "7d9341d0d6aef5eb1597",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 13.740026356774889,
+        "y": 413.50936464198713,
+        "z": 1000,
+        "width": 1234.6395112016294,
+        "height": 290.50341440038335,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "pivotTable",
+    "projections": {
+      "Rows": [
+        {
+          "queryRef": "Invoice Summary.Type",
+          "active": true
+        },
+        {
+          "queryRef": "Contacts.ContactName",
+          "active": true
+        },
+        {
+          "queryRef": "Invoice Summary.InvoiceNumber",
+          "active": true
+        },
+        {
+          "queryRef": "Invoice Summary.DueDate",
+          "active": true
+        },
+        {
+          "queryRef": "Invoice Summary.ExpectedPaymentDate"
+        }
+      ],
+      "Columns": [
+        {
+          "queryRef": "Invoice Summary.Aging Group",
+          "active": true
+        }
+      ],
+      "Values": [
+        {
+          "queryRef": "Sum(Invoice Summary.AmountDue)"
+        },
+        {
+          "queryRef": "Sum(Invoice Summary.AmountDue_LC)"
+        },
+        {
+          "queryRef": "Sum(Invoice Summary.AmountPaid)"
+        },
+        {
+          "queryRef": "Sum(Invoice Summary.AmountPaid_LC)"
+        },
+        {
+          "queryRef": "Sum(Invoice Summary.Total_LC)"
+        },
+        {
+          "queryRef": "Sum(Invoice Summary.Total)"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "i",
+          "Entity": "Invoice Summary",
+          "Type": 0
+        },
+        {
+          "Name": "c",
+          "Entity": "Contacts",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "ContactName"
+          },
+          "Name": "Contacts.ContactName"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "i"
+                  }
+                },
+                "Property": "AmountDue"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(Invoice Summary.AmountDue)"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "i"
+                  }
+                },
+                "Property": "AmountDue_LC"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(Invoice Summary.AmountDue_LC)"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "i"
+                  }
+                },
+                "Property": "AmountPaid"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(Invoice Summary.AmountPaid)"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "i"
+                  }
+                },
+                "Property": "AmountPaid_LC"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(Invoice Summary.AmountPaid_LC)"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "i"
+                  }
+                },
+                "Property": "Total_LC"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(Invoice Summary.Total_LC)"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "i"
+                  }
+                },
+                "Property": "Total"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(Invoice Summary.Total)"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "i"
+              }
+            },
+            "Property": "DueDate"
+          },
+          "Name": "Invoice Summary.DueDate"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "i"
+              }
+            },
+            "Property": "ExpectedPaymentDate"
+          },
+          "Name": "Invoice Summary.ExpectedPaymentDate"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "i"
+              }
+            },
+            "Property": "InvoiceNumber"
+          },
+          "Name": "Invoice Summary.InvoiceNumber"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "i"
+              }
+            },
+            "Property": "Aging Group"
+          },
+          "Name": "Invoice Summary.Aging Group"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "i"
+              }
+            },
+            "Property": "Type"
+          },
+          "Name": "Invoice Summary.Type"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 1,
+          "Expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "c"
+                }
+              },
+              "Property": "ContactName"
+            }
+          }
+        }
+      ]
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Invoice Summary.Type"
+            ],
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Invoice Summary"
+                    }
+                  },
+                  "Property": "Type"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Contacts.ContactName"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Invoice Summary.InvoiceNumber"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Invoice Summary.DueDate"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Invoice Summary.ExpectedPaymentDate"
+            ],
+            "isCollapsed": true
+          }
+        ],
+        "root": {
+          "identityValues": null,
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'AccountsPayable'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'AccountsReceivable'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'ACCPAY'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'ACCREC'"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
+      }
+    ],
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Statement_Structure.Header"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {}
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ],
+      "subTotals": [
+        {
+          "properties": {
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowTotal": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "'11'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnTotal": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "'11'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "showExpandCollapseButtons": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#dae2ef'"
+                    }
+                  }
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#dae2ef'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#57657d'"
+                    }
+                  }
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

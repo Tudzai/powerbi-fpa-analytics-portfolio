@@ -1,0 +1,20 @@
+{
+  "status": "ready",
+  "final_dashboard_html": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 19 - Finance Data Quality BI Governance\\output\\dashboard_final.html",
+  "enhancement_version": "v4_20260623_project20_style",
+  "tabs": 4,
+  "filter_controls": [
+    "Year",
+    "Domain",
+    "Criticality",
+    "Workspace",
+    "Sensitivity"
+  ],
+  "current_lens": true,
+  "kpi_cards": 20,
+  "kpi_sparklines": 20,
+  "chart_panels": 21,
+  "table_panels": 7,
+  "source": "local prepared synthetic portfolio data",
+  "latest_complete_month": "May 2026"
+}

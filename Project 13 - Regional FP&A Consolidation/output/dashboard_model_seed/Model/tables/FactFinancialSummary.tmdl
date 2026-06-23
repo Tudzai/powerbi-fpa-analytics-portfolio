@@ -1,0 +1,163 @@
+﻿table FactFinancialSummary
+
+	column date_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: date_id
+
+	column entity_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: entity_id
+
+	column business_unit_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: business_unit_id
+
+	column scenario_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+	column scenario
+		dataType: string
+		summarizeBy: none
+		sourceColumn: scenario
+
+	column country
+		dataType: string
+		summarizeBy: none
+		sourceColumn: country
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column business_unit
+		dataType: string
+		summarizeBy: none
+		sourceColumn: business_unit
+
+	column currency
+		dataType: string
+		summarizeBy: none
+		sourceColumn: currency
+
+	column gross_revenue_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: gross_revenue_usd
+
+	column external_revenue_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: external_revenue_usd
+
+	column intercompany_revenue_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: intercompany_revenue_usd
+
+	column intercompany_cost_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: intercompany_cost_usd
+
+	column intercompany_elimination_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: intercompany_elimination_usd
+
+	column cogs_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: cogs_usd
+
+	column gross_profit_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: gross_profit_usd
+
+	column opex_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: opex_usd
+
+	column ebitda_pre_elim_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: ebitda_pre_elim_usd
+
+	column ebitda_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: ebitda_usd
+
+	column ebitda_margin
+		dataType: double
+		summarizeBy: none
+		sourceColumn: ebitda_margin
+
+	column operating_income_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: operating_income_usd
+
+	column net_income_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: net_income_usd
+
+	column cash_position_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: cash_position_usd
+
+	column operating_cash_flow_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: operating_cash_flow_usd
+
+	column working_capital_usd
+		dataType: double
+		summarizeBy: none
+		sourceColumn: working_capital_usd
+
+	partition FactFinancialSummary-Import = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/fact_financial_summary.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {
+				        {"date_id", type text},
+				        {"entity_id", type text},
+				        {"business_unit_id", type text},
+				        {"scenario_id", type text},
+				        {"scenario", type text},
+				        {"country", type text},
+				        {"region", type text},
+				        {"business_unit", type text},
+				        {"currency", type text},
+				        {"gross_revenue_usd", type number},
+				        {"external_revenue_usd", type number},
+				        {"intercompany_revenue_usd", type number},
+				        {"intercompany_cost_usd", type number},
+				        {"intercompany_elimination_usd", type number},
+				        {"cogs_usd", type number},
+				        {"gross_profit_usd", type number},
+				        {"opex_usd", type number},
+				        {"ebitda_pre_elim_usd", type number},
+				        {"ebitda_usd", type number},
+				        {"ebitda_margin", type number},
+				        {"operating_income_usd", type number},
+				        {"net_income_usd", type number},
+				        {"cash_position_usd", type number},
+				        {"operating_cash_flow_usd", type number},
+				        {"working_capital_usd", type number}
+				    }, "en-US")
+				in
+				    TypedColumns
+

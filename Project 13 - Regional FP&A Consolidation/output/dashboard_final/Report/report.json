@@ -1,0 +1,67 @@
+{
+  "id": 0,
+  "layoutOptimization": 0,
+  "publicCustomVisuals": [
+    "APMatrixCloud4B291F0FACAE43E38940A86C88AEC5CD",
+    "PBI_CV_32852E50B30D4D70ACC1C55C87F71ED0",
+    "apVariance49271b11d4eb4cc3939520617ffd114d",
+    "powerKPIMatrixEB2381CC88A8425FBEB1B07FF57784E6"
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY18SU07",
+            "path": "BaseThemes/CY18SU07.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "Custom5215988708742156.json",
+            "path": "Custom5215988708742156.json",
+            "type": 201
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "acterysReportingVisual.pbiviz.json",
+            "path": "acterysReportingVisual.pbiviz.json",
+            "type": 5
+          }
+        ],
+        "name": "acterysReportingVisual",
+        "type": 0
+      }
+    }
+  ],
+  "theme": {
+    "themeJson": {
+      "dataColors": [
+        "#2B6F75",
+        "#2F5F9E",
+        "#6F8552",
+        "#A8894B",
+        "#B85A72",
+        "#1E1E1E"
+      ],
+      "name": "Regional FP&A Finance Seed"
+    }
+  }
+}

@@ -17,7 +17,9 @@
     "FactAccountHealth": 240,
     "MonthlyKPIs": 29
   },
-  "measures": 52,
+  "measures": 75,
   "relationships": 17,
-  "pbix_exists": false
+  "pbix_exists": true,
+  "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 15 - SaaS CFO Metrics\\output\\dashboard_final.pbix",
+  "final_pbix_status": "rebuilt_desktop_saved_and_checked"
 }

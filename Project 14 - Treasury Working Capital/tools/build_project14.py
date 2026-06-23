@@ -704,7 +704,162 @@ def validate_data(data: dict) -> dict:
 
 
 def measure_catalog() -> list[dict]:
-    return [
+    def dax_money_m(value_var: str) -> str:
+        return f'FORMAT(DIVIDE({value_var}, 1000000), "$0.0M;($0.0M);$0.0M")'
+
+    def dax_value_format(value_var: str, kind: str) -> str:
+        if kind == "money_m":
+            return dax_money_m(value_var)
+        if kind == "percent":
+            return f'FORMAT({value_var}, "0.0%")'
+        if kind == "days":
+            return f'FORMAT({value_var}, "0.0") & "d"'
+        if kind == "weeks":
+            return f'FORMAT({value_var}, "0.0") & " wks"'
+        if kind == "count":
+            return f'FORMAT({value_var}, "#,0")'
+        return f'FORMAT({value_var}, "0.0")'
+
+    def dax_delta_format(kind: str) -> str:
+        if kind == "percent":
+            return 'IF(ISBLANK(PriorValue), "n/a", FORMAT((CurrentValue - PriorValue) * 100, "+0.0;-0.0;0.0") & "pt")'
+        if kind in {"days", "weeks", "count", "number"}:
+            return 'IF(ISBLANK(PriorValue), "n/a", FORMAT(CurrentValue - PriorValue, "+0.0;-0.0;0.0"))'
+        return 'IF(ISBLANK(PriorValue), "n/a", FORMAT(DIVIDE(CurrentValue - PriorValue, ABS(PriorValue)), "+0.0%;-0.0%;0.0%"))'
+
+    def svg_hex(hex_color: str) -> str:
+        return hex_color.replace("#", "%23")
+
+    def kpi_card_svg_measure(
+        measure_name: str,
+        label: str,
+        value_measure: str,
+        accent: str,
+        format_kind: str,
+        period: str = "month",
+        lower_is_better: bool = False,
+    ) -> dict:
+        label_svg = label.replace("%", "%25").replace("&", "and")
+        accent_svg = svg_hex(accent)
+        if period == "week":
+            period_block = f"""
+VAR CurrentPeriod =
+    MAXX(ALLSELECTED(DimWeek), DimWeek[week_number])
+VAR PriorPeriod = CurrentPeriod - 1
+VAR CurrentValue =
+    CALCULATE(
+        [{value_measure}],
+        FILTER(ALL(DimWeek), DimWeek[week_number] = CurrentPeriod)
+    )
+VAR PriorValue =
+    CALCULATE(
+        [{value_measure}],
+        FILTER(ALL(DimWeek), DimWeek[week_number] = PriorPeriod)
+    )
+VAR PeriodTable =
+    ADDCOLUMNS(
+        FILTER(ALLSELECTED(DimWeek), DimWeek[week_number] <= CurrentPeriod),
+        "__Sort", DimWeek[week_number],
+        "__Value", [{value_measure}]
+    )
+"""
+        else:
+            period_block = f"""
+VAR CurrentPeriod =
+    MAXX(
+        FILTER(ALL(DimDate), DimDate[is_latest_complete] = TRUE()),
+        DimDate[month_index]
+    )
+VAR PriorPeriod = CurrentPeriod - 12
+VAR CurrentValue =
+    CALCULATE(
+        [{value_measure}],
+        FILTER(ALL(DimDate), DimDate[month_index] = CurrentPeriod)
+    )
+VAR PriorValue =
+    CALCULATE(
+        [{value_measure}],
+        FILTER(ALL(DimDate), DimDate[month_index] = PriorPeriod)
+    )
+VAR PeriodTable =
+    ADDCOLUMNS(
+        FILTER(ALLSELECTED(DimDate), DimDate[month_index] <= CurrentPeriod),
+        "__Sort", DimDate[month_index],
+        "__Value", [{value_measure}]
+    )
+"""
+        delta_good = "CurrentValue <= PriorValue" if lower_is_better else "CurrentValue >= PriorValue"
+        trend_good = "LastValue <= FirstValue" if lower_is_better else "LastValue >= FirstValue"
+        expression = f"""{period_block}
+VAR CurrentTextRaw = {dax_value_format("CurrentValue", format_kind)}
+VAR PriorTextRaw = IF(ISBLANK(PriorValue), "n/a", {dax_value_format("PriorValue", format_kind)})
+VAR DeltaTextRaw = {dax_delta_format(format_kind)}
+VAR CurrentText = SUBSTITUTE(CurrentTextRaw, "%", "%25")
+VAR PriorText = SUBSTITUTE(PriorTextRaw, "%", "%25")
+VAR DeltaText = SUBSTITUTE(DeltaTextRaw, "%", "%25")
+VAR DeltaColor =
+    IF(ISBLANK(PriorValue), "%23607081", IF({delta_good}, "%230F766E", "%23B85062"))
+VAR CleanTable =
+    FILTER(PeriodTable, NOT ISBLANK([__Value]))
+VAR RowCount = COUNTROWS(CleanTable)
+VAR MinValue = MINX(CleanTable, [__Value])
+VAR MaxValue = MAXX(CleanTable, [__Value])
+VAR FirstValue = MINX(TOPN(1, CleanTable, [__Sort], ASC), [__Value])
+VAR LastValue = MINX(TOPN(1, CleanTable, [__Sort], DESC), [__Value])
+VAR StartYValue = 80 - DIVIDE(FirstValue - MinValue, MaxValue - MinValue, 0.5) * 38
+VAR EndYValue = 80 - DIVIDE(LastValue - MinValue, MaxValue - MinValue, 0.5) * 38
+VAR TrendColor = IF({trend_good}, "%230F766E", "%23B85062")
+VAR BandColor = IF({trend_good}, "%23DDEEDC", "%23F7DADD")
+VAR LinePoints =
+    CONCATENATEX(
+        CleanTable,
+        VAR RankValue = RANKX(CleanTable, [__Sort], , ASC, DENSE) - 1
+        VAR XValue = 136 + DIVIDE(RankValue, MAX(1, RowCount - 1), 0) * 92
+        VAR YValue = 80 - DIVIDE([__Value] - MinValue, MaxValue - MinValue, 0.5) * 38
+        RETURN FORMAT(XValue, "0.0") & "," & FORMAT(YValue, "0.0"),
+        " ",
+        [__Sort],
+        ASC
+    )
+VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='252' height='158' viewBox='0 0 252 158'>"
+        & "<rect x='1' y='1' width='250' height='156' rx='10' fill='%23FFFFFF' stroke='%23D8E0E7' stroke-width='1.2'/>"
+        & "<rect x='12' y='11' width='228' height='4' rx='2' fill='{accent_svg}'/>"
+        & "<rect x='14' y='27' width='12' height='12' rx='3' fill='{accent_svg}'/>"
+        & "<text x='34' y='38' font-family='Segoe UI Semibold' font-size='12.5' fill='%2315202B'>{label_svg}</text>"
+        & "<text x='14' y='77' font-family='Segoe UI Semibold' font-size='25' fill='{accent_svg}'>" & CurrentText & "</text>"
+        & "<rect x='130' y='30' width='108' height='58' rx='8' fill='%23F3F6F8'/>"
+        & "<rect x='136' y='58' width='92' height='12' rx='6' fill='" & BandColor & "'/>"
+        & "<line x1='136' y1='64' x2='228' y2='64' stroke='%23AAB7C4' stroke-width='1' stroke-dasharray='4 5'/>"
+        & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>"
+        & "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='3.6' fill='%23FFFFFF' stroke='%23607081' stroke-width='1.4'/>"
+        & "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='4.8' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='1.8'/>"
+        & "<rect x='14' y='126' width='98' height='20' rx='6' fill='%23F8FAFB'/>"
+        & "<rect x='120' y='126' width='118' height='20' rx='6' fill='%23F8FAFB'/>"
+        & "<text x='22' y='140' font-family='Segoe UI' font-size='9.4' fill='%23607081'>PY " & PriorText & "</text>"
+        & "<text x='130' y='140' font-family='Segoe UI Semibold' font-size='9.4' fill='" & DeltaColor & "'>Delta " & DeltaText & "</text>"
+        & "</svg>"
+RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)"""
+        return {
+            "measure_name": measure_name,
+            "definition": f"Project 20-style SVG KPI card for {label}; includes current value, prior comparison, delta, and mini trend.",
+            "dax": expression.strip(),
+            "format_string": "",
+            "data_type": "string",
+            "data_category": "ImageUrl",
+        }
+
+    def svg_measure(measure_name: str, definition: str, dax: str) -> dict:
+        return {
+            "measure_name": measure_name,
+            "definition": definition,
+            "dax": dax.strip(),
+            "format_string": "",
+            "data_type": "string",
+            "data_category": "ImageUrl",
+        }
+
+    base = [
         {"measure_name": "Cash Balance", "definition": "Total book cash balance across bank accounts.", "dax": "SUM(FactCashPosition[balance_usd])", "format_string": "$#,0"},
         {"measure_name": "Available Cash", "definition": "Cash balance net of restricted cash.", "dax": "SUM(FactCashPosition[available_cash_usd])", "format_string": "$#,0"},
         {"measure_name": "Restricted Cash", "definition": "Restricted bank cash not available for operating liquidity.", "dax": "SUM(FactCashPosition[restricted_cash_usd])", "format_string": "$#,0"},
@@ -736,6 +891,137 @@ def measure_catalog() -> list[dict]:
         {"measure_name": "Open Risk Value", "definition": "Value attached to non-closed treasury action items.", "dax": "CALCULATE(SUM(FactTreasuryRiskAction[amount_usd]), FactTreasuryRiskAction[status] <> \"Closed\")", "format_string": "$#,0"},
         {"measure_name": "Open Risk Count", "definition": "Count of non-closed treasury risk action items.", "dax": "CALCULATE(COUNTROWS(FactTreasuryRiskAction), FactTreasuryRiskAction[status] <> \"Closed\")", "format_string": "#,0"},
     ]
+
+    project20_upgrade = [
+        {"measure_name": "Latest Complete Month", "definition": "Latest complete monthly period used by Project 20-style KPI cards.", "dax": "MAXX(FILTER(ALL(DimDate), DimDate[is_latest_complete] = TRUE()), DimDate[date])", "format_string": "mmm yyyy"},
+        kpi_card_svg_measure("Available Liquidity KPI Card SVG", "Available Liquidity", "Available Liquidity", "#0F766E", "money_m"),
+        kpi_card_svg_measure("Liquidity Headroom KPI Card SVG", "Liquidity Headroom", "Liquidity Headroom", "#2F5F9E", "money_m"),
+        kpi_card_svg_measure("Forecast Net Flow KPI Card SVG", "13W Net Flow", "Forecast Net Cash Flow", "#B68B36", "money_m", period="week"),
+        kpi_card_svg_measure("Cash Runway KPI Card SVG", "Cash Runway", "Cash Runway Weeks", "#6F8552", "weeks", period="week"),
+        kpi_card_svg_measure("AR Outstanding KPI Card SVG", "AR Outstanding", "AR Outstanding", "#2F5F9E", "money_m"),
+        kpi_card_svg_measure("Overdue AR KPI Card SVG", "Overdue AR %", "Overdue AR %", "#B85062", "percent", lower_is_better=True),
+        kpi_card_svg_measure("AP Due 14 Days KPI Card SVG", "AP Due 14d", "AP Due 14 Days", "#B68B36", "money_m", period="week", lower_is_better=True),
+        kpi_card_svg_measure("Cash Conversion KPI Card SVG", "Cash Conversion", "Cash Conversion Cycle", "#6F8552", "days", lower_is_better=True),
+        kpi_card_svg_measure("Forecast Closing Cash KPI Card SVG", "Closing Cash", "Forecast Closing Cash", "#0F766E", "money_m", period="week"),
+        kpi_card_svg_measure("Forecast Error KPI Card SVG", "Forecast Error", "Forecast Error %", "#B85062", "percent", lower_is_better=True),
+        kpi_card_svg_measure("Unhedged FX KPI Card SVG", "Unhedged FX %", "Unhedged FX %", "#B68B36", "percent", lower_is_better=True),
+        kpi_card_svg_measure("Open Risk KPI Card SVG", "Open Risks", "Open Risk Count", "#B85062", "count", lower_is_better=True),
+        svg_measure(
+            "Current Lens SVG",
+            "Compact Project 20-style lens showing selected region, entity count, and scenario.",
+            """
+VAR RegionCount = COUNTROWS(VALUES(DimEntity[region]))
+VAR RegionTotal = CALCULATE(COUNTROWS(VALUES(DimEntity[region])), ALL(DimEntity[region]))
+VAR RegionText =
+    IF(
+        NOT ISFILTERED(DimEntity[region]) || RegionCount = RegionTotal,
+        "All Regions",
+        IF(RegionCount = 1, SELECTEDVALUE(DimEntity[region]), FORMAT(RegionCount, "0") & " Regions")
+    )
+VAR EntityCount = COUNTROWS(VALUES(DimEntity[entity]))
+VAR EntityTotal = CALCULATE(COUNTROWS(VALUES(DimEntity[entity])), ALL(DimEntity[entity]))
+VAR EntityText =
+    IF(
+        NOT ISFILTERED(DimEntity[entity]) || EntityCount = EntityTotal,
+        "All Entities",
+        IF(EntityCount = 1, SELECTEDVALUE(DimEntity[entity]), FORMAT(EntityCount, "0") & " Entities")
+    )
+VAR ScenarioText =
+    IF(HASONEVALUE(DimScenario[scenario]), SELECTEDVALUE(DimScenario[scenario]), "All Scenarios")
+VAR Line1 = LEFT(RegionText & " | " & ScenarioText, 29)
+VAR Line2 = LEFT(EntityText, 30)
+VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='144' height='76' viewBox='0 0 144 76'>"
+        & "<rect x='1' y='1' width='142' height='74' rx='8' fill='%2322313F' stroke='%230F766E' stroke-width='1.2'/>"
+        & "<text x='10' y='19' font-family='Segoe UI Semibold' font-size='10.4' fill='%239ACBC6'>Current Lens</text>"
+        & "<circle cx='126' cy='16' r='3.4' fill='%230F766E'/>"
+        & "<text x='10' y='41' font-family='Segoe UI Semibold' font-size='10.5' fill='%23FFFFFF'>" & Line1 & "</text>"
+        & "<text x='10' y='60' font-family='Segoe UI' font-size='9.4' fill='%23D8E0E7'>" & Line2 & "</text>"
+        & "</svg>"
+RETURN "data:image/svg+xml;utf8," & SVG
+""",
+        ),
+        svg_measure(
+            "Treasury Decision Chips SVG",
+            "Decision chips for the Treasury Command Center page.",
+            """
+VAR Chip1Raw = "Scenario " & COALESCE(SELECTEDVALUE(DimScenario[scenario]), "All")
+VAR Chip2Raw = "Headroom " & FORMAT(DIVIDE([Liquidity Headroom], 1000000), "$0M;($0M);$0M")
+VAR Chip3Raw = "Runway " & FORMAT([Cash Runway Weeks], "0.0") & " wks"
+VAR Chip1 = SUBSTITUTE(Chip1Raw, "%", "%25")
+VAR Chip2 = SUBSTITUTE(Chip2Raw, "%", "%25")
+VAR Chip3 = SUBSTITUTE(Chip3Raw, "%", "%25")
+VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='490' height='38' viewBox='0 0 490 38'>"
+        & "<rect x='0' y='0' width='490' height='38' rx='8' fill='none'/>"
+        & "<rect x='0.5' y='2.5' width='142' height='33' rx='7' fill='%23E6F4EC' stroke='%23FFFFFF' stroke-width='0.9'/>"
+        & "<rect x='13' y='13' width='11' height='11' rx='3' fill='%230F766E'/>"
+        & "<text x='36' y='23.5' font-family='Segoe UI Semibold' font-size='12.2' fill='%2315202B'>" & Chip1 & "</text>"
+        & "<rect x='156.5' y='2.5' width='150' height='33' rx='7' fill='%23E7F0FF' stroke='%23FFFFFF' stroke-width='0.9'/>"
+        & "<rect x='169' y='13' width='11' height='11' rx='3' fill='%232F5F9E'/>"
+        & "<text x='192' y='23.5' font-family='Segoe UI Semibold' font-size='12.2' fill='%2315202B'>" & Chip2 & "</text>"
+        & "<rect x='320.5' y='2.5' width='168' height='33' rx='7' fill='%23EEF5E8' stroke='%23FFFFFF' stroke-width='0.9'/>"
+        & "<rect x='333' y='13' width='11' height='11' rx='3' fill='%236F8552'/>"
+        & "<text x='356' y='23.5' font-family='Segoe UI Semibold' font-size='12.2' fill='%2315202B'>" & Chip3 & "</text>"
+        & "</svg>"
+RETURN "data:image/svg+xml;utf8," & SVG
+""",
+        ),
+        svg_measure(
+            "Working Capital Decision Chips SVG",
+            "Decision chips for the Working Capital Control page.",
+            """
+VAR Chip1Raw = "Overdue " & FORMAT([Overdue AR %], "0.0%")
+VAR Chip2Raw = "CCC " & FORMAT([Cash Conversion Cycle], "0.0") & "d"
+VAR Chip3Raw = "AP 14d " & FORMAT(DIVIDE([AP Due 14 Days], 1000000), "$0M;($0M);$0M")
+VAR Chip1 = SUBSTITUTE(Chip1Raw, "%", "%25")
+VAR Chip2 = SUBSTITUTE(Chip2Raw, "%", "%25")
+VAR Chip3 = SUBSTITUTE(Chip3Raw, "%", "%25")
+VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='490' height='38' viewBox='0 0 490 38'>"
+        & "<rect x='0' y='0' width='490' height='38' rx='8' fill='none'/>"
+        & "<rect x='0.5' y='2.5' width='142' height='33' rx='7' fill='%23F7DADD' stroke='%23FFFFFF' stroke-width='0.9'/>"
+        & "<rect x='13' y='13' width='11' height='11' rx='3' fill='%23B85062'/>"
+        & "<text x='36' y='23.5' font-family='Segoe UI Semibold' font-size='12.2' fill='%2315202B'>" & Chip1 & "</text>"
+        & "<rect x='156.5' y='2.5' width='150' height='33' rx='7' fill='%23E7F0FF' stroke='%23FFFFFF' stroke-width='0.9'/>"
+        & "<rect x='169' y='13' width='11' height='11' rx='3' fill='%232F5F9E'/>"
+        & "<text x='192' y='23.5' font-family='Segoe UI Semibold' font-size='12.2' fill='%2315202B'>" & Chip2 & "</text>"
+        & "<rect x='320.5' y='2.5' width='168' height='33' rx='7' fill='%23FFF3D6' stroke='%23FFFFFF' stroke-width='0.9'/>"
+        & "<rect x='333' y='13' width='11' height='11' rx='3' fill='%23B68B36'/>"
+        & "<text x='356' y='23.5' font-family='Segoe UI Semibold' font-size='12.2' fill='%2315202B'>" & Chip3 & "</text>"
+        & "</svg>"
+RETURN "data:image/svg+xml;utf8," & SVG
+""",
+        ),
+        svg_measure(
+            "Risk Decision Chips SVG",
+            "Decision chips for the Forecast, FX and Risk page.",
+            """
+VAR Chip1Raw = "FX unhedged " & FORMAT([Unhedged FX %], "0.0%")
+VAR Chip2Raw = "Open risks " & FORMAT([Open Risk Count], "#,0")
+VAR Chip3Raw = "Forecast error " & FORMAT([Forecast Error %], "0.0%")
+VAR Chip1 = SUBSTITUTE(Chip1Raw, "%", "%25")
+VAR Chip2 = SUBSTITUTE(Chip2Raw, "%", "%25")
+VAR Chip3 = SUBSTITUTE(Chip3Raw, "%", "%25")
+VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='490' height='38' viewBox='0 0 490 38'>"
+        & "<rect x='0' y='0' width='490' height='38' rx='8' fill='none'/>"
+        & "<rect x='0.5' y='2.5' width='142' height='33' rx='7' fill='%23FFF3D6' stroke='%23FFFFFF' stroke-width='0.9'/>"
+        & "<rect x='13' y='13' width='11' height='11' rx='3' fill='%23B68B36'/>"
+        & "<text x='36' y='23.5' font-family='Segoe UI Semibold' font-size='12.2' fill='%2315202B'>" & Chip1 & "</text>"
+        & "<rect x='156.5' y='2.5' width='150' height='33' rx='7' fill='%23F7DADD' stroke='%23FFFFFF' stroke-width='0.9'/>"
+        & "<rect x='169' y='13' width='11' height='11' rx='3' fill='%23B85062'/>"
+        & "<text x='192' y='23.5' font-family='Segoe UI Semibold' font-size='12.2' fill='%2315202B'>" & Chip2 & "</text>"
+        & "<rect x='320.5' y='2.5' width='168' height='33' rx='7' fill='%23E7F0FF' stroke='%23FFFFFF' stroke-width='0.9'/>"
+        & "<rect x='333' y='13' width='11' height='11' rx='3' fill='%232F5F9E'/>"
+        & "<text x='356' y='23.5' font-family='Segoe UI Semibold' font-size='12.2' fill='%2315202B'>" & Chip3 & "</text>"
+        & "</svg>"
+RETURN "data:image/svg+xml;utf8," & SVG
+""",
+        ),
+    ]
+
+    return base + project20_upgrade
 
 
 def build_data_dictionary(data: dict) -> str:
@@ -1344,6 +1630,8 @@ Design choices:
         "dataColors": ["#0F766E", "#2F5F9E", "#6F8552", "#B68B36", "#B85062", "#22313F"],
         "background": "#F3F6F8",
         "foreground": "#15202B",
+        "sidebar": "#22313F",
+        "panel": "#FFFFFF",
         "tableAccent": "#0F766E",
     }
     page_map = [
@@ -1352,15 +1640,18 @@ Design choices:
         {"page": "Forecast, FX & Risk", "purpose": "13-week forecast, FX exposure, debt/facility maturity, and risk actions."},
     ]
     visual_map = [
-        {"page": "Treasury Command Center", "visuals": ["KPI cards", "13-week closing cash line", "Liquidity by region bar", "Cash movement columns", "Action queue table"]},
-        {"page": "Working Capital Control", "visuals": ["KPI cards", "AR aging bar", "AP due bar", "DSO/DPO trend line", "Top customer/vendor tables"]},
-        {"page": "Forecast, FX & Risk", "visuals": ["KPI cards", "Net cash flow columns", "Unhedged FX bar", "Facility maturity table", "Risk queue table"]},
+        {"page": "Treasury Command Center", "visuals": ["4 SVG KPI cards", "Current Lens SVG", "decision chips", "13-week net cash flow", "liquidity by region", "cash by bank", "risk action table"]},
+        {"page": "Working Capital Control", "visuals": ["4 SVG KPI cards", "Current Lens SVG", "decision chips", "AR aging", "AP due schedule", "DSO/DPO trend", "customer AR detail table"]},
+        {"page": "Forecast, FX & Risk", "visuals": ["4 SVG KPI cards", "Current Lens SVG", "decision chips", "cash movement waterfall", "unhedged FX", "risk level", "risk action table"]},
     ]
     slicer_map = [
-        {"slicer": "Region", "field": "DimEntity[region]", "scope": "All pages"},
-        {"slicer": "Entity", "field": "DimEntity[entity_id]", "scope": "All pages"},
-        {"slicer": "Scenario", "field": "DimScenario[scenario]", "scope": "Forecast pages"},
-        {"slicer": "Forecast Week", "field": "DimWeek[week_label]", "scope": "Forecast and executive pages"},
+        {"slicer": "Region", "field": "DimEntity[region]", "scope": "All pages in left rail"},
+        {"slicer": "Entity", "field": "DimEntity[entity]", "scope": "All pages in left rail"},
+        {"slicer": "Scenario", "field": "DimScenario[scenario]", "scope": "Treasury and forecast pages"},
+        {"slicer": "Forecast Week", "field": "DimWeek[week_label]", "scope": "Treasury command center"},
+        {"slicer": "Customer Risk", "field": "DimCustomer[risk_rating]", "scope": "Working capital page"},
+        {"slicer": "Vendor Criticality", "field": "DimVendor[criticality]", "scope": "Working capital page"},
+        {"slicer": "Currency", "field": "FactFXExposure[exposure_currency]", "scope": "Forecast, FX & Risk page"},
     ]
     write_json("build/config/theme.json", theme)
     write_json("build/config/page_map.json", page_map)
@@ -1369,9 +1660,10 @@ Design choices:
     write_json("build/config/dashboard_config.json", {
         "title": "Treasury Working Capital Command Dashboard",
         "page_count": 3,
-        "style": "executive treasury cockpit with muted finance palette, strong KPI hierarchy, and compact action tables",
+        "style": "Project 20-quality treasury cockpit: dark treasury rail, compact dropdown slicers, four SVG KPI cards per page, Current Lens SVG, decision chips, polished chart/table panels, and muted finance palette",
         "selected_seed": str(selected_seed),
         "template_role": "technical PBIX seed only; final model and report bindings are Project 14 native assets",
+        "project20_upgrade_reference": str(BI_ROOT / "Project 20 - Board Investor CFO Pack"),
     })
 
     write_text(

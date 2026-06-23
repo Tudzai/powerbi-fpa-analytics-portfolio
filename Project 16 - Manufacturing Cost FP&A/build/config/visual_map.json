@@ -1,15 +1,15 @@
 {
-  "visual_count_target": 37,
+  "visual_count_target": 51,
   "native_visual_types": [
     "cardVisual",
     "slicer",
     "lineChart",
-    "columnChart",
     "barChart",
     "waterfallChart",
     "tableEx",
     "textbox"
   ],
+  "kpi_pattern": "4 focused cards per page plus native mini line-chart sparklines",
   "latest_month_snapshot": {
     "actual_revenue": 46084829.56,
     "actual_cogs": 27300829.560000002,

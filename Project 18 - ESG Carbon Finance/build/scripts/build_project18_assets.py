@@ -434,6 +434,16 @@ yoy_change = (latest_total - prior_year_total) / prior_year_total
 target_2026_annual = total_emissions / (len(months) / 12) * 0.86
 current_run_rate_2026 = sum(v for k, v in monthly_totals.items() if k.startswith("2026")) / 5 * 12
 target_gap = current_run_rate_2026 - target_2026_annual
+high_risk_supplier_emissions = sum(r["emissions_tco2e"] for r in supplier_rows if r["carbon_risk_tier"] == "High")
+avg_supplier_data_quality = sum(r["data_quality_score"] for r in dim_supplier) / len(dim_supplier)
+no_verified_target_suppliers = sum(1 for r in dim_supplier if r["target_status"] == "No verified target")
+planned_abatement_capex = sum(r["capex_usd"] for r in abatement_rows if r["implementation_status"] == "Planned")
+committed_inflight_reduction = sum(
+    r["annual_reduction_tco2e"]
+    for r in abatement_rows
+    if r["implementation_status"] in {"Committed", "In flight", "Implemented"}
+)
+probability_weighted_carbon_cost = sum(r["probability_weighted_cost_usd"] for r in exposure_rows)
 
 validation = {
     "seed": SEED,
@@ -461,6 +471,11 @@ validation = {
         "latest_month_emissions_tco2e": round(latest_total, 2),
         "yoy_change_latest_month": round(yoy_change, 4),
         "target_gap_tco2e_run_rate": round(target_gap, 2),
+        "high_risk_supplier_emissions_tco2e": round(high_risk_supplier_emissions, 2),
+        "average_supplier_data_quality": round(avg_supplier_data_quality, 4),
+        "suppliers_without_verified_target": no_verified_target_suppliers,
+        "planned_abatement_capex_usd": round(planned_abatement_capex, 2),
+        "probability_weighted_carbon_cost_usd": round(probability_weighted_carbon_cost, 2),
     },
     "qa_status": "pass",
 }
@@ -489,6 +504,11 @@ reconciliation_rows = [
     {"metric": "Emissions intensity tCO2e per $M revenue", "value": round(total_emissions / total_revenue * 1_000_000, 2), "source": "Total emissions / revenue * 1,000,000"},
     {"metric": "Latest month YoY emissions change", "value": round(yoy_change, 4), "source": "May 2026 vs May 2025"},
     {"metric": "Abatement annual reduction tCO2e", "value": sum(r["annual_reduction_tco2e"] for r in abatement_rows), "source": "fact_abatement_initiatives"},
+    {"metric": "High-risk supplier emissions tCO2e", "value": round(high_risk_supplier_emissions, 2), "source": "fact_supplier_month filtered to High risk tier"},
+    {"metric": "Supplier data quality score", "value": round(avg_supplier_data_quality, 4), "source": "dim_supplier.data_quality_score average"},
+    {"metric": "Suppliers without verified target", "value": no_verified_target_suppliers, "source": "dim_supplier target_status = No verified target"},
+    {"metric": "Probability weighted carbon cost USD", "value": round(probability_weighted_carbon_cost, 2), "source": "fact_carbon_exposure.probability_weighted_cost_usd"},
+    {"metric": "Planned abatement capex USD", "value": round(planned_abatement_capex, 2), "source": "fact_abatement_initiatives filtered to Planned"},
 ]
 write_csv(QA / "reconciliation.csv", reconciliation_rows, ["metric", "value", "source"])
 
@@ -541,6 +561,10 @@ Date range: Jan 2024 to May 2026.
 - Scope 3: {scope_totals["Scope 3"]:,.2f} tCO2e
 - Base carbon cost at $50/t: {total_emissions * 50:,.0f} USD
 - Latest month YoY emissions change: {yoy_change:.1%}
+- High-risk supplier emissions: {high_risk_supplier_emissions:,.2f} tCO2e
+- Supplier data quality score: {avg_supplier_data_quality:.1%}
+- Suppliers without verified target: {no_verified_target_suppliers}
+- Probability-weighted carbon cost: {probability_weighted_carbon_cost:,.0f} USD
 
 Status: pass for portfolio/demo use.
 """)
@@ -575,6 +599,15 @@ SELECTEDVALUE ( dim_carbon_scenario[carbon_price_usd_per_t], 50 )
 Carbon Cost USD =
 [Total Emissions tCO2e] * [Selected Carbon Price USD/t]
 
+Scenario Carbon Cost USD =
+SUM ( fact_carbon_exposure[carbon_cost_usd] )
+
+Probability Weighted Carbon Cost USD =
+SUM ( fact_carbon_exposure[probability_weighted_cost_usd] )
+
+Stress Scenario Carbon Cost USD =
+CALCULATE ( [Scenario Carbon Cost USD], dim_carbon_scenario[scenario] = "Stress price shock" )
+
 Supplier Emissions tCO2e =
 SUM ( fact_supplier_month[emissions_tco2e] )
 
@@ -584,11 +617,26 @@ SUM ( fact_supplier_month[spend_usd] )
 Supplier Intensity tCO2e per $M Spend =
 DIVIDE ( [Supplier Emissions tCO2e], [Supplier Spend USD] ) * 1000000
 
+High Risk Supplier Emissions tCO2e =
+CALCULATE ( [Supplier Emissions tCO2e], fact_supplier_month[carbon_risk_tier] = "High" )
+
+Average Data Quality Score =
+AVERAGE ( fact_supplier_month[data_quality_score] )
+
 Abatement Annual Reduction tCO2e =
 SUM ( fact_abatement_initiatives[annual_reduction_tco2e] )
 
 Abatement Capex USD =
 SUM ( fact_abatement_initiatives[capex_usd] )
+
+Planned Abatement Capex USD =
+CALCULATE ( [Abatement Capex USD], fact_abatement_initiatives[implementation_status] = "Planned" )
+
+Committed and In Flight Reduction tCO2e =
+CALCULATE (
+    [Abatement Annual Reduction tCO2e],
+    fact_abatement_initiatives[implementation_status] IN { "Committed", "In flight", "Implemented" }
+)
 
 Avoided Carbon Cost USD at Selected Price =
 [Abatement Annual Reduction tCO2e] * [Selected Carbon Price USD/t]
@@ -638,6 +686,13 @@ measure_catalog = {
             "validation": "Total emissions multiplied by scenario price.",
         },
         {
+            "name": "Probability Weighted Carbon Cost USD",
+            "business_definition": "Scenario exposure weighted by scenario probability.",
+            "dax": "SUM ( fact_carbon_exposure[probability_weighted_cost_usd] )",
+            "format": "$#,0",
+            "validation": "Reconciles to fact_carbon_exposure probability-weighted cost.",
+        },
+        {
             "name": "Emissions Intensity tCO2e per $M Revenue",
             "business_definition": "Emissions normalized by revenue.",
             "dax": "DIVIDE ( [Total Emissions tCO2e], [Revenue USD] ) * 1000000",
@@ -652,11 +707,25 @@ measure_catalog = {
             "validation": "Uses prepared supplier monthly rollup.",
         },
         {
+            "name": "High Risk Supplier Emissions tCO2e",
+            "business_definition": "Supplier emissions tied to high-risk suppliers.",
+            "dax": "CALCULATE ( [Supplier Emissions tCO2e], fact_supplier_month[carbon_risk_tier] = \"High\" )",
+            "format": "#,0.0",
+            "validation": "Reconciles to fact_supplier_month filtered by carbon_risk_tier.",
+        },
+        {
             "name": "Abatement ROI",
             "business_definition": "Annual benefit from savings and avoided carbon cost divided by capex.",
             "dax": "DIVIDE ( [Abatement Annual Benefit USD], [Abatement Capex USD] )",
             "format": "0.0%",
             "validation": "Uses initiative-level capex, opex savings, and selected carbon price.",
+        },
+        {
+            "name": "Planned Abatement Capex USD",
+            "business_definition": "Capital still in planned status and requiring governance approval.",
+            "dax": "CALCULATE ( [Abatement Capex USD], fact_abatement_initiatives[implementation_status] = \"Planned\" )",
+            "format": "$#,0",
+            "validation": "Reconciles to initiative rows with Planned status.",
         },
     ]
 }
@@ -733,6 +802,10 @@ Supplier Intensity tCO2e per $M Spend: supplier emissions divided by supplier sp
 
 Supplier Risk Tier: synthetic tier based on category, emission profile, target status, and data quality score.
 
+High Risk Supplier Emissions tCO2e: emissions from suppliers classified as high carbon risk.
+
+Average Data Quality Score: average supplier data quality score used as a governance guardrail.
+
 ## Abatement
 
 Abatement Annual Reduction tCO2e: annual reduction potential of the selected initiative set.
@@ -740,6 +813,10 @@ Abatement Annual Reduction tCO2e: annual reduction potential of the selected ini
 Abatement ROI: annual opex savings plus avoided carbon cost divided by capex.
 
 MACC USD per tCO2e: annualized net cost divided by annual reduction potential.
+
+Planned Abatement Capex USD: abatement capital still in planned status and requiring CFO/ESG approval.
+
+Probability Weighted Carbon Cost USD: carbon cost exposure weighted by scenario probability.
 """)
 write_text(MODEL / "semantic_model_notes.md", """
 # Semantic Model Notes
@@ -752,6 +829,7 @@ The model intentionally combines sustainability and CFO views:
 - financial carbon exposure under carbon price scenarios
 - supplier risk/intensity diagnostics
 - abatement ROI and MACC prioritization
+- governance guardrails for target gaps, high-risk suppliers, and planned capex
 """)
 
 theme = {
@@ -791,14 +869,20 @@ page_map = {
             "visuals": ["scenario exposure line", "MACC ranking", "ROI/payback matrix", "initiative action table"],
             "slicers": ["Scenario", "Scope", "Implementation status"],
         },
+        {
+            "page": "Risk & Action Control Tower",
+            "question": "Which supplier, target, and capex risks need executive follow-up?",
+            "visuals": ["supplier risk exposure", "target status exposure", "capex by action status", "risk action queue", "guardrail summary"],
+            "slicers": ["Year", "Supplier risk tier", "Target status", "Implementation status"],
+        },
     ]
 }
 write_json(CONFIG / "page_map.json", page_map)
 write_json(CONFIG / "dashboard_config.json", {
     "project": "Project 18 - ESG Carbon Finance",
     "audience": "CFO, ESG finance lead, procurement lead, and operations leadership",
-    "business_goal": "Connect emissions inventory, carbon cost exposure, supplier intensity, and abatement ROI into one executive-ready decision dashboard.",
-    "page_count": 3,
+    "business_goal": "Connect emissions inventory, carbon cost exposure, supplier intensity, abatement ROI, and risk/action governance into one executive-ready decision dashboard.",
+    "page_count": 4,
     "theme": "ESG Carbon Finance Executive",
     "data_mode": "synthetic_demo",
     "latest_complete_month": "2026-05",
@@ -806,6 +890,7 @@ write_json(CONFIG / "dashboard_config.json", {
 write_json(CONFIG / "visual_map.json", page_map)
 write_json(CONFIG / "slicer_map.json", {
     "global_slicers": ["Year", "Region", "Business Unit", "Scope", "Carbon price scenario"],
+    "risk_action_slicers": ["Supplier risk tier", "Target status", "Implementation status"],
     "notes": "Use few high-signal slicers; avoid high-cardinality supplier slicers on overview page.",
 })
 
@@ -846,20 +931,38 @@ Main visuals:
 - MACC-style ranking by initiative.
 - ROI and payback matrix.
 - Action table by status.
+
+## Page 4 - Risk & Action Control Tower
+
+User question: Which supplier, target, and capex risks need executive follow-up?
+
+Primary KPIs:
+- High Risk Supplier Emissions tCO2e
+- Suppliers Without Verified Target
+- Average Data Quality Score
+- 2026 Target Gap tCO2e
+- Planned Abatement Capex USD
+
+Main visuals:
+- Supplier risk exposure by tier.
+- Supplier target status exposure.
+- Capex by implementation status.
+- High-risk supplier action queue.
+- Guardrail summary for CFO/ESG operating review.
 """
 write_text(REPORT / "report_spec.md", report_spec)
 write_text(REPORT / "page_plan.md", report_spec)
 write_text(REPORT / "visual_inventory.md", """
 # Visual Inventory
 
-- KPI cards: 10
-- Line charts: 2
-- Stacked/clustered bar or column charts: 5
-- Matrix/table visuals: 4
-- Slicers: 8
+- KPI cards: native `cardVisual` containers with compact sparkline callouts
+- Line charts: native `lineChart` containers for monthly emissions and scenario exposure
+- Bar/ranking charts: native `barChart` containers for scope, supplier, facility, MACC, risk, target, and capex views
+- Tables: native `tableEx` containers for executive detail, supplier risk, abatement queue, risk queue, and guardrail summary
+- Slicers: native dropdown `slicer` containers with widened labels for Year, Region, Business Unit, Scope, Scenario, Risk tier, Target status, and Implementation status
 - Optional decomposition/tree map: 1
 
-Native Power BI visuals only; no custom visuals required.
+Native Power BI visuals only; no custom visuals required. Static text is used only for page chrome and sparkline callouts.
 """)
 write_text(REPORT / "filter_interaction_plan.md", """
 # Filter Interaction Plan
@@ -869,14 +972,15 @@ Global slicers: Year, Region, Business Unit, Scope, Carbon price scenario.
 Interactions:
 - Scenario slicer affects carbon cost, scenario exposure, abatement ROI, and avoided cost.
 - Scope slicer affects emissions, supplier intensity, and abatement views.
-- Supplier risk tier affects supplier page only.
+- Supplier risk tier affects supplier diagnostics and Risk & Action Control Tower.
+- Implementation status affects abatement ROI and capex governance views.
 """)
 write_text(REPORT / "theme_notes.md", """
 # Theme Notes
 
 Palette uses deep green, teal, chartreuse, amber, coral, graphite, and smoke. It avoids a one-note green-only ESG palette while still signaling sustainability and finance seriousness.
 
-Layout style: dense executive BI surface, not a marketing hero. KPI strip first, then movement, then diagnostic breakdown, then action table.
+Layout style: dense executive BI surface, not a marketing hero. KPI strip first, then movement, then diagnostic breakdown, then action/risk queue.
 """)
 
 write_text(DOCS / "design_research.md", """
@@ -900,11 +1004,12 @@ Secondary reference: `Template/03_FPnA_Budget_Spend/Packt_Ch12_Planning_Case_Stu
 
 Reason: scenario planning pattern is relevant for carbon price scenarios and investment decisions.
 
-## Final 3-Tab Layout
+## Final 4-Page Layout
 
 1. ESG Finance Overview
 2. Emissions & Supplier Intensity
 3. Carbon Scenario & Abatement ROI
+4. Risk & Action Control Tower
 """)
 
 write_text(AGENT / "intake_brief.md", """
@@ -912,7 +1017,7 @@ write_text(AGENT / "intake_brief.md", """
 
 Project: Project 18 - ESG Carbon Finance
 
-Request: Build a complete BI product from the Project 18 markdown and BI A-Z master prompt. User requested exactly 3 tabs and asked for researched template/layout selection.
+Request: Upgrade Project 18 using the BI A-Z Master Prompt v3 and Power BI Upgrade Playbook. Refresh the project to a 4-page executive dashboard pattern with a dedicated risk/action page.
 
 Assumptions:
 - Portfolio/demo build, not production GHG reporting.
@@ -920,6 +1025,7 @@ Assumptions:
 - Primary audience: CFO, ESG finance lead, procurement lead, operations leadership.
 - Final target remains Power BI PBIX at `output/dashboard_final.pbix`.
 - Supplemental HTML and build package are allowed, but cannot replace a validated PBIX.
+- Upgrade emphasis: model guardrails, report story, PBIX rebuildability, QA evidence, and portfolio handoff polish.
 """)
 write_text(AGENT / "run_log.md", """
 # Run Log
@@ -931,6 +1037,8 @@ write_text(AGENT / "run_log.md", """
 - Selected Procurement/Supplier Spend local PBIX as layout seed/reference.
 - Generated synthetic ESG Carbon Finance data with seed 180418.
 - Generated model, measures, config, QA, report spec, and handoff artifacts.
+- 2026-06-23: Upgraded to BI A-Z v3 structure with 4-page report journey and dedicated Risk & Action Control Tower.
+- 2026-06-23: Added risk/guardrail KPIs to data validation, DAX, model metadata, HTML preview, and native Power BI layout generator.
 """)
 write_text(AGENT / "session_guard.md", f"""
 # Session Guard
@@ -939,18 +1047,18 @@ Current project path: {PROJECT}
 
 Expected final PBIX path: {PROJECT / "output" / "dashboard_final.pbix"}
 
-Power BI windows detected at data-build time: none from `pbi-tools info`; Computer Use listed Power BI Desktop installed and not running.
+Power BI windows detected at original data-build time: unrelated sessions were present in environment check output and were not selected for save operations.
 
-Selected window/process/session: pending Desktop PBIX build.
+Selected window/process/session: none during source/data regeneration. Use exact path matching before any Desktop save or open-check.
 
-Evidence selected session belongs to current project: to be completed during Desktop open-check.
+Evidence selected session belongs to current project: required before future Desktop save/open-check.
 
-Ignored unrelated sessions: none detected during environment check.
+Ignored unrelated sessions: any pbi-tools sessions whose `PbixPath` is outside Project 18.
 """)
 write_text(AGENT / "pbix_authoring_decision.md", """
 # PBIX Authoring Decision
 
-Preferred route: COMPUTER_USE / Desktop-assisted PBIX build.
+Preferred route: SCRIPTED_DESKTOP_PBIX with Desktop open-check.
 
 Evidence:
 - Power BI Desktop EXE is installed.
@@ -962,7 +1070,9 @@ Fallback routes:
 - PBIP/PBIT build package: prepared as supplemental source package.
 - Manual-assisted Desktop build: documented if automated Save As cannot complete.
 
-Final status is not complete until `output/dashboard_final.pbix` exists and opens in Power BI Desktop with visual error count 0.
+Final status:
+- Original 2026-06-15 PBIX opened in Power BI Desktop with visual error count 0.
+- 2026-06-23 v3 upgrade regenerates source/model/layout package and requires a fresh Desktop open-check after PBIX patching.
 """)
 write_text(AGENT / "failure_matrix.md", """
 # Failure Matrix
@@ -972,7 +1082,8 @@ write_text(AGENT / "failure_matrix.md", """
 | Power BI Desktop EXE | Available | `C:\\Program Files\\Microsoft Power BI Desktop\\bin\\PBIDesktop.exe` | Use Desktop route |
 | pbi-tools extract | Available | Procurement sample extracted | Use for inspection/export |
 | pbi-tools compile | Failing | MissingMethodException in PowerBIPackager.Save | Do not rely on compile for final |
-| Final PBIX | Pending | No validated final file yet | Desktop build/save required |
+| Final PBIX | Delivered before v3 refresh | `qa/pbix_final_validation.json` showed open-check pass on 2026-06-15 | Re-run open-check after any PBIX patch |
+| v3 layout refresh | Source generated | 4-page native layout JSON generated by build script | Patch PBIX and validate package |
 """)
 
 write_text(WORKFLOW / "blueprint.md", """
@@ -991,6 +1102,7 @@ CFO, ESG finance lead, procurement lead, and operations leadership.
 - Are emissions and carbon exposure improving or worsening?
 - Which scopes, facilities, business units, and suppliers drive the footprint?
 - Which abatement initiatives should receive capital first?
+- Which supplier, target, and capex risks need executive follow-up?
 
 ## KPI Tree
 
@@ -998,7 +1110,7 @@ North-star KPI: Total Emissions tCO2e.
 
 Driver KPIs: Scope 1/2/3 mix, emissions intensity, supplier intensity, carbon price exposure.
 
-Diagnostic KPIs: supplier risk tier, data quality score, MACC, payback, abatement ROI.
+Diagnostic KPIs: supplier risk tier, data quality score, MACC, payback, abatement ROI, target gap, planned capex.
 
 ## Data Requirements
 
@@ -1009,6 +1121,7 @@ Synthetic portfolio data at monthly emission activity grain, with supplier and a
 1. What is the current ESG finance exposure?
 2. Where are the emissions and supplier intensity hotspots?
 3. Which scenario and abatement investments should be prioritized?
+4. Which risks and action owners need CFO/ESG review?
 """)
 write_json(WORKFLOW / "state.json", {
     "project_name": "Project 18 - ESG Carbon Finance",
@@ -1020,11 +1133,11 @@ write_json(WORKFLOW / "state.json", {
     "data_mode": "synthetic",
     "target_output": "Power BI PBIX",
     "final_pbix_path": "output/dashboard_final.pbix",
-    "current_phase": 3,
-    "phase_status": "build_package_ready_pbix_pending",
-    "critical_kpis": ["Total Emissions tCO2e", "Carbon Cost USD", "Supplier Intensity", "Abatement ROI", "MACC"],
+    "current_phase": 8,
+    "phase_status": "v3_source_package_refreshed_pbix_patch_pending_open_check",
+    "critical_kpis": ["Total Emissions tCO2e", "Carbon Cost USD", "Supplier Intensity", "High Risk Supplier Emissions", "Abatement ROI", "MACC", "Planned Capex"],
     "assumptions": ["Synthetic demo data because no production source was provided.", "Latest complete month is 2026-05."],
-    "risks": ["Final PBIX requires Desktop save/open validation."],
+    "risks": ["Any newly patched PBIX requires Desktop save/open validation before being called final."],
 })
 write_text(WORKFLOW / "decision_log.md", """
 # Decision Log
@@ -1036,15 +1149,20 @@ Reason: No real source data was provided and the project is portfolio/demo orien
 Impact: Dashboard can be rebuilt deterministically but is not a production GHG inventory.
 Reversible: yes.
 
-Decision: Use three tabs.
-Reason: User explicitly requested three tabs.
-Impact: Original five-page project plan is condensed into overview, drivers, and scenario/action.
+Decision: Upgrade from three tabs to four pages.
+Reason: BI A-Z v3 standard separates risk/exception/action handling from scenario and ROI analysis.
+Impact: The executive journey now has overview, diagnostics, scenario/ROI, and control-tower action review.
 Reversible: yes.
 
 Decision: Use Procurement PBIX as layout seed/reference only.
 Reason: It is the closest local supplier/spend template but not ESG-specific.
 Impact: Avoids stale domain bindings in final content.
 Reversible: yes.
+
+Decision: Keep native static textbox/shape visuals for the patched report layout.
+Reason: They rendered reliably in the prior Desktop open-check while preserving the semantic model for Data/Model view exploration.
+Impact: Canvas is executive-readable; deeper self-service analysis remains available through model fields and measures.
+Reversible: yes, if a future build uses fully bound native visuals with Desktop QA.
 """)
 write_text(WORKFLOW / "risk_register.md", """
 # Risk Register
@@ -1054,7 +1172,8 @@ write_text(WORKFLOW / "risk_register.md", """
 | PBIX cannot be saved by automation | High | Medium | Prepare rebuild package and Desktop runbook | Open |
 | Synthetic data mistaken for production | High | Low | Label all source docs and QA as synthetic demo | Mitigated |
 | ESG accounting overclaim | Medium | Low | Cite GHG Protocol and label factor assumptions synthetic | Mitigated |
-| Too much content for 3 tabs | Medium | Medium | Use KPI hierarchy and detail tables only where needed | Mitigated |
+| Risk/action story gets buried inside ROI page | Medium | Medium | Add dedicated Risk & Action Control Tower | Mitigated |
+| v3 PBIX patch not yet open-checked | High | Medium | Patch package, validate file, then open exact PBIX in Desktop | Open |
 """)
 
 write_text(QA / "data_model_qa.md", """
@@ -1069,6 +1188,7 @@ Checks:
 - Fact record IDs are unique.
 - Critical key fields are non-null.
 - Rate measures are defined with DIVIDE in DAX.
+- Risk and action guardrails reconcile to prepared supplier, scenario, and initiative tables.
 """)
 write_text(QA / "qa_checklist.md", """
 # QA Checklist
@@ -1086,24 +1206,26 @@ write_text(QA / "qa_checklist.md", """
 - [x] DAX measure definitions created.
 - [x] Rates use DIVIDE.
 - [x] Reconciliation CSV created.
+- [x] Risk/action guardrails reconciled.
 
 ## Visual QA
 
-- [ ] Final PBIX opened in Power BI Desktop.
-- [ ] Three native report pages verified.
-- [ ] Visual error count verified as 0.
-- [ ] Desktop screenshots saved.
+- [x] Native report layout JSON generated.
+- [x] Four report pages defined in spec/config.
+- [ ] v3 patched PBIX opened in Power BI Desktop.
+- [ ] Visual error count verified as 0 after v3 patch.
+- [ ] Desktop screenshots refreshed after v3 patch.
 
 ## File QA
 
 - [ ] output/dashboard_final.pbix exists.
-- [ ] Exact file opens in Power BI Desktop.
+- [ ] Exact v3 PBIX opens in Power BI Desktop.
 """)
-write_text(QA / "visual_qa_notes.md", "Visual QA is pending until final PBIX is created and opened in Power BI Desktop.")
-write_text(QA / "interaction_qa_notes.md", "Interaction QA plan: verify Year, Region, Scope, Business Unit, and Carbon Scenario slicers after PBIX build.")
+write_text(QA / "visual_qa_notes.md", "Native layout JSON now defines four pages with actual slicer, cardVisual, lineChart, barChart, and tableEx containers plus compact KPI sparkline callouts. Fresh Desktop visual QA is required after patching `output/dashboard_final.pbix` with the upgraded layout.")
+write_text(QA / "interaction_qa_notes.md", "Interaction QA plan: verify Year, Region, Scope, Business Unit, Carbon Scenario, Supplier Risk Tier, Target Status, and Implementation Status after the v3 PBIX open-check.")
 write_text(QA / "performance_qa_notes.md", "Prepared data is compact: less than 2,000 fact rows and should be responsive in Power BI Desktop.")
-write_text(QA / "regression_qa_notes.md", "Regression QA is pending final PBIX build. Data/model regression checks pass for generated artifacts.")
-write_text(QA / "report_qa.md", "Report QA pending Desktop build and screenshot capture.")
+write_text(QA / "regression_qa_notes.md", "Data/model regression checks pass for generated artifacts. PBIX visual regression should be refreshed after applying the v3 layout.")
+write_text(QA / "report_qa.md", "Report source QA: pass for four-page spec/config/layout generation. Desktop screenshot QA pending after v3 PBIX patch.")
 
 write_text(DOCS / "rebuild_guide.md", f"""
 # Rebuild Guide
@@ -1112,6 +1234,8 @@ Run from the project folder:
 
 ```powershell
 python build/scripts/build_project18_assets.py
+python build/scripts/build_powerbi_native_assets.py
+powershell -NoProfile -ExecutionPolicy Bypass -File build/scripts/03_apply_native_layout_to_pbix.ps1
 ```
 
 Then open Power BI Desktop and import the prepared CSVs from:
@@ -1120,7 +1244,7 @@ Then open Power BI Desktop and import the prepared CSVs from:
 {PREP}
 ```
 
-Create relationships according to `model/relationship_map.md`, add measures from `model/MEASURES.dax`, apply `build/config/theme.json`, and build the three pages in `report/report_spec.md`.
+The scripted route regenerates data/docs, model/layout source, then patches the native layout into `output/dashboard_final.pbix`. If building manually, create relationships according to `model/relationship_map.md`, add measures from `model/MEASURES.dax`, apply `build/config/theme.json`, and build the four pages in `report/report_spec.md`.
 """)
 write_text(DOCS / "refresh_guide.md", """
 # Refresh Guide
@@ -1137,31 +1261,48 @@ Steps:
 write_text(DOCS / "handoff_notes.md", """
 # Handoff Notes
 
-Final PBIX: `output/dashboard_final.pbix` pending Desktop build/save validation.
+Final PBIX: `output/dashboard_final.pbix`.
 
-Dashboard purpose: connect emissions, supplier intensity, carbon price scenarios, and abatement ROI for ESG finance decisions.
+v3 status: source/model/layout package refreshed. A fresh Power BI Desktop open-check is required after patching the PBIX with the v3 four-page layout.
+
+Dashboard purpose: connect emissions, supplier intensity, carbon price scenarios, abatement ROI, and risk/action governance for ESG finance decisions.
 
 Audience: CFO, ESG finance, procurement, and operations leaders.
+
+Canvas standard: upgraded toward the Project 20 pattern with native dropdown slicers, native KPI cards/charts/tables, widened filter labels, chart/table polish, and compact KPI sparkline callouts.
 
 Pages:
 1. ESG Finance Overview
 2. Emissions & Supplier Intensity
 3. Carbon Scenario & Abatement ROI
+4. Risk & Action Control Tower
 
 Key KPIs:
 - Total Emissions tCO2e
 - Carbon Cost USD
 - Emissions Intensity
 - Supplier Intensity
+- High Risk Supplier Emissions
+- Average Data Quality Score
 - Abatement ROI
 - MACC USD per tCO2e
+- Planned Abatement Capex USD
 
 Data source: synthetic demo CSVs generated with seed 180418.
 
-Known issue: final PBIX is not complete until Desktop Save As and open-check pass.
+Known issue: any newly patched v3 PBIX should be reopened in Power BI Desktop and screenshot-checked before being described as freshly Desktop-validated.
 """)
 write_text(DOCS / "changelog.md", """
 # Changelog
+
+## 2026-06-23
+
+- Upgraded Project 18 to the BI A-Z v3 delivery structure.
+- Added a fourth page: Risk & Action Control Tower.
+- Added risk/guardrail KPI definitions for high-risk supplier emissions, data quality, probability-weighted carbon cost, target gap, and planned abatement capex.
+- Updated report spec, config, QA notes, handoff notes, and native layout generator for the four-page executive story.
+- Reworked the active PBIX layout generator from static analytical panels to native slicer/card/chart/table containers, with KPI sparkline callouts and widened slicer labels.
+- Fixed supplemental HTML preview month labels and added KPI sparklines for preview parity.
 
 ## 2026-06-15
 
@@ -1175,26 +1316,28 @@ write_text(DOCS / "issue_log.md", """
 
 | Date | Issue | Status | Notes |
 |---|---|---:|---|
-| 2026-06-15 | Final PBIX requires Desktop build/open-check | Open | Build package is ready; Desktop validation pending |
+| 2026-06-23 | v3 PBIX requires fresh Desktop open-check after layout patch | Open | Validate exact `output/dashboard_final.pbix` after patching |
+| 2026-06-15 | Original final PBIX required Desktop build/open-check | Closed | Open-check passed in prior validation evidence |
 | 2026-06-15 | pbi-tools compile failed with installed packaging API | Open | Use Desktop route instead of pbi-tools compile |
 """)
 write_text(DOCS / "release_notes.md", """
 # Release Notes
 
-Release candidate source package for Project 18 - ESG Carbon Finance.
+v3 source package for Project 18 - ESG Carbon Finance.
 
 Included:
 - Synthetic data and validation
 - Semantic model and DAX
-- 3-tab report design
+- 4-page report design
 - Theme and config
 - Handoff/rebuild/refresh docs
 - Supplemental HTML dashboard preview
+- Native Power BI layout generator
 
-Not yet released as final PBIX until Power BI Desktop save/open QA passes.
+Fresh Desktop open-check is required after any v3 PBIX patch.
 """)
-write_text(DOCS / "known_issues.md", "Final PBIX is pending Desktop build/open validation.")
-write_text(DOCS / "performance_tuning_log.md", "No performance tuning required for this compact synthetic dataset.")
+write_text(DOCS / "known_issues.md", "v3 PBIX patch requires a fresh Power BI Desktop open-check and screenshot refresh before claiming fresh visual QA pass.")
+write_text(DOCS / "performance_tuning_log.md", "No performance tuning required for this compact synthetic dataset. The v3 layout keeps each page visually dense but compact, with static native canvas elements and fewer than 6 analytical panels per page.")
 
 write_text(POWERBI / "notes" / "authoring_strategy.md", (AGENT / "pbix_authoring_decision.md").read_text(encoding="utf-8"))
 write_text(POWERBI / "notes" / "pbix_build_runbook.md", """
@@ -1209,7 +1352,7 @@ write_text(POWERBI / "notes" / "pbix_build_runbook.md", """
 4. Create star-schema relationships from `model/relationship_map.md`.
 5. Add DAX measures from `model/MEASURES.dax`.
 6. Import theme from `build/config/theme.json`.
-7. Build the 3 pages from `report/report_spec.md`.
+7. Build the 4 pages from `report/report_spec.md`.
 8. Save as `output/dashboard_final.pbix`.
 9. Reopen exact file and complete `qa/pbix_final_validation.json`.
 """)
@@ -1223,7 +1366,7 @@ Preferred Desktop path:
 Validation:
 - Confirm title/path belongs to Project 18.
 - Save only to `output/dashboard_final.pbix`.
-- Capture screenshots for all 3 pages into `output/screenshots`.
+- Capture screenshots for all 4 pages into `output/screenshots`.
 - Record visual error count.
 """)
 write_text(POWERBI / "launch_powerbi.ps1", f"""
@@ -1263,6 +1406,35 @@ for r in flat_rows:
 
 top_suppliers = sorted(supplier_rows, key=lambda r: r["supplier_intensity_tco2e_per_musd"], reverse=True)[:10]
 top_abatement = sorted(abatement_rows, key=lambda r: r["macc_usd_per_tco2e"])[:10]
+risk_exposure = defaultdict(float)
+target_exposure = defaultdict(float)
+for row in supplier_rows:
+    risk_exposure[row["carbon_risk_tier"]] += row["emissions_tco2e"]
+    target_exposure[row["target_status"]] += row["emissions_tco2e"]
+capex_status = defaultdict(float)
+for row in abatement_rows:
+    capex_status[row["implementation_status"]] += row["capex_usd"]
+
+def preview_spark(values):
+    blocks = "▁▂▃▄▅▆▇█"
+    cleaned = [float(v) for v in values if v is not None]
+    if not cleaned:
+        return ""
+    lo, hi = min(cleaned), max(cleaned)
+    if hi == lo:
+        return blocks[3] * len(cleaned)
+    return "".join(blocks[min(len(blocks) - 1, max(0, round((v - lo) / (hi - lo) * (len(blocks) - 1))))] for v in cleaned)
+
+overview_months = sorted(overview_by_month.items())
+monthly_emissions_values = [v["emissions"] for _k, v in overview_months]
+monthly_cost_values = [v["emissions"] * 90 for _k, v in overview_months]
+monthly_intensity_values = [(v["emissions"] / v["revenue"] * 1_000_000) if v["revenue"] else 0 for _k, v in overview_months]
+supplier_risk_by_month = defaultdict(float)
+for row in supplier_rows:
+    month = f"{row['date_key'][:4]}-{row['date_key'][4:6]}-01"
+    if row["carbon_risk_tier"] == "High":
+        supplier_risk_by_month[month] += row["emissions_tco2e"]
+high_risk_monthly_values = [supplier_risk_by_month[k] for k, _v in overview_months]
 
 html_payload = {
     "kpis": {
@@ -1270,15 +1442,35 @@ html_payload = {
         "Carbon cost @ $90/t": f"${total_emissions*90/1_000_000:,.1f}M",
         "Intensity": f"{total_emissions/total_revenue*1_000_000:,.1f} tCO2e/$M",
         "Latest YoY": f"{yoy_change:.1%}",
+        "High-risk emissions": f"{high_risk_supplier_emissions/1000:,.1f}k tCO2e",
+        "Target gap": f"{target_gap/1000:,.1f}k tCO2e",
+    },
+    "sparkline": {
+        "Total emissions": preview_spark(monthly_emissions_values[-12:]),
+        "Carbon cost @ $90/t": preview_spark(monthly_cost_values[-12:]),
+        "Intensity": preview_spark(monthly_intensity_values[-12:]),
+        "Latest YoY": preview_spark(monthly_emissions_values[-12:]),
+        "High-risk emissions": preview_spark(high_risk_monthly_values[-12:]),
+        "Target gap": preview_spark(monthly_emissions_values[-12:]),
     },
     "months": [
-        {"month": k[:4] + "-" + k[4:], "emissions": round(v["emissions"], 1), "cost": round(v["emissions"] * 90 / 1_000_000, 2)}
-        for k, v in sorted(overview_by_month.items())
+        {"month": k[:7], "emissions": round(v["emissions"], 1), "cost": round(v["emissions"] * 90 / 1_000_000, 2)}
+        for k, v in overview_months
     ],
     "scope": [{"scope": k, "emissions": round(v, 1)} for k, v in sorted(scope_for_chart.items())],
     "business_units": [{"business_unit": k, "emissions": round(v, 1)} for k, v in sorted(bu_for_chart.items(), key=lambda x: x[1], reverse=True)],
     "suppliers": top_suppliers,
     "abatement": top_abatement,
+    "risk": [{"tier": k, "emissions": round(v, 1)} for k, v in sorted(risk_exposure.items(), key=lambda x: x[1], reverse=True)],
+    "targets": [{"target": k, "emissions": round(v, 1)} for k, v in sorted(target_exposure.items(), key=lambda x: x[1], reverse=True)],
+    "capex_status": [{"status": k, "capex": round(v, 1)} for k, v in sorted(capex_status.items(), key=lambda x: x[1], reverse=True)],
+    "guardrails": {
+        "supplier_data_quality": f"{avg_supplier_data_quality:.1%}",
+        "suppliers_without_target": no_verified_target_suppliers,
+        "planned_capex": f"${planned_abatement_capex/1_000_000:,.1f}M",
+        "weighted_carbon_cost": f"${probability_weighted_carbon_cost/1_000_000:,.1f}M",
+        "secured_reduction": f"{committed_inflight_reduction/1000:,.1f}k tCO2e",
+    },
 }
 write_json(OUTPUT / "dashboard_preview_data.json", html_payload)
 
@@ -1306,6 +1498,7 @@ html = """
     .kpi { grid-column: span 3; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px; min-height:88px; }
     .kpi b { display:block; font-size:12px; color:var(--muted); margin-bottom:10px; }
     .kpi span { font-size:25px; font-weight:700; }
+    .kpi small { display:block; margin-top:8px; color:var(--teal); font: 700 13px/1 Consolas, monospace; letter-spacing:1px; white-space:nowrap; overflow:hidden; text-overflow:clip; }
     .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px; min-height:280px; }
     .span6 { grid-column: span 6; } .span7 { grid-column: span 7; } .span5 { grid-column: span 5; } .span12 { grid-column: span 12; }
     h2 { margin:0 0 10px; font-size:16px; }
@@ -1326,6 +1519,7 @@ html = """
     <button class="active" data-page="overview">ESG Finance Overview</button>
     <button data-page="supplier">Emissions & Supplier Intensity</button>
     <button data-page="roi">Carbon Scenario & Abatement ROI</button>
+    <button data-page="risk">Risk & Action Control Tower</button>
   </nav>
   <main>
     <section id="overview" class="page active">
@@ -1346,6 +1540,14 @@ html = """
         <div class="card span12"><h2>Abatement Priority by MACC</h2><table id="abatementTable"></table><div class="note">Negative or low MACC initiatives should be prioritized before high-cost options when feasible.</div></div>
       </div>
     </section>
+    <section id="risk" class="page">
+      <div class="grid">
+        <div class="card span6"><h2>Supplier Risk Exposure</h2><svg id="riskChart"></svg></div>
+        <div class="card span6"><h2>Target Status Exposure</h2><svg id="targetChart"></svg></div>
+        <div class="card span6"><h2>Capex by Action Status</h2><svg id="capexChart"></svg></div>
+        <div class="card span6"><h2>Guardrail Summary</h2><table id="guardrailTable"></table></div>
+      </div>
+    </section>
   </main>
   <script id="payload" type="application/json">__PAYLOAD__</script>
   <script>
@@ -1358,7 +1560,8 @@ html = """
     const kpiEl = document.getElementById('kpis');
     Object.entries(data.kpis).forEach(([k,v]) => {
       const el = document.createElement('div'); el.className='kpi';
-      el.innerHTML = `<b>${k}</b><span>${v}</span>`; kpiEl.appendChild(el);
+      const spark = data.sparkline?.[k] || '';
+      el.innerHTML = `<b>${k}</b><span>${v}</span><small>${spark}</small>`; kpiEl.appendChild(el);
     });
     function bar(svgId, rows, label, value, color) {
       const svg = document.getElementById(svgId), w=900, h=220, m=34;
@@ -1381,10 +1584,15 @@ html = """
     trend();
     bar('scope', data.scope, 'scope', 'emissions', '#2A9D8F');
     bar('bu', data.business_units, 'business_unit', 'emissions', '#12372A');
+    bar('riskChart', data.risk, 'tier', 'emissions', '#E76F51');
+    bar('targetChart', data.targets, 'target', 'emissions', '#F4A261');
+    bar('capexChart', data.capex_status, 'status', 'capex', '#12372A');
     const supplierTable = document.getElementById('supplierTable');
     supplierTable.innerHTML = '<tr><th>Supplier</th><th>Category</th><th>Risk</th><th>Intensity</th><th>Target</th></tr>' + data.suppliers.map(r => `<tr><td>${r.supplier}</td><td>${r.supplier_category}</td><td>${r.carbon_risk_tier}</td><td>${r.supplier_intensity_tco2e_per_musd.toLocaleString()}</td><td>${r.target_status}</td></tr>`).join('');
     const abatementTable = document.getElementById('abatementTable');
     abatementTable.innerHTML = '<tr><th>Initiative</th><th>Scope</th><th>Status</th><th>Reduction</th><th>MACC</th><th>Payback</th><th>ROI</th></tr>' + data.abatement.map(r => `<tr><td>${r.initiative}</td><td>${r.scope}</td><td>${r.implementation_status}</td><td>${r.annual_reduction_tco2e.toLocaleString()}</td><td>$${r.macc_usd_per_tco2e.toLocaleString()}</td><td>${r.payback_years_at_90}</td><td>${(r.roi_at_90*100).toFixed(1)}%</td></tr>`).join('');
+    const guardrailTable = document.getElementById('guardrailTable');
+    guardrailTable.innerHTML = '<tr><th>Guardrail</th><th>Value</th></tr>' + Object.entries(data.guardrails).map(([k,v]) => `<tr><td>${k.replaceAll('_',' ')}</td><td>${v}</td></tr>`).join('');
   </script>
 </body>
 </html>
@@ -1394,25 +1602,28 @@ write_text(OUTPUT / "dashboard_preview.html", html)
 readme = f"""
 # Project 18 - ESG Carbon Finance
 
-Executive-ready portfolio BI build connecting emissions, carbon cost exposure, supplier intensity, and abatement ROI.
+Executive-ready portfolio BI build connecting emissions, carbon cost exposure, supplier intensity, abatement ROI, and risk/action governance.
 
 ## Current Build Status
 
 - Data/model/report source package: ready.
 - Supplemental HTML preview: `output/dashboard_preview.html`.
 - Final PBIX target: `output/dashboard_final.pbix`.
-- Final PBIX status: pending Power BI Desktop build/open-check.
+- Final PBIX status: v3 source/layout package refreshed; run fresh Power BI Desktop open-check after PBIX patch.
 
 ## Dashboard Pages
 
 1. ESG Finance Overview
 2. Emissions & Supplier Intensity
 3. Carbon Scenario & Abatement ROI
+4. Risk & Action Control Tower
 
 ## Rebuild
 
 ```powershell
 python build/scripts/build_project18_assets.py
+python build/scripts/build_powerbi_native_assets.py
+powershell -NoProfile -ExecutionPolicy Bypass -File build/scripts/03_apply_native_layout_to_pbix.ps1
 ```
 
 See `docs/rebuild_guide.md`, `docs/handoff_notes.md`, and `powerbi/notes/pbix_build_runbook.md`.

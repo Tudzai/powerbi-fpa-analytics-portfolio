@@ -1,0 +1,29 @@
+{
+  "version": "2.5.8",
+  "author": {
+    "name": "Managility ",
+    "email": "support@acterys.com"
+  },
+  "resources": [
+    {
+      "resourceId": "rId0",
+      "sourceType": 5,
+      "file": "resources/acterysReportingVisual.pbiviz.json"
+    }
+  ],
+  "visual": {
+    "guid": "acterysReportingVisual",
+    "name": "ActerysReporting 2.5.8",
+    "displayName": "Acterys Reporting 2.5.8",
+    "version": "2.5.8",
+    "description": "Acterys Reporting",
+    "supportUrl": "https://knowledge.acterys.com/",
+    "gitHubUrl": "",
+    "visualClassName": "Visual"
+  },
+  "metadata": {
+    "pbivizjson": {
+      "resourceId": "rId0"
+    }
+  }
+}

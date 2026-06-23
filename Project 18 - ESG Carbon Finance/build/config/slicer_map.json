@@ -6,5 +6,10 @@
     "Scope",
     "Carbon price scenario"
   ],
+  "risk_action_slicers": [
+    "Supplier risk tier",
+    "Target status",
+    "Implementation status"
+  ],
   "notes": "Use few high-signal slicers; avoid high-cardinality supplier slicers on overview page."
 }

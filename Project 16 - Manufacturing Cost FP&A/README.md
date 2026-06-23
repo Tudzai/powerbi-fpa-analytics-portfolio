@@ -4,9 +4,6 @@ Executive-ready BI portfolio product for manufacturing standard cost variance, c
 
 Main target: `output/dashboard_final.pbix`.
 Supplemental preview: `output/dashboard_final.html`.
-Supplemental Power BI template package: `output/dashboard_project16_model_schema.pbit`.
-
-PBIX status: blocked for persistence. The live Power BI Desktop session has the Project 16 model/layout, but the saved PBIX on disk still contains the seed DataModel when validated offline. See `output/PBIX_BUILD_STATUS.md` and `qa/pbix_final_validation.json`.
 
 Tabs:
 - Manufacturing FP&A Overview

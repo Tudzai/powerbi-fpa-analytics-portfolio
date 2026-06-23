@@ -7,5 +7,5 @@ Preferred Desktop path:
 Validation:
 - Confirm title/path belongs to Project 18.
 - Save only to `output/dashboard_final.pbix`.
-- Capture screenshots for all 3 pages into `output/screenshots`.
+- Capture screenshots for all 4 pages into `output/screenshots`.
 - Record visual error count.

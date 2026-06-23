@@ -13,8 +13,10 @@ __pycache__/
 # Power BI transient and extracted validation artifacts
 **/build/scratch/
 **/build/tools/
+**/.playwright-cli/
 **/_tmp/
 **/_agent/
+**/tmp/
 **/_rebuild_temp*/
 **/tmp_*
 **/archive/
@@ -43,6 +45,7 @@ __pycache__/
 **/output/pbix_extract/
 **/output/*extract*/
 **/output/tmp_*
+**/output/backups/
 **/output/user_settings_patch*/
 **/output/*.csv
 **/output/exports/*.csv

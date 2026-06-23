@@ -1,6 +1,8 @@
 {
   "Executive Overview": [
-    "6 KPI cards",
+    "Current Lens",
+    "Decision Chip",
+    "6 KPI cards with sparklines",
     "Revenue/GP trend",
     "GP by lane cluster",
     "service mix donut",
@@ -8,7 +10,9 @@
     "lane gap table"
   ],
   "Trade Lane Margin": [
-    "6 KPI cards",
+    "Current Lens",
+    "Decision Chip",
+    "6 KPI cards with sparklines",
     "GP margin by lane",
     "mode revenue/GP bars",
     "margin gap waterfall",
@@ -16,7 +20,9 @@
     "service/carrier cost table"
   ],
   "Cost Drivers & Action Queue": [
-    "6 KPI cards",
+    "Current Lens",
+    "Decision Chip",
+    "6 KPI cards with sparklines",
     "cost driver waterfall",
     "cost by carrier",
     "risk by issue type donut",

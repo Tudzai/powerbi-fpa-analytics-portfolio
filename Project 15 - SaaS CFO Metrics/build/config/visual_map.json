@@ -1,4 +1,7 @@
 {
-  "visual_containers": 47,
-  "visual_style": "board-ready SaaS CFO cockpit with KPI strip, revenue bridge, cohort retention and unit economics panels"
+  "visual_containers": 89,
+  "visual_style": "Project 20-quality SaaS CFO cockpit with left rail, SVG KPI cards, current lens, decision chips, synchronized chart slots, metric-aware units, action-button page navigation, and explicit table widths",
+  "navigation_action_count": 9,
+  "table_column_width_rules": 32,
+  "table_column_alignment_rules": 32
 }

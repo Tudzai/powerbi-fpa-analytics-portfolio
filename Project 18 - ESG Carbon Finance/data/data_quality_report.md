@@ -33,5 +33,9 @@ Date range: Jan 2024 to May 2026.
 - Scope 3: 371,560.58 tCO2e
 - Base carbon cost at $50/t: 35,972,630 USD
 - Latest month YoY emissions change: -12.8%
+- High-risk supplier emissions: 161,952.82 tCO2e
+- Supplier data quality score: 82.0%
+- Suppliers without verified target: 5
+- Probability-weighted carbon cost: 58,995,114 USD
 
 Status: pass for portfolio/demo use.

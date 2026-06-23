@@ -34,3 +34,21 @@ Main visuals:
 - MACC-style ranking by initiative.
 - ROI and payback matrix.
 - Action table by status.
+
+## Page 4 - Risk & Action Control Tower
+
+User question: Which supplier, target, and capex risks need executive follow-up?
+
+Primary KPIs:
+- High Risk Supplier Emissions tCO2e
+- Suppliers Without Verified Target
+- Average Data Quality Score
+- 2026 Target Gap tCO2e
+- Planned Abatement Capex USD
+
+Main visuals:
+- Supplier risk exposure by tier.
+- Supplier target status exposure.
+- Capex by implementation status.
+- High-risk supplier action queue.
+- Guardrail summary for CFO/ESG operating review.

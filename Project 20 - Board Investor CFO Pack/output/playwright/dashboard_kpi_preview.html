@@ -1,0 +1,352 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Project 20 KPI Preview</title>
+<link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#463793;font:13px Segoe UI,Arial,sans-serif;color:#211A32}
+.app{width:1280px;height:720px;display:grid;grid-template-columns:184px 1fr;padding:8px 18px 14px 14px;gap:20px;background:#463793}
+aside{background:#250642;border-radius:8px;padding:20px 22px;color:#fff}
+.brand{font-weight:700;color:#DCD4F4;margin-bottom:22px}
+button{width:100%;height:30px;margin:0 0 10px;border:0;border-radius:6px;background:#321052;color:#CFC3E6;text-align:left;padding:0 14px;font:600 12px Segoe UI;cursor:pointer}
+button.active{background:#6B42D8;color:#fff}
+main{position:relative}
+.page{display:none}
+.page.active{display:block}
+h1{margin:8px 0 8px;font-size:22px;line-height:1.18;color:#EDEAF9}
+.chips{position:absolute;top:9px;left:438px;display:flex;gap:10px}
+.chips span{background:#E7F0FF;border-left:5px solid #4F87F5;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:700;color:#261C3C;white-space:nowrap}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,248px);gap:14px;margin-top:10px}
+.kpi-card{height:140px;background:#FFFFFF;border:1px solid #D5CDE6;border-radius:8px;box-shadow:0 8px 18px rgba(24,8,39,.2);position:relative;overflow:hidden;padding:11px 14px 8px}
+.accent{position:absolute;top:7px;left:10px;right:10px;height:3px;border-radius:3px}
+.kpi-top{display:flex;align-items:center;gap:10px;height:24px;margin-top:3px}
+.icon{width:24px;height:24px;border-radius:5px;color:#fff;display:grid;place-items:center;font-size:10px;font-weight:800;letter-spacing:0}
+.kpi-label{font-size:13px;line-height:1;font-weight:600;white-space:nowrap}
+.kpi-main{display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:10px;align-items:center;margin-top:10px;min-height:48px}
+.kpi-value{font-size:25px;line-height:1.15;font-weight:700;white-space:nowrap;letter-spacing:0;min-width:0}
+.spark{height:44px;border-radius:7px;overflow:hidden}
+.spark-svg{display:block;width:92px;height:44px}
+.kpi-footer{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #8F7BAE;margin-top:12px;padding-top:7px;font-size:10.5px;line-height:1;color:#211A32;gap:6px;white-space:nowrap}
+.kpi-footer strong{font-size:10px;color:#1F8E45}
+.panel-grid{display:grid;grid-template-columns:426px 304px 294px;grid-template-rows:230px 232px;gap:24px 16px;margin-top:20px}
+.panel{background:#F0EAF7;border:1px solid #D5CDE6;border-radius:8px;box-shadow:0 8px 18px rgba(24,8,39,.16);padding:10px 12px;overflow:hidden}
+.panel h2{font-size:14px;line-height:1;margin:0 0 8px;color:#211A32}
+.panel small{display:block;color:#6E667B;font-size:11px;margin-bottom:12px}
+.bars p{display:grid;grid-template-columns:72px 1fr;align-items:center;gap:8px;margin:10px 0;font-size:11px;color:#6E667B}
+.bars b{display:block;height:17px;background:#6B42D8;border-radius:2px}
+.donut{width:116px;height:116px;margin:18px auto 12px;border-radius:50%;background:conic-gradient(#5890F5 0 57%,#2E2C9A 57% 81%,#D07343 81% 96%,#5C1474 96%);position:relative}
+.donut:after{content:"";position:absolute;inset:32px;background:#F0EAF7;border-radius:50%}
+.legend{font-size:11px;color:#6E667B;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.legend i{width:8px;height:8px;border-radius:50%;background:#5890F5;display:inline-block;margin-top:3px}
+table{width:100%;border-collapse:collapse;font-size:11px;background:#fff}
+th,td{padding:5px 6px;border-bottom:1px solid #E2DAEF;text-align:left}
+th{font-weight:700;color:#211A32}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside><div class="brand">Finance<br>Control</div><button class="active" data-tab="performance">01 Performance</button><button data-tab="cash">02 Cash Plan</button><button data-tab="risk">03 Risk Monitor</button></aside>
+  <main><section id='performance' class='page active'><h1>Performance</h1><div class='chips'><span>On plan</span><span>Board Lens</span><span>Data through May 2026</span></div><div class='kpi-grid'>
+        <article class="kpi-card" data-testid="kpi-card" data-page="performance">
+          <div class="accent" style="background:#4F87F5"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#4F87F5">Re</span>
+            <span class="kpi-label">Revenue</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#4F87F5">$36.7M</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#DDEEDC"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,28.4 14.5,11.8 25.0,32.9 35.5,15.0 46.0,16.9 56.5,19.4 67.0,25.2 77.5,22.0 88.0,15.0" fill="none" stroke="#4F87F5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="28.4" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="25.0" cy="32.9" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="15.0" r="4" fill="#4F87F5" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>$31.4M</strong></span><span>YoY <strong>+16.4%</strong></span></div>
+        </article>
+        
+
+        <article class="kpi-card" data-testid="kpi-card" data-page="performance">
+          <div class="accent" style="background:#0F9F95"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#0F9F95">Ma</span>
+            <span class="kpi-label">Margin</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#0F9F95">77.8%</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#DDEEDC"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,32.2 14.5,14.3 25.0,31.0 35.5,9.8 46.0,15.6 56.5,18.2 67.0,23.3 77.5,15.0 88.0,20.1" fill="none" stroke="#0F9F95" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="32.2" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="35.5" cy="9.8" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="20.1" r="4" fill="#0F9F95" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>75.9%</strong></span><span>YoY <strong>+1.9pt</strong></span></div>
+        </article>
+        
+
+        <article class="kpi-card" data-testid="kpi-card" data-page="performance">
+          <div class="accent" style="background:#1F8E45"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#1F8E45">EB</span>
+            <span class="kpi-label">EBITDA</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#1F8E45">$14.3M</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#DDEEDC"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,20.7 14.5,19.4 25.0,9.2 35.5,18.8 46.0,18.2 56.5,17.5 67.0,31.0 77.5,13.7 88.0,11.1" fill="none" stroke="#1F8E45" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="20.7" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="77.5" cy="13.7" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="11.1" r="4" fill="#1F8E45" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>$12.5M</strong></span><span>YoY <strong>+22.8%</strong></span></div>
+        </article>
+        
+
+        <article class="kpi-card" data-testid="kpi-card" data-page="performance">
+          <div class="accent" style="background:#BE7C10"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#BE7C10">Ca</span>
+            <span class="kpi-label">Cash</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#BE7C10">$376.7M</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#DDEEDC"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,15.6 14.5,10.5 25.0,32.2 35.5,25.8 46.0,22.0 56.5,28.4 67.0,23.3 77.5,24.6 88.0,15.0" fill="none" stroke="#BE7C10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="15.6" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="25.0" cy="32.2" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="15.0" r="4" fill="#BE7C10" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>$348M</strong></span><span>YoY <strong>+8.1%</strong></span></div>
+        </article>
+        </div><div class='panel-grid'><div class='panel'><h2>Revenue vs Plan + EBITDA Trend</h2><small>Drilldown: Month > KPI</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div><div class='panel'><h2>Revenue Mix by Region</h2><small>Drilldown: Region</small><div class="donut"></div><div class="legend"><i></i>Americas <i></i>EMEA <i></i>APAC</div></div><div class='panel'><h2>Revenue by Business Unit</h2><small>Drilldown: Business Unit</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div><div class='panel'><h2>Board KPI Details</h2><small>Drilldown: Details</small>
+          <table><tr><th>Metric</th><th>Actual</th><th>Status</th></tr><tr><td>Cash</td><td>$376.3M</td><td>Clear</td></tr><tr><td>EBITDA</td><td>$15.3M</td><td>Clear</td></tr><tr><td>Runway</td><td>99.0x</td><td>Clear</td></tr></table>
+        </div><div class='panel'><h2>Revenue vs Plan by BU</h2><small>Drilldown: Variance</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div><div class='panel'><h2>EBITDA by BU</h2><small>Drilldown: EBITDA</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div></div></section><section id='cash' class='page'><h1>Cash Plan</h1><div class='chips'><span>On plan</span><span>Board Lens</span><span>Data through May 2026</span></div><div class='kpi-grid'>
+        <article class="kpi-card" data-testid="kpi-card" data-page="cash">
+          <div class="accent" style="background:#BE7C10"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#BE7C10">Ca</span>
+            <span class="kpi-label">Cash</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#BE7C10">$376.7M</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#DDEEDC"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,28.4 14.5,11.8 25.0,32.9 35.5,15.0 46.0,16.9 56.5,19.4 67.0,25.2 77.5,22.0 88.0,15.0" fill="none" stroke="#BE7C10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="28.4" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="25.0" cy="32.9" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="15.0" r="4" fill="#BE7C10" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>$348M</strong></span><span>YoY <strong>+8.1%</strong></span></div>
+        </article>
+        
+
+        <article class="kpi-card" data-testid="kpi-card" data-page="cash">
+          <div class="accent" style="background:#4F87F5"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#4F87F5">Ru</span>
+            <span class="kpi-label">Runway</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#4F87F5">99.0x</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#DDEEDC"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,32.2 14.5,14.3 25.0,31.0 35.5,9.8 46.0,15.6 56.5,18.2 67.0,23.3 77.5,15.0 88.0,20.1" fill="none" stroke="#4F87F5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="32.2" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="35.5" cy="9.8" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="20.1" r="4" fill="#4F87F5" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>88.4x</strong></span><span>YoY <strong>+12.0%</strong></span></div>
+        </article>
+        
+
+        <article class="kpi-card" data-testid="kpi-card" data-page="cash">
+          <div class="accent" style="background:#0F9F95"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#0F9F95">FC</span>
+            <span class="kpi-label">FCF</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#0F9F95">$13.5M</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#DDEEDC"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,20.7 14.5,19.4 25.0,9.2 35.5,18.8 46.0,18.2 56.5,17.5 67.0,31.0 77.5,13.7 88.0,11.1" fill="none" stroke="#0F9F95" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="20.7" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="77.5" cy="13.7" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="11.1" r="4" fill="#0F9F95" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>$8.6M</strong></span><span>YoY <strong>+18.3%</strong></span></div>
+        </article>
+        
+
+        <article class="kpi-card" data-testid="kpi-card" data-page="cash">
+          <div class="accent" style="background:#B73535"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#B73535">Bu</span>
+            <span class="kpi-label">Burn</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#B73535">$0</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#F3D7D7"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,15.6 14.5,10.5 25.0,32.2 35.5,25.8 46.0,22.0 56.5,28.4 67.0,23.3 77.5,24.6 88.0,15.0" fill="none" stroke="#B73535" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="15.6" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="25.0" cy="32.2" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="15.0" r="4" fill="#B73535" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>$0.0M</strong></span><span>YoY <strong>0.0%</strong></span></div>
+        </article>
+        </div><div class='panel-grid'><div class='panel'><h2>Cash Balance + Funding Need Trend</h2><small>Drilldown: Month > KPI</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div><div class='panel'><h2>Funding Need by Scenario</h2><small>Drilldown: Region</small><div class="donut"></div><div class="legend"><i></i>Americas <i></i>EMEA <i></i>APAC</div></div><div class='panel'><h2>Runway by Scenario</h2><small>Drilldown: Business Unit</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div><div class='panel'><h2>3-Statement Summary</h2><small>Drilldown: Details</small>
+          <table><tr><th>Metric</th><th>Actual</th><th>Status</th></tr><tr><td>Cash</td><td>$376.3M</td><td>Clear</td></tr><tr><td>EBITDA</td><td>$15.3M</td><td>Clear</td></tr><tr><td>Runway</td><td>99.0x</td><td>Clear</td></tr></table>
+        </div><div class='panel'><h2>Opex by Cost Category</h2><small>Drilldown: Variance</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div><div class='panel'><h2>Free Cash Flow by Scenario</h2><small>Drilldown: EBITDA</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div></div></section><section id='risk' class='page'><h1>Risk Monitor</h1><div class='chips'><span>On plan</span><span>Board Lens</span><span>Data through May 2026</span></div><div class='kpi-grid'>
+        <article class="kpi-card" data-testid="kpi-card" data-page="risk">
+          <div class="accent" style="background:#4F87F5"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#4F87F5">EV</span>
+            <span class="kpi-label">EV</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#4F87F5">$1.9B</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#DDEEDC"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,28.4 14.5,11.8 25.0,32.9 35.5,15.0 46.0,16.9 56.5,19.4 67.0,25.2 77.5,22.0 88.0,15.0" fill="none" stroke="#4F87F5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="28.4" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="25.0" cy="32.9" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="15.0" r="4" fill="#4F87F5" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>$1.9B</strong></span><span>YoY <strong>+9.5%</strong></span></div>
+        </article>
+        
+
+        <article class="kpi-card" data-testid="kpi-card" data-page="risk">
+          <div class="accent" style="background:#1F8E45"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#1F8E45">Eq</span>
+            <span class="kpi-label">Equity</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#1F8E45">$1.5B</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#DDEEDC"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,32.2 14.5,14.3 25.0,31.0 35.5,9.8 46.0,15.6 56.5,18.2 67.0,23.3 77.5,15.0 88.0,20.1" fill="none" stroke="#1F8E45" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="32.2" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="35.5" cy="9.8" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="20.1" r="4" fill="#1F8E45" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>$1.5B</strong></span><span>YoY <strong>+8.8%</strong></span></div>
+        </article>
+        
+
+        <article class="kpi-card" data-testid="kpi-card" data-page="risk">
+          <div class="accent" style="background:#BE7C10"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#BE7C10">Le</span>
+            <span class="kpi-label">Leverage</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#BE7C10">0.2x</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#F3D7D7"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,20.7 14.5,19.4 25.0,9.2 35.5,18.8 46.0,18.2 56.5,17.5 67.0,31.0 77.5,13.7 88.0,11.1" fill="none" stroke="#B73535" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="20.7" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="77.5" cy="13.7" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="11.1" r="4" fill="#B73535" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>0.3x</strong></span><span>YoY <strong>-0.1x</strong></span></div>
+        </article>
+        
+
+        <article class="kpi-card" data-testid="kpi-card" data-page="risk">
+          <div class="accent" style="background:#B73535"></div>
+          <div class="kpi-top">
+            <span class="icon" style="background:#B73535">Ri</span>
+            <span class="kpi-label">Risk</span>
+          </div>
+          <div class="kpi-main">
+            <div class="kpi-value" data-testid="kpi-value" style="color:#B73535">$31M</div>
+            <div class="spark" aria-hidden="true"><svg class="spark-svg" viewBox="0 0 92 44" aria-hidden="true">
+          <rect x="0" y="0" width="92" height="44" rx="7" fill="#F3EFFA"/>
+          <rect x="2" y="16" width="88" height="11" rx="5" fill="#F3D7D7"/>
+          <line x1="2" y1="22" x2="90" y2="22" stroke="#B8AECF" stroke-width="1" stroke-dasharray="4 5"/>
+          <polyline points="4.0,15.6 14.5,10.5 25.0,32.2 35.5,25.8 46.0,22.0 56.5,28.4 67.0,23.3 77.5,24.6 88.0,15.0" fill="none" stroke="#B73535" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4.0" cy="15.6" r="3" fill="#fff" stroke="#8F7BAE" stroke-width="1.4"/>
+          <circle cx="25.0" cy="32.2" r="3.2" fill="#D96A5D" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="88.0" cy="15.0" r="4" fill="#B73535" stroke="#fff" stroke-width="1.5"/>
+        </svg></div>
+          </div>
+          <div class="kpi-footer"><span>PY <strong>$31M</strong></span><span>YoY <strong>-8.6%</strong></span></div>
+        </article>
+        </div><div class='panel-grid'><div class='panel'><h2>Valuation Range by Method</h2><small>Drilldown: Month > KPI</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div><div class='panel'><h2>Risk Exposure by Severity</h2><small>Drilldown: Region</small><div class="donut"></div><div class="legend"><i></i>Americas <i></i>EMEA <i></i>APAC</div></div><div class='panel'><h2>Covenant Headroom Trend</h2><small>Drilldown: Business Unit</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div><div class='panel'><h2>Risk Register</h2><small>Drilldown: Details</small>
+          <table><tr><th>Metric</th><th>Actual</th><th>Status</th></tr><tr><td>Cash</td><td>$376.3M</td><td>Clear</td></tr><tr><td>EBITDA</td><td>$15.3M</td><td>Clear</td></tr><tr><td>Runway</td><td>99.0x</td><td>Clear</td></tr></table>
+        </div><div class='panel'><h2>Sensitivity Impact</h2><small>Drilldown: Variance</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div><div class='panel'><h2>Risk Exposure by Owner</h2><small>Drilldown: EBITDA</small>
+          <div class="bars"><p><span>Apr 2024</span><b style="width:48%"></b></p><p><span>Apr 2025</span><b style="width:62%"></b></p><p><span>Apr 2026</span><b style="width:82%"></b></p><p><span>Aug 2025</span><b style="width:66%"></b></p></div>
+        </div></div></section></main>
+</div>
+<script>
+document.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('button,.page').forEach(el => el.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.tab).classList.add('active');
+}));
+</script>
+</body>
+</html>

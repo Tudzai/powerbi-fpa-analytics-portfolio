@@ -1,0 +1,39 @@
+{
+  "name": "8bd613d47adb0725ca69",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 15.381400208986415,
+        "y": 20.062695924764888,
+        "z": 3000,
+        "width": 387.87878787878788,
+        "height": 76.907001044932073
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Balance Sheet",
+                    "textStyle": {
+                      "fontSize": "24pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

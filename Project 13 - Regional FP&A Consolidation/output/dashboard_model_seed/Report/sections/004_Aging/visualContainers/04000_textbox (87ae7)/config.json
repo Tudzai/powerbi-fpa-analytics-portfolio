@@ -1,0 +1,55 @@
+{
+  "name": "87ae756bc7048dde2ac8",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 14.035087719298247,
+        "y": 18.421052631578949,
+        "z": 4000,
+        "width": 224.56140350877195,
+        "height": 79.824561403508781,
+        "tabOrder": 4000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Debtor/Creditor Details",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "18pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

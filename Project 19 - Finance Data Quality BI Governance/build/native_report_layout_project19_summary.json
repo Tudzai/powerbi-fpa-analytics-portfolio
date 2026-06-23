@@ -1,9 +1,10 @@
 {
-  "pages": 3,
-  "visual_containers": 37,
+  "pages": 4,
+  "visual_containers": 117,
   "pages_list": [
     "Governance Overview",
     "Reliability & Quality",
-    "Adoption & Controls"
+    "Adoption & Controls",
+    "Risk & Action Queue"
   ]
 }

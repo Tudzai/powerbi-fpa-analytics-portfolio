@@ -1,6 +1,7 @@
-# Data Quality Report
+﻿# Data Quality Report
 
 - Synthetic seed: `20260615`
+- Date range: `2025-01-01` through `2026-05-31`
 - Latest complete month: `May 2026`
 
 | Table | Rows | Columns | Duplicate Rows | Null Cells |

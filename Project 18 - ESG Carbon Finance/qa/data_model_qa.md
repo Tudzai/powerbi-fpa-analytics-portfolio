@@ -9,3 +9,4 @@ Checks:
 - Fact record IDs are unique.
 - Critical key fields are non-null.
 - Rate measures are defined with DIVIDE in DAX.
+- Risk and action guardrails reconcile to prepared supplier, scenario, and initiative tables.

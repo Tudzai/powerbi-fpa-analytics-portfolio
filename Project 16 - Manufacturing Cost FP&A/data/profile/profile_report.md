@@ -3,6 +3,7 @@
 | Table | Rows | Columns | Duplicate Rows | Missing Cells |
 |---|---:|---:|---:|---:|
 | dim_date | 29 | 9 | 0 | 0 |
+| dim_spark_date | 29 | 9 | 0 | 0 |
 | dim_plant | 5 | 8 | 0 | 0 |
 | dim_product | 24 | 10 | 0 | 0 |
 | dim_line | 12 | 7 | 0 | 0 |

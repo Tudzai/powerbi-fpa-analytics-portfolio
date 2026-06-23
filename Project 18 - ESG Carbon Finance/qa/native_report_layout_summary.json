@@ -3,7 +3,17 @@
   "pages": [
     "ESG Finance Overview",
     "Emissions & Supplier Intensity",
-    "Carbon Scenario & Abatement ROI"
+    "Carbon Scenario & Abatement ROI",
+    "Risk & Action Control Tower"
   ],
-  "visual_containers": 337
+  "visual_containers": 79,
+  "visual_type_counts": {
+    "textbox": 28,
+    "slicer": 20,
+    "cardVisual": 15,
+    "lineChart": 1,
+    "barChart": 11,
+    "tableEx": 4
+  },
+  "native_visual_containers": 51
 }

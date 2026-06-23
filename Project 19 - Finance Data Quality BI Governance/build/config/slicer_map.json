@@ -10,5 +10,9 @@
   "Adoption & Controls": [
     "Workspace",
     "Sensitivity"
+  ],
+  "Risk & Action Queue": [
+    "Department",
+    "Month"
   ]
 }

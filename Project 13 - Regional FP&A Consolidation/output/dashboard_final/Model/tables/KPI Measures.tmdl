@@ -1,0 +1,120 @@
+﻿table 'KPI Measures'
+
+	/// Consolidated external revenue after excluding intercompany revenue.
+	measure 'Total Revenue' = SUM ( FactFinancialSummary[external_revenue_usd] )
+		formatString: $#,0,,.0M
+
+	/// External plus intercompany revenue before elimination.
+	measure 'Gross Revenue' = SUM ( FactFinancialSummary[gross_revenue_usd] )
+		formatString: $#,0,,.0M
+
+	/// Intercompany revenue requiring elimination.
+	measure 'Intercompany Revenue' = SUM ( FactFinancialSummary[intercompany_revenue_usd] )
+		formatString: $#,0,,.0M
+
+	/// Net intercompany elimination impact.
+	measure 'Intercompany Elimination' = SUM ( FactFinancialSummary[intercompany_elimination_usd] )
+		formatString: $#,0,,.0M
+
+	/// Revenue minus cost of services.
+	measure 'Gross Profit' = SUM ( FactFinancialSummary[gross_profit_usd] )
+		formatString: $#,0,,.0M
+
+	/// Gross profit divided by consolidated external revenue.
+	measure 'Gross Margin %' = DIVIDE ( [Gross Profit], [Total Revenue] )
+		formatString: 0.0%
+
+	/// Personnel, facilities, sales and marketing, and G&A.
+	measure OPEX = SUM ( FactFinancialSummary[opex_usd] )
+		formatString: $#,0,,.0M
+
+	/// Gross profit plus OPEX after intercompany elimination.
+	measure EBITDA = SUM ( FactFinancialSummary[ebitda_usd] )
+		formatString: $#,0,,.0M
+
+	/// EBITDA divided by consolidated external revenue.
+	measure 'EBITDA Margin %' = DIVIDE ( [EBITDA], [Total Revenue] )
+		formatString: 0.0%
+
+	/// EBITDA less depreciation.
+	measure 'Operating Income' = SUM ( FactFinancialSummary[operating_income_usd] )
+		formatString: $#,0,,.0M
+
+	/// Operating income less interest and tax.
+	measure 'Net Income' = SUM ( FactFinancialSummary[net_income_usd] )
+		formatString: $#,0,,.0M
+
+	/// Period-end cash position by entity and BU allocation.
+	measure 'Cash Position' = SUM ( FactFinancialSummary[cash_position_usd] )
+		formatString: $#,0,,.0M
+
+	/// Operating cash flow proxy tied to EBITDA conversion.
+	measure 'Operating Cash Flow' = SUM ( FactFinancialSummary[operating_cash_flow_usd] )
+		formatString: $#,0,,.0M
+
+	/// Working capital proxy for close review.
+	measure 'Working Capital' = SUM ( FactFinancialSummary[working_capital_usd] )
+		formatString: $#,0,,.0M
+
+	/// Actual consolidated revenue.
+	measure 'Actual Revenue' = CALCULATE ( [Total Revenue], DimScenario[scenario] = "Actual" )
+		formatString: $#,0,,.0M
+
+	/// Budget consolidated revenue.
+	measure 'Budget Revenue' = CALCULATE ( [Total Revenue], DimScenario[scenario] = "Budget" )
+		formatString: $#,0,,.0M
+
+	/// Actual revenue less budget revenue.
+	measure 'Revenue Var vs Budget' = [Actual Revenue] - [Budget Revenue]
+		formatString: $#,0,,.0M
+
+	/// Revenue variance divided by budget revenue.
+	measure 'Revenue Var %' = DIVIDE ( [Revenue Var vs Budget], [Budget Revenue] )
+		formatString: 0.0%
+
+	/// Actual EBITDA.
+	measure 'Actual EBITDA' = CALCULATE ( [EBITDA], DimScenario[scenario] = "Actual" )
+		formatString: $#,0,,.0M
+
+	/// Budget EBITDA.
+	measure 'Budget EBITDA' = CALCULATE ( [EBITDA], DimScenario[scenario] = "Budget" )
+		formatString: $#,0,,.0M
+
+	/// Actual EBITDA less budget EBITDA.
+	measure 'EBITDA Var vs Budget' = [Actual EBITDA] - [Budget EBITDA]
+		formatString: $#,0,,.0M
+
+	/// EBITDA variance divided by budget EBITDA.
+	measure 'EBITDA Var %' = DIVIDE ( [EBITDA Var vs Budget], [Budget EBITDA] )
+		formatString: 0.0%
+
+	/// Forecast EBITDA.
+	measure 'Forecast EBITDA' = CALCULATE ( [EBITDA], DimScenario[scenario] = "Forecast" )
+		formatString: $#,0,,.0M
+
+	/// Directional forecast accuracy for EBITDA.
+	measure 'Forecast Accuracy %' = 1 - ABS ( DIVIDE ( [Actual EBITDA] - [Forecast EBITDA], [Actual EBITDA] ) )
+		formatString: 0.0%
+
+	/// Open or in-progress close exceptions.
+	measure 'Open Exception Count' = CALCULATE ( COUNTROWS ( FactCloseExceptions ), FactCloseExceptions[status] <> "Closed" )
+		formatString: #,0
+
+	/// Value attached to unresolved close exceptions.
+	measure 'Open Exception Value' = CALCULATE ( SUM ( FactCloseExceptions[amount_usd] ), FactCloseExceptions[status] <> "Closed" )
+		formatString: $#,0,,.0M
+
+	column 'Measure Group'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Measure Group
+
+	partition 'KPI Measures-Import' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Measure Group = text], {{"Regional FP&A Consolidation"}})
+				in
+				    Source
+

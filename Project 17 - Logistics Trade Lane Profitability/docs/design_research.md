@@ -11,6 +11,9 @@ Layout selected for Project 17:
 - Tab 1: Executive Trade Lane Cockpit.
 - Tab 2: Trade Lane Margin diagnostics.
 - Tab 3: Cost Drivers and Action Queue.
+- Slicers sit in a top filter row above the KPI strip on every page so filters are visible before the reader scans KPIs.
+- Current Lens and Decision Chip callouts sit in the same top band to make the active analytical context and recommended action visible.
+- KPI cards include compact native sparkline micro-trends using existing monthly Date context and KPI measures.
 
 Design system:
 - Off-white canvas, white panels, compact KPI strip, blue/teal/green for revenue and profit, amber/red for warnings and margin leakage.

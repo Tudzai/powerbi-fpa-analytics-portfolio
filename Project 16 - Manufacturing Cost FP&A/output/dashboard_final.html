@@ -14,7 +14,7 @@
     .tabs { display:flex; gap:8px; margin:18px 0; }
     .tabs button { border:1px solid var(--line); background:#fff; padding:9px 14px; border-radius:6px; cursor:pointer; font-weight:600; }
     .tabs button.active { background:var(--steel); color:#fff; border-color:var(--steel); }
-    .grid { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; }
+    .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
     .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px; min-height:82px; box-sizing:border-box; }
     .label { color:var(--muted); font-size:12px; }
     .value { font-size:24px; font-weight:750; margin-top:10px; }
@@ -47,9 +47,7 @@
     <div class="grid">
       <div class="card"><div class="label">Revenue</div><div class="value" style="color:var(--steel)">$46.1M</div></div>
       <div class="card"><div class="label">Gross Margin</div><div class="value" style="color:var(--teal)">$18.8M</div></div>
-      <div class="card"><div class="label">GM %</div><div class="value" style="color:var(--teal)">40.8%</div></div>
       <div class="card"><div class="label">Cost Variance</div><div class="value" style="color:var(--amber)">$1.7M</div></div>
-      <div class="card"><div class="label">Unit Cost</div><div class="value" style="color:var(--violet)">$42</div></div>
       <div class="card"><div class="label">Yield</div><div class="value" style="color:var(--teal)">96.8%</div></div>
     </div>
     <div class="two"><div class="panel"><img src="screenshots/tab1_overview.png" alt="Overview screenshot"></div><div class="panel"><table><thead><tr><th>Product</th><th>Line</th><th>Revenue</th><th>GM</th><th>GM %</th><th>Inventory</th></tr></thead><tbody><tr><td>Sensor Module B</td><td>Electronics Assembly</td><td>$3.9M</td><td>$2.0M</td><td>50.6%</td><td>$1.3M</td></tr>
@@ -67,19 +65,15 @@
       <div class="card"><div class="label">Labor Variance</div><div class="value" style="color:var(--red)">$98.4K</div></div>
       <div class="card"><div class="label">OH Variance</div><div class="value" style="color:var(--violet)">$47.7K</div></div>
       <div class="card"><div class="label">Yield Loss</div><div class="value" style="color:var(--red)">$693.8K</div></div>
-      <div class="card"><div class="label">Actual COGS</div><div class="value">$27.3M</div></div>
-      <div class="card"><div class="label">Standard COGS</div><div class="value">$25.6M</div></div>
     </div>
     <div class="panel" style="margin-top:14px"><img src="screenshots/tab2_variance.png" alt="Variance screenshot"></div>
   </section>
   <section id="ops" class="section">
     <div class="grid">
-      <div class="card"><div class="label">Utilization</div><div class="value" style="color:var(--steel)">61.3%</div></div>
+      <div class="card"><div class="label">Yield</div><div class="value" style="color:var(--teal)">96.8%</div></div>
       <div class="card"><div class="label">Scrap Rate</div><div class="value" style="color:var(--red)">3.2%</div></div>
-      <div class="card"><div class="label">Inventory Value</div><div class="value" style="color:var(--violet)">$24.3M</div></div>
-      <div class="card"><div class="label">Inventory Days</div><div class="value">26.7</div></div>
-      <div class="card"><div class="label">Capacity Gap</div><div class="value" style="color:var(--amber)">2.8K</div></div>
-      <div class="card"><div class="label">Slow Moving Inv.</div><div class="value" style="color:var(--red)">$2.8M</div></div>
+      <div class="card"><div class="label">Utilization</div><div class="value" style="color:var(--steel)">61.3%</div></div>
+      <div class="card"><div class="label">Scenario Uplift</div><div class="value" style="color:var(--teal)">$209.9K</div></div>
     </div>
     <div class="two"><div class="panel"><img src="screenshots/tab3_yield_capacity_wc.png" alt="Yield capacity screenshot"></div><div class="panel"><table><thead><tr><th>Plant</th><th>Line</th><th>Product Line</th><th>Yield</th><th>Scrap</th><th>Utilization</th><th>Inv Days</th></tr></thead><tbody><tr><td>Johor Packaging Systems</td><td>Packaging Line 1</td><td>Packaging Systems</td><td>97.0%</td><td>3.0%</td><td>95.6%</td><td>32.4</td></tr>
 <tr><td>Rayong Components</td><td>Machining Cell</td><td>Precision Parts</td><td>96.1%</td><td>3.9%</td><td>46.4%</td><td>29.1</td></tr>

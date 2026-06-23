@@ -1,5 +1,6 @@
-# Issue Log
+﻿# Issue Log
 
-- Open: automated PBIX finalization blocked until exact Project 19 Desktop session can be isolated.
-- Observed: `pbi-tools compile` failed because the output seed is a Fabric PBIP project, while this pbi-tools compile command expects legacy PbixProj parts such as `Version.txt`.
-- Observed: Project 19 PBIP process launched with the correct command line, but Desktop visual capture was obstructed by an unrelated SQL Server credential prompt from another Power BI session. No credentials were entered and no file was saved.
+- Closed: final dashboard was not visible. `output/dashboard_final.pbix` now exists, opens in Power BI Desktop, and was saved from the v5 template route.
+- Closed: missing native KPI sparklines. Final PBIX package includes 16 native line-chart sparklines across the four KPI strips.
+- Closed: slicer clipping risk. Page 4 dropdown interaction evidence shows visible options without text clipping.
+- No open release-blocking issues remain after Desktop verification on 2026-06-23.

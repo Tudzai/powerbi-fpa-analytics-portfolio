@@ -29,6 +29,7 @@
   ],
   "row_counts": {
     "dim_date": 29,
+    "dim_spark_date": 29,
     "dim_plant": 5,
     "dim_product": 24,
     "dim_line": 12,

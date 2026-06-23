@@ -8,20 +8,22 @@
   "data_mode": "synthetic",
   "target_output": "Power BI PBIX",
   "final_pbix_path": "output/dashboard_final.pbix",
-  "current_phase": 3,
-  "phase_status": "build_package_ready_pbix_pending",
+  "current_phase": 8,
+  "phase_status": "v3_source_package_refreshed_pbix_patch_pending_open_check",
   "critical_kpis": [
     "Total Emissions tCO2e",
     "Carbon Cost USD",
     "Supplier Intensity",
+    "High Risk Supplier Emissions",
     "Abatement ROI",
-    "MACC"
+    "MACC",
+    "Planned Capex"
   ],
   "assumptions": [
     "Synthetic demo data because no production source was provided.",
     "Latest complete month is 2026-05."
   ],
   "risks": [
-    "Final PBIX requires Desktop save/open validation."
+    "Any newly patched PBIX requires Desktop save/open validation before being called final."
   ]
 }

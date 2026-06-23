@@ -38,7 +38,12 @@
     "emissions_intensity_tco2e_per_musd_revenue": 123.13,
     "latest_month_emissions_tco2e": 21968.59,
     "yoy_change_latest_month": -0.1285,
-    "target_gap_tco2e_run_rate": 29092.93
+    "target_gap_tco2e_run_rate": 29092.93,
+    "high_risk_supplier_emissions_tco2e": 161952.82,
+    "average_supplier_data_quality": 0.8204,
+    "suppliers_without_verified_target": 5,
+    "planned_abatement_capex_usd": 19150000,
+    "probability_weighted_carbon_cost_usd": 58995113.97
   },
   "qa_status": "pass"
 }

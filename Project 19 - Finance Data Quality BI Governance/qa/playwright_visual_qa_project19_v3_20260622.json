@@ -1,0 +1,21 @@
+{
+  "status": "pass_preview",
+  "checked_at": "2026-06-22T16:32:57+07:00",
+  "artifact": "output/dashboard_final.html",
+  "screenshot": "output/playwright/project19_final_dashboard_v3_risk_action_qa.png",
+  "page_checked": "Risk & Action Queue",
+  "viewport": "1280x720",
+  "result": {
+    "page_rendered": true,
+    "blank_state": false,
+    "primary_filters_visible": true,
+    "tab_navigation_visible": true,
+    "kpi_cards_visible": 5,
+    "charts_visible": true,
+    "tables_below_fold": true,
+    "console_errors": [
+      "favicon.ico 404 only"
+    ]
+  },
+  "note": "HTML is a QA preview only. Final Power BI deliverable remains output/dashboard_final.pbix after Desktop Save As and reopen validation."
+}

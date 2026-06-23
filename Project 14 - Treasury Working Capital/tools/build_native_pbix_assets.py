@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import copy
 import csv
@@ -14,6 +14,7 @@ SAMPLE_DIR = BI_ROOT / "Project 10 - AML Fraud Monitoring" / "qa" / "legacy_visu
 MODEL_BIM = ROOT / "model" / "model.bim"
 LAYOUT_JSON = ROOT / "build" / "native_report_layout_project14.json"
 SEED_TEMPLATE = BI_ROOT / "Template" / "01_Core_Financial_Statements" / "Packt_Ch07_Group_Reporting.pbix"
+KPI_RESOURCE_DIR = ROOT / "assets" / "kpi_cards_project20_upgrade"
 
 
 THEME = {
@@ -32,6 +33,7 @@ THEME = {
     "ink": "#22313F",
 }
 PALETTE = [THEME["teal"], THEME["blue"], THEME["green"], THEME["gold"], THEME["rose"], THEME["ink"]]
+MEASURE_TABLE = "KPI_Measures"
 
 
 TABLE_FILES = {
@@ -146,6 +148,20 @@ def measure_catalog() -> list[dict]:
     return json.loads((ROOT / "model" / "measure_catalog.json").read_text(encoding="utf-8"))
 
 
+def model_measure(item: dict) -> dict:
+    result = {
+        "name": item["measure_name"],
+        "expression": item["dax"],
+        "formatString": item.get("format_string", ""),
+        "description": item.get("definition", ""),
+    }
+    if item.get("data_type"):
+        result["dataType"] = item["data_type"]
+    if item.get("data_category"):
+        result["dataCategory"] = item["data_category"]
+    return result
+
+
 def build_model_bim() -> dict:
     tables = []
     prepared = ROOT / "data" / "prepared"
@@ -176,7 +192,7 @@ def build_model_bim() -> dict:
 
     tables.append(
         {
-            "name": "KPI Measures",
+            "name": MEASURE_TABLE,
             "columns": [
                 {
                     "name": "Measure Group",
@@ -188,7 +204,7 @@ def build_model_bim() -> dict:
             ],
             "partitions": [
                 {
-                    "name": "KPI Measures-Import",
+                    "name": f"{MEASURE_TABLE}-Import",
                     "mode": "import",
                     "source": {
                         "type": "m",
@@ -201,15 +217,7 @@ def build_model_bim() -> dict:
                     },
                 }
             ],
-            "measures": [
-                {
-                    "name": item["measure_name"],
-                    "expression": item["dax"],
-                    "formatString": item["format_string"],
-                    "description": item["definition"],
-                }
-                for item in measure_catalog()
-            ],
+            "measures": [model_measure(item) for item in measure_catalog()],
         }
     )
 
@@ -298,6 +306,13 @@ def title_accent(title: str | None) -> str:
     return THEME["ink"]
 
 
+def measure_format(measure_name: str) -> str:
+    for item in measure_catalog():
+        if item["measure_name"] == measure_name:
+            return item.get("format_string", "")
+    return ""
+
+
 def visual_shell(title: str | None = None, subtitle: str | None = None) -> dict:
     result = {
         "background": [{"properties": {"show": lit("true"), "color": color(THEME["panel"]), "transparency": lit("0D")}}],
@@ -334,11 +349,14 @@ def visual_shell(title: str | None = None, subtitle: str | None = None) -> dict:
 
 def chart_objects(kind: str, fields: list[tuple[str, str, str, str]], title: str | None) -> dict:
     measures = [f"{table}.{field}" for table, field, role, _ in fields if role == "measure"]
+    measure_names = [field for _table, field, role, _ in fields if role == "measure"]
+    formats = [measure_format(name) for name in measure_names]
+    display_units = "1000000D" if formats and all("$" in fmt for fmt in formats if fmt) else "0D"
     objects = {
-        "valueAxis": [{"properties": {"showAxisTitle": lit("false"), "gridlineShow": lit("true"), "gridlineColor": color(THEME["grid"]), "labelColor": color(THEME["muted"]), "fontSize": lit("8.0D")}}],
+        "valueAxis": [{"properties": {"showAxisTitle": lit("false"), "gridlineShow": lit("false"), "gridlineColor": color(THEME["grid"]), "labelColor": color(THEME["muted"]), "fontSize": lit("8.0D"), "labelDisplayUnits": lit(display_units)}}],
         "categoryAxis": [{"properties": {"showAxisTitle": lit("false"), "gridlineShow": lit("false"), "concatenateLabels": lit("false"), "labelColor": color(THEME["muted"]), "fontSize": lit("8.0D")}}],
         "legend": [{"properties": {"showTitle": lit("false"), "position": prop_text("Top"), "fontColor": color(THEME["muted"]), "fontSize": lit("8.0D")}}],
-        "labels": [{"properties": {"show": lit("false"), "fontColor": color(THEME["text"]), "labelColor": color(THEME["text"])}}],
+        "labels": [{"properties": {"show": lit("false"), "fontColor": color(THEME["text"]), "labelColor": color(THEME["text"]), "labelDisplayUnits": lit(display_units)}}],
         "dataPoint": [],
     }
     if kind == "donutChart":
@@ -366,6 +384,60 @@ def table_objects() -> dict:
         "grid": [{"properties": {"gridHorizontal": lit("false"), "gridVertical": lit("false"), "outlineColor": color(THEME["border"]), "rowPadding": lit("5D")}}],
         "columnHeaders": [{"properties": {"fontFamily": prop_text("Segoe UI Semibold"), "fontSize": lit("8.0D"), "fontColor": color(THEME["teal"]), "backColor": color(THEME["panel2"])}}],
         "values": [{"properties": {"fontSize": lit("7.5D"), "fontFamily": prop_text("Segoe UI"), "fontColor": color(THEME["text"]), "backColorPrimary": color(THEME["panel"]), "backColorSecondary": color(THEME["panel2"])}}],
+    }
+
+
+def table_image_objects(image_w: int, image_h: int, surface_color: str, qref: str) -> dict:
+    return {
+        "grid": [
+            {
+                "properties": {
+                    "gridHorizontal": lit("false"),
+                    "gridVertical": lit("false"),
+                    "outlineColor": color(surface_color),
+                    "rowPadding": lit("0L"),
+                    "imageWidth": lit(f"{image_w}L"),
+                    "imageHeight": lit(f"{image_h}L"),
+                }
+            }
+        ],
+        "columnHeaders": [
+            {
+                "properties": {
+                    "show": lit("false"),
+                    "fontSize": lit("1.0D"),
+                    "fontColor": color(surface_color),
+                }
+            }
+        ],
+        "values": [
+            {
+                "properties": {
+                    "fontSize": lit("1.0D"),
+                    "fontColor": color(surface_color),
+                    "urlIcon": lit("false"),
+                    "imageWidth": lit(f"{image_w}L"),
+                    "imageHeight": lit(f"{image_h}L"),
+                    "backColor": color(surface_color),
+                    "backColorPrimary": color(surface_color),
+                    "backColorSecondary": color(surface_color),
+                }
+            }
+        ],
+        "imageSize": [
+            {
+                "properties": {
+                    "height": lit(f"{image_h}L"),
+                    "width": lit(f"{image_w}L"),
+                }
+            }
+        ],
+        "columnWidth": [
+            {
+                "properties": {"value": lit(f"{image_w}D")},
+                "selector": {"metadata": qref},
+            }
+        ],
     }
 
 
@@ -437,10 +509,48 @@ def data_visual(kind: str, x, y, w, h, z, proj_map: dict[str, list[tuple[str, st
     return outer(cfg, x, y, w, h, z)
 
 
+def single_measure_query(table: str, measure: str, display: str, alias: str, qref: str) -> dict:
+    return {
+        "Commands": [
+            {
+                "SemanticQueryDataShapeCommand": {
+                    "Query": {
+                        "Version": 2,
+                        "From": [{"Name": alias, "Entity": table, "Type": 0}],
+                        "Select": [ref(table, measure, "measure", alias, display)],
+                    },
+                    "Binding": {"Primary": {"Groupings": [{"Projections": [0]}]}},
+                    "DataReduction": {"DataVolume": 4, "Primary": {"Window": {"Count": 1000}}},
+                    "Version": 1,
+                },
+                "ExecutionMetricsKind": 1,
+            }
+        ]
+    }
+
+
+def single_measure_transforms(objects: dict, measure: str, display: str, alias: str, qref: str) -> dict:
+    return {
+        "objects": objects,
+        "projectionOrdering": {"Values": [0]},
+        "queryMetadata": {"Select": [{"Restatement": display, "Name": qref, "Type": 2048}]},
+        "visualElements": [{"DataRoles": [{"Name": "Values", "Projection": 0, "isActive": False}]}],
+        "selects": [
+            {
+                "displayName": display,
+                "queryName": qref,
+                "roles": {"Values": True},
+                "type": {"category": None, "underlyingType": 1},
+                "expr": {"Measure": {"Expression": {"SourceRef": {"Entity": alias}}, "Property": measure}},
+            }
+        ],
+    }
+
+
 def card(measure: str, title: str, x, y, w, h, z) -> dict:
-    visual = data_visual("cardVisual", x, y, w, h, z, {"Data": [("KPI Measures", measure, "measure", title)]}, title)
+    visual = data_visual("cardVisual", x, y, w, h, z, {"Data": [(MEASURE_TABLE, measure, "measure", title)]}, title)
     cfg = json.loads(visual["config"])
-    metadata = f"KPI Measures.{measure}"
+    metadata = f"{MEASURE_TABLE}.{measure}"
     accent = title_accent(title)
     cfg["singleVisual"]["objects"] = {
         "layout": [{"properties": {"backgroundShow": lit("false"), "rectangleRoundedCurve": lit("6L"), "cellPadding": lit("6D"), "paddingUniform": lit("6D")}, "selector": {"id": "default"}}],
@@ -460,6 +570,141 @@ def card(measure: str, title: str, x, y, w, h, z) -> dict:
 
 def slicer(table: str, field: str, title: str, x, y, w, h, z) -> dict:
     return data_visual("slicer", x, y, w, h, z, {"Values": [(table, field, "column", title)]}, title)
+
+
+def svg_measure(measure: str, x, y, w, h, z, image_w: int, image_h: int, display: str | None = None) -> dict:
+    display = display or measure.replace(" KPI Card SVG", "").replace(" SVG", "")
+    qref = f"{MEASURE_TABLE}.{measure}"
+    alias = "k"
+    surface_color = THEME["ink"] if measure == "Current Lens SVG" else THEME["bg"]
+    if measure.endswith("Decision Chips SVG"):
+        image_w = max(20, min(int(image_w), int(w) - 44))
+        image_h = max(20, min(int(image_h), 32))
+    elif measure == "Current Lens SVG":
+        image_w = max(20, min(int(image_w), int(w) - 4))
+        image_h = max(20, min(int(image_h), int(h) - 4))
+    elif measure.endswith("KPI Card SVG"):
+        image_w = max(20, int(w) - 6)
+        image_h = max(20, int(h) - 6)
+    visual = data_visual("tableEx", x, y, w, h, z, {"Values": [(MEASURE_TABLE, measure, "measure", display)]}, "")
+    cfg = json.loads(visual["config"])
+    cfg["singleVisual"]["columnProperties"] = {qref: {"displayName": display}}
+    objects = table_image_objects(image_w, image_h, surface_color, qref)
+    cfg["singleVisual"]["objects"] = objects
+    cfg["singleVisual"]["vcObjects"] = {
+        "background": [{"properties": {"show": lit("false")}}],
+        "border": [{"properties": {"show": lit("false")}}],
+        "dropShadow": [{"properties": {"show": lit("false")}}],
+        "title": [{"properties": {"show": lit("false")}}],
+        "visualHeader": [{"properties": {"show": lit("false")}}],
+        "visualTooltip": [{"properties": {"show": lit("false")}}],
+    }
+    visual["config"] = json.dumps(cfg, separators=(",", ":"), ensure_ascii=False)
+    visual["query"] = json.dumps(single_measure_query(MEASURE_TABLE, measure, display, alias, qref), separators=(",", ":"), ensure_ascii=False)
+    visual["dataTransforms"] = json.dumps(single_measure_transforms(objects, measure, display, alias, qref), separators=(",", ":"), ensure_ascii=False)
+    return visual
+
+
+KPI_IMAGE_DATA = {
+    "Available Liquidity KPI Card SVG": ("Liquidity", "$92.5M", "PY $92.5M", "Delta 0.0%", THEME["teal"], "flat"),
+    "Liquidity Headroom KPI Card SVG": ("Headroom", "$82.3M", "PY $82.3M", "Delta 0.0%", THEME["blue"], "flat"),
+    "Forecast Net Flow KPI Card SVG": ("13W Net Flow", "($2.9M)", "PY ($3.4M)", "Delta +14.5%", THEME["gold"], "up"),
+    "Cash Runway KPI Card SVG": ("Runway", "19.4w", "PY 18.9w", "Delta +0.5w", THEME["green"], "up"),
+    "AR Outstanding KPI Card SVG": ("AR Balance", "$58.4M", "PY $61.2M", "Delta -4.6%", THEME["blue"], "down_good"),
+    "Overdue AR KPI Card SVG": ("Overdue AR", "19.7%", "PY 22.4%", "Delta -2.7pt", THEME["rose"], "down_good"),
+    "AP Due 14 Days KPI Card SVG": ("AP 14d", "$11.8M", "PY $10.6M", "Delta +11.3%", THEME["gold"], "up_bad"),
+    "Cash Conversion KPI Card SVG": ("CCC", "42d", "PY 45d", "Delta -3d", THEME["green"], "down_good"),
+    "Forecast Closing Cash KPI Card SVG": ("Closing Cash", "$172.9M", "PY $175.8M", "Delta -1.7%", THEME["teal"], "down"),
+    "Forecast Error KPI Card SVG": ("Fcst Error", "22.1%", "PY 22.1%", "Delta 0.0pt", THEME["rose"], "flat"),
+    "Unhedged FX KPI Card SVG": ("Unhedged FX", "54.8%", "PY 54.8%", "Delta 0.0pt", THEME["gold"], "flat"),
+    "Open Risk KPI Card SVG": ("Open Risks", "24", "PY 26", "Delta -2", THEME["rose"], "down_good"),
+}
+
+
+def static_kpi_svg(title: str, value: str, prior: str, delta: str, accent: str, trend: str) -> str:
+    trend_color = THEME["rose"] if trend in {"down", "up_bad"} else THEME["teal"]
+    delta_color = THEME["rose"] if trend in {"down", "up_bad"} else THEME["teal"]
+    if trend == "flat":
+        points = "138,74 160,74 182,74 204,74 226,74"
+    elif trend.startswith("down"):
+        points = "138,48 160,54 182,62 204,72 226,86"
+    else:
+        points = "138,86 160,76 182,66 204,56 226,48"
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="252" height="158" viewBox="0 0 252 158">
+<rect x="1" y="1" width="250" height="156" rx="10" fill="#FFFFFF" stroke="#D8E0E7" stroke-width="1.2"/>
+<rect x="12" y="11" width="228" height="4" rx="2" fill="{accent}"/>
+<rect x="14" y="30" width="12" height="12" rx="3" fill="{accent}"/>
+<text x="34" y="41" font-family="Segoe UI Semibold" font-size="12.5" fill="#15202B">{title}</text>
+<text x="14" y="82" font-family="Segoe UI Semibold" font-size="25" fill="{accent}">{value}</text>
+<rect x="130" y="32" width="108" height="74" rx="8" fill="#F3F6F8"/>
+<rect x="136" y="67" width="92" height="12" rx="6" fill="#E6F4EC"/>
+<line x1="136" y1="73" x2="228" y2="73" stroke="#AAB7C4" stroke-width="1" stroke-dasharray="4 5"/>
+<polyline points="{points}" fill="none" stroke="{trend_color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="138" cy="{points.split()[0].split(',')[1]}" r="3.6" fill="#FFFFFF" stroke="#607081" stroke-width="1.4"/>
+<circle cx="226" cy="{points.split()[-1].split(',')[1]}" r="4.8" fill="{trend_color}" stroke="#FFFFFF" stroke-width="1.8"/>
+<rect x="14" y="126" width="98" height="20" rx="6" fill="#F8FAFB"/>
+<rect x="120" y="126" width="118" height="20" rx="6" fill="#F8FAFB"/>
+<text x="22" y="140" font-family="Segoe UI" font-size="9.4" fill="#607081">{prior}</text>
+<text x="130" y="140" font-family="Segoe UI Semibold" font-size="9.4" fill="{delta_color}">{delta}</text>
+</svg>"""
+    return svg
+
+
+def kpi_resource_name(measure: str) -> str:
+    safe = measure.lower().replace(" ", "_").replace("%", "pct")
+    safe = "".join(ch if ch.isalnum() or ch == "_" else "_" for ch in safe)
+    return f"project14_{safe}.svg"
+
+
+def write_kpi_resources() -> None:
+    KPI_RESOURCE_DIR.mkdir(parents=True, exist_ok=True)
+    for measure, (title, value, prior, delta, accent, trend) in KPI_IMAGE_DATA.items():
+        svg = static_kpi_svg(title, value, prior, delta, accent, trend)
+        (KPI_RESOURCE_DIR / kpi_resource_name(measure)).write_text(svg, encoding="utf-8")
+
+
+def kpi_image(measure: str, x, y, w, h, z) -> dict:
+    item_name = kpi_resource_name(measure)
+    cfg = {
+        "name": rand_name(),
+        "layouts": [{"id": 0, "position": pos(x, y, w, h, z)}],
+        "singleVisual": {
+            "visualType": "image",
+            "objects": {
+                "general": [
+                    {
+                        "properties": {
+                            "image": {
+                                "image": {
+                                    "name": prop_text(measure),
+                                    "url": {
+                                        "expr": {
+                                            "ResourcePackageItem": {
+                                                "PackageName": "RegisteredResources",
+                                                "PackageType": 1,
+                                                "ItemName": item_name,
+                                            }
+                                        }
+                                    },
+                                    "scaling": prop_text("Fit"),
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "drillFilterOtherVisuals": True,
+            "vcObjects": {
+                "title": [{"properties": {"show": lit("false")}}],
+                "subTitle": [{"properties": {"show": lit("false")}}],
+                "background": [{"properties": {"show": lit("false")}}],
+                "border": [{"properties": {"show": lit("false")}}],
+                "dropShadow": [{"properties": {"show": lit("false")}}],
+                "visualHeader": [{"properties": {"show": lit("false")}}],
+            },
+        },
+    }
+    return outer(cfg, x, y, w, h, z)
 
 
 def text_box(text: str, x, y, w, h, z, size=12, fg=None, bold=True) -> dict:
@@ -506,21 +751,100 @@ def shape(x, y, w, h, z, fill) -> dict:
             "drillFilterOtherVisuals": True,
             "objects": {
                 "shape": [{"properties": {"tileShape": lit("'rectangle'")}}],
-                "fill": [{"properties": {"show": lit("true"), "fillColor": color(fill), "transparency": lit("0D")}}],
+                "fill": [{"properties": {"show": lit("false")}}],
                 "outline": [{"properties": {"show": lit("false")}}],
+            },
+            "vcObjects": {
+                "title": [{"properties": {"show": lit("false")}}],
+                "subTitle": [{"properties": {"show": lit("false")}}],
+                "background": [{"properties": {"show": lit("true"), "color": color(fill), "transparency": lit("0D")}}],
+                "border": [{"properties": {"show": lit("false")}}],
+                "visualHeader": [{"properties": {"show": lit("false")}}],
             },
         },
     }
     return outer(cfg, x, y, w, h, z)
 
 
-def header(title: str, subtitle: str) -> list[dict]:
+def kpi_tile(measure: str, x, y, w, h, z) -> list[dict]:
+    title, value, prior, delta, accent, trend = KPI_IMAGE_DATA[measure]
+    trend_color = THEME["rose"] if trend in {"down", "up_bad"} else THEME["teal"]
+    delta_color = THEME["rose"] if trend in {"down", "up_bad"} else THEME["teal"]
+    if trend == "flat":
+        bar_heights = [12, 12, 12, 12, 12]
+    elif trend.startswith("down"):
+        bar_heights = [42, 34, 27, 21, 16]
+    else:
+        bar_heights = [16, 21, 27, 34, 42]
+
+    visuals: list[dict] = [
+        shape(x, y, w, h, z, THEME["border"]),
+        shape(x + 1, y + 1, w - 2, h - 2, z + 1, "#FFFFFF"),
+        shape(x + 12, y + 11, w - 24, 4, z + 2, accent),
+        shape(x + 14, y + 30, 12, 12, z + 3, accent),
+        text_box(title, x + 34, y + 26, 100, 22, z + 4, 8.8, THEME["text"], True),
+        text_box(value, x + 14, y + 55, 112, 36, z + 5, 19.2, accent, True),
+        shape(x + 142, y + 32, 96, 74, z + 6, THEME["panel2"]),
+        shape(x + 148, y + 73, 78, 1.5, z + 7, THEME["border"]),
+    ]
+    for idx, bar_height in enumerate(bar_heights):
+        visuals.append(shape(x + 154 + idx * 14, y + 88 - bar_height, 8, bar_height, z + 8 + idx, trend_color))
+    visuals += [
+        shape(x + 14, y + 126, 98, 20, z + 20, THEME["panel2"]),
+        shape(x + 120, y + 126, 118, 20, z + 21, THEME["panel2"]),
+        text_box(prior, x + 22, y + 128, 82, 16, z + 22, 6.8, THEME["muted"], False),
+        text_box(delta, x + 130, y + 128, 98, 16, z + 23, 6.8, delta_color, True),
+    ]
+    return visuals
+
+
+PAGES = [
+    ("Treasury Command Center", "Liquidity control"),
+    ("Working Capital Control", "AR AP execution"),
+    ("Forecast, FX & Risk", "Forecast risk"),
+]
+
+
+def nav_items(active_page: str, z: int = 20) -> list[dict]:
+    visuals: list[dict] = []
+    y = 126
+    for idx, (page, short_label) in enumerate(PAGES):
+        is_active = page == active_page
+        fill = THEME["teal"] if is_active else "#1C3B45"
+        fg = "#FFFFFF" if is_active else "#B8C8CF"
+        visuals.append(shape(22, y + idx * 42, 140, 30, z + idx * 2, fill))
+        visuals.append(text_box(short_label, 34, y + 7 + idx * 42, 116, 15, z + idx * 2 + 1, 7.8, fg, True))
+    return visuals
+
+
+def sidebar(active_page: str, lens_y: int, slicers: list[tuple[str, str, str, int]]) -> list[dict]:
+    visuals: list[dict] = [
+        shape(0, 0, 184, 720, 1, THEME["ink"]),
+        shape(18, 24, 8, 44, 2, THEME["teal"]),
+        text_box("TWC", 34, 22, 90, 24, 3, 14, "#FFFFFF", True),
+        text_box("Treasury lens", 34, 48, 112, 16, 4, 8, "#9ACBC6", False),
+        shape(22, 82, 140, 1.5, 5, "#435866"),
+        text_box("PAGES", 24, 96, 120, 14, 6, 7.2, "#9ACBC6", False),
+    ]
+    visuals += nav_items(active_page, 20)
+    visuals.append(text_box("GLOBAL LENS", 24, 250, 120, 14, 50, 7.2, "#9ACBC6", False))
+    for table, field, title, y in slicers:
+        visuals.append(slicer(table, field, title, 24, y, 136, 38, 70 + y))
+    visuals.append(text_box("CURRENT LENS", 24, lens_y - 20, 120, 14, 150, 7.2, "#9ACBC6", False))
+    visuals.append(svg_measure("Current Lens SVG", 22, lens_y, 144, 76, 160, 144, 76))
+    visuals.append(shape(22, 664, 140, 1.5, 170, "#435866"))
+    visuals.append(text_box("Synthetic demo data", 24, 676, 122, 14, 180, 7, "#B8C8CF", False))
+    visuals.append(text_box("Seed 14042", 24, 692, 122, 14, 181, 7, "#9ACBC6", False))
+    return visuals
+
+
+def header(title: str, subtitle: str, chip_measure: str) -> list[dict]:
     return [
-        shape(24, 18, 5, 48, 10, THEME["teal"]),
-        text_box("TREASURY WORKING CAPITAL", 38, 20, 260, 18, 20, 7.5, THEME["teal"], False),
-        text_box(title, 38, 32, 520, 34, 30, 14, THEME["text"]),
-        text_box(subtitle, 575, 36, 430, 24, 40, 8, THEME["muted"], False),
-        shape(24, 70, 1232, 2, 50, THEME["border"]),
+        text_box("TREASURY WORKING CAPITAL", 204, 24, 260, 18, 200, 7.5, THEME["teal"], False),
+        text_box(title, 204, 39, 470, 34, 210, 15, THEME["text"]),
+        text_box(subtitle, 204, 70, 450, 18, 220, 8, THEME["muted"], False),
+        svg_measure(chip_measure, 766, 35, 490, 38, 230, 490, 38),
+        shape(204, 88, 1052, 2, 240, THEME["border"]),
     ]
 
 
@@ -558,198 +882,307 @@ def blank_layout() -> dict:
     }
 
 
+def register_kpi_resource_items(layout: dict) -> None:
+    packages = layout.setdefault("resourcePackages", [])
+    registered = None
+    for package in packages:
+        resource_package = package.get("resourcePackage", {})
+        if resource_package.get("name") == "RegisteredResources":
+            registered = resource_package
+            break
+    if registered is None:
+        registered = {"name": "RegisteredResources", "type": 1, "items": [], "disabled": False}
+        packages.append({"resourcePackage": registered})
+
+    items = registered.setdefault("items", [])
+    existing = {item.get("name") for item in items}
+    for measure in KPI_IMAGE_DATA:
+        item_name = kpi_resource_name(measure)
+        if item_name in existing:
+            continue
+        items.append({"type": 100, "path": item_name, "name": item_name})
+
+
 def build_layout() -> dict:
     random.seed(14042)
     layout = blank_layout()
 
-    p1 = header("Treasury Command Center", "Liquidity, runway, scenario forecast, and action queue")
+    kx = [204, 471, 738, 1005]
+    ky, kw, kh = 104, 255, 164
+    top_y, top_h = 284, 172
+    bot_y, bot_h = 480, 166
+
+    p1 = sidebar(
+        "Treasury Command Center",
+        514,
+        [
+            ("DimEntity", "region", "Region", 274),
+            ("DimEntity", "entity", "Entity", 326),
+            ("DimScenario", "scenario", "Scenario", 378),
+            ("DimWeek", "week_label", "Forecast Week", 430),
+        ],
+    )
+    p1 += header("Treasury Command Center", "Liquidity, runway, scenario forecast, and action queue", "Treasury Decision Chips SVG")
     p1 += [
-        slicer("DimEntity", "region", "Region", 784, 24, 128, 42, 100),
-        slicer("DimEntity", "entity", "Entity", 922, 24, 158, 42, 110),
-        slicer("DimScenario", "scenario", "Scenario", 1090, 24, 166, 42, 120),
-        card("Available Liquidity", "Available Liquidity", 24, 92, 190, 88, 200),
-        card("Cash Balance", "Cash Balance", 224, 92, 190, 88, 210),
-        card("Liquidity Headroom", "Liquidity Headroom", 424, 92, 190, 88, 220),
-        card("Cash Runway Weeks", "Cash Runway", 624, 92, 190, 88, 230),
-        card("Forecast Net Cash Flow", "13W Net Flow", 824, 92, 190, 88, 240),
-        card("Forecast Error %", "Forecast Error", 1024, 92, 232, 88, 250),
+        svg_measure("Available Liquidity KPI Card SVG", kx[0], ky, kw, kh, 300, 252, 158, "Liquidity KPI Card"),
+        svg_measure("Liquidity Headroom KPI Card SVG", kx[1], ky, kw, kh, 310, 252, 158, "Headroom KPI Card"),
+        svg_measure("Forecast Net Flow KPI Card SVG", kx[2], ky, kw, kh, 320, 252, 158, "Net Flow KPI Card"),
+        svg_measure("Cash Runway KPI Card SVG", kx[3], ky, kw, kh, 330, 252, 158, "Runway KPI Card"),
         data_visual(
             "columnChart",
-            24,
             204,
-            610,
-            236,
-            300,
-            {"Category": [("DimWeek", "week_label", "column", "Week")], "Y": [("KPI Measures", "Forecast Net Cash Flow", "measure", "Net Cash Flow")]},
-            "13-week net cash flow",
-            "Receipts less payments by week",
-        ),
-        data_visual(
-            "barChart",
-            646,
-            204,
-            300,
-            236,
-            310,
-            {"Category": [("DimEntity", "region", "column", "Region")], "Y": [("KPI Measures", "Available Liquidity", "measure", "Available Liquidity")]},
-            "Liquidity by region",
-        ),
-        data_visual(
-            "barChart",
-            958,
-            204,
-            298,
-            236,
-            320,
-            {"Category": [("DimBank", "bank", "column", "Bank")], "Y": [("KPI Measures", "Available Cash", "measure", "Available Cash")]},
-            "Cash by bank",
-        ),
-        data_visual(
-            "barChart",
-            24,
-            462,
-            610,
-            176,
-            330,
-            {"Category": [("FactTreasuryRiskAction", "risk_type", "column", "Risk")], "Y": [("KPI Measures", "Open Risk Value", "measure", "Open Risk Value")]},
-            "Management action queue",
-        ),
-        data_visual(
-            "barChart",
-            646,
-            462,
-            610,
-            176,
-            340,
-            {"Category": [("DimEntity", "country", "column", "Country")], "Y": [("KPI Measures", "Liquidity Headroom", "measure", "Headroom")]},
-            "Treasury operating snapshot",
-        ),
-    ]
-
-    p2 = header("Working Capital Control", "AR/AP aging, DSO/DPO, and collection-payment focus")
-    p2 += [
-        slicer("DimEntity", "region", "Region", 784, 24, 128, 42, 100),
-        slicer("DimCustomer", "risk_rating", "Customer Risk", 922, 24, 158, 42, 110),
-        slicer("DimVendor", "criticality", "Vendor Criticality", 1090, 24, 166, 42, 120),
-        card("AR Outstanding", "AR Outstanding", 24, 92, 190, 88, 200),
-        card("Overdue AR", "Overdue AR", 224, 92, 190, 88, 210),
-        card("Overdue AR %", "Overdue AR %", 424, 92, 190, 88, 220),
-        card("AP Outstanding", "AP Outstanding", 624, 92, 190, 88, 230),
-        card("DSO", "DSO", 824, 92, 190, 88, 240),
-        card("Cash Conversion Cycle", "Cash Conversion", 1024, 92, 232, 88, 250),
-        data_visual(
-            "barChart",
-            24,
-            204,
-            390,
-            236,
-            300,
-            {"Category": [("FactARInvoice", "aging_bucket", "column", "Aging Bucket")], "Y": [("KPI Measures", "AR Outstanding", "measure", "AR Outstanding")]},
-            "AR aging exposure",
-        ),
-        data_visual(
-            "barChart",
+            top_y,
             426,
-            204,
-            390,
-            236,
-            310,
-            {"Category": [("FactAPInvoice", "due_window", "column", "Due Window")], "Y": [("KPI Measures", "AP Outstanding", "measure", "AP Outstanding")]},
-            "AP due schedule",
-        ),
-        data_visual(
-            "columnChart",
-            828,
-            204,
-            428,
-            236,
-            320,
-            {"Category": [("DimDate", "month_label", "column", "Month")], "Y": [("KPI Measures", "DSO", "measure", "DSO"), ("KPI Measures", "DPO", "measure", "DPO")]},
-            "DSO and DPO trend",
+            top_h,
+            400,
+            {"Category": [("DimWeek", "week_label", "column", "Week")], "Y": [(MEASURE_TABLE, "Forecast Net Cash Flow", "measure", "Net Cash Flow")]},
+            "13-week net cash flow",
+            "Drilldown: Forecast week",
         ),
         data_visual(
             "barChart",
-            24,
-            462,
-            610,
-            176,
-            330,
-            {"Category": [("DimCustomer", "risk_rating", "column", "Risk")], "Y": [("KPI Measures", "Overdue AR", "measure", "Overdue AR")]},
-            "Collection focus customers",
+            642,
+            top_y,
+            304,
+            top_h,
+            410,
+            {"Category": [("DimEntity", "region", "column", "Region")], "Y": [(MEASURE_TABLE, "Available Liquidity", "measure", "Available Liquidity")]},
+            "Liquidity by region",
+            "Drilldown: Region",
         ),
         data_visual(
             "barChart",
-            646,
-            462,
-            610,
-            176,
-            340,
-            {"Category": [("DimVendor", "criticality", "column", "Criticality")], "Y": [("KPI Measures", "AP Due 14 Days", "measure", "Due 14 Days")]},
-            "Payment planning vendors",
+            966,
+            top_y,
+            290,
+            top_h,
+            420,
+            {"Category": [("DimBank", "bank", "column", "Bank")], "Y": [(MEASURE_TABLE, "Available Cash", "measure", "Available Cash")]},
+            "Cash by bank",
+            "Drilldown: Bank",
+        ),
+        data_visual(
+            "barChart",
+            204,
+            bot_y,
+            332,
+            bot_h,
+            430,
+            {"Category": [("FactTreasuryRiskAction", "risk_type", "column", "Risk")], "Y": [(MEASURE_TABLE, "Open Risk Value", "measure", "Open Risk Value")]},
+            "Management action queue",
+            "Drilldown: Risk type",
+        ),
+        data_visual(
+            "barChart",
+            548,
+            bot_y,
+            332,
+            bot_h,
+            440,
+            {"Category": [("DimEntity", "country", "column", "Country")], "Y": [(MEASURE_TABLE, "Liquidity Headroom", "measure", "Headroom")]},
+            "Treasury operating snapshot",
+            "Drilldown: Country",
+        ),
+        data_visual(
+            "tableEx",
+            892,
+            bot_y,
+            364,
+            bot_h,
+            450,
+            {
+                "Values": [
+                    ("FactTreasuryRiskAction", "risk_type", "column", "Risk"),
+                    ("FactTreasuryRiskAction", "owner_team", "column", "Owner"),
+                    ("FactTreasuryRiskAction", "status", "column", "Status"),
+                    (MEASURE_TABLE, "Open Risk Value", "measure", "Open Value"),
+                ]
+            },
+            "Action detail",
+            "Drilldown: Risk > owner",
         ),
     ]
 
-    p3 = header("Forecast, FX & Risk", "13-week cash forecast, unhedged FX, debt maturity, and exception actioning")
+    p2 = sidebar(
+        "Working Capital Control",
+        514,
+        [
+            ("DimEntity", "region", "Region", 274),
+            ("DimEntity", "entity", "Entity", 326),
+            ("DimCustomer", "risk_rating", "Customer Risk", 378),
+            ("DimVendor", "criticality", "Vendor Criticality", 430),
+        ],
+    )
+    p2 += header("Working Capital Control", "AR/AP aging, DSO/DPO, and collection-payment focus", "Working Capital Decision Chips SVG")
+    p2 += [
+        svg_measure("AR Outstanding KPI Card SVG", kx[0], ky, kw, kh, 300, 252, 158, "AR KPI Card"),
+        svg_measure("Overdue AR KPI Card SVG", kx[1], ky, kw, kh, 310, 252, 158, "Overdue KPI Card"),
+        svg_measure("AP Due 14 Days KPI Card SVG", kx[2], ky, kw, kh, 320, 252, 158, "AP 14d KPI Card"),
+        svg_measure("Cash Conversion KPI Card SVG", kx[3], ky, kw, kh, 330, 252, 158, "CCC KPI Card"),
+        data_visual(
+            "barChart",
+            204,
+            top_y,
+            426,
+            top_h,
+            400,
+            {"Category": [("FactARInvoice", "aging_bucket", "column", "Aging Bucket")], "Y": [(MEASURE_TABLE, "AR Outstanding", "measure", "AR Outstanding")]},
+            "AR aging exposure",
+            "Drilldown: Aging bucket",
+        ),
+        data_visual(
+            "barChart",
+            642,
+            top_y,
+            304,
+            top_h,
+            410,
+            {"Category": [("FactAPInvoice", "due_window", "column", "Due Window")], "Y": [(MEASURE_TABLE, "AP Outstanding", "measure", "AP Outstanding")]},
+            "AP due schedule",
+            "Drilldown: Due window",
+        ),
+        data_visual(
+            "columnChart",
+            966,
+            top_y,
+            290,
+            top_h,
+            420,
+            {"Category": [("DimDate", "month_label", "column", "Month")], "Y": [(MEASURE_TABLE, "DSO", "measure", "DSO"), (MEASURE_TABLE, "DPO", "measure", "DPO")]},
+            "DSO and DPO trend",
+            "Drilldown: Month",
+        ),
+        data_visual(
+            "barChart",
+            204,
+            bot_y,
+            332,
+            bot_h,
+            430,
+            {"Category": [("DimCustomer", "risk_rating", "column", "Risk")], "Y": [(MEASURE_TABLE, "Overdue AR", "measure", "Overdue AR")]},
+            "Collection focus customers",
+            "Drilldown: Customer risk",
+        ),
+        data_visual(
+            "barChart",
+            548,
+            bot_y,
+            332,
+            bot_h,
+            440,
+            {"Category": [("DimVendor", "criticality", "column", "Criticality")], "Y": [(MEASURE_TABLE, "AP Due 14 Days", "measure", "Due 14 Days")]},
+            "Payment planning vendors",
+            "Drilldown: Vendor criticality",
+        ),
+        data_visual(
+            "tableEx",
+            892,
+            bot_y,
+            364,
+            bot_h,
+            450,
+            {
+                "Values": [
+                    ("FactARInvoice", "aging_bucket", "column", "Aging"),
+                    ("DimCustomer", "risk_rating", "column", "Risk"),
+                    ("FactARInvoice", "is_overdue", "column", "Overdue"),
+                    (MEASURE_TABLE, "AR Outstanding", "measure", "AR"),
+                    (MEASURE_TABLE, "Overdue AR", "measure", "Overdue AR"),
+                ]
+            },
+            "Execution detail",
+            "Drilldown: Customer AR status",
+        ),
+    ]
+
+    p3 = sidebar(
+        "Forecast, FX & Risk",
+        514,
+        [
+            ("DimEntity", "region", "Region", 274),
+            ("DimEntity", "entity", "Entity", 326),
+            ("DimScenario", "scenario", "Scenario", 378),
+            ("FactFXExposure", "exposure_currency", "Currency", 430),
+        ],
+    )
+    p3 += header("Forecast, FX & Risk", "13-week cash forecast, unhedged FX, debt maturity, and exception actioning", "Risk Decision Chips SVG")
     p3 += [
-        slicer("DimEntity", "region", "Region", 784, 24, 128, 42, 100),
-        slicer("DimScenario", "scenario", "Scenario", 922, 24, 158, 42, 110),
-        slicer("FactFXExposure", "exposure_currency", "Currency", 1090, 24, 166, 42, 120),
-        card("Forecast Closing Cash", "Closing Cash", 24, 92, 190, 88, 200),
-        card("Forecast Receipts", "Forecast Receipts", 224, 92, 190, 88, 210),
-        card("Forecast Payments", "Forecast Payments", 424, 92, 190, 88, 220),
-        card("FX Net Exposure", "FX Net Exposure", 624, 92, 190, 88, 230),
-        card("Unhedged FX %", "Unhedged FX %", 824, 92, 190, 88, 240),
-        card("Open Risk Count", "Open Risks", 1024, 92, 232, 88, 250),
+        svg_measure("Forecast Closing Cash KPI Card SVG", kx[0], ky, kw, kh, 300, 252, 158, "Closing Cash KPI Card"),
+        svg_measure("Forecast Error KPI Card SVG", kx[1], ky, kw, kh, 310, 252, 158, "Forecast Error KPI Card"),
+        svg_measure("Unhedged FX KPI Card SVG", kx[2], ky, kw, kh, 320, 252, 158, "Unhedged FX KPI Card"),
+        svg_measure("Open Risk KPI Card SVG", kx[3], ky, kw, kh, 330, 252, 158, "Open Risk KPI Card"),
         data_visual(
             "waterfallChart",
-            24,
             204,
-            610,
-            236,
-            300,
-            {"Category": [("DimWeek", "week_label", "column", "Week")], "Y": [("KPI Measures", "Forecast Net Cash Flow", "measure", "Net Flow")]},
+            top_y,
+            426,
+            top_h,
+            400,
+            {"Category": [("DimWeek", "week_label", "column", "Week")], "Y": [(MEASURE_TABLE, "Forecast Net Cash Flow", "measure", "Net Flow")]},
             "13-week cash movement walk",
-            "Net flow by week for selected scenario",
+            "Drilldown: Forecast week",
         ),
         data_visual(
             "barChart",
-            646,
-            204,
-            300,
-            236,
-            310,
-            {"Category": [("FactFXExposure", "exposure_currency", "column", "Currency")], "Y": [("KPI Measures", "Unhedged FX Exposure", "measure", "Unhedged Exposure")]},
+            642,
+            top_y,
+            304,
+            top_h,
+            410,
+            {"Category": [("FactFXExposure", "exposure_currency", "column", "Currency")], "Y": [(MEASURE_TABLE, "Unhedged FX Exposure", "measure", "Unhedged Exposure")]},
             "Unhedged FX by currency",
+            "Drilldown: Currency",
         ),
         data_visual(
             "barChart",
-            958,
-            204,
-            298,
-            236,
-            320,
-            {"Category": [("FactTreasuryRiskAction", "risk_level", "column", "Level")], "Y": [("KPI Measures", "Open Risk Value", "measure", "Open Risk Value")]},
+            966,
+            top_y,
+            290,
+            top_h,
+            420,
+            {"Category": [("FactTreasuryRiskAction", "risk_level", "column", "Level")], "Y": [(MEASURE_TABLE, "Open Risk Value", "measure", "Open Risk Value")]},
             "Risk value by level",
+            "Drilldown: Risk level",
         ),
         data_visual(
             "barChart",
-            24,
-            462,
-            610,
-            176,
-            330,
-            {"Category": [("FactLiquidityFacility", "facility_type", "column", "Facility")], "Y": [("KPI Measures", "Credit Available", "measure", "Credit Available")]},
+            204,
+            bot_y,
+            332,
+            bot_h,
+            430,
+            {"Category": [("FactLiquidityFacility", "facility_type", "column", "Facility")], "Y": [(MEASURE_TABLE, "Credit Available", "measure", "Credit Available")]},
             "Debt and facility maturity",
+            "Drilldown: Facility",
         ),
         data_visual(
             "barChart",
-            646,
-            462,
-            610,
-            176,
-            340,
-            {"Category": [("FactTreasuryRiskAction", "owner_team", "column", "Owner")], "Y": [("KPI Measures", "Open Risk Value", "measure", "Open Risk Value")]},
+            548,
+            bot_y,
+            332,
+            bot_h,
+            440,
+            {"Category": [("FactTreasuryRiskAction", "owner_team", "column", "Owner")], "Y": [(MEASURE_TABLE, "Open Risk Value", "measure", "Open Risk Value")]},
             "Treasury exception queue",
+            "Drilldown: Owner",
+        ),
+        data_visual(
+            "tableEx",
+            892,
+            bot_y,
+            364,
+            bot_h,
+            450,
+            {
+                "Values": [
+                    ("FactTreasuryRiskAction", "risk_level", "column", "Level"),
+                    ("FactTreasuryRiskAction", "owner_team", "column", "Owner"),
+                    ("FactTreasuryRiskAction", "status", "column", "Status"),
+                    (MEASURE_TABLE, "Open Risk Value", "measure", "Open Value"),
+                ]
+            },
+            "Risk actions",
+            "Drilldown: Severity > owner",
         ),
     ]
 
@@ -758,6 +1191,7 @@ def build_layout() -> dict:
         section("WorkingCapitalControl", "Working Capital Control", 1, p2),
         section("ForecastFxRisk", "Forecast, FX & Risk", 2, p3),
     ]
+    register_kpi_resource_items(layout)
     return layout
 
 
@@ -895,6 +1329,7 @@ foreach ($tableDef in $modelDefinition.model.tables) {
       $measure = New-Object Microsoft.AnalysisServices.Tabular.Measure
       $measure.Name = [string]($measureDef.name)
       $measure.Expression = [string]($measureDef.expression)
+      if ($measureDef.dataCategory) { $measure.DataCategory = [string]$measureDef.dataCategory }
       if ($measureDef.formatString) { $measure.FormatString = [string]$measureDef.formatString }
       if ($measureDef.description) { $measure.Description = [string]$measureDef.description }
       $table.Measures.Add($measure)
@@ -940,6 +1375,7 @@ Write-Output ($result | ConvertTo-Json -Depth 10)
   [string]$ProjectRoot = "",
   [string]$ModelPbix = "",
   [string]$LayoutJson = "",
+  [string]$ResourceDir = "",
   [string]$OutputPbix = "",
   [string]$FinalPbix = ""
 )
@@ -948,6 +1384,7 @@ $ErrorActionPreference = "Stop"
 if ([string]::IsNullOrWhiteSpace($ProjectRoot)) { $ProjectRoot = Resolve-Path (Join-Path $PSScriptRoot "..") }
 if ([string]::IsNullOrWhiteSpace($ModelPbix)) { $ModelPbix = Join-Path $ProjectRoot "output\dashboard_model_seed_ch07.pbix" }
 if ([string]::IsNullOrWhiteSpace($LayoutJson)) { $LayoutJson = Join-Path $ProjectRoot "build\native_report_layout_project14.json" }
+if ([string]::IsNullOrWhiteSpace($ResourceDir)) { $ResourceDir = Join-Path $ProjectRoot "assets\kpi_cards_project20_upgrade" }
 if ([string]::IsNullOrWhiteSpace($OutputPbix)) { $OutputPbix = Join-Path $ProjectRoot "output\dashboard_v01.pbix" }
 if ([string]::IsNullOrWhiteSpace($FinalPbix)) { $FinalPbix = Join-Path $ProjectRoot "output\dashboard_final.pbix" }
 $QaRoot = Join-Path $ProjectRoot "qa"
@@ -986,6 +1423,20 @@ try {
   finally { $stream.Dispose() }
   $securityUri = New-Object System.Uri("/SecurityBindings", [System.UriKind]::Relative)
   if ($package.PartExists($securityUri)) { $package.DeletePart($securityUri) }
+  if (Test-Path -LiteralPath $ResourceDir) {
+    foreach ($file in Get-ChildItem -LiteralPath $ResourceDir -Filter "*.svg" -File) {
+      $resourceUri = New-Object System.Uri(("/Report/StaticResources/RegisteredResources/{0}" -f $file.Name), [System.UriKind]::Relative)
+      if ($package.PartExists($resourceUri)) { $package.DeletePart($resourceUri) }
+      $resourcePart = $package.CreatePart($resourceUri, "image/svg+xml", [System.IO.Packaging.CompressionOption]::Normal)
+      $source = [IO.File]::OpenRead($file.FullName)
+      $target = $resourcePart.GetStream([IO.FileMode]::Create, [IO.FileAccess]::Write)
+      try { $source.CopyTo($target) }
+      finally {
+        $target.Dispose()
+        $source.Dispose()
+      }
+    }
+  }
 }
 finally { $package.Close() }
 
@@ -1008,6 +1459,7 @@ $metadata = [ordered]@{
   project_root = $ProjectRoot
   source_model_pbix = $ModelPbix
   layout_json = $LayoutJson
+  resource_dir = $ResourceDir
   output_pbix = $OutputPbix
   final_pbix = $FinalPbix
   final_pbix_bytes = (Get-Item -LiteralPath $FinalPbix).Length
@@ -1022,21 +1474,113 @@ $metadata | ConvertTo-Json -Depth 10
 """, encoding="utf-8")
 
 
+def visual_config(visual: dict) -> dict:
+    return json.loads(visual["config"])
+
+
+def visual_query_refs(visual: dict) -> list[str]:
+    cfg = visual_config(visual)
+    refs: list[str] = []
+    for bucket in cfg.get("singleVisual", {}).get("projections", {}).values():
+        for item in bucket:
+            if item.get("queryRef"):
+                refs.append(item["queryRef"])
+    return refs
+
+
+def verify_project20_upgrade(layout: dict) -> dict:
+    visual_type_counts: dict[str, int] = {}
+    page_checks = []
+    for section_data in layout["sections"]:
+        visuals = section_data["visualContainers"]
+        checks = {
+            "page": section_data["displayName"],
+            "dynamic_kpi_cards": [],
+            "lens_count": 0,
+            "decision_chip_count": 0,
+            "slicer_count": 0,
+            "top_chart_slots": [],
+            "detail_tables": [],
+        }
+        for visual in visuals:
+            cfg = visual_config(visual)
+            vtype = cfg.get("singleVisual", {}).get("visualType")
+            visual_type_counts[vtype] = visual_type_counts.get(vtype, 0) + 1
+            refs = visual_query_refs(visual)
+            position = visual.get("x"), visual.get("y"), visual.get("width"), visual.get("height")
+            is_kpi_card = vtype == "tableEx" and any(ref.endswith("KPI Card SVG") for ref in refs)
+            is_lens = f"{MEASURE_TABLE}.Current Lens SVG" in refs
+            is_decision_chip = any(ref.endswith("Decision Chips SVG") for ref in refs)
+            if vtype == "slicer":
+                checks["slicer_count"] += 1
+            if is_kpi_card and visual.get("y") == 104 and visual.get("width") == 255 and visual.get("height") == 164:
+                checks["dynamic_kpi_cards"].append({"type": vtype, "refs": refs, "rect": position})
+            elif is_lens:
+                checks["lens_count"] += 1
+            elif is_decision_chip:
+                checks["decision_chip_count"] += 1
+            elif vtype == "tableEx":
+                checks["detail_tables"].append({"refs": refs, "rect": position})
+            if vtype in {"barChart", "columnChart", "waterfallChart"} and 280 <= visual.get("y", 0) <= 295:
+                checks["top_chart_slots"].append({"type": vtype, "rect": position})
+
+        checks["kpi_slots_pass"] = len(checks["dynamic_kpi_cards"]) == 4
+        checks["lens_pass"] = checks["lens_count"] == 1
+        checks["decision_chips_pass"] = checks["decision_chip_count"] == 1
+        checks["slicer_pass"] = checks["slicer_count"] == 4
+        checks["top_chart_slots_pass"] = len(checks["top_chart_slots"]) == 3
+        checks["detail_table_pass"] = len(checks["detail_tables"]) >= 1
+        page_checks.append(checks)
+
+    status = "pass" if all(
+        item["kpi_slots_pass"]
+        and item["lens_pass"]
+        and item["decision_chips_pass"]
+        and item["slicer_pass"]
+        and item["top_chart_slots_pass"]
+        and item["detail_table_pass"]
+        for item in page_checks
+    ) and visual_type_counts.get("cardVisual", 0) == 0 else "fail"
+
+    return {
+        "status": status,
+        "checked_layout": str(LAYOUT_JSON),
+        "quality_benchmark": "Project 20 v77-style direct layout verification adapted to Project 14 treasury palette",
+        "visual_type_counts": visual_type_counts,
+        "pages": page_checks,
+        "checks": {
+            "card_visual_removed": visual_type_counts.get("cardVisual", 0) == 0,
+            "dynamic_svg_kpi_cards_per_page": "4",
+            "current_lens_per_page": "1",
+            "decision_chip_per_page": "1",
+            "compact_slicers_per_page": "4",
+            "top_chart_slots_per_page": "3",
+        },
+    }
+
+
 def main() -> None:
     MODEL_BIM.parent.mkdir(parents=True, exist_ok=True)
     LAYOUT_JSON.parent.mkdir(parents=True, exist_ok=True)
+    write_kpi_resources()
     MODEL_BIM.write_text(json.dumps(build_model_bim(), indent=2), encoding="utf-8")
-    LAYOUT_JSON.write_text(json.dumps(build_layout(), ensure_ascii=False, indent=2), encoding="utf-8")
+    layout = build_layout()
+    LAYOUT_JSON.write_text(json.dumps(layout, ensure_ascii=False, indent=2), encoding="utf-8")
     write_native_scripts()
+    verification = verify_project20_upgrade(layout)
+    (ROOT / "qa").mkdir(parents=True, exist_ok=True)
+    (ROOT / "qa" / "project20_upgrade_verification.json").write_text(json.dumps(verification, indent=2), encoding="utf-8")
     summary = {
         "status": "native_assets_created",
         "model_bim": str(MODEL_BIM),
         "layout_json": str(LAYOUT_JSON),
         "seed_template": str(SEED_TEMPLATE),
-        "pages": [section["displayName"] for section in json.loads(LAYOUT_JSON.read_text(encoding="utf-8"))["sections"]],
+        "pages": [section["displayName"] for section in layout["sections"]],
+        "project20_upgrade_verification": verification["status"],
     }
     print(json.dumps(summary, indent=2))
 
 
 if __name__ == "__main__":
     main()
+

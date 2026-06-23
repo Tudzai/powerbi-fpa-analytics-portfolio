@@ -1,0 +1,65 @@
+{
+  "name": "019a0c8da17abca3fd86",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 771.22385402759244,
+        "y": 40.943480195816655,
+        "z": 2000,
+        "width": 425.71428571428572,
+        "height": 89.523809523809518
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "slicer",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "Organisation.LegalName",
+          "active": true
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "o",
+          "Entity": "Organisation",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o"
+              }
+            },
+            "Property": "LegalName"
+          },
+          "Name": "Organisation.LegalName"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

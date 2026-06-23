@@ -1,3 +1,3 @@
 # Known Issues
 
-- `output/dashboard_final.pbix` is not created by the deterministic script. It requires Desktop save/open-check from the generated PBIP seed.
+- `output/dashboard_final.pbix` remains required as the final deliverable and must be created through Power BI Desktop Save As, then reopened for validation.

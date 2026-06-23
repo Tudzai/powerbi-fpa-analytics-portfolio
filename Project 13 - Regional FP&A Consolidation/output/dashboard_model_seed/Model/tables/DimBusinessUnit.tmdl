@@ -1,0 +1,25 @@
+﻿table DimBusinessUnit
+
+	column business_unit_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: business_unit_id
+
+	column business_unit
+		dataType: string
+		summarizeBy: none
+		sourceColumn: business_unit
+
+	partition DimBusinessUnit-Import = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/dim_business_unit.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {
+				        {"business_unit_id", type text},
+				        {"business_unit", type text}
+				    }, "en-US")
+				in
+				    TypedColumns
+

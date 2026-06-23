@@ -1,8 +1,6 @@
 ﻿# Issue Log
 
-Status: closed
-
-- Ch06 Multi Currency seed was rejected as the technical seed because stale `/UnappliedChanges` web queries triggered credential prompts during Desktop apply/save.
-- Final technical seed is Ch07 Group Reporting because it has `/Report/Layout`, no stale unapplied query prompt, and supports TOM model replacement.
-- Earlier native `tableEx` panels rendered blank in Desktop; replaced with built-in chart panels.
-- No open issue remains for `output/dashboard_final.pbix`.
+- Final native PBIX validation is complete: `qa/pbix_final_validation.json` and `qa/project20_upgrade_verification.json` pass.
+- Earlier Desktop image-placeholder/static-KPI risk was resolved by rendering KPI cards as dynamic `tableEx` ImageUrl SVG measures.
+- Explicit slicer sync-group metadata was not found in the native layout; repeated compact slicers are used on each page and documented in `qa/interaction_qa_notes.md`.
+- Synthetic data is for portfolio/demo use only.

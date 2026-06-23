@@ -5,4 +5,4 @@
 3. Confirm the report title/pages match Project 19.
 4. Refresh all tables.
 5. Save as `C:\Users\Win\OneDrive\Codex\Portfolio\BI\Project 19 - Finance Data Quality BI Governance\output\dashboard_final.pbix`.
-6. Reopen the exact PBIX and verify 3 pages, native visuals, no visual errors.
+6. Reopen the exact PBIX and verify 4 pages, native visuals, no visual errors.

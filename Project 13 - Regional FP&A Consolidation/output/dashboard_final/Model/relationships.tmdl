@@ -1,0 +1,60 @@
+﻿relationship rel_FactFinancials_date_id_DimDate_date_id
+	fromColumn: FactFinancials.date_id
+	toColumn: DimDate.date_id
+
+relationship rel_FactFinancialSummary_date_id_DimDate_date_id
+	fromColumn: FactFinancialSummary.date_id
+	toColumn: DimDate.date_id
+
+relationship rel_FactVarianceDriverBridge_date_id_DimDate_date_id
+	fromColumn: FactVarianceDriverBridge.date_id
+	toColumn: DimDate.date_id
+
+relationship rel_FactCloseExceptions_date_id_DimDate_date_id
+	fromColumn: FactCloseExceptions.date_id
+	toColumn: DimDate.date_id
+
+relationship rel_FactFXRate_date_id_DimDate_date_id
+	fromColumn: FactFXRate.date_id
+	toColumn: DimDate.date_id
+
+relationship rel_FactFinancials_entity_id_DimEntity_entity_id
+	fromColumn: FactFinancials.entity_id
+	toColumn: DimEntity.entity_id
+
+relationship rel_FactFinancialSummary_entity_id_DimEntity_entity_id
+	fromColumn: FactFinancialSummary.entity_id
+	toColumn: DimEntity.entity_id
+
+relationship rel_FactVarianceDriverBridge_entity_id_DimEntity_entity_id
+	fromColumn: FactVarianceDriverBridge.entity_id
+	toColumn: DimEntity.entity_id
+
+relationship rel_FactCloseExceptions_entity_id_DimEntity_entity_id
+	fromColumn: FactCloseExceptions.entity_id
+	toColumn: DimEntity.entity_id
+
+relationship rel_FactFinancials_business_unit_id_DimBusinessUnit_business_unit_id
+	fromColumn: FactFinancials.business_unit_id
+	toColumn: DimBusinessUnit.business_unit_id
+
+relationship rel_FactFinancialSummary_business_unit_id_DimBusinessUnit_business_unit_id
+	fromColumn: FactFinancialSummary.business_unit_id
+	toColumn: DimBusinessUnit.business_unit_id
+
+relationship rel_FactVarianceDriverBridge_business_unit_id_DimBusinessUnit_business_unit_id
+	fromColumn: FactVarianceDriverBridge.business_unit_id
+	toColumn: DimBusinessUnit.business_unit_id
+
+relationship rel_FactFinancials_scenario_id_DimScenario_scenario_id
+	fromColumn: FactFinancials.scenario_id
+	toColumn: DimScenario.scenario_id
+
+relationship rel_FactFinancialSummary_scenario_id_DimScenario_scenario_id
+	fromColumn: FactFinancialSummary.scenario_id
+	toColumn: DimScenario.scenario_id
+
+relationship rel_FactFinancials_account_id_DimAccount_account_id
+	fromColumn: FactFinancials.account_id
+	toColumn: DimAccount.account_id
+

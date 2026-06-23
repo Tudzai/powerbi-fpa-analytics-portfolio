@@ -2,6 +2,7 @@ param(
   [string]$ProjectRoot = "",
   [string]$ModelPbix = "",
   [string]$LayoutJson = "",
+  [string]$ResourceDir = "",
   [string]$OutputPbix = "",
   [string]$FinalPbix = ""
 )
@@ -10,6 +11,7 @@ $ErrorActionPreference = "Stop"
 if ([string]::IsNullOrWhiteSpace($ProjectRoot)) { $ProjectRoot = Resolve-Path (Join-Path $PSScriptRoot "..") }
 if ([string]::IsNullOrWhiteSpace($ModelPbix)) { $ModelPbix = Join-Path $ProjectRoot "output\dashboard_model_seed_ch07.pbix" }
 if ([string]::IsNullOrWhiteSpace($LayoutJson)) { $LayoutJson = Join-Path $ProjectRoot "build\native_report_layout_project14.json" }
+if ([string]::IsNullOrWhiteSpace($ResourceDir)) { $ResourceDir = Join-Path $ProjectRoot "assets\kpi_cards_project20_upgrade" }
 if ([string]::IsNullOrWhiteSpace($OutputPbix)) { $OutputPbix = Join-Path $ProjectRoot "output\dashboard_v01.pbix" }
 if ([string]::IsNullOrWhiteSpace($FinalPbix)) { $FinalPbix = Join-Path $ProjectRoot "output\dashboard_final.pbix" }
 $QaRoot = Join-Path $ProjectRoot "qa"
@@ -48,6 +50,20 @@ try {
   finally { $stream.Dispose() }
   $securityUri = New-Object System.Uri("/SecurityBindings", [System.UriKind]::Relative)
   if ($package.PartExists($securityUri)) { $package.DeletePart($securityUri) }
+  if (Test-Path -LiteralPath $ResourceDir) {
+    foreach ($file in Get-ChildItem -LiteralPath $ResourceDir -Filter "*.svg" -File) {
+      $resourceUri = New-Object System.Uri(("/Report/StaticResources/RegisteredResources/{0}" -f $file.Name), [System.UriKind]::Relative)
+      if ($package.PartExists($resourceUri)) { $package.DeletePart($resourceUri) }
+      $resourcePart = $package.CreatePart($resourceUri, "image/svg+xml", [System.IO.Packaging.CompressionOption]::Normal)
+      $source = [IO.File]::OpenRead($file.FullName)
+      $target = $resourcePart.GetStream([IO.FileMode]::Create, [IO.FileAccess]::Write)
+      try { $source.CopyTo($target) }
+      finally {
+        $target.Dispose()
+        $source.Dispose()
+      }
+    }
+  }
 }
 finally { $package.Close() }
 
@@ -70,6 +86,7 @@ $metadata = [ordered]@{
   project_root = $ProjectRoot
   source_model_pbix = $ModelPbix
   layout_json = $LayoutJson
+  resource_dir = $ResourceDir
   output_pbix = $OutputPbix
   final_pbix = $FinalPbix
   final_pbix_bytes = (Get-Item -LiteralPath $FinalPbix).Length

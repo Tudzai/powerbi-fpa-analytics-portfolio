@@ -4,3 +4,8 @@ Carbon cost USD at $50/t,35972630.5,Total emissions * dim_carbon_scenario[Base i
 Emissions intensity tCO2e per $M revenue,123.13,"Total emissions / revenue * 1,000,000"
 Latest month YoY emissions change,-0.1285,May 2026 vs May 2025
 Abatement annual reduction tCO2e,54850,fact_abatement_initiatives
+High-risk supplier emissions tCO2e,161952.82,fact_supplier_month filtered to High risk tier
+Supplier data quality score,0.8204,dim_supplier.data_quality_score average
+Suppliers without verified target,5,dim_supplier target_status = No verified target
+Probability weighted carbon cost USD,58995113.97,fact_carbon_exposure.probability_weighted_cost_usd
+Planned abatement capex USD,19150000,fact_abatement_initiatives filtered to Planned

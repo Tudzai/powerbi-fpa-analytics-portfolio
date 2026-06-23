@@ -4,7 +4,7 @@
   "expected_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP&A Consolidation\\output\\dashboard_final.pbix",
   "file_exists": true,
   "route": "TEMPLATE_SEED_TOM_PUSH_NATIVE_LAYOUT",
-  "reason": "Finance PBIX seed was copied, Project 13 model was pushed through the Power BI Desktop TOM/XMLA session, Desktop saved the seed PBIX, native layout was patched, and final PBIX was reopened/validated.",
+  "reason": "Finance PBIX seed was copied, Project 13 model was pushed through the Power BI Desktop TOM/XMLA session, Desktop saved the seed PBIX, native layout was patched, and final PBIX was reopened/validated. On 2026-06-23 the native layout was upgraded again so all slicers sit in a top filter bar, then the final PBIX passed package validation, pbi-tools extract, Desktop exact-file open-check, and screenshot QA.",
   "environment": {
     "checked_at": "2026-06-15T02:01:15",
     "power_bi_desktop_exe": "C:\\Program Files\\Microsoft Power BI Desktop\\bin\\PBIDesktop.exe",

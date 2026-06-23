@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "checked_at": "2026-06-23T22:39:42.1630437+07:00",
+  "pbix_path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_final.pbix",
+  "pbix_sha256": "644011EB707D39FD8A9F13B8E4BCE32156E45E943AD3A7F69F4FDE1565A95923",
+  "power_bi_process_id": 40044,
+  "power_bi_window_title": "dashboard_final",
+  "pages_checked": [
+    "ESG Finance Overview",
+    "Emissions & Supplier Intensity",
+    "Carbon Scenario & Abatement ROI",
+    "Risk & Action Control Tower"
+  ],
+  "screenshots": [
+    "output/screenshots/desktop_page1_overview.png",
+    "output/screenshots/desktop_page2_supplier.png",
+    "output/screenshots/desktop_page3_roi.png",
+    "output/screenshots/desktop_page4_risk.png",
+    "output/screenshots/desktop_qa_contact_sheet.png",
+    "output/screenshots/desktop_page3_roi_canvas_crop.png",
+    "output/screenshots/desktop_page4_risk_canvas_crop.png"
+  ],
+  "visual_error_count": 0,
+  "ui_automation_error_text_hits": [],
+  "notes": [
+    "Power BI Desktop opened the final PBIX successfully.",
+    "All four report pages were selected by UI Automation and captured with PrintWindow.",
+    "Common Power BI visual error strings returned zero hits on all four pages.",
+    "Manual screenshot review confirmed slicer labels remain visible and no visual error cards are present."
+  ]
+}

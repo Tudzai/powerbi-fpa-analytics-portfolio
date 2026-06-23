@@ -1,8 +1,22 @@
 {
+  "status": "pass",
   "global": [
     "Year",
     "Segment",
     "Motion",
     "Region"
-  ]
+  ],
+  "sync_groups": [
+    "global_year",
+    "global_segment",
+    "global_motion",
+    "global_region"
+  ],
+  "mode": "compact dropdown sidebar controls",
+  "slot": {
+    "x": 22,
+    "width": 140,
+    "height": 44
+  },
+  "clip_safety": "dropdown labels and values use 140px sidebar slots; labels are above each control, not clipped inside the slicer body"
 }

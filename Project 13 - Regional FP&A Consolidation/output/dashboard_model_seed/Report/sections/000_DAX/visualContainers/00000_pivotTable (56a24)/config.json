@@ -1,0 +1,387 @@
+{
+  "name": "56a24c90f50dabceb393",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 10.467289719626169,
+        "y": 141.30841121495328,
+        "z": 0,
+        "width": 1249.3457943925234,
+        "height": 578.69158878504675
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "pivotTable",
+    "projections": {
+      "Rows": [
+        {
+          "queryRef": "Report Structure.Header",
+          "active": true
+        },
+        {
+          "queryRef": "Accounts.Name"
+        }
+      ],
+      "Columns": [
+        {
+          "queryRef": "Calendar.Year_Month",
+          "active": true
+        }
+      ],
+      "Values": [
+        {
+          "queryRef": "Transactions.Report Value"
+        },
+        {
+          "queryRef": "Transactions.%Sales"
+        },
+        {
+          "queryRef": "Transactions.VAR"
+        },
+        {
+          "queryRef": "Transactions.VAR %"
+        },
+        {
+          "queryRef": "SparklineData(Sum(Transactions.NetAmount_GC)_[Calendar.Year_Month])"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "a",
+          "Entity": "Accounts",
+          "Type": 0
+        },
+        {
+          "Name": "c",
+          "Entity": "Calendar",
+          "Type": 0
+        },
+        {
+          "Name": "t",
+          "Entity": "Transactions",
+          "Type": 0
+        },
+        {
+          "Name": "r",
+          "Entity": "Report Structure",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "a"
+              }
+            },
+            "Property": "Name"
+          },
+          "Name": "Accounts.Name"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Year_Month"
+          },
+          "Name": "Calendar.Year_Month"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "%Sales"
+          },
+          "Name": "Transactions.%Sales"
+        },
+        {
+          "SparklineData": {
+            "Measure": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Source": "t"
+                      }
+                    },
+                    "Property": "NetAmount_GC"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "Groupings": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "c"
+                    }
+                  },
+                  "Property": "Year_Month"
+                }
+              }
+            ]
+          },
+          "Name": "SparklineData(Sum(Transactions.NetAmount_GC)_[Calendar.Year_Month])"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "VAR"
+          },
+          "Name": "Transactions.VAR"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "VAR %"
+          },
+          "Name": "Transactions.VAR %"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "Report Value"
+          },
+          "Name": "Transactions.Report Value"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "r"
+              }
+            },
+            "Property": "Header"
+          },
+          "Name": "Report Structure.Header"
+        }
+      ]
+    },
+    "columnProperties": {
+      "Sum(Transactions.Balance)": {
+        "displayName": "Actual"
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "4.821718719253369D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Calendar"
+                          }
+                        },
+                        "Property": "Year_Month"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "datetime'2021-12-01T00:00:00'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "SparklineData(Sum(Transactions.Balance)_[Calendar.Date])"
+          }
+        }
+      ],
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotalsLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "'EBIT'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Transactions"
+                            }
+                          },
+                          "Property": "%Sales"
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient2": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#094780'"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#a0d1ff'"
+                              }
+                            },
+                            "value": {
+                              "Literal": {
+                                "Value": "0D"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Transactions.%Sales"
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "dataBars": {
+              "minValue": {
+                "expr": {
+                  "Literal": {
+                    "Value": "-1D"
+                  }
+                }
+              },
+              "maxValue": {
+                "expr": {
+                  "Literal": {
+                    "Value": "1D"
+                  }
+                }
+              },
+              "positiveColor": {
+                "solid": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'#176C36'"
+                      }
+                    }
+                  }
+                }
+              },
+              "negativeColor": {
+                "solid": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'#FE0505'"
+                      }
+                    }
+                  }
+                }
+              },
+              "axisColor": {
+                "solid": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'#252423'"
+                      }
+                    }
+                  }
+                }
+              },
+              "reverseDirection": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "hideText": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Transactions.VAR %"
+          }
+        }
+      ]
+    }
+  }
+}

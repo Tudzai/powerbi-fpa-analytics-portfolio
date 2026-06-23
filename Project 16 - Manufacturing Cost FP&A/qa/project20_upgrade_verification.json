@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-06-23T16:04:00+07:00",
+  "status": "layout_pass_pbix_datamodel_still_blocked",
+  "project": "Project 16 - Manufacturing Cost FP&A",
+  "source_layout": "build/native_report_layout_project16.json",
+  "final_pbix_container": "output/dashboard_final.pbix",
+  "supplemental_pbit": "output/dashboard_project16_model_schema.pbit",
+  "pages": [
+    {
+      "page": "01 Manufacturing FP&A Overview",
+      "top_slicers": ["Month", "Plant", "Product Line", "Line"]
+    },
+    {
+      "page": "02 Standard Cost Variance",
+      "top_slicers": ["Month", "Plant", "Product Line", "Line"]
+    },
+    {
+      "page": "03 Yield Capacity & WC",
+      "top_slicers": ["Month", "Plant", "Product Line", "Scenario"]
+    }
+  ],
+  "slicer_slot_contract": {
+    "x": [24, 336, 648, 960],
+    "y": 72,
+    "width": 296,
+    "height": 52
+  },
+  "visual_counts": {
+    "pages": 3,
+    "visual_containers": 45,
+    "slicers": 12,
+    "cardVisual": 18,
+    "charts": 9,
+    "tables": 3
+  },
+  "evidence": [
+    "qa/native_layout_validation.json",
+    "build/config/slicer_map.json",
+    "output/dashboard_project16_model_schema.pbit",
+    "output/screenshots/tab1_overview.png",
+    "output/screenshots/tab2_variance.png",
+    "output/screenshots/tab3_yield_capacity_wc.png"
+  ],
+  "known_blocker": "The PBIX report layout is patched, but offline DataModel validation remains blocked because output/dashboard_final.pbix still contains the seed model tables until a clean Power BI Desktop save persists the Project 16 model."
+}

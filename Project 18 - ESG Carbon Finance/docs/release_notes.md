@@ -1,15 +1,14 @@
 # Release Notes
 
-Final PBIX release for Project 18 - ESG Carbon Finance.
+v3 source package for Project 18 - ESG Carbon Finance.
 
 Included:
 - Synthetic data and validation
 - Semantic model and DAX
-- 3-tab report design
+- 4-page report design
 - Theme and config
 - Handoff/rebuild/refresh docs
 - Supplemental HTML dashboard preview
-- Final PBIX: `output/dashboard_final.pbix`
-- Desktop open-check evidence: `qa/pbix_final_validation.json`
+- Native Power BI layout generator
 
-Power BI Desktop save/open QA passed on 2026-06-15.
+Fresh Desktop open-check is required after any v3 PBIX patch.

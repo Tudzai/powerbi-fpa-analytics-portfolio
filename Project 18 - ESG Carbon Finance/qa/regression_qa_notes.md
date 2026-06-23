@@ -1,1 +1,1 @@
-Regression QA is pending final PBIX build. Data/model regression checks pass for generated artifacts.
+Data/model regression checks pass for generated artifacts. PBIX visual regression should be refreshed after applying the v3 layout.

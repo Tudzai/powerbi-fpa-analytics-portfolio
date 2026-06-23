@@ -948,6 +948,48 @@
             "expression": "AVERAGE ( FactAccessReview[DeploymentControlScore] )",
             "formatString": "0.0",
             "displayFolder": "Controls"
+          },
+          {
+            "name": "Current Lens Label",
+            "expression": "VAR MonthLens = SELECTEDVALUE ( DimDate[MonthYear], \"All Months\" )\nVAR DomainLens = SELECTEDVALUE ( DimDataset[Domain], \"All Domains\" )\nVAR CriticalityLens = SELECTEDVALUE ( DimDataset[Criticality], \"All Tiers\" )\nRETURN \"Lens: \" & MonthLens & \" | \" & DomainLens & \" | \" & CriticalityLens",
+            "formatString": "",
+            "displayFolder": "Executive Lens"
+          },
+          {
+            "name": "Usage Lens Label",
+            "expression": "VAR WorkspaceLens = SELECTEDVALUE ( DimReport[Workspace], \"All Workspaces\" )\nVAR SensitivityLens = SELECTEDVALUE ( DimReport[SensitivityLabel], \"All Sensitivity\" )\nRETURN \"Lens: \" & WorkspaceLens & \" | \" & SensitivityLens",
+            "formatString": "",
+            "displayFolder": "Executive Lens"
+          },
+          {
+            "name": "Action Lens Label",
+            "expression": "VAR MonthLens = SELECTEDVALUE ( DimDate[MonthYear], \"All Months\" )\nVAR DepartmentLens = SELECTEDVALUE ( DimDepartment[Department], \"All Departments\" )\nRETURN \"Lens: \" & MonthLens & \" | \" & DepartmentLens",
+            "formatString": "",
+            "displayFolder": "Executive Lens"
+          },
+          {
+            "name": "Governance Decision Chip",
+            "expression": "VAR Dq = [Data Quality Score]\nVAR Fresh = [Freshness SLA %]\nVAR OpenIncidents = [Open Incidents]\nRETURN IF ( Dq >= 92 && Fresh >= 0.95 && OpenIncidents <= 30, \"PASS: trust posture on track\", IF ( OpenIncidents > 45, \"ESCALATE: incident load above guardrail\", \"WATCH: owner review required\" ) )",
+            "formatString": "",
+            "displayFolder": "Executive Lens"
+          },
+          {
+            "name": "Reliability Decision Chip",
+            "expression": "VAR Failed = [Failed Refreshes]\nVAR Complete = [Completeness %]\nVAR RecPass = [Reconciliation Pass %]\nRETURN IF ( Failed <= 25 && Complete >= 0.99 && RecPass >= 0.90, \"PASS: close-ready reliability\", IF ( Failed > 40 || Complete < 0.985, \"ESCALATE: reliability SLA at risk\", \"WATCH: validate exception queue\" ) )",
+            "formatString": "",
+            "displayFolder": "Executive Lens"
+          },
+          {
+            "name": "Adoption Decision Chip",
+            "expression": "VAR LoadSec = [Avg Report Load Seconds]\nVAR AccessRisk = [Access Risk Events]\nVAR ControlScore = [Deployment Control Score]\nRETURN IF ( LoadSec <= 3.0 && AccessRisk <= 800 && ControlScore >= 92, \"PASS: governed adoption healthy\", IF ( AccessRisk > 950, \"ESCALATE: access risk concentration\", \"WATCH: control follow-up needed\" ) )",
+            "formatString": "",
+            "displayFolder": "Executive Lens"
+          },
+          {
+            "name": "Risk Action Decision Chip",
+            "expression": "VAR OpenIncidents = [Open Incidents]\nVAR AccessRisk = [Access Risk Events]\nVAR Pending = [Pending Access Reviews]\nRETURN IF ( OpenIncidents <= 30 && AccessRisk <= 800 && Pending <= 900, \"PASS: action load inside guardrail\", IF ( OpenIncidents > 45 || Pending > 1100, \"ESCALATE: prioritize owner actions\", \"WATCH: triage aging queues\" ) )",
+            "formatString": "",
+            "displayFolder": "Executive Lens"
           }
         ]
       }

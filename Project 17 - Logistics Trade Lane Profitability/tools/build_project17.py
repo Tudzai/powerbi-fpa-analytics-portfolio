@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import csv
 import json
@@ -40,6 +40,12 @@ THEME = {
     "ink": "#111827",
 }
 PALETTE = [THEME["blue"], THEME["teal"], THEME["green"], THEME["amber"], THEME["red"], THEME["ink"]]
+FILTER_ROW_Y = 82
+FILTER_ROW_H = 56
+CONTEXT_CHIP_H = 56
+CONTENT_ROW_SHIFT = 52
+KPI_ROW_Y = 92 + CONTENT_ROW_SHIFT
+SPARKLINE_OFFSET_Y = 62
 
 
 TABLE_FILES = {
@@ -994,7 +1000,7 @@ def projections(mapping: dict[str, list[tuple[str, str, str, str]]]) -> dict:
     return {bucket: [{"queryRef": f"{table}.{field}", **({"active": True} if idx == 0 else {})} for idx, (table, field, *_rest) in enumerate(fields)] for bucket, fields in mapping.items()}
 
 
-def data_visual(kind: str, x, y, w, h, z, proj_map: dict[str, list[tuple[str, str, str, str]]], title: str, subtitle: str | None = None) -> dict:
+def data_visual(kind: str, x, y, w, h, z, proj_map: dict[str, list[tuple[str, str, str, str]]], title: str, subtitle: str | None = None, show_container_title: bool = True) -> dict:
     cfg = json.loads(json.dumps(SAMPLES[kind]))
     cfg["name"] = rand_name()
     sv = cfg["singleVisual"]
@@ -1009,7 +1015,38 @@ def data_visual(kind: str, x, y, w, h, z, proj_map: dict[str, list[tuple[str, st
         sv["objects"] = slicer_objects(title)
     else:
         sv["objects"] = chart_objects(kind, fields, title)
-    sv["vcObjects"] = visual_shell(title, subtitle)
+    sv["vcObjects"] = visual_shell(title if show_container_title else None, subtitle)
+    return outer(cfg, x, y, w, h, z)
+
+
+def transparent_shell() -> dict:
+    return {
+        "background": [{"properties": {"show": lit("false"), "transparency": lit("100D")}}],
+        "border": [{"properties": {"show": lit("false")}}],
+        "dropShadow": [{"properties": {"show": lit("false")}}],
+        "title": [{"properties": {"show": lit("false")}}],
+        "visualHeader": [{"properties": {"show": lit("false")}}],
+    }
+
+
+def sparkline(measure: str, x, y, w, h, z, accent: str | None = None) -> dict:
+    cfg = json.loads(json.dumps(SAMPLES["columnChart"]))
+    cfg["name"] = rand_name()
+    sv = cfg["singleVisual"]
+    sv["visualType"] = "columnChart"
+    fields = [("DimDate", "month_index", "column", "Month"), ("KPI Measures", measure, "measure", measure)]
+    sv["projections"] = projections({"Category": [fields[0]], "Y": [fields[1]]})
+    sv["prototypeQuery"] = prototype(fields)
+    sv.pop("columnProperties", None)
+    sv["drillFilterOtherVisuals"] = False
+    objects = chart_objects("columnChart", fields, None)
+    objects["valueAxis"][0]["properties"].update({"show": lit("false"), "gridlineShow": lit("false"), "showAxisTitle": lit("false")})
+    objects["categoryAxis"][0]["properties"].update({"show": lit("false"), "gridlineShow": lit("false"), "showAxisTitle": lit("false")})
+    objects["legend"][0]["properties"]["show"] = lit("false")
+    objects["labels"][0]["properties"]["show"] = lit("false")
+    objects["dataPoint"][0]["properties"]["fill"] = color(accent or title_accent(measure))
+    sv["objects"] = objects
+    sv["vcObjects"] = transparent_shell()
     return outer(cfg, x, y, w, h, z)
 
 
@@ -1034,8 +1071,16 @@ def card(measure: str, title: str, x, y, w, h, z) -> dict:
     return visual
 
 
+def kpi_stack(measure: str, title: str, x, y, w, h, z) -> list[dict]:
+    accent = title_accent(title)
+    return [
+        card(measure, title, x, y, w, h, z),
+        sparkline(measure, x + 12, y + SPARKLINE_OFFSET_Y, w - 24, 18, z + 70, accent),
+    ]
+
+
 def slicer(table: str, field: str, title: str, x, y, w, h, z) -> dict:
-    return data_visual("slicer", x, y, w, h, z, {"Values": [(table, field, "column", title)]}, title)
+    return data_visual("slicer", x, y, w, h, z, {"Values": [(table, field, "column", title)]}, title, show_container_title=False)
 
 
 def text_box(text: str, x, y, w, h, z, size=12, fg=None, bold=True) -> dict:
@@ -1090,12 +1135,27 @@ def shape(x, y, w, h, z, fill) -> dict:
     return outer(cfg, x, y, w, h, z)
 
 
+def context_chip(label: str, body: str, x, y, w, h, z, accent: str, fill: str) -> list[dict]:
+    return [
+        shape(x, y, w, h, z, fill),
+        text_box(label.upper(), x + 10, y + 5, w - 20, 11, z + 50, 5.8, accent, True),
+        text_box(body, x + 10, y + 19, w - 20, h - 21, z + 60, 7.2, THEME["text"], True),
+    ]
+
+
+def decision_layer(lens: str, decision: str) -> list[dict]:
+    return (
+        context_chip("Current Lens", lens, 660, FILTER_ROW_Y, 260, CONTEXT_CHIP_H, 80, THEME["blue"], THEME["panel2"])
+        + context_chip("Decision Chip", decision, 930, FILTER_ROW_Y, 326, CONTEXT_CHIP_H, 85, THEME["amber"], "#FFFBEB")
+    )
+
+
 def header(title: str, subtitle: str) -> list[dict]:
     return [
         shape(24, 18, 5, 48, 10, THEME["blue"]),
-        text_box("LOGISTICS TRADE LANE PROFITABILITY", 38, 20, 330, 18, 20, 7.5, THEME["blue"], False),
-        text_box(title, 38, 32, 525, 34, 30, 14, THEME["text"]),
-        text_box(subtitle, 575, 36, 430, 24, 40, 8, THEME["muted"], False),
+        text_box("LOGISTICS TRADE LANE PROFITABILITY", 38, 20, 330, 11, 20, 6.6, THEME["blue"], False),
+        text_box(title, 38, 36, 525, 28, 30, 14, THEME["text"]),
+        text_box(subtitle, 575, 38, 430, 22, 40, 8, THEME["muted"], False),
         shape(24, 70, 1232, 2, 50, THEME["border"]),
     ]
 
@@ -1141,55 +1201,58 @@ def build_layout() -> dict:
 
     p1 = header("Executive Overview", "Margin status, volume, reprice value, and customer/lane concentration")
     p1 += [
-        slicer("DimDate", "year", "Year", 860, 24, 92, 42, 100),
-        slicer("DimTradeLane", "mode", "Mode", 962, 24, 120, 42, 110),
-        slicer("DimCustomer", "segment", "Segment", 1092, 24, 164, 42, 120),
-        card("Net Revenue", "Net Revenue", 24, 92, 190, 88, 200),
-        card("Gross Profit", "Gross Profit", 224, 92, 190, 88, 210),
-        card("GP Margin %", "GP Margin", 424, 92, 190, 88, 220),
-        card("Shipment Count", "Shipments", 624, 92, 190, 88, 230),
-        card("Cost per Shipment", "Cost / Shipment", 824, 92, 190, 88, 240),
-        card("Reprice Opportunity", "Reprice Opp.", 1024, 92, 232, 88, 250),
-        data_visual("columnChart", 24, 204, 420, 226, 300, {"Category": [("DimDate", "month_label", "column", "Month")], "Y": [("KPI Measures", "Net Revenue", "measure", "Revenue"), ("KPI Measures", "Gross Profit", "measure", "GP")]}, "Revenue and GP Trend"),
-        data_visual("barChart", 456, 204, 376, 226, 310, {"Category": [("DimTradeLane", "lane_cluster", "column", "Cluster")], "Y": [("KPI Measures", "Gross Profit", "measure", "GP")]}, "Gross Profit by Lane Cluster"),
-        data_visual("donutChart", 844, 204, 412, 226, 320, {"Category": [("DimService", "service_family", "column", "Service")], "Y": [("KPI Measures", "Net Revenue", "measure", "Revenue")]}, "Revenue Mix by Service"),
-        data_visual("tableEx", 24, 454, 596, 184, 330, {"Values": [("DimCustomer", "customer_name", "column", "Customer"), ("DimTradeLane", "lane_name", "column", "Lane"), ("KPI Measures", "Net Revenue", "measure", "Revenue"), ("KPI Measures", "GP Margin %", "measure", "GP%"), ("KPI Measures", "Reprice Opportunity", "measure", "Reprice") ]}, "Customer-Lane Profitability Watchlist"),
-        data_visual("tableEx", 632, 454, 624, 184, 340, {"Values": [("DimTradeLane", "lane_name", "column", "Lane"), ("DimTradeLane", "mode", "column", "Mode"), ("KPI Measures", "Shipment Count", "measure", "Shipments"), ("KPI Measures", "Cost per Shipment", "measure", "Cost/Shipment"), ("KPI Measures", "Margin Gap vs Target", "measure", "Margin Gap") ]}, "Lane Margin Gap Table"),
+        slicer("DimDate", "year", "Year", 24, FILTER_ROW_Y, 160, FILTER_ROW_H, 100),
+        slicer("DimTradeLane", "mode", "Mode", 194, FILTER_ROW_Y, 190, FILTER_ROW_H, 110),
+        slicer("DimCustomer", "segment", "Segment", 394, FILTER_ROW_Y, 220, FILTER_ROW_H, 120),
+        *decision_layer("Latest period 2026-05 | all selected lanes", "Reprice loss lanes, protect GP"),
+        *kpi_stack("Net Revenue", "Net Revenue", 24, KPI_ROW_Y, 190, 88, 200),
+        *kpi_stack("Gross Profit", "Gross Profit", 224, KPI_ROW_Y, 190, 88, 210),
+        *kpi_stack("GP Margin %", "GP Margin", 424, KPI_ROW_Y, 190, 88, 220),
+        *kpi_stack("Shipment Count", "Shipments", 624, KPI_ROW_Y, 190, 88, 230),
+        *kpi_stack("Cost per Shipment", "Cost / Shipment", 824, KPI_ROW_Y, 190, 88, 240),
+        *kpi_stack("Reprice Opportunity", "Reprice Opp.", 1024, KPI_ROW_Y, 232, 88, 250),
+        data_visual("columnChart", 24, 204 + CONTENT_ROW_SHIFT, 420, 226, 300, {"Category": [("DimDate", "month_label", "column", "Month")], "Y": [("KPI Measures", "Net Revenue", "measure", "Revenue"), ("KPI Measures", "Gross Profit", "measure", "GP")]}, "Revenue and GP Trend"),
+        data_visual("barChart", 456, 204 + CONTENT_ROW_SHIFT, 376, 226, 310, {"Category": [("DimTradeLane", "lane_cluster", "column", "Cluster")], "Y": [("KPI Measures", "Gross Profit", "measure", "GP")]}, "Gross Profit by Lane Cluster"),
+        data_visual("donutChart", 844, 204 + CONTENT_ROW_SHIFT, 412, 226, 320, {"Category": [("DimService", "service_family", "column", "Service")], "Y": [("KPI Measures", "Net Revenue", "measure", "Revenue")]}, "Revenue Mix by Service"),
+        data_visual("tableEx", 24, 454 + CONTENT_ROW_SHIFT, 596, 184, 330, {"Values": [("DimCustomer", "customer_name", "column", "Customer"), ("DimTradeLane", "lane_name", "column", "Lane"), ("KPI Measures", "Net Revenue", "measure", "Revenue"), ("KPI Measures", "GP Margin %", "measure", "GP%"), ("KPI Measures", "Reprice Opportunity", "measure", "Reprice") ]}, "Customer-Lane Profitability Watchlist"),
+        data_visual("tableEx", 632, 454 + CONTENT_ROW_SHIFT, 624, 184, 340, {"Values": [("DimTradeLane", "lane_name", "column", "Lane"), ("DimTradeLane", "mode", "column", "Mode"), ("KPI Measures", "Shipment Count", "measure", "Shipments"), ("KPI Measures", "Cost per Shipment", "measure", "Cost/Shipment"), ("KPI Measures", "Margin Gap vs Target", "measure", "Margin Gap") ]}, "Lane Margin Gap Table"),
     ]
 
     p2 = header("Trade Lane Margin", "Lane economics, service mix, utilization, and margin gap diagnosis")
     p2 += [
-        slicer("DimTradeLane", "origin_country", "Origin", 860, 24, 120, 42, 100),
-        slicer("DimTradeLane", "destination_country", "Destination", 990, 24, 132, 42, 110),
-        slicer("DimOffice", "office", "Office", 1132, 24, 124, 42, 120),
-        card("TEU", "TEU", 24, 92, 190, 88, 200),
-        card("CBM", "CBM", 224, 92, 190, 88, 210),
-        card("Revenue per Shipment", "Rev / Shipment", 424, 92, 190, 88, 220),
-        card("Negative Margin Shipments", "Neg. Margin Shipments", 624, 92, 190, 88, 230),
-        card("On-Time %", "On-Time %", 824, 92, 190, 88, 240),
-        card("Utilization %", "Utilization %", 1024, 92, 232, 88, 250),
-        data_visual("barChart", 24, 204, 390, 236, 300, {"Category": [("DimTradeLane", "lane_name", "column", "Lane")], "Y": [("KPI Measures", "GP Margin %", "measure", "GP%")]}, "GP Margin by Trade Lane"),
-        data_visual("columnChart", 426, 204, 390, 236, 310, {"Category": [("DimTradeLane", "mode", "column", "Mode")], "Y": [("KPI Measures", "Net Revenue", "measure", "Revenue"), ("KPI Measures", "Gross Profit", "measure", "GP")]}, "Revenue and GP by Mode"),
-        data_visual("waterfallChart", 828, 204, 428, 236, 320, {"Category": [("FactCostDriverBridge", "driver", "column", "Driver")], "Y": [("KPI Measures", "Bridge Amount", "measure", "Amount")]}, "Margin Gap Driver Bridge", "Explains gross profit gap versus target"),
-        data_visual("tableEx", 24, 462, 610, 176, 330, {"Values": [("DimTradeLane", "lane_name", "column", "Lane"), ("DimCustomer", "customer_name", "column", "Customer"), ("KPI Measures", "Shipment Count", "measure", "Shipments"), ("KPI Measures", "GP Margin %", "measure", "GP%"), ("KPI Measures", "Margin Gap %", "measure", "Gap %"), ("KPI Measures", "On-Time %", "measure", "On-Time")]}, "Lane-Customer Margin Detail"),
-        data_visual("tableEx", 646, 462, 610, 176, 340, {"Values": [("DimService", "service", "column", "Service"), ("DimCarrier", "carrier", "column", "Carrier"), ("KPI Measures", "Freight Cost", "measure", "Freight"), ("KPI Measures", "Fuel Cost", "measure", "Fuel"), ("KPI Measures", "Cost per Shipment", "measure", "Cost/Shipment")]}, "Service and Carrier Cost Detail"),
+        slicer("DimTradeLane", "origin_country", "Origin", 24, FILTER_ROW_Y, 180, FILTER_ROW_H, 100),
+        slicer("DimTradeLane", "destination_country", "Destination", 214, FILTER_ROW_Y, 220, FILTER_ROW_H, 110),
+        slicer("DimOffice", "office", "Office", 444, FILTER_ROW_Y, 190, FILTER_ROW_H, 120),
+        *decision_layer("Lane, origin, destination, and office view", "Prioritize gap by lane/customer"),
+        *kpi_stack("TEU", "TEU", 24, KPI_ROW_Y, 190, 88, 200),
+        *kpi_stack("CBM", "CBM", 224, KPI_ROW_Y, 190, 88, 210),
+        *kpi_stack("Revenue per Shipment", "Rev / Shipment", 424, KPI_ROW_Y, 190, 88, 220),
+        *kpi_stack("Negative Margin Shipments", "Neg. Margin Shipments", 624, KPI_ROW_Y, 190, 88, 230),
+        *kpi_stack("On-Time %", "On-Time %", 824, KPI_ROW_Y, 190, 88, 240),
+        *kpi_stack("Utilization %", "Utilization %", 1024, KPI_ROW_Y, 232, 88, 250),
+        data_visual("barChart", 24, 204 + CONTENT_ROW_SHIFT, 390, 236, 300, {"Category": [("DimTradeLane", "lane_name", "column", "Lane")], "Y": [("KPI Measures", "GP Margin %", "measure", "GP%")]}, "GP Margin by Trade Lane"),
+        data_visual("columnChart", 426, 204 + CONTENT_ROW_SHIFT, 390, 236, 310, {"Category": [("DimTradeLane", "mode", "column", "Mode")], "Y": [("KPI Measures", "Net Revenue", "measure", "Revenue"), ("KPI Measures", "Gross Profit", "measure", "GP")]}, "Revenue and GP by Mode"),
+        data_visual("waterfallChart", 828, 204 + CONTENT_ROW_SHIFT, 428, 236, 320, {"Category": [("FactCostDriverBridge", "driver", "column", "Driver")], "Y": [("KPI Measures", "Bridge Amount", "measure", "Amount")]}, "Margin Gap Driver Bridge", "Explains gross profit gap versus target"),
+        data_visual("tableEx", 24, 462 + CONTENT_ROW_SHIFT, 610, 176, 330, {"Values": [("DimTradeLane", "lane_name", "column", "Lane"), ("DimCustomer", "customer_name", "column", "Customer"), ("KPI Measures", "Shipment Count", "measure", "Shipments"), ("KPI Measures", "GP Margin %", "measure", "GP%"), ("KPI Measures", "Margin Gap %", "measure", "Gap %"), ("KPI Measures", "On-Time %", "measure", "On-Time")]}, "Lane-Customer Margin Detail"),
+        data_visual("tableEx", 646, 462 + CONTENT_ROW_SHIFT, 610, 176, 340, {"Values": [("DimService", "service", "column", "Service"), ("DimCarrier", "carrier", "column", "Carrier"), ("KPI Measures", "Freight Cost", "measure", "Freight"), ("KPI Measures", "Fuel Cost", "measure", "Fuel"), ("KPI Measures", "Cost per Shipment", "measure", "Cost/Shipment")]}, "Service and Carrier Cost Detail"),
     ]
 
     p3 = header("Cost Drivers & Action Queue", "Cost leakage, owners, risk value, and margin recovery actions")
     p3 += [
-        slicer("FactActionQueue", "priority", "Priority", 860, 24, 116, 42, 100),
-        slicer("FactActionQueue", "status", "Status", 986, 24, 120, 42, 110),
-        slicer("FactActionQueue", "owner", "Owner", 1116, 24, 140, 42, 120),
-        card("Fuel Cost", "Fuel Cost", 24, 92, 190, 88, 200),
-        card("Demurrage Cost", "Demurrage", 224, 92, 190, 88, 210),
-        card("Claims Cost", "Claims", 424, 92, 190, 88, 220),
-        card("Open Actions", "Open Actions", 624, 92, 190, 88, 230),
-        card("Action Risk Value", "Action Risk", 824, 92, 190, 88, 240),
-        card("Recovery Value", "Recovery Value", 1024, 92, 232, 88, 250),
-        data_visual("waterfallChart", 24, 204, 420, 236, 300, {"Category": [("FactCostDriverBridge", "driver", "column", "Driver")], "Y": [("KPI Measures", "Bridge Amount", "measure", "Amount")]}, "Cost Driver Waterfall"),
-        data_visual("barChart", 456, 204, 376, 236, 310, {"Category": [("DimCarrier", "carrier", "column", "Carrier")], "Y": [("KPI Measures", "Total Cost", "measure", "Cost")]}, "Total Cost by Carrier"),
-        data_visual("donutChart", 844, 204, 412, 236, 320, {"Category": [("FactActionQueue", "issue_type", "column", "Issue")], "Y": [("KPI Measures", "Action Risk Value", "measure", "Risk")]}, "Risk by Issue Type"),
-        data_visual("tableEx", 24, 462, 1232, 176, 330, {"Values": [("FactActionQueue", "priority", "column", "Priority"), ("FactActionQueue", "status", "column", "Status"), ("DimCustomer", "customer_name", "column", "Customer"), ("DimTradeLane", "lane_name", "column", "Lane"), ("FactActionQueue", "issue_type", "column", "Issue"), ("FactActionQueue", "owner", "column", "Owner"), ("KPI Measures", "Action Risk Value", "measure", "Risk"), ("KPI Measures", "Recovery Value", "measure", "Recovery")]}, "Pricing and Action Queue"),
+        slicer("FactActionQueue", "priority", "Priority", 24, FILTER_ROW_Y, 180, FILTER_ROW_H, 100),
+        slicer("FactActionQueue", "status", "Status", 214, FILTER_ROW_Y, 190, FILTER_ROW_H, 110),
+        slicer("FactActionQueue", "owner", "Owner", 414, FILTER_ROW_Y, 220, FILTER_ROW_H, 120),
+        *decision_layer("Priority, status, and owner action view", "Close high-risk open actions"),
+        *kpi_stack("Fuel Cost", "Fuel Cost", 24, KPI_ROW_Y, 190, 88, 200),
+        *kpi_stack("Demurrage Cost", "Demurrage", 224, KPI_ROW_Y, 190, 88, 210),
+        *kpi_stack("Claims Cost", "Claims", 424, KPI_ROW_Y, 190, 88, 220),
+        *kpi_stack("Open Actions", "Open Actions", 624, KPI_ROW_Y, 190, 88, 230),
+        *kpi_stack("Action Risk Value", "Action Risk", 824, KPI_ROW_Y, 190, 88, 240),
+        *kpi_stack("Recovery Value", "Recovery Value", 1024, KPI_ROW_Y, 232, 88, 250),
+        data_visual("waterfallChart", 24, 204 + CONTENT_ROW_SHIFT, 420, 236, 300, {"Category": [("FactCostDriverBridge", "driver", "column", "Driver")], "Y": [("KPI Measures", "Bridge Amount", "measure", "Amount")]}, "Cost Driver Waterfall"),
+        data_visual("barChart", 456, 204 + CONTENT_ROW_SHIFT, 376, 236, 310, {"Category": [("DimCarrier", "carrier", "column", "Carrier")], "Y": [("KPI Measures", "Total Cost", "measure", "Cost")]}, "Total Cost by Carrier"),
+        data_visual("donutChart", 844, 204 + CONTENT_ROW_SHIFT, 412, 236, 320, {"Category": [("FactActionQueue", "issue_type", "column", "Issue")], "Y": [("KPI Measures", "Action Risk Value", "measure", "Risk")]}, "Risk by Issue Type"),
+        data_visual("tableEx", 24, 462 + CONTENT_ROW_SHIFT, 1232, 176, 330, {"Values": [("FactActionQueue", "priority", "column", "Priority"), ("FactActionQueue", "status", "column", "Status"), ("DimCustomer", "customer_name", "column", "Customer"), ("DimTradeLane", "lane_name", "column", "Lane"), ("FactActionQueue", "issue_type", "column", "Issue"), ("FactActionQueue", "owner", "column", "Owner"), ("KPI Measures", "Action Risk Value", "measure", "Risk"), ("KPI Measures", "Recovery Value", "measure", "Recovery")]}, "Pricing and Action Queue"),
     ]
 
     layout["sections"] = [
@@ -1498,9 +1561,9 @@ def write_config_docs() -> None:
     write_json(
         "build/config/visual_map.json",
         {
-            "Executive Overview": ["6 KPI cards", "Revenue/GP trend", "GP by lane cluster", "service mix donut", "customer-lane watchlist", "lane gap table"],
-            "Trade Lane Margin": ["6 KPI cards", "GP margin by lane", "mode revenue/GP bars", "margin gap waterfall", "lane-customer detail", "service/carrier cost table"],
-            "Cost Drivers & Action Queue": ["6 KPI cards", "cost driver waterfall", "cost by carrier", "risk by issue type donut", "pricing/action queue"],
+            "Executive Overview": ["Current Lens", "Decision Chip", "6 KPI cards with sparklines", "Revenue/GP trend", "GP by lane cluster", "service mix donut", "customer-lane watchlist", "lane gap table"],
+            "Trade Lane Margin": ["Current Lens", "Decision Chip", "6 KPI cards with sparklines", "GP margin by lane", "mode revenue/GP bars", "margin gap waterfall", "lane-customer detail", "service/carrier cost table"],
+            "Cost Drivers & Action Queue": ["Current Lens", "Decision Chip", "6 KPI cards with sparklines", "cost driver waterfall", "cost by carrier", "risk by issue type donut", "pricing/action queue"],
         },
     )
     write_json(
@@ -1517,6 +1580,8 @@ def write_config_docs() -> None:
             "project": "Project 17 - Logistics Trade Lane Profitability",
             "audience": "Commercial FP&A, country heads, pricing, procurement, and operations leadership",
             "business_goal": "Identify margin-destructive lanes/customers and prioritize repricing or cost-to-serve actions.",
+            "slicer_placement": "Top filter row above the KPI strip on every report page.",
+            "project20_style_upgrades": ["Current Lens", "Decision Chip", "top slicer row with extra dropdown clearance", "KPI sparklines"],
             "page_count": 3,
             "final_pbix": str(PROJECT / "output" / "dashboard_final.pbix"),
         },
@@ -1582,6 +1647,9 @@ Layout selected for Project 17:
 - Tab 1: Executive Trade Lane Cockpit.
 - Tab 2: Trade Lane Margin diagnostics.
 - Tab 3: Cost Drivers and Action Queue.
+- Slicers sit in a top filter row above the KPI strip on every page so filters are visible before the reader scans KPIs.
+- Current Lens and Decision Chip callouts sit in the same top band to make the active analytical context and recommended action visible.
+- KPI cards include compact native sparkline micro-trends using existing monthly Date context and KPI measures.
 
 Design system:
 - Off-white canvas, white panels, compact KPI strip, blue/teal/green for revenue and profit, amber/red for warnings and margin leakage.
@@ -1732,3 +1800,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+

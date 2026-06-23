@@ -1,8 +1,8 @@
 {
   "project": "Project 18 - ESG Carbon Finance",
   "audience": "CFO, ESG finance lead, procurement lead, and operations leadership",
-  "business_goal": "Connect emissions inventory, carbon cost exposure, supplier intensity, and abatement ROI into one executive-ready decision dashboard.",
-  "page_count": 3,
+  "business_goal": "Connect emissions inventory, carbon cost exposure, supplier intensity, abatement ROI, and risk/action governance into one executive-ready decision dashboard.",
+  "page_count": 4,
   "theme": "ESG Carbon Finance Executive",
   "data_mode": "synthetic_demo",
   "latest_complete_month": "2026-05"

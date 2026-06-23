@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "domain_quality",
   "position": {
-    "x": 642,
-    "y": 205,
-    "z": 201,
+    "x": 762,
+    "y": 212,
+    "z": 301,
     "height": 278,
-    "width": 300,
-    "tabOrder": 201
+    "width": 236,
+    "tabOrder": 301
   },
   "visual": {
     "visualType": "barChart",
@@ -63,9 +63,40 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "KPI Measures"
+                  }
+                },
+                "Property": "Data Quality Score"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Shows filtered dashboard evidence for Quality by Finance Domain.'"
+                }
+              }
+            }
+          }
+        }
+      ],
       "title": [
         {
           "properties": {
@@ -85,13 +116,13 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#17202A"
+                "color": "#13212B"
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10L"
+                  "Value": "9L"
                 }
               }
             },
@@ -149,13 +180,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8DED8"
+                "color": "#D8E5E8"
               }
             },
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6L"
+                  "Value": "8L"
                 }
               }
             }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "governance_summary",
   "position": {
-    "x": 970,
-    "y": 515,
-    "z": 302,
-    "height": 170,
-    "width": 286,
-    "tabOrder": 302
+    "x": 1016,
+    "y": 514,
+    "z": 305,
+    "height": 172,
+    "width": 240,
+    "tabOrder": 305
   },
   "visual": {
     "visualType": "tableEx",
@@ -73,9 +73,40 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "KPI Measures"
+                  }
+                },
+                "Property": "Dataset Count"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Shows filtered dashboard evidence for Source System Coverage.'"
+                }
+              }
+            }
+          }
+        }
+      ],
       "title": [
         {
           "properties": {
@@ -95,13 +126,13 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#17202A"
+                "color": "#13212B"
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10L"
+                  "Value": "9L"
                 }
               }
             },
@@ -159,13 +190,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8DED8"
+                "color": "#D8E5E8"
               }
             },
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "6L"
+                  "Value": "8L"
                 }
               }
             }

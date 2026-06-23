@@ -1,6 +1,8 @@
 {
   "Governance Overview": [
-    "5 KPI cards",
+    "4 KPI cards",
+    "dynamic Current Lens",
+    "decision chip",
     "quality/freshness line",
     "domain bar",
     "dataset table",
@@ -8,7 +10,9 @@
     "reconciliation donut"
   ],
   "Reliability & Quality": [
-    "5 KPI cards",
+    "4 KPI cards",
+    "dynamic Current Lens",
+    "decision chip",
     "refresh/completeness line",
     "failure bar",
     "variance bar",
@@ -16,11 +20,23 @@
     "aging columns"
   ],
   "Adoption & Controls": [
-    "5 KPI cards",
+    "4 KPI cards",
+    "dynamic Current Lens",
+    "decision chip",
     "adoption bar",
     "performance line",
     "access columns",
     "access detail table",
     "export columns"
+  ],
+  "Risk & Action Queue": [
+    "4 KPI cards",
+    "dynamic Current Lens",
+    "decision chip",
+    "risk trend",
+    "department risk bar",
+    "aging bar",
+    "incident queue",
+    "access action queue"
   ]
 }

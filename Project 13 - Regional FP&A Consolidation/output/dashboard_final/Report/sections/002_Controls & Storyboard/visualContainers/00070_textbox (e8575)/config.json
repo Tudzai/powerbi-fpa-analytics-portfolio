@@ -1,0 +1,42 @@
+{
+  "name": "e8575442e666bdf2c73a",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 38,
+        "y": 94,
+        "z": 70,
+        "width": 118,
+        "height": 18,
+        "tabOrder": 70
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "FILTER LENS",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "8.0pt",
+                      "color": "#FFFFFF"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

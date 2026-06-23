@@ -1,7 +1,7 @@
 {
   "layout": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\build\\native_report_layout_project16.json",
   "pages": 3,
-  "visual_containers": 45,
+  "visual_containers": 51,
   "page_names": [
     "01 Manufacturing FP&A Overview",
     "02 Standard Cost Variance",
@@ -10,8 +10,8 @@
   "visual_types": {
     "textbox": 3,
     "slicer": 12,
-    "cardVisual": 18,
-    "columnChart": 2,
+    "cardVisual": 12,
+    "lineChart": 14,
     "barChart": 6,
     "tableEx": 3,
     "waterfallChart": 1

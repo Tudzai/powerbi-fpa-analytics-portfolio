@@ -4,19 +4,19 @@
   "project_seed_copy": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\powerbi\\seed\\Packt_Ch10_PVM_seed.pbix",
   "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\output\\dashboard_final.pbix",
   "layout_json": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\build\\native_report_layout_project16.json",
-  "backup": null,
+  "backup": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 16 - Manufacturing Cost FP&A\\archive\\old_versions\\dashboard_final_before_project16_layout_20260623_212952.pbix",
   "page_count": 3,
   "pages": [
     "01 Manufacturing FP&A Overview",
     "02 Standard Cost Variance",
     "03 Yield Capacity & WC"
   ],
-  "visual_count": 45,
+  "visual_count": 51,
   "visual_types": {
     "textbox": 3,
     "slicer": 12,
-    "cardVisual": 18,
-    "columnChart": 2,
+    "cardVisual": 12,
+    "lineChart": 14,
     "barChart": 6,
     "tableEx": 3,
     "waterfallChart": 1

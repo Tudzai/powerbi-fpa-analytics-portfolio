@@ -1,10 +1,61 @@
-{
-  "status": "blocked",
-  "reason": "Final PBIX has not been saved and reopened in Power BI Desktop yet. Desktop automation found the Project 19 PBIP process, but a credential prompt/topmost window from another Power BI session prevented a clean visual open-check. pbi-tools compile also failed because the generated PBIP is Fabric PBIP format, not legacy PbixProj.",
-  "final_pbix_exists": false,
-  "pbip_process_detected": true,
-  "pbip_process_command_line_contains_project19": true,
-  "desktop_visual_open_check": "blocked",
-  "visual_error_count": null,
-  "safe_to_call_final": false
+﻿{
+    "status":  "pass_final_pbix_desktop_verified",
+    "enhancement_version":  "v5_20260623_project20_sparklines",
+    "final_pbix":  "output/dashboard_final.pbix",
+    "versioned_snapshot":  "output/dashboard_final_v5_project20_sparklines.pbix",
+    "template_export":  "output/dashboard_template_desktop_v5.pbit",
+    "final_pbix_bytes":  721453,
+    "final_pbix_last_write_time":  "2026-06-23T22:24:25+07:00",
+    "final_pbix_sha256":  "40245922672C33DA8A5681387FDBC8C503B0B15ADD62535A883594FF8F5979D4",
+    "template_bytes":  134557,
+    "desktop_title_verified":  "dashboard_final",
+    "desktop_last_saved_observed":  "Today at 10:24 PM",
+    "package_audit":  {
+                          "entry_count":  133,
+                          "visual_json_count":  117,
+                          "kpi_card_count":  16,
+                          "native_sparkline_visual_count":  16,
+                          "slicer_count":  8,
+                          "has_data_model":  true
+                      },
+    "desktop_visual_error_count_observed":  0,
+    "desktop_pages_verified":  [
+                                   "Governance Overview",
+                                   "Reliability \u0026 Quality",
+                                   "Adoption \u0026 Controls",
+                                   "Risk \u0026 Action Queue"
+                               ],
+    "screenshots":  [
+                        {
+                            "file":  "output/screenshots/desktop_final_page1_governance_v5.png",
+                            "bytes":  176660,
+                            "last_write_time":  "2026-06-23T22:26:38+07:00"
+                        },
+                        {
+                            "file":  "output/screenshots/desktop_final_page2_reliability_v5.png",
+                            "bytes":  175880,
+                            "last_write_time":  "2026-06-23T22:27:28+07:00"
+                        },
+                        {
+                            "file":  "output/screenshots/desktop_final_page3_adoption_v5.png",
+                            "bytes":  180137,
+                            "last_write_time":  "2026-06-23T22:27:33+07:00"
+                        },
+                        {
+                            "file":  "output/screenshots/desktop_final_page4_actions_v5.png",
+                            "bytes":  182276,
+                            "last_write_time":  "2026-06-23T22:28:24+07:00"
+                        },
+                        {
+                            "file":  "output/screenshots/desktop_interaction_page4_department_dropdown_v5.png",
+                            "bytes":  185415,
+                            "last_write_time":  "2026-06-23T22:33:29+07:00"
+                        }
+                    ],
+    "notes":  [
+                  "Final PBIX was created through Power BI Desktop from dashboard_template_desktop_v5.pbit.",
+                  "Desktop screenshots verify all four pages rendered from dashboard_final.pbix.",
+                  "Page 4 dropdown slicer interaction screenshot verifies slicer text is visible and not clipped.",
+                  "No visual error placeholder was observed on the four Desktop verification screenshots."
+              ]
 }

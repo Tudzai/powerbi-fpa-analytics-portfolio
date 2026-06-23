@@ -1,3 +1,4 @@
-- Governance Overview: 13 visuals
-- Reliability & Quality: 12 visuals
-- Adoption & Controls: 12 visuals
+- Governance Overview: 30 visuals
+- Reliability & Quality: 29 visuals
+- Adoption & Controls: 29 visuals
+- Risk & Action Queue: 29 visuals

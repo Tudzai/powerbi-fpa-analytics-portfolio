@@ -15,6 +15,13 @@
       "validation": "Total emissions multiplied by scenario price."
     },
     {
+      "name": "Probability Weighted Carbon Cost USD",
+      "business_definition": "Scenario exposure weighted by scenario probability.",
+      "dax": "SUM ( fact_carbon_exposure[probability_weighted_cost_usd] )",
+      "format": "$#,0",
+      "validation": "Reconciles to fact_carbon_exposure probability-weighted cost."
+    },
+    {
       "name": "Emissions Intensity tCO2e per $M Revenue",
       "business_definition": "Emissions normalized by revenue.",
       "dax": "DIVIDE ( [Total Emissions tCO2e], [Revenue USD] ) * 1000000",
@@ -29,11 +36,25 @@
       "validation": "Uses prepared supplier monthly rollup."
     },
     {
+      "name": "High Risk Supplier Emissions tCO2e",
+      "business_definition": "Supplier emissions tied to high-risk suppliers.",
+      "dax": "CALCULATE ( [Supplier Emissions tCO2e], fact_supplier_month[carbon_risk_tier] = \"High\" )",
+      "format": "#,0.0",
+      "validation": "Reconciles to fact_supplier_month filtered by carbon_risk_tier."
+    },
+    {
       "name": "Abatement ROI",
       "business_definition": "Annual benefit from savings and avoided carbon cost divided by capex.",
       "dax": "DIVIDE ( [Abatement Annual Benefit USD], [Abatement Capex USD] )",
       "format": "0.0%",
       "validation": "Uses initiative-level capex, opex savings, and selected carbon price."
+    },
+    {
+      "name": "Planned Abatement Capex USD",
+      "business_definition": "Capital still in planned status and requiring governance approval.",
+      "dax": "CALCULATE ( [Abatement Capex USD], fact_abatement_initiatives[implementation_status] = \"Planned\" )",
+      "format": "$#,0",
+      "validation": "Reconciles to initiative rows with Planned status."
     }
   ]
 }

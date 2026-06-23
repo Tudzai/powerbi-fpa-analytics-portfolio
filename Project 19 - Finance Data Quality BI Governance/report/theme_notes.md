@@ -1,1 +1,1 @@
-Palette uses finance-safe navy, teal, amber, plum, and slate accents on a light neutral background. Red is reserved for risk states only.
+Palette uses Project 19 finance-safe navy, teal, amber, plum, and slate accents on a cool governance canvas. Project 20 influenced the left rail, lens/chip, spacing, and KPI discipline only; the purple board-pack skin was intentionally not copied.

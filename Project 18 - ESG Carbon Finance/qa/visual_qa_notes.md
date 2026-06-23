@@ -1,9 +1,9 @@
-Visual QA passed for the final PBIX open-check.
+Native layout JSON defines four pages with actual slicer, cardVisual, lineChart, barChart, and tableEx containers plus compact KPI sparkline callouts.
 
-- Checked file: `output/dashboard_final.pbix`
-- Power BI Desktop process: 3736
-- Window handle: 268138
-- Evidence screenshot: `output/screenshots/powerbi_desktop_static_opencheck_page1.png`
-- Result: report renders without the previous theme modal and without empty field-placeholder visuals.
+Fresh Desktop QA passed on 2026-06-23 22:39 +07:00 for `output/dashboard_final.pbix` SHA256 `644011EB707D39FD8A9F13B8E4BCE32156E45E943AD3A7F69F4FDE1565A95923`.
 
-Note: the report uses static native textbox/shape visuals for chart and table surfaces so Desktop rendering is stable across local PBIX package versions. The semantic model, relationships, CSV refresh paths, and DAX measures remain included for analysis.
+Evidence:
+- Power BI Desktop opened the final PBIX successfully.
+- All four report pages were selected by UI Automation and captured to `output/screenshots/desktop_page*.png`.
+- `output/screenshots/desktop_qa_contact_sheet.png` shows no visual error cards and visible slicer labels.
+- UI Automation audit found 0 Power BI error-string hits across all four pages.

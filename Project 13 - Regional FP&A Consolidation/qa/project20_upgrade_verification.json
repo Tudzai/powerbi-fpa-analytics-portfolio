@@ -1,0 +1,39 @@
+﻿{
+    "generated_at":  "2026-06-23 22:33:03 +07:00",
+    "project_root":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP\u0026A Consolidation",
+    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP\u0026A Consolidation\\output\\dashboard_final.pbix",
+    "final_pbix_bytes":  5225657,
+    "backup":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP\u0026A Consolidation\\archive\\old_versions\\project20_sparkline_upgrade_20260623_212852",
+    "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP\u0026A Consolidation\\build\\native_report_layout_project13.json",
+    "validation_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP\u0026A Consolidation\\qa\\pbix_native_report_validation.json",
+    "pages":  [
+                  "Executive Summary",
+                  "P\u0026L Variance",
+                  "Controls \u0026 Storyboard"
+              ],
+    "activeSectionIndex":  0,
+    "slicers":  {
+                    "y":  86,
+                    "height":  44,
+                    "count":  8
+                },
+    "visual_type_counts":  {
+                               "shape":  46,
+                               "textbox":  38,
+                               "slicer":  8,
+                               "cardVisual":  12,
+                               "lineClusteredColumnComboChart":  13,
+                               "tableEx":  5,
+                               "barChart":  3,
+                               "columnChart":  2,
+                               "waterfallChart":  2,
+                               "donutChart":  1
+                           },
+    "checks":  {
+                   "package_validation":  "pass",
+                   "missing_query_refs":  "pass",
+                   "svg_query_refs_in_final_layout":  "none",
+                   "desktop_screenshot_after_final_patch":  "not_rerun",
+                   "tom_model_push":  "pass_live_session_only"
+               }
+}

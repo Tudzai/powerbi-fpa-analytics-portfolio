@@ -1,0 +1,42 @@
+{
+  "name": "4fa45ffb78b6077e810b",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 38,
+        "y": 36,
+        "z": 30,
+        "width": 520,
+        "height": 30,
+        "tabOrder": 30
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "P&L Variance",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "14pt",
+                      "color": "#0F172A"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

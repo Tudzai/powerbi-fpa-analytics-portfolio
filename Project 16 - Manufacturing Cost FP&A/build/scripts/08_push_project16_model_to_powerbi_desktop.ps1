@@ -166,7 +166,7 @@ function Add-KpiMeasure {
 $portToUse = Resolve-PowerBIPort
 Import-PowerBIAssemblies
 $prepared = Join-Path $ProjectRoot "data\prepared"
-$tableNames = @("dim_date", "dim_plant", "dim_product", "dim_line", "dim_scenario", "fact_manufacturing_month", "fact_cost_variance_bridge")
+$tableNames = @("dim_date", "dim_spark_date", "dim_plant", "dim_product", "dim_line", "dim_scenario", "fact_manufacturing_month", "fact_cost_variance_bridge")
 
 $server = New-Object Microsoft.AnalysisServices.Tabular.Server
 $server.Connect("localhost:$portToUse")
@@ -256,6 +256,24 @@ try {
   Add-KpiMeasure -Table $measureTable -Name "Scenario Gross Margin" -Expression "[Current Gross Margin] + [Scenario Cost Savings] + [Current Gross Margin] * [Scenario Volume Delta %]" -FormatString "$#,0"
   Add-KpiMeasure -Table $measureTable -Name "Scenario GM %" -Expression "DIVIDE ( [Scenario Gross Margin], [Current Revenue] * ( 1 + [Scenario Volume Delta %] ) )" -FormatString "0.0%"
   Add-KpiMeasure -Table $measureTable -Name "Scenario EBITDA Uplift" -Expression "[Scenario Gross Margin] - [Current Gross Margin]" -FormatString "$#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Revenue Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Actual Revenue], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Gross Margin Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Gross Margin], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark GM % Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Gross Margin %], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "0.0%"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Cost Variance Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Cost Variance vs Standard], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Unit Cost Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Unit Cost], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$0.00"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Yield Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Yield %], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "0.0%"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Material Variance Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Material Variance], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Labor Variance Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Labor Variance], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Overhead Variance Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Overhead Variance], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Yield Loss Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Yield Loss Cost], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Actual COGS Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Actual COGS], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Standard COGS Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Standard COGS], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Scrap Rate Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Scrap Rate], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "0.0%"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Utilization Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Utilization %], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "0.0%"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Capacity Gap Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Capacity Gap Units], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Inventory Value Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Inventory Value], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$#,0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Inventory Days Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Inventory Days], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "0.0"
+  Add-KpiMeasure -Table $measureTable -Name "Spark Scenario EBITDA Uplift Trend" -Expression "VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Scenario EBITDA Uplift], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )" -FormatString "$#,0"
 
   $model.SaveChanges()
   $model.RequestRefresh([Microsoft.AnalysisServices.Tabular.RefreshType]::Full)

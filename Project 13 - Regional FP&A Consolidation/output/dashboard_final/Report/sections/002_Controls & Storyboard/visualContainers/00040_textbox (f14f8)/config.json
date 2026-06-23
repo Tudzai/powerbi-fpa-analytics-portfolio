@@ -1,0 +1,42 @@
+{
+  "name": "f14f87b86c547b513d9d",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 575,
+        "y": 36,
+        "z": 40,
+        "width": 430,
+        "height": 24,
+        "tabOrder": 40
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "FX, intercompany, close exceptions, and board-ready narrative",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "8pt",
+                      "color": "#526173"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

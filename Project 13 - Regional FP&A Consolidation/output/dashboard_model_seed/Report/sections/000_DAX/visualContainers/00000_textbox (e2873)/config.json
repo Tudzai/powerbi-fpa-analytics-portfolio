@@ -1,0 +1,39 @@
+{
+  "name": "e287391fae75825a1a6f",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 25.714285714285712,
+        "y": 49.523809523809518,
+        "z": 3000,
+        "width": 395.23809523809524,
+        "height": 77.142857142857139
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "My First Financial Report",
+                    "textStyle": {
+                      "fontSize": "24pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

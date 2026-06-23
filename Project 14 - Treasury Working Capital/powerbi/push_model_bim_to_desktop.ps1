@@ -108,6 +108,7 @@ foreach ($tableDef in $modelDefinition.model.tables) {
       $measure = New-Object Microsoft.AnalysisServices.Tabular.Measure
       $measure.Name = [string]($measureDef.name)
       $measure.Expression = [string]($measureDef.expression)
+      if ($measureDef.dataCategory) { $measure.DataCategory = [string]$measureDef.dataCategory }
       if ($measureDef.formatString) { $measure.FormatString = [string]$measureDef.formatString }
       if ($measureDef.description) { $measure.Description = [string]$measureDef.description }
       $table.Measures.Add($measure)

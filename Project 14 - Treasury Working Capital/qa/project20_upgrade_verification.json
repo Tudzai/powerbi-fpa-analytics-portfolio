@@ -1,0 +1,346 @@
+{
+  "status": "pass",
+  "checked_layout": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\build\\native_report_layout_project14.json",
+  "quality_benchmark": "Project 20 v77-style direct layout verification adapted to Project 14 treasury palette",
+  "visual_type_counts": {
+    "shape": 24,
+    "textbox": 39,
+    "slicer": 12,
+    "tableEx": 21,
+    "columnChart": 2,
+    "barChart": 12,
+    "waterfallChart": 1
+  },
+  "pages": [
+    {
+      "page": "Treasury Command Center",
+      "dynamic_kpi_cards": [
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.Available Liquidity KPI Card SVG"
+          ],
+          "rect": [
+            204,
+            104,
+            255,
+            164
+          ]
+        },
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.Liquidity Headroom KPI Card SVG"
+          ],
+          "rect": [
+            471,
+            104,
+            255,
+            164
+          ]
+        },
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.Forecast Net Flow KPI Card SVG"
+          ],
+          "rect": [
+            738,
+            104,
+            255,
+            164
+          ]
+        },
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.Cash Runway KPI Card SVG"
+          ],
+          "rect": [
+            1005,
+            104,
+            255,
+            164
+          ]
+        }
+      ],
+      "lens_count": 1,
+      "decision_chip_count": 1,
+      "slicer_count": 4,
+      "top_chart_slots": [
+        {
+          "type": "columnChart",
+          "rect": [
+            204,
+            284,
+            426,
+            172
+          ]
+        },
+        {
+          "type": "barChart",
+          "rect": [
+            642,
+            284,
+            304,
+            172
+          ]
+        },
+        {
+          "type": "barChart",
+          "rect": [
+            966,
+            284,
+            290,
+            172
+          ]
+        }
+      ],
+      "detail_tables": [
+        {
+          "refs": [
+            "FactTreasuryRiskAction.risk_type",
+            "FactTreasuryRiskAction.owner_team",
+            "FactTreasuryRiskAction.status",
+            "KPI_Measures.Open Risk Value"
+          ],
+          "rect": [
+            892,
+            480,
+            364,
+            166
+          ]
+        }
+      ],
+      "kpi_slots_pass": true,
+      "lens_pass": true,
+      "decision_chips_pass": true,
+      "slicer_pass": true,
+      "top_chart_slots_pass": true,
+      "detail_table_pass": true
+    },
+    {
+      "page": "Working Capital Control",
+      "dynamic_kpi_cards": [
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.AR Outstanding KPI Card SVG"
+          ],
+          "rect": [
+            204,
+            104,
+            255,
+            164
+          ]
+        },
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.Overdue AR KPI Card SVG"
+          ],
+          "rect": [
+            471,
+            104,
+            255,
+            164
+          ]
+        },
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.AP Due 14 Days KPI Card SVG"
+          ],
+          "rect": [
+            738,
+            104,
+            255,
+            164
+          ]
+        },
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.Cash Conversion KPI Card SVG"
+          ],
+          "rect": [
+            1005,
+            104,
+            255,
+            164
+          ]
+        }
+      ],
+      "lens_count": 1,
+      "decision_chip_count": 1,
+      "slicer_count": 4,
+      "top_chart_slots": [
+        {
+          "type": "barChart",
+          "rect": [
+            204,
+            284,
+            426,
+            172
+          ]
+        },
+        {
+          "type": "barChart",
+          "rect": [
+            642,
+            284,
+            304,
+            172
+          ]
+        },
+        {
+          "type": "columnChart",
+          "rect": [
+            966,
+            284,
+            290,
+            172
+          ]
+        }
+      ],
+      "detail_tables": [
+        {
+          "refs": [
+            "FactARInvoice.aging_bucket",
+            "DimCustomer.risk_rating",
+            "FactARInvoice.is_overdue",
+            "KPI_Measures.AR Outstanding",
+            "KPI_Measures.Overdue AR"
+          ],
+          "rect": [
+            892,
+            480,
+            364,
+            166
+          ]
+        }
+      ],
+      "kpi_slots_pass": true,
+      "lens_pass": true,
+      "decision_chips_pass": true,
+      "slicer_pass": true,
+      "top_chart_slots_pass": true,
+      "detail_table_pass": true
+    },
+    {
+      "page": "Forecast, FX & Risk",
+      "dynamic_kpi_cards": [
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.Forecast Closing Cash KPI Card SVG"
+          ],
+          "rect": [
+            204,
+            104,
+            255,
+            164
+          ]
+        },
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.Forecast Error KPI Card SVG"
+          ],
+          "rect": [
+            471,
+            104,
+            255,
+            164
+          ]
+        },
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.Unhedged FX KPI Card SVG"
+          ],
+          "rect": [
+            738,
+            104,
+            255,
+            164
+          ]
+        },
+        {
+          "type": "tableEx",
+          "refs": [
+            "KPI_Measures.Open Risk KPI Card SVG"
+          ],
+          "rect": [
+            1005,
+            104,
+            255,
+            164
+          ]
+        }
+      ],
+      "lens_count": 1,
+      "decision_chip_count": 1,
+      "slicer_count": 4,
+      "top_chart_slots": [
+        {
+          "type": "waterfallChart",
+          "rect": [
+            204,
+            284,
+            426,
+            172
+          ]
+        },
+        {
+          "type": "barChart",
+          "rect": [
+            642,
+            284,
+            304,
+            172
+          ]
+        },
+        {
+          "type": "barChart",
+          "rect": [
+            966,
+            284,
+            290,
+            172
+          ]
+        }
+      ],
+      "detail_tables": [
+        {
+          "refs": [
+            "FactTreasuryRiskAction.risk_level",
+            "FactTreasuryRiskAction.owner_team",
+            "FactTreasuryRiskAction.status",
+            "KPI_Measures.Open Risk Value"
+          ],
+          "rect": [
+            892,
+            480,
+            364,
+            166
+          ]
+        }
+      ],
+      "kpi_slots_pass": true,
+      "lens_pass": true,
+      "decision_chips_pass": true,
+      "slicer_pass": true,
+      "top_chart_slots_pass": true,
+      "detail_table_pass": true
+    }
+  ],
+  "checks": {
+    "card_visual_removed": true,
+    "dynamic_svg_kpi_cards_per_page": "4",
+    "current_lens_per_page": "1",
+    "decision_chip_per_page": "1",
+    "compact_slicers_per_page": "4",
+    "top_chart_slots_per_page": "3"
+  }
+}

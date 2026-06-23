@@ -1,15 +1,16 @@
 {
-  "name": "Finance Governance Light",
+  "name": "Finance Governance Control Room",
   "dataColors": [
     "#1B4D89",
     "#2A9D8F",
     "#D99A2B",
     "#8E5572",
     "#44546A",
-    "#C44E52"
+    "#C44E52",
+    "#247A5A"
   ],
-  "background": "#F7F8FA",
-  "foreground": "#17202A",
+  "background": "#EEF3F5",
+  "foreground": "#13212B",
   "tableAccent": "#1B4D89",
   "visualStyles": {
     "*": {
@@ -19,9 +20,42 @@
             "fontFace": "Segoe UI",
             "color": {
               "solid": {
-                "color": "#17202A"
+                "color": "#13212B"
               }
             }
+          }
+        ]
+      }
+    },
+    "textbox": {
+      "*": {
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "background": [
+          {
+            "show": false
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "shape": {
+      "*": {
+        "title": [
+          {
+            "show": false
+          }
+        ],
+        "border": [
+          {
+            "show": false
           }
         ]
       }

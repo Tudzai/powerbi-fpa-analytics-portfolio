@@ -1,13 +1,21 @@
 {
   "final_pbix_path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_final.pbix",
-  "opened_in_power_bi_desktop": false,
+  "opened_in_power_bi_desktop": true,
   "saved_after_open": false,
-  "page_count": 0,
-  "visual_count": 0,
-  "visual_error_count": null,
-  "screenshots": [],
-  "qa_status": "pending_desktop_build",
-  "known_issues": [
-    "Final PBIX is not validated until Desktop conversion/save and visual QA complete."
-  ]
+  "page_count": 4,
+  "visual_count": 79,
+  "visual_error_count": 0,
+  "screenshots": [
+    "output/screenshots/desktop_page1_overview.png",
+    "output/screenshots/desktop_page2_supplier.png",
+    "output/screenshots/desktop_page3_roi.png",
+    "output/screenshots/desktop_page4_risk.png",
+    "output/screenshots/desktop_qa_contact_sheet.png",
+    "output/screenshots/desktop_page3_roi_canvas_crop.png",
+    "output/screenshots/desktop_page4_risk_canvas_crop.png"
+  ],
+  "qa_status": "desktop_open_check_passed",
+  "native_package_validation": "passed",
+  "build_route": "SCRIPTED_DESKTOP_PBIX",
+  "known_issues": []
 }

@@ -1,0 +1,142 @@
+{
+  "name": "b3388ec7262a2eed0750",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 0,
+        "y": 75.623632385120359,
+        "z": 0,
+        "width": 1280,
+        "height": 644.20131291028451
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "acterysReportingVisual",
+    "projections": {
+      "Rows": [
+        {
+          "queryRef": "Accounts.Type",
+          "active": true
+        },
+        {
+          "queryRef": "Accounts.Name",
+          "active": true
+        }
+      ],
+      "Measure": [
+        {
+          "queryRef": "Transactions.ACT"
+        },
+        {
+          "queryRef": "Transactions.BUD"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "a",
+          "Entity": "Accounts",
+          "Type": 0
+        },
+        {
+          "Name": "t",
+          "Entity": "Transactions",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "a"
+              }
+            },
+            "Property": "Type"
+          },
+          "Name": "Accounts.Type"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "a"
+              }
+            },
+            "Property": "Name"
+          },
+          "Name": "Accounts.Name"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "ACT"
+          },
+          "Name": "Transactions.ACT"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "BUD"
+          },
+          "Name": "Transactions.BUD"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "saveGroup": [
+        {
+          "properties": {
+            "navigationState": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[\"Expense\",\"Overheads\",\"OtherIncome\"]'"
+                }
+              }
+            },
+            "rowCalc": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[{\"headerValue\":\"Gross Profit\",\"uid\":\"DirectCosts\",\"secondUid\":\"\",\"formula\":\"[Revenue] + [DirectCosts]\",\"style\":\"Style 1\",\"format\":\"Measure\",\"stepIndex\":0,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":-9999,\"optionalCalcId\":\"\"},{\"headerValue\":\"EBIT\",\"uid\":\"OtherIncome\",\"secondUid\":\"\",\"formula\":\"[Gross Profit] + [Expense] + [Overheads] + [OtherIncome]\",\"style\":\"Style 1\",\"format\":\"Measure\",\"stepIndex\":1,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":-9999,\"optionalCalcId\":\"\"},{\"headerValue\":\"EBIT %\",\"uid\":\"EBIT\",\"secondUid\":\"\",\"formula\":\"[EBIT]/[Revenue]\",\"style\":\"Style 1\",\"format\":\"0.00 %\",\"stepIndex\":2,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":-9999,\"optionalCalcId\":\"\"}]'"
+                }
+              }
+            },
+            "customStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[{\"uid\":\"DirectCosts|Purchases\",\"isDouble\":false,\"addToHeader\":false,\"color\":\"#000000\",\"isUnderline\":true},{\"uid\":\"OtherIncome\",\"isDouble\":false,\"addToHeader\":false,\"color\":\"#000000\",\"isUnderline\":true}]'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "variance": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

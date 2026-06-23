@@ -2,6 +2,13 @@
   "project": "Project 17 - Logistics Trade Lane Profitability",
   "audience": "Commercial FP&A, country heads, pricing, procurement, and operations leadership",
   "business_goal": "Identify margin-destructive lanes/customers and prioritize repricing or cost-to-serve actions.",
+  "slicer_placement": "Top filter row above the KPI strip on every report page.",
+  "project20_style_upgrades": [
+    "Current Lens",
+    "Decision Chip",
+    "top slicer row with extra dropdown clearance",
+    "KPI sparklines"
+  ],
   "page_count": 3,
   "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix"
 }

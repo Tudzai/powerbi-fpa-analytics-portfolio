@@ -1,13 +1,11 @@
-# QA Checklist
+﻿# QA Checklist
 
-- [x] Project folder structure created.
-- [x] Synthetic data generated with fixed seed `20260615`.
-- [x] Data dictionary and data quality report created.
-- [x] Star schema and DAX measures documented.
-- [x] Three-page Power BI report definition generated.
-- [x] PBIP seed generated.
-- [x] Supplemental HTML preview generated.
-- [x] Project 19 PBIP process detected by command line.
-- [ ] `output/dashboard_final.pbix` exists.
-- [ ] Final PBIX opens in Power BI Desktop.
-- [ ] Visual error count = 0 in Desktop.
+- [x] Final PBIX exists at `output/dashboard_final.pbix`.
+- [x] Final PBIX opened and saved in Power BI Desktop.
+- [x] Four Desktop pages rendered: Governance Overview, Reliability & Quality, Adoption & Controls, Risk & Action Queue.
+- [x] Native package audit found 117 visual definitions.
+- [x] KPI row includes 16 native KPI cards and 16 native line-chart sparklines.
+- [x] Dropdown slicers remain visible and unclipped.
+- [x] Chart/table layout reviewed in Desktop screenshots.
+- [x] Observed visual error count is 0.
+- [x] Versioned PBIX snapshot created.

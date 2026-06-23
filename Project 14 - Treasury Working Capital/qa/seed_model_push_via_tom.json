@@ -1,9 +1,9 @@
 ﻿{
-    "timestamp":  "2026-06-15 03:40:49 +07:00",
+    "timestamp":  "2026-06-23 17:17:54 +07:00",
     "status":  "project14_model_pushed_via_tom",
     "target_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 14 - Treasury Working Capital\\output\\dashboard_model_seed_ch07.pbix",
-    "power_bi_port":  49976,
-    "process_id":  55704,
+    "power_bi_port":  59503,
+    "process_id":  39512,
     "tables":  [
                    "DimDate",
                    "DimWeek",
@@ -22,8 +22,8 @@
                    "FactForecastAccuracy",
                    "FactFXExposure",
                    "FactTreasuryRiskAction",
-                   "KPI Measures"
+                   "KPI_Measures"
                ],
     "relationship_count":  17,
-    "measure_count":  30
+    "measure_count":  47
 }

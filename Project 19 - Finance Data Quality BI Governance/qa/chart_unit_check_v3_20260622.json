@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "rules": {
+    "money": "displayed with $K/$M where applicable",
+    "percent": "displayed as percent",
+    "counts": "displayed as whole numbers without currency units",
+    "seconds_hours_scores": "displayed as one-decimal numeric measures"
+  },
+  "checked_metrics": [
+    "Rec Variance",
+    "Freshness SLA",
+    "Refresh Success",
+    "Completeness",
+    "Reconciliation Pass Rate",
+    "Report Views",
+    "Avg Load Sec",
+    "Control Score"
+  ]
+}

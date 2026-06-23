@@ -1,10 +1,12 @@
-{
+﻿{
   "project": "Project 19 - Finance Data Quality BI Governance",
-  "created_at": "2026-06-15T03:11:51",
+  "created_at": "2026-06-23T21:48:25",
   "seed": 20260615,
-  "main_expected_artifact": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 19 - Finance Data Quality BI Governance\\output\\dashboard_final.pbix",
+  "enhancement_version": "v5_20260623_project20_sparklines",
+  "final_pbix_target": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 19 - Finance Data Quality BI Governance\\output\\dashboard_final.pbix",
+  "html_qa_preview": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 19 - Finance Data Quality BI Governance\\output\\dashboard_final.html",
   "pbip_seed": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 19 - Finance Data Quality BI Governance\\output\\powerbi_project\\Finance_Data_Quality_BI_Governance.pbip",
-  "html_preview": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 19 - Finance Data Quality BI Governance\\output\\dashboard_final.html",
+  "final_dashboard_html": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 19 - Finance Data Quality BI Governance\\output\\dashboard_final.html",
   "tables": {
     "DimDate": 516,
     "DimDataset": 12,

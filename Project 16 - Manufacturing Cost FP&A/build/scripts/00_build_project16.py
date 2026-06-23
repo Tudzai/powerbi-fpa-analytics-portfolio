@@ -30,9 +30,16 @@ MEASURE_TABLE = "KPI Measures"
 COLORS = {
     "bg": "#F6F7F9",
     "panel": "#FFFFFF",
+    "pale": "#F8FAFC",
+    "card": "#FFFFFF",
     "ink": "#111827",
     "muted": "#667085",
     "line": "#D9DEE7",
+    "chart_grid": "#E2E8F0",
+    "table_header": "#F1F5F9",
+    "table_row": "#FFFFFF",
+    "table_alt": "#F8FAFC",
+    "track": "#E5E7EB",
     "steel": "#2563EB",
     "teal": "#0F766E",
     "amber": "#D97706",
@@ -229,8 +236,11 @@ def generate_dimensions() -> dict[str, pd.DataFrame]:
         ],
     )
 
+    dim_spark_date = dim_date.copy()
+
     return {
         "dim_date": dim_date,
+        "dim_spark_date": dim_spark_date,
         "dim_plant": dim_plant,
         "dim_product": dim_product,
         "dim_line": dim_line,
@@ -592,6 +602,24 @@ Scenario Cost Savings = [Current Material Variance] * [Scenario Material Cost Re
 Scenario Gross Margin = [Current Gross Margin] + [Scenario Cost Savings] + [Current Gross Margin] * [Scenario Volume Delta %]
 Scenario GM % = DIVIDE ( [Scenario Gross Margin], [Current Revenue] * ( 1 + [Scenario Volume Delta %] ) )
 Scenario EBITDA Uplift = [Scenario Gross Margin] - [Current Gross Margin]
+Spark Revenue Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Actual Revenue], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Gross Margin Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Gross Margin], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark GM % Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Gross Margin %], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Cost Variance Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Cost Variance vs Standard], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Unit Cost Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Unit Cost], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Yield Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Yield %], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Material Variance Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Material Variance], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Labor Variance Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Labor Variance], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Overhead Variance Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Overhead Variance], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Yield Loss Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Yield Loss Cost], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Actual COGS Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Actual COGS], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Standard COGS Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Standard COGS], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Scrap Rate Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Scrap Rate], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Utilization Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Utilization %], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Capacity Gap Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Capacity Gap Units], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Inventory Value Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Inventory Value], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Inventory Days Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Inventory Days], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
+Spark Scenario EBITDA Uplift Trend = VAR SparkMonth = SELECTEDVALUE ( dim_spark_date[year_month] ) RETURN CALCULATE ( [Scenario EBITDA Uplift], REMOVEFILTERS ( dim_date ), TREATAS ( { SparkMonth }, dim_date[year_month] ) )
 ```
 """.strip()
 
@@ -657,6 +685,24 @@ MEASURE_FORMATS = {
     "Scenario Gross Margin": "$#,0",
     "Scenario GM %": "0.0%",
     "Scenario EBITDA Uplift": "$#,0",
+    "Spark Revenue Trend": "$#,0",
+    "Spark Gross Margin Trend": "$#,0",
+    "Spark GM % Trend": "0.0%",
+    "Spark Cost Variance Trend": "$#,0",
+    "Spark Unit Cost Trend": "$0.00",
+    "Spark Yield Trend": "0.0%",
+    "Spark Material Variance Trend": "$#,0",
+    "Spark Labor Variance Trend": "$#,0",
+    "Spark Overhead Variance Trend": "$#,0",
+    "Spark Yield Loss Trend": "$#,0",
+    "Spark Actual COGS Trend": "$#,0",
+    "Spark Standard COGS Trend": "$#,0",
+    "Spark Scrap Rate Trend": "0.0%",
+    "Spark Utilization Trend": "0.0%",
+    "Spark Capacity Gap Trend": "#,0",
+    "Spark Inventory Value Trend": "$#,0",
+    "Spark Inventory Days Trend": "0.0",
+    "Spark Scenario EBITDA Uplift Trend": "$#,0",
 }
 
 
@@ -726,6 +772,13 @@ def measure_format(measure: str) -> str:
     return MEASURE_FORMATS.get(measure, "#,0")
 
 
+def chart_display_units(measures: list[str]) -> float:
+    formats = [measure_format(measure) for measure in measures]
+    if formats and all("$" in fmt for fmt in formats):
+        return 1000000.0
+    return 0.0
+
+
 def measure_transform(measure: str, display: str, role: str, fmt: str) -> dict:
     return {
         "displayName": display,
@@ -786,18 +839,36 @@ def data_transforms(
     return json.dumps(payload, separators=(",", ":"))
 
 
-def visual_frame(title: str | None = None, subtitle: str | None = None) -> dict:
+def visual_frame(
+    title: str | None = None,
+    subtitle: str | None = None,
+    fill: str = "#FFFFFF",
+    title_size: float = 9.0,
+    subtitle_size: float = 7.0,
+    radius: float = 6.0,
+    shadow: bool = True,
+) -> dict:
     vc = {
-        "background": [{"properties": {"show": pbi_literal(True), "color": color("#FFFFFF"), "transparency": pbi_literal(0.0)}}],
-        "border": [{"properties": {"show": pbi_literal(True), "color": color("#D9DEE7"), "radius": pbi_literal(6.0), "width": pbi_literal(1.0)}}],
-        "dropShadow": [{"properties": {"show": pbi_literal(True), "position": text("Outer"), "color": color("#94A3B8"), "transparency": pbi_literal(88.0), "angle": pbi_literal(45.0), "distance": pbi_literal(1.0)}}],
+        "background": [{"properties": {"show": pbi_literal(True), "color": color(fill), "transparency": pbi_literal(0.0)}}],
+        "border": [{"properties": {"show": pbi_literal(True), "color": color("#D8DEE8"), "radius": pbi_literal(radius), "width": pbi_literal(1.0)}}],
+        "dropShadow": [{"properties": {"show": pbi_literal(shadow), "position": text("Outer"), "color": color("#CBD5E1"), "transparency": pbi_literal(86.0), "angle": pbi_literal(45.0), "distance": pbi_literal(1.5)}}],
         "visualHeader": [{"properties": {"show": pbi_literal(False)}}],
     }
     if title:
-        vc["title"] = [{"properties": {"show": pbi_literal(True), "text": text(title), "fontFamily": text("Segoe UI Semibold"), "fontSize": pbi_literal(9.0), "fontColor": color("#1F2937"), "alignment": text("left")}}]
+        vc["title"] = [{"properties": {"show": pbi_literal(True), "text": text(title), "fontFamily": text("Segoe UI Semibold"), "fontSize": pbi_literal(title_size), "fontColor": color("#111827"), "alignment": text("left")}}]
     if subtitle:
-        vc["subTitle"] = [{"properties": {"show": pbi_literal(True), "text": text(subtitle), "fontFamily": text("Segoe UI"), "fontSize": pbi_literal(7.0), "fontColor": color("#64748B")}}]
+        vc["subTitle"] = [{"properties": {"show": pbi_literal(True), "text": text(subtitle), "fontFamily": text("Segoe UI"), "fontSize": pbi_literal(subtitle_size), "fontColor": color("#64748B")}}]
     return vc
+
+
+def transparent_frame() -> dict:
+    return {
+        "background": [{"properties": {"show": pbi_literal(False)}}],
+        "border": [{"properties": {"show": pbi_literal(False)}}],
+        "title": [{"properties": {"show": pbi_literal(False)}}],
+        "subTitle": [{"properties": {"show": pbi_literal(False)}}],
+        "visualHeader": [{"properties": {"show": pbi_literal(False)}}],
+    }
 
 
 def add_container(config: dict, pos: dict, query: str | None = None, transforms: str | None = None) -> dict:
@@ -848,14 +919,14 @@ def title_text(title: str, subtitle: str, pos: dict) -> dict:
     return add_container(config, pos)
 
 
-def card(measure: str, display: str, pos: dict, value_color: str = "#2563EB") -> dict:
+def card(measure: str, display: str, pos: dict, value_color: str = "#2563EB", value_font: float = 21.0) -> dict:
     qref = f"{MEASURE_TABLE}.{measure}"
     objects = {
         "layout": [{"properties": {"rectangleRoundedCurve": pbi_literal(6), "cellPadding": pbi_literal(6.0), "paddingUniform": pbi_literal(6.0)}, "selector": {"id": "default"}}, {"properties": {}}],
         "fillCustom": [{"properties": {"show": pbi_literal(False)}}],
         "outline": [{"properties": {"show": pbi_literal(False)}, "selector": {"id": "default"}}],
-        "value": [{"properties": {"fontSize": pbi_literal(22.0), "fontFamily": text("Segoe UI Semibold"), "fontColor": color(value_color)}, "selector": {"metadata": qref}}],
-        "label": [{"properties": {"show": pbi_literal(True), "position": text("belowValue"), "fontSize": pbi_literal(7.3), "fontFamily": text("Segoe UI"), "fontColor": color("#475569")}, "selector": {"metadata": qref}}],
+        "value": [{"properties": {"fontSize": pbi_literal(value_font), "fontFamily": text("Segoe UI Semibold"), "fontColor": color(value_color)}, "selector": {"metadata": qref}}],
+        "label": [{"properties": {"show": pbi_literal(False)}, "selector": {"metadata": qref}}],
         "divider": [{"properties": {"show": pbi_literal(False)}, "selector": {"metadata": qref}}],
         "referenceLabelDetail": [{"properties": {"show": pbi_literal(False)}, "selector": {"metadata": qref}}],
     }
@@ -871,7 +942,7 @@ def card(measure: str, display: str, pos: dict, value_color: str = "#2563EB") ->
             "drillFilterOtherVisuals": True,
             "hasDefaultSort": True,
             "objects": objects,
-            "vcObjects": visual_frame(display),
+            "vcObjects": visual_frame(display, fill=COLORS["card"], title_size=8.4),
         },
     }
     transforms = data_transforms(
@@ -884,13 +955,20 @@ def card(measure: str, display: str, pos: dict, value_color: str = "#2563EB") ->
     return add_container(config, pos, make_query(from_items, selects), transforms)
 
 
-def slicer(table: str, column: str, display: str, pos: dict) -> dict:
+def slicer(
+    table: str,
+    column: str,
+    display: str,
+    pos: dict,
+    single_select: bool = False,
+    sync_group: str | None = None,
+) -> dict:
     qref = f"{table}.{column}"
     objects = {
         "data": [{"properties": {"mode": text("Dropdown")}}],
-        "selection": [{"properties": {"selectAllCheckboxEnabled": pbi_literal(True), "singleSelect": pbi_literal(False)}}],
-        "header": [{"properties": {"show": pbi_literal(False), "text": text(display), "textSize": pbi_literal(7.5), "fontColor": color("#334155"), "fontFamily": text("Segoe UI Semibold")}}],
-        "items": [{"properties": {"textSize": pbi_literal(7.5), "fontColor": color("#111827"), "fontFamily": text("Segoe UI")}}],
+        "selection": [{"properties": {"selectAllCheckboxEnabled": pbi_literal(not single_select), "singleSelect": pbi_literal(single_select)}}],
+        "header": [{"properties": {"show": pbi_literal(False)}}],
+        "items": [{"properties": {"textSize": pbi_literal(7.2), "fontColor": color("#111827"), "fontFamily": text("Segoe UI"), "alignment": text("center")}}],
     }
     from_items = [{"Name": "f", "Entity": table, "Type": 0}]
     selects = [column_select("f", table, column, display)]
@@ -903,9 +981,11 @@ def slicer(table: str, column: str, display: str, pos: dict) -> dict:
             "drillFilterOtherVisuals": True,
             "hasDefaultSort": True,
             "objects": objects,
-            "vcObjects": visual_frame(display),
+            "vcObjects": visual_frame(display, fill=COLORS["pale"], title_size=7.8, radius=6.0, shadow=False),
         },
     }
+    if sync_group:
+        config["singleVisual"]["syncGroup"] = {"groupName": sync_group, "fieldChanges": True, "filterChanges": True}
     transforms = data_transforms(
         objects,
         [("Values", 0, True)],
@@ -916,14 +996,70 @@ def slicer(table: str, column: str, display: str, pos: dict) -> dict:
     return add_container(config, pos, make_query(from_items, selects), transforms)
 
 
-def chart_objects(fill: str = "#2563EB", show_labels: bool = True) -> dict:
+def chart_objects(fill: str = "#2563EB", show_labels: bool = True, display_units: float = 1000000.0) -> dict:
     return {
-        "valueAxis": [{"properties": {"showAxisTitle": pbi_literal(False), "gridlineShow": pbi_literal(False), "labelDisplayUnits": pbi_literal(1000000.0)}}],
-        "categoryAxis": [{"properties": {"showAxisTitle": pbi_literal(False), "gridlineShow": pbi_literal(False), "concatenateLabels": pbi_literal(False), "fontSize": pbi_literal(7.0)}}],
-        "labels": [{"properties": {"show": pbi_literal(show_labels), "labelDisplayUnits": pbi_literal(1000000.0), "fontSize": pbi_literal(7.0)}}],
-        "legend": [{"properties": {"showTitle": pbi_literal(False), "position": text("Top")}}],
+        "valueAxis": [{"properties": {"showAxisTitle": pbi_literal(False), "gridlineShow": pbi_literal(False), "gridlineColor": color(COLORS["chart_grid"]), "labelDisplayUnits": pbi_literal(display_units), "fontSize": pbi_literal(7.0), "color": color(COLORS["muted"])}}],
+        "categoryAxis": [{"properties": {"showAxisTitle": pbi_literal(False), "gridlineShow": pbi_literal(False), "concatenateLabels": pbi_literal(False), "fontSize": pbi_literal(7.0), "color": color(COLORS["ink"])}}],
+        "labels": [{"properties": {"show": pbi_literal(show_labels), "labelDisplayUnits": pbi_literal(display_units), "fontSize": pbi_literal(7.0), "color": color(COLORS["ink"])}}],
+        "legend": [{"properties": {"showTitle": pbi_literal(False), "position": text("Top"), "fontSize": pbi_literal(7.0), "labelColor": color(COLORS["muted"])}}],
         "dataPoint": [{"properties": {"fill": color(fill)}}],
     }
+
+
+def sparkline_chart(measure: str, display: str, pos: dict, fill: str = "#2563EB") -> dict:
+    category_ref = "dim_spark_date.year_month"
+    measure_ref = f"{MEASURE_TABLE}.{measure}"
+    objects = {
+        "valueAxis": [{"properties": {"show": pbi_literal(False), "showAxisTitle": pbi_literal(False), "gridlineShow": pbi_literal(False)}}],
+        "categoryAxis": [{"properties": {"show": pbi_literal(False), "showAxisTitle": pbi_literal(False), "gridlineShow": pbi_literal(False)}}],
+        "labels": [{"properties": {"show": pbi_literal(False)}}],
+        "legend": [{"properties": {"show": pbi_literal(False)}}],
+        "dataPoint": [{"properties": {"fill": color(fill), "strokeWidth": pbi_literal(2.25), "showAllDataPoints": pbi_literal(True), "markerSize": pbi_literal(2.4)}}],
+    }
+    from_items = [{"Name": "c", "Entity": "dim_spark_date", "Type": 0}, {"Name": "m", "Entity": MEASURE_TABLE, "Type": 0}]
+    selects = [column_select("c", "dim_spark_date", "year_month", "Month"), measure_select("m", measure, display)]
+    order_by = {"Direction": 1, "Expression": {"Column": {"Expression": source_ref("c"), "Property": "month_index"}}}
+    config = {
+        "name": visual_id(),
+        "singleVisual": {
+            "visualType": "lineChart",
+            "projections": {"Category": [{"queryRef": category_ref, "active": True}], "Y": [{"queryRef": measure_ref}]},
+            "prototypeQuery": {"Version": 2, "From": from_items, "Select": selects, "OrderBy": [order_by]},
+            "drillFilterOtherVisuals": False,
+            "hasDefaultSort": True,
+            "objects": objects,
+            "vcObjects": transparent_frame(),
+        },
+    }
+    transforms = data_transforms(
+        objects,
+        [("Category", 0, True), ("Y", 1, False)],
+        [
+            {"Restatement": "Month", "Name": category_ref, "Type": 2048},
+            {"Restatement": display, "Name": measure_ref, "Type": 1, "Format": measure_format(measure)},
+        ],
+        [
+            column_transform("c", "dim_spark_date", "year_month", "Month", "Category"),
+            measure_transform(measure, display, "Y", measure_format(measure)),
+        ],
+        {"Category": [0], "Y": [1]},
+        {"Category": [{"queryRef": category_ref, "suppressConcat": False}]},
+    )
+    return add_container(config, pos, make_query(from_items, selects, order_by), transforms)
+
+
+def kpi_card_stack(measure: str, display: str, spark_measure: str, pos: dict, value_color: str = "#2563EB") -> list[dict]:
+    spark_pos = position(
+        int(pos["x"] + 14),
+        int(pos["y"] + pos["height"] - 34),
+        int(pos["z"] + 500),
+        int(pos["width"] - 28),
+        28,
+    )
+    return [
+        card(measure, display, pos, value_color, value_font=20.5),
+        sparkline_chart(spark_measure, f"{display} Trend", spark_pos, value_color),
+    ]
 
 
 def single_measure_chart(
@@ -942,7 +1078,7 @@ def single_measure_chart(
 ) -> dict:
     category_ref = f"{category_table}.{category_column}"
     measure_ref = f"{MEASURE_TABLE}.{measure}"
-    objects = chart_objects(fill=fill, show_labels=visual_type not in {"lineChart"})
+    objects = chart_objects(fill=fill, show_labels=visual_type not in {"lineChart"}, display_units=chart_display_units([measure]))
     from_items = [{"Name": "c", "Entity": category_table, "Type": 0}, {"Name": "m", "Entity": MEASURE_TABLE, "Type": 0}]
     selects = [column_select("c", category_table, category_column, category_display), measure_select("m", measure, measure_display)]
     if order_measure:
@@ -985,9 +1121,10 @@ def multi_measure_column(
     pos: dict,
     fill: str = "#2563EB",
     order_column: str | None = None,
+    visual_type: str = "columnChart",
 ) -> dict:
     category_ref = f"{category_table}.{category_column}"
-    objects = chart_objects(fill=fill, show_labels=False)
+    objects = chart_objects(fill=fill, show_labels=False, display_units=chart_display_units([measure for measure, _ in measures]))
     from_items = [{"Name": "c", "Entity": category_table, "Type": 0}, {"Name": "m", "Entity": MEASURE_TABLE, "Type": 0}]
     selects = [column_select("c", category_table, category_column, category_display)]
     projections_y = []
@@ -1008,7 +1145,7 @@ def multi_measure_column(
     config = {
         "name": visual_id(),
         "singleVisual": {
-            "visualType": "columnChart",
+            "visualType": visual_type,
             "projections": {"Category": [{"queryRef": category_ref, "active": True}], "Y": projections_y},
             "prototypeQuery": {"Version": 2, "From": from_items, "Select": selects, **({"OrderBy": [order_by]} if order_by else {})},
             "drillFilterOtherVisuals": True,
@@ -1026,6 +1163,28 @@ def multi_measure_column(
         {"Category": [{"queryRef": category_ref, "suppressConcat": False}]},
     )
     return add_container(config, pos, make_query(from_items, selects, order_by), transforms)
+
+
+def table_column_width(display: str, qref: str) -> float:
+    label = display.lower()
+    if "description" in label:
+        return 170.0
+    if "product" in label:
+        return 145.0
+    if label in {"plant", "line", "scenario"}:
+        return 112.0
+    if any(token in label for token in ["revenue", "gm", "var", "yield", "scrap", "days", "savings"]):
+        return 88.0
+    if qref.startswith(f"{MEASURE_TABLE}."):
+        return 84.0
+    return 100.0
+
+
+def table_cell_alignment(display: str, qref: str) -> str:
+    label = display.lower()
+    if qref.startswith(f"{MEASURE_TABLE}.") or any(token in label for token in ["revenue", "gm", "var", "yield", "scrap", "days", "savings"]):
+        return "right"
+    return "left"
 
 
 def table_visual(
@@ -1062,10 +1221,19 @@ def table_visual(
         projections.append({"queryRef": qref})
         metadata.append({"Restatement": display, "Name": qref, "Type": 1, "Format": measure_format(measure)})
         transform_selects.append(measure_transform(measure, display, "Values", measure_format(measure)))
+    column_info = [(f"{table}.{column}", display) for table, column, display in fields] + [(f"{MEASURE_TABLE}.{measure}", display) for measure, display in measures]
     objects = {
-        "grid": [{"properties": {"gridHorizontal": pbi_literal(False), "outlineColor": color("#CBD5E1")}}],
-        "columnHeaders": [{"properties": {"fontFamily": text("Segoe UI Semibold"), "fontSize": pbi_literal(7.5), "fontColor": color("#334155")}}],
-        "values": [{"properties": {"fontSize": pbi_literal(7.5), "fontFamily": text("Segoe UI")}}],
+        "grid": [{"properties": {"gridHorizontal": pbi_literal(True), "gridVertical": pbi_literal(False), "outlineColor": color("#CBD5E1"), "rowPadding": pbi_literal(5)}}],
+        "columnHeaders": [{"properties": {"show": pbi_literal(True), "fontFamily": text("Segoe UI Semibold"), "fontSize": pbi_literal(7.4), "fontColor": color(COLORS["ink"]), "backColor": color(COLORS["table_header"]), "alignment": text("left")}}],
+        "values": [{"properties": {"fontSize": pbi_literal(7.15), "fontFamily": text("Segoe UI"), "fontColor": color(COLORS["ink"]), "backColorPrimary": color(COLORS["table_row"]), "backColorSecondary": color(COLORS["table_alt"])}}],
+        "columnWidth": [
+            {"properties": {"value": pbi_literal(table_column_width(display, qref))}, "selector": {"metadata": qref}}
+            for qref, display in column_info
+        ],
+        "columnFormatting": [
+            {"properties": {"alignment": text(table_cell_alignment(display, qref))}, "selector": {"metadata": qref}}
+            for qref, display in column_info
+        ],
     }
     order_by = None
     if order_measure:
@@ -1115,26 +1283,37 @@ def section(name: str, display_name: str, ordinal: int, visuals: list[dict]) -> 
 
 
 def build_native_layout() -> dict:
-    kpi_x = [24, 228, 432, 636, 840, 1044]
-    slicer_y = 18
+    top_slicer_y = 72
+    top_slicer_height = 52
+    top_slicer_x = [24, 336, 648, 960]
+    top_slicer_width = 296
+    kpi_x = top_slicer_x
+    kpi_y = 142
+    kpi_width = top_slicer_width
+    kpi_height = 94
+    chart_y = 254
+    chart_height = 198
+    variance_chart_height = 222
+    table_y = 478
+    table_height = 212
+    variance_table_y = 500
+    variance_table_height = 190
 
     def global_slicers(z: int) -> list[dict]:
         return [
-            slicer("dim_date", "year_month", "Month", position(690, slicer_y, z, 110, 48)),
-            slicer("dim_plant", "plant_name", "Plant", position(814, slicer_y, z + 1, 140, 48)),
-            slicer("dim_product", "product_line", "Product Line", position(968, slicer_y, z + 2, 146, 48)),
-            slicer("dim_line", "line_name", "Line", position(1128, slicer_y, z + 3, 128, 48)),
+            slicer("dim_date", "year_month", "Month", position(top_slicer_x[0], top_slicer_y, z, top_slicer_width, top_slicer_height), single_select=True, sync_group="p16_month"),
+            slicer("dim_plant", "plant_name", "Plant", position(top_slicer_x[1], top_slicer_y, z + 1, top_slicer_width, top_slicer_height), sync_group="p16_plant"),
+            slicer("dim_product", "product_line", "Product Line", position(top_slicer_x[2], top_slicer_y, z + 2, top_slicer_width, top_slicer_height), sync_group="p16_product_line"),
+            slicer("dim_line", "line_name", "Line", position(top_slicer_x[3], top_slicer_y, z + 3, top_slicer_width, top_slicer_height), sync_group="p16_line"),
         ]
 
     page1 = [
         title_text("Manufacturing Cost FP&A", "Overview | margin, cost variance, yield, utilization, and inventory risk", position(24, 14, 1, 650, 54)),
         *global_slicers(10),
-        card("Current Revenue", "Revenue", position(kpi_x[0], 88, 100, 188, 86), COLORS["steel"]),
-        card("Current Gross Margin", "Gross Margin", position(kpi_x[1], 88, 101, 188, 86), COLORS["teal"]),
-        card("Current GM %", "GM %", position(kpi_x[2], 88, 102, 188, 86), COLORS["green"]),
-        card("Current Cost Variance", "Cost Var", position(kpi_x[3], 88, 103, 188, 86), COLORS["amber"]),
-        card("Current Unit Cost", "Unit Cost", position(kpi_x[4], 88, 104, 188, 86), COLORS["violet"]),
-        card("Current Yield %", "Yield", position(kpi_x[5], 88, 105, 188, 86), COLORS["teal"]),
+        *kpi_card_stack("Current Revenue", "Revenue", "Spark Revenue Trend", position(kpi_x[0], kpi_y, 100, kpi_width, kpi_height), COLORS["steel"]),
+        *kpi_card_stack("Current Gross Margin", "Gross Margin", "Spark Gross Margin Trend", position(kpi_x[1], kpi_y, 101, kpi_width, kpi_height), COLORS["teal"]),
+        *kpi_card_stack("Current Cost Variance", "Cost Var", "Spark Cost Variance Trend", position(kpi_x[2], kpi_y, 102, kpi_width, kpi_height), COLORS["amber"]),
+        *kpi_card_stack("Current Yield %", "Yield", "Spark Yield Trend", position(kpi_x[3], kpi_y, 103, kpi_width, kpi_height), COLORS["green"]),
         multi_measure_column(
             "Revenue vs COGS Trend",
             "Actual revenue, actual COGS, and standard COGS by month",
@@ -1142,18 +1321,19 @@ def build_native_layout() -> dict:
             "year_month",
             "Month",
             [("Actual Revenue", "Revenue"), ("Actual COGS", "Actual COGS"), ("Standard COGS", "Std COGS")],
-            position(24, 198, 210, 500, 220),
+            position(24, chart_y, 210, 500, chart_height),
             COLORS["steel"],
             "month_index",
+            "lineChart",
         ),
-        single_measure_chart("barChart", "Cost Variance by Plant", "Actual COGS less standard COGS", "dim_plant", "plant_name", "Plant", "Cost Variance vs Standard", "Cost Var", position(548, 198, 211, 342, 220), COLORS["amber"]),
-        single_measure_chart("barChart", "Gross Margin by Product Line", "Current selection", "dim_product", "product_line", "Product Line", "Gross Margin", "GM", position(914, 198, 212, 342, 220), COLORS["teal"]),
+        single_measure_chart("barChart", "Cost Variance by Plant", "Actual COGS less standard COGS", "dim_plant", "plant_name", "Plant", "Cost Variance vs Standard", "Cost Var", position(548, chart_y, 211, 342, chart_height), COLORS["amber"]),
+        single_measure_chart("barChart", "Gross Margin by Product Line", "Current selection", "dim_product", "product_line", "Product Line", "Gross Margin", "GM", position(914, chart_y, 212, 342, chart_height), COLORS["teal"]),
         table_visual(
             "Margin Action List",
             "Highest value combinations to review with operations",
             [("dim_plant", "plant_name", "Plant"), ("dim_line", "line_name", "Line"), ("dim_product", "product", "Product")],
             [("Current Revenue", "Revenue"), ("Current Gross Margin", "GM"), ("Current Cost Variance", "Cost Var"), ("Current Yield %", "Yield"), ("Current Inventory Days", "Inv Days")],
-            position(24, 444, 300, 1232, 246),
+            position(24, table_y, 300, 1232, table_height),
             "Current Cost Variance",
         ),
     ]
@@ -1161,37 +1341,33 @@ def build_native_layout() -> dict:
     page2 = [
         title_text("Standard Cost Variance", "Bridge material, labor, overhead, yield, and product drivers", position(24, 14, 1, 620, 54)),
         *global_slicers(20),
-        card("Current Material Variance", "Material Var", position(kpi_x[0], 88, 100, 188, 86), COLORS["amber"]),
-        card("Current Labor Variance", "Labor Var", position(kpi_x[1], 88, 101, 188, 86), COLORS["red"]),
-        card("Current Overhead Variance", "OH Var", position(kpi_x[2], 88, 102, 188, 86), COLORS["violet"]),
-        card("Current Yield Loss Cost", "Yield Loss", position(kpi_x[3], 88, 103, 188, 86), COLORS["red"]),
-        card("Current Actual COGS", "Actual COGS", position(kpi_x[4], 88, 104, 188, 86), COLORS["slate"]),
-        card("Current Standard COGS", "Std COGS", position(kpi_x[5], 88, 105, 188, 86), COLORS["steel"]),
-        single_measure_chart("waterfallChart", "COGS Variance Bridge", "Standard COGS to actual COGS for latest month", "fact_cost_variance_bridge", "bridge_step", "Bridge Step", "Bridge Amount", "Amount", position(24, 198, 210, 500, 250), COLORS["steel"], False, True),
-        single_measure_chart("barChart", "Material Variance by Product Line", "Material price and usage pressure", "dim_product", "product_line", "Product Line", "Material Variance", "Material Var", position(548, 198, 211, 342, 250), COLORS["amber"]),
-        single_measure_chart("barChart", "Labor Variance by Plant", "Efficiency and overtime pressure", "dim_plant", "plant_name", "Plant", "Labor Variance", "Labor Var", position(914, 198, 212, 342, 250), COLORS["red"]),
+        *kpi_card_stack("Current Material Variance", "Material Var", "Spark Material Variance Trend", position(kpi_x[0], kpi_y, 100, kpi_width, kpi_height), COLORS["amber"]),
+        *kpi_card_stack("Current Labor Variance", "Labor Var", "Spark Labor Variance Trend", position(kpi_x[1], kpi_y, 101, kpi_width, kpi_height), COLORS["red"]),
+        *kpi_card_stack("Current Overhead Variance", "OH Var", "Spark Overhead Variance Trend", position(kpi_x[2], kpi_y, 102, kpi_width, kpi_height), COLORS["violet"]),
+        *kpi_card_stack("Current Yield Loss Cost", "Yield Loss", "Spark Yield Loss Trend", position(kpi_x[3], kpi_y, 103, kpi_width, kpi_height), COLORS["red"]),
+        single_measure_chart("waterfallChart", "COGS Variance Bridge", "Standard COGS to actual COGS for latest month", "fact_cost_variance_bridge", "bridge_step", "Bridge Step", "Bridge Amount", "Amount", position(24, chart_y, 210, 500, variance_chart_height), COLORS["steel"], False, True),
+        single_measure_chart("barChart", "Material Variance by Product Line", "Material price and usage pressure", "dim_product", "product_line", "Product Line", "Material Variance", "Material Var", position(548, chart_y, 211, 342, variance_chart_height), COLORS["amber"]),
+        single_measure_chart("barChart", "Labor Variance by Plant", "Efficiency and overtime pressure", "dim_plant", "plant_name", "Plant", "Labor Variance", "Labor Var", position(914, chart_y, 212, 342, variance_chart_height), COLORS["red"]),
         table_visual(
             "Variance Detail",
             "Product and plant level variance diagnostics",
             [("dim_product", "product", "Product"), ("dim_product", "product_line", "Line"), ("dim_plant", "plant_name", "Plant")],
             [("Material Variance", "Mat Var"), ("Labor Variance", "Labor Var"), ("Overhead Variance", "OH Var"), ("Yield Loss Cost", "Yield Loss"), ("Cost Variance vs Standard", "Total Var")],
-            position(24, 474, 300, 1232, 216),
+            position(24, variance_table_y, 300, 1232, variance_table_height),
             "Cost Variance vs Standard",
         ),
     ]
 
     page3 = [
         title_text("Yield, Capacity & Working Capital", "Operational drivers and scenario levers for EBITDA protection", position(24, 14, 1, 650, 54)),
-        slicer("dim_date", "year_month", "Month", position(650, slicer_y, 20, 110, 48)),
-        slicer("dim_plant", "plant_name", "Plant", position(774, slicer_y, 21, 140, 48)),
-        slicer("dim_product", "product_line", "Product Line", position(928, slicer_y, 22, 146, 48)),
-        slicer("dim_scenario", "scenario_name", "Scenario", position(1088, slicer_y, 23, 168, 48)),
-        card("Current Yield %", "Yield", position(kpi_x[0], 88, 100, 188, 86), COLORS["teal"]),
-        card("Current Scrap Rate", "Scrap Rate", position(kpi_x[1], 88, 101, 188, 86), COLORS["red"]),
-        card("Current Utilization %", "Utilization", position(kpi_x[2], 88, 102, 188, 86), COLORS["steel"]),
-        card("Current Capacity Gap Units", "Capacity Gap", position(kpi_x[3], 88, 103, 188, 86), COLORS["amber"]),
-        card("Current Inventory Value", "Inventory", position(kpi_x[4], 88, 104, 188, 86), COLORS["violet"]),
-        card("Scenario EBITDA Uplift", "Scenario Uplift", position(kpi_x[5], 88, 105, 188, 86), COLORS["green"]),
+        slicer("dim_date", "year_month", "Month", position(top_slicer_x[0], top_slicer_y, 20, top_slicer_width, top_slicer_height), single_select=True, sync_group="p16_month"),
+        slicer("dim_plant", "plant_name", "Plant", position(top_slicer_x[1], top_slicer_y, 21, top_slicer_width, top_slicer_height), sync_group="p16_plant"),
+        slicer("dim_product", "product_line", "Product Line", position(top_slicer_x[2], top_slicer_y, 22, top_slicer_width, top_slicer_height), sync_group="p16_product_line"),
+        slicer("dim_scenario", "scenario_name", "Scenario", position(top_slicer_x[3], top_slicer_y, 23, top_slicer_width, top_slicer_height), single_select=True, sync_group="p16_scenario"),
+        *kpi_card_stack("Current Yield %", "Yield", "Spark Yield Trend", position(kpi_x[0], kpi_y, 100, kpi_width, kpi_height), COLORS["teal"]),
+        *kpi_card_stack("Current Scrap Rate", "Scrap Rate", "Spark Scrap Rate Trend", position(kpi_x[1], kpi_y, 101, kpi_width, kpi_height), COLORS["red"]),
+        *kpi_card_stack("Current Utilization %", "Utilization", "Spark Utilization Trend", position(kpi_x[2], kpi_y, 102, kpi_width, kpi_height), COLORS["steel"]),
+        *kpi_card_stack("Scenario EBITDA Uplift", "Scenario Uplift", "Spark Scenario EBITDA Uplift Trend", position(kpi_x[3], kpi_y, 103, kpi_width, kpi_height), COLORS["green"]),
         multi_measure_column(
             "Yield and Scrap Trend",
             "Yield improvement and scrap containment",
@@ -1199,18 +1375,19 @@ def build_native_layout() -> dict:
             "year_month",
             "Month",
             [("Yield %", "Yield"), ("Scrap Rate", "Scrap")],
-            position(24, 198, 210, 410, 220),
+            position(24, chart_y, 210, 410, chart_height),
             COLORS["teal"],
             "month_index",
+            "lineChart",
         ),
-        single_measure_chart("barChart", "Utilization by Line", "Run hours over available hours", "dim_line", "line_name", "Line", "Utilization %", "Utilization", position(458, 198, 211, 394, 220), COLORS["steel"]),
-        single_measure_chart("barChart", "Inventory Days by Product Line", "Working capital tied to production mix", "dim_product", "product_line", "Product Line", "Inventory Days", "Inv Days", position(876, 198, 212, 380, 220), COLORS["violet"]),
+        single_measure_chart("barChart", "Utilization by Line", "Run hours over available hours", "dim_line", "line_name", "Line", "Utilization %", "Utilization", position(458, chart_y, 211, 394, chart_height), COLORS["steel"]),
+        single_measure_chart("barChart", "Inventory Days by Product Line", "Working capital tied to production mix", "dim_product", "product_line", "Product Line", "Inventory Days", "Inv Days", position(876, chart_y, 212, 380, chart_height), COLORS["violet"]),
         table_visual(
             "Scenario and Bottleneck Review",
             "Select a scenario and prioritize lines with high scrap, utilization, and inventory days",
             [("dim_scenario", "scenario_name", "Scenario"), ("dim_scenario", "description", "Description"), ("dim_line", "line_name", "Line")],
             [("Scenario Cost Savings", "Savings"), ("Scenario Gross Margin", "Scenario GM"), ("Scenario GM %", "Scenario GM %"), ("Current Scrap Rate", "Scrap"), ("Current Inventory Days", "Inv Days")],
-            position(24, 444, 300, 1232, 246),
+            position(24, table_y, 300, 1232, table_height),
             "Scenario EBITDA Uplift",
         ),
     ]
@@ -1281,7 +1458,27 @@ def count_visual_types(layout: dict) -> dict[str, int]:
 def render_screenshots(dims: dict[str, pd.DataFrame], facts: dict[str, pd.DataFrame], metrics: dict) -> None:
     fact = facts["fact_manufacturing_month"]
     enriched = fact.merge(dims["dim_plant"], on="plant_id", how="left").merge(dims["dim_product"], on="product_id", how="left")
-    monthly = fact.groupby("year_month", as_index=False).agg(actual_revenue=("actual_revenue", "sum"), actual_cogs=("actual_cogs", "sum"), standard_cogs=("standard_cogs", "sum"), gross_margin=("gross_margin", "sum"))
+    monthly = fact.groupby("year_month", as_index=False).agg(
+        actual_revenue=("actual_revenue", "sum"),
+        actual_cogs=("actual_cogs", "sum"),
+        standard_cogs=("standard_cogs", "sum"),
+        gross_margin=("gross_margin", "sum"),
+        material_variance=("material_variance", "sum"),
+        labor_variance=("labor_variance", "sum"),
+        overhead_variance=("overhead_variance", "sum"),
+        yield_loss_cost=("yield_loss_cost", "sum"),
+        good_units=("good_units", "sum"),
+        produced_units=("produced_units", "sum"),
+        scrap_units=("scrap_units", "sum"),
+        run_hours=("run_hours", "sum"),
+        available_hours=("available_hours", "sum"),
+        inventory_value=("inventory_value", "sum"),
+    )
+    monthly["cost_variance"] = monthly.actual_cogs - monthly.standard_cogs
+    monthly["yield_pct"] = monthly.good_units / monthly.produced_units
+    monthly["scrap_rate"] = monthly.scrap_units / monthly.produced_units
+    monthly["utilization_pct"] = monthly.run_hours / monthly.available_hours
+    monthly["scenario_uplift"] = monthly.material_variance * 0.035 + monthly.labor_variance * 0.075 + monthly.overhead_variance * 0.060 + monthly.yield_loss_cost * 0.120
     latest = enriched[enriched.year_month.eq(LATEST_MONTH)].copy()
     plant_var = latest.groupby("plant_name", as_index=False).agg(cost_variance=("material_variance", "sum"), actual_cogs=("actual_cogs", "sum")).sort_values("cost_variance", ascending=False)
     product_margin = latest.groupby("product_line", as_index=False).agg(gross_margin=("gross_margin", "sum"), inventory_value=("inventory_value", "sum"), actual_cogs=("actual_cogs", "sum")).sort_values("gross_margin")
@@ -1293,44 +1490,67 @@ def render_screenshots(dims: dict[str, pd.DataFrame], facts: dict[str, pd.DataFr
 
     pages = [
         ("tab1_overview.png", "Manufacturing FP&A Overview", [
-            ("Revenue", money(metrics["current"]["actual_revenue"])),
-            ("Gross Margin", money(metrics["current"]["gross_margin"])),
-            ("Cost Var", money(metrics["current"]["cost_variance"])),
-            ("Yield", pct(metrics["current"]["yield_pct"])),
+            ("Revenue", money(metrics["current"]["actual_revenue"]), "actual_revenue", COLORS["steel"]),
+            ("Gross Margin", money(metrics["current"]["gross_margin"]), "gross_margin", COLORS["teal"]),
+            ("Cost Var", money(metrics["current"]["cost_variance"]), "cost_variance", COLORS["amber"]),
+            ("Yield", pct(metrics["current"]["yield_pct"]), "yield_pct", COLORS["green"]),
         ]),
         ("tab2_variance.png", "Standard Cost Variance", [
-            ("Material Var", money(metrics["current"]["material_variance"])),
-            ("Labor Var", money(metrics["current"]["labor_variance"])),
-            ("OH Var", money(metrics["current"]["overhead_variance"])),
-            ("Yield Loss", money(metrics["current"]["yield_loss_cost"])),
+            ("Material Var", money(metrics["current"]["material_variance"]), "material_variance", COLORS["amber"]),
+            ("Labor Var", money(metrics["current"]["labor_variance"]), "labor_variance", COLORS["red"]),
+            ("OH Var", money(metrics["current"]["overhead_variance"]), "overhead_variance", COLORS["violet"]),
+            ("Yield Loss", money(metrics["current"]["yield_loss_cost"]), "yield_loss_cost", COLORS["red"]),
         ]),
         ("tab3_yield_capacity_wc.png", "Yield, Capacity & Working Capital", [
-            ("Utilization", pct(metrics["current"]["utilization_pct"])),
-            ("Scrap Rate", pct(metrics["current"]["scrap_rate"])),
-            ("Inventory", money(metrics["current"]["inventory_value"])),
-            ("Inv Days", f"{metrics['current']['inventory_days']:.1f}"),
+            ("Yield", pct(metrics["current"]["yield_pct"]), "yield_pct", COLORS["teal"]),
+            ("Scrap Rate", pct(metrics["current"]["scrap_rate"]), "scrap_rate", COLORS["red"]),
+            ("Utilization", pct(metrics["current"]["utilization_pct"]), "utilization_pct", COLORS["steel"]),
+            ("Scenario Uplift", money(metrics["current"]["cost_variance"] * 0.12), "scenario_uplift", COLORS["green"]),
         ]),
     ]
     for file_name, title, cards in pages:
         fig = plt.figure(figsize=(16, 9), facecolor=COLORS["bg"])
         fig.suptitle(title, fontsize=24, fontweight="bold", x=0.03, ha="left", color=COLORS["ink"])
-        for i, (label, value) in enumerate(cards):
-            ax = fig.add_axes([0.03 + i * 0.235, 0.79, 0.205, 0.12])
+        slicer_labels = ["Month", "Plant", "Product Line", "Scenario" if "Working Capital" in title else "Line"]
+        for i, label in enumerate(slicer_labels):
+            ax = fig.add_axes([0.03 + i * 0.235, 0.805, 0.205, 0.06])
             ax.set_facecolor(COLORS["panel"])
-            ax.text(0.04, 0.62, value, fontsize=22, fontweight="bold", color=[COLORS["steel"], COLORS["teal"], COLORS["amber"], COLORS["violet"]][i], transform=ax.transAxes)
-            ax.text(0.04, 0.20, label, fontsize=10, color=COLORS["muted"], transform=ax.transAxes)
+            ax.text(0.035, 0.68, label, fontsize=7.5, fontweight="bold", color=COLORS["muted"], transform=ax.transAxes)
+            ax.text(0.035, 0.23, "All", fontsize=9.5, color=COLORS["ink"], transform=ax.transAxes)
+            ax.text(0.95, 0.25, "v", fontsize=8, color=COLORS["muted"], ha="right", transform=ax.transAxes)
             ax.set_xticks([])
             ax.set_yticks([])
             for spine in ax.spines.values():
                 spine.set_edgecolor(COLORS["line"])
-        ax1 = fig.add_axes([0.05, 0.45, 0.42, 0.27], facecolor=COLORS["panel"])
+        for i, (label, value, series_col, accent) in enumerate(cards):
+            ax = fig.add_axes([0.03 + i * 0.235, 0.66, 0.205, 0.105])
+            ax.set_facecolor(COLORS["panel"])
+            ax.text(0.04, 0.68, label, fontsize=9.2, fontweight="bold", color=COLORS["ink"], transform=ax.transAxes)
+            ax.text(0.04, 0.37, value, fontsize=20, fontweight="bold", color=accent, transform=ax.transAxes)
+            series = monthly[series_col].to_numpy(dtype=float)
+            low, high = float(np.nanmin(series)), float(np.nanmax(series))
+            denom = high - low if high != low else 1.0
+            norm = (series - low) / denom
+            xs = np.linspace(0.08, 0.94, len(series))
+            ys = 0.10 + norm * 0.18
+            ax.fill_between(xs, 0.08, ys, color=accent, alpha=0.10, transform=ax.transAxes)
+            ax.plot(xs, ys, color=accent, linewidth=1.8, transform=ax.transAxes)
+            ax.scatter([xs[-1]], [ys[-1]], s=16, color=accent, edgecolor="white", linewidth=0.8, transform=ax.transAxes, zorder=5)
+            ax.set_xticks([])
+            ax.set_yticks([])
+            for spine in ax.spines.values():
+                spine.set_edgecolor(COLORS["line"])
+        ax1 = fig.add_axes([0.05, 0.38, 0.42, 0.21], facecolor=COLORS["panel"])
         ax1.plot(monthly.year_month, monthly.actual_revenue / 1_000_000, color=COLORS["steel"], linewidth=2.4, label="Revenue")
         ax1.plot(monthly.year_month, monthly.actual_cogs / 1_000_000, color=COLORS["amber"], linewidth=2.0, label="COGS")
-        ax1.tick_params(axis="x", labelrotation=45, labelsize=7)
+        ax1.tick_params(axis="x", labelrotation=45, labelsize=5.5)
+        for idx, tick in enumerate(ax1.get_xticklabels()):
+            if idx % 3:
+                tick.set_visible(False)
         ax1.set_title("Revenue vs COGS trend", loc="left", fontsize=11, fontweight="bold")
         ax1.legend(frameon=False, fontsize=8)
         ax1.grid(axis="y", color=COLORS["line"], linewidth=0.7, alpha=0.8)
-        ax2 = fig.add_axes([0.53, 0.45, 0.42, 0.27], facecolor=COLORS["panel"])
+        ax2 = fig.add_axes([0.53, 0.38, 0.42, 0.21], facecolor=COLORS["panel"])
         if "Variance" in title:
             bars = plant_var
             ax2.barh(bars.plant_name, bars.cost_variance / 1_000, color=COLORS["amber"])
@@ -1340,13 +1560,13 @@ def render_screenshots(dims: dict[str, pd.DataFrame], facts: dict[str, pd.DataFr
             ax2.barh(bars.product_line, bars.gross_margin / 1_000, color=COLORS["teal"])
             ax2.set_title("Gross margin by product line ($K)", loc="left", fontsize=11, fontweight="bold")
         ax2.grid(axis="x", color=COLORS["line"], linewidth=0.7, alpha=0.8)
-        ax3 = fig.add_axes([0.05, 0.10, 0.42, 0.25], facecolor=COLORS["panel"])
+        ax3 = fig.add_axes([0.05, 0.07, 0.42, 0.20], facecolor=COLORS["panel"])
         ax3.bar(line_summary.line_name, line_summary.utilization * 100, color=COLORS["steel"])
         ax3.axhline(85, color=COLORS["amber"], linestyle="--", linewidth=1)
         ax3.tick_params(axis="x", labelrotation=60, labelsize=7)
         ax3.set_title("Line utilization %", loc="left", fontsize=11, fontweight="bold")
         ax3.grid(axis="y", color=COLORS["line"], linewidth=0.7, alpha=0.8)
-        ax4 = fig.add_axes([0.53, 0.10, 0.42, 0.25], facecolor=COLORS["panel"])
+        ax4 = fig.add_axes([0.53, 0.07, 0.42, 0.20], facecolor=COLORS["panel"])
         ax4.bar(product_margin.product_line, product_margin.inventory_days, color=COLORS["violet"])
         ax4.tick_params(axis="x", labelrotation=25, labelsize=8)
         ax4.set_title("Inventory days by product line", loc="left", fontsize=11, fontweight="bold")
@@ -1384,7 +1604,7 @@ def build_html(dims: dict[str, pd.DataFrame], facts: dict[str, pd.DataFrame], ex
     .tabs {{ display:flex; gap:8px; margin:18px 0; }}
     .tabs button {{ border:1px solid var(--line); background:#fff; padding:9px 14px; border-radius:6px; cursor:pointer; font-weight:600; }}
     .tabs button.active {{ background:var(--steel); color:#fff; border-color:var(--steel); }}
-    .grid {{ display:grid; grid-template-columns:repeat(6,1fr); gap:12px; }}
+    .grid {{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }}
     .card {{ background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px; min-height:82px; box-sizing:border-box; }}
     .label {{ color:var(--muted); font-size:12px; }}
     .value {{ font-size:24px; font-weight:750; margin-top:10px; }}
@@ -1417,9 +1637,7 @@ def build_html(dims: dict[str, pd.DataFrame], facts: dict[str, pd.DataFrame], ex
     <div class="grid">
       <div class="card"><div class="label">Revenue</div><div class="value" style="color:var(--steel)">{money(current['actual_revenue'])}</div></div>
       <div class="card"><div class="label">Gross Margin</div><div class="value" style="color:var(--teal)">{money(current['gross_margin'])}</div></div>
-      <div class="card"><div class="label">GM %</div><div class="value" style="color:var(--teal)">{pct(current['gross_margin_pct'])}</div></div>
       <div class="card"><div class="label">Cost Variance</div><div class="value" style="color:var(--amber)">{money(current['cost_variance'])}</div></div>
-      <div class="card"><div class="label">Unit Cost</div><div class="value" style="color:var(--violet)">{money(current['unit_cost'])}</div></div>
       <div class="card"><div class="label">Yield</div><div class="value" style="color:var(--teal)">{pct(current['yield_pct'])}</div></div>
     </div>
     <div class="two"><div class="panel"><img src="screenshots/tab1_overview.png" alt="Overview screenshot"></div><div class="panel"><table><thead><tr><th>Product</th><th>Line</th><th>Revenue</th><th>GM</th><th>GM %</th><th>Inventory</th></tr></thead><tbody>{rows_products}</tbody></table></div></div>
@@ -1430,19 +1648,15 @@ def build_html(dims: dict[str, pd.DataFrame], facts: dict[str, pd.DataFrame], ex
       <div class="card"><div class="label">Labor Variance</div><div class="value" style="color:var(--red)">{money(current['labor_variance'])}</div></div>
       <div class="card"><div class="label">OH Variance</div><div class="value" style="color:var(--violet)">{money(current['overhead_variance'])}</div></div>
       <div class="card"><div class="label">Yield Loss</div><div class="value" style="color:var(--red)">{money(current['yield_loss_cost'])}</div></div>
-      <div class="card"><div class="label">Actual COGS</div><div class="value">{money(current['actual_cogs'])}</div></div>
-      <div class="card"><div class="label">Standard COGS</div><div class="value">{money(current['standard_cogs'])}</div></div>
     </div>
     <div class="panel" style="margin-top:14px"><img src="screenshots/tab2_variance.png" alt="Variance screenshot"></div>
   </section>
   <section id="ops" class="section">
     <div class="grid">
-      <div class="card"><div class="label">Utilization</div><div class="value" style="color:var(--steel)">{pct(current['utilization_pct'])}</div></div>
+      <div class="card"><div class="label">Yield</div><div class="value" style="color:var(--teal)">{pct(current['yield_pct'])}</div></div>
       <div class="card"><div class="label">Scrap Rate</div><div class="value" style="color:var(--red)">{pct(current['scrap_rate'])}</div></div>
-      <div class="card"><div class="label">Inventory Value</div><div class="value" style="color:var(--violet)">{money(current['inventory_value'])}</div></div>
-      <div class="card"><div class="label">Inventory Days</div><div class="value">{current['inventory_days']:.1f}</div></div>
-      <div class="card"><div class="label">Capacity Gap</div><div class="value" style="color:var(--amber)">{num(current['capacity_gap_units'])}</div></div>
-      <div class="card"><div class="label">Slow Moving Inv.</div><div class="value" style="color:var(--red)">{money(current['slow_moving_inventory_value'])}</div></div>
+      <div class="card"><div class="label">Utilization</div><div class="value" style="color:var(--steel)">{pct(current['utilization_pct'])}</div></div>
+      <div class="card"><div class="label">Scenario Uplift</div><div class="value" style="color:var(--teal)">{money(current['cost_variance'] * 0.12)}</div></div>
     </div>
     <div class="two"><div class="panel"><img src="screenshots/tab3_yield_capacity_wc.png" alt="Yield capacity screenshot"></div><div class="panel"><table><thead><tr><th>Plant</th><th>Line</th><th>Product Line</th><th>Yield</th><th>Scrap</th><th>Utilization</th><th>Inv Days</th></tr></thead><tbody>{rows_watch}</tbody></table></div></div>
   </section>
@@ -1525,6 +1739,7 @@ Latest reconciliation: revenue {money(metrics['current']['actual_revenue'])}, ac
 - Main grain: monthly plant x line x product in `fact_manufacturing_month`.
 - Standard cost variance is decomposed into material, labor, overhead, and yield loss drivers.
 - Product/plant/line/date are conformed dimensions for all operational finance visuals.
+- `dim_spark_date` is disconnected and used only by KPI mini-sparkline measures so Month slicers do not collapse trends to one point.
 - `dim_scenario` is disconnected and drives scenario measures without filtering facts directly.
 - Rates and percentages are DAX measures with `DIVIDE`; raw rate columns are not used as KPI totals.
 """,
@@ -1562,17 +1777,17 @@ def write_config(metrics: dict) -> None:
                 {
                     "name": "01 Manufacturing FP&A Overview",
                     "purpose": "Monitor margin, standard cost variance, yield, utilization, unit cost, and working capital.",
-                    "visuals": ["KPI strip", "Revenue/COGS trend", "Variance by plant", "Margin by product line", "Margin action list"],
+                    "visuals": ["4 KPI cards with mini sparklines", "Revenue/COGS line trend", "Variance by plant", "Margin by product line", "Margin action list"],
                 },
                 {
                     "name": "02 Standard Cost Variance",
                     "purpose": "Explain cost variance through material, labor, overhead, and yield loss drivers.",
-                    "visuals": ["Variance KPI strip", "COGS waterfall", "Material variance by product line", "Labor variance by plant", "Variance detail table"],
+                    "visuals": ["4 variance KPI cards with mini sparklines", "COGS waterfall", "Material variance by product line", "Labor variance by plant", "Variance detail table"],
                 },
                 {
                     "name": "03 Yield Capacity & WC",
                     "purpose": "Tie yield, scrap, utilization, capacity gaps, inventory days, and scenario savings to EBITDA protection.",
-                    "visuals": ["Operations KPI strip", "Yield/scrap trend", "Utilization by line", "Inventory days", "Scenario and bottleneck table"],
+                    "visuals": ["4 operations KPI cards with mini sparklines", "Yield/scrap line trend", "Utilization by line", "Inventory days", "Scenario and bottleneck table"],
                 },
             ]
         },
@@ -1580,13 +1795,15 @@ def write_config(metrics: dict) -> None:
     write_json(
         "build/config/slicer_map.json",
         {
+            "placement": "top_filter_bar",
+            "layout": {"x": 24, "y": 72, "slot_width": 296, "slot_height": 52, "gap": 16},
             "global_slicers": [
-                {"label": "Month", "field": "dim_date[year_month]", "type": "dropdown"},
-                {"label": "Plant", "field": "dim_plant[plant_name]", "type": "dropdown"},
-                {"label": "Product Line", "field": "dim_product[product_line]", "type": "dropdown"},
-                {"label": "Line", "field": "dim_line[line_name]", "type": "dropdown"},
+                {"label": "Month", "field": "dim_date[year_month]", "type": "dropdown", "single_select": True, "sync_group": "p16_month"},
+                {"label": "Plant", "field": "dim_plant[plant_name]", "type": "dropdown", "sync_group": "p16_plant"},
+                {"label": "Product Line", "field": "dim_product[product_line]", "type": "dropdown", "sync_group": "p16_product_line"},
+                {"label": "Line", "field": "dim_line[line_name]", "type": "dropdown", "sync_group": "p16_line"},
             ],
-            "scenario_slicer": {"label": "Scenario", "field": "dim_scenario[scenario_name]", "type": "dropdown"},
+            "scenario_slicer": {"label": "Scenario", "field": "dim_scenario[scenario_name]", "type": "dropdown", "single_select": True, "sync_group": "p16_scenario"},
         },
     )
     write_json(
@@ -1605,8 +1822,9 @@ def write_config(metrics: dict) -> None:
     write_json(
         "build/config/visual_map.json",
         {
-            "visual_count_target": 37,
-            "native_visual_types": ["cardVisual", "slicer", "lineChart", "columnChart", "barChart", "waterfallChart", "tableEx", "textbox"],
+            "visual_count_target": 51,
+            "native_visual_types": ["cardVisual", "slicer", "lineChart", "barChart", "waterfallChart", "tableEx", "textbox"],
+            "kpi_pattern": "4 focused cards per page plus native mini line-chart sparklines",
             "latest_month_snapshot": metrics["current"],
         },
     )
@@ -1711,7 +1929,10 @@ Research references:
 
 Applied layout:
 - 3 tabs only, as requested.
-- Each tab starts with a KPI strip and then moves from trend or bridge to driver breakdown and action table.
+- Each tab starts with a dedicated top filter bar, then four focused KPI cards, then trend/bridge, driver breakdown, and action table.
+- Slicers use compact dropdown visuals in four equal-width top slots so controls are visible without a sidebar or scroll.
+- KPI cards use native card visuals plus native mini line-chart sparklines driven by a disconnected spark date table, so selecting Month does not collapse the trend.
+- Tables use stronger header fills, row banding, row padding, and measure alignment for faster scanning.
 - Visual palette is industrial FP&A light: steel blue for primary measures, teal for margin/yield, amber/red for cost pressure and risk, violet for working capital.
 """,
     )
@@ -1746,6 +1967,8 @@ Assumptions:
 - Reviewed available template library and selected `Packt_Ch10_PVM.pbix` as the technical seed.
 - Generated synthetic manufacturing FP&A data with seed `{SEED}`.
 - Built model docs, DAX measures, config maps, native Power BI layout JSON, HTML preview, screenshots, and QA docs.
+- Project 20 style pass: moved native slicers into a dedicated top filter bar above the KPI row and regenerated preview evidence.
+- Project 20 upgrade pass: rebuilt KPI areas as four focused cards per page with native mini sparklines; tightened slicer typography/sync groups; changed trend panels to line visuals; improved chart units and table styling.
 - Next stage: copy seed PBIX, apply Project 16 layout, launch exact Project 16 PBIX in Power BI Desktop, push model, save, reopen, and validate.
 """,
     )
@@ -1788,6 +2011,13 @@ Why this route:
 Project: Manufacturing Cost FP&A.
 Main output target: `output/dashboard_final.pbix`.
 Supplemental preview: `output/dashboard_final.html`.
+
+Layout update:
+- Slicers are positioned in a dedicated top filter bar on every page.
+- Overview and Variance use Month, Plant, Product Line, and Line.
+- Yield, Capacity & WC uses Month, Plant, Product Line, and Scenario.
+- Each page uses four larger KPI cards with native mini sparklines beneath the value.
+- Main trend panels are native line charts, and tables use compact banded rows with numeric alignment.
 
 Latest-month snapshot:
 - Revenue: {money(metrics['current']['actual_revenue'])}
@@ -1836,6 +2066,8 @@ The prepared CSV files are the refresh boundary.
 - Created Project 16 Manufacturing Cost FP&A BI product structure.
 - Generated synthetic manufacturing standard-cost, production, inventory, and scenario data.
 - Added semantic model docs, DAX measures, native 3-tab Power BI layout JSON, theme, HTML preview, screenshots, runbooks, and QA docs.
+- Upgraded slicer placement to a top filter bar across all pages, preserving the light manufacturing FP&A style while borrowing Project 20's compact aligned control pattern.
+- Upgraded KPI cards, sparklines, chart units, trend chart types, slicer text fit, and table styling toward the Project 20 standard.
 """,
     )
     write_text(
@@ -1867,8 +2099,9 @@ The prepared CSV files are the refresh boundary.
         """# Interaction QA Notes
 
 Planned PBIX interactions:
-- Month, Plant, Product Line, and Line slicers appear on Overview and Variance pages.
-- Month, Plant, Product Line, and Scenario slicers appear on Yield, Capacity & WC.
+- Month, Plant, Product Line, and Line slicers appear in the top filter bar on Overview and Variance pages.
+- Month, Plant, Product Line, and Scenario slicers appear in the top filter bar on Yield, Capacity & WC.
+- The top slicer slots share the same y-position, width, height, and z-order pattern on each page.
 - Native visuals are configured for default cross-filtering.
 - Final click testing requires Power BI Desktop after save/reopen.
 """,
@@ -1881,11 +2114,12 @@ Generated preview screenshots cover all 3 requested tabs.
 
 Native PBIX layout contains:
 - 3 page title textboxes.
-- 13 slicers.
-- 18 KPI cards.
-- Trend, bar, column, waterfall, and detail-table visuals.
+- 12 top-bar slicers.
+- 12 focused KPI cards.
+- 12 native mini line-chart sparklines layered inside KPI cards.
+- Trend line, bar, waterfall, and detail-table visuals.
 
-Design follows a light manufacturing FP&A theme with consistent spacing and restrained color use.
+Design follows a light manufacturing FP&A theme with consistent spacing, top aligned slicers, Project 20-style focused KPI cards, and restrained color use.
 """,
     )
     write_text(
@@ -2143,7 +2377,7 @@ function Add-KpiMeasure {{
 $portToUse = Resolve-PowerBIPort
 Import-PowerBIAssemblies
 $prepared = Join-Path $ProjectRoot "data\prepared"
-$tableNames = @("dim_date", "dim_plant", "dim_product", "dim_line", "dim_scenario", "fact_manufacturing_month", "fact_cost_variance_bridge")
+$tableNames = @("dim_date", "dim_spark_date", "dim_plant", "dim_product", "dim_line", "dim_scenario", "fact_manufacturing_month", "fact_cost_variance_bridge")
 
 $server = New-Object Microsoft.AnalysisServices.Tabular.Server
 $server.Connect("localhost:$portToUse")

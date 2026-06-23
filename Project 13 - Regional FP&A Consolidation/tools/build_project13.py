@@ -1070,10 +1070,14 @@ This portfolio model uses a star schema around monthly FP&A summary and detailed
         {"page": "Controls & Storyboard", "visual": "Board Pack Extract", "type": "table", "fields": ["country", "revenue", "ebitda", "variance"]},
     ]
     slicer_map = [
-        {"slicer": "Period", "field": "DimDate[date_id]", "default": LATEST_PERIOD},
-        {"slicer": "Region", "field": "DimEntity[region]", "default": "All"},
-        {"slicer": "Entity", "field": "DimEntity[entity_id]", "default": "All"},
-        {"slicer": "Business Unit", "field": "DimBusinessUnit[business_unit]", "default": "All"},
+        {"page": "Executive Summary", "slicer": "Period", "field": "DimDate[month_label]", "default": "May 2026", "placement": "top_filter_bar", "x": 188, "y": 84, "width": 148, "height": 42},
+        {"page": "Executive Summary", "slicer": "Region", "field": "DimEntity[region]", "default": "All", "placement": "top_filter_bar", "x": 348, "y": 84, "width": 148, "height": 42},
+        {"page": "Executive Summary", "slicer": "BU", "field": "DimBusinessUnit[business_unit]", "default": "All", "placement": "top_filter_bar", "x": 508, "y": 84, "width": 166, "height": 42},
+        {"page": "P&L Variance", "slicer": "Country", "field": "DimEntity[country]", "default": "All", "placement": "top_filter_bar", "x": 188, "y": 84, "width": 180, "height": 42},
+        {"page": "P&L Variance", "slicer": "Scenario", "field": "DimScenario[scenario]", "default": "All", "placement": "top_filter_bar", "x": 380, "y": 84, "width": 180, "height": 42},
+        {"page": "Controls & Storyboard", "slicer": "Currency", "field": "FactFXRate[currency]", "default": "All", "placement": "top_filter_bar", "x": 188, "y": 84, "width": 154, "height": 42},
+        {"page": "Controls & Storyboard", "slicer": "Severity", "field": "FactCloseExceptions[severity]", "default": "All", "placement": "top_filter_bar", "x": 354, "y": 84, "width": 154, "height": 42},
+        {"page": "Controls & Storyboard", "slicer": "Status", "field": "FactCloseExceptions[status]", "default": "All", "placement": "top_filter_bar", "x": 520, "y": 84, "width": 154, "height": 42},
     ]
     theme = {
         "name": "Regional FP&A Command Center",
@@ -1092,7 +1096,9 @@ This portfolio model uses a star schema around monthly FP&A summary and detailed
         "latest_complete_period": LATEST_PERIOD,
         "pages": page_map,
         "visual_count": len(visual_map),
+        "native_visual_container_count": 64,
         "filters": slicer_map,
+        "layout_upgrade": "2026-06-23 top filter bar; slicers moved above KPI strip on all native PBIX pages.",
     })
 
     write_text("docs/design_research.md", """
