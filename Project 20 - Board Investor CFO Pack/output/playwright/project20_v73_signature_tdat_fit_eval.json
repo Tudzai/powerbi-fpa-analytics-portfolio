@@ -1,0 +1,7 @@
+{
+  "title": "Project 20 v73 Signature QA",
+  "passText": true,
+  "imgLoaded": true,
+  "statusText": "Signature fits without scroll",
+  "consoleErrorExpected": false
+}

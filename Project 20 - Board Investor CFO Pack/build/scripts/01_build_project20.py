@@ -2141,11 +2141,12 @@ def rail_filter_row(label, table, column, display, y, z, accent, sync_name, sing
 
 def sidebar_signature(z):
     return [
-        solid_rect("#172035", pos(66, 20, z + 1, 58, 54), radius=10.0),
-        solid_rect("#F8FBFF", pos(73, 28, z + 2, 42, 3), radius=1.5),
-        plain_text("AT", pos(75, 33, z + 3, 54, 34), "#F8FBFF", "19pt", "Segoe UI Black"),
-        solid_rect("#8AB8FF", pos(76, 63, z + 4, 22, 3), radius=1.5),
-        solid_rect("#8DE1D6", pos(94, 65, z + 5, 25, 3), radius=1.5),
+        solid_rect("#172035", pos(32, 18, z + 1, 56, 54), radius=10.0),
+        solid_rect("#F8FBFF", pos(40, 27, z + 2, 40, 3), radius=1.5),
+        plain_text("AT", pos(38, 30, z + 3, 62, 46), "#F8FBFF", "15pt", "Segoe UI Black"),
+        solid_rect("#8AB8FF", pos(41, 63, z + 4, 22, 3), radius=1.5),
+        solid_rect("#8DE1D6", pos(59, 65, z + 5, 25, 3), radius=1.5),
+        plain_text("TDAT", pos(102, 30, z + 6, 66, 38), "#F8FBFF", "9.2pt", "Segoe UI Semibold"),
     ]
 
 

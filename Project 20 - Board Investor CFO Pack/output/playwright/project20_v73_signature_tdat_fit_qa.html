@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Project 20 v73 Signature QA</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f2fb;
+      --ink: #191327;
+      --muted: #5e5571;
+      --purple: #4a3a8e;
+      --panel: #ffffff;
+      --line: #d7cee9;
+      --pass: #2f8655;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    main {
+      width: min(1340px, calc(100vw - 48px));
+      margin: 24px auto 40px;
+    }
+
+    header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 6px;
+      background: #e8f4ec;
+      color: var(--pass);
+      padding: 8px 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--pass);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    figure {
+      margin: 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 10px 26px rgba(49, 37, 90, 0.12);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid #d1c8e3;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    aside {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 9px 14px;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    dt {
+      color: var(--muted);
+    }
+
+    dd {
+      margin: 0;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .checklist {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .check {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .check strong {
+      color: var(--pass);
+    }
+
+    @media (max-width: 900px) {
+      main {
+        width: min(100vw - 24px, 760px);
+      }
+
+      header,
+      .grid {
+        display: block;
+      }
+
+      .status,
+      aside {
+        margin-top: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Project 20 v73 Signature QA</h1>
+        <p>Direct PBIX verification: pass</p>
+      </div>
+      <div class="status"><span class="dot"></span> Signature fits without scroll</div>
+    </header>
+
+    <section class="grid">
+      <figure>
+        <img src="project20_v73_signature_tdat_fit_full.png" alt="Power BI Desktop render showing fitted AT logo and TDAT wordmark">
+        <figcaption>Power BI Desktop render of the real PBIX. The Signature block shows the full `AT` favicon and `TDAT` wordmark without local scrollbars.</figcaption>
+      </figure>
+
+      <aside>
+        <h2>PBIX Checks</h2>
+        <dl>
+          <dt>Status</dt><dd>pass</dd>
+          <dt>Signature visuals</dt><dd>6</dd>
+          <dt>Signature tableEx</dt><dd>0</dd>
+          <dt>AT textbox fit</dt><dd>1</dd>
+          <dt>TDAT textbox fit</dt><dd>1</dd>
+          <dt>Finance textbox</dt><dd>0</dd>
+          <dt>v71 KPI geometry</dt><dd>0</dd>
+        </dl>
+        <div class="checklist" aria-label="Verification checklist">
+          <div class="check"><strong>Pass</strong><span>Native favicon-style logo is visible.</span></div>
+          <div class="check"><strong>Pass</strong><span>`TDAT` text is present beside the logo.</span></div>
+          <div class="check"><strong>Pass</strong><span>No table visual is left in the Signature zone to create scrollbars.</span></div>
+          <div class="check"><strong>Pass</strong><span>KPI-card rollback is preserved.</span></div>
+        </div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

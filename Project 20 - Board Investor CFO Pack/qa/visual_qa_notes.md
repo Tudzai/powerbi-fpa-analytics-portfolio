@@ -1,17 +1,19 @@
 # Visual QA Notes
 
-v72 rolls back the v71 KPI enlargement pass and focuses only on the sidebar Signature.
+Signature-only correction built after rolling back the v71 KPI-card enlargement.
 
-- Final product is a real PBIX patched through the native layout route, not an HTML-only preview.
-- The Signature now uses a centered native favicon-style mark: dark navy rounded square, white `AT`, and two small blue/teal accent strokes.
-- The adjacent `TDAT` / `Finance Control` text boxes were removed because they rendered as small overflow rectangles in Power BI Desktop.
-- The old `Portfolio Signature SVG` tableEx visual is no longer used in the Signature area, so the logo does not create its own scrollbar.
-- Direct PBIX verification confirms `signature_tableEx = 0`, `right_side_signature_visuals = 0`, `brand_textboxes = 0`, and `v71_kpi_geometry_260x190 = 0`.
-- Playwright evidence is generated from a Power BI Desktop render captured from the actual `output/dashboard_final.pbix`.
+- Final product is a real PBIX rebuilt through TOM model push and native layout patch, not an HTML-only preview.
+- Scope is intentionally limited to the left-sidebar Signature block.
+- The Signature now uses native Power BI shapes/text: a compact favicon-style `AT` logo plus a separate `TDAT` wordmark.
+- The old scroll-prone Signature table visual is removed; direct PBIX verification reports `signature_tableEx = 0`.
+- The old overflowing `Finance Control` Signature textbox is removed; direct PBIX verification reports `finance_control_textboxes = 0`.
+- The `AT` and `TDAT` textboxes are sized to fit without horizontal or vertical scroll; direct PBIX verification reports `at_textboxes_fit = 1` and `tdat_textboxes_fit = 1`.
+- KPI geometry remains rolled back from v71; direct PBIX verification reports `v71_kpi_geometry_260x190 = 0`.
 
 Evidence:
 
-- Direct PBIX verification: `qa/pbix_direct_verification_v72_signature_only.json`
-- Desktop render capture: `output/playwright/project20_v72_signature_favicon_only_full.png`
-- Playwright QA evidence: `output/playwright/project20_v72_signature_favicon_only_qa.png`
-- Snapshot PBIX: `output/dashboard_final_v72_signature_favicon_only.pbix`
+- Direct PBIX verification: `qa/pbix_direct_verification_v73_signature_tdat_fit.json`
+- Power BI Desktop render: `output/playwright/project20_v73_signature_tdat_fit_full.png`
+- Playwright evidence page: `output/playwright/project20_v73_signature_tdat_fit_qa.html`
+- Playwright evidence screenshot: `output/playwright/project20_v73_signature_tdat_fit_qa.png`
+- PBIX snapshot: `output/dashboard_final_v73_signature_tdat_fit.pbix`
