@@ -1,28 +1,56 @@
-# Cách Vẽ Chart Đẹp
+# Cách vẽ chart đẹp
 
-Tài liệu này rút từ Project 20 - Board Investor CFO Pack, tập trung vào chart panel, chart units, sort, màu sắc và khả năng scan trong dashboard Power BI.
+Tài liệu này rút từ Project 20 - Board Investor CFO Pack, gồm cách chọn chart, format panel, xử lý units, sort, layout giữa các tab và QA bằng PBIX thật.
 
-## Mục Tiêu Chart Trong Dashboard
+Mục tiêu là chart giúp người xem ra quyết định, không chỉ trang trí.
 
-Chart trong dashboard không phải để trang trí. Chart cần trả lời nhanh:
+## 1. Vai trò chart trong dashboard
 
-- Metric đang tăng/giảm?
+Project 20 dùng dashboard theo 3 tầng:
+
+- KPI row: đọc nhanh trong 3-10 giây.
+- Chart panels: phân tích driver, trend, mix, variance.
+- Tables: audit chi tiết và drill sâu.
+
+Chart nên trả lời nhanh:
+
+- Metric đang đi lên hay đi xuống?
 - Nhóm nào đóng góp nhiều nhất?
 - Chênh lệch so với plan nằm ở đâu?
-- Có rủi ro hay outlier nào cần chú ý?
+- Có rủi ro/outlier nào cần chú ý?
 
-Project 20 dùng chart theo 3 tầng:
+## 2. Page structure trong Project 20
 
-- KPI strip trên cùng: 3-30 second scan.
-- Chart panels ở giữa: phân tích trend/mix/driver.
-- Tables ở dưới: chi tiết và audit.
+Project 20 có 3 tab:
 
-## Chart Panel Layout
+- `Performance`
+- `Cash Plan`
+- `Risk & Valuation`
 
-Trong Project 20, chart panel dùng card/panel sáng trên nền tím đậm:
+Mỗi tab có cùng logic bố cục:
+
+- Sidebar bên trái.
+- Header/title.
+- KPI card row phía trên.
+- 3 chart panels hàng trên.
+- 3 panels hàng dưới, gồm chart/table tùy page.
+
+Ở v77, layout tab `Performance` user chỉnh tay được dùng làm source-of-truth để sync `Cash Plan` và `Risk & Valuation`.
+
+Top chart slots chuẩn v77:
+
+| Slot | x | y | width | height |
+|---|---:|---:|---:|---:|
+| 1 | 205.6 | 215.2 | 425.6 | 210.4 |
+| 2 | 640.8 | 216.8 | 304.5 | 210.4 |
+| 3 | 966.0 | 218.4 | 293.3 | 210.4 |
+
+## 3. Chart panel style
+
+Chart panel dùng nền sáng trên canvas tím đậm.
 
 ```python
-def frame(title=None, sub=None, fill=None):
+def frame(fill=None):
     fill = fill or COLORS["panel"]
     return {
         "background": [{
@@ -53,16 +81,17 @@ def frame(title=None, sub=None, fill=None):
     }
 ```
 
-Best practices:
+Quy tắc:
 
-- Border mảnh, radius vừa phải.
-- Shadow nhẹ để tách panel khỏi nền.
-- Không để chart panel quá trắng nếu canvas quá đậm; dùng pale lavender như `#F0EAF7`.
-- Title ngắn, subtitle nói drill grain.
+- Border mảnh.
+- Radius vừa phải.
+- Shadow nhẹ.
+- Không dùng panel trắng quá gắt trên nền tím.
+- Không nhồi quá nhiều chart trong một panel.
 
-## Subtitle Cho Chart
+## 4. Title và subtitle
 
-Project 20 dùng subtitle kiểu:
+Project 20 dùng subtitle ngắn kiểu:
 
 - `Drilldown: Month > KPI`
 - `Drilldown: Region`
@@ -71,36 +100,12 @@ Project 20 dùng subtitle kiểu:
 
 Quy tắc:
 
-- Subtitle không phải mô tả dài.
-- Subtitle cho biết người dùng có thể drill theo gì.
-- Tránh câu hướng dẫn dài trong dashboard.
+- Title nói metric/chủ đề.
+- Subtitle nói grain/drill path.
+- Không viết hướng dẫn dài trong dashboard.
+- Không dùng title chung chung như `Chart 1`.
 
-## Chart Units Đúng Theo Metric
-
-Một lỗi rất xấu là ép mọi chart về `$M`. Project 20 đã sửa logic chart units:
-
-```python
-def chart_display_units(measures: list[str]) -> float:
-    formats = [mfmt(measure) or "" for measure in measures]
-    return 1000000.0 if formats and all("$" in fmt for fmt in formats) else 0.0
-```
-
-Kết quả:
-
-- Revenue, Cash, EBITDA, Funding Need: compact theo `$M`.
-- Runway Months: không bị ép millions.
-- Leverage Ratio: không bị ép millions.
-- Gross Margin/Covenant ratios: giữ unit tự nhiên.
-
-Checklist:
-
-- Nếu format measure có `$`, dùng display unit 1,000,000.
-- Nếu format là `0.0x`, `%`, `pt`, count, không dùng display unit `$M`.
-- Multi-measure chart chỉ dùng `$M` nếu tất cả measures là money.
-
-## Chart Objects Pattern
-
-Project 20 tạo object chart bằng function:
+## 5. Chart objects pattern
 
 ```python
 def chart_objects(fill, labels=True, display_units=1000000.0):
@@ -143,35 +148,45 @@ def chart_objects(fill, labels=True, display_units=1000000.0):
             "properties": {
                 "fill": col(fill)
             }
-        }],
+        }]
     }
 ```
 
-Best practices:
+Chart nhỏ nên ít noise:
 
-- Tắt axis title nếu title/subtitle đã đủ rõ.
-- Tắt gridline với chart nhỏ để giảm noise.
-- Data labels chỉ bật khi ít categories và label không đè nhau.
-- Legend đặt top, font nhỏ.
-- `concatenateLabels = false` để label category dễ đọc hơn.
+- Tắt axis title nếu title/subtitle đã đủ.
+- Tắt gridline nếu chart không cần đọc chính xác từng mức.
+- Legend top, font nhỏ.
+- Data labels chỉ bật khi ít category.
 
-## Sort Chart
+## 6. Units đúng theo metric
 
-Chart ranking nên sort theo measure descending:
+Một lỗi xấu là ép mọi chart về `$M`.
+
+Project 20 dùng logic:
 
 ```python
-order = {
-    "Direction": 2,
-    "Expression": {
-        "Measure": {
-            "Expression": src("m"),
-            "Property": measure
-        }
-    }
-}
+def chart_display_units(measures: list[str]) -> float:
+    formats = [mfmt(measure) or "" for measure in measures]
+    return 1000000.0 if formats and all("$" in fmt for fmt in formats) else 0.0
 ```
 
-Chart trend nên sort theo month index ascending:
+Kết quả:
+
+- Revenue/Cash/EBITDA/Funding Need: compact `$M`.
+- Runway: giữ `x` hoặc month logic, không `$M`.
+- Leverage: giữ `x`.
+- Gross Margin: giữ `%` hoặc `pt`.
+
+Checklist:
+
+- Money chart dùng `$M`.
+- Ratio/multiple không dùng display unit money.
+- Multi-measure chart chỉ dùng `$M` nếu tất cả measures là money.
+
+## 7. Sort chart
+
+Trend chart sort theo thời gian:
 
 ```python
 order = {
@@ -185,136 +200,174 @@ order = {
 }
 ```
 
-Quy tắc:
-
-- Trend chart: sort theo thời gian tăng dần.
-- Bar chart ranking: sort theo metric giảm dần.
-- Scenario chart: dùng sort order nếu scenario có thứ tự business.
-- Không để Power BI sort alphabetic nếu chart thể hiện performance.
-
-## Chart Type Trong Project 20
-
-Performance page:
-
-- Revenue vs Plan + EBITDA Trend: multi-series bar chart theo month.
-- Revenue Mix by Region: donut chart.
-- Revenue by Business Unit: horizontal bar chart.
-- Revenue vs Plan by BU: variance bar chart.
-- EBITDA by BU: bar chart.
-
-Cash Plan page:
-
-- Cash Balance + Funding Need Trend.
-- Funding Need by Scenario.
-- Runway by Scenario.
-- Opex by Cost Category.
-- Free Cash Flow by Scenario.
-
-Risk & Valuation page:
-
-- Valuation Range by Method.
-- Risk Exposure by Severity.
-- Covenant Headroom Trend.
-- Sensitivity Impact.
-- Risk Exposure by Owner.
-
-## Màu Sắc
-
-Project 20 dùng semantic colors:
+Ranking chart sort theo measure descending:
 
 ```python
-"blue": "#4F87F5"
-"teal": "#0F9F95"
-"green": "#1F8E45"
-"amber": "#BE7C10"
-"red": "#B73535"
-"violet": "#6C2DBE"
+order = {
+    "Direction": 2,
+    "Expression": {
+        "Measure": {
+            "Expression": src("m"),
+            "Property": measure
+        }
+    }
+}
 ```
 
 Quy tắc:
 
-- Blue: revenue/primary metric.
-- Teal: margin/cash-flow/efficiency.
-- Green: favorable/profit/headroom.
-- Amber: watch/cash/leverage.
-- Red: burn/funding/risk.
-- Violet: portfolio/business-unit accent.
+- Trend: thời gian tăng dần.
+- Ranking: metric giảm dần.
+- Scenario: nếu có business order thì dùng thứ tự business, không alphabetic.
+- Variance: có thể sort theo absolute impact nếu muốn làm rõ driver.
 
-Không nên:
+## 8. Khi dùng donut
 
-- Mỗi chart một màu ngẫu nhiên.
-- Dùng quá nhiều màu trong bar chart ranking.
-- Dùng đỏ cho mọi variance âm nếu metric lower-is-better.
+Donut chỉ dùng khi:
 
-## Khi Nào Dùng Donut
-
-Donut chỉ nên dùng khi:
-
-- Category ít, khoảng 3-5 nhóm.
-- Muốn đọc mix/share.
+- 3-5 nhóm.
+- Mục tiêu là đọc mix/share.
 - Không cần so sánh ranking quá chính xác.
 
-Trong Project 20, `Revenue Mix by Region` hợp với donut vì chỉ có 4 region.
+Trong Project 20:
 
-Nếu có nhiều hơn 5 categories, dùng bar chart.
+- `Revenue Mix by Region` dùng donut vì có 4 region.
 
-## Khi Nào Dùng Bar Chart
+Nếu category nhiều hơn 5, dùng bar chart.
 
-Dùng bar chart cho:
+## 9. Khi dùng bar chart
 
-- Ranking business unit.
-- Variance by BU.
-- Risk exposure by owner/severity.
-- Scenario comparison.
+Bar chart dùng cho:
 
-Gợi ý:
+- Revenue by Business Unit.
+- Funding Need by Scenario.
+- Runway by Scenario.
+- Risk Exposure by Severity.
+- Risk Exposure by Owner.
+- Sensitivity Impact.
 
-- Horizontal bar cho category label dài.
-- Data label bật nếu số category ít.
-- Axis title tắt nếu title đã rõ.
-- Sort descending theo measure.
+Quy tắc:
 
-## Khi Nào Dùng Multi-Series Trend
+- Horizontal bar cho label dài.
+- Data label bật khi số category ít.
+- Sort theo metric.
+- Một chart ranking thường chỉ cần một màu chính, không cần quá nhiều màu.
 
-Dùng multi-series trend khi cần so sánh:
+## 10. Khi dùng multi-series trend
+
+Dùng multi-series khi cần so sánh:
 
 - Actual vs Plan vs Forecast.
-- Cash vs Funding Need.
-- Leverage vs Limit.
-- Low/Base/High valuation range.
+- Cash Balance vs Funding Need.
+- Covenant/headroom trend.
+- Valuation range.
 
 Lưu ý:
 
-- Multi-series chart dễ rối; giới hạn 2-4 series.
-- Nếu series khác unit, tách chart hoặc dùng combo cẩn thận.
-- Legend phải rõ nhưng nhỏ.
+- 2-4 series là vừa.
+- Nếu khác unit, tách chart hoặc dùng combo cẩn thận.
+- Legend nhỏ nhưng rõ.
+- Không dùng quá nhiều màu bão hòa.
 
-## QA Chart Trong PBIX Thật
+## 11. Màu semantic
 
-Project 20 không chỉ nhìn HTML preview. Verification đọc trực tiếp `Report/Layout` trong PBIX:
+Project 20 dùng màu có ý nghĩa:
 
-- Chart title/subtitle tồn tại.
-- Chart units đúng theo measure format.
-- Chart/table visual count đúng.
-- Target tables có SVG columns.
-- Power BI Desktop render được và Playwright crop từ Desktop screenshot.
+```python
+blue   = "#4F87F5"  # revenue/primary
+teal   = "#0F9F95"  # margin/cash-flow/efficiency
+green  = "#1F8E45"  # favorable/headroom/profit
+amber  = "#BE7C10"  # watch/cash/leverage
+red    = "#B73535"  # burn/funding/risk
+violet = "#6C2DBE"  # portfolio/business unit
+```
 
-Checklist chart:
+Quy tắc:
+
+- Cùng metric dùng cùng màu qua nhiều tab.
+- Không random màu theo chart.
+- Đỏ chỉ dùng cho rủi ro/cảnh báo hoặc metric xấu.
+- Lower-is-better phải đảo logic màu.
+
+## 12. Chart list trong Project 20
+
+Performance:
+
+- Revenue vs Plan + EBITDA Trend.
+- Revenue Mix by Region.
+- Revenue by Business Unit.
+- Revenue vs Plan by BU.
+- EBITDA by BU.
+- Board KPI Details.
+
+Cash Plan:
+
+- Cash Balance + Funding Need Trend.
+- Funding Need by Scenario.
+- Runway by Scenario.
+- 3-Statement Summary.
+- Opex by Cost Category.
+- Free Cash Flow by Scenario.
+
+Risk & Valuation:
+
+- Valuation Range by Method.
+- Risk Exposure by Severity.
+- Covenant Headroom Trend.
+- Risk Register.
+- Sensitivity Impact.
+- Risk Exposure by Owner.
+
+## 13. Sync chart layout giữa tab
+
+Ở v77, `Performance` là layout chuẩn. `Cash Plan` và `Risk & Valuation` được sync top chart row theo slot của `Performance`.
+
+Bài học kỹ thuật:
+
+- Patch đúng section theo `displayName`.
+- Patch chart visual trong đúng page.
+- Không search internal visual name global.
+- Sau khi edit PBIX zip, xoá `SecurityBindings`.
+- Mở PBIX trong Power BI Desktop để xác nhận file không corrupt.
+
+Direct verification v77:
+
+- `top_chart_slots_pass = true` cho `Cash Plan`.
+- `top_chart_slots_pass = true` cho `Risk & Valuation`.
+
+## 14. QA chart trong PBIX thật
+
+Project 20 dùng 2 lớp QA:
+
+1. Direct PBIX verification:
+   - đọc `Report/Layout`.
+   - verify Lens/KPI/chart slots.
+   - verify title, units, visual types.
+
+2. Visual QA:
+   - mở `dashboard_final.pbix` bằng Power BI Desktop.
+   - capture `Performance`, `Cash Plan`, `Risk & Valuation`.
+   - tạo QA HTML.
+   - dùng Playwright screenshot full page.
+
+Evidence:
+
+- `qa/pbix_direct_verification_v77_tabs_synced.json`
+- `output/playwright/project20_v77_performance_full.jpg`
+- `output/playwright/project20_v77_cash_plan_full.jpg`
+- `output/playwright/project20_v77_risk_valuation_full.jpg`
+- `output/playwright/project20_v77_tabs_synced_qa.png`
+
+## 15. Checklist cuối cho chart
 
 - Chart đúng loại dữ liệu.
+- Title rõ, subtitle nói drill grain.
 - Sort đúng business logic.
-- Unit không sai.
-- Title ngắn.
-- Subtitle cho drill grain.
+- Unit đúng từng metric.
 - Axis không thừa.
+- Gridline không gây noise.
 - Label không đè.
-- Màu nhất quán.
-- Cross-filter enabled nếu cần interactive.
-- Verify trong PBIX thật, không chỉ preview.
-
-## Files Liên Quan Trong Project 20
-
-- `build/scripts/01_build_project20.py`
-- `build/native_report_layout_project20.json`
-- `qa/pbix_direct_verification_v58.json`
-- `output/playwright/project20_v58_desktop_crops.png`
+- Màu nhất quán qua các tab.
+- Chart panel không lệch shape.
+- Top chart row được sync giữa các tab.
+- QA bằng PBIX thật, không chỉ HTML preview.

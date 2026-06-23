@@ -1,34 +1,51 @@
-# Cách Tạo Các Bảng Và Slicer Đẹp, Không Bị Lệch Ô
+# Cách tạo bảng và slicer đẹp, không bị lệch ô
 
-Tài liệu này rút từ Project 20 - Board Investor CFO Pack, nhất là giai đoạn v58 đã pass table/slicer verification trong PBIX thật.
+Tài liệu này rút từ Project 20 - Board Investor CFO Pack, đặc biệt các lần sửa sidebar, slicer, Current Lens, Signature, bảng chi tiết và QA đến bản v77.
 
-## Nguyên Tắc Chung
+Mục tiêu là tạo dashboard mà người xem không phải scroll để thấy slicer, logo, Current Lens hoặc KPI. Chart/table có thể có scroll nội bộ nếu dữ liệu dài, nhưng slicer/KPI/signature thì không.
 
-Bảng và slicer trong dashboard tài chính phải ưu tiên scan nhanh:
+## 1. Nguyên tắc sidebar
 
-- Cột quan trọng đọc rõ.
-- Cột số canh phải.
-- Cột text canh trái.
-- Header nổi nhẹ nhưng không quá nặng.
-- Row banding giúp mắt đi theo hàng.
-- Slicer nằm đúng khung, không lệch, không tràn chữ.
+Sidebar trong Project 20 là vùng điều hướng + filter. Nó phải ổn định hơn các phần khác của dashboard.
 
-Trong Project 20, các bảng chính được polish:
+Sidebar gồm:
 
-- `Board KPI Details`
-- `3-Statement Summary`
-- `Risk Register`
+- Signature/logo.
+- Page navigation: Performance, Cash Plan, Risk Monitor.
+- Global Lens: Year, Scenario.
+- P&L Lens: Business Unit, Region.
+- Current Lens.
+- Data through.
 
-Các slicer chính nằm trong left rail:
+Quy tắc:
 
-- Year
-- Scenario
-- BU
-- Region
+- Các control phải cùng trục x.
+- Width phải thống nhất.
+- Label không bị cắt.
+- Không để scrollbar trong logo, slicer, Current Lens.
+- Không dùng visual header nếu nó tạo icon/filter/more menu làm lệch ô.
 
-## Bố Cục Slicer Không Bị Lệch
+## 2. Signature/logo
 
-Trong Project 20, slicer được đặt trong sidebar có tọa độ cố định:
+Với logo, Project 20 đã thử nhiều cách. Bài học cuối:
+
+- Nếu logo cần giống hệt asset, lấy `favicon.svg` làm source.
+- Không tự vẽ lại nếu user muốn dùng đúng asset.
+- Nếu render SVG bằng tableEx bị placeholder/scrollbar, cân nhắc native shape/text hoặc đảm bảo image visual đủ rộng/cao.
+- TDAT nên là text riêng để dễ đọc, không ép chung vào logo quá nhỏ.
+
+Checklist logo:
+
+- Logo hiện đủ, không cần scroll ngang/dọc.
+- Chữ `TDAT` đọc rõ.
+- Không có hai thanh chữ nhật trắng/thừa cạnh logo.
+- Không có tableEx visual header artifact.
+
+## 3. Slicer layout không lệch ô
+
+Slicer trong sidebar dùng dropdown, không dùng list khi sidebar hẹp.
+
+Ví dụ pattern vị trí:
 
 ```python
 slicer("DimDate", "Year", "Year", pos(30, 274, z + 52, 146, 42), mode="Dropdown")
@@ -39,46 +56,93 @@ slicer("DimRegion", "Region", "Region", pos(30, 552, z + 58, 146, 42), mode="Dro
 
 Quy tắc:
 
-- Slicer width cố định, cùng x position.
-- Label nằm phía trên slicer, không nằm trong cùng visual nếu dễ cắt chữ.
-- Height dropdown nên đủ cao: khoảng 38-44 px.
-- Không dùng Basic list khi sidebar quá hẹp, vì list dễ lệch ô và tạo visual header/scrollbar rối.
-- Dùng cùng `z` pattern để tránh slicer bị che bởi shape/sidebar.
+- Cùng `x`.
+- Cùng `width`.
+- Height tối thiểu 38-44 px.
+- Label phía trên dropdown, không chen trong visual.
+- Tắt slicer header.
+- Tắt visual header nếu không cần.
+- Dùng z-index rõ để slicer không bị shape đè.
 
-## Slicer Formatting
+## 4. Căn giữa text trong slicer
 
-Pattern trong script:
+Lỗi Project 20 từng gặp: `2026`, `Base Case`, `All` không nằm giữa khung.
 
-```python
-objects = {
-    "data": [{"properties": {"mode": txt(mode)}}],
-    "selection": [{
-        "properties": {
-            "selectAllCheckboxEnabled": lit(show_select_all),
-            "singleSelect": lit(False)
-        }
-    }],
-    "header": [{"properties": {"show": lit(False)}}],
-    "items": [{
-        "properties": {
-            "fontFamily": txt("Segoe UI"),
-            "fontSize": lit(item_size),
-            "fontColor": col(COLORS["ink"])
-        }
-    }],
-}
+Cách xử lý:
+
+- Tăng height dropdown đủ lớn.
+- Giảm font nếu text gần chạm mép.
+- Dùng padding/outline ít.
+- Đảm bảo shape nền không nhỏ hơn visual slicer.
+- Không đặt slicer đè lên label hoặc separator.
+
+Checklist:
+
+- `2026` nằm giữa ô Year.
+- `Base Case` nằm giữa ô Scenario.
+- `All` nằm giữa Business Unit/Region.
+- Dropdown arrow cùng hàng với text.
+- Không có scrollbar trong slicer.
+
+## 5. Current Lens
+
+Current Lens trong Project 20 là SVG Image URL measure:
+
+- Hiển thị năm + scenario.
+- Hiển thị BU + region.
+- Có indicator dot nhỏ.
+- Fit trong ô sidebar.
+
+Vấn đề từng gặp:
+
+- Lens nhỏ quá, chữ bị sát mép.
+- Nền ngoài shape bị tím nhạt khác sidebar.
+- Có thanh/viền trắng do tableEx artifact.
+
+Pattern cuối:
+
+- SVG canvas khoảng `166x76`.
+- tableEx image size khớp canvas.
+- Visual frame đủ rộng/cao.
+- Nền ngoài khớp sidebar `#250642`.
+- Nếu user chỉnh layout thủ công, sync bằng tọa độ source-of-truth chứ không đoán lại.
+
+Ví dụ nội dung:
+
+```DAX
+VAR Line1 = LEFT(YearText & " | " & ScenarioText, 25)
+VAR Line2 = LEFT(BUText & " | " & RegionText, 28)
+VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='166' height='76' viewBox='0 0 166 76'>" &
+    "<rect x='1' y='1' width='164' height='74' rx='7' fill='%233F1A63' stroke='%238E73E7'/>" &
+    "<text x='10' y='18' font-family='Segoe UI' font-size='10' font-weight='700' fill='%23CFC3E6'>Current Lens</text>" &
+    "<text x='10' y='40' font-family='Segoe UI' font-size='12' font-weight='700' fill='%23FFFFFF'>" & Line1 & "</text>" &
+    "<text x='10' y='58' font-family='Segoe UI' font-size='9' fill='%23CFC3E6'>" & Line2 & "</text>" &
+    "</svg>"
+RETURN "data:image/svg+xml;utf8," & SVG
 ```
 
-Best practices:
+## 6. Bảng/table trong dashboard
 
-- Hide slicer header để tránh icon/filter/more menu làm rối.
-- Dùng font size 7.4-8.3 tùy sidebar.
-- Dùng `selectAllCheckboxEnabled` cho dropdown, tắt cho Basic list nếu cần.
-- Dùng fill nhất quán (`COLORS["pale"]`) để slicer giống một control có chủ đích.
+Project 20 có 3 bảng chính:
 
-## Table Visual Polish
+- `Board KPI Details`
+- `3-Statement Summary`
+- `Risk Register`
 
-Project 20 dùng `tableEx` với format rõ:
+Bảng có thể scroll nếu số dòng nhiều, nhưng phải nhìn có chủ đích:
+
+- Header rõ.
+- Row banding nhẹ.
+- Column width cố định.
+- Numeric right aligned.
+- Status/sparkline centered.
+- Text left aligned.
+- SVG sparkline/signal đủ width.
+
+## 7. Table visual polish
+
+Pattern `tableEx`:
 
 ```python
 "grid": [{
@@ -88,7 +152,7 @@ Project 20 dùng `tableEx` với format rõ:
         "outlineColor": col(COLORS["table_grid"]),
         "rowPadding": lit(3),
         "imageHeight": lit(24 if has_image else 0),
-        "imageWidth": lit(66 if has_image else 0),
+        "imageWidth": lit(66 if has_image else 0)
     }
 }]
 ```
@@ -101,7 +165,7 @@ Header:
         "fontFamily": txt("Segoe UI Semibold"),
         "fontSize": lit(7.2),
         "fontColor": col(COLORS["ink"]),
-        "backColor": col(COLORS["table_header"]),
+        "backColor": col(COLORS["table_header"])
     }
 }]
 ```
@@ -116,16 +180,14 @@ Rows:
         "fontColor": col(COLORS["ink"]),
         "backColorPrimary": col(COLORS["table_row"]),
         "backColorSecondary": col(COLORS["table_alt"]),
-        "urlIcon": lit(False),
-        "imageHeight": lit(24 if has_image else 0),
-        "imageWidth": lit(66 if has_image else 0),
+        "urlIcon": lit(False)
     }
 }]
 ```
 
-## Column Width Rules
+## 8. Column width rules
 
-Không để Power BI tự đo cột nếu bảng có nhiều loại dữ liệu. Project 20 dùng function riêng:
+Không để Power BI auto-size khi bảng có nhiều loại dữ liệu.
 
 ```python
 def table_column_width(display: str, qref: str) -> float:
@@ -152,9 +214,7 @@ Quy tắc:
 - SVG sparkline/signal: 60-70 px.
 - Status ngắn: 60-70 px.
 
-## Alignment Rules
-
-Project 20 dùng alignment theo loại cột:
+## 9. Alignment rules
 
 ```python
 def table_cell_alignment(display: str, qref: str) -> str:
@@ -168,74 +228,70 @@ def table_cell_alignment(display: str, qref: str) -> str:
 
 Lý do:
 
-- Số phải canh phải để so sánh nhanh.
+- Số canh phải để so sánh nhanh.
 - Icon/status/sparkline canh giữa.
 - Text mô tả canh trái.
 
-## SVG Column Trong Table
+## 10. SVG trong table
 
-Project 20 thêm các cột SVG:
+Project 20 dùng SVG columns:
 
 - `Board KPI Trend SVG`
 - `Statement Trend SVG`
 - `Risk Signal SVG`
 
-Pattern:
+Yêu cầu:
 
-```python
-measures=[
-    ("Board KPI Trend SVG", "Trend")
-]
-```
-
-Trong model, measure phải có:
-
-```python
-{"dataType": "string", "dataCategory": "ImageUrl"}
-```
-
-Checklist cho SVG table:
-
-- Measure trả về `data:image/svg+xml;utf8,...`
+- Measure trả `data:image/svg+xml;utf8,...`.
+- Measure có `dataCategory = ImageUrl`.
+- `urlIcon = false`.
+- `imageHeight` và `imageWidth` phải set.
 - Column width đủ rộng.
-- `imageHeight` và `imageWidth` được set.
-- `urlIcon` = false để render image thay vì icon link.
-- SVG không quá nhiều chi tiết vì table row thấp.
 
-## Tránh Lệch Ô Trong Table
+Không vẽ sparkline table quá chi tiết, vì row thấp.
 
-Các lỗi thường gặp:
+## 11. Sync layout giữa các tab
 
-- Không set width cho toàn bộ cột.
-- Text cột quá dài làm auto-resize.
-- Image column không set `imageHeight/imageWidth`.
-- Header font lớn hơn row quá nhiều.
-- Row padding quá cao làm table bị cắt dưới panel.
+Project 20 v77 có bài học lớn: khi user đã chỉnh tab `Performance` bằng tay, tab đó là chuẩn.
 
-Trong Project 20, direct verification kiểm:
+Để sync sang `Cash Plan` và `Risk & Valuation`:
 
-- 3 bảng mục tiêu đều có SVG column.
-- `columnWidth` count bằng số column.
-- `columnFormatting` count bằng số column.
-- Header fill được set.
-- Banded rows được set.
+- Đọc `Report/Layout` trong PBIX.
+- Tìm section theo `displayName`.
+- Patch visual trong đúng section.
+- Dùng query token như `Lens Summary SVG`, `Cash KPI Card SVG`, `Risk KPI Card SVG`.
+- Không search global theo internal name vì internal name có thể trùng giữa các tab.
+- Sau khi patch zip PBIX, xoá `SecurityBindings`.
+- Mở lại Power BI Desktop để chắc file không corrupt.
 
-## Checklist Table/Slicer
+Direct verification v77 pass:
 
-- Slicer cùng x, cùng width, cùng mode.
-- Slicer header hidden.
-- Slicer label không bị cắt.
-- Table có column width cho mọi cột.
-- Numeric columns canh phải.
-- SVG/status columns canh giữa.
-- Header fill nhẹ.
-- Row banding nhẹ.
-- Row padding đủ nhưng không làm table tràn.
-- Direct verification trong PBIX pass, không chỉ nhìn HTML preview.
+- `lens_pass = true`
+- `kpi_slots_pass = true`
+- `top_chart_slots_pass = true`
 
-## Files Liên Quan Trong Project 20
+## 12. QA chống lỗi scroll/lệch
 
-- `build/scripts/01_build_project20.py`
-- `build/native_report_layout_project20.json`
-- `qa/pbix_direct_verification_v58.json`
-- `output/playwright/project20_v58_desktop_crops.png`
+Các lỗi user ghét nhất trong Project 20:
+
+- Logo phải scroll mới thấy đủ.
+- Slicer text không nằm giữa.
+- Current Lens không fit.
+- KPI card có scrollbar.
+- KPI card có nền rectangle xấu sau value.
+- Chart/table không fit shape.
+
+Checklist QA:
+
+- Logo TDAT hiện đủ, không scroll.
+- Slicer Year/Scenario/BU/Region cùng trục và text nằm giữa.
+- Current Lens fit trong ô.
+- KPI card không có scrollbar.
+- Table có thể scroll nếu dữ liệu dài, nhưng không được lệch column.
+- Direct PBIX verification pass.
+- Capture Power BI Desktop bằng Playwright/desktop screenshot.
+
+Evidence v77:
+
+- `qa/pbix_direct_verification_v77_tabs_synced.json`
+- `output/playwright/project20_v77_tabs_synced_qa.png`
