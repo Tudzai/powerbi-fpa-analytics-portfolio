@@ -1,0 +1,50 @@
+﻿{
+    "status":  "pass",
+    "checked_at":  "2026-06-23T12:57:07",
+    "pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+    "source_favicon":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\assets\\favicon.svg",
+    "source_favicon_sha256":  "9A20197C48B172C5DB4495CD61D15ED1E0246C652EE7DBBAC7CA2D883924D62C",
+    "signature_implementation":  "source assets/favicon.svg embedded as Portfolio Signature SVG ImageUrl measure rendered in tableEx; TDAT remains separate text",
+    "source_svg_encoded_marker_check":  true,
+    "checks":  [
+                   {
+                       "page":  "Performance",
+                       "signature_visuals":  2,
+                       "signature_tableEx":  1,
+                       "queryRefs":  [
+                                         "KPI_Measures.Portfolio Signature SVG"
+                                     ],
+                       "tdat_textboxes":  1,
+                       "image_visuals":  0,
+                       "native_logo_shapes":  0,
+                       "visual_tooltip_disabled_count":  1
+                   },
+                   {
+                       "page":  "Cash Plan",
+                       "signature_visuals":  2,
+                       "signature_tableEx":  1,
+                       "queryRefs":  [
+                                         "KPI_Measures.Portfolio Signature SVG"
+                                     ],
+                       "tdat_textboxes":  1,
+                       "image_visuals":  0,
+                       "native_logo_shapes":  0,
+                       "visual_tooltip_disabled_count":  1
+                   },
+                   {
+                       "page":  "Risk \u0026 Valuation",
+                       "signature_visuals":  2,
+                       "signature_tableEx":  1,
+                       "queryRefs":  [
+                                         "KPI_Measures.Portfolio Signature SVG"
+                                     ],
+                       "tdat_textboxes":  1,
+                       "image_visuals":  0,
+                       "native_logo_shapes":  0,
+                       "visual_tooltip_disabled_count":  1
+                   }
+               ],
+    "issues":  [
+
+               ]
+}

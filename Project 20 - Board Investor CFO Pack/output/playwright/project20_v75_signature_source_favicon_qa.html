@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="project20_v75_signature_source_favicon.svg" />
+  <title>Project 20 Signature Source Favicon QA</title>
+  <style>
+    :root {
+      --bg: #2a0d47;
+      --panel: #f4f0fb;
+      --ink: #241f31;
+      --muted: #5e566b;
+      --accent: #8de1d6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #2a0d47 0%, #493d91 100%);
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+      padding: 32px;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .qa-card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.65);
+      border-radius: 8px;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.26);
+      padding: 20px;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      margin-top: 6px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .source {
+      background: var(--bg);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      min-height: 180px;
+    }
+
+    .source img {
+      width: 96px;
+      height: 96px;
+      display: block;
+    }
+
+    .crop img {
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(42, 13, 71, 0.22);
+      border-radius: 4px;
+      display: block;
+    }
+
+    .checks {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .check {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      flex: 0 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="qa-card">
+      <h1>Project 20 Signature QA</h1>
+      <p>Final PBIX reads the source assets/favicon.svg as the signature image and keeps TDAT as editable text. No recreated PNG or native-shape logo is used.</p>
+    </section>
+
+    <section class="qa-card grid">
+      <div>
+        <h2>Source asset</h2>
+        <div class="source">
+          <img src="project20_v75_signature_source_favicon.svg" alt="Source favicon.svg" />
+        </div>
+      </div>
+
+      <div class="crop">
+        <h2>Power BI Desktop crop</h2>
+        <img src="project20_v75_signature_source_favicon_crop.png" alt="Signature crop from final PBIX" />
+        <div class="checks">
+          <div class="check"><span class="dot"></span><span>Logo is visible without vertical or horizontal scrolling inside the signature visual.</span></div>
+          <div class="check"><span class="dot"></span><span>TDAT label remains visible next to the favicon.</span></div>
+          <div class="check"><span class="dot"></span><span>Legacy rectangle/shape approximation was removed from the signature area.</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

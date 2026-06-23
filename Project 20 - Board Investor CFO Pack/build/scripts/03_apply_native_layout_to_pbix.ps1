@@ -12,15 +12,6 @@ try{
   $part=$pkg.GetPart($u)
   $st=$part.GetStream([IO.FileMode]::Open,[IO.FileAccess]::ReadWrite)
   try{$st.SetLength(0);$st.Write($bytes,0,$bytes.Length)}finally{$st.Dispose()}
-  $assetPath=Join-Path $ProjectRoot "assets\favicon_signature.png"
-  if(Test-Path -LiteralPath $assetPath){
-    $assetUri=New-Object System.Uri("/Report/StaticResources/RegisteredResources/favicon_signature.png",[System.UriKind]::Relative)
-    if($pkg.PartExists($assetUri)){$pkg.DeletePart($assetUri)}
-    $assetPart=$pkg.CreatePart($assetUri,"image/png",[System.IO.Packaging.CompressionOption]::Normal)
-    $assetBytes=[IO.File]::ReadAllBytes($assetPath)
-    $assetStream=$assetPart.GetStream([IO.FileMode]::Create,[IO.FileAccess]::Write)
-    try{$assetStream.Write($assetBytes,0,$assetBytes.Length)}finally{$assetStream.Dispose()}
-  }
   $su=New-Object System.Uri("/SecurityBindings",[System.UriKind]::Relative)
   if($pkg.PartExists($su)){$pkg.DeletePart($su)}
 }finally{$pkg.Close()}
