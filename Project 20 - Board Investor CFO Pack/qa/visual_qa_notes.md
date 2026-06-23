@@ -15,20 +15,21 @@ Evidence:
 - Desktop capture: `qa/screenshots/project20_interactive_data_desktop_full.jpg`
 - Playwright crop: `output/playwright/project20_interactive_data_desktop_crop.png`
 
-## V75 Signature Source Favicon Correction
+## V76 SVG Fit Correction
 
-The signature area now uses the actual source favicon asset from `assets/favicon.svg`, which matches `C:\Users\Win\OneDrive\Codex\Portfolio\assets\favicon.svg` with SHA256 `9A20197C48B172C5DB4495CD61D15ED1E0246C652EE7DBBAC7CA2D883924D62C`.
-The build script reads that SVG file and embeds it into the semantic model as the `Portfolio Signature SVG` ImageUrl measure, rendered through a native `tableEx` visual in the PBIX.
-The `TDAT` label remains as a separate editable text box beside the favicon.
+Scope: Signature SVG, KPI Card SVG sizing, and Current Lens SVG sizing/backing.
 
-This replaces the earlier recreated/native-shape signature attempt. The legacy rectangle approximation and generated `assets/favicon_signature.png` file were removed.
+- Signature: removed the visible white top line by removing inner white-line rectangles from the SVG source and adding a small same-sidebar-color layout mask over the tableEx header artifact.
+- KPI cards: increased generated SVG canvas to `252x158` and tableEx image size to `249x158` inside each `255x164` card frame.
+- Current Lens: increased generated SVG canvas to `166x76`, tableEx image size to `166x76` inside the `170x80` frame, and matched the outside backing to sidebar `#250642` so the pale-purple edge no longer shows.
 
 Validation:
 
 - Final PBIX: `output/dashboard_final.pbix`
-- Snapshot: `output/dashboard_final_v75_signature_source_favicon.pbix`
-- Direct PBIX verification: `qa/pbix_direct_verification_v75_signature_source_favicon.json`
-- Desktop full capture: `output/playwright/project20_v75_signature_source_favicon_full.png`
-- Desktop signature crop: `output/playwright/project20_v75_signature_source_favicon_crop.png`
-- Playwright QA page: `output/playwright/project20_v75_signature_source_favicon_qa.html`
-- Playwright QA screenshot: `output/playwright/project20_v75_signature_source_favicon_qa.png`
+- Snapshot: `output/dashboard_final_v76_svg_fit.pbix`
+- Direct PBIX verification: `qa/pbix_direct_verification_v76_svg_fit.json`
+- Desktop full capture: `output/playwright/project20_v76_svg_fit_full.png`
+- Signature crop: `output/playwright/project20_v76_svg_fit_signature_crop.png`
+- KPI crop: `output/playwright/project20_v76_svg_fit_kpi_crop.png`
+- Playwright QA page: `output/playwright/project20_v76_svg_fit_qa.html`
+- Playwright QA screenshot: `output/playwright/project20_v76_svg_fit_qa.png`

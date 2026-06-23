@@ -998,13 +998,13 @@ VAR AreaPath =
         ASC
     ) & " L228 84 Z"
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='132' viewBox='0 0 248 140'>" &
-    "<rect x='5' y='5' width='238' height='130' rx='14' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
-    "<rect x='18' y='13' width='212' height='4' rx='2' fill='{encoded_color}' opacity='0.9'/>" &
-    "<rect x='18' y='29' width='12' height='12' rx='3' fill='{encoded_color}' opacity='0.95'/>" &
-    "<circle cx='24' cy='35' r='2' fill='%23FFFFFF' opacity='0.85'/>" &
-    "<text x='36' y='39' font-family='Segoe UI' font-size='14' font-weight='750' fill='%23211A32'>{title}</text>" &
-    "<text x='18' y='80' font-family='Segoe UI' font-size='27' font-weight='750' fill='{encoded_color}'>" & ValueText & "</text>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='252' height='158' viewBox='0 0 252 158'>" &
+    "<rect x='1' y='1' width='250' height='156' rx='15' fill='%23F4EFFA' stroke='%237142A4' stroke-width='2.5'/>" &
+    "<rect x='16' y='13' width='220' height='4.5' rx='2.25' fill='{encoded_color}' opacity='0.9'/>" &
+    "<rect x='16' y='32' width='13' height='13' rx='3' fill='{encoded_color}' opacity='0.95'/>" &
+    "<circle cx='22.5' cy='38.5' r='2.2' fill='%23FFFFFF' opacity='0.85'/>" &
+    "<text x='36' y='43' font-family='Segoe UI' font-size='15' font-weight='750' fill='%23211A32'>{title}</text>" &
+    "<text x='16' y='91' font-family='Segoe UI' font-size='30' font-weight='750' fill='{encoded_color}'>" & ValueText & "</text>" &
     "<rect x='130' y='34' width='104' height='54' rx='8' fill='%23FFFFFF' opacity='0.46'/>" &
     "<rect x='136' y='59' width='92' height='12' rx='6' fill='" & BandColor & "'/>" &
     "<rect x='141' y='52' width='12' height='26' rx='2' fill='%23D9D1EB' opacity='0.34'/>" &
@@ -1017,13 +1017,13 @@ VAR SVG =
     "<circle cx='136' cy='" & FORMAT(StartYValue, "0.0") & "' r='4' fill='%23FFFFFF' stroke='%2377A4F5' stroke-width='2'/>" &
     "<circle cx='" & FORMAT(LowXValue, "0.0") & "' cy='" & FORMAT(LowYValue, "0.0") & "' r='4' fill='%23D96A5D' stroke='%23FFFFFF' stroke-width='2'/>" &
     "<circle cx='228' cy='" & FORMAT(EndYValue, "0.0") & "' r='5' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='2'/>" &
-    "<rect x='16' y='94' width='98' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<rect x='122' y='94' width='110' height='34' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
-    "<text x='24' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>PY</text>" &
-    "<text x='24' y='123' font-family='Segoe UI' font-size='12' fill='%236E667B'>" & PYText & "</text>" &
-    "<text x='132' y='108' font-family='Segoe UI' font-size='11' font-weight='750' fill='%23211A32'>YoY</text>" &
-    "<polygon points='134,114 140,124 128,124' fill='" & YoYColor & "'/>" &
-    "<text x='148' y='123' font-family='Segoe UI' font-size='12' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
+    "<rect x='16' y='112' width='101' height='36' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<rect x='126' y='112' width='110' height='36' rx='8' fill='%23FFFFFF' opacity='0.64'/>" &
+    "<text x='24' y='127' font-family='Segoe UI' font-size='11.5' font-weight='750' fill='%23211A32'>PY</text>" &
+    "<text x='24' y='143' font-family='Segoe UI' font-size='12.2' fill='%236E667B'>" & PYText & "</text>" &
+    "<text x='136' y='127' font-family='Segoe UI' font-size='11.5' font-weight='750' fill='%23211A32'>YoY</text>" &
+    "<polygon points='138,134 144,144 132,144' fill='" & YoYColor & "'/>" &
+    "<text x='152' y='143' font-family='Segoe UI' font-size='12.2' font-weight='750' fill='" & YoYColor & "'>" & YoYText & "</text>" &
     "</svg>"
 RETURN IF(RowCount = 0, BLANK(), "data:image/svg+xml;utf8," & SVG)'''
 
@@ -1067,15 +1067,15 @@ VAR RegionText =
     IF(NOT ISFILTERED(DimRegion[Region]) || RegionCount = RegionTotal,
         "All Regions",
         IF(RegionCount = 1, SELECTEDVALUE(DimRegion[Region]), FORMAT(RegionCount, "0") & " Regions"))
-VAR Line1 = LEFT(YearText & " | " & ScenarioText, 25)
-VAR Line2 = LEFT(BUText & " | " & RegionText, 28)
+VAR Line1 = LEFT(YearText & " | " & ScenarioText, 28)
+VAR Line2 = LEFT(BUText & " | " & RegionText, 32)
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='154' height='52' viewBox='0 0 154 52'>" &
-    "<rect x='0.5' y='0.5' width='153' height='51' rx='7' fill='%233F1A63' stroke='%238E73E7' stroke-width='1'/>" &
-    "<text x='10' y='16' font-family='Segoe UI' font-size='9.5' font-weight='700' fill='%23CFC3E6'>Current Lens</text>" &
-    "<circle cx='136' cy='13' r='3.4' fill='%236EE4CF'/>" &
-    "<text x='10' y='33' font-family='Segoe UI' font-size='10.5' font-weight='700' fill='%23FFFFFF'>" & Line1 & "</text>" &
-    "<text x='10' y='46' font-family='Segoe UI' font-size='8.7' fill='%23CFC3E6'>" & Line2 & "</text>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' width='166' height='76' viewBox='0 0 166 76'>" &
+    "<rect x='1' y='1' width='164' height='74' rx='8' fill='%233F1A63' stroke='%238E73E7' stroke-width='1.2'/>" &
+    "<text x='12' y='20' font-family='Segoe UI' font-size='10.2' font-weight='700' fill='%23CFC3E6'>Current Lens</text>" &
+    "<circle cx='148' cy='17' r='3.6' fill='%236EE4CF'/>" &
+    "<text x='12' y='42' font-family='Segoe UI' font-size='12.2' font-weight='750' fill='%23FFFFFF'>" & Line1 & "</text>" &
+    "<text x='12' y='61' font-family='Segoe UI' font-size='9.7' fill='%23CFC3E6'>" & Line2 & "</text>" &
     "</svg>"
 RETURN "data:image/svg+xml;utf8," & SVG'''
 
@@ -1918,7 +1918,7 @@ def measure_value(measure, display, p, accent, value_font=20.0):
 
 def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
     qref = f"{MEASURE_TABLE}.{measure}"
-    surface_color = COLORS["sidebar"] if measure.startswith("Portfolio Signature") else COLORS["bg"]
+    surface_color = COLORS["sidebar"] if measure.startswith("Portfolio Signature") or measure == "Lens Summary SVG" else COLORS["bg"]
     if display == "Decision Chips":
         image_w = max(20, int(p["width"] - 44))
         image_h = 32
@@ -1926,11 +1926,11 @@ def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
         image_w = 64
         image_h = 64
     elif measure == "Lens Summary SVG":
-        image_w = max(20, int(p["width"] - 18))
-        image_h = max(20, int(p["height"] - 18))
+        image_w = max(20, int(p["width"] - 4))
+        image_h = max(20, int(p["height"] - 4))
     elif measure.endswith("KPI Card SVG"):
-        image_w = max(20, int(p["width"] - 32))
-        image_h = max(20, int(p["height"] - 28))
+        image_w = max(20, int(p["width"] - 6))
+        image_h = max(20, int(p["height"] - 6))
     else:
         image_w = max(20, int(p["width"] - 8))
         image_h = max(20, int(p["height"] - 8))
@@ -2182,7 +2182,8 @@ def rail_filter_row(label, table, column, display, y, z, accent, sync_name, sing
 def sidebar_signature(z):
     return [
         kpi_svg_table("Portfolio Signature SVG", "Signature", pos(40, 24, z + 1, 84, 80)),
-        plain_text("TDAT", pos(116, 39, z + 2, 54, 28), "#F8FBFF", "8.8pt", "Segoe UI Semibold"),
+        solid_rect(COLORS["sidebar"], pos(40, 24, z + 2, 92, 19), radius=0.0),
+        plain_text("TDAT", pos(116, 39, z + 3, 54, 28), "#F8FBFF", "8.8pt", "Segoe UI Semibold"),
     ]
 
 

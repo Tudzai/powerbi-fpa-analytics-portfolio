@@ -1,0 +1,44 @@
+﻿{
+    "status":  "pass",
+    "checked_at":  "2026-06-23T13:40:39",
+    "pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+    "checks":  {
+                   "signature_inner_white_rects_removed":  true,
+                   "signature_top_bar_mask_present":  true,
+                   "signature_layout_mask_present":  "one #250642 mask shape per page at x=40 y=24 w=92 h=19",
+                   "kpi_card_canvas":  "252x158",
+                   "kpi_visual_image_size":  "249x158 in 255x164 frame",
+                   "lens_canvas":  "166x76",
+                   "lens_visual_image_size":  "166x76 in 170x80 frame",
+                   "lens_backing_color":  "#250642 sidebar-matched outside SVG shape",
+                   "pages":  [
+                                 {
+                                     "page":  "Performance",
+                                     "kpi_card_svg_visuals":  4,
+                                     "lens_visuals":  1,
+                                     "lens_sidebar_backing":  1,
+                                     "signature_visuals":  1,
+                                     "signature_layout_masks":  1
+                                 },
+                                 {
+                                     "page":  "Cash Plan",
+                                     "kpi_card_svg_visuals":  4,
+                                     "lens_visuals":  1,
+                                     "lens_sidebar_backing":  1,
+                                     "signature_visuals":  1,
+                                     "signature_layout_masks":  1
+                                 },
+                                 {
+                                     "page":  "Risk \u0026 Valuation",
+                                     "kpi_card_svg_visuals":  4,
+                                     "lens_visuals":  1,
+                                     "lens_sidebar_backing":  1,
+                                     "signature_visuals":  1,
+                                     "signature_layout_masks":  1
+                                 }
+                             ]
+               },
+    "issues":  [
+
+               ]
+}

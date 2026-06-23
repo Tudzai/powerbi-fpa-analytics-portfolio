@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:," />
+  <title>Project 20 SVG Fit QA</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #250642 0%, #493d91 100%);
+      color: #241f31;
+      font-family: "Segoe UI", Arial, sans-serif;
+      padding: 32px;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+    .card {
+      background: #f4f0fb;
+      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 8px;
+      box-shadow: 0 18px 42px rgba(0,0,0,.26);
+      padding: 20px;
+    }
+    h1, h2, p { margin: 0; }
+    h1 { font-size: 24px; line-height: 1.2; }
+    h2 { font-size: 15px; margin-bottom: 10px; }
+    p { color: #5e566b; font-size: 14px; line-height: 1.45; margin-top: 6px; }
+    .grid {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(42,13,71,.22);
+      border-radius: 4px;
+      background: #463793;
+    }
+    .checks {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+    .check {
+      background: #fff;
+      border-radius: 6px;
+      padding: 10px 12px;
+      border-left: 4px solid #8de1d6;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <h1>Project 20 SVG Fit QA</h1>
+      <p>Final PBIX was rebuilt after Signature, KPI Card SVG, and Lens Summary SVG changes. Direct PBIX verification passed with no issues.</p>
+    </section>
+
+    <section class="card grid">
+      <div>
+        <h2>Signature crop</h2>
+        <img src="project20_v76_svg_fit_signature_crop.png" alt="Signature crop from final PBIX" />
+      </div>
+      <div>
+        <h2>KPI card row crop</h2>
+        <img src="project20_v76_svg_fit_kpi_crop.png" alt="KPI row crop from final PBIX" />
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Verification checks</h2>
+      <div class="checks">
+        <div class="check">Signature white top line removed by SVG top-bar mask plus layout mask.</div>
+        <div class="check">KPI Card SVG canvas is 252x158 and visual image size is 249x158 inside each 255x164 frame.</div>
+        <div class="check">Lens Summary SVG is 166x76 inside a 170x80 frame, with sidebar-matched outside backing.</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

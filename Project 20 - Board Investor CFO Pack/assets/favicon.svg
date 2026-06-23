@@ -11,9 +11,8 @@
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="14" fill="url(#bg)"/>
-  <rect x="6" y="6" width="52" height="52" rx="11" fill="#f8fbff" fill-opacity="0.025"/>
-  <rect x="6.5" y="6.5" width="51" height="51" rx="10.5" fill="none" stroke="#f8fbff" stroke-opacity="0.13" stroke-width="1.6"/>
   <text x="8.5" y="43" fill="#f8fbff" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="900">AT</text>
+  <rect x="6" y="13" width="56" height="10" rx="1.5" fill="#101b2d"/>
   <path d="M12 50C22 46.5 35 48 52 42.5" fill="none" stroke="url(#accent)" stroke-width="2.8" stroke-linecap="round" opacity="0.88"/>
   <circle cx="52" cy="42.5" r="2.85" fill="#e9bf72"/>
 </svg>
