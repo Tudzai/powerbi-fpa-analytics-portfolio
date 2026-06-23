@@ -33,3 +33,26 @@ Validation:
 - KPI crop: `output/playwright/project20_v76_svg_fit_kpi_crop.png`
 - Playwright QA page: `output/playwright/project20_v76_svg_fit_qa.html`
 - Playwright QA screenshot: `output/playwright/project20_v76_svg_fit_qa.png`
+
+## V77 Tab Layout Sync
+
+Scope: sync the user-adjusted `Performance` layout into the following tabs without rebuilding the model or overwriting the manual layout source.
+
+- Used `output/dashboard_final.pbix` as the source of truth and restored from `tmp/dashboard_final_before_v77_tab_sync.pbix` after finding a full JSON reserialize made Power BI reject the file.
+- Patched only section-scoped visual coordinates in `Report/Layout`: `Current Lens`, four KPI card image visuals, and the top chart row for `Cash Plan` and `Risk & Valuation`.
+- Removed stale `SecurityBindings` after the PBIX zip edit so Power BI Desktop opens the final file normally.
+- Verified the final PBIX directly: both target tabs match the adjusted `Performance` slots for Lens, KPI row, and top chart row.
+- Opened `dashboard_final.pbix` in Power BI Desktop and captured all three tabs for visual QA.
+
+Validation:
+
+- Final PBIX: `output/dashboard_final.pbix`
+- Snapshot: `output/dashboard_final_v77_tabs_synced.pbix`
+- Pre-patch backup: `tmp/dashboard_final_before_v77_tab_sync.pbix`
+- Direct PBIX verification: `qa/pbix_direct_verification_v77_tabs_synced.json`
+- Performance capture: `output/playwright/project20_v77_performance_full.jpg`
+- Cash Plan capture: `output/playwright/project20_v77_cash_plan_full.jpg`
+- Risk & Valuation capture: `output/playwright/project20_v77_risk_valuation_full.jpg`
+- Playwright QA page: `output/playwright/project20_v77_tabs_synced_qa.html`
+- Playwright QA screenshot: `output/playwright/project20_v77_tabs_synced_qa.png`
+- Playwright snapshot: `output/playwright/project20_v77_tabs_synced_snapshot.txt`

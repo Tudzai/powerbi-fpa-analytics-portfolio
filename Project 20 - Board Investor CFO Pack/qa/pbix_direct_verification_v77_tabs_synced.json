@@ -1,0 +1,229 @@
+﻿{
+    "generated_at":  "2026-06-23T14:33:04",
+    "pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+    "status":  "pass",
+    "checks":  [
+                   {
+                       "page":  "Cash Plan",
+                       "lens_pass":  true,
+                       "kpi_slots_pass":  true,
+                       "top_chart_slots_pass":  true,
+                       "kpi_page":  [
+                                        {
+                                            "key":  "Cash",
+                                            "rect":  {
+                                                         "x":  204,
+                                                         "y":  49.4,
+                                                         "w":  266.2,
+                                                         "h":  172.2
+                                                     }
+                                        },
+                                        {
+                                            "key":  "Runway",
+                                            "rect":  {
+                                                         "x":  471.3,
+                                                         "y":  49.4,
+                                                         "w":  300.5,
+                                                         "h":  177
+                                                     }
+                                        },
+                                        {
+                                            "key":  "FCF",
+                                            "rect":  {
+                                                         "x":  738,
+                                                         "y":  49.4,
+                                                         "w":  266.2,
+                                                         "h":  172.2
+                                                     }
+                                        },
+                                        {
+                                            "key":  "Burn",
+                                            "rect":  {
+                                                         "x":  1004.2,
+                                                         "y":  49.4,
+                                                         "w":  271,
+                                                         "h":  188.1
+                                                     }
+                                        }
+                                    ],
+                       "kpi_perf":  [
+                                        {
+                                            "key":  "Revenue",
+                                            "rect":  {
+                                                         "x":  204,
+                                                         "y":  49.4,
+                                                         "w":  266.2,
+                                                         "h":  172.2
+                                                     }
+                                        },
+                                        {
+                                            "key":  "Margin",
+                                            "rect":  {
+                                                         "x":  471.3,
+                                                         "y":  49.4,
+                                                         "w":  300.5,
+                                                         "h":  177
+                                                     }
+                                        },
+                                        {
+                                            "key":  "EBITDA",
+                                            "rect":  {
+                                                         "x":  738,
+                                                         "y":  49.4,
+                                                         "w":  266.2,
+                                                         "h":  172.2
+                                                     }
+                                        },
+                                        {
+                                            "key":  "Cash",
+                                            "rect":  {
+                                                         "x":  1004.2,
+                                                         "y":  49.4,
+                                                         "w":  271,
+                                                         "h":  188.1
+                                                     }
+                                        }
+                                    ],
+                       "charts_page":  [
+                                           {
+                                               "type":  "barChart",
+                                               "rect":  {
+                                                            "x":  205.6,
+                                                            "y":  215.2,
+                                                            "w":  425.6,
+                                                            "h":  210.4
+                                                        }
+                                           },
+                                           {
+                                               "type":  "barChart",
+                                               "rect":  {
+                                                            "x":  640.8,
+                                                            "y":  216.8,
+                                                            "w":  304.5,
+                                                            "h":  210.4
+                                                        }
+                                           },
+                                           {
+                                               "type":  "barChart",
+                                               "rect":  {
+                                                            "x":  966,
+                                                            "y":  218.4,
+                                                            "w":  293.3,
+                                                            "h":  210.4
+                                                        }
+                                           }
+                                       ]
+                   },
+                   {
+                       "page":  "Risk \u0026 Valuation",
+                       "lens_pass":  true,
+                       "kpi_slots_pass":  true,
+                       "top_chart_slots_pass":  true,
+                       "kpi_page":  [
+                                        {
+                                            "key":  "EV",
+                                            "rect":  {
+                                                         "x":  204,
+                                                         "y":  49.4,
+                                                         "w":  266.2,
+                                                         "h":  172.2
+                                                     }
+                                        },
+                                        {
+                                            "key":  "Equity",
+                                            "rect":  {
+                                                         "x":  471.3,
+                                                         "y":  49.4,
+                                                         "w":  300.5,
+                                                         "h":  177
+                                                     }
+                                        },
+                                        {
+                                            "key":  "Leverage",
+                                            "rect":  {
+                                                         "x":  738,
+                                                         "y":  49.4,
+                                                         "w":  266.2,
+                                                         "h":  172.2
+                                                     }
+                                        },
+                                        {
+                                            "key":  "Risk",
+                                            "rect":  {
+                                                         "x":  1004.2,
+                                                         "y":  49.4,
+                                                         "w":  271,
+                                                         "h":  188.1
+                                                     }
+                                        }
+                                    ],
+                       "kpi_perf":  [
+                                        {
+                                            "key":  "Revenue",
+                                            "rect":  {
+                                                         "x":  204,
+                                                         "y":  49.4,
+                                                         "w":  266.2,
+                                                         "h":  172.2
+                                                     }
+                                        },
+                                        {
+                                            "key":  "Margin",
+                                            "rect":  {
+                                                         "x":  471.3,
+                                                         "y":  49.4,
+                                                         "w":  300.5,
+                                                         "h":  177
+                                                     }
+                                        },
+                                        {
+                                            "key":  "EBITDA",
+                                            "rect":  {
+                                                         "x":  738,
+                                                         "y":  49.4,
+                                                         "w":  266.2,
+                                                         "h":  172.2
+                                                     }
+                                        },
+                                        {
+                                            "key":  "Cash",
+                                            "rect":  {
+                                                         "x":  1004.2,
+                                                         "y":  49.4,
+                                                         "w":  271,
+                                                         "h":  188.1
+                                                     }
+                                        }
+                                    ],
+                       "charts_page":  [
+                                           {
+                                               "type":  "barChart",
+                                               "rect":  {
+                                                            "x":  205.6,
+                                                            "y":  215.2,
+                                                            "w":  425.6,
+                                                            "h":  210.4
+                                                        }
+                                           },
+                                           {
+                                               "type":  "barChart",
+                                               "rect":  {
+                                                            "x":  640.8,
+                                                            "y":  216.8,
+                                                            "w":  304.5,
+                                                            "h":  210.4
+                                                        }
+                                           },
+                                           {
+                                               "type":  "barChart",
+                                               "rect":  {
+                                                            "x":  966,
+                                                            "y":  218.4,
+                                                            "w":  293.3,
+                                                            "h":  210.4
+                                                        }
+                                           }
+                                       ]
+                   }
+               ]
+}

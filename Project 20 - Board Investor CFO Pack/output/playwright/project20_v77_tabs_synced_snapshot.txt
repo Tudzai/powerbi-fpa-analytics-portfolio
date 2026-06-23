@@ -1,0 +1,20 @@
+﻿### Page
+- Page URL: http://127.0.0.1:8789/project20_v77_tabs_synced_qa.html
+- Page Title: Project 20 v77 Tab Sync QA
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- main [ref=e2]:
+  - heading "Project 20 v77 Tab Sync QA" [level=1] [ref=e3]
+  - paragraph [ref=e4]: "Direct PBIX verification: PASS"
+  - paragraph [ref=e5]: Cash Plan and Risk & Valuation were synced to the user-adjusted Performance layout for Lens, KPI card row, and top chart row.
+  - generic [ref=e6]:
+    - heading "Performance" [level=2] [ref=e7]
+    - img "Performance tab capture" [ref=e8]
+  - generic [ref=e9]:
+    - heading "Cash Plan" [level=2] [ref=e10]
+    - img "Cash Plan tab capture" [ref=e11]
+  - generic [ref=e12]:
+    - heading "Risk & Valuation" [level=2] [ref=e13]
+    - img "Risk and Valuation tab capture" [ref=e14]
+```
