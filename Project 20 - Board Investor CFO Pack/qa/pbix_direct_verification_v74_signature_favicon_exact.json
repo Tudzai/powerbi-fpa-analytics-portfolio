@@ -1,0 +1,42 @@
+﻿{
+    "status":  "pass",
+    "checked_at":  "2026-06-23T10:41:01",
+    "pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 20 - Board Investor CFO Pack\\output\\dashboard_final.pbix",
+    "source_favicon":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\assets\\favicon.svg",
+    "signature_implementation":  "native Power BI shapes/text based on favicon.svg; no image visual/tableEx to avoid placeholder or scrollbars; T is drawn as native bars to avoid textbox clipping",
+    "signature_checks":  [
+                             {
+                                 "page":  "Performance",
+                                 "signature_visuals":  12,
+                                 "shapes":  10,
+                                 "a_textboxes":  1,
+                                 "tdat_textboxes":  1,
+                                 "image_visuals":  0,
+                                 "tableEx_visuals":  0,
+                                 "bounds":  "x 40-170, y 24-88 inside sidebar x 14-190"
+                             },
+                             {
+                                 "page":  "Cash Plan",
+                                 "signature_visuals":  12,
+                                 "shapes":  10,
+                                 "a_textboxes":  1,
+                                 "tdat_textboxes":  1,
+                                 "image_visuals":  0,
+                                 "tableEx_visuals":  0,
+                                 "bounds":  "x 40-170, y 24-88 inside sidebar x 14-190"
+                             },
+                             {
+                                 "page":  "Risk \u0026 Valuation",
+                                 "signature_visuals":  12,
+                                 "shapes":  10,
+                                 "a_textboxes":  1,
+                                 "tdat_textboxes":  1,
+                                 "image_visuals":  0,
+                                 "tableEx_visuals":  0,
+                                 "bounds":  "x 40-170, y 24-88 inside sidebar x 14-190"
+                             }
+                         ],
+    "issues":  [
+
+               ]
+}

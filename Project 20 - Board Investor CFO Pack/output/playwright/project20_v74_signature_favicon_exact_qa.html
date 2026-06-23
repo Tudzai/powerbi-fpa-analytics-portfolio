@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Project 20 Signature QA</title>
+  <style>
+    :root { color-scheme: dark; --bg:#463793; --panel:#250642; --ink:#f8fbff; --muted:#d8d1ef; --line:#8f7bae; }
+    * { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; background:var(--bg); color:var(--ink); font-family:"Segoe UI", Arial, sans-serif; display:grid; place-items:center; padding:32px; }
+    main { width:min(1120px,100%); display:grid; grid-template-columns:320px 1fr; gap:24px; align-items:start; }
+    section { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:18px; box-shadow:0 18px 34px rgba(24,8,39,.24); }
+    h1,h2 { margin:0 0 12px; line-height:1.2; letter-spacing:0; }
+    h1 { font-size:22px; }
+    h2 { font-size:16px; }
+    p,li { color:var(--muted); font-size:14px; line-height:1.45; }
+    ul { margin:0; padding-left:18px; }
+    img { display:block; max-width:100%; border-radius:6px; background:#180827; }
+    .source { width:96px; height:96px; padding:8px; object-fit:contain; }
+    .crop { width:100%; image-rendering:auto; }
+    .stack { display:grid; gap:14px; }
+    code { color:#fff; background:rgba(255,255,255,.09); border-radius:4px; padding:2px 5px; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="stack">
+      <h1>Signature QA</h1>
+      <img class="source" src="project20_v74_signature_source_favicon.svg" alt="Source favicon.svg">
+      <ul>
+        <li>Source asset: <code>assets/favicon.svg</code></li>
+        <li>PBIX target: <code>output/dashboard_final.pbix</code></li>
+        <li>Implementation: native shapes/text, no image visual placeholder.</li>
+        <li>Required text: <code>TDAT</code> present.</li>
+      </ul>
+    </section>
+    <section class="stack">
+      <h2>Power BI Desktop Crop</h2>
+      <img class="crop" src="project20_v74_signature_favicon_exact_crop.png" alt="Power BI Desktop Signature crop">
+      <p>Expected: full logo visible beside TDAT, with no vertical or horizontal scrollbar in the signature area.</p>
+    </section>
+  </main>
+</body>
+</html>

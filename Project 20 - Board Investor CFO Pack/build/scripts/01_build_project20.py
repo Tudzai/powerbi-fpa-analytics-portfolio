@@ -28,6 +28,7 @@ START_MONTH = pd.Timestamp("2024-01-01")
 LATEST_MONTH = pd.Timestamp("2026-05-01")
 MONTHS = pd.date_range(START_MONTH, LATEST_MONTH, freq="MS")
 MEASURE_TABLE = "KPI_Measures"
+SIGNATURE_RESOURCE_ITEM = "favicon_signature.png"
 
 PAGE_SECTION_NAMES = {
     "Performance": "ReportSectionPerformance",
@@ -1081,27 +1082,26 @@ RETURN "data:image/svg+xml;utf8," & SVG'''
 
 def portfolio_signature_svg() -> str:
     return r'''VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'>" &
+    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>" &
     "<defs>" &
     "<linearGradient id='bg' x1='7' y1='58' x2='57' y2='6' gradientUnits='userSpaceOnUse'>" &
-    "<stop stop-color='%230A1323'/>" &
-    "<stop offset='0.58' stop-color='%23101B2D'/>" &
-    "<stop offset='1' stop-color='%2314303A'/>" &
+    "<stop stop-color='%230a1323'/>" &
+    "<stop offset='0.58' stop-color='%23101b2d'/>" &
+    "<stop offset='1' stop-color='%2314303a'/>" &
     "</linearGradient>" &
     "<linearGradient id='accent' x1='12' y1='51' x2='52' y2='44' gradientUnits='userSpaceOnUse'>" &
-    "<stop stop-color='%238AB8FF'/>" &
-    "<stop offset='1' stop-color='%238DE1D6'/>" &
+    "<stop stop-color='%237ba4e5'/>" &
+    "<stop offset='1' stop-color='%237dc8c0'/>" &
     "</linearGradient>" &
     "</defs>" &
     "<rect width='64' height='64' rx='14' fill='url(%23bg)'/>" &
-    "<rect x='6' y='6' width='52' height='52' rx='11' fill='%23F8FBFF' opacity='0.025'/>" &
-    "<rect x='6.5' y='6.5' width='51' height='51' rx='10.5' fill='none' stroke='%23F8FBFF' opacity='0.13' stroke-width='1.6'/>" &
-    "<text x='8.5' y='43' fill='%23F8FBFF' font-family='Arial' font-size='31' font-weight='900'>AT</text>" &
-    "<path d='M12 50C22 46.5 35 48 52 42.5' fill='none' stroke='url(%23accent)' stroke-width='2.8' stroke-linecap='round' opacity='0.88'/>" &
-    "<circle cx='52' cy='42.5' r='2.85' fill='%23E9BF72'/>" &
+    "<rect x='6' y='6' width='52' height='52' rx='11' fill='%23162132'/>" &
+    "<rect x='6.5' y='6.5' width='51' height='51' rx='10.5' fill='none' stroke='%232e3848' stroke-width='1.6'/>" &
+    "<text x='8.5' y='43' fill='%23f8fbff' font-family='Arial, Helvetica, sans-serif' font-size='31' font-weight='900'>AT</text>" &
+    "<path d='M12 50C22 46.5 35 48 52 42.5' fill='none' stroke='url(%23accent)' stroke-width='2.8' stroke-linecap='round'/>" &
+    "<circle cx='52' cy='42.5' r='2.85' fill='%23e9bf72'/>" &
     "</svg>"
 RETURN "data:image/svg+xml;utf8," & SVG'''
-
 
 def decision_chips_svg(page: str) -> str:
     if page == "performance":
@@ -1824,6 +1824,51 @@ def solid_rect(fill, p, radius=0.0, border=False):
     return container({"name": uuid.uuid4().hex[:20], "singleVisual": {"visualType": "shape", "objects": objects, "drillFilterOtherVisuals": True, "vcObjects": vc_objects}}, p)
 
 
+def static_image(item_name: str, p: dict) -> dict:
+    objects = {
+        "general": [
+            {
+                "properties": {
+                    "image": {
+                        "image": {
+                            "name": txt(item_name),
+                            "url": {
+                                "expr": {
+                                    "ResourcePackageItem": {
+                                        "PackageName": "RegisteredResources",
+                                        "PackageType": 1,
+                                        "ItemName": item_name,
+                                    }
+                                }
+                            },
+                            "scaling": txt("Fit"),
+                        }
+                    }
+                }
+            }
+        ]
+    }
+    return container(
+        {
+            "name": uuid.uuid4().hex[:20],
+            "singleVisual": {
+                "visualType": "image",
+                "objects": objects,
+                "drillFilterOtherVisuals": True,
+                "vcObjects": {
+                    "title": [{"properties": {"show": lit(False)}}],
+                    "subTitle": [{"properties": {"show": lit(False)}}],
+                    "background": [{"properties": {"show": lit(False)}}],
+                    "border": [{"properties": {"show": lit(False)}}],
+                    "dropShadow": [{"properties": {"show": lit(False)}}],
+                    "visualHeader": hidden_header(COLORS["sidebar"]),
+                },
+            },
+        },
+        p,
+    )
+
+
 def card(measure, display, p, accent, value_font=20.0, sub=None, title=None):
     qref = f"{MEASURE_TABLE}.{measure}"
     objects = {
@@ -1880,12 +1925,13 @@ def measure_value(measure, display, p, accent, value_font=20.0):
 
 def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
     qref = f"{MEASURE_TABLE}.{measure}"
+    surface_color = COLORS["sidebar"] if measure.startswith("Portfolio Signature") else COLORS["bg"]
     if display == "Decision Chips":
         image_w = max(20, int(p["width"] - 44))
         image_h = 32
-    elif measure == "Portfolio Signature SVG":
-        image_w = max(20, int(p["width"] - 8))
-        image_h = max(20, int(p["height"] - 8))
+    elif measure.startswith("Portfolio Signature"):
+        image_w = 64
+        image_h = 64
     elif measure == "Lens Summary SVG":
         image_w = max(20, int(p["width"] - 18))
         image_h = max(20, int(p["height"] - 18))
@@ -1901,7 +1947,7 @@ def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
                 "properties": {
                     "gridHorizontal": lit(False),
                     "gridVertical": lit(False),
-                    "outlineColor": col(COLORS["bg"]),
+                    "outlineColor": col(surface_color),
                     "rowPadding": lit(0),
                     "imageHeight": lit(image_h),
                     "imageWidth": lit(image_w),
@@ -1913,7 +1959,7 @@ def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
                 "properties": {
                     "show": lit(False),
                     "fontSize": lit(1.0),
-                    "fontColor": col(COLORS["bg"]),
+                    "fontColor": col(surface_color),
                 }
             }
         ],
@@ -1921,10 +1967,10 @@ def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
             {
                 "properties": {
                     "fontSize": lit(1.0),
-                    "fontColor": col(COLORS["bg"]),
-                    "backColor": col(COLORS["bg"]),
-                    "backColorPrimary": col(COLORS["bg"]),
-                    "backColorSecondary": col(COLORS["bg"]),
+                    "fontColor": col(surface_color),
+                    "backColor": col(surface_color),
+                    "backColorPrimary": col(surface_color),
+                    "backColorSecondary": col(surface_color),
                     "urlIcon": lit(False),
                     "imageHeight": lit(image_h),
                     "imageWidth": lit(image_w),
@@ -1941,7 +1987,7 @@ def kpi_svg_table(measure: str, display: str, p: dict) -> dict:
         ],
         "columnWidth": [
             {
-                "properties": {"value": lit(float(image_w if display == "Decision Chips" or measure == "Portfolio Signature SVG" or measure == "Lens Summary SVG" or measure.endswith("KPI Card SVG") else image_w + 6))},
+                "properties": {"value": lit(float(image_w if display == "Decision Chips" or measure.startswith("Portfolio Signature") or measure == "Lens Summary SVG" or measure.endswith("KPI Card SVG") else image_w + 6))},
                 "selector": {"metadata": qref},
             }
         ],
@@ -2141,12 +2187,18 @@ def rail_filter_row(label, table, column, display, y, z, accent, sync_name, sing
 
 def sidebar_signature(z):
     return [
-        solid_rect("#172035", pos(32, 18, z + 1, 56, 54), radius=10.0),
-        solid_rect("#F8FBFF", pos(40, 27, z + 2, 40, 3), radius=1.5),
-        plain_text("AT", pos(38, 30, z + 3, 62, 46), "#F8FBFF", "15pt", "Segoe UI Black"),
-        solid_rect("#8AB8FF", pos(41, 63, z + 4, 22, 3), radius=1.5),
-        solid_rect("#8DE1D6", pos(59, 65, z + 5, 25, 3), radius=1.5),
-        plain_text("TDAT", pos(102, 30, z + 6, 66, 38), "#F8FBFF", "9.2pt", "Segoe UI Semibold"),
+        solid_rect("#0A1323", pos(40, 24, z + 1, 64, 64), radius=14.0),
+        solid_rect("#142B3A", pos(46, 30, z + 2, 52, 52), radius=10.5),
+        solid_rect("#0F1B2D", pos(47, 31, z + 3, 50, 50), radius=10.0),
+        solid_rect("#F8FBFF", pos(48, 31, z + 4, 49, 3), radius=1.5),
+        plain_text("A", pos(49, 31, z + 5, 36, 42), "#F8FBFF", "24pt", "Arial Black"),
+        solid_rect("#F8FBFF", pos(78, 47, z + 6, 22, 5.4), radius=1.0),
+        solid_rect("#F8FBFF", pos(86, 48, z + 7, 6.8, 23), radius=0.8),
+        solid_rect("#8AB8FF", pos(52, 75, z + 8, 16, 2.8), radius=1.4),
+        solid_rect("#8FC7F4", pos(67, 73, z + 9, 14, 2.8), radius=1.4),
+        solid_rect("#8DE1D6", pos(80, 70, z + 10, 16, 2.8), radius=1.4),
+        solid_rect("#E9BF72", pos(93, 67, z + 11, 6, 6), radius=3.0),
+        plain_text("TDAT", pos(116, 39, z + 12, 54, 28), "#F8FBFF", "8.8pt", "Segoe UI Semibold"),
     ]
 
 
@@ -2987,6 +3039,19 @@ def build_layout() -> dict:
     cfg = {
         "version": "5.73",
         "themeCollection": {"baseTheme": {"name": "CY26SU05", "type": 2}},
+        "resourcePackages": [
+            {
+                "name": "RegisteredResources",
+                "type": "RegisteredResources",
+                "items": [
+                    {
+                        "name": SIGNATURE_RESOURCE_ITEM,
+                        "path": SIGNATURE_RESOURCE_ITEM,
+                        "type": "Image",
+                    }
+                ],
+            }
+        ],
         "activeSectionIndex": 0,
         "defaultDrillFilterOtherVisuals": True,
         "settings": {"useNewFilterPaneExperience": True, "useStylableVisualContainerHeader": False, "queryLimitOption": 6},
@@ -3321,7 +3386,23 @@ function V([string]$p){ $s=[IO.File]::OpenRead($p); try{[Microsoft.PowerBI.Packa
 V $ModelPbix; Copy-Item $ModelPbix $OutputPbix -Force
 $layout=Get-Content $LayoutJson -Raw|ConvertFrom-Json; $bytes=[Text.Encoding]::Unicode.GetBytes(($layout|ConvertTo-Json -Depth 100 -Compress))
 $pkg=[System.IO.Packaging.Package]::Open($OutputPbix,[IO.FileMode]::Open,[IO.FileAccess]::ReadWrite)
-try{$u=New-Object System.Uri("/Report/Layout",[System.UriKind]::Relative); $part=$pkg.GetPart($u); $st=$part.GetStream([IO.FileMode]::Open,[IO.FileAccess]::ReadWrite); try{$st.SetLength(0);$st.Write($bytes,0,$bytes.Length)}finally{$st.Dispose()}; $su=New-Object System.Uri("/SecurityBindings",[System.UriKind]::Relative); if($pkg.PartExists($su)){$pkg.DeletePart($su)}}finally{$pkg.Close()}
+try{
+  $u=New-Object System.Uri("/Report/Layout",[System.UriKind]::Relative)
+  $part=$pkg.GetPart($u)
+  $st=$part.GetStream([IO.FileMode]::Open,[IO.FileAccess]::ReadWrite)
+  try{$st.SetLength(0);$st.Write($bytes,0,$bytes.Length)}finally{$st.Dispose()}
+  $assetPath=Join-Path $ProjectRoot "assets\favicon_signature.png"
+  if(Test-Path -LiteralPath $assetPath){
+    $assetUri=New-Object System.Uri("/Report/StaticResources/RegisteredResources/favicon_signature.png",[System.UriKind]::Relative)
+    if($pkg.PartExists($assetUri)){$pkg.DeletePart($assetUri)}
+    $assetPart=$pkg.CreatePart($assetUri,"image/png",[System.IO.Packaging.CompressionOption]::Normal)
+    $assetBytes=[IO.File]::ReadAllBytes($assetPath)
+    $assetStream=$assetPart.GetStream([IO.FileMode]::Create,[IO.FileAccess]::Write)
+    try{$assetStream.Write($assetBytes,0,$assetBytes.Length)}finally{$assetStream.Dispose()}
+  }
+  $su=New-Object System.Uri("/SecurityBindings",[System.UriKind]::Relative)
+  if($pkg.PartExists($su)){$pkg.DeletePart($su)}
+}finally{$pkg.Close()}
 V $OutputPbix; Copy-Item $OutputPbix $FinalPbix -Force; V $FinalPbix
 $result=[ordered]@{status="passed"; final_pbix=$FinalPbix; final_pbix_created=$true; final_pbix_size=(Get-Item $FinalPbix).Length; pages=@($layout.sections|ForEach-Object{$_.displayName}); visual_containers=($layout.sections|ForEach-Object{$_.visualContainers.Count}|Measure-Object -Sum).Sum}
 $result|ConvertTo-Json -Depth 8|Set-Content (Join-Path $QaRoot "pbix_native_report_validation.json") -Encoding UTF8; $result|ConvertTo-Json -Depth 8
