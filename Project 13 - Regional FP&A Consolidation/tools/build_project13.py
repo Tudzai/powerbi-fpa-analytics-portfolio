@@ -15,6 +15,7 @@ PROJECT = Path(__file__).resolve().parents[1]
 SEED = 13042
 RUN_TS = datetime.now().replace(microsecond=0).isoformat()
 LATEST_PERIOD = "2026-05"
+MONEY_FORMAT = "$#,0;($#,0);$0"
 
 
 def ensure_dirs() -> None:
@@ -152,6 +153,22 @@ def generate_data() -> dict:
         {"business_unit_id": "CB", "business_unit": "Customs Brokerage", "mix": 0.12, "margin": 0.31},
         {"business_unit_id": "CORP", "business_unit": "Corporate Shared Services", "mix": 0.08, "margin": 0.10},
     ]
+    entity_profiles = {
+        "SGP01": {"demand": 1.07, "margin": 1.05, "cost": 0.96, "growth": 0.95, "risk": 0.62, "cash": 1.18, "wc": 0.88},
+        "VNM01": {"demand": 1.18, "margin": 1.02, "cost": 1.01, "growth": 1.42, "risk": 0.92, "cash": 1.02, "wc": 1.02},
+        "THA01": {"demand": 0.98, "margin": 0.98, "cost": 1.03, "growth": 1.00, "risk": 0.96, "cash": 0.97, "wc": 1.00},
+        "MYS01": {"demand": 0.91, "margin": 0.91, "cost": 1.09, "growth": 0.82, "risk": 1.28, "cash": 0.86, "wc": 1.16},
+        "IDN01": {"demand": 1.12, "margin": 0.90, "cost": 1.11, "growth": 1.34, "risk": 1.58, "cash": 0.82, "wc": 1.26},
+        "PHL01": {"demand": 0.86, "margin": 0.96, "cost": 1.05, "growth": 1.16, "risk": 1.18, "cash": 0.91, "wc": 1.10},
+        "AUS01": {"demand": 0.92, "margin": 1.08, "cost": 0.95, "growth": 0.72, "risk": 0.70, "cash": 1.20, "wc": 0.84},
+    }
+    bu_profiles = {
+        "FF": {"volume": 1.09, "margin": 1.02, "cost": 1.00, "growth": 1.10, "risk": 0.94, "opex": 1.00, "season": 1.10},
+        "CL": {"volume": 1.02, "margin": 0.93, "cost": 1.05, "growth": 0.98, "risk": 1.24, "opex": 1.06, "season": 0.92},
+        "WH": {"volume": 0.88, "margin": 1.03, "cost": 1.04, "growth": 0.86, "risk": 0.82, "opex": 1.09, "season": 0.72},
+        "CB": {"volume": 0.74, "margin": 1.13, "cost": 0.94, "growth": 1.02, "risk": 0.76, "opex": 0.92, "season": 1.28},
+        "CORP": {"volume": 0.52, "margin": 0.74, "cost": 1.18, "growth": 0.66, "risk": 1.34, "opex": 1.34, "season": 0.55},
+    }
     accounts = [
         ("REV_EXT", "External Revenue", "Revenue", 10, "P&L"),
         ("REV_IC", "Intercompany Revenue", "Revenue", 20, "P&L"),
@@ -228,35 +245,57 @@ def generate_data() -> dict:
 
     fact_financials = []
     summary = []
-    scenario_factor = {"Actual": 1.0, "Budget": 0.985, "Forecast": 1.012, "Prior Year": 0.91}
-    cost_pressure = {"Actual": 1.015, "Budget": 1.0, "Forecast": 1.01, "Prior Year": 0.92}
+    scenario_profiles = {
+        "Actual": {"revenue": 1.000, "cost": 1.025, "margin": 1.000, "trend": 1.000, "noise": (0.935, 1.075)},
+        "Budget": {"revenue": 0.960, "cost": 0.985, "margin": 1.018, "trend": 0.985, "noise": (1.000, 1.000)},
+        "Forecast": {"revenue": 1.035, "cost": 1.018, "margin": 0.995, "trend": 1.018, "noise": (0.980, 1.032)},
+        "Prior Year": {"revenue": 0.870, "cost": 0.930, "margin": 0.965, "trend": 0.885, "noise": (0.960, 1.040)},
+    }
     for p_idx, period in enumerate(periods):
-        trend = 1 + p_idx * 0.010
-        season = 1 + 0.06 * math.sin((p_idx + 1) / 2.3) + (0.05 if period.endswith("-12") else 0)
+        trend = 1 + p_idx * 0.0085
+        base_season = 1 + 0.065 * math.sin((p_idx + 1) / 2.3) + (0.052 if period.endswith("-12") else 0)
         for e in entities:
-            entity_noise = random.uniform(0.96, 1.04)
+            entity_profile = entity_profiles[e["entity_id"]]
+            entity_noise = random.uniform(0.955, 1.045)
             for bu in business_units:
-                bu_noise = random.uniform(0.94, 1.06)
+                bu_profile = bu_profiles[bu["business_unit_id"]]
+                bu_noise = random.uniform(0.925, 1.075)
+                season = 1 + (base_season - 1) * bu_profile["season"]
                 for scen in scenarios:
                     scenario = scen["scenario"]
-                    local_trend = trend * scenario_factor[scenario]
-                    if scenario == "Budget":
-                        noise = 1.0
-                    elif scenario == "Forecast":
-                        noise = random.uniform(0.985, 1.025)
-                    else:
-                        noise = random.uniform(0.94, 1.07)
-                    ext_rev = 1_050_000 * e["scale"] * bu["mix"] * season * local_trend * entity_noise * bu_noise * noise
+                    scenario_profile = scenario_profiles[scenario]
+                    local_trend = (trend + p_idx * (0.0038 * entity_profile["growth"] + 0.0022 * bu_profile["growth"])) * scenario_profile["trend"]
+                    low_noise, high_noise = scenario_profile["noise"]
+                    noise = 1.0 if low_noise == high_noise else random.uniform(low_noise, high_noise)
+                    ext_rev = (
+                        1_075_000
+                        * e["scale"]
+                        * entity_profile["demand"]
+                        * bu["mix"]
+                        * bu_profile["volume"]
+                        * season
+                        * local_trend
+                        * scenario_profile["revenue"]
+                        * entity_noise
+                        * bu_noise
+                        * noise
+                    )
                     if scenario == "Actual" and e["entity_id"] in {"VNM01", "IDN01"} and period >= "2026-02":
-                        ext_rev *= 1.035
+                        ext_rev *= 1.055
                     if scenario == "Actual" and e["entity_id"] == "MYS01" and period >= "2026-01":
-                        ext_rev *= 0.965
+                        ext_rev *= 0.925
+                    if scenario == "Actual" and bu["business_unit_id"] == "CL" and e["entity_id"] in {"IDN01", "MYS01"} and period >= "2026-01":
+                        ext_rev *= 0.955
+                    if scenario == "Forecast" and e["entity_id"] in {"VNM01", "IDN01"}:
+                        ext_rev *= 1.025
+                    effective_margin = max(0.065, min(0.42, bu["margin"] * entity_profile["margin"] * bu_profile["margin"] * scenario_profile["margin"]))
+                    cost_multiplier = scenario_profile["cost"] * entity_profile["cost"] * bu_profile["cost"]
                     ic_rev = ext_rev * (0.035 + (0.035 if bu["business_unit_id"] == "CORP" else 0.0)) * random.uniform(0.85, 1.15)
-                    cogs = -ext_rev * (1 - bu["margin"]) * cost_pressure[scenario] * random.uniform(0.985, 1.02)
-                    personnel = -ext_rev * (0.085 + (0.035 if bu["business_unit_id"] == "CORP" else 0.0)) * cost_pressure[scenario] * random.uniform(0.97, 1.04)
-                    facilities = -ext_rev * (0.035 + (0.015 if bu["business_unit_id"] == "WH" else 0.0)) * cost_pressure[scenario] * random.uniform(0.96, 1.05)
-                    sm = -ext_rev * 0.026 * random.uniform(0.9, 1.12)
-                    ga = -ext_rev * 0.030 * random.uniform(0.94, 1.08)
+                    cogs = -ext_rev * (1 - effective_margin) * cost_multiplier * random.uniform(0.980, 1.028)
+                    personnel = -ext_rev * (0.085 + (0.035 if bu["business_unit_id"] == "CORP" else 0.0)) * cost_multiplier * bu_profile["opex"] * random.uniform(0.965, 1.045)
+                    facilities = -ext_rev * (0.035 + (0.015 if bu["business_unit_id"] == "WH" else 0.0)) * cost_multiplier * bu_profile["opex"] * random.uniform(0.955, 1.055)
+                    sm = -ext_rev * 0.026 * bu_profile["growth"] * random.uniform(0.895, 1.130)
+                    ga = -ext_rev * 0.030 * entity_profile["risk"] * random.uniform(0.935, 1.085)
                     dep = -ext_rev * 0.018 * random.uniform(0.96, 1.05)
                     interest = -ext_rev * 0.009 * random.uniform(0.92, 1.10)
                     tax = -max(0, ext_rev + cogs + personnel + facilities + sm + ga + dep + interest) * 0.18
@@ -296,9 +335,9 @@ def generate_data() -> dict:
                     ebitda = ebitda_pre_elim + ic_elim
                     operating_income = ebitda + dep
                     net_income = operating_income + interest + tax
-                    cash_position = max(40_000, (ebitda * 2.9) + (ext_rev * 0.18) + random.uniform(-25000, 25000))
-                    op_cash_flow = ebitda * random.uniform(0.62, 0.92)
-                    working_capital = ext_rev * random.uniform(0.16, 0.25)
+                    cash_position = max(40_000, (ebitda * 2.9 * entity_profile["cash"]) + (ext_rev * 0.18) + random.uniform(-25000, 25000))
+                    op_cash_flow = ebitda * random.uniform(0.60, 0.93) * (1.06 if entity_profile["cash"] > 1 else 0.96)
+                    working_capital = ext_rev * random.uniform(0.16, 0.25) * entity_profile["wc"]
                     summary.append({
                         "date_id": period,
                         "entity_id": e["entity_id"],
@@ -378,27 +417,31 @@ def generate_data() -> dict:
     exceptions = []
     ex_periods = periods[-7:]
     for idx in range(1, 76):
-        e = random.choice(entities)
+        e = random.choices(entities, weights=[entity_profiles[item["entity_id"]]["risk"] for item in entities], k=1)[0]
+        bu = random.choices(business_units, weights=[bu_profiles[item["business_unit_id"]]["risk"] for item in business_units], k=1)[0]
         ex_type, owner, weight = random.choice(exception_types)
-        status = random.choices(statuses, weights=[0.34, 0.26, 0.22, 0.18])[0]
-        severity = random.choices(severities, weights=[0.22, 0.48, 0.30])[0]
+        risk_weight = entity_profiles[e["entity_id"]]["risk"] * bu_profiles[bu["business_unit_id"]]["risk"]
+        status = random.choices(statuses, weights=[0.30 + 0.09 * risk_weight, 0.26, 0.23, max(0.08, 0.24 - 0.06 * risk_weight)])[0]
+        severity = random.choices(severities, weights=[0.16 + 0.08 * risk_weight, 0.50, max(0.12, 0.34 - 0.06 * risk_weight)])[0]
         period = random.choice(ex_periods)
-        amount = random.uniform(15_000, 260_000) * (1.8 if severity == "High" else 1.0)
+        amount = random.uniform(15_000, 260_000) * (1.8 if severity == "High" else 1.0) * risk_weight
         y, m = map(int, period.split("-"))
         due = date(y, m, 1) + timedelta(days=random.randint(11, 36))
         exceptions.append({
             "exception_id": f"EX{idx:03d}",
             "date_id": period,
             "entity_id": e["entity_id"],
+            "business_unit_id": bu["business_unit_id"],
             "country": e["country"],
             "region": e["region"],
+            "business_unit": bu["business_unit"],
             "exception_type": ex_type,
             "owner_team": owner,
             "severity": severity,
             "status": status,
             "amount_usd": round2(amount),
             "due_date": due.isoformat(),
-            "commentary": f"{ex_type} requires {owner} follow-up before regional close pack sign-off.",
+            "commentary": f"{ex_type} in {bu['business_unit']} requires {owner} follow-up before regional close pack sign-off.",
             "is_synthetic": "TRUE",
         })
 
@@ -427,6 +470,7 @@ def validate_data(data: dict) -> dict:
     fact = data["fact_financials"]
     summary = data["fact_financial_summary"]
     bridge = data["fact_variance_driver_bridge"]
+    exceptions = data["fact_close_exceptions"]
 
     key_fields = ["date_id", "entity_id", "business_unit_id", "scenario_id", "account_id"]
     keys = [tuple(row[k] for k in key_fields) for row in fact]
@@ -450,6 +494,14 @@ def validate_data(data: dict) -> dict:
     for r in fact:
         fk_bad += int(r["date_id"] not in dates or r["entity_id"] not in entities or r["business_unit_id"] not in bus or r["scenario_id"] not in scenarios or r["account_id"] not in accounts)
     checks.append({"check": "Foreign key integrity", "status": "pass" if fk_bad == 0 else "fail", "detail": f"{fk_bad} bad FK rows"})
+
+    exception_missing_bu = sum(1 for r in exceptions if r.get("business_unit_id") in ("", None) or r.get("business_unit") in ("", None))
+    exception_fk_bad = sum(1 for r in exceptions if r["date_id"] not in dates or r["entity_id"] not in entities or r["business_unit_id"] not in bus)
+    checks.append({
+        "check": "Close exception BU slicer keys",
+        "status": "pass" if exception_missing_bu == 0 and exception_fk_bad == 0 else "fail",
+        "detail": f"{exception_missing_bu} missing BU fields; {exception_fk_bad} exception FK rows outside Date/Entity/BU dimensions",
+    })
 
     by_summary = defaultdict(dict)
     for r in summary:
@@ -487,33 +539,34 @@ def validate_data(data: dict) -> dict:
 
 
 def metric_catalog() -> list[dict]:
+    currency_format = MONEY_FORMAT
     measures = [
-        ("Total Revenue", "SUM ( FactFinancialSummary[external_revenue_usd] )", "$#,0,,.0M", "Consolidated external revenue after excluding intercompany revenue."),
-        ("Gross Revenue", "SUM ( FactFinancialSummary[gross_revenue_usd] )", "$#,0,,.0M", "External plus intercompany revenue before elimination."),
-        ("Intercompany Revenue", "SUM ( FactFinancialSummary[intercompany_revenue_usd] )", "$#,0,,.0M", "Intercompany revenue requiring elimination."),
-        ("Intercompany Elimination", "SUM ( FactFinancialSummary[intercompany_elimination_usd] )", "$#,0,,.0M", "Net intercompany elimination impact."),
-        ("Gross Profit", "SUM ( FactFinancialSummary[gross_profit_usd] )", "$#,0,,.0M", "Revenue minus cost of services."),
+        ("Total Revenue", "SUM ( FactFinancialSummary[external_revenue_usd] )", currency_format, "Consolidated external revenue after excluding intercompany revenue."),
+        ("Gross Revenue", "SUM ( FactFinancialSummary[gross_revenue_usd] )", currency_format, "External plus intercompany revenue before elimination."),
+        ("Intercompany Revenue", "SUM ( FactFinancialSummary[intercompany_revenue_usd] )", currency_format, "Intercompany revenue requiring elimination."),
+        ("Intercompany Elimination", "SUM ( FactFinancialSummary[intercompany_elimination_usd] )", currency_format, "Net intercompany elimination impact."),
+        ("Gross Profit", "SUM ( FactFinancialSummary[gross_profit_usd] )", currency_format, "Revenue minus cost of services."),
         ("Gross Margin %", "DIVIDE ( [Gross Profit], [Total Revenue] )", "0.0%", "Gross profit divided by consolidated external revenue."),
-        ("OPEX", "SUM ( FactFinancialSummary[opex_usd] )", "$#,0,,.0M", "Personnel, facilities, sales and marketing, and G&A."),
-        ("EBITDA", "SUM ( FactFinancialSummary[ebitda_usd] )", "$#,0,,.0M", "Gross profit plus OPEX after intercompany elimination."),
+        ("OPEX", "SUM ( FactFinancialSummary[opex_usd] )", currency_format, "Personnel, facilities, sales and marketing, and G&A."),
+        ("EBITDA", "SUM ( FactFinancialSummary[ebitda_usd] )", currency_format, "Gross profit plus OPEX after intercompany elimination."),
         ("EBITDA Margin %", "DIVIDE ( [EBITDA], [Total Revenue] )", "0.0%", "EBITDA divided by consolidated external revenue."),
-        ("Operating Income", "SUM ( FactFinancialSummary[operating_income_usd] )", "$#,0,,.0M", "EBITDA less depreciation."),
-        ("Net Income", "SUM ( FactFinancialSummary[net_income_usd] )", "$#,0,,.0M", "Operating income less interest and tax."),
-        ("Cash Position", "SUM ( FactFinancialSummary[cash_position_usd] )", "$#,0,,.0M", "Period-end cash position by entity and BU allocation."),
-        ("Operating Cash Flow", "SUM ( FactFinancialSummary[operating_cash_flow_usd] )", "$#,0,,.0M", "Operating cash flow proxy tied to EBITDA conversion."),
-        ("Working Capital", "SUM ( FactFinancialSummary[working_capital_usd] )", "$#,0,,.0M", "Working capital proxy for close review."),
-        ("Actual Revenue", "CALCULATE ( [Total Revenue], DimScenario[scenario] = \"Actual\" )", "$#,0,,.0M", "Actual consolidated revenue."),
-        ("Budget Revenue", "CALCULATE ( [Total Revenue], DimScenario[scenario] = \"Budget\" )", "$#,0,,.0M", "Budget consolidated revenue."),
-        ("Revenue Var vs Budget", "[Actual Revenue] - [Budget Revenue]", "$#,0,,.0M", "Actual revenue less budget revenue."),
+        ("Operating Income", "SUM ( FactFinancialSummary[operating_income_usd] )", currency_format, "EBITDA less depreciation."),
+        ("Net Income", "SUM ( FactFinancialSummary[net_income_usd] )", currency_format, "Operating income less interest and tax."),
+        ("Cash Position", "SUM ( FactFinancialSummary[cash_position_usd] )", currency_format, "Period-end cash position by entity and BU allocation."),
+        ("Operating Cash Flow", "SUM ( FactFinancialSummary[operating_cash_flow_usd] )", currency_format, "Operating cash flow proxy tied to EBITDA conversion."),
+        ("Working Capital", "SUM ( FactFinancialSummary[working_capital_usd] )", currency_format, "Working capital proxy for close review."),
+        ("Actual Revenue", "CALCULATE ( [Total Revenue], DimScenario[scenario] = \"Actual\" )", currency_format, "Actual consolidated revenue."),
+        ("Budget Revenue", "CALCULATE ( [Total Revenue], DimScenario[scenario] = \"Budget\" )", currency_format, "Budget consolidated revenue."),
+        ("Revenue Var vs Budget", "[Actual Revenue] - [Budget Revenue]", currency_format, "Actual revenue less budget revenue."),
         ("Revenue Var %", "DIVIDE ( [Revenue Var vs Budget], [Budget Revenue] )", "0.0%", "Revenue variance divided by budget revenue."),
-        ("Actual EBITDA", "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Actual\" )", "$#,0,,.0M", "Actual EBITDA."),
-        ("Budget EBITDA", "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Budget\" )", "$#,0,,.0M", "Budget EBITDA."),
-        ("EBITDA Var vs Budget", "[Actual EBITDA] - [Budget EBITDA]", "$#,0,,.0M", "Actual EBITDA less budget EBITDA."),
+        ("Actual EBITDA", "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Actual\" )", currency_format, "Actual EBITDA."),
+        ("Budget EBITDA", "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Budget\" )", currency_format, "Budget EBITDA."),
+        ("EBITDA Var vs Budget", "[Actual EBITDA] - [Budget EBITDA]", currency_format, "Actual EBITDA less budget EBITDA."),
         ("EBITDA Var %", "DIVIDE ( [EBITDA Var vs Budget], [Budget EBITDA] )", "0.0%", "EBITDA variance divided by budget EBITDA."),
-        ("Forecast EBITDA", "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Forecast\" )", "$#,0,,.0M", "Forecast EBITDA."),
+        ("Forecast EBITDA", "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Forecast\" )", currency_format, "Forecast EBITDA."),
         ("Forecast Accuracy %", "1 - ABS ( DIVIDE ( [Actual EBITDA] - [Forecast EBITDA], [Actual EBITDA] ) )", "0.0%", "Directional forecast accuracy for EBITDA."),
         ("Open Exception Count", "CALCULATE ( COUNTROWS ( FactCloseExceptions ), FactCloseExceptions[status] <> \"Closed\" )", "#,0", "Open or in-progress close exceptions."),
-        ("Open Exception Value", "CALCULATE ( SUM ( FactCloseExceptions[amount_usd] ), FactCloseExceptions[status] <> \"Closed\" )", "$#,0,,.0M", "Value attached to unresolved close exceptions."),
+        ("Open Exception Value", "CALCULATE ( SUM ( FactCloseExceptions[amount_usd] ), FactCloseExceptions[status] <> \"Closed\" )", currency_format, "Value attached to unresolved close exceptions."),
     ]
     return [
         {"measure_name": name, "dax": dax, "format_string": fmt, "definition": definition}
@@ -529,6 +582,7 @@ def build_html(data: dict) -> str:
         "exceptions": data["fact_close_exceptions"],
         "entities": data["dim_entity"],
         "businessUnits": data["dim_business_unit"],
+        "scenarios": data["dim_scenario"],
         "dates": data["dim_date"],
         "sources": [
             {"name": "Zebra BI income statement and financial dashboard patterns", "url": "https://zebrabi.com/template/income-statement-dashboard-in-power-bi/"},
@@ -562,22 +616,51 @@ HTML_TEMPLATE = r"""
     .titlebar { display:flex; gap:16px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; }
     h1 { margin:0; font-size:24px; letter-spacing:0; }
     .subtitle { color:var(--muted); margin-top:5px; font-size:13px; }
-    .status-pill { border:1px solid var(--line); background:#f9fbfc; border-radius:999px; padding:6px 10px; font-size:12px; color:var(--muted); }
-    .filters { display:grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap:10px; margin-top:14px; }
-    label { display:flex; flex-direction:column; gap:4px; font-size:12px; color:var(--muted); }
-    select { height:34px; border:1px solid var(--line); border-radius:6px; background:white; color:var(--ink); padding:0 8px; }
+    .status-pill { border:1px solid var(--line); background:#f9fbfc; border-radius:999px; padding:6px 10px; font-size:12px; color:var(--muted); box-shadow:0 1px 2px rgba(23,33,43,.04); }
+    .filters { display:grid; grid-template-columns: repeat(6, minmax(135px, 1fr)); gap:10px; margin-top:14px; }
+    label { display:flex; flex-direction:column; gap:5px; font-size:12px; color:var(--muted); background:#fbfcfd; border:1px solid #e5eaf0; border-radius:8px; padding:8px 10px; }
+    select { height:32px; border:1px solid var(--line); border-radius:6px; background:white; color:var(--ink); padding:0 8px; font:inherit; }
     nav { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
     nav button { border:1px solid var(--line); background:white; color:var(--ink); border-radius:6px; padding:8px 10px; cursor:pointer; }
     nav button.active { background:var(--teal); color:white; border-color:var(--teal); }
     main { padding:18px 28px 34px; max-width:1500px; margin:0 auto; }
     .page { display:none; }
     .page.active { display:block; }
-    .kpis { display:grid; grid-template-columns: repeat(6, minmax(150px, 1fr)); gap:12px; margin-bottom:14px; }
-    .card, .panel { background:var(--paper); border:1px solid var(--line); border-radius:8px; }
-    .card { padding:13px 14px; min-height:108px; }
-    .card .label { color:var(--muted); font-size:12px; }
-    .card .value { margin-top:8px; font-size:24px; font-weight:700; white-space:nowrap; }
-    .card .delta { margin-top:6px; font-size:12px; color:var(--muted); }
+    .lens-bar { display:grid; grid-template-columns:minmax(130px, 170px) minmax(0, 1fr); gap:16px; align-items:center; min-height:96px; margin-bottom:16px; padding:12px 16px; background:#242b35; border:1px solid #3a4655; border-radius:12px; box-shadow:0 12px 24px rgba(23,33,43,.18); overflow:hidden; }
+    .filter-lens-label { color:#d0b16a; font-size:12px; font-weight:600; letter-spacing:0; text-transform:uppercase; white-space:nowrap; }
+    .current-lens { display:grid; grid-template-columns:6px 16px minmax(230px, 1fr) minmax(154px, 178px) minmax(144px, 178px); gap:14px; align-items:center; min-height:72px; color:#f7fafc; }
+    .lens-rail { width:6px; height:54px; border-radius:999px; background:var(--teal); opacity:.86; }
+    .lens-dot { width:16px; height:16px; border-radius:50%; background:var(--teal); opacity:.92; }
+    .lens-copy { min-width:0; }
+    .lens-title { font-size:14px; line-height:1.2; font-weight:800; letter-spacing:0; }
+    .lens-line { margin-top:5px; font-size:14px; line-height:1.2; font-weight:700; color:#f7fafc; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .lens-subline { margin-top:3px; font-size:12px; line-height:1.2; color:#d7dee8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .lens-chip { min-height:62px; display:grid; place-items:center; align-content:center; gap:4px; text-align:center; background:#1f2630; border:1px solid #3a4655; border-radius:11px; padding:9px 12px; overflow:hidden; }
+    .lens-chip span { font-size:11.5px; line-height:1.1; color:#d7dee8; }
+    .lens-chip b { display:block; font-size:23px; line-height:1; color:var(--blue); }
+    .lens-chip-risk b { color:#d0b16a; }
+    .kpis { display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:16px; margin:0 0 16px; }
+    .panel { background:var(--paper); border:1px solid var(--line); border-radius:8px; box-shadow:0 7px 18px rgba(23,33,43,.07); }
+    .card { --accent:var(--teal); position:relative; min-height:135px; display:grid; grid-template-columns:minmax(0,1fr) minmax(118px, 34%); grid-template-rows:1fr auto; gap:9px 12px; padding:14px 13px 10px; overflow:hidden; color:#f7fafc; background:#242b35; border:1px solid #3a4655; border-radius:12px; box-shadow:0 12px 24px rgba(23,33,43,.20); }
+    .card::before { content:""; position:absolute; left:14px; top:14px; width:38%; max-width:170px; height:4px; border-radius:999px; background:var(--accent); opacity:.95; }
+    .card.accent-blue { --accent:var(--blue); }
+    .card.accent-teal { --accent:var(--teal); }
+    .card.accent-amber { --accent:var(--amber); }
+    .card.accent-olive { --accent:var(--olive); }
+    .card.accent-rose { --accent:var(--rose); }
+    .card .label { display:flex; align-items:center; gap:8px; margin-top:22px; color:#f7fafc; font-size:14px; line-height:1.15; font-weight:800; white-space:nowrap; min-width:0; overflow:hidden; text-overflow:ellipsis; }
+    .card .label::before { content:""; width:13px; height:13px; border:2px solid var(--accent); border-radius:4px; flex:0 0 auto; opacity:.9; }
+    .card .value { margin-top:12px; font-size:34px; line-height:1; font-weight:600; white-space:nowrap; color:var(--accent); letter-spacing:0; }
+    .card .delta { font-size:12px; color:#d7dee8; }
+    .card .kpi-main { min-width:0; grid-column:1; grid-row:1; }
+    .card .kpi-footer { grid-column:1 / -1; grid-row:2; display:grid; grid-template-columns:minmax(0, 1fr) minmax(86px, .62fr); gap:8px; align-items:center; min-width:0; }
+    .footer-chip { min-height:26px; display:flex; align-items:center; justify-content:center; border:1px solid #3a4655; border-radius:999px; padding:4px 10px; background:#2b3340; color:#d7dee8; font-size:12px; line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .footer-chip.good { color:#99b66f; background:rgba(107,122,58,.20); border-color:rgba(153,182,111,.20); }
+    .footer-chip.bad { color:#d2788b; background:rgba(178,87,106,.20); border-color:rgba(210,120,139,.20); }
+    .spark { grid-column:2; grid-row:1; align-self:center; min-width:0; min-height:84px; background:#1f2630; border:1px solid #3a4655; border-radius:10px; padding:8px; overflow:hidden; }
+    .sparkline-svg { width:100%; height:66px; display:block; overflow:visible; }
+    .delta.good { color:#99b66f; }
+    .delta.bad { color:#d2788b; }
     .delta.good { color:var(--good); }
     .delta.bad { color:var(--bad); }
     .grid { display:grid; grid-template-columns: 1.25fr .95fr; gap:14px; align-items:start; }
@@ -585,17 +668,23 @@ HTML_TEMPLATE = r"""
     .grid.story { grid-template-columns: 1.45fr .8fr; }
     .mosaic { display:grid; grid-template-columns: 1.1fr .9fr 1fr; gap:14px; align-items:start; margin-top:14px; }
     .rail { display:grid; gap:10px; }
-    .panel { padding:14px; min-width:0; }
-    .panel h2 { margin:0 0 4px; font-size:15px; }
+    .panel { padding:14px; min-width:0; overflow:hidden; }
+    .panel h2 { margin:0 0 4px; font-size:15px; display:flex; align-items:center; gap:8px; }
+    .panel h2::before { content:""; width:8px; height:8px; border-radius:2px; background:var(--teal); flex:0 0 auto; }
     .panel .note { color:var(--muted); font-size:12px; margin-bottom:12px; }
-    svg { width:100%; height:280px; display:block; overflow:visible; }
+    svg { width:100%; display:block; overflow:visible; }
+    svg.chart { height:280px; background:#fbfcfd; border:1px solid #edf1f5; border-radius:7px; }
+    .empty-state { height:280px; display:grid; place-items:center; border:1px dashed #cfd8e3; border-radius:7px; color:var(--muted); background:#fbfcfd; font-size:12px; }
     table { width:100%; border-collapse:collapse; font-size:12px; }
     th, td { padding:8px 7px; border-bottom:1px solid #edf0f3; text-align:right; }
     th:first-child, td:first-child, th:nth-child(2), td:nth-child(2) { text-align:left; }
     th { color:var(--muted); font-weight:600; background:#fafbfc; position:sticky; top:0; }
     .table-wrap { max-height:360px; overflow:auto; border:1px solid #edf0f3; border-radius:6px; }
     .action-strip { display:grid; grid-template-columns: 1.3fr 1fr 1fr; gap:12px; margin:14px 0; }
-    .action { background:#fff7ed; border:1px solid #f0c987; border-radius:8px; padding:12px; font-size:13px; }
+    .action { --accent:var(--amber); background:#ffffff; border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:8px; padding:12px; font-size:13px; box-shadow:0 5px 14px rgba(23,33,43,.05); }
+    .action.action-blue { --accent:var(--blue); }
+    .action.action-teal { --accent:var(--teal); }
+    .action.action-rose { --accent:var(--rose); }
     .action b { display:block; margin-bottom:4px; }
     .legend { display:flex; gap:12px; flex-wrap:wrap; font-size:12px; color:var(--muted); margin-top:8px; }
     .swatch { width:10px; height:10px; display:inline-block; border-radius:2px; margin-right:5px; }
@@ -612,9 +701,14 @@ HTML_TEMPLATE = r"""
     @media (max-width: 980px) {
       header { padding:14px; }
       main { padding:14px; }
-      .filters, .kpis, .grid, .grid.three, .grid.story, .mosaic, .action-strip { grid-template-columns:1fr; }
-      .card .value { font-size:21px; }
-      svg { height:240px; }
+      .filters, .kpis, .grid, .grid.three, .grid.story, .mosaic, .action-strip, .lens-bar { grid-template-columns:1fr; }
+      .current-lens { grid-template-columns:6px 16px minmax(0,1fr); }
+      .lens-chip { grid-column:1 / -1; min-height:58px; }
+      .card { grid-template-columns:1fr; min-height:0; }
+      .card .spark { grid-column:1; grid-row:auto; min-height:78px; }
+      .card .kpi-footer { grid-column:1; }
+      .card .value { font-size:30px; }
+      svg.chart { height:240px; }
     }
   </style>
 </head>
@@ -630,8 +724,10 @@ HTML_TEMPLATE = r"""
   <div class="filters">
     <label>Period<select id="periodFilter"></select></label>
     <label>Region<select id="regionFilter"></select></label>
-    <label>Entity<select id="entityFilter"></select></label>
+    <label>Country<select id="countryFilter"></select></label>
     <label>Business Unit<select id="buFilter"></select></label>
+    <label>Scenario<select id="scenarioFilter"></select></label>
+    <label>Entity<select id="entityFilter"></select></label>
   </div>
   <nav>
     <button data-page="overview" class="active">Executive Summary</button>
@@ -641,6 +737,10 @@ HTML_TEMPLATE = r"""
 </header>
 <main>
   <section id="overview" class="page active">
+    <div class="lens-bar">
+      <div class="filter-lens-label">FILTER LENS</div>
+      <div class="current-lens" id="currentLens"></div>
+    </div>
     <div class="kpis" id="kpiStrip"></div>
     <div class="action-strip" id="actionStrip"></div>
     <div class="grid">
@@ -703,8 +803,8 @@ HTML_TEMPLATE = r"""
 </main>
 <script>
 const DATA = __DATA__;
-const state = { period: DATA.metadata.latest_complete_period, region: "All", entity: "All", bu: "All", page: "overview" };
-const colors = { actual:"#28666e", budget:"#d9902f", forecast:"#3d5a80", good:"#28666e", bad:"#b2576a", olive:"#6b7a3a", muted:"#667085", line:"#d8dee7" };
+const state = { period: DATA.metadata.latest_complete_period, region: "All", country: "All", entity: "All", bu: "All", scenario: "Actual", page: "overview" };
+const colors = { actual:"#28666e", budget:"#d9902f", forecast:"#3d5a80", prior:"#6b7a3a", teal:"#28666e", blue:"#3d5a80", amber:"#d9902f", rose:"#b2576a", good:"#28666e", bad:"#b2576a", olive:"#6b7a3a", muted:"#667085", line:"#d8dee7" };
 const money = v => {
   const sign = v < 0 ? "-" : "";
   const a = Math.abs(v);
@@ -715,17 +815,27 @@ const money = v => {
 };
 const pct = v => `${(v*100).toFixed(1)}%`;
 const num = v => Number(v || 0);
+function selectedScenario(){ return state.scenario || "Actual"; }
+function comparisonScenario(){ return selectedScenario()==="Budget" ? "Actual" : "Budget"; }
+function scenarioColor(scenario){
+  return {Actual:colors.actual, Budget:colors.budget, Forecast:colors.forecast, "Prior Year":colors.prior}[scenario] || colors.actual;
+}
+function countryMatch(r){ return state.country === "All" || r.country === state.country; }
+function buMatch(r){ return state.bu === "All" || r.business_unit_id === state.bu || r.business_unit === state.bu; }
 function matches(r){
   return r.date_id <= state.period &&
     (state.region === "All" || r.region === state.region) &&
+    countryMatch(r) &&
     (state.entity === "All" || r.entity_id === state.entity) &&
-    (state.bu === "All" || r.business_unit_id === state.bu || r.business_unit === state.bu);
+    buMatch(r);
 }
 function currentRows(scenario){
-  return DATA.summary.filter(r => r.date_id === state.period && r.scenario === scenario &&
+  const lens = scenario || selectedScenario();
+  return DATA.summary.filter(r => r.date_id === state.period && r.scenario === lens &&
     (state.region === "All" || r.region === state.region) &&
+    countryMatch(r) &&
     (state.entity === "All" || r.entity_id === state.entity) &&
-    (state.bu === "All" || r.business_unit === state.bu));
+    buMatch(r));
 }
 function sumRows(rows){
   return rows.reduce((a,r)=>{
@@ -741,13 +851,118 @@ function group(rows, key, valueKey){
 function byScenarioMetric(period, scenario, metric){
   return sumRows(DATA.summary.filter(r => r.date_id === period && r.scenario === scenario &&
     (state.region === "All" || r.region === state.region) &&
+    countryMatch(r) &&
     (state.entity === "All" || r.entity_id === state.entity) &&
-    (state.bu === "All" || r.business_unit === state.bu)))[metric] || 0;
+    buMatch(r)))[metric] || 0;
 }
-function svgWrap(content, h=280){ return `<svg viewBox="0 0 760 ${h}" role="img">${content}</svg>`; }
+function emptyState(label="No data for this filter selection"){
+  return `<div class="empty-state">${label}</div>`;
+}
+function shortLabel(text, max=18){
+  const s = String(text || "");
+  return s.length > max ? `${s.slice(0, max-1)}...` : s;
+}
+function esc(text){
+  return String(text ?? "").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function periodLabel(period){
+  const [year, month] = String(period).split("-").map(Number);
+  if (!year || !month) return period;
+  return new Date(year, month - 1, 1).toLocaleString("en-US", { month:"short", year:"numeric" });
+}
+function businessUnitLabel(){
+  if (state.bu === "All") return "All BUs";
+  return DATA.businessUnits.find(b => b.business_unit_id === state.bu)?.business_unit || state.bu;
+}
+function scopeLine(){
+  const parts = [businessUnitLabel()];
+  if (state.country !== "All") parts.push(state.country);
+  else if (state.region !== "All") parts.push(state.region);
+  else parts.push("All regions");
+  if (state.entity !== "All") parts.push(state.entity);
+  return parts.join(" | ");
+}
+function svgWrap(content, h=280, cls="chart"){ return `<svg class="${cls}" viewBox="0 0 760 ${h}" role="img">${content}</svg>`; }
 function axis(min,max,h){ return v => h - 36 - ((v-min)/(max-min || 1))*(h-70); }
 function xScale(n,w=720){ return i => 34 + (n<=1?0:i*(w-68)/(n-1)); }
+function sparkline(values, good=true, accent=colors.actual){
+  const clean = values.map(num).filter(Number.isFinite);
+  if (clean.length < 2) return `<svg class="sparkline-svg" viewBox="0 0 112 64"><line x1="10" x2="102" y1="34" y2="34" stroke="#3a4655" stroke-width="2" stroke-linecap="round"/></svg>`;
+  const min = Math.min(...clean), max = Math.max(...clean);
+  const y = v => 52 - ((v-min)/(max-min || 1))*38;
+  const x = i => 10 + i*(92/(clean.length-1));
+  const pts = clean.map((v,i)=>`${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+  const stroke = good ? accent : colors.bad;
+  const startX = x(0).toFixed(1), startY = y(clean[0]).toFixed(1);
+  const endX = x(clean.length-1).toFixed(1), endY = y(clean[clean.length-1]).toFixed(1);
+  const area = `${startX},54 ${pts} ${endX},54`;
+  return `<svg class="sparkline-svg" viewBox="0 0 112 64"><line x1="10" x2="102" y1="34" y2="34" stroke="#3a4655" stroke-width="1.4" stroke-dasharray="5 6"/><polygon points="${area}" fill="${stroke}" opacity=".18"/><polyline points="${pts}" fill="none" stroke="${stroke}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${startX}" cy="${startY}" r="4.5" fill="#242b35" stroke="#d7dee8" stroke-width="2"/><circle cx="${endX}" cy="${endY}" r="5" fill="${stroke}"/></svg>`;
+}
+function kpiCard({label, value, delta, good=true, series=[], accent="teal", status}){
+  const accentColor = {blue:colors.budget, teal:colors.actual, amber:colors.forecast, olive:colors.olive, rose:colors.bad}[accent] || colors.actual;
+  const statusText = status || (good ? "ON TRACK" : "WATCH");
+  return `<div class="card accent-${accent}"><div class="kpi-main"><div class="label">${esc(label)}</div><div class="value">${esc(value)}</div></div><div class="spark">${sparkline(series, good, accentColor)}</div><div class="kpi-footer"><span class="footer-chip">${esc(delta)}</span><span class="footer-chip ${good?'good':'bad'}">${esc(statusText)}</span></div></div>`;
+}
+function metricSeries(metric, scenario=selectedScenario()){
+  return DATA.dates.filter(d=>d.date_id<=state.period).map(d=>byScenarioMetric(d.date_id, scenario, metric));
+}
+function marginSeries(scenario=selectedScenario()){
+  return DATA.dates.filter(d=>d.date_id<=state.period).map(d=>{
+    const rev = byScenarioMetric(d.date_id, scenario, "external_revenue_usd");
+    return rev ? byScenarioMetric(d.date_id, scenario, "ebitda_usd") / rev : 0;
+  });
+}
+function filteredExceptionsAt(period){
+  return DATA.exceptions.filter(r => r.date_id <= period &&
+    (state.region==="All"||r.region===state.region) &&
+    countryMatch(r) &&
+    (state.entity==="All"||r.entity_id===state.entity) &&
+    buMatch(r));
+}
+function exceptionSeries(){
+  return DATA.dates.filter(d=>d.date_id<=state.period).map(d=>filteredExceptionsAt(d.date_id).filter(x=>x.status!=="Closed").length);
+}
+function exceptionValueSeries(){
+  return DATA.dates.filter(d=>d.date_id<=state.period).map(d=>
+    filteredExceptionsAt(d.date_id).filter(x=>x.status!=="Closed").reduce((s,x)=>s+num(x.amount_usd),0)
+  );
+}
+function renderCurrentLens({lens, revVarPct, closeRisk}){
+  document.getElementById("currentLens").innerHTML = `
+    <div class="lens-rail"></div>
+    <div class="lens-dot"></div>
+    <div class="lens-copy">
+      <div class="lens-title">CURRENT LENS</div>
+      <div class="lens-line">${esc(periodLabel(state.period))} | ${esc(lens)} lens</div>
+      <div class="lens-subline">${esc(scopeLine())}</div>
+    </div>
+    <div class="lens-chip"><span>Revenue var</span><b>${esc(pct(revVarPct))}</b></div>
+    <div class="lens-chip lens-chip-risk"><span>Close risk</span><b>${esc(money(closeRisk))}</b></div>`;
+}
+function comboTrendChart(labels, bars, lines, barColor=colors.actual){
+  if (!labels.length || (!bars.some(Boolean) && !lines.some(s=>s.values.some(Boolean)))) return emptyState();
+  const h=280, w=760, plotLeft=42, plotRight=724, base=h-38;
+  const maxBar = Math.max(1, ...bars);
+  const lineVals = lines.flatMap(s=>s.values);
+  const minLine = Math.min(0, ...lineVals), maxLine = Math.max(1, ...lineVals) * 1.08;
+  const x = i => plotLeft + i*((plotRight-plotLeft)/Math.max(1, labels.length-1));
+  const barW = Math.min(22, (plotRight-plotLeft)/Math.max(1, labels.length)*0.55);
+  const yBar = v => base - (v/maxBar)*(h-84);
+  const yLine = axis(minLine, maxLine, h);
+  const grid = [0,.25,.5,.75,1].map(t=>`<line x1="${plotLeft}" x2="${plotRight}" y1="${36+t*(h-74)}" y2="${36+t*(h-74)}" stroke="${colors.line}" stroke-width="1"/>`).join("");
+  const cols = bars.map((v,i)=>`<rect x="${x(i)-barW/2}" y="${yBar(v)}" width="${barW}" height="${base-yBar(v)}" rx="3" fill="${barColor}" opacity=".24"/>`).join("");
+  const paths = lines.map(s=>{
+    const pts = s.values.map((v,i)=>`${x(i)},${yLine(v)}`).join(" ");
+    return `<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="${s.dash?2.2:3}" ${s.dash?'stroke-dasharray="6 5"':''} stroke-linecap="round" stroke-linejoin="round"/><circle cx="${x(s.values.length-1)}" cy="${yLine(s.values.at(-1))}" r="4" fill="${s.color}"/>`;
+  }).join("");
+  const lab = labels.filter((_,i)=>i%3===0 || i===labels.length-1).map(l=>{
+    const i = labels.indexOf(l);
+    return `<text x="${x(i)}" y="${h-10}" font-size="11" text-anchor="middle" fill="${colors.muted}">${l.slice(5)}</text>`;
+  }).join("");
+  return svgWrap(`${grid}${cols}${paths}${lab}<text x="${plotLeft}" y="20" font-size="11" fill="${colors.muted}">Revenue ${money(maxBar)}</text><text x="610" y="20" font-size="11" fill="${colors.muted}">EBITDA ${money(maxLine)}</text>`, h);
+}
 function lineChart(series, labels){
+  if (!labels.length || !series.some(s=>s.values.some(Boolean))) return emptyState();
   const vals = series.flatMap(s=>s.values);
   const min = Math.min(0, ...vals), max = Math.max(...vals)*1.08;
   const h=280, y=axis(min,max,h), x=xScale(labels.length);
@@ -763,9 +978,10 @@ function lineChart(series, labels){
   return svgWrap(`${grid}${paths}${lab}<text x="34" y="20" font-size="11" fill="${colors.muted}">${money(max)}</text><text x="34" y="${h-38}" font-size="11" fill="${colors.muted}">${money(min)}</text>`, h);
 }
 function barChart(items, opts={}){
+  if (!items.length) return emptyState();
   const h=opts.h||280, w=760, left=opts.left||170;
   const max = Math.max(1, ...items.map(d=>Math.abs(d.value)));
-  const rowH = Math.min(34, (h-38)/Math.max(1, items.length));
+  const rowH = Math.min(38, (h-34)/Math.max(1, items.length));
   const zero = left + (opts.diverging ? (w-left-30)/2 : 0);
   const scale = v => opts.diverging ? Math.abs(v)/max*((w-left-40)/2) : Math.abs(v)/max*(w-left-40);
   const bars = items.map((d,i)=>{
@@ -774,12 +990,13 @@ function barChart(items, opts={}){
     const bw = scale(val);
     const x = opts.diverging ? (val>=0 ? zero : zero-bw) : left;
     const fill = val>=0 ? (opts.color||colors.actual) : colors.bad;
-    return `<text x="8" y="${y+18}" font-size="12" fill="${colors.muted}">${d.name}</text><rect x="${x}" y="${y+5}" width="${bw}" height="${Math.max(8,rowH-11)}" rx="3" fill="${fill}"/><text x="${val>=0?x+bw+6:x-6}" y="${y+18}" text-anchor="${val>=0?'start':'end'}" font-size="12" fill="${colors.muted}">${money(val)}</text>`;
+    return `<text x="8" y="${y+20}" font-size="15" fill="${colors.muted}"><title>${d.name}</title>${shortLabel(d.name, 20)}</text><rect x="${x}" y="${y+6}" width="${Math.max(2,bw)}" height="${Math.max(9,rowH-12)}" rx="3" fill="${fill}"/><text x="${val>=0?x+bw+7:x-7}" y="${y+20}" text-anchor="${val>=0?'start':'end'}" font-size="14" fill="${colors.muted}">${money(val)}</text>`;
   }).join("");
   const zeroLine = opts.diverging ? `<line x1="${zero}" x2="${zero}" y1="10" y2="${h-18}" stroke="${colors.line}"/>` : "";
   return svgWrap(`${zeroLine}${bars}`, h);
 }
 function waterfall(items){
+  if (!items.length) return emptyState("No bridge rows for this filter selection");
   const h=280,w=760,baseY=h-34;
   let running = 0;
   const spans = items.map(d => {
@@ -833,19 +1050,26 @@ function table(el, headers, rows){
 function renderFilters(){
   const periods = DATA.dates.map(d=>d.date_id);
   const regions = ["All", ...new Set(DATA.entities.map(e=>e.region))];
+  const countries = ["All", ...new Set(DATA.entities.map(e=>e.country))];
   const entities = ["All", ...DATA.entities.map(e=>e.entity_id)];
-  const bus = ["All", ...DATA.businessUnits.map(b=>b.business_unit)];
+  const bus = ["All", ...DATA.businessUnits.map(b=>b.business_unit_id)];
+  const scenarios = DATA.scenarios.map(s=>s.scenario);
   const fill=(id, vals, lab)=>{ const s=document.getElementById(id); s.innerHTML=vals.map(v=>`<option value="${v}">${lab?lab(v):v}</option>`).join(""); };
   fill("periodFilter", periods);
   fill("regionFilter", regions);
+  fill("countryFilter", countries);
   fill("entityFilter", entities, v => v==="All" ? "All" : `${v} - ${DATA.entities.find(e=>e.entity_id===v).country}`);
-  fill("buFilter", bus);
+  fill("buFilter", bus, v => v==="All" ? "All" : DATA.businessUnits.find(b=>b.business_unit_id===v).business_unit);
+  fill("scenarioFilter", scenarios);
   document.getElementById("periodFilter").value=state.period;
-  ["periodFilter","regionFilter","entityFilter","buFilter"].forEach(id => document.getElementById(id).addEventListener("change", e => {
+  document.getElementById("scenarioFilter").value=state.scenario;
+  ["periodFilter","regionFilter","countryFilter","entityFilter","buFilter","scenarioFilter"].forEach(id => document.getElementById(id).addEventListener("change", e => {
     if(id==="periodFilter") state.period=e.target.value;
-    if(id==="regionFilter") state.region=e.target.value;
+    if(id==="regionFilter") { state.region=e.target.value; state.entity="All"; document.getElementById("entityFilter").value="All"; }
+    if(id==="countryFilter") { state.country=e.target.value; state.entity="All"; document.getElementById("entityFilter").value="All"; }
     if(id==="entityFilter") state.entity=e.target.value;
     if(id==="buFilter") state.bu=e.target.value;
+    if(id==="scenarioFilter") state.scenario=e.target.value;
     render();
   }));
   document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>{
@@ -855,51 +1079,59 @@ function renderFilters(){
   }));
 }
 function renderOverview(){
-  const a=sumRows(currentRows("Actual")), b=sumRows(currentRows("Budget")), f=sumRows(currentRows("Forecast"));
+  const lens = selectedScenario(), compare = comparisonScenario();
+  const a=sumRows(currentRows(lens)), b=sumRows(currentRows(compare)), f=sumRows(currentRows("Forecast"));
   const revVar = (a.external_revenue_usd||0)-(b.external_revenue_usd||0);
   const ebitdaVar = (a.ebitda_usd||0)-(b.ebitda_usd||0);
   const exOpen = filteredExceptions().filter(x=>x.status!=="Closed");
+  const closeRisk = exOpen.reduce((s,x)=>s+num(x.amount_usd),0);
+  const marginActual = (a.ebitda_usd||0)/(a.external_revenue_usd||1);
+  const marginBudget = (b.ebitda_usd||0)/(b.external_revenue_usd||1);
+  const revVarPct = b.external_revenue_usd ? revVar / Math.abs(b.external_revenue_usd) : 0;
+  renderCurrentLens({lens, revVarPct, closeRisk});
   const kpis=[
-    ["Revenue", money(a.external_revenue_usd), `${money(revVar)} vs Budget`, revVar>=0],
-    ["EBITDA", money(a.ebitda_usd), `${money(ebitdaVar)} vs Budget`, ebitdaVar>=0],
-    ["EBITDA Margin", pct((a.ebitda_usd||0)/(a.external_revenue_usd||1)), `${pct(((a.ebitda_usd||0)/(a.external_revenue_usd||1))-((b.ebitda_usd||0)/(b.external_revenue_usd||1)))} vs Budget`, ebitdaVar>=0],
-    ["Cash Position", money(a.cash_position_usd), `${money(a.operating_cash_flow_usd||0)} OCF`, (a.operating_cash_flow_usd||0)>=0],
-    ["Forecast EBITDA", money(f.ebitda_usd), `${money((f.ebitda_usd||0)-(a.ebitda_usd||0))} vs Actual`, Math.abs((f.ebitda_usd||0)-(a.ebitda_usd||0)) < Math.abs(a.ebitda_usd||1)*0.05],
-    ["Open Exceptions", exOpen.length.toString(), `${money(exOpen.reduce((s,x)=>s+num(x.amount_usd),0))} value`, exOpen.length<20],
+    {label:"Revenue", value:money(a.external_revenue_usd), delta:`${pct(revVarPct)} vs ${compare}`, good:revVar>=0, series:metricSeries("external_revenue_usd", lens), accent:"blue", status:revVar>=0?"ON TRACK":"WATCH"},
+    {label:"EBITDA", value:money(a.ebitda_usd), delta:`${money(ebitdaVar)} vs ${compare}`, good:ebitdaVar>=0, series:metricSeries("ebitda_usd", lens), accent:"teal", status:ebitdaVar>=0?"ON TRACK":"ACTION"},
+    {label:"EBITDA Margin", value:pct(marginActual), delta:`${pct(marginActual-marginBudget)} vs ${compare}`, good:marginActual>=marginBudget, series:marginSeries(lens), accent:"olive", status:marginActual>=marginBudget?"ON TRACK":"WATCH"},
+    {label:"Close Risk", value:money(closeRisk), delta:`${exOpen.length} open items`, good:closeRisk<5000000, series:exceptionValueSeries(), accent:"rose", status:closeRisk<5000000?"WATCH":"ACTION"},
   ];
-  document.getElementById("kpiStrip").innerHTML=kpis.map(k=>`<div class="card"><div class="label">${k[0]}</div><div class="value">${k[1]}</div><div class="delta ${k[3]?'good':'bad'}">${k[2]}</div></div>`).join("");
-  const worst = group(currentRows("Actual").map(r=>({...r, variance:(r.ebitda_usd - (currentRows("Budget").find(x=>x.entity_id===r.entity_id&&x.business_unit_id===r.business_unit_id)?.ebitda_usd||0))})), "country", "variance").sort((a,b)=>a.value-b.value)[0];
+  document.getElementById("kpiStrip").innerHTML=kpis.map(kpiCard).join("");
+  const compareRows = currentRows(compare);
+  const worst = group(currentRows(lens).map(r=>({...r, variance:(r.ebitda_usd - (compareRows.find(x=>x.entity_id===r.entity_id&&x.business_unit_id===r.business_unit_id)?.ebitda_usd||0))})), "country", "variance").sort((a,b)=>a.value-b.value)[0];
   document.getElementById("actionStrip").innerHTML=[
-    `<div class="action"><b>Action Required</b>${worst?worst.name:"Portfolio"} is the largest EBITDA pressure point at ${money(worst?worst.value:0)} vs Budget.</div>`,
-    `<div class="action"><b>Bridge Integrity</b>Driver bridge ties to EBITDA variance with $1 tolerance in QA.</div>`,
-    `<div class="action"><b>Close Focus</b>${exOpen.filter(x=>x.severity==="High").length} high-severity items remain open or in review.</div>`
+    `<div class="action action-rose"><b>Action Required</b>${worst?worst.name:"Portfolio"} is the largest ${lens} EBITDA pressure point at ${money(worst?worst.value:0)} vs ${compare}.</div>`,
+    `<div class="action action-teal"><b>Bridge Integrity</b>Driver bridge ties to EBITDA variance with $1 tolerance in QA.</div>`,
+    `<div class="action action-blue"><b>Close Focus</b>${exOpen.filter(x=>x.severity==="High").length} high-severity items remain open or in review.</div>`
   ].join("");
   const labels=DATA.dates.filter(d=>d.date_id<=state.period).map(d=>d.date_id);
-  const metric="ebitda_usd";
-  const series=["Actual","Budget","Forecast"].map(s=>({name:s,color:s==="Actual"?colors.actual:s==="Budget"?colors.budget:colors.forecast, values:labels.map(p=>byScenarioMetric(p,s,metric))}));
-  document.getElementById("trendChart").innerHTML=lineChart(series, labels);
-  document.getElementById("trendLegend").innerHTML=series.map(s=>`<span><i class="swatch" style="background:${s.color}"></i>${s.name}</span>`).join("");
-  const bridgeRows = DATA.bridge.filter(r=>r.date_id===state.period && (state.region==="All"||r.region===state.region) && (state.entity==="All"||r.entity_id===state.entity) && (state.bu==="All"||r.business_unit===state.bu));
+  const trendScenarios = [lens, compare, "Forecast"].filter((s,i,a)=>a.indexOf(s)===i);
+  const series=trendScenarios.map(s=>({name:`${s} EBITDA`, color:scenarioColor(s), values:labels.map(p=>byScenarioMetric(p,s,"ebitda_usd")), dash:s!==lens}));
+  document.getElementById("trendChart").innerHTML=comboTrendChart(labels, labels.map(p=>byScenarioMetric(p,lens,"external_revenue_usd")), series, scenarioColor(lens));
+  document.getElementById("trendLegend").innerHTML=[`<span><i class="swatch" style="background:${scenarioColor(lens)}; opacity:.35"></i>${lens} Revenue</span>`, ...series.map(s=>`<span><i class="swatch" style="background:${s.color}"></i>${s.name}</span>`)].join("");
+  const bridgeRows = DATA.bridge.filter(r=>r.date_id===state.period && (state.region==="All"||r.region===state.region) && countryMatch(r) && (state.entity==="All"||r.entity_id===state.entity) && buMatch(r));
   const br = group(bridgeRows, "driver", "amount_usd").sort((a,b)=>DATA.bridge.find(x=>x.driver===a.name).driver_sort-DATA.bridge.find(x=>x.driver===b.name).driver_sort);
   document.getElementById("bridgeChart").innerHTML=waterfall(br);
-  const entityItems = group(currentRows("Actual").map(r=>({...r, variance:r.ebitda_usd-(currentRows("Budget").find(x=>x.entity_id===r.entity_id&&x.business_unit_id===r.business_unit_id)?.ebitda_usd||0)})), "country", "variance").slice(0,7);
+  const entityItems = group(currentRows(lens).map(r=>({...r, variance:r.ebitda_usd-(compareRows.find(x=>x.entity_id===r.entity_id&&x.business_unit_id===r.business_unit_id)?.ebitda_usd||0)})), "country", "variance").slice(0,7);
   document.getElementById("entityBars").innerHTML=barChart(entityItems,{diverging:true,left:120,h:250});
-  document.getElementById("regionBars").innerHTML=barChart(group(currentRows("Actual"),"region","external_revenue_usd"),{left:100,h:250,color:colors.blue});
-  table("attentionTable", ["ID","Country","Type","Severity","Value","Status"], exOpen.sort((a,b)=>b.amount_usd-a.amount_usd).slice(0,8).map(x=>[x.exception_id,x.country,x.exception_type,`<span class="sev-${x.severity}">${x.severity}</span>`,money(x.amount_usd),x.status]));
+  document.getElementById("regionBars").innerHTML=barChart(group(currentRows(lens),"region","external_revenue_usd"),{left:100,h:250,color:scenarioColor(lens)});
+  table("attentionTable", ["ID","Country","BU","Type","Severity","Value","Status"], exOpen.sort((a,b)=>b.amount_usd-a.amount_usd).slice(0,8).map(x=>[x.exception_id,x.country,x.business_unit,x.exception_type,`<span class="sev-${x.severity}">${x.severity}</span>`,money(x.amount_usd),x.status]));
 }
 function filteredExceptions(){
   return DATA.exceptions.filter(r => r.date_id <= state.period &&
     (state.region==="All"||r.region===state.region) &&
-    (state.entity==="All"||r.entity_id===state.entity));
+    countryMatch(r) &&
+    (state.entity==="All"||r.entity_id===state.entity) &&
+    buMatch(r));
 }
 function renderPnl(){
-  const actual = currentRows("Actual"), budget=currentRows("Budget");
+  const lens = selectedScenario(), compare = comparisonScenario();
+  const actual = currentRows(lens), budget=currentRows(compare);
   const rows = group(actual,"country","external_revenue_usd").map(g=>{
     const ar = actual.filter(r=>r.country===g.name), br=budget.filter(r=>r.country===g.name);
     const a=sumRows(ar), b=sumRows(br), varE=(a.ebitda_usd||0)-(b.ebitda_usd||0);
     return [g.name, money(a.external_revenue_usd), money(a.gross_profit_usd), money(a.opex_usd), money(a.ebitda_usd), pct((a.ebitda_usd||0)/(a.external_revenue_usd||1)), `<span class="${varE>=0?'delta good':'delta bad'}">${money(varE)}</span>`];
   });
-  table("pnlTable", ["Country","Revenue","Gross Profit","OPEX","EBITDA","Margin","EBITDA Var"], rows);
+  table("pnlTable", ["Country",`${lens} Revenue`,"Gross Profit","OPEX","EBITDA","Margin",`EBITDA Var vs ${compare}`], rows);
   const a=sumRows(actual);
   document.getElementById("pnlWaterfall").innerHTML=waterfall([
     {name:"Revenue",value:a.external_revenue_usd||0},{name:"COGS",value:(a.gross_profit_usd||0)-(a.external_revenue_usd||0)},{name:"OPEX",value:a.opex_usd||0},{name:"Elim",value:a.intercompany_elimination_usd||0},{name:"EBITDA",value:(a.ebitda_usd||0)-((a.external_revenue_usd||0)+((a.gross_profit_usd||0)-(a.external_revenue_usd||0))+(a.opex_usd||0)+(a.intercompany_elimination_usd||0))}
@@ -910,12 +1142,12 @@ function renderPnl(){
   table("detailTable", ["Period","Country","BU","Revenue","EBITDA","Cash"], actual.sort((a,b)=>b.external_revenue_usd-a.external_revenue_usd).slice(0,30).map(r=>[r.date_id,r.country,r.business_unit,money(r.external_revenue_usd),money(r.ebitda_usd),money(r.cash_position_usd)]));
 }
 function renderFxIc(){
-  const a=currentRows("Actual");
+  const a=currentRows();
   document.getElementById("fxBars").innerHTML=barChart(group(a,"currency","external_revenue_usd"),{left:80,h:270,color:colors.olive});
   const ic = group(a.map(r=>({...r, impact:r.ebitda_usd-r.ebitda_pre_elim_usd})),"country","impact");
   document.getElementById("icBars").innerHTML=barChart(ic,{left:120,h:270,diverging:true});
   const open=filteredExceptions().filter(x=>x.exception_type==="Intercompany Mismatch" && x.status!=="Closed");
-  const countries=[...new Set(DATA.entities.map(e=>e.country))];
+  const countries=[...new Set((open.length ? open : a).map(e=>e.country))];
   const statuses=["Open","In Review","Action Agreed"];
   table("icMatrix", ["Country",...statuses,"Total"], countries.map(c=>{
     const vals=statuses.map(s=>open.filter(x=>x.country===c&&x.status===s).reduce((a,b)=>a+num(b.amount_usd),0));
@@ -923,7 +1155,8 @@ function renderFxIc(){
   }));
 }
 function renderBu(){
-  const a=currentRows("Actual"), b=currentRows("Budget");
+  const lens = selectedScenario(), compare = comparisonScenario();
+  const a=currentRows(lens), b=currentRows(compare);
   document.getElementById("buBars").innerHTML=barChart(group(a,"business_unit","ebitda_usd"),{left:170,h:270,color:colors.blue});
   const pts=[...new Set(a.map(r=>`${r.entity_id}|${r.business_unit}`))].map(k=>{
     const [eid,bu]=k.split("|"); const ar=sumRows(a.filter(r=>r.entity_id===eid&&r.business_unit===bu)); const br=sumRows(b.filter(r=>r.entity_id===eid&&r.business_unit===bu)); return {label:k, x:((ar.external_revenue_usd||0)-(br.external_revenue_usd||0))/(br.external_revenue_usd||1), y:(ar.ebitda_usd||0)/(ar.external_revenue_usd||1), size:ar.external_revenue_usd||0};
@@ -931,32 +1164,39 @@ function renderBu(){
   const minX=Math.min(...pts.map(p=>p.x),-.1), maxX=Math.max(...pts.map(p=>p.x),.1), minY=Math.min(...pts.map(p=>p.y),0), maxY=Math.max(...pts.map(p=>p.y),.35);
   const sx=x=>55+(x-minX)/(maxX-minX||1)*650, sy=y=>235-(y-minY)/(maxY-minY||1)*190, maxSize=Math.max(...pts.map(p=>p.size));
   document.getElementById("scatterChart").innerHTML=svgWrap(`<line x1="55" x2="710" y1="235" y2="235" stroke="${colors.line}"/><line x1="55" x2="55" y1="35" y2="235" stroke="${colors.line}"/>${pts.map(p=>`<circle cx="${sx(p.x)}" cy="${sy(p.y)}" r="${4+10*Math.sqrt(p.size/maxSize)}" fill="${colors.teal||'#28666e'}" opacity=".72"><title>${p.label} ${pct(p.x)} growth, ${pct(p.y)} margin</title></circle>`).join("")}<text x="55" y="260" font-size="11" fill="${colors.muted}">Revenue variance %</text><text x="10" y="30" font-size="11" fill="${colors.muted}">Margin</text>`,270);
-  table("buTable", ["BU","Revenue","EBITDA","Margin","EBITDA Var"], group(a,"business_unit","external_revenue_usd").map(g=>{ const ar=sumRows(a.filter(r=>r.business_unit===g.name)); const br=sumRows(b.filter(r=>r.business_unit===g.name)); const v=(ar.ebitda_usd||0)-(br.ebitda_usd||0); return [g.name,money(ar.external_revenue_usd),money(ar.ebitda_usd),pct((ar.ebitda_usd||0)/(ar.external_revenue_usd||1)),`<span class="${v>=0?'delta good':'delta bad'}">${money(v)}</span>`]; }));
+  table("buTable", ["BU",`${lens} Revenue`,`${lens} EBITDA`,"Margin",`EBITDA Var vs ${compare}`], group(a,"business_unit","external_revenue_usd").map(g=>{ const ar=sumRows(a.filter(r=>r.business_unit===g.name)); const br=sumRows(b.filter(r=>r.business_unit===g.name)); const v=(ar.ebitda_usd||0)-(br.ebitda_usd||0); return [g.name,money(ar.external_revenue_usd),money(ar.ebitda_usd),pct((ar.ebitda_usd||0)/(ar.external_revenue_usd||1)),`<span class="${v>=0?'delta good':'delta bad'}">${money(v)}</span>`]; }));
 }
 function renderExceptions(){
   const ex=filteredExceptions(), open=ex.filter(x=>x.status!=="Closed"), high=open.filter(x=>x.severity==="High");
   document.getElementById("exceptionKpis").innerHTML=[
-    ["Open Items",open.length,"Items not closed"],["High Severity",high.length,"Requires controller review"],["Open Value",money(open.reduce((s,x)=>s+num(x.amount_usd),0)),"USD exposure"],["IC Mismatch",money(open.filter(x=>x.exception_type==="Intercompany Mismatch").reduce((s,x)=>s+num(x.amount_usd),0)),"Elimination focus"],["Late Close",open.filter(x=>x.exception_type==="Late Entity Close").length,"Entity close delays"],["Closed",ex.filter(x=>x.status==="Closed").length,"Resolved in scope"]
-  ].map(k=>`<div class="card"><div class="label">${k[0]}</div><div class="value">${k[1]}</div><div class="delta">${k[2]}</div></div>`).join("");
+    {label:"Open Items",value:open.length,delta:"Items not closed",good:open.length<20,series:exceptionSeries(),accent:"rose"},
+    {label:"High Severity",value:high.length,delta:"Requires controller review",good:high.length<5,series:DATA.dates.filter(d=>d.date_id<=state.period).map(d=>filteredExceptionsAt(d.date_id).filter(x=>x.status!=="Closed"&&x.severity==="High").length),accent:"rose"},
+    {label:"Open Value",value:money(open.reduce((s,x)=>s+num(x.amount_usd),0)),delta:"USD exposure",good:open.reduce((s,x)=>s+num(x.amount_usd),0)<5000000,series:DATA.dates.filter(d=>d.date_id<=state.period).map(d=>filteredExceptionsAt(d.date_id).filter(x=>x.status!=="Closed").reduce((s,x)=>s+num(x.amount_usd),0)),accent:"amber"},
+    {label:"IC Mismatch",value:money(open.filter(x=>x.exception_type==="Intercompany Mismatch").reduce((s,x)=>s+num(x.amount_usd),0)),delta:"Elimination focus",good:true,series:DATA.dates.filter(d=>d.date_id<=state.period).map(d=>filteredExceptionsAt(d.date_id).filter(x=>x.exception_type==="Intercompany Mismatch"&&x.status!=="Closed").reduce((s,x)=>s+num(x.amount_usd),0)),accent:"blue"},
+    {label:"Late Close",value:open.filter(x=>x.exception_type==="Late Entity Close").length,delta:"Entity close delays",good:open.filter(x=>x.exception_type==="Late Entity Close").length<4,series:DATA.dates.filter(d=>d.date_id<=state.period).map(d=>filteredExceptionsAt(d.date_id).filter(x=>x.exception_type==="Late Entity Close"&&x.status!=="Closed").length),accent:"olive"},
+    {label:"Closed",value:ex.filter(x=>x.status==="Closed").length,delta:"Resolved in scope",good:true,series:DATA.dates.filter(d=>d.date_id<=state.period).map(d=>filteredExceptionsAt(d.date_id).filter(x=>x.status==="Closed").length),accent:"teal"}
+  ].map(kpiCard).join("");
   document.getElementById("exceptionBars").innerHTML=barChart(group(open,"exception_type","amount_usd"),{left:180,h:270,color:colors.rose});
   document.getElementById("ownerBars").innerHTML=barChart(group(open,"owner_team","amount_usd"),{left:180,h:270,color:colors.amber});
-  table("exceptionTable", ["ID","Period","Country","Type","Owner","Severity","Status","Value","Due","Commentary"], open.sort((a,b)=>b.amount_usd-a.amount_usd).map(x=>[x.exception_id,x.date_id,x.country,x.exception_type,x.owner_team,`<span class="sev-${x.severity}">${x.severity}</span>`,x.status,money(x.amount_usd),x.due_date,x.commentary]));
+  table("exceptionTable", ["ID","Period","Country","BU","Type","Owner","Severity","Status","Value","Due","Commentary"], open.sort((a,b)=>b.amount_usd-a.amount_usd).map(x=>[x.exception_id,x.date_id,x.country,x.business_unit,x.exception_type,x.owner_team,`<span class="sev-${x.severity}">${x.severity}</span>`,x.status,money(x.amount_usd),x.due_date,x.commentary]));
 }
 function renderStory(){
-  const actual = currentRows("Actual"), budget = currentRows("Budget"), forecast = currentRows("Forecast");
+  const lens = selectedScenario(), compare = comparisonScenario();
+  const actual = currentRows(lens), budget = currentRows(compare), forecast = currentRows("Forecast");
   const a = sumRows(actual), b = sumRows(budget), f = sumRows(forecast);
-  const bridgeRows = DATA.bridge.filter(r=>r.date_id===state.period && (state.region==="All"||r.region===state.region) && (state.entity==="All"||r.entity_id===state.entity) && (state.bu==="All"||r.business_unit===state.bu));
+  const actualBridge = sumRows(currentRows("Actual")), budgetBridge = sumRows(currentRows("Budget"));
+  const bridgeRows = DATA.bridge.filter(r=>r.date_id===state.period && (state.region==="All"||r.region===state.region) && countryMatch(r) && (state.entity==="All"||r.entity_id===state.entity) && buMatch(r));
   const bridgeItems = [
-    {name:"Budget", value:b.ebitda_usd||0, anchor:true},
+    {name:"Budget", value:budgetBridge.ebitda_usd||0, anchor:true},
     ...group(bridgeRows, "driver", "amount_usd").sort((x,y)=>DATA.bridge.find(r=>r.driver===x.name).driver_sort-DATA.bridge.find(r=>r.driver===y.name).driver_sort),
-    {name:"Actual", value:a.ebitda_usd||0, anchor:true}
+    {name:"Actual", value:actualBridge.ebitda_usd||0, anchor:true}
   ];
   document.getElementById("storyBridge").innerHTML = waterfall(bridgeItems);
   const revVar = (a.external_revenue_usd||0)-(b.external_revenue_usd||0);
   const ebitdaVar = (a.ebitda_usd||0)-(b.ebitda_usd||0);
   const open = filteredExceptions().filter(x=>x.status!=="Closed");
-  const verdict = ebitdaVar >= 0 ? "Regional EBITDA is ahead of plan; protect yield and close high-value intercompany items." : "Regional EBITDA is below plan; prioritize country variance recovery and close high-severity items.";
-  document.getElementById("verdictPanel").innerHTML = `<div class="story-callout"><b>${ebitdaVar>=0?"On Track":"Action Required"}</b><br>${verdict}</div><div class="story-callout"><b>Revenue</b><br>${money(a.external_revenue_usd||0)} actual, ${money(revVar)} vs budget.</div><div class="story-callout"><b>Close Risk</b><br>${open.length} unresolved items with ${money(open.reduce((s,x)=>s+num(x.amount_usd),0))} exposure.</div>`;
+  const verdict = ebitdaVar >= 0 ? `${lens} EBITDA is ahead of ${compare}; protect yield and close high-value intercompany items.` : `${lens} EBITDA is below ${compare}; prioritize country variance recovery and close high-severity items.`;
+  document.getElementById("verdictPanel").innerHTML = `<div class="story-callout"><b>${ebitdaVar>=0?"On Track":"Action Required"}</b><br>${verdict}</div><div class="story-callout"><b>Revenue</b><br>${money(a.external_revenue_usd||0)} ${lens.toLowerCase()}, ${money(revVar)} vs ${compare.toLowerCase()}.</div><div class="story-callout"><b>Close Risk</b><br>${open.length} unresolved items with ${money(open.reduce((s,x)=>s+num(x.amount_usd),0))} exposure.</div>`;
   const bulletRows = [
     ["Revenue", a.external_revenue_usd||0, b.external_revenue_usd||1],
     ["EBITDA", a.ebitda_usd||0, b.ebitda_usd||1],
@@ -974,10 +1214,10 @@ function renderStory(){
     const ar=sumRows(actual.filter(r=>r.country===g.name)); const br=sumRows(budget.filter(r=>r.country===g.name)); const ev=(ar.ebitda_usd||0)-(br.ebitda_usd||0);
     return [g.name, money(ar.external_revenue_usd), money(ar.ebitda_usd), pct((ar.ebitda_usd||0)/(ar.external_revenue_usd||1)), `<span class="${ev>=0?'delta good':'delta bad'}">${money(ev)}</span>`];
   });
-  table("boardTable", ["Country","Revenue","EBITDA","Margin","Var vs Budget"], boardRows);
+  table("boardTable", ["Country",`${lens} Revenue`,`${lens} EBITDA`,"Margin",`Var vs ${compare}`], boardRows);
 }
 function render(){
-  document.getElementById("freshness").textContent=`Synthetic portfolio data | Seed ${DATA.metadata.seed} | Latest complete ${state.period}`;
+  document.getElementById("freshness").textContent=`Synthetic portfolio data | Seed ${DATA.metadata.seed} | ${state.period} | ${selectedScenario()} lens`;
   renderOverview(); renderPnl(); renderFxIc(); renderBu(); renderExceptions(); renderStory();
   document.getElementById("sources").innerHTML=`Design references: ${DATA.sources.map(s=>`<a href="${s.url}">${s.name}</a>`).join(" | ")}`;
   window.__dashboardQa = {
@@ -986,7 +1226,11 @@ function render(){
     tables: document.querySelectorAll("table").length,
     svgs: document.querySelectorAll("svg").length,
     activePage: state.page,
-    period: state.period
+    period: state.period,
+    region: state.region,
+    country: state.country,
+    businessUnit: state.bu,
+    scenario: state.scenario
   };
 }
 renderFilters();
@@ -1013,6 +1257,7 @@ def build_docs(data: dict, validation: dict, env: dict) -> None:
         ("DimBusinessUnit[business_unit_id]", "FactFinancials[business_unit_id]", "1:*", "single"),
         ("DimBusinessUnit[business_unit_id]", "FactFinancialSummary[business_unit_id]", "1:*", "single"),
         ("DimBusinessUnit[business_unit_id]", "FactVarianceDriverBridge[business_unit_id]", "1:*", "single"),
+        ("DimBusinessUnit[business_unit_id]", "FactCloseExceptions[business_unit_id]", "1:*", "single"),
         ("DimScenario[scenario_id]", "FactFinancials[scenario_id]", "1:*", "single"),
         ("DimScenario[scenario_id]", "FactFinancialSummary[scenario_id]", "1:*", "single"),
         ("DimAccount[account_id]", "FactFinancials[account_id]", "1:*", "single"),
@@ -1028,13 +1273,13 @@ def build_docs(data: dict, validation: dict, env: dict) -> None:
     table_meta = {
         "DimDate": "One row per month. Key: `date_id`. Fields: calendar date, year, quarter, month label, latest-complete flag, and month index.",
         "DimEntity": "One row per legal entity / country. Key: `entity_id`. Fields: entity name, country, region, functional currency, ownership percentage.",
-        "DimBusinessUnit": "One row per business unit. Key: `business_unit_id`. Used to slice financials and variance drivers.",
+        "DimBusinessUnit": "One row per business unit. Key: `business_unit_id`. Used to slice financials, variance drivers, and close exceptions.",
         "DimAccount": "P&L account hierarchy. Key: `account_id`. Fields: account, group, sort order, and statement classification.",
         "DimScenario": "Planning scenario dimension. Key: `scenario_id`. Values: Actual, Budget, Forecast, and Prior Year.",
         "FactFinancials": "Monthly entity-BU-scenario-account grain. Amounts are stored in local currency and USD; account sign convention is normalized for reporting.",
         "FactFinancialSummary": "Monthly entity-BU-scenario KPI-ready grain. Stores revenue, intercompany, gross profit, OPEX, EBITDA, income, cash, operating cash flow, and working capital in USD.",
         "FactVarianceDriverBridge": "Monthly entity-BU variance-driver grain. `amount_usd` ties to Actual EBITDA minus Budget EBITDA by month/entity/BU within $1 tolerance.",
-        "FactCloseExceptions": "Close exception register by issue. Tracks owner team, severity, status, amount at risk, due date, and management commentary.",
+        "FactCloseExceptions": "Close exception register by issue at month x entity x business unit grain. Tracks owner team, severity, status, amount at risk, due date, and management commentary.",
         "FactFXRate": "Monthly currency-to-USD rates by rate type. Join to `DimDate`; use currency as a lookup attribute when extending the model.",
     }
     write_text("data/data_dictionary.md", "\n".join([f"## {k}\n\n{v}\n" for k, v in table_meta.items()]))
@@ -1049,7 +1294,9 @@ This portfolio model uses a star schema around monthly FP&A summary and detailed
 - Local currency: retained on account facts using generated FX rates.
 - Scenario logic: Actual, Budget, Forecast, and Prior Year are modeled as scenario rows, not separate columns.
 - Bridge logic: `FactVarianceDriverBridge` sums exactly to Actual EBITDA minus Budget EBITDA at month/entity/BU grain.
+- Close-risk logic: `FactCloseExceptions` carries `business_unit_id` so the BU slicer can filter close-risk KPIs, action lists, and funnel views.
 - KPI safety: margin and variance rates use `DIVIDE` in DAX definitions; rates are not additive.
+- Currency format safety: currency measure format strings intentionally avoid literal million suffixes; visuals can set display units without producing `MM` labels.
 - Data status: synthetic portfolio/demo data with fixed seed `{SEED}`.
 """)
 
@@ -1070,11 +1317,16 @@ This portfolio model uses a star schema around monthly FP&A summary and detailed
         {"page": "Controls & Storyboard", "visual": "Board Pack Extract", "type": "table", "fields": ["country", "revenue", "ebitda", "variance"]},
     ]
     slicer_map = [
-        {"page": "Executive Summary", "slicer": "Period", "field": "DimDate[month_label]", "default": "May 2026", "placement": "top_filter_bar", "x": 188, "y": 84, "width": 148, "height": 42},
-        {"page": "Executive Summary", "slicer": "Region", "field": "DimEntity[region]", "default": "All", "placement": "top_filter_bar", "x": 348, "y": 84, "width": 148, "height": 42},
-        {"page": "Executive Summary", "slicer": "BU", "field": "DimBusinessUnit[business_unit]", "default": "All", "placement": "top_filter_bar", "x": 508, "y": 84, "width": 166, "height": 42},
+        {"page": "Executive Summary", "slicer": "Period", "field": "DimDate[month_label]", "default": "May 2026", "placement": "top_filter_bar", "x": 188, "y": 84, "width": 132, "height": 42},
+        {"page": "Executive Summary", "slicer": "Region", "field": "DimEntity[region]", "default": "All", "placement": "top_filter_bar", "x": 328, "y": 84, "width": 132, "height": 42},
+        {"page": "Executive Summary", "slicer": "Country", "field": "DimEntity[country]", "default": "All", "placement": "top_filter_bar", "x": 468, "y": 84, "width": 132, "height": 42},
+        {"page": "Executive Summary", "slicer": "BU", "field": "DimBusinessUnit[business_unit]", "default": "All", "placement": "top_filter_bar", "x": 608, "y": 84, "width": 148, "height": 42},
+        {"page": "Executive Summary", "slicer": "Scenario", "field": "DimScenario[scenario]", "default": "Actual", "placement": "top_filter_bar", "x": 764, "y": 84, "width": 132, "height": 42},
         {"page": "P&L Variance", "slicer": "Country", "field": "DimEntity[country]", "default": "All", "placement": "top_filter_bar", "x": 188, "y": 84, "width": 180, "height": 42},
-        {"page": "P&L Variance", "slicer": "Scenario", "field": "DimScenario[scenario]", "default": "All", "placement": "top_filter_bar", "x": 380, "y": 84, "width": 180, "height": 42},
+        {"page": "P&L Variance", "slicer": "Scenario", "field": "DimScenario[scenario]", "default": "Actual", "placement": "top_filter_bar", "x": 380, "y": 84, "width": 180, "height": 42},
+        {"page": "Controls & Storyboard", "slicer": "Country", "field": "DimEntity[country]", "default": "All", "placement": "top_filter_bar", "x": 188, "y": 84, "width": 154, "height": 42},
+        {"page": "Controls & Storyboard", "slicer": "BU", "field": "DimBusinessUnit[business_unit]", "default": "All", "placement": "top_filter_bar", "x": 354, "y": 84, "width": 154, "height": 42},
+        {"page": "Controls & Storyboard", "slicer": "Scenario", "field": "DimScenario[scenario]", "default": "Actual", "placement": "top_filter_bar", "x": 520, "y": 84, "width": 154, "height": 42},
         {"page": "Controls & Storyboard", "slicer": "Currency", "field": "FactFXRate[currency]", "default": "All", "placement": "top_filter_bar", "x": 188, "y": 84, "width": 154, "height": 42},
         {"page": "Controls & Storyboard", "slicer": "Severity", "field": "FactCloseExceptions[severity]", "default": "All", "placement": "top_filter_bar", "x": 354, "y": 84, "width": 154, "height": 42},
         {"page": "Controls & Storyboard", "slicer": "Status", "field": "FactCloseExceptions[status]", "default": "All", "placement": "top_filter_bar", "x": 520, "y": 84, "width": 154, "height": 42},
@@ -1098,7 +1350,7 @@ This portfolio model uses a star schema around monthly FP&A summary and detailed
         "visual_count": len(visual_map),
         "native_visual_container_count": 64,
         "filters": slicer_map,
-        "layout_upgrade": "2026-06-23 top filter bar; slicers moved above KPI strip on all native PBIX pages.",
+        "layout_upgrade": "2026-06-27 top filter bar includes Period, Region, Country, BU, Scenario, and Entity lens controls.",
     })
 
     write_text("docs/design_research.md", """
@@ -1226,6 +1478,7 @@ Chosen deliverable: portable HTML dashboard plus Power BI-ready data/model/DAX/r
         ]),
         ("FactCloseExceptions", "data/prepared/fact_close_exceptions.csv", [
             ("exception_id", "type text"), ("date_id", "type text"), ("entity_id", "type text"), ("country", "type text"), ("region", "type text"),
+            ("business_unit_id", "type text"), ("business_unit", "type text"),
             ("exception_type", "type text"), ("owner_team", "type text"), ("severity", "type text"), ("status", "type text"),
             ("amount_usd", "type number"), ("due_date", "type date"), ("commentary", "type text"), ("is_synthetic", "type logical"),
         ]),
@@ -1326,7 +1579,7 @@ Do not reuse another PBIX template as final unless all model bindings, visual fi
         "reason": "Final native PBIX was created and validated.",
     })
     write_text("qa/visual_qa_notes.md", "HTML visual QA is performed by the Playwright smoke test after generation. Run `python tools/validate_dashboard.py` after every rebuild. PBIX native visual QA passes after `powerbi/apply_native_layout_to_pbix.ps1` plus Desktop per-tab render scan.")
-    write_text("qa/interaction_qa_notes.md", "HTML filters cover period, region, entity, and business unit. They update cards, charts, and tables.")
+    write_text("qa/interaction_qa_notes.md", "HTML filters cover period, region, country, entity, business unit, and scenario. They update KPI cards, charts, current-lens tables, and close-risk outputs.")
     write_text("qa/performance_qa_notes.md", "Static HTML embeds compact summary/bridge/exception data and avoids external runtime dependencies.")
     write_text("qa/regression_qa_notes.md", "Generator is deterministic with seed 13042. Rebuild should preserve row counts and bridge tie-out.")
 
@@ -1379,7 +1632,7 @@ Suggested operating controls:
 - Latest complete period: `{LATEST_PERIOD}`.
 - Pages: {", ".join([p["page"] for p in page_map])}.
 - QA: data QA pass; bridge tie-out pass; HTML QA pending until `python tools/validate_dashboard.py`; PBIX QA pass after native package validation and Desktop per-tab render scan.
-- Rebuild command: `python tools/build_project13.py`; `python tools/build_native_pbix_assets.py`; run `powerbi\prepare_seed_pbix.ps1`, open/save seed after TOM push, then run `powerbi\apply_native_layout_to_pbix.ps1`.
+- Rebuild command: `python tools/build_project13.py`; `python tools/build_native_pbix_assets.py`; run `powerbi\\prepare_seed_pbix.ps1`, open/save seed after TOM push, then run `powerbi\\apply_native_layout_to_pbix.ps1`.
 """)
     write_text("README.md", f"""
 # Project 13 - Regional FP&A Consolidation

@@ -1,3 +1,1 @@
-HTML visual QA passed at 2026-06-14T19:42:21.318Z. Desktop and mobile screenshots were captured under `output/screenshots/`; all 3 dashboard tabs rendered with no console errors, overflow, NaN, or undefined text. PBIX native visual QA passed for `output/dashboard_final.pbix`.
-
-2026-06-23 top-slicer upgrade QA: final PBIX package validation passed, pbi-tools extract passed, direct `Report/Layout` coordinate check found 8 slicers at y=84 with no non-shape overlaps, and `output/screenshots/powerbi_desktop_top_slicer_final_20260623.png` confirms the top filter bar renders above the KPI strip in Power BI Desktop.
+HTML visual QA passed at 2026-06-27T13:55:10.249Z. Desktop and mobile screenshots were captured under `output/screenshots/`; all 3 dashboard tabs rendered with no console errors, overflow, NaN, or undefined text. PBIX native visual QA passed for `output/dashboard_final.pbix`.
