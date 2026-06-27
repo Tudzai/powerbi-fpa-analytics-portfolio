@@ -161,13 +161,6 @@
                   "Value": "45.0D"
                 }
               }
-            },
-            "distance": {
-              "expr": {
-                "Literal": {
-                  "Value": "1.5D"
-                }
-              }
             }
           }
         }

@@ -1,0 +1,82 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "DimDate",
+              "Type": 0
+            },
+            {
+              "Name": "k",
+              "Entity": "KPI Measures",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "d"
+                  }
+                },
+                "Property": "date"
+              },
+              "Name": "DimDate.date",
+              "NativeReferenceName": "Month"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "k"
+                  }
+                },
+                "Property": "Actual Revenue"
+              },
+              "Name": "KPI Measures.Actual Revenue",
+              "NativeReferenceName": "Revenue"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "k"
+                  }
+                },
+                "Property": "Actual EBITDA"
+              },
+              "Name": "KPI Measures.Actual EBITDA",
+              "NativeReferenceName": "EBITDA"
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 4,
+            "Primary": {
+              "Sample": {}
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

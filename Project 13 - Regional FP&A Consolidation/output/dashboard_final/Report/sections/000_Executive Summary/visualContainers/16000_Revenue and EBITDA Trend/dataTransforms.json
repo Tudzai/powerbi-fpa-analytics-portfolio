@@ -1,0 +1,371 @@
+{
+  "objects": {
+    "valueAxis": [
+      {
+        "properties": {
+          "showAxisTitle": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "gridlineShow": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "labelDisplayUnits": {
+            "expr": {
+              "Literal": {
+                "Value": "1000000D"
+              }
+            }
+          },
+          "gridlineColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#E6ECF2'"
+                  }
+                }
+              }
+            }
+          },
+          "labelColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#526173'"
+                  }
+                }
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.2D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "categoryAxis": [
+      {
+        "properties": {
+          "showAxisTitle": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "gridlineShow": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "concatenateLabels": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "labelColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#526173'"
+                  }
+                }
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.2D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "legend": [
+      {
+        "properties": {
+          "showTitle": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "position": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          },
+          "labelColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#526173'"
+                  }
+                }
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.2D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "labels": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.0D"
+              }
+            }
+          },
+          "labelDisplayUnits": {
+            "expr": {
+              "Literal": {
+                "Value": "1000000D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "dataPoint": [
+      {
+        "properties": {
+          "fill": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#2B6F75'"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "KPI Measures.Actual Revenue"
+        }
+      },
+      {
+        "properties": {
+          "fill": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#2F5F9E'"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "KPI Measures.Actual EBITDA"
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Category": [
+      0
+    ],
+    "Y": [
+      1
+    ],
+    "Y2": [
+      2
+    ]
+  },
+  "projectionActiveItems": {
+    "Category": [
+      {
+        "queryRef": "DimDate.date",
+        "suppressConcat": false
+      }
+    ],
+    "Y": [
+      {
+        "queryRef": "KPI Measures.Actual Revenue",
+        "suppressConcat": false
+      }
+    ],
+    "Y2": [
+      {
+        "queryRef": "KPI Measures.Actual EBITDA",
+        "suppressConcat": false
+      }
+    ]
+  },
+  "splits": [
+    {
+      "selects": {
+        "0": true,
+        "1": true
+      }
+    },
+    {
+      "selects": {
+        "0": true,
+        "2": true
+      }
+    }
+  ],
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "date",
+        "Name": "DimDate.date",
+        "Type": 4
+      },
+      {
+        "Restatement": "Actual Revenue",
+        "Name": "KPI Measures.Actual Revenue",
+        "Type": 1,
+        "Format": "$#,0;($#,0);$0"
+      },
+      {
+        "Restatement": "Actual EBITDA",
+        "Name": "KPI Measures.Actual EBITDA",
+        "Type": 1,
+        "Format": "$#,0;($#,0);$0"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Category",
+          "Projection": 0,
+          "isActive": true
+        },
+        {
+          "Name": "Y",
+          "Projection": 1,
+          "isActive": true
+        }
+      ]
+    },
+    {
+      "DataRoles": [
+        {
+          "Name": "Category",
+          "Projection": 0,
+          "isActive": true
+        },
+        {
+          "Name": "Y2",
+          "Projection": 2,
+          "isActive": true
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "date",
+      "queryName": "DimDate.date",
+      "roles": {
+        "Category": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 519
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "DimDate"
+            }
+          },
+          "Property": "date"
+        }
+      }
+    },
+    {
+      "displayName": "Actual Revenue",
+      "format": "$#,0;($#,0);$0",
+      "queryName": "KPI Measures.Actual Revenue",
+      "roles": {
+        "Y": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Actual Revenue"
+        }
+      }
+    },
+    {
+      "displayName": "Actual EBITDA",
+      "format": "$#,0;($#,0);$0",
+      "queryName": "KPI Measures.Actual EBITDA",
+      "roles": {
+        "Y2": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Actual EBITDA"
+        }
+      }
+    }
+  ]
+}

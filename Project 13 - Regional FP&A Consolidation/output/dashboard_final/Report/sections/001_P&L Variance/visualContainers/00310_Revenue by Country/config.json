@@ -119,17 +119,6 @@
                 }
               }
             },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#526173'"
-                    }
-                  }
-                }
-              }
-            },
             "fontSize": {
               "expr": {
                 "Literal": {
@@ -175,17 +164,6 @@
                 }
               }
             },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#526173'"
-                    }
-                  }
-                }
-              }
-            },
             "fontSize": {
               "expr": {
                 "Literal": {
@@ -210,17 +188,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'Top'"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#526173'"
-                    }
-                  }
                 }
               }
             },
@@ -266,28 +233,6 @@
               "expr": {
                 "Literal": {
                   "Value": "1000000D"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#0F172A'"
-                    }
-                  }
-                }
-              }
-            },
-            "labelColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#0F172A'"
-                    }
-                  }
                 }
               }
             }
@@ -417,13 +362,6 @@
               "expr": {
                 "Literal": {
                   "Value": "45.0D"
-                }
-              }
-            },
-            "distance": {
-              "expr": {
-                "Literal": {
-                  "Value": "1.5D"
                 }
               }
             }

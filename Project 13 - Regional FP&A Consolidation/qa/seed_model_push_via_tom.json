@@ -1,9 +1,9 @@
-{
-    "timestamp":  "2026-06-27 20:29:29 +07:00",
+﻿{
+    "timestamp":  "2026-06-27 21:21:15 +07:00",
     "status":  "project13_model_pushed_via_tom",
     "target_pbix":  "<PROJECT_ROOT>\\output\\dashboard_final.pbix",
-    "power_bi_port":  65104,
-    "process_id":  32676,
+    "power_bi_port":  61401,
+    "process_id":  5952,
     "tables":  [
                    "DimDate",
                    "DimEntity",

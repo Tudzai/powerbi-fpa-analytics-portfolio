@@ -119,17 +119,6 @@
                 }
               }
             },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#526173'"
-                    }
-                  }
-                }
-              }
-            },
             "fontSize": {
               "expr": {
                 "Literal": {
@@ -150,32 +139,7 @@
                 }
               }
             },
-            "gridlineShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "concatenateLabels": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
             "labelColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#526173'"
-                    }
-                  }
-                }
-              }
-            },
-            "color": {
               "solid": {
                 "color": {
                   "expr": {
@@ -210,17 +174,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'Top'"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#526173'"
-                    }
-                  }
                 }
               }
             },
@@ -268,49 +221,7 @@
                   "Value": "1000000D"
                 }
               }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#0F172A'"
-                    }
-                  }
-                }
-              }
-            },
-            "labelColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#0F172A'"
-                    }
-                  }
-                }
-              }
             }
-          }
-        }
-      ],
-      "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#2B6F75'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "KPI Measures.Latest Bridge Amount"
           }
         }
       ],
@@ -456,13 +367,6 @@
               "expr": {
                 "Literal": {
                   "Value": "45.0D"
-                }
-              }
-            },
-            "distance": {
-              "expr": {
-                "Literal": {
-                  "Value": "1.5D"
                 }
               }
             }

@@ -1,0 +1,77 @@
+{
+  "verification_name": "kpi_svg_overlap_fix",
+  "verified_at": "2026-06-27 21:24:00 +07:00",
+  "primary_artifact": "output/dashboard_final.pbix",
+  "scope": [
+    "Executive Summary KPI SVG cards",
+    "P&L Variance KPI SVG cards",
+    "Controls & Storyboard KPI SVG cards"
+  ],
+  "issue_fixed": {
+    "name": "SVG internal layout overlap / sparkline panel collision",
+    "symptoms": [
+      "Sparkline panel visually overlapped footer chips",
+      "Sparkline sat too close to the main KPI value",
+      "Footer chips PY, variance %, and status were hard to read"
+    ]
+  },
+  "changes": {
+    "source_generator": "tools/build_native_pbix_assets.py",
+    "model_source": "model/model.bim",
+    "extracted_pbix_model": "output/dashboard_final/Model/tables/KPI Measures.tmdl",
+    "layout_rules": {
+      "card_size": "296 x 135",
+      "spark_panel": {
+        "x": 178,
+        "y": 38,
+        "width": 106,
+        "height": 52,
+        "max_bottom_y": 90
+      },
+      "footer_row": {
+        "y": 104,
+        "height": 24,
+        "py_chip": "x=14 width=92",
+        "variance_chip": "x=112 width=76",
+        "status_chip": "x=196 width=86"
+      },
+      "sparkline": {
+        "stroke_width": 3.6,
+        "area_fill_opacity": 0.17,
+        "clip_path": "sparkClip x=178 y=38 width=106 height=52"
+      }
+    }
+  },
+  "checks": {
+    "python_compile": "pass: python -m py_compile tools/build_native_pbix_assets.py",
+    "native_assets_rebuilt": "pass: python tools/build_native_pbix_assets.py regenerated model/model.bim and build/native_report_layout_project13.json",
+    "desktop_model_push": "pass: powerbi/push_model_bim_to_desktop.ps1 pushed 92 measures into the open output/dashboard_final.pbix session",
+    "power_bi_desktop_save": "pass: Power BI Desktop title bar showed Last saved after Ctrl+S on dashboard_final",
+    "package_validation": "pass: Microsoft.PowerBI.Packaging.PowerBIPackager.Validate(output/dashboard_final.pbix)",
+    "pbi_tools_extract": "pass: pbi-tools extract output/dashboard_final.pbix refreshed output/dashboard_final/",
+    "old_overlap_geometry_removed": {
+      "spark_panel_170_43_106_64": 0,
+      "footer_y_110": 0,
+      "area_fill_opacity_0_26": 0,
+      "stroke_width_4_0": 0
+    },
+    "new_geometry_present": {
+      "spark_panel_178_38_106_52_hits": 38,
+      "footer_14_104_92_24_hits": 25,
+      "stroke_width_3_6_hits": 38,
+      "area_fill_opacity_0_17_hits": 25
+    },
+    "pbix_desktop_visual_check": {
+      "status": "pass_observed",
+      "notes": "Power BI Desktop canvas showed KPI cards with the sparkline panel above the footer row; PY, variance, and status chips remained readable with no visible scrollbar or measure-name header. A clean snapshot was checked after closing the slicer dropdown."
+    }
+  },
+  "pass_criteria": {
+    "sparkline_does_not_overlap_footer": true,
+    "footer_chips_readable": true,
+    "value_not_cropped": true,
+    "no_scrollbar_or_header_leakage": true,
+    "kpi_card_height_135_preserved": true,
+    "palette_preserved": true
+  }
+}

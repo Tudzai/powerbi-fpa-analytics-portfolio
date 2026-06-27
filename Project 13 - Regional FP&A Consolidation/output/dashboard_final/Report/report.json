@@ -1,5 +1,4 @@
 {
-  "activeSectionIndex": 0,
   "id": 0,
   "layoutOptimization": 0,
   "publicCustomVisuals": [
@@ -52,17 +51,5 @@
       }
     }
   ],
-  "theme": {
-    "themeJson": {
-      "dataColors": [
-        "#2B6F75",
-        "#2F5F9E",
-        "#6F8552",
-        "#A8894B",
-        "#B85A72",
-        "#1E1E1E"
-      ],
-      "name": "Regional FP&A Finance Seed"
-    }
-  }
+  "theme": "Custom5215988708742156.json"
 }

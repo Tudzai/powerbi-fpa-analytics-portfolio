@@ -1,0 +1,57 @@
+{
+  "name": "34f73925d972bd11f164",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 38,
+        "y": 96,
+        "z": 7000,
+        "width": 112,
+        "height": 38,
+        "tabOrder": 7000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "FILTER LENS",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "8.0pt",
+                      "color": "#D0B16A"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -16,35 +16,7 @@
   "singleVisual": {
     "visualType": "basicShape",
     "drillFilterOtherVisuals": true,
-    "vcObjects": {
-      "visualHeader": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "objects": {
-      "shape": [
-        {
-          "properties": {
-            "tileShape": {
-              "expr": {
-                "Literal": {
-                  "Value": "'rectangle'"
-                }
-              }
-            }
-          }
-        }
-      ],
       "fill": [
         {
           "properties": {
@@ -75,8 +47,10 @@
             }
           }
         }
-      ],
-      "outline": [
+      ]
+    },
+    "vcObjects": {
+      "visualHeader": [
         {
           "properties": {
             "show": {

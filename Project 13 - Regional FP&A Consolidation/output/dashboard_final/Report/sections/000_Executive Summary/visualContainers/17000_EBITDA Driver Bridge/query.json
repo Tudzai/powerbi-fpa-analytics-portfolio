@@ -1,0 +1,69 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "FactVarianceDriverBridge",
+              "Type": 0
+            },
+            {
+              "Name": "k",
+              "Entity": "KPI Measures",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "f"
+                  }
+                },
+                "Property": "driver"
+              },
+              "Name": "FactVarianceDriverBridge.driver",
+              "NativeReferenceName": "Driver"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "k"
+                  }
+                },
+                "Property": "Latest Bridge Amount"
+              },
+              "Name": "KPI Measures.Latest Bridge Amount",
+              "NativeReferenceName": "Amount"
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1
+                ]
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 3,
+            "Primary": {
+              "Top": {}
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

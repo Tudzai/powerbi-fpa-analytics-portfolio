@@ -1,0 +1,57 @@
+{
+  "name": "719bf8cbc3d80e79e567",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 852,
+        "y": 540,
+        "z": 22000,
+        "width": 388,
+        "height": 24,
+        "tabOrder": 22000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "MANAGEMENT ATTENTION LIST",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "8.4pt",
+                      "color": "#2B6F75"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

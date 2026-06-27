@@ -1,0 +1,68 @@
+{
+  "name": "5fec5bce15dc9ca43940",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 836,
+        "y": 528,
+        "z": 20000,
+        "width": 420,
+        "height": 158,
+        "tabOrder": 20000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "basicShape",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "fill": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E1E1E'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

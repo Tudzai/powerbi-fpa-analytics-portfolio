@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import copy
 import csv
@@ -246,63 +246,63 @@ VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
 VAR FirstY =
     IF (
         MaxValue = MinValue,
-        70,
-        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+        64,
+        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
     )
 VAR LastY =
     IF (
         MaxValue = MinValue,
-        70,
-        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+        64,
+        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
     )
 VAR LinePoints =
     CONCATENATEX (
         CleanTable,
         VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
         VAR YRatio =
             IF (
                 MaxValue = MinValue,
                 0.5,
                 DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
             )
-        VAR YValue = 96 - YRatio * 52
+        VAR YValue = 90 - YRatio * 52
         RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
         " ",
         DimDate[date],
         ASC
     )
-VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 VAR ValueText = {_svg_text_expr(value_text)}
 VAR PyText = {_svg_text_expr(py_text)}
 VAR DeltaText = {_svg_text_expr(delta_text)}
 VAR Sparkline =
     IF (
         RowCount >= 2,
-        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='{dark_panel_2}' stroke='{muted}' stroke-width='1.45'/>"
-            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-        "<line x1='172' y1='70' x2='274' y2='70' stroke='{dark_rule}' stroke-width='4.0' stroke-linecap='round'/>"
+        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='{dark_panel_2}' stroke='{muted}' stroke-width='1.35'/>"
+            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+        "<line x1='178' y1='64' x2='274' y2='64' stroke='{dark_rule}' stroke-width='3.6' stroke-linecap='round'/>"
     )
 VAR SVG =
     "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
     & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='{dark_panel}' stroke='{dark_border}' stroke-width='1.05'/>"
     & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='{accent_enc}'/>"
     & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='{accent_enc}' fill-opacity='0.22' stroke='{accent_enc}' stroke-width='1.15'/>"
     & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='{label_font}' fill='{text}' letter-spacing='0'>{label}</text>"
     & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='{accent_enc}' letter-spacing='0'>" & ValueText & "</text>"
-    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='{dark_panel_2}' stroke='{dark_border}' stroke-width='1.0'/>"
-    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='{accent_enc}' fill-opacity='0.13'/>"
-    & "<line x1='170' y1='73' x2='276' y2='73' stroke='{dark_rule}' stroke-width='1.4' stroke-dasharray='4 5'/>"
+    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='{dark_panel_2}' stroke='{dark_border}' stroke-width='1.0'/>"
+    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='{accent_enc}' fill-opacity='0.13'/>"
+    & "<line x1='178' y1='64' x2='284' y2='64' stroke='{dark_rule}' stroke-width='1.4' stroke-dasharray='4 5'/>"
     & Sparkline
-    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='{footer_fill}' stroke='{dark_border}' stroke-width='0.75'/>"
-    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='{muted}'>PY " & PyText & "</text>"
-    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='{footer_fill}' stroke='{dark_border}' stroke-width='0.75'/>"
+    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='{muted}'>PY " & PyText & "</text>"
+    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
     & "</svg>"
 RETURN
     "data:image/svg+xml;utf8," & SVG
@@ -1683,8 +1683,7 @@ New-Item -ItemType Directory -Force -Path $QaRoot | Out-Null
 
 function Get-PowerBiSessionForPbix([string]$Path) {
   $resolved = [IO.Path]::GetFullPath($Path)
-  $pbiTools = (Get-Command pbi-tools -ErrorAction Stop).Source
-  $infoText = & $pbiTools info 2>&1 | Out-String
+  $infoText = & "pbi-tools" info 2>&1 | Out-String
   $jsonStart = $infoText.IndexOf("{")
   if ($jsonStart -lt 0) { throw "pbi-tools info did not return JSON." }
   $info = $infoText.Substring($jsonStart) | ConvertFrom-Json

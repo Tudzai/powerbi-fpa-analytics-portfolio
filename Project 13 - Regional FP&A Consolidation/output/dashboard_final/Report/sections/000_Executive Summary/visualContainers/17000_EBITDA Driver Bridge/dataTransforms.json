@@ -1,0 +1,293 @@
+{
+  "objects": {
+    "valueAxis": [
+      {
+        "properties": {
+          "showAxisTitle": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "gridlineShow": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "labelDisplayUnits": {
+            "expr": {
+              "Literal": {
+                "Value": "1000000D"
+              }
+            }
+          },
+          "gridlineColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#E6ECF2'"
+                  }
+                }
+              }
+            }
+          },
+          "labelColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#526173'"
+                  }
+                }
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.2D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "categoryAxis": [
+      {
+        "properties": {
+          "showAxisTitle": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "labelColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#526173'"
+                  }
+                }
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.2D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "legend": [
+      {
+        "properties": {
+          "showTitle": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "position": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          },
+          "labelColor": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#526173'"
+                  }
+                }
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.2D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "labels": [
+      {
+        "properties": {
+          "show": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          },
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "7.0D"
+              }
+            }
+          },
+          "labelDisplayUnits": {
+            "expr": {
+              "Literal": {
+                "Value": "1000000D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "sentimentColors": [
+      {
+        "properties": {
+          "increaseFill": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#2B6F75'"
+                  }
+                }
+              }
+            }
+          },
+          "decreaseFill": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#B85A72'"
+                  }
+                }
+              }
+            }
+          },
+          "totalFill": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#1E1E1E'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Category": [
+      0
+    ],
+    "Y": [
+      1
+    ]
+  },
+  "projectionActiveItems": {
+    "Category": [
+      {
+        "queryRef": "FactVarianceDriverBridge.driver",
+        "suppressConcat": false
+      }
+    ],
+    "Y": [
+      {
+        "queryRef": "KPI Measures.Latest Bridge Amount",
+        "suppressConcat": false
+      }
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "driver",
+        "Name": "FactVarianceDriverBridge.driver",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Latest Bridge Amount",
+        "Name": "KPI Measures.Latest Bridge Amount",
+        "Type": 1,
+        "Format": "$#,0;($#,0);$0"
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Category",
+          "Projection": 0,
+          "isActive": true
+        },
+        {
+          "Name": "Y",
+          "Projection": 1,
+          "isActive": true
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "driver",
+      "queryName": "FactVarianceDriverBridge.driver",
+      "roles": {
+        "Category": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "FactVarianceDriverBridge"
+            }
+          },
+          "Property": "driver"
+        }
+      }
+    },
+    {
+      "displayName": "Latest Bridge Amount",
+      "format": "$#,0;($#,0);$0",
+      "queryName": "KPI Measures.Latest Bridge Amount",
+      "roles": {
+        "Y": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "KPI Measures"
+            }
+          },
+          "Property": "Latest Bridge Amount"
+        }
+      }
+    }
+  ]
+}

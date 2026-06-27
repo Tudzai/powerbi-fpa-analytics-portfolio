@@ -1,0 +1,57 @@
+{
+  "name": "c855da6d59d8126bc73f",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 852,
+        "y": 648,
+        "z": 25000,
+        "width": 388,
+        "height": 30,
+        "tabOrder": 25000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "3. Bridge levers: price/yield, volume, productivity.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "8.2pt",
+                      "color": "#D8E0EA"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

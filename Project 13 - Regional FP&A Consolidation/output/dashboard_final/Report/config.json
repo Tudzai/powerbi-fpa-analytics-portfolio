@@ -1,5 +1,5 @@
 {
-  "version": "5.66",
+  "version": "5.68",
   "themeCollection": {
     "baseTheme": {
       "name": "CY18SU07",
@@ -20,7 +20,7 @@
       }
     }
   },
-  "activeSectionIndex": 5,
+  "activeSectionIndex": 0,
   "defaultDrillFilterOtherVisuals": true,
   "linguisticSchemaSyncVersion": 2,
   "settings": {

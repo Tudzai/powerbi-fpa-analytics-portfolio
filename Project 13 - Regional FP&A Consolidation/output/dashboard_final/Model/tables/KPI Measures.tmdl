@@ -445,63 +445,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232F5F9E'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232F5F9E' fill-opacity='0.22' stroke='%232F5F9E' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>Revenue</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232F5F9E' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232F5F9E' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%232F5F9E' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
@@ -550,63 +550,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232B6F75'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232B6F75' fill-opacity='0.22' stroke='%232B6F75' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>EBITDA</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232B6F75' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232B6F75' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%232B6F75' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
@@ -655,63 +655,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( CurrentValue, "0.0%" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( PriorValue, "0.0%" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DeltaPoints, "+0.0pt;-0.0pt;0.0pt" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%236F8552'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%236F8552' fill-opacity='0.22' stroke='%236F8552' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='13.0' fill='%23F7FAFC' letter-spacing='0'>EBITDA Margin</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%236F8552' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%236F8552' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%236F8552' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
@@ -760,63 +760,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%23A8894B'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%23A8894B' fill-opacity='0.22' stroke='%23A8894B' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='13.0' fill='%23F7FAFC' letter-spacing='0'>Cash Position</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%23A8894B' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%23A8894B' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%23A8894B' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
@@ -865,63 +865,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232F5F9E'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232F5F9E' fill-opacity='0.22' stroke='%232F5F9E' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='13.0' fill='%23F7FAFC' letter-spacing='0'>Gross Revenue</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232F5F9E' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232F5F9E' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%232F5F9E' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
@@ -970,63 +970,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232B6F75'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232B6F75' fill-opacity='0.22' stroke='%232B6F75' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>Gross Profit</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232B6F75' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232B6F75' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%232B6F75' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
@@ -1075,63 +1075,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%23B85A72'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%23B85A72' fill-opacity='0.22' stroke='%23B85A72' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>OPEX</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%23B85A72' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%23B85A72' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%23B85A72' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
@@ -1180,63 +1180,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%236F8552'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%236F8552' fill-opacity='0.22' stroke='%236F8552' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>Net Income</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%236F8552' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%236F8552' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%236F8552' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
@@ -1285,63 +1285,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232F5F9E'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232F5F9E' fill-opacity='0.22' stroke='%232F5F9E' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>IC Revenue</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232F5F9E' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232F5F9E' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%232F5F9E' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
@@ -1390,63 +1390,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232B6F75'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232B6F75' fill-opacity='0.22' stroke='%232B6F75' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='13.0' fill='%23F7FAFC' letter-spacing='0'>IC Elimination</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232B6F75' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232B6F75' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%232B6F75' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
@@ -1495,63 +1495,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%23B85A72'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%23B85A72' fill-opacity='0.22' stroke='%23B85A72' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>Close Risk</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%23B85A72' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%23B85A72' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%23B85A72' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
@@ -1600,63 +1600,63 @@ table 'KPI Measures'
 			VAR FirstY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LastY =
 			    IF (
 			        MaxValue = MinValue,
-			        70,
-			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			        64,
+			        90 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
 			    )
 			VAR LinePoints =
 			    CONCATENATEX (
 			        CleanTable,
 			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR XValue = 178 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 96
 			        VAR YRatio =
 			            IF (
 			                MaxValue = MinValue,
 			                0.5,
 			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
 			            )
-			        VAR YValue = 96 - YRatio * 52
+			        VAR YValue = 90 - YRatio * 52
 			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
 			        " ",
 			        DimDate[date],
 			        ASC
 			    )
-			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR AreaPoints = "178,90 " & LinePoints & " 274,90"
 			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( CurrentValue, "0.0%" ), "%", "%25" ), "&", "and" )
 			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( PriorValue, "0.0%" ), "%", "%25" ), "&", "and" )
 			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DeltaPoints, "+0.0pt;-0.0pt;0.0pt" ), "%", "%25" ), "&", "and" )
 			VAR Sparkline =
 			    IF (
 			        RowCount >= 2,
-			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
-			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
-			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
-			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
-			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.17'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/>"
+			            & "<circle cx='178' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.0' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.35'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.0' fill='" & TrendColor & "'/></g>",
+			        "<line x1='178' y1='64' x2='274' y2='64' stroke='%23313B48' stroke-width='3.6' stroke-linecap='round'/>"
 			    )
 			VAR SVG =
 			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
-			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<defs><clipPath id='sparkClip'><rect x='178' y='38' width='106' height='52' rx='5'/></clipPath></defs>"
 			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
 			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%23A8894B'/>"
 			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%23A8894B' fill-opacity='0.22' stroke='%23A8894B' stroke-width='1.15'/>"
 			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='13.0' fill='%23F7FAFC' letter-spacing='0'>Forecast Accuracy</text>"
 			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%23A8894B' letter-spacing='0'>" & ValueText & "</text>"
-			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
-			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%23A8894B' fill-opacity='0.13'/>"
-			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & "<rect x='170' y='32' width='114' height='64' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='178' y='38' width='106' height='52' rx='5.5' fill='%23A8894B' fill-opacity='0.13'/>"
+			    & "<line x1='178' y1='64' x2='284' y2='64' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
 			    & Sparkline
-			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
-			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
-			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
-			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
-			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "<rect x='14' y='104' width='92' height='24' rx='11' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='60' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='112' y='104' width='76' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='150' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.8' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='196' y='104' width='86' height='24' rx='11' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='239' y='120' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.7' fill='" & StatusColor & "'>" & StatusText & "</text>"
 			    & "</svg>"
 			RETURN
 			    "data:image/svg+xml;utf8," & SVG
