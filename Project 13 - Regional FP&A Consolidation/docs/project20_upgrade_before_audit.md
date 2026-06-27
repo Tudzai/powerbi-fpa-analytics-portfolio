@@ -6,7 +6,7 @@ Audit date: 2026-06-23
 
 - `BI_A2Z_Master_Prompt_v3.md`
 - `PROJECT_20_STYLE_UPGRADE_PROMPT.md`
-- Target folder: `C:\Users\Win\OneDrive\Codex\Portfolio\BI\Project 13 - Regional FP&A Consolidation`
+- Target folder: `<PROJECT_ROOT>`
 - Project 20 reference docs and QA: README, handoff notes, v77 direct verification, interaction QA, slicer/table polish notes, and changelog.
 
 ## Before State

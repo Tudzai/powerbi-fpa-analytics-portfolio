@@ -1,0 +1,57 @@
+{
+  "name": "4fa45ffb78b6077e810b",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 852,
+        "y": 610,
+        "z": 344,
+        "width": 388,
+        "height": 30,
+        "tabOrder": 344
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "vcObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "2. Close risk: controller follow-up before board pack.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "8.2pt",
+                      "color": "#D8E0EA"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

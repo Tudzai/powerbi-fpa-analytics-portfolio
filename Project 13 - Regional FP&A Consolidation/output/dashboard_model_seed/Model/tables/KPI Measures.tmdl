@@ -1,4 +1,4 @@
-﻿table 'KPI Measures'
+table 'KPI Measures'
 
 	/// Consolidated external revenue after excluding intercompany revenue.
 	measure 'Total Revenue' = SUM ( FactFinancialSummary[external_revenue_usd] )
@@ -117,4 +117,3 @@
 				    Source = #table(type table [Measure Group = text], {{"Regional FP&A Consolidation"}})
 				in
 				    Source
-

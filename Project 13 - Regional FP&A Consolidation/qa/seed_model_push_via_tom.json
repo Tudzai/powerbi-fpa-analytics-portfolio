@@ -1,9 +1,9 @@
-﻿{
-    "timestamp":  "2026-06-23 21:45:06 +07:00",
+{
+    "timestamp":  "2026-06-27 20:29:29 +07:00",
     "status":  "project13_model_pushed_via_tom",
-    "target_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP\u0026A Consolidation\\output\\dashboard_model_seed.pbix",
-    "power_bi_port":  51438,
-    "process_id":  18084,
+    "target_pbix":  "<PROJECT_ROOT>\\output\\dashboard_final.pbix",
+    "power_bi_port":  65104,
+    "process_id":  32676,
     "tables":  [
                    "DimDate",
                    "DimEntity",
@@ -17,6 +17,6 @@
                    "FactFXRate",
                    "KPI Measures"
                ],
-    "relationship_count":  15,
-    "measure_count":  69
+    "relationship_count":  16,
+    "measure_count":  92
 }

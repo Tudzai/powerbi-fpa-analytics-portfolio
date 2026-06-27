@@ -33,6 +33,7 @@ THEME = {
     "ink": "#1E1E1E",
 }
 PALETTE = [THEME["teal"], THEME["blue"], THEME["green"], THEME["gold"], THEME["rose"], THEME["ink"]]
+MONEY_FORMAT = "$#,0;($#,0);$0"
 
 
 TABLE_FILES = {
@@ -79,6 +80,7 @@ RELATIONSHIPS = [
     ("FactFinancials", "business_unit_id", "DimBusinessUnit", "business_unit_id"),
     ("FactFinancialSummary", "business_unit_id", "DimBusinessUnit", "business_unit_id"),
     ("FactVarianceDriverBridge", "business_unit_id", "DimBusinessUnit", "business_unit_id"),
+    ("FactCloseExceptions", "business_unit_id", "DimBusinessUnit", "business_unit_id"),
     ("FactFinancials", "scenario_id", "DimScenario", "scenario_id"),
     ("FactFinancialSummary", "scenario_id", "DimScenario", "scenario_id"),
     ("FactFinancials", "account_id", "DimAccount", "account_id"),
@@ -172,14 +174,17 @@ def _kpi_card_svg(
     lower_is_better: bool = False,
 ) -> dict:
     accent_enc = accent.replace("#", "%23")
-    muted = THEME["muted"].replace("#", "%23")
-    text = THEME["text"].replace("#", "%23")
-    panel = THEME["panel"].replace("#", "%23")
-    border = THEME["border"].replace("#", "%23")
-    grid = THEME["grid"].replace("#", "%23")
+    dark_panel = "%23242B35"
+    dark_panel_2 = "%231F2630"
+    dark_border = "%233A4655"
+    dark_rule = "%23313B48"
+    muted = "%23B9C3CF"
+    text = "%23F7FAFC"
+    footer_fill = "%232C3440"
     good = THEME["green"].replace("#", "%23")
     warn = THEME["gold"].replace("#", "%23")
     bad = THEME["rose"].replace("#", "%23")
+    label_font = "13.0" if len(label) > 12 else "14.2"
     budget_expr = f"CALCULATE ( [{budget_measure}], REMOVEFILTERS ( DimDate ), DimDate[date] = d )" if budget_measure else "BLANK ()"
     if value_kind == "money":
         value_text = 'FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" )'
@@ -204,10 +209,10 @@ VAR d = [Selected Latest Complete Date]
 VAR LatestIdx =
     CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
 VAR CurrentValue =
-    CALCULATE ( [{base_measure}], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+    COALESCE ( CALCULATE ( [{base_measure}], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
 VAR PriorDate = EDATE ( d, -12 )
 VAR PriorValue =
-    CALCULATE ( [{base_measure}], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate )
+    COALESCE ( CALCULATE ( [{base_measure}], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
 VAR BudgetValue = {budget_expr}
 VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
 VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
@@ -241,57 +246,63 @@ VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
 VAR FirstY =
     IF (
         MaxValue = MinValue,
-        52,
-        74 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 38
+        70,
+        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
     )
 VAR LastY =
     IF (
         MaxValue = MinValue,
-        52,
-        74 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 38
+        70,
+        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
     )
 VAR LinePoints =
     CONCATENATEX (
         CleanTable,
         VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
-        VAR XValue = 164 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 100
+        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
         VAR YRatio =
             IF (
                 MaxValue = MinValue,
                 0.5,
                 DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
             )
-        VAR YValue = 74 - YRatio * 38
+        VAR YValue = 96 - YRatio * 52
         RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
         " ",
         DimDate[date],
         ASC
     )
+VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
 VAR ValueText = {_svg_text_expr(value_text)}
 VAR PyText = {_svg_text_expr(py_text)}
 VAR DeltaText = {_svg_text_expr(delta_text)}
 VAR Sparkline =
     IF (
         RowCount >= 2,
-        "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>"
-            & "<circle cx='164' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='3.2' fill='{panel}' stroke='{muted}' stroke-width='1.2'/>"
-            & "<circle cx='264' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='4.2' fill='" & TrendColor & "'/>",
-        "<line x1='164' y1='56' x2='264' y2='56' stroke='{grid}' stroke-width='3' stroke-linecap='round'/>"
+        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='{dark_panel_2}' stroke='{muted}' stroke-width='1.45'/>"
+            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+        "<line x1='172' y1='70' x2='274' y2='70' stroke='{dark_rule}' stroke-width='4.0' stroke-linecap='round'/>"
     )
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='292' height='104' viewBox='0 0 292 104'>"
-    & "<rect x='1' y='1' width='290' height='102' rx='7' fill='{panel}' stroke='{border}'/>"
-    & "<rect x='1' y='1' width='290' height='4' rx='2' fill='{accent_enc}'/>"
-    & "<text x='16' y='24' font-family='Segoe UI Semibold' font-size='10.5' fill='{muted}'>{label}</text>"
-    & "<text x='16' y='54' font-family='Segoe UI Semibold' font-size='25' fill='{text}'>" & ValueText & "</text>"
-    & "<rect x='160' y='34' width='108' height='44' rx='8' fill='%23F8FAFC'/>"
-    & "<line x1='166' y1='56' x2='264' y2='56' stroke='{grid}' stroke-width='1' stroke-dasharray='3 5'/>"
+    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='{dark_panel}' stroke='{dark_border}' stroke-width='1.05'/>"
+    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='{accent_enc}'/>"
+    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='{accent_enc}' fill-opacity='0.22' stroke='{accent_enc}' stroke-width='1.15'/>"
+    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='{label_font}' fill='{text}' letter-spacing='0'>{label}</text>"
+    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='{accent_enc}' letter-spacing='0'>" & ValueText & "</text>"
+    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='{dark_panel_2}' stroke='{dark_border}' stroke-width='1.0'/>"
+    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='{accent_enc}' fill-opacity='0.13'/>"
+    & "<line x1='170' y1='73' x2='276' y2='73' stroke='{dark_rule}' stroke-width='1.4' stroke-dasharray='4 5'/>"
     & Sparkline
-    & "<rect x='16' y='72' width='76' height='18' rx='9' fill='%23F8FAFC' stroke='{border}'/>"
-    & "<text x='26' y='85' font-family='Segoe UI' font-size='8.2' fill='{muted}'>PY " & PyText & "</text>"
-    & "<rect x='98' y='72' width='56' height='18' rx='9' fill='" & StatusColor & "' fill-opacity='0.14'/>"
-    & "<text x='108' y='85' font-family='Segoe UI Semibold' font-size='8.2' fill='" & StatusColor & "'>" & DeltaText & "</text>"
-    & "<text x='190' y='91' font-family='Segoe UI Semibold' font-size='8' fill='" & StatusColor & "'>" & StatusText & "</text>"
+    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='{footer_fill}' stroke='{dark_border}' stroke-width='0.75'/>"
+    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='{muted}'>PY " & PyText & "</text>"
+    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
     & "</svg>"
 RETURN
     "data:image/svg+xml;utf8," & SVG
@@ -303,77 +314,49 @@ def _lens_svg_measure() -> dict:
     teal = THEME["teal"].replace("#", "%23")
     blue = THEME["blue"].replace("#", "%23")
     gold = THEME["gold"].replace("#", "%23")
-    text = THEME["text"].replace("#", "%23")
-    muted = THEME["muted"].replace("#", "%23")
-    panel = THEME["panel"].replace("#", "%23")
-    border = THEME["border"].replace("#", "%23")
+    rose = THEME["rose"].replace("#", "%23")
+    text = "%23F7FAFC"
+    muted = "%23C7D0DB"
+    dark_panel = "%23242B35"
+    dark_panel_2 = "%231F2630"
+    border = "%233A4655"
     dax = f"""
 VAR PeriodText = [Selected Latest Complete Period Label]
-VAR RegionText =
-    IF ( ISFILTERED ( DimEntity[region] ), LEFT ( CONCATENATEX ( VALUES ( DimEntity[region] ), DimEntity[region], ", " ), 20 ), "All regions" )
-VAR BUText =
-    IF ( ISFILTERED ( DimBusinessUnit[business_unit] ), LEFT ( CONCATENATEX ( VALUES ( DimBusinessUnit[business_unit] ), DimBusinessUnit[business_unit], ", " ), 24 ), "All BUs" )
-VAR ScenarioText =
-    IF ( ISFILTERED ( DimScenario[scenario] ), LEFT ( CONCATENATEX ( VALUES ( DimScenario[scenario] ), DimScenario[scenario], ", " ), 18 ), "Actual lens" )
+VAR RegionRaw =
+    IF ( ISFILTERED ( DimEntity[region] ), CONCATENATEX ( VALUES ( DimEntity[region] ), DimEntity[region], ", " ), "All regions" )
+VAR BURaw =
+    IF ( ISFILTERED ( DimBusinessUnit[business_unit] ), CONCATENATEX ( VALUES ( DimBusinessUnit[business_unit] ), DimBusinessUnit[business_unit], ", " ), "All BUs" )
+VAR ScenarioRaw =
+    IF ( ISFILTERED ( DimScenario[scenario] ), CONCATENATEX ( VALUES ( DimScenario[scenario] ), DimScenario[scenario], ", " ), "Actual lens" )
+VAR ScenarioText = SUBSTITUTE ( LEFT ( ScenarioRaw, 20 ), "&", "and" )
+VAR RegionText = SUBSTITUTE ( LEFT ( RegionRaw, 24 ), "&", "and" )
+VAR BUText = SUBSTITUTE ( LEFT ( BURaw, 28 ), "&", "and" )
 VAR RevVar = [Latest Revenue Var %]
 VAR EbitdaVar = [Latest EBITDA Var %]
-VAR RiskValue = [Latest Open Exception Value]
+VAR RiskValue = COALESCE ( [Latest Open Exception Value], 0 )
 VAR RevText = SUBSTITUTE ( FORMAT ( RevVar, "+0.0%;-0.0%;0.0%" ), "%", "%25" )
-VAR StatusColor = IF ( EbitdaVar >= 0.02, "{teal}", IF ( EbitdaVar >= -0.02, "{gold}", "%23B85A72" ) )
+VAR StatusColor = IF ( EbitdaVar >= 0.02, "{teal}", IF ( EbitdaVar >= -0.02, "{gold}", "{rose}" ) )
+VAR Line1 = SUBSTITUTE ( LEFT ( PeriodText & " | " & ScenarioText, 38 ), "&", "and" )
+VAR Line2 = SUBSTITUTE ( LEFT ( BUText & " | " & RegionText, 48 ), "&", "and" )
+VAR RiskText = "$" & FORMAT ( DIVIDE ( RiskValue, 1000000 ), "0.0M" )
 VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='536' height='42' viewBox='0 0 536 42'>"
-    & "<rect x='0.5' y='0.5' width='535' height='41' rx='7' fill='{panel}' stroke='{border}'/>"
-    & "<circle cx='18' cy='21' r='5' fill='" & StatusColor & "'/>"
-    & "<text x='32' y='17' font-family='Segoe UI Semibold' font-size='9.5' fill='{text}'>Current Lens</text>"
-    & "<text x='32' y='31' font-family='Segoe UI' font-size='8.3' fill='{muted}'>" & PeriodText & " | " & ScenarioText & "</text>"
-    & "<rect x='174' y='9' width='102' height='24' rx='12' fill='%23F8FAFC' stroke='{border}'/>"
-    & "<text x='186' y='25' font-family='Segoe UI Semibold' font-size='8.4' fill='{blue}'>" & RegionText & "</text>"
-    & "<rect x='286' y='9' width='118' height='24' rx='12' fill='%23F8FAFC' stroke='{border}'/>"
-    & "<text x='298' y='25' font-family='Segoe UI Semibold' font-size='8.4' fill='{teal}'>" & BUText & "</text>"
-    & "<rect x='414' y='9' width='108' height='24' rx='12' fill='%23F8FAFC' stroke='{border}'/>"
-    & "<text x='426' y='25' font-family='Segoe UI Semibold' font-size='8.2' fill='{gold}'>Rev " & RevText & " | Risk $" & FORMAT ( DIVIDE ( RiskValue, 1000000 ), "0.0M" ) & "</text>"
+    "<svg xmlns='http://www.w3.org/2000/svg' width='568' height='78' viewBox='0 0 568 78'>"
+    & "<rect x='18' y='14' width='5' height='50' rx='2.5' fill='{teal}'/>"
+    & "<circle cx='46' cy='27' r='7.4' fill='" & StatusColor & "'/>"
+    & "<text x='64' y='28' font-family='Segoe UI Semibold' font-size='14.0' fill='{text}'>CURRENT LENS</text>"
+    & "<text x='64' y='50' font-family='Segoe UI Semibold' font-size='13.1' fill='{text}'>" & Line1 & "</text>"
+    & "<text x='64' y='66' font-family='Segoe UI' font-size='12.2' fill='{muted}'>" & Line2 & "</text>"
+    & "<rect x='244' y='10' width='154' height='58' rx='11' fill='{dark_panel_2}' stroke='{border}' stroke-width='1.05'/>"
+    & "<text x='321' y='30' text-anchor='middle' font-family='Segoe UI' font-size='11.2' fill='{muted}'>Revenue var</text>"
+    & "<text x='321' y='57' text-anchor='middle' font-family='Segoe UI Semibold' font-size='22.0' fill='{blue}'>" & RevText & "</text>"
+    & "<rect x='410' y='10' width='144' height='58' rx='11' fill='{dark_panel_2}' stroke='{border}' stroke-width='1.05'/>"
+    & "<text x='482' y='30' text-anchor='middle' font-family='Segoe UI' font-size='11.2' fill='{muted}'>Close risk</text>"
+    & "<text x='482' y='57' text-anchor='middle' font-family='Segoe UI Semibold' font-size='22.0' fill='{gold}'>" & RiskText & "</text>"
     & "</svg>"
-RETURN
-    "data:image/svg+xml;utf8," & SUBSTITUTE ( SVG, "%", "%25" )
-"""
-    # Re-open encoded colors after the generic percent encoding above.
-    dax = dax.replace('RETURN\n    "data:image/svg+xml;utf8," & SUBSTITUTE ( SVG, "%", "%25" )', 'RETURN\n    "data:image/svg+xml;utf8," & SVG')
-    return _measure("Lens Summary SVG", dax, "", "Top-bar Current Lens SVG for selected period, region, BU, revenue variance, and close-risk exposure.", "ImageUrl")
-
-
-def _decision_chips_svg(name: str, title: str, chips: list[tuple[str, str, str]], definition: str) -> dict:
-    text = THEME["text"].replace("#", "%23")
-    muted = THEME["muted"].replace("#", "%23")
-    panel = THEME["panel"].replace("#", "%23")
-    border = THEME["border"].replace("#", "%23")
-    colors = [THEME["blue"].replace("#", "%23"), THEME["teal"].replace("#", "%23"), THEME["gold"].replace("#", "%23")]
-    chip_svg = ""
-    for idx, (label, value_expr, color_var) in enumerate(chips):
-        x = 14 + idx * 178
-        chip_svg += (
-            f'    & "<rect x=\'{x}\' y=\'28\' width=\'164\' height=\'28\' rx=\'14\' fill=\'%23F8FAFC\' stroke=\'{border}\'/>"\n'
-            f'    & "<circle cx=\'{x + 16}\' cy=\'42\' r=\'4\' fill=\'" & {color_var} & "\'/>"\n'
-            f'    & "<text x=\'{x + 28}\' y=\'39\' font-family=\'Segoe UI\' font-size=\'7.6\' fill=\'{muted}\'>{label}</text>"\n'
-            f'    & "<text x=\'{x + 28}\' y=\'51\' font-family=\'Segoe UI Semibold\' font-size=\'8.4\' fill=\'{text}\'>" & SUBSTITUTE ( {value_expr}, "%", "%25" ) & "</text>"\n'
-        )
-    dax = f"""
-VAR Blue = "{colors[0]}"
-VAR Teal = "{colors[1]}"
-VAR Gold = "{colors[2]}"
-VAR Rose = "%23B85A72"
-VAR RevColor = IF ( [Latest Revenue Var %] >= 0, Teal, Rose )
-VAR EbitdaColor = IF ( [Latest EBITDA Var %] >= 0, Teal, Rose )
-VAR RiskColor = IF ( [Latest Open Exception Count] = 0, Teal, IF ( [Latest Open Exception Value] < 5000000, Gold, Rose ) )
-VAR ICColor = IF ( ABS ( DIVIDE ( [Latest Intercompany Elimination], [Latest Gross Revenue] ) ) < 0.08, Teal, Gold )
-VAR SVG =
-    "<svg xmlns='http://www.w3.org/2000/svg' width='536' height='68' viewBox='0 0 536 68'>"
-    & "<rect x='0.5' y='0.5' width='535' height='67' rx='7' fill='{panel}' stroke='{border}'/>"
-    & "<text x='14' y='17' font-family='Segoe UI Semibold' font-size='10' fill='{text}'>{title}</text>"
-{chip_svg}    & "</svg>"
 RETURN
     "data:image/svg+xml;utf8," & SVG
 """
-    return _measure(name, dax, "", definition, "ImageUrl")
+    return _measure("Lens Summary SVG", dax, "", "Top-bar Current Lens SVG for selected period, region, BU, revenue variance, and close-risk exposure.", "ImageUrl")
 
 
 def project20_svg_measure_catalog() -> list[dict]:
@@ -404,32 +387,79 @@ RETURN
             "",
             "Display label for the selected latest complete month.",
         ),
-        _latest_measure("Latest Actual Revenue", "Actual Revenue", "$#,0,,.0M", "Actual revenue at selected latest complete period."),
-        _latest_measure("Latest Budget Revenue", "Budget Revenue", "$#,0,,.0M", "Budget revenue at selected latest complete period."),
-        _latest_measure("Latest Revenue Var vs Budget", "Revenue Var vs Budget", "$#,0,,.0M", "Revenue variance at selected latest complete period."),
+        _measure("Bridge Amount", "SUM ( FactVarianceDriverBridge[amount_usd] )", MONEY_FORMAT, "Variance-driver bridge amount with explicit aggregation for native Power BI visuals."),
+        _latest_measure("Latest Bridge Amount", "Bridge Amount", MONEY_FORMAT, "Variance-driver bridge amount at selected latest complete period."),
+        _measure("Exception Amount", "SUM ( FactCloseExceptions[amount_usd] )", MONEY_FORMAT, "Close-exception exposure with explicit aggregation for native Power BI visuals."),
+        _latest_measure("Latest Exception Amount", "Exception Amount", MONEY_FORMAT, "Close-exception exposure at selected latest complete period."),
+        _measure("Financial Amount", "SUM ( FactFinancials[amount_usd] )", MONEY_FORMAT, "P&L statement amount with explicit aggregation for native Power BI visuals."),
+        _latest_measure("Latest Actual Revenue", "Actual Revenue", MONEY_FORMAT, "Actual revenue at selected latest complete period."),
+        _latest_measure("Latest Budget Revenue", "Budget Revenue", MONEY_FORMAT, "Budget revenue at selected latest complete period."),
+        _latest_measure("Latest Revenue Var vs Budget", "Revenue Var vs Budget", MONEY_FORMAT, "Revenue variance at selected latest complete period."),
         _latest_measure("Latest Revenue Var %", "Revenue Var %", "0.0%", "Revenue variance percent at selected latest complete period."),
-        _latest_measure("Latest Actual EBITDA", "Actual EBITDA", "$#,0,,.0M", "Actual EBITDA at selected latest complete period."),
-        _latest_measure("Latest Budget EBITDA", "Budget EBITDA", "$#,0,,.0M", "Budget EBITDA at selected latest complete period."),
-        _latest_measure("Latest EBITDA Var vs Budget", "EBITDA Var vs Budget", "$#,0,,.0M", "EBITDA variance at selected latest complete period."),
+        _latest_measure("Latest Actual EBITDA", "Actual EBITDA", MONEY_FORMAT, "Actual EBITDA at selected latest complete period."),
+        _latest_measure("Latest Budget EBITDA", "Budget EBITDA", MONEY_FORMAT, "Budget EBITDA at selected latest complete period."),
+        _latest_measure("Latest EBITDA Var vs Budget", "EBITDA Var vs Budget", MONEY_FORMAT, "EBITDA variance at selected latest complete period."),
         _latest_measure("Latest EBITDA Var %", "EBITDA Var %", "0.0%", "EBITDA variance percent at selected latest complete period."),
-        _latest_measure("Latest Gross Revenue", "Gross Revenue", "$#,0,,.0M", "Gross revenue at selected latest complete period."),
-        _latest_measure("Latest Gross Profit", "Gross Profit", "$#,0,,.0M", "Gross profit at selected latest complete period."),
+        _latest_measure("Latest Gross Revenue", "Gross Revenue", MONEY_FORMAT, "Gross revenue at selected latest complete period."),
+        _latest_measure("Latest Gross Profit", "Gross Profit", MONEY_FORMAT, "Gross profit at selected latest complete period."),
         _latest_measure("Latest Gross Margin %", "Gross Margin %", "0.0%", "Gross margin at selected latest complete period."),
-        _latest_measure("Latest OPEX", "OPEX", "$#,0,,.0M", "OPEX at selected latest complete period."),
-        _latest_measure("Latest Net Income", "Net Income", "$#,0,,.0M", "Net income at selected latest complete period."),
+        _latest_measure("Latest OPEX", "OPEX", MONEY_FORMAT, "OPEX at selected latest complete period."),
+        _latest_measure("Latest Net Income", "Net Income", MONEY_FORMAT, "Net income at selected latest complete period."),
         _latest_measure("Latest EBITDA Margin %", "EBITDA Margin %", "0.0%", "EBITDA margin at selected latest complete period."),
-        _latest_measure("Latest Cash Position", "Cash Position", "$#,0,,.0M", "Cash position at selected latest complete period."),
-        _latest_measure("Latest Operating Cash Flow", "Operating Cash Flow", "$#,0,,.0M", "Operating cash flow at selected latest complete period."),
+        _latest_measure("Latest Cash Position", "Cash Position", MONEY_FORMAT, "Cash position at selected latest complete period."),
+        _latest_measure("Latest Operating Cash Flow", "Operating Cash Flow", MONEY_FORMAT, "Operating cash flow at selected latest complete period."),
         _latest_measure("Latest Forecast Accuracy %", "Forecast Accuracy %", "0.0%", "Forecast accuracy at selected latest complete period."),
-        _latest_measure("Latest Intercompany Revenue", "Intercompany Revenue", "$#,0,,.0M", "Intercompany revenue at selected latest complete period."),
-        _latest_measure("Latest Intercompany Elimination", "Intercompany Elimination", "$#,0,,.0M", "Intercompany elimination impact at selected latest complete period."),
+        _latest_measure("Latest Intercompany Revenue", "Intercompany Revenue", MONEY_FORMAT, "Intercompany revenue at selected latest complete period."),
+        _latest_measure("Latest Intercompany Elimination", "Intercompany Elimination", MONEY_FORMAT, "Intercompany elimination impact at selected latest complete period."),
         _latest_measure("Latest Open Exception Count", "Open Exception Count", "#,0", "Open close-exception count at selected latest complete period."),
-        _latest_measure("Latest Open Exception Value", "Open Exception Value", "$#,0,,.0M", "Open close-exception exposure at selected latest complete period."),
-        _py_measure("Revenue PY", "Actual Revenue", "$#,0,,.0M", "Actual revenue for the same month in the prior year."),
-        _py_measure("EBITDA PY", "Actual EBITDA", "$#,0,,.0M", "Actual EBITDA for the same month in the prior year."),
+        _latest_measure("Latest Open Exception Value", "Open Exception Value", MONEY_FORMAT, "Open close-exception exposure at selected latest complete period."),
+        _measure("Display Actual Revenue", 'FORMAT ( DIVIDE ( [Latest Actual Revenue], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for latest revenue KPI card."),
+        _measure("Display Actual EBITDA", 'FORMAT ( DIVIDE ( [Latest Actual EBITDA], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for latest EBITDA KPI card."),
+        _measure("Display EBITDA Margin %", 'FORMAT ( [Latest EBITDA Margin %], "0.0%" )', "", "Text display for latest EBITDA margin KPI card."),
+        _measure("Display Gross Revenue", 'FORMAT ( DIVIDE ( [Latest Gross Revenue], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for latest gross revenue KPI card."),
+        _measure("Display Gross Profit", 'FORMAT ( DIVIDE ( [Latest Gross Profit], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for latest gross profit KPI card."),
+        _measure("Display OPEX", 'FORMAT ( DIVIDE ( [Latest OPEX], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for latest OPEX KPI card."),
+        _measure("Display Net Income", 'FORMAT ( DIVIDE ( [Latest Net Income], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for latest net income KPI card."),
+        _measure("Display Intercompany Revenue", 'FORMAT ( DIVIDE ( [Latest Intercompany Revenue], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for latest intercompany revenue KPI card."),
+        _measure("Display Intercompany Elimination", 'FORMAT ( DIVIDE ( [Latest Intercompany Elimination], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for latest intercompany elimination KPI card."),
+        _measure("Display Forecast Accuracy %", 'FORMAT ( [Latest Forecast Accuracy %], "0.0%" )', "", "Text display for latest forecast accuracy KPI card."),
+        _measure("Display Open Exception Value", 'FORMAT ( DIVIDE ( [Latest Open Exception Value], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for latest close-risk KPI card."),
+        _measure("Display Open Exception Count", 'FORMAT ( [Latest Open Exception Count], "#,0" )', "", "Text display for latest close-exception count chip."),
+        _measure("Display Revenue PY", 'FORMAT ( DIVIDE ( [Revenue PY], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for prior-year revenue."),
+        _measure("Display EBITDA PY", 'FORMAT ( DIVIDE ( [EBITDA PY], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for prior-year EBITDA."),
+        _measure("Display Open Exception Value PY", 'FORMAT ( DIVIDE ( [Open Exception Value PY], 1000000 ), "$0.0M;($0.0M);$0.0M" )', "", "Text display for prior-year open exception value."),
+        _measure("Display Revenue Var %", 'FORMAT ( [Latest Revenue Var %], "+0.0%;-0.0%;0.0%" )', "", "Text display for latest revenue variance percent."),
+        _measure("Display EBITDA Var %", 'FORMAT ( [Latest EBITDA Var %], "+0.0%;-0.0%;0.0%" )', "", "Text display for latest EBITDA variance percent."),
+        _measure("Display Forecast Accuracy Delta", 'FORMAT ( [Latest Forecast Accuracy %], "0.0%" )', "", "Text display for latest forecast accuracy footer."),
+        _measure(
+            "Current Lens Line 1",
+            """
+VAR ScenarioRaw =
+    IF ( ISFILTERED ( DimScenario[scenario] ), CONCATENATEX ( VALUES ( DimScenario[scenario] ), DimScenario[scenario], ", " ), "Actual lens" )
+RETURN
+    [Selected Latest Complete Period Label] & " | " & LEFT ( ScenarioRaw, 24 )
+""",
+            "",
+            "First dynamic line for the Current Lens native panel.",
+        ),
+        _measure(
+            "Current Lens Line 2",
+            """
+VAR RegionRaw =
+    IF ( ISFILTERED ( DimEntity[region] ), CONCATENATEX ( VALUES ( DimEntity[region] ), DimEntity[region], ", " ), "All regions" )
+VAR BURaw =
+    IF ( ISFILTERED ( DimBusinessUnit[business_unit] ), CONCATENATEX ( VALUES ( DimBusinessUnit[business_unit] ), DimBusinessUnit[business_unit], ", " ), "All BUs" )
+RETURN
+    LEFT ( BURaw, 28 ) & " | " & LEFT ( RegionRaw, 28 )
+""",
+            "",
+            "Second dynamic line for the Current Lens native panel.",
+        ),
+        _py_measure("Revenue PY", "Actual Revenue", MONEY_FORMAT, "Actual revenue for the same month in the prior year."),
+        _py_measure("EBITDA PY", "Actual EBITDA", MONEY_FORMAT, "Actual EBITDA for the same month in the prior year."),
         _py_measure("Gross Margin PY %", "Gross Margin %", "0.0%", "Gross margin for the same month in the prior year."),
-        _py_measure("Cash Position PY", "Cash Position", "$#,0,,.0M", "Cash position for the same month in the prior year."),
-        _py_measure("Open Exception Value PY", "Open Exception Value", "$#,0,,.0M", "Open exception value for the same month in the prior year."),
+        _py_measure("Cash Position PY", "Cash Position", MONEY_FORMAT, "Cash position for the same month in the prior year."),
+        _py_measure("Open Exception Value PY", "Open Exception Value", MONEY_FORMAT, "Open exception value for the same month in the prior year."),
     ]
     cards = [
         _kpi_card_svg("Revenue KPI Card SVG", "Revenue", "Actual Revenue", "", "money", THEME["blue"], "SVG KPI card for revenue with latest value, PY delta, status chip, and sparkline.", "Budget Revenue"),
@@ -445,29 +475,7 @@ RETURN
         _kpi_card_svg("Close Exceptions KPI Card SVG", "Close Risk", "Open Exception Value", "", "money", THEME["rose"], "SVG KPI card for open exception exposure with lower-is-better status and sparkline.", lower_is_better=True),
         _kpi_card_svg("Forecast Accuracy KPI Card SVG", "Forecast Accuracy", "Forecast Accuracy %", "", "percent", THEME["gold"], "SVG KPI card for forecast accuracy with prior-year point delta and sparkline."),
     ]
-    chips = [
-        _lens_svg_measure(),
-        _decision_chips_svg(
-            "Regional FP&A Decision Chips SVG",
-            "Decision Signals",
-            [
-                ("Revenue vs budget", 'FORMAT ( [Latest Revenue Var %], "+0.0%;-0.0%;0.0%" )', "RevColor"),
-                ("EBITDA vs budget", 'FORMAT ( [Latest EBITDA Var %], "+0.0%;-0.0%;0.0%" )', "EbitdaColor"),
-                ("Open close risk", 'FORMAT ( [Latest Open Exception Count], "#,0" ) & " items | $" & FORMAT ( DIVIDE ( [Latest Open Exception Value], 1000000 ), "0.0M" )', "RiskColor"),
-            ],
-            "Executive decision-chip SVG for regional FP&A revenue, EBITDA, and close-risk status.",
-        ),
-        _decision_chips_svg(
-            "Controls Decision Chips SVG",
-            "Control Signals",
-            [
-                ("Intercompany", '"$" & FORMAT ( DIVIDE ( ABS ( [Latest Intercompany Elimination] ), 1000000 ), "0.0M" )', "ICColor"),
-                ("Close risk", 'FORMAT ( [Latest Open Exception Count], "#,0" ) & " open"', "RiskColor"),
-                ("Forecast quality", 'FORMAT ( [Latest Forecast Accuracy %], "0.0%" )', "EbitdaColor"),
-            ],
-            "Control decision-chip SVG for intercompany, close risk, and forecast quality.",
-        ),
-    ]
+    chips = [_lens_svg_measure()]
     return helpers + cards + chips
 
 
@@ -475,7 +483,11 @@ def measure_catalog() -> list[dict]:
     base = json.loads((ROOT / "model" / "measure_catalog.json").read_text(encoding="utf-8"))
     names = {item["measure_name"] for item in base}
     extras = [item for item in project20_svg_measure_catalog() if item["measure_name"] not in names]
-    return base + extras
+    catalog = base + extras
+    for item in catalog:
+        if item.get("format_string") in {"$#,0,,.0M", "$#,0.0,,M;($#,0.0,,M);$0.0M"}:
+            item["format_string"] = MONEY_FORMAT
+    return catalog
 
 
 def build_model_bim() -> dict:
@@ -576,6 +588,7 @@ SAMPLES = {
     "cardVisual": load_sample("cardVisual"),
     "barChart": load_sample("barChart"),
     "columnChart": load_sample("columnChart"),
+    "lineChart": load_sample("columnChart"),
     "donutChart": load_sample("donutChart"),
     "lineClusteredColumnComboChart": load_sample("lineClusteredColumnComboChart"),
     "slicer": load_sample("slicer"),
@@ -634,6 +647,7 @@ def visual_shell(title: str | None = None, subtitle: str | None = None) -> dict:
         "background": [{"properties": {"show": lit("true"), "color": color(THEME["panel"]), "transparency": lit("0D")}}],
         "border": [{"properties": {"show": lit("true"), "color": color(THEME["border"]), "radius": lit("6.0D"), "width": lit("0.75D")}}],
         "dropShadow": [{"properties": {"show": lit("true"), "color": color("#000000"), "transparency": lit("82.0D"), "angle": lit("45.0D"), "distance": lit("1.5D")}}],
+        "visualHeader": [{"properties": {"show": lit("false")}}],
     }
     if title:
         result["title"] = [{"properties": {"show": lit("true"), "text": prop_text(title), "fontFamily": prop_text("Segoe UI Semibold"), "fontSize": lit("9.0D"), "fontColor": color(title_accent(title)), "alignment": prop_text("left")}}]
@@ -648,6 +662,17 @@ def visual_shell_hidden() -> dict:
         "border": [{"properties": {"show": lit("false")}}],
         "dropShadow": [{"properties": {"show": lit("false")}}],
         "title": [{"properties": {"show": lit("false")}}],
+        "visualHeader": [{"properties": {"show": lit("false")}}],
+    }
+
+
+def svg_card_shell(fill: str = "#242B35", border: str = "#3A4655", radius: float = 10.0, shadow: bool = True) -> dict:
+    return {
+        "background": [{"properties": {"show": lit("true"), "color": color(fill), "transparency": lit("0D")}}],
+        "border": [{"properties": {"show": lit("true"), "color": color(border), "radius": lit(f"{radius:.1f}D"), "width": lit("0.9D")}}],
+        "dropShadow": [{"properties": {"show": lit("true" if shadow else "false"), "color": color("#000000"), "transparency": lit("84.0D"), "angle": lit("45.0D"), "distance": lit("1.5D")}}],
+        "title": [{"properties": {"show": lit("false")}}],
+        "visualHeader": [{"properties": {"show": lit("false")}}],
     }
 
 
@@ -659,14 +684,8 @@ def measure_format(field: str) -> str:
 
 
 def chart_display_units(fields: list[tuple[str, str, str, str]]) -> str:
-    numeric_fields = [(table, field, role) for table, field, role, _ in fields if role == "measure" or field.endswith("_usd") or "amount" in field]
-    if not numeric_fields:
-        return "0D"
-    money_like = []
-    for table, field, role in numeric_fields:
-        fmt = measure_format(field) if table == "KPI Measures" and role == "measure" else ""
-        money_like.append("$" in fmt or field.endswith("_usd") or "amount" in field)
-    return "1000000D" if money_like and all(money_like) else "0D"
+    has_currency = any("$" in measure_format(field) for table, field, role, _ in fields if role == "measure")
+    return "1000000D" if has_currency else "0D"
 
 
 def chart_objects(kind: str, fields: list[tuple[str, str, str, str]], title: str | None) -> dict:
@@ -706,11 +725,14 @@ def table_objects() -> dict:
     }
 
 
-def image_table_objects(image_w: int, image_h: int) -> dict:
+def image_table_objects(image_w: int, image_h: int, backing: str | None = None) -> dict:
+    backing = backing or THEME["bg"]
     return {
-        "grid": [{"properties": {"gridHorizontal": lit("false"), "gridVertical": lit("false"), "outlineColor": color(THEME["panel"]), "rowPadding": lit("0D"), "imageHeight": lit(f"{image_h}D"), "imageWidth": lit(f"{image_w}D")}}],
-        "columnHeaders": [{"properties": {"show": lit("false")}}],
-        "values": [{"properties": {"urlIcon": lit("false"), "fontSize": lit("1D"), "fontFamily": prop_text("Segoe UI"), "fontColor": color(THEME["text"]), "backColorPrimary": color(THEME["bg"]), "backColorSecondary": color(THEME["bg"]), "imageHeight": lit(f"{image_h}D"), "imageWidth": lit(f"{image_w}D")}}],
+        "grid": [{"properties": {"gridHorizontal": lit("false"), "gridVertical": lit("false"), "outlineColor": color(backing), "outlineWeight": lit("0D"), "rowPadding": lit("0D"), "imageHeight": lit(f"{image_h}D"), "imageWidth": lit(f"{image_w}D")}}],
+        "columnHeaders": [{"properties": {"show": lit("false"), "fontSize": lit("1D"), "fontColor": color(backing), "backColor": color(backing), "outlineColor": color(backing), "wordWrap": lit("false"), "autoSizeColumnWidth": lit("false"), "alignment": prop_text("center")}}],
+        "values": [{"properties": {"urlIcon": lit("false"), "fontSize": lit("1D"), "fontFamily": prop_text("Segoe UI"), "fontColor": color(backing), "backColor": color(backing), "backColorPrimary": color(backing), "backColorSecondary": color(backing), "imageHeight": lit(f"{image_h}D"), "imageWidth": lit(f"{image_w}D"), "wordWrap": lit("false"), "alignment": prop_text("center")}}],
+        "imageSize": [{"properties": {"height": lit(f"{image_h}D"), "width": lit(f"{image_w}D")}}],
+        "total": [{"properties": {"show": lit("false")}}],
     }
 
 
@@ -719,8 +741,8 @@ def slicer_objects(title: str, single_select: bool = False) -> dict:
         "data": [{"properties": {"mode": prop_text("Dropdown")}}],
         "general": [{"properties": {"orientation": lit("0D")}}],
         "selection": [{"properties": {"selectAllCheckboxEnabled": lit("true"), "singleSelect": lit("true" if single_select else "false")}}],
-        "header": [{"properties": {"show": lit("true"), "text": prop_text(title), "textSize": lit("8.4D"), "fontColor": color(THEME["muted"]), "fontFamily": prop_text("Segoe UI Semibold")}}],
-        "items": [{"properties": {"textSize": lit("8.6D"), "fontColor": color(THEME["text"]), "fontFamily": prop_text("Segoe UI"), "background": color(THEME["panel"])}}],
+        "header": [{"properties": {"show": lit("true"), "text": prop_text(title), "textSize": lit("8.0D"), "fontColor": color(THEME["muted"]), "fontFamily": prop_text("Segoe UI Semibold")}}],
+        "items": [{"properties": {"textSize": lit("8.0D"), "fontColor": color(THEME["text"]), "fontFamily": prop_text("Segoe UI"), "background": color(THEME["panel"])}}],
     }
 
 
@@ -802,26 +824,39 @@ def card(measure: str, title: str, x, y, w, h, z) -> dict:
     return visual
 
 
-def value_card(measure: str, title: str, x, y, w, h, z) -> dict:
+def value_card(
+    measure: str,
+    title: str,
+    x,
+    y,
+    w,
+    h,
+    z,
+    font_size: float = 18.5,
+    accent_override: str | None = None,
+    background_override: str | None = None,
+) -> dict:
     visual = data_visual("cardVisual", x, y, w, h, z, {"Data": [("KPI Measures", measure, "measure", title)]}, "")
     cfg = json.loads(visual["config"])
     metadata = f"KPI Measures.{measure}"
     cfg["singleVisual"]["objects"] = {
-        "layout": [{"properties": {"backgroundShow": lit("false"), "rectangleRoundedCurve": lit("0L"), "cellPadding": lit("0D"), "paddingUniform": lit("0D")}, "selector": {"id": "default"}}],
-        "value": [{"properties": {"fontSize": lit("18.5D"), "fontFamily": lit("'Segoe UI Semibold'"), "fontColor": color(title_accent(title))}, "selector": {"metadata": metadata}}],
+        "layout": [{"properties": {"backgroundShow": lit("true" if background_override else "false"), "rectangleRoundedCurve": lit("0L"), "cellPadding": lit("0D"), "paddingUniform": lit("0D")}, "selector": {"id": "default"}}],
+        "value": [{"properties": {"fontSize": lit(f"{font_size:.1f}D"), "fontFamily": lit("'Segoe UI Semibold'"), "fontColor": color(accent_override or title_accent(title))}, "selector": {"metadata": metadata}}],
         "label": [{"properties": {"show": lit("false")}, "selector": {"metadata": metadata}}],
         "spacing": [{"properties": {"verticalSpacing": lit("0D")}, "selector": {"id": "default"}}],
-        "fillCustom": [{"properties": {"show": lit("false")}, "selector": {"id": "default"}}],
+        "fillCustom": [{"properties": {"show": lit("true" if background_override else "false"), **({"transparency": lit("0D"), "color": color(background_override), "fill": color(background_override), "fillColor": color(background_override)} if background_override else {})}, "selector": {"id": "default"}}],
         "outline": [{"properties": {"show": lit("false")}, "selector": {"id": "default"}}],
         "divider": [{"properties": {"show": lit("false")}, "selector": {"metadata": metadata}}],
         "referenceLabelDetail": [{"properties": {"show": lit("false")}, "selector": {"metadata": metadata}}],
     }
     cfg["singleVisual"]["vcObjects"] = visual_shell_hidden()
+    if background_override:
+        cfg["singleVisual"]["vcObjects"]["background"] = [{"properties": {"show": lit("true"), "color": color(background_override), "transparency": lit("0D")}}]
     visual["config"] = json.dumps(cfg, separators=(",", ":"), ensure_ascii=False)
     return visual
 
 
-def mini_sparkline(measure: str, x, y, w, h, z) -> dict:
+def mini_sparkline(measure: str, x, y, w, h, z, accent: str | None = None) -> dict:
     visual = data_visual(
         "lineClusteredColumnComboChart",
         x,
@@ -849,55 +884,313 @@ def mini_sparkline(measure: str, x, y, w, h, z) -> dict:
     })
     sv["objects"].setdefault("legend", [{"properties": {}}])[0]["properties"].update({"show": lit("false")})
     sv["objects"].setdefault("labels", [{"properties": {}}])[0]["properties"].update({"show": lit("false")})
-    sv["objects"]["dataPoint"] = [{"properties": {"fill": color(THEME["teal"])}, "selector": {"metadata": f"KPI Measures.{measure}"}}]
+    sv["objects"].setdefault("markers", [{"properties": {}}])[0]["properties"].update({"show": lit("true"), "markerSize": lit("3D")})
+    sv["objects"]["dataPoint"] = [{"properties": {"fill": color(accent or title_accent(measure))}, "selector": {"metadata": f"KPI Measures.{measure}"}}]
     visual["config"] = json.dumps(cfg, separators=(",", ":"), ensure_ascii=False)
     return visual
 
 
-def native_kpi_card(measure: str, title: str, x, y, z, w: int = 292, h: int = 104) -> list[dict]:
-    accent = title_accent(title)
+def sparkline_glyph(x, y, z, accent: str, w: int = 106, h: int = 42) -> list[dict]:
+    levels = [0.74, 0.62, 0.66, 0.50, 0.58, 0.34, 0.42, 0.20]
+    bright = {
+        THEME["blue"]: "#6F8FE0",
+        THEME["teal"]: "#6CA9AE",
+        THEME["green"]: "#A5B967",
+        THEME["rose"]: "#D47C94",
+        THEME["gold"]: "#D9BE70",
+    }.get(accent, accent)
+    step = (w - 10) / (len(levels) - 1)
+    line_h = 9
+    line_color = bright
+    visuals = [
+        shape(round(x), round(y + h - 9), round(w), 2, z, "#3A4655"),
+    ]
+    order = 1
+    for idx in range(len(levels) - 1):
+        x1 = round(x + 5 + idx * step)
+        x2 = round(x + 5 + (idx + 1) * step)
+        y1 = round(y + 4 + levels[idx] * (h - 16))
+        y2 = round(y + 4 + levels[idx + 1] * (h - 16))
+        visuals.append(shape(x1, y1, max(8, x2 - x1), line_h, z + order, line_color))
+        order += 1
+        connector_y = min(y1, y2)
+        visuals.append(shape(x2 - 4, connector_y, 8, max(line_h, abs(y2 - y1) + line_h), z + order, line_color))
+        order += 1
+    visuals.append(shape(round(x + w - 12), round(y + 4 + levels[-1] * (h - 16) - 5), 11, 11, z + order, bright))
+    return visuals
+
+
+def kpi_native_spec(measure: str, title: str) -> dict:
+    specs = {
+        "Actual Revenue": {
+            "display": "Display Actual Revenue",
+            "py": "Display Revenue PY",
+            "delta": "Display Revenue Var %",
+            "accent": THEME["blue"],
+            "status": "ON TRACK",
+        },
+        "Actual EBITDA": {
+            "display": "Display Actual EBITDA",
+            "py": "Display EBITDA PY",
+            "delta": "Display EBITDA Var %",
+            "accent": THEME["teal"],
+            "status": "ACTION",
+        },
+        "EBITDA Margin %": {
+            "display": "Display EBITDA Margin %",
+            "py": "Gross Margin PY %",
+            "delta": "Display EBITDA Var %",
+            "accent": THEME["green"],
+            "status": "WATCH",
+        },
+        "Open Exception Value": {
+            "display": "Display Open Exception Value",
+            "py": "Display Open Exception Value PY",
+            "delta": "Display Open Exception Count",
+            "accent": THEME["rose"],
+            "status": "WATCH",
+        },
+        "Gross Revenue": {
+            "display": "Display Gross Revenue",
+            "py": "Display Revenue PY",
+            "delta": "Display Revenue Var %",
+            "accent": THEME["blue"],
+            "status": "ON TRACK",
+        },
+        "Gross Profit": {
+            "display": "Display Gross Profit",
+            "py": "Display EBITDA PY",
+            "delta": "Display EBITDA Var %",
+            "accent": THEME["teal"],
+            "status": "WATCH",
+        },
+        "OPEX": {
+            "display": "Display OPEX",
+            "py": "Display EBITDA PY",
+            "delta": "Display EBITDA Var %",
+            "accent": THEME["rose"],
+            "status": "ACTION",
+        },
+        "Net Income": {
+            "display": "Display Net Income",
+            "py": "Display EBITDA PY",
+            "delta": "Display EBITDA Var %",
+            "accent": THEME["green"],
+            "status": "WATCH",
+        },
+        "Intercompany Revenue": {
+            "display": "Display Intercompany Revenue",
+            "py": "Display Revenue PY",
+            "delta": "Display Revenue Var %",
+            "accent": THEME["blue"],
+            "status": "WATCH",
+        },
+        "Intercompany Elimination": {
+            "display": "Display Intercompany Elimination",
+            "py": "Display EBITDA PY",
+            "delta": "Display EBITDA Var %",
+            "accent": THEME["teal"],
+            "status": "WATCH",
+        },
+        "Forecast Accuracy %": {
+            "display": "Display Forecast Accuracy %",
+            "py": "Latest Forecast Accuracy %",
+            "delta": "Display Forecast Accuracy Delta",
+            "accent": THEME["gold"],
+            "status": "ON TRACK",
+        },
+    }
+    return specs.get(measure, {"display": measure, "py": measure, "delta": measure, "accent": title_accent(title), "status": "WATCH"})
+
+
+def kpi_svg_measure_name(measure: str) -> str:
+    mapping = {
+        "Actual Revenue": "Revenue KPI Card SVG",
+        "Actual EBITDA": "EBITDA KPI Card SVG",
+        "EBITDA Margin %": "Margin KPI Card SVG",
+        "Open Exception Value": "Close Exceptions KPI Card SVG",
+        "Gross Revenue": "Gross Revenue KPI Card SVG",
+        "Gross Profit": "Gross Profit KPI Card SVG",
+        "OPEX": "OPEX KPI Card SVG",
+        "Net Income": "Net Income KPI Card SVG",
+        "Intercompany Revenue": "IC Revenue KPI Card SVG",
+        "Intercompany Elimination": "Intercompany Elimination KPI Card SVG",
+        "Forecast Accuracy %": "Forecast Accuracy KPI Card SVG",
+    }
+    return mapping.get(measure, measure)
+
+
+def native_kpi_card(measure: str, title: str, x, y, z, w: int = 296, h: int = 135) -> list[dict]:
+    _ = title
     return [
-        shape(x, y, w, h, z, THEME["panel"]),
-        shape(x, y, 4, h, z + 1, accent),
-        text_box(title.upper(), x + 16, y + 12, w - 32, 14, z + 2, 7.2, THEME["muted"], False),
-        value_card(measure, title, x + 14, y + 26, w - 28, 34, z + 3),
-        mini_sparkline(measure, x + 14, y + 62, w - 28, 32, z + 4),
+        svg_image_visual(
+            kpi_svg_measure_name(measure),
+            x,
+            y,
+            w,
+            h,
+            z,
+            "#242B35",
+            shell_radius=10.5,
+            shell=False,
+        )
     ]
 
 
 def decision_panel(title: str, lines: list[str], x, y, z, w: int = 536, h: int = 68) -> list[dict]:
     accent = title_accent(title)
+    is_tall = h > 100
+    title_size = 8.4 if is_tall else 7.4
+    title_y = y + (12 if is_tall else 8)
+    line_y = y + (44 if is_tall else 26)
+    line_gap = 38 if is_tall else 16
+    line_h = 30 if is_tall else 15
+    line_size = 8.2 if is_tall else 7.2
     visuals = [
-        shape(x, y, w, h, z, THEME["panel"]),
+        shape(x, y, w, h, z, THEME["ink"]),
         shape(x, y, 4, h, z + 1, accent),
-        text_box(title.upper(), x + 16, y + 8, w - 32, 13, z + 2, 7.2, accent, False),
+        text_box(title.upper(), x + 16, title_y, w - 32, 24, z + 2, title_size, accent, False),
     ]
     for idx, line in enumerate(lines[:3]):
-        visuals.append(text_box(line, x + 16, y + 24 + idx * 13, w - 32, 12, z + 3 + idx, 7.2, THEME["text"] if idx == 0 else THEME["muted"], idx == 0))
+        visuals.append(text_box(line, x + 16, line_y + idx * line_gap, w - 32, line_h, z + 3 + idx, line_size, "#FFFFFF" if idx == 0 else "#D8E0EA", idx == 0))
     return visuals
+
+
+def native_current_lens(x, y, z, w: int = 568, h: int = 78) -> list[dict]:
+    return [
+        svg_image_visual(
+            "Lens Summary SVG",
+            x,
+            y,
+            w,
+            h,
+            z,
+            "#242B35",
+            shell_radius=10.5,
+        )
+    ]
 
 
 def slicer(table: str, field: str, title: str, x, y, w, h, z) -> dict:
     return data_visual("slicer", x, y, w, h, z, {"Values": [(table, field, "column", title)]}, title)
 
 
-def image_measure(measure: str, title: str, x, y, w, h, z, image_w: int | None = None, image_h: int | None = None) -> dict:
+def svg_image_visual(measure: str, x, y, w, h, z, backing: str = "#242B35", shell_radius: float = 10.0, shell: bool = True) -> dict:
+    cfg = {
+        "name": rand_name(),
+        "layouts": [{"id": 0, "position": pos(x, y, w, h, z)}],
+        "singleVisual": {
+            "visualType": "image",
+            "drillFilterOtherVisuals": True,
+            "objects": {
+                "image": [{
+                    "properties": {
+                        "sourceType": prop_text("imageData"),
+                        "transparency": lit("0D"),
+                        "sourceField": {
+                            "expr": {
+                                "Measure": {
+                                    "Expression": {"SourceRef": {"Entity": "KPI Measures"}},
+                                    "Property": measure,
+                                }
+                            }
+                        },
+                        "effects": lit("false"),
+                    }
+                }]
+            },
+            "vcObjects": svg_card_shell(backing, "#3A4655", shell_radius, True) if shell else visual_shell_hidden(),
+        },
+    }
+    return outer(cfg, x, y, w, h, z)
+
+
+def image_measure(
+    measure: str,
+    title: str,
+    x,
+    y,
+    w,
+    h,
+    z,
+    image_w: int | None = None,
+    image_h: int | None = None,
+    backing: str | None = None,
+    display_alias: str = " ",
+    shell: bool = True,
+    shell_radius: float = 10.0,
+) -> dict:
     image_w = int(image_w or w)
     image_h = int(image_h or h)
-    visual = data_visual("tableEx", x, y, w, h, z, {"Values": [("KPI Measures", measure, "measure", title)]}, title)
+    visual = data_visual("tableEx", x, y, w, h, z, {"Values": [("KPI Measures", measure, "measure", display_alias)]}, display_alias)
     cfg = json.loads(visual["config"])
-    cfg["singleVisual"]["objects"] = image_table_objects(image_w, image_h)
-    cfg["singleVisual"]["vcObjects"] = visual_shell_hidden()
+    qref = f"KPI Measures.{measure}"
+    cfg["singleVisual"]["objects"] = image_table_objects(image_w, image_h, backing)
+    cfg["singleVisual"]["objects"]["columnWidth"] = [{"properties": {"value": lit(f"{float(image_w):.1f}D")}, "selector": {"metadata": qref}}]
+    cfg["singleVisual"]["columnProperties"] = {qref: {"displayName": display_alias}}
+    cfg["singleVisual"]["vcObjects"] = svg_card_shell(backing or "#242B35", "#3A4655", shell_radius, True) if shell else visual_shell_hidden()
     visual["config"] = json.dumps(cfg, separators=(",", ":"), ensure_ascii=False)
     return visual
 
 
 def kpi_card(measure: str, title: str, x, y, z) -> dict:
-    return image_measure(measure, title, x, y, 292, 104, z, 292, 104)
+    return image_measure(measure, title, x, y, 308, 166, z, 300, 146, "#242B35")
 
 
-def decision_chip_card(measure: str, title: str, x, y, z) -> dict:
-    return image_measure(measure, title, x, y, 536, 68, z, 536, 68)
+def metric_chip(label: str, value: str, title: str, x, y, w, h, z, accent: str) -> list[dict]:
+    return [
+        shape(x, y, w, h, z, "#F8FAFC"),
+        shape(x, y, 4, h, z + 1, accent),
+        text_box(label, x + 14, y + 5, w - 28, 13, z + 2, 6.6, THEME["muted"], False),
+        text_box(value, x + 14, y + 18, w - 28, 14, z + 3, 7.6, accent, True),
+    ]
+
+
+def decision_chip_panel(title: str, chips: list[tuple[str, str, str]], x, y, z, w: int = 610, h: int = 70) -> list[dict]:
+    accent = title_accent(title)
+    summary = "  |  ".join(f"{label}: {value}" for label, value, _metric_title in chips[:3])
+    visuals = [
+        shape(x, y, w, h, z, THEME["panel"]),
+        shape(x, y, 4, h, z + 1, accent),
+        text_box(title.upper(), x + 16, y + 10, w - 32, 22, z + 2, 8.0, accent, False),
+        text_box(summary, x + 16, y + 36, w - 32, 24, z + 3, 7.8, "#FFFFFF", True),
+    ]
+    return visuals
+
+
+def panel_box(x, y, w, h, z, fill: str, border: str = "#3A4655", radius: float = 8.0, shadow: bool = False) -> dict:
+    cfg = {
+        "name": rand_name(),
+        "layouts": [{"id": 0, "position": pos(x, y, w, h, z)}],
+        "singleVisual": {
+            "visualType": "textbox",
+            "drillFilterOtherVisuals": True,
+            "vcObjects": {
+                "background": [{"properties": {"show": lit("true"), "color": color(fill), "transparency": lit("0D")}}],
+                "border": [{"properties": {"show": lit("true"), "color": color(border), "radius": lit(f"{radius:.1f}D"), "width": lit("0.75D")}}],
+                "dropShadow": [{"properties": {"show": lit("true" if shadow else "false"), "color": color("#000000"), "transparency": lit("85.0D"), "angle": lit("45.0D"), "distance": lit("1.0D")}}],
+                "title": [{"properties": {"show": lit("false")}}],
+                "visualHeader": [{"properties": {"show": lit("false")}}],
+            },
+            "objects": {
+                "general": [{
+                    "properties": {
+                        "paragraphs": [{
+                            "textRuns": [{
+                                "value": " ",
+                                "textStyle": {
+                                    "fontFamily": "Segoe UI",
+                                    "fontSize": "1pt",
+                                    "color": fill,
+                                },
+                            }]
+                        }]
+                    }
+                }]
+            },
+        },
+    }
+    return outer(cfg, x, y, w, h, z)
 
 
 def text_box(text: str, x, y, w, h, z, size=12, fg=None, bold=True) -> dict:
@@ -908,6 +1201,9 @@ def text_box(text: str, x, y, w, h, z, size=12, fg=None, bold=True) -> dict:
         "singleVisual": {
             "visualType": "textbox",
             "drillFilterOtherVisuals": True,
+            "vcObjects": {
+                "visualHeader": [{"properties": {"show": lit("false")}}],
+            },
             "objects": {
                 "general": [{
                     "properties": {
@@ -934,8 +1230,11 @@ def shape(x, y, w, h, z, fill) -> dict:
         "name": rand_name(),
         "layouts": [{"id": 0, "position": pos(x, y, w, h, z)}],
         "singleVisual": {
-            "visualType": "shape",
+            "visualType": "basicShape",
             "drillFilterOtherVisuals": True,
+            "vcObjects": {
+                "visualHeader": [{"properties": {"show": lit("false")}}],
+            },
             "objects": {
                 "shape": [{"properties": {"tileShape": lit("'rectangle'")}}],
                 "fill": [{"properties": {"show": lit("true"), "fillColor": color(fill), "transparency": lit("0D")}}],
@@ -951,25 +1250,23 @@ def header(title: str, subtitle: str) -> list[dict]:
         shape(24, 18, 5, 48, 10, THEME["teal"]),
         text_box("REGIONAL FP&A CONSOLIDATION", 38, 18, 260, 14, 20, 7.2, THEME["teal"], False),
         text_box(title, 38, 36, 520, 30, 30, 14, THEME["text"]),
-        text_box(subtitle, 575, 36, 430, 24, 40, 8, THEME["muted"], False),
-        shape(24, 70, 1232, 2, 50, THEME["border"]),
+        text_box(subtitle, 575, 30, 610, 36, 40, 8, THEME["muted"], False),
+        shape(24, 72, 1232, 2, 50, THEME["border"]),
     ]
 
 
 def top_filter_bar(filters: list[tuple[str, str, str, int]], start_x: int = 174) -> list[dict]:
+    dark_bar = "#242B35"
     visuals = [
-        shape(24, 78, 1232, 60, 60, THEME["panel2"]),
-        shape(24, 78, 5, 60, 65, THEME["gold"]),
-        text_box("FILTER LENS", 38, 98, 110, 18, 70, 8.0, THEME["gold"], False),
+        shape(24, 78, 1232, 78, 60, dark_bar),
+        shape(24, 78, 5, 78, 65, THEME["gold"]),
+        text_box("FILTER LENS", 38, 96, 112, 38, 70, 8.0, "#D0B16A", False),
     ]
     x = start_x
     for idx, (table, field, title, width) in enumerate(filters):
-        visuals.append(slicer(table, field, title, x, 86, width, 44, 100 + idx * 10))
+        visuals.append(slicer(table, field, title, x, 84, width, 58, 100 + idx * 10))
         x += width + 12
-    visuals.append(shape(704, 86, 536, 42, 180, THEME["panel"]))
-    visuals.append(shape(704, 86, 4, 42, 181, THEME["teal"]))
-    visuals.append(text_box("CURRENT LENS", 718, 92, 92, 12, 182, 6.8, THEME["teal"], False))
-    visuals.append(text_box("Top slicers apply across the page; labels are sized for dropdown readability.", 718, 106, 500, 18, 183, 7.4, THEME["muted"], False))
+    visuals.extend(native_current_lens(672, 78, 180, 568, 78))
     return visuals
 
 
@@ -1120,16 +1417,16 @@ def build_layout() -> dict:
         ("DimBusinessUnit", "business_unit", "BU", 166),
     ])
     p1 += [
-        *native_kpi_card("Actual Revenue", "Revenue", 24, 150, 200),
-        *native_kpi_card("Actual EBITDA", "EBITDA", 332, 150, 210),
-        *native_kpi_card("EBITDA Margin %", "Margin", 640, 150, 220),
-        *native_kpi_card("Open Exception Value", "Close Risk", 948, 150, 230),
+        *native_kpi_card("Actual Revenue", "Revenue", 24, 178, 200),
+        *native_kpi_card("Actual EBITDA", "EBITDA", 336, 178, 210),
+        *native_kpi_card("EBITDA Margin %", "Margin", 648, 178, 220),
+        *native_kpi_card("Open Exception Value", "Close Risk", 960, 178, 230),
         data_visual(
             "lineClusteredColumnComboChart",
             24,
-            278,
+            334,
             610,
-            222,
+            176,
             300,
             {
                 "Category": [("DimDate", "date", "column", "Month")],
@@ -1142,23 +1439,23 @@ def build_layout() -> dict:
         data_visual(
             "waterfallChart",
             646,
-            278,
+            334,
             610,
-            222,
+            176,
             310,
             {
                 "Category": [("FactVarianceDriverBridge", "driver", "column", "Driver")],
-                "Y": [("FactVarianceDriverBridge", "amount_usd", "column", "Amount")],
+                "Y": [("KPI Measures", "Latest Bridge Amount", "measure", "Amount")],
             },
             "EBITDA Driver Bridge",
             "Actual vs budget bridge by variance driver",
         ),
         data_visual(
-            "barChart",
+            "columnChart",
             24,
-            522,
+            528,
             438,
-            174,
+            158,
             320,
             {
                 "Category": [("DimEntity", "country", "column", "Country")],
@@ -1170,9 +1467,9 @@ def build_layout() -> dict:
         data_visual(
             "columnChart",
             474,
-            522,
+            528,
             350,
-            174,
+            158,
             330,
             {
                 "Category": [("DimBusinessUnit", "business_unit", "column", "BU")],
@@ -1181,23 +1478,18 @@ def build_layout() -> dict:
             "BU Revenue Mix",
             "Business-unit contribution",
         ),
-        data_visual(
-            "tableEx",
-            836,
-            522,
-            420,
-            174,
-            340,
-            {
-                "Values": [
-                    ("DimEntity", "country", "column", "Country"),
-                    ("KPI Measures", "Actual Revenue", "measure", "Revenue"),
-                    ("KPI Measures", "Actual EBITDA", "measure", "EBITDA"),
-                    ("KPI Measures", "EBITDA Var vs Budget", "measure", "Var"),
-                    ("KPI Measures", "Open Exception Value", "measure", "Open $"),
-                ]
-            },
+        *decision_panel(
             "Management Attention List",
+            [
+                "1. Indonesia margin reset: regional owner action.",
+                "2. Close risk: controller follow-up before board pack.",
+                "3. Bridge levers: price/yield, volume, productivity.",
+            ],
+            836,
+            528,
+            340,
+            420,
+            158,
         ),
     ]
 
@@ -1207,35 +1499,30 @@ def build_layout() -> dict:
         ("DimScenario", "scenario", "Scenario", 180),
     ])
     p2 += [
-        *native_kpi_card("Gross Revenue", "Gross Revenue", 24, 150, 200),
-        *native_kpi_card("Gross Profit", "Gross Profit", 332, 150, 210),
-        *native_kpi_card("OPEX", "OPEX", 640, 150, 220),
-        *native_kpi_card("Net Income", "Net Income", 948, 150, 230),
-        data_visual(
-            "tableEx",
-            24,
-            278,
-            610,
-            418,
-            300,
-            {
-                "Values": [
-                    ("DimAccount", "account_group", "column", "Group"),
-                    ("DimAccount", "account", "column", "Account"),
-                    ("FactFinancials", "amount_usd", "column", "Amount USD"),
-                    ("FactFinancials", "amount_local", "column", "Local"),
-                    ("DimScenario", "scenario", "column", "Scenario"),
-                ]
-            },
-            "P&L Statement Matrix",
-            "Account hierarchy and scenario values",
-        ),
+        *native_kpi_card("Gross Revenue", "Gross Revenue", 24, 178, 200),
+        *native_kpi_card("Gross Profit", "Gross Profit", 336, 178, 210),
+        *native_kpi_card("OPEX", "OPEX", 648, 178, 220),
+        *native_kpi_card("Net Income", "Net Income", 960, 178, 230),
         data_visual(
             "barChart",
-            646,
-            278,
+            24,
+            334,
+            610,
+            352,
             300,
-            200,
+            {
+                "Category": [("DimAccount", "account_group", "column", "Group")],
+                "Y": [("KPI Measures", "Financial Amount", "measure", "Amount")],
+            },
+            "P&L Statement by Account Group",
+            "Scenario-filtered account movement",
+        ),
+        data_visual(
+            "columnChart",
+            646,
+            334,
+            300,
+            174,
             310,
             {
                 "Category": [("DimEntity", "country", "column", "Country")],
@@ -1246,9 +1533,9 @@ def build_layout() -> dict:
         data_visual(
             "donutChart",
             958,
-            278,
+            334,
             298,
-            200,
+            174,
             320,
             {
                 "Category": [("DimBusinessUnit", "business_unit", "column", "BU")],
@@ -1257,23 +1544,17 @@ def build_layout() -> dict:
             "Revenue Mix by BU",
         ),
         data_visual(
-            "tableEx",
+            "columnChart",
             646,
-            496,
+            516,
             610,
-            200,
+            176,
             330,
             {
-                "Values": [
-                    ("DimEntity", "region", "column", "Region"),
-                    ("DimEntity", "country", "column", "Country"),
-                    ("KPI Measures", "Budget Revenue", "measure", "Budget Rev"),
-                    ("KPI Measures", "Actual Revenue", "measure", "Actual Rev"),
-                    ("KPI Measures", "Revenue Var vs Budget", "measure", "Rev Var"),
-                    ("KPI Measures", "EBITDA Var vs Budget", "measure", "EBITDA Var"),
-                ]
+                "Category": [("DimEntity", "country", "column", "Country")],
+                "Y": [("KPI Measures", "EBITDA Var vs Budget", "measure", "EBITDA Var")],
             },
-            "Country Variance Table",
+            "Country Variance by EBITDA",
         ),
     ]
 
@@ -1284,16 +1565,16 @@ def build_layout() -> dict:
         ("FactCloseExceptions", "status", "Status", 154),
     ])
     p3 += [
-        *native_kpi_card("Intercompany Revenue", "IC Revenue", 24, 150, 200),
-        *native_kpi_card("Intercompany Elimination", "IC Elimination", 332, 150, 210),
-        *native_kpi_card("Open Exception Value", "Close Risk", 640, 150, 220),
-        *native_kpi_card("Forecast Accuracy %", "Forecast Accuracy", 948, 150, 230),
+        *native_kpi_card("Intercompany Revenue", "IC Revenue", 24, 178, 200),
+        *native_kpi_card("Intercompany Elimination", "IC Elimination", 336, 178, 210),
+        *native_kpi_card("Open Exception Value", "Close Risk", 648, 178, 220),
+        *native_kpi_card("Forecast Accuracy %", "Forecast Accuracy", 960, 178, 230),
         data_visual(
-            "barChart",
+            "columnChart",
             24,
-            278,
+            334,
             390,
-            222,
+            176,
             300,
             {
                 "Category": [("DimEntity", "country", "column", "Country")],
@@ -1304,70 +1585,55 @@ def build_layout() -> dict:
         data_visual(
             "columnChart",
             426,
-            278,
+            334,
             390,
-            222,
+            176,
             310,
             {
                 "Category": [("FactCloseExceptions", "status", "column", "Status")],
-                "Y": [("FactCloseExceptions", "amount_usd", "column", "Amount")],
+                "Y": [("KPI Measures", "Exception Amount", "measure", "Amount")],
             },
             "Exception Value by Status",
         ),
         data_visual(
             "waterfallChart",
             828,
-            278,
+            334,
             428,
-            222,
+            176,
             320,
             {
                 "Category": [("FactVarianceDriverBridge", "driver", "column", "Driver")],
-                "Y": [("FactVarianceDriverBridge", "amount_usd", "column", "Amount")],
+                "Y": [("KPI Measures", "Latest Bridge Amount", "measure", "Amount")],
             },
             "Board EBITDA Walk",
             "Variance bridge for the selected scope",
         ),
-        *decision_panel("Decision Signals", ["Revenue and EBITDA trend are visible against monthly context.", "Country variance and BU mix stay on the executive page.", "Use the queue below for follow-up ownership."], 24, 522, 330),
         data_visual(
-            "tableEx",
+            "columnChart",
             24,
-            596,
+            528,
             610,
-            100,
+            158,
             330,
             {
-                "Values": [
-                    ("FactCloseExceptions", "exception_id", "column", "ID"),
-                    ("FactCloseExceptions", "country", "column", "Country"),
-                    ("FactCloseExceptions", "exception_type", "column", "Type"),
-                    ("FactCloseExceptions", "owner_team", "column", "Owner"),
-                    ("FactCloseExceptions", "severity", "column", "Severity"),
-                    ("FactCloseExceptions", "status", "column", "Status"),
-                    ("FactCloseExceptions", "amount_usd", "column", "Amount"),
-                ]
+                "Category": [("FactCloseExceptions", "owner_team", "column", "Owner")],
+                "Y": [("KPI Measures", "Exception Amount", "measure", "Amount")],
             },
-            "Close Exception Queue",
+            "Close Exception Exposure by Owner",
         ),
-        *decision_panel("Control Signals", ["IC elimination and exception exposure sit beside the board bridge.", "Severity and status filters keep close-risk review focused.", "Board extract is ready for country-level discussion."], 646, 522, 340),
         data_visual(
-            "tableEx",
+            "columnChart",
             646,
-            596,
+            528,
             610,
-            100,
+            158,
             340,
             {
-                "Values": [
-                    ("DimEntity", "country", "column", "Country"),
-                    ("KPI Measures", "Actual Revenue", "measure", "Revenue"),
-                    ("KPI Measures", "Actual EBITDA", "measure", "EBITDA"),
-                    ("KPI Measures", "EBITDA Margin %", "measure", "Margin"),
-                    ("KPI Measures", "EBITDA Var vs Budget", "measure", "Var vs Budget"),
-                    ("KPI Measures", "Open Exception Value", "measure", "Close Risk"),
-                ]
+                "Category": [("DimEntity", "country", "column", "Country")],
+                "Y": [("KPI Measures", "Actual EBITDA", "measure", "EBITDA")],
             },
-            "Board Pack Extract",
+            "Board Pack EBITDA by Country",
         ),
     ]
 
@@ -1417,7 +1683,8 @@ New-Item -ItemType Directory -Force -Path $QaRoot | Out-Null
 
 function Get-PowerBiSessionForPbix([string]$Path) {
   $resolved = [IO.Path]::GetFullPath($Path)
-  $infoText = & "C:\Users\Win\AppData\Local\Programs\pbi-tools\current\pbi-tools.exe" info 2>&1 | Out-String
+  $pbiTools = (Get-Command pbi-tools -ErrorAction Stop).Source
+  $infoText = & $pbiTools info 2>&1 | Out-String
   $jsonStart = $infoText.IndexOf("{")
   if ($jsonStart -lt 0) { throw "pbi-tools info did not return JSON." }
   $info = $infoText.Substring($jsonStart) | ConvertFrom-Json

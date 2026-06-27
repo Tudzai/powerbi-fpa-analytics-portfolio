@@ -1,32 +1,25 @@
-{
-  "status": "pass",
-  "final_output": "output/dashboard_final.pbix",
-  "expected_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 13 - Regional FP&A Consolidation\\output\\dashboard_final.pbix",
-  "file_exists": true,
-  "route": "TEMPLATE_SEED_TOM_PUSH_NATIVE_LAYOUT",
-  "reason": "Finance PBIX seed was copied, Project 13 model was pushed through the Power BI Desktop TOM/XMLA session, Desktop saved the seed PBIX, native layout was patched, and final PBIX was reopened/validated. On 2026-06-23 the native layout was upgraded again so all slicers sit in a top filter bar, then the final PBIX passed package validation, pbi-tools extract, Desktop exact-file open-check, and screenshot QA.",
-  "environment": {
-    "checked_at": "2026-06-15T02:01:15",
-    "power_bi_desktop_exe": "C:\\Program Files\\Microsoft Power BI Desktop\\bin\\PBIDesktop.exe",
-    "power_bi_desktop_program_files": true,
-    "power_bi_desktop_x86": false,
-    "power_bi_start_apps": [
-      {
-        "Name": "Power BI Desktop",
-        "AppID": "Microsoft.MicrosoftPowerBIDesktop_8wekyb3d8bbwe!Microsoft.MicrosoftPowerBIDesktop"
-      },
-      {
-        "Name": "Power BI Desktop",
-        "AppID": "{6D809377-6AF0-444B-8957-A3773F02200E}\\Microsoft Power BI Desktop\\bin\\PBIDesktop.exe"
-      }
-    ],
-    "pbi_tools": "C:\\Users\\Win\\AppData\\Local\\Programs\\pbi-tools\\current\\pbi-tools.EXE",
-    "pbi_tools_info_excerpt": "pbi-tools | Copyright (C) Mathias Thierbach 2018-2025\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Affero General Public License as published\nby the Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\nSee <https://goto.pbi.tools/license> for full license details.\n\n\n{\n  \"version\": \"1.2.0\",\n  \"edition\": \"Desktop\",\n  \"build\": \"1.2.25006.2036\",\n  \"pbixProjVersion\": \"1.0\",\n  \"pbiBuildVersion\": \"2.138.782.0\",\n  \"longPathsEnabled\": true,\n  \"amoVersion\": \"19.87.7.0\",\n  \"toolPath\": \"C:\\\\Users\\\\Win\\\\AppData\\\\Local\\\\Programs\\\\pbi-tools\\\\current\\\\pbi-tools.EXE\",\n  \"locale\": {\n    \"system\": \"en-US (1033)\",\n    \"ui\": \"en-US (1033)\"\n  },\n  \"settings\": {\n    \"PBITOOLS_LogLevel\": null,\n    \"PBITOOLS_PbiInstallDir\": \"C:\\\\Program Files\\\\Microsoft Power BI Desktop\\\\bin\",\n    \"PBITOOLS_AppDataDir\": null,\n    \"PBITOOLS_Debug\": null,\n    \"PBITOOLS_UICulture\": null,\n    \"PBITOOLS_EffectiveDate\": null,\n    \"PBITOOLS_DefaultModelSerialization\": null,\n    \"PBITOOLS_ExternalAmoPath\": null\n  },\n  \"runtime\": {\n    \"platform\": \"Microsoft Windows 10.0.26200 \",\n    \"architecture\": \"X64\",\n    \"framework\": \".NET Framework 4.8.9325.0\"\n  },\n  \"pbiInstalls\": [\n    {\n      \"ProductVersion\": \"2.154.1260.0 (26.05)+f6b01d4ee0491b332167366c6bb36121ee062561\",\n      \"Is64Bit\": true,\n      \"InstallDir\": \"C:\\\\Program Files\\\\Microsoft Power BI Desktop\\\\bin\",\n      \"SettingsDir\": null,\n      \"Location\": \"Custom\"\n    },\n    {\n      \"ProductVersion\": \"2.155.756.0 (26.06)+7f1da5803bfe48beff98093405280405ddb467dd\",\n      \"Is64Bit\": true,\n      \"InstallDir\": \"C:\\\\Program Files\\\\WindowsApps\\\\Microsoft.MicrosoftPowerBIDesktop_2.155.756.0_x64__8wekyb3d8bbwe\\\\bin\",\n      \"SettingsDir\": \"C:\\\\Users\\\\Win\\\\Microsoft\\\\Power BI Desktop Store App\",\n      \"Location\": \"WindowsStore\"\n    },\n    {\n      \"ProductVersion\": \"2.154.1260.0 (26.05)+f6b01d4ee0491b332167366c6bb36121ee062561\",\n      \"Is64Bit\": true,\n      \"InstallDir\": \"C:\\\\Program Files\\\\Microsoft Power BI Desktop\\\\bin\",\n      \"SettingsDir\": \"C:\\\\Users\\\\Win\\\\AppData\\\\Local\\\\Microsoft\\\\Power BI Desktop\",\n      \"Location\": \"Installer\"\n    }\n  ],\n  \"effectivePbiInstallDir\": \"C:\\\\Program Files\\\\Microsoft Power BI Desktop\\\\bin\",\n  \"pbiSessions\": []\n}",
-    "dotnet": null,
-    "tabular_editor": null,
-    "computer_use": {
-      "status": "pass",
-      "evidence": "Computer Use bootstrap and sky.list_apps returned apps in this run; Power BI Desktop was discoverable."
-    }
-  }
+﻿{
+    "status":  "pass",
+    "final_output":  "output/dashboard_final.pbix",
+    "expected_pbix":  "output/dashboard_final.pbix",
+    "file_exists":  true,
+    "route":  "finance_seed_tom_push_native_layout_patch",
+    "reason":  "Finance seed PBIX, Project 13 TOM model push, native layout patch, and Desktop/reopen/render QA completed.",
+    "environment":  {
+                        "checked_at":  "2026-06-27T20:46:18",
+                        "power_bi_desktop_exe":  "Power BI Desktop",
+                        "power_bi_desktop_program_files":  true,
+                        "power_bi_desktop_x86":  false,
+                        "power_bi_start_apps":  [
+
+                                                ],
+                        "pbi_tools":  "pbi-tools",
+                        "pbi_tools_info_excerpt":  "pbi-tools 1.2.0 Desktop; local install paths omitted for public repository.",
+                        "dotnet":  null,
+                        "tabular_editor":  null,
+                        "computer_use":  {
+                                             "status":  "pass",
+                                             "evidence":  "Computer Use bootstrap and sky.list_apps returned apps in this run; Power BI Desktop was discoverable."
+                                         }
+                    }
 }

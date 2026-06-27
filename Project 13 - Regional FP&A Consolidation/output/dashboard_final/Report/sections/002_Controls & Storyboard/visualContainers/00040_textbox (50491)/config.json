@@ -1,0 +1,57 @@
+{
+  "name": "50491f92f1524f48a173",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 575,
+        "y": 30,
+        "z": 40,
+        "width": 610,
+        "height": 36,
+        "tabOrder": 40
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "vcObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "FX, intercompany, close exceptions, and board-ready narrative",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "8pt",
+                      "color": "#526173"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,6 @@
 // DimDate
 let
-    ProjectRoot = "C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/",
+    ProjectRoot = "<PROJECT_ROOT>/",
     Source = Csv.Document(File.Contents(ProjectRoot & "data/prepared/dim_date.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     Typed = Table.TransformColumnTypes(Promoted, {
@@ -18,7 +18,7 @@ in
 
 // DimEntity
 let
-    ProjectRoot = "C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/",
+    ProjectRoot = "<PROJECT_ROOT>/",
     Source = Csv.Document(File.Contents(ProjectRoot & "data/prepared/dim_entity.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     Typed = Table.TransformColumnTypes(Promoted, {
@@ -34,7 +34,7 @@ in
 
 // DimBusinessUnit
 let
-    ProjectRoot = "C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/",
+    ProjectRoot = "<PROJECT_ROOT>/",
     Source = Csv.Document(File.Contents(ProjectRoot & "data/prepared/dim_business_unit.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     Typed = Table.TransformColumnTypes(Promoted, {
@@ -46,7 +46,7 @@ in
 
 // DimAccount
 let
-    ProjectRoot = "C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/",
+    ProjectRoot = "<PROJECT_ROOT>/",
     Source = Csv.Document(File.Contents(ProjectRoot & "data/prepared/dim_account.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     Typed = Table.TransformColumnTypes(Promoted, {
@@ -61,7 +61,7 @@ in
 
 // DimScenario
 let
-    ProjectRoot = "C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/",
+    ProjectRoot = "<PROJECT_ROOT>/",
     Source = Csv.Document(File.Contents(ProjectRoot & "data/prepared/dim_scenario.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     Typed = Table.TransformColumnTypes(Promoted, {
@@ -74,7 +74,7 @@ in
 
 // FactFinancials
 let
-    ProjectRoot = "C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/",
+    ProjectRoot = "<PROJECT_ROOT>/",
     Source = Csv.Document(File.Contents(ProjectRoot & "data/prepared/fact_financials.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     Typed = Table.TransformColumnTypes(Promoted, {
@@ -95,7 +95,7 @@ in
 
 // FactFinancialSummary
 let
-    ProjectRoot = "C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/",
+    ProjectRoot = "<PROJECT_ROOT>/",
     Source = Csv.Document(File.Contents(ProjectRoot & "data/prepared/fact_financial_summary.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     Typed = Table.TransformColumnTypes(Promoted, {
@@ -130,7 +130,7 @@ in
 
 // FactVarianceDriverBridge
 let
-    ProjectRoot = "C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/",
+    ProjectRoot = "<PROJECT_ROOT>/",
     Source = Csv.Document(File.Contents(ProjectRoot & "data/prepared/fact_variance_driver_bridge.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     Typed = Table.TransformColumnTypes(Promoted, {
@@ -150,7 +150,7 @@ in
 
 // FactCloseExceptions
 let
-    ProjectRoot = "C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/",
+    ProjectRoot = "<PROJECT_ROOT>/",
     Source = Csv.Document(File.Contents(ProjectRoot & "data/prepared/fact_close_exceptions.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     Typed = Table.TransformColumnTypes(Promoted, {
@@ -159,6 +159,8 @@ let
         {"entity_id", type text},
         {"country", type text},
         {"region", type text},
+        {"business_unit_id", type text},
+        {"business_unit", type text},
         {"exception_type", type text},
         {"owner_team", type text},
         {"severity", type text},
@@ -173,7 +175,7 @@ in
 
 // FactFXRate
 let
-    ProjectRoot = "C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/",
+    ProjectRoot = "<PROJECT_ROOT>/",
     Source = Csv.Document(File.Contents(ProjectRoot & "data/prepared/fact_fx_rate.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
     Typed = Table.TransformColumnTypes(Promoted, {

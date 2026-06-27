@@ -1,27 +1,27 @@
 {
   "Total Revenue": {
     "dax": "SUM ( FactFinancialSummary[external_revenue_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Consolidated external revenue after excluding intercompany revenue."
   },
   "Gross Revenue": {
     "dax": "SUM ( FactFinancialSummary[gross_revenue_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "External plus intercompany revenue before elimination."
   },
   "Intercompany Revenue": {
     "dax": "SUM ( FactFinancialSummary[intercompany_revenue_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Intercompany revenue requiring elimination."
   },
   "Intercompany Elimination": {
     "dax": "SUM ( FactFinancialSummary[intercompany_elimination_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Net intercompany elimination impact."
   },
   "Gross Profit": {
     "dax": "SUM ( FactFinancialSummary[gross_profit_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Revenue minus cost of services."
   },
   "Gross Margin %": {
@@ -31,12 +31,12 @@
   },
   "OPEX": {
     "dax": "SUM ( FactFinancialSummary[opex_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Personnel, facilities, sales and marketing, and G&A."
   },
   "EBITDA": {
     "dax": "SUM ( FactFinancialSummary[ebitda_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Gross profit plus OPEX after intercompany elimination."
   },
   "EBITDA Margin %": {
@@ -46,42 +46,42 @@
   },
   "Operating Income": {
     "dax": "SUM ( FactFinancialSummary[operating_income_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "EBITDA less depreciation."
   },
   "Net Income": {
     "dax": "SUM ( FactFinancialSummary[net_income_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Operating income less interest and tax."
   },
   "Cash Position": {
     "dax": "SUM ( FactFinancialSummary[cash_position_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Period-end cash position by entity and BU allocation."
   },
   "Operating Cash Flow": {
     "dax": "SUM ( FactFinancialSummary[operating_cash_flow_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Operating cash flow proxy tied to EBITDA conversion."
   },
   "Working Capital": {
     "dax": "SUM ( FactFinancialSummary[working_capital_usd] )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Working capital proxy for close review."
   },
   "Actual Revenue": {
     "dax": "CALCULATE ( [Total Revenue], DimScenario[scenario] = \"Actual\" )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Actual consolidated revenue."
   },
   "Budget Revenue": {
     "dax": "CALCULATE ( [Total Revenue], DimScenario[scenario] = \"Budget\" )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Budget consolidated revenue."
   },
   "Revenue Var vs Budget": {
     "dax": "[Actual Revenue] - [Budget Revenue]",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Actual revenue less budget revenue."
   },
   "Revenue Var %": {
@@ -91,17 +91,17 @@
   },
   "Actual EBITDA": {
     "dax": "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Actual\" )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Actual EBITDA."
   },
   "Budget EBITDA": {
     "dax": "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Budget\" )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Budget EBITDA."
   },
   "EBITDA Var vs Budget": {
     "dax": "[Actual EBITDA] - [Budget EBITDA]",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Actual EBITDA less budget EBITDA."
   },
   "EBITDA Var %": {
@@ -111,7 +111,7 @@
   },
   "Forecast EBITDA": {
     "dax": "CALCULATE ( [EBITDA], DimScenario[scenario] = \"Forecast\" )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Forecast EBITDA."
   },
   "Forecast Accuracy %": {
@@ -126,7 +126,7 @@
   },
   "Open Exception Value": {
     "dax": "CALCULATE ( SUM ( FactCloseExceptions[amount_usd] ), FactCloseExceptions[status] <> \"Closed\" )",
-    "format_string": "$#,0,,.0M",
+    "format_string": "$#,0;($#,0);$0",
     "definition": "Value attached to unresolved close exceptions."
   }
 }

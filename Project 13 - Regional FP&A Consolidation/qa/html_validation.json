@@ -1,117 +1,121 @@
-{
-  "status": "pass",
-  "checked_at": "2026-06-27T13:55:10.249Z",
-  "html": "C:\\Users\\Win\\AppData\\Local\\Temp\\codex-powerbi-fpa-analytics-portfolio-main\\Project 13 - Regional FP&A Consolidation\\output\\dashboard_final.html",
-  "results": [
-    {
-      "viewport": {
-        "name": "desktop",
-        "width": 1366,
-        "height": 768
-      },
-      "errors": [],
-      "qa": {
-        "title": "Regional FP&A Consolidation Dashboard",
-        "kpiCards": 10,
-        "panels": 24,
-        "tables": 8,
-        "svgs": 24,
-        "overflowX": false,
-        "hasNaN": false,
-        "qa": {
-          "kpiCards": 10,
-          "panels": 24,
-          "tables": 8,
-          "svgs": 24,
-          "activePage": "overview",
-          "period": "2026-05",
-          "region": "All",
-          "country": "All",
-          "businessUnit": "All",
-          "scenario": "Actual"
-        }
-      },
-      "filtered": {
-        "period": "2026-05",
-        "kpiCards": 10,
-        "activePage": "overview",
-        "actionText": "Action Required\nIndonesia is the largest Actual EBITDA pressure point at -$30K vs Budget.\nBridge Integrity\nDriver bridge ties to EBITDA variance with $1 tolerance in QA.\nClose Focus\n0 high-severity items remain open or in review."
-      },
-      "pages": [
-        {
-          "expected": "overview",
-          "active": "overview",
-          "activeElementVisible": true,
-          "hasNaN": false
-        },
-        {
-          "expected": "pnl",
-          "active": "pnl",
-          "activeElementVisible": true,
-          "hasNaN": false
-        },
-        {
-          "expected": "story",
-          "active": "story",
-          "activeElementVisible": true,
-          "hasNaN": false
-        }
-      ]
-    },
-    {
-      "viewport": {
-        "name": "mobile",
-        "width": 390,
-        "height": 844
-      },
-      "errors": [],
-      "qa": {
-        "title": "Regional FP&A Consolidation Dashboard",
-        "kpiCards": 10,
-        "panels": 24,
-        "tables": 8,
-        "svgs": 24,
-        "overflowX": false,
-        "hasNaN": false,
-        "qa": {
-          "kpiCards": 10,
-          "panels": 24,
-          "tables": 8,
-          "svgs": 24,
-          "activePage": "overview",
-          "period": "2026-05",
-          "region": "All",
-          "country": "All",
-          "businessUnit": "All",
-          "scenario": "Actual"
-        }
-      },
-      "filtered": {
-        "period": "2026-05",
-        "kpiCards": 10,
-        "activePage": "overview",
-        "actionText": "Action Required\nIndonesia is the largest Actual EBITDA pressure point at -$30K vs Budget.\nBridge Integrity\nDriver bridge ties to EBITDA variance with $1 tolerance in QA.\nClose Focus\n0 high-severity items remain open or in review."
-      },
-      "pages": [
-        {
-          "expected": "overview",
-          "active": "overview",
-          "activeElementVisible": true,
-          "hasNaN": false
-        },
-        {
-          "expected": "pnl",
-          "active": "pnl",
-          "activeElementVisible": true,
-          "hasNaN": false
-        },
-        {
-          "expected": "story",
-          "active": "story",
-          "activeElementVisible": true,
-          "hasNaN": false
-        }
-      ]
-    }
-  ]
+﻿{
+    "status":  "pass",
+    "checked_at":  "2026-06-27T14:11:54.271Z",
+    "html":  "output/dashboard_final.html",
+    "results":  [
+                    {
+                        "viewport":  {
+                                         "name":  "desktop",
+                                         "width":  1366,
+                                         "height":  768
+                                     },
+                        "errors":  [
+
+                                   ],
+                        "qa":  {
+                                   "title":  "Regional FP\u0026A Consolidation Dashboard",
+                                   "kpiCards":  10,
+                                   "panels":  24,
+                                   "tables":  8,
+                                   "svgs":  24,
+                                   "overflowX":  false,
+                                   "hasNaN":  false,
+                                   "qa":  {
+                                              "kpiCards":  10,
+                                              "panels":  24,
+                                              "tables":  8,
+                                              "svgs":  24,
+                                              "activePage":  "overview",
+                                              "period":  "2026-05",
+                                              "region":  "All",
+                                              "country":  "All",
+                                              "businessUnit":  "All",
+                                              "scenario":  "Actual"
+                                          }
+                               },
+                        "filtered":  {
+                                         "period":  "2026-05",
+                                         "kpiCards":  10,
+                                         "activePage":  "overview",
+                                         "actionText":  "Action Required\nIndonesia is the largest Actual EBITDA pressure point at -$30K vs Budget.\nBridge Integrity\nDriver bridge ties to EBITDA variance with $1 tolerance in QA.\nClose Focus\n0 high-severity items remain open or in review."
+                                     },
+                        "pages":  [
+                                      {
+                                          "expected":  "overview",
+                                          "active":  "overview",
+                                          "activeElementVisible":  true,
+                                          "hasNaN":  false
+                                      },
+                                      {
+                                          "expected":  "pnl",
+                                          "active":  "pnl",
+                                          "activeElementVisible":  true,
+                                          "hasNaN":  false
+                                      },
+                                      {
+                                          "expected":  "story",
+                                          "active":  "story",
+                                          "activeElementVisible":  true,
+                                          "hasNaN":  false
+                                      }
+                                  ]
+                    },
+                    {
+                        "viewport":  {
+                                         "name":  "mobile",
+                                         "width":  390,
+                                         "height":  844
+                                     },
+                        "errors":  [
+
+                                   ],
+                        "qa":  {
+                                   "title":  "Regional FP\u0026A Consolidation Dashboard",
+                                   "kpiCards":  10,
+                                   "panels":  24,
+                                   "tables":  8,
+                                   "svgs":  24,
+                                   "overflowX":  false,
+                                   "hasNaN":  false,
+                                   "qa":  {
+                                              "kpiCards":  10,
+                                              "panels":  24,
+                                              "tables":  8,
+                                              "svgs":  24,
+                                              "activePage":  "overview",
+                                              "period":  "2026-05",
+                                              "region":  "All",
+                                              "country":  "All",
+                                              "businessUnit":  "All",
+                                              "scenario":  "Actual"
+                                          }
+                               },
+                        "filtered":  {
+                                         "period":  "2026-05",
+                                         "kpiCards":  10,
+                                         "activePage":  "overview",
+                                         "actionText":  "Action Required\nIndonesia is the largest Actual EBITDA pressure point at -$30K vs Budget.\nBridge Integrity\nDriver bridge ties to EBITDA variance with $1 tolerance in QA.\nClose Focus\n0 high-severity items remain open or in review."
+                                     },
+                        "pages":  [
+                                      {
+                                          "expected":  "overview",
+                                          "active":  "overview",
+                                          "activeElementVisible":  true,
+                                          "hasNaN":  false
+                                      },
+                                      {
+                                          "expected":  "pnl",
+                                          "active":  "pnl",
+                                          "activeElementVisible":  true,
+                                          "hasNaN":  false
+                                      },
+                                      {
+                                          "expected":  "story",
+                                          "active":  "story",
+                                          "activeElementVisible":  true,
+                                          "hasNaN":  false
+                                      }
+                                  ]
+                    }
+                ]
 }

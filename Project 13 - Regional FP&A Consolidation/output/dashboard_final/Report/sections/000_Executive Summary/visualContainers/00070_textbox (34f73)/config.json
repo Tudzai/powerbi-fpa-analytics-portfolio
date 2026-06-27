@@ -5,10 +5,10 @@
       "id": 0,
       "position": {
         "x": 38,
-        "y": 94,
+        "y": 96,
         "z": 70,
-        "width": 118,
-        "height": 18,
+        "width": 112,
+        "height": 38,
         "tabOrder": 70
       }
     }
@@ -16,6 +16,21 @@
   "singleVisual": {
     "visualType": "textbox",
     "drillFilterOtherVisuals": true,
+    "vcObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "objects": {
       "general": [
         {
@@ -28,7 +43,7 @@
                     "textStyle": {
                       "fontFamily": "Segoe UI",
                       "fontSize": "8.0pt",
-                      "color": "#FFFFFF"
+                      "color": "#D0B16A"
                     }
                   }
                 ]

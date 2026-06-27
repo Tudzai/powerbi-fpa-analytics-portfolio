@@ -1,4 +1,4 @@
-﻿relationship rel_FactFinancials_date_id_DimDate_date_id
+relationship rel_FactFinancials_date_id_DimDate_date_id
 	fromColumn: FactFinancials.date_id
 	toColumn: DimDate.date_id
 
@@ -57,4 +57,3 @@ relationship rel_FactFinancialSummary_scenario_id_DimScenario_scenario_id
 relationship rel_FactFinancials_account_id_DimAccount_account_id
 	fromColumn: FactFinancials.account_id
 	toColumn: DimAccount.account_id
-

@@ -1,4 +1,4 @@
-﻿relationship rel_FactFinancials_date_id_DimDate_date_id
+relationship rel_FactFinancials_date_id_DimDate_date_id
 	fromColumn: FactFinancials.date_id
 	toColumn: DimDate.date_id
 
@@ -46,6 +46,10 @@ relationship rel_FactVarianceDriverBridge_business_unit_id_DimBusinessUnit_busin
 	fromColumn: FactVarianceDriverBridge.business_unit_id
 	toColumn: DimBusinessUnit.business_unit_id
 
+relationship rel_FactCloseExceptions_business_unit_id_DimBusinessUnit_business_unit_id
+	fromColumn: FactCloseExceptions.business_unit_id
+	toColumn: DimBusinessUnit.business_unit_id
+
 relationship rel_FactFinancials_scenario_id_DimScenario_scenario_id
 	fromColumn: FactFinancials.scenario_id
 	toColumn: DimScenario.scenario_id
@@ -57,4 +61,3 @@ relationship rel_FactFinancialSummary_scenario_id_DimScenario_scenario_id
 relationship rel_FactFinancials_account_id_DimAccount_account_id
 	fromColumn: FactFinancials.account_id
 	toColumn: DimAccount.account_id
-

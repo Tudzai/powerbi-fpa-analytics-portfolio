@@ -1,6 +1,6 @@
 [
   {
-    "page": "Executive Overview",
+    "page": "Executive Summary",
     "visual": "KPI strip",
     "type": "cards",
     "fields": [
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "page": "Executive Overview",
+    "page": "Executive Summary",
     "visual": "Revenue and EBITDA Trend",
     "type": "line",
     "fields": [
@@ -23,7 +23,7 @@
     ]
   },
   {
-    "page": "Executive Overview",
+    "page": "Executive Summary",
     "visual": "EBITDA Variance Bridge",
     "type": "waterfall",
     "fields": [
@@ -32,7 +32,7 @@
     ]
   },
   {
-    "page": "Entity & Country P&L",
+    "page": "P&L Variance",
     "visual": "Country P&L Matrix",
     "type": "matrix",
     "fields": [
@@ -44,37 +44,17 @@
     ]
   },
   {
-    "page": "FX & Intercompany",
-    "visual": "FX Exposure",
-    "type": "bar",
+    "page": "P&L Variance",
+    "visual": "Margin Heatmap",
+    "type": "table",
     "fields": [
-      "currency",
-      "external_revenue_usd"
-    ]
-  },
-  {
-    "page": "BU Drilldown",
-    "visual": "Growth vs Margin",
-    "type": "scatter",
-    "fields": [
-      "revenue_variance_pct",
+      "country",
+      "business_unit",
       "ebitda_margin"
     ]
   },
   {
-    "page": "Close Exceptions",
-    "visual": "Exception Log",
-    "type": "table",
-    "fields": [
-      "exception_type",
-      "owner_team",
-      "severity",
-      "status",
-      "amount_usd"
-    ]
-  },
-  {
-    "page": "Board Storyboard",
+    "page": "Controls & Storyboard",
     "visual": "Board Narrative Bridge",
     "type": "waterfall",
     "fields": [
@@ -84,7 +64,7 @@
     ]
   },
   {
-    "page": "Board Storyboard",
+    "page": "Controls & Storyboard",
     "visual": "Target Pacing",
     "type": "bullet",
     "fields": [
@@ -94,21 +74,23 @@
     ]
   },
   {
-    "page": "Board Storyboard",
-    "visual": "Country Revenue Treemap",
-    "type": "treemap",
-    "fields": [
-      "country",
-      "external_revenue_usd"
-    ]
-  },
-  {
-    "page": "Board Storyboard",
+    "page": "Controls & Storyboard",
     "visual": "Close Risk Funnel",
     "type": "funnel",
     "fields": [
       "severity",
       "open_exception_value"
+    ]
+  },
+  {
+    "page": "Controls & Storyboard",
+    "visual": "Board Pack Extract",
+    "type": "table",
+    "fields": [
+      "country",
+      "revenue",
+      "ebitda",
+      "variance"
     ]
   }
 ]

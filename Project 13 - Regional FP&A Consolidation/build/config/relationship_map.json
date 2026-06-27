@@ -72,6 +72,12 @@
     "direction": "single"
   },
   {
+    "from": "DimBusinessUnit[business_unit_id]",
+    "to": "FactCloseExceptions[business_unit_id]",
+    "cardinality": "1:*",
+    "direction": "single"
+  },
+  {
     "from": "DimScenario[scenario_id]",
     "to": "FactFinancials[scenario_id]",
     "cardinality": "1:*",

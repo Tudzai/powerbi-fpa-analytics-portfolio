@@ -1,20 +1,20 @@
 {
-  "name": "f12edf19190a90ad4f85",
+  "name": "35ee8411b87a97e94a1c",
   "layouts": [
     {
       "id": 0,
       "position": {
         "x": 24,
-        "y": 262,
+        "y": 334,
         "z": 300,
         "width": 390,
-        "height": 236,
+        "height": 176,
         "tabOrder": 300
       }
     }
   ],
   "singleVisual": {
-    "visualType": "barChart",
+    "visualType": "columnChart",
     "projections": {
       "Category": [
         {
@@ -86,7 +86,14 @@
             "gridlineShow": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000000D"
                 }
               }
             },
@@ -112,10 +119,21 @@
                 }
               }
             },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#526173'"
+                    }
+                  }
+                }
+              }
+            },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8.0D"
+                  "Value": "7.2D"
                 }
               }
             }
@@ -157,10 +175,21 @@
                 }
               }
             },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#526173'"
+                    }
+                  }
+                }
+              }
+            },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8.0D"
+                  "Value": "7.2D"
                 }
               }
             }
@@ -195,10 +224,21 @@
                 }
               }
             },
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#526173'"
+                    }
+                  }
+                }
+              }
+            },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8.0D"
+                  "Value": "7.2D"
                 }
               }
             }
@@ -211,7 +251,21 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "7.0D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000000D"
                 }
               }
             },
@@ -324,7 +378,7 @@
             "width": {
               "expr": {
                 "Literal": {
-                  "Value": "1.0D"
+                  "Value": "0.75D"
                 }
               }
             }
@@ -355,7 +409,7 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "78.0D"
+                  "Value": "82.0D"
                 }
               }
             },
@@ -369,7 +423,20 @@
             "distance": {
               "expr": {
                 "Literal": {
-                  "Value": "1.0D"
+                  "Value": "1.5D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -403,7 +470,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9.5D"
+                  "Value": "9.0D"
                 }
               }
             },

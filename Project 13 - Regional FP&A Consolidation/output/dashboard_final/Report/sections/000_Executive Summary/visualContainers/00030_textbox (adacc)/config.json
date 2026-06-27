@@ -16,6 +16,21 @@
   "singleVisual": {
     "visualType": "textbox",
     "drillFilterOtherVisuals": true,
+    "vcObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "objects": {
       "general": [
         {

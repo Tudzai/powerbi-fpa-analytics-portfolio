@@ -3,7 +3,7 @@
 Run:
 
 ```powershell
-cd "C:\Users\Win\OneDrive\Codex\Portfolio\BI\Project 13 - Regional FP&A Consolidation"
+cd "<PROJECT_ROOT>"
 python tools/build_project13.py
 ```
 

@@ -1,0 +1,160 @@
+{
+  "checked_at": "2026-06-27T20:36:16+07:00",
+  "status": "pass",
+  "acceptance_surface": "Power BI Desktop PBIX canvas; HTML preview was not used as the acceptance surface",
+  "primary_artifact": "output/dashboard_final.pbix",
+  "last_repack_time": "2026-06-27T20:30:57+07:00",
+  "final_polish_scope": [
+    "Current Lens metric chips enlarged",
+    "KPI row grid realigned to the chart-card content grid",
+    "KPI SVG card made full-bleed inside the image visual with no separate visual shell"
+  ],
+  "layout_decisions": {
+    "kpi_height": 135,
+    "requested_kpi_width": 300,
+    "final_kpi_width": 296,
+    "reason_for_296_width": "The true content grid spans x=24 to x=1256, width=1232. Four 300px KPI cards leave only 10.7px gaps and cause the right card to feel out-of-grid. Four 296px KPI cards plus three 16px gaps fill the grid exactly.",
+    "kpi_x_positions": [
+      24,
+      336,
+      648,
+      960
+    ],
+    "kpi_right_edges": [
+      320,
+      632,
+      944,
+      1256
+    ],
+    "kpi_gap": 16,
+    "chart_grid_left": 24,
+    "chart_grid_right": 1256
+  },
+  "current_lens_polish": {
+    "visual_dimensions": "568x78",
+    "old_chip_sizes": {
+      "revenue_var": "116x48",
+      "close_risk": "110x48"
+    },
+    "new_chip_sizes": {
+      "revenue_var": "154x58",
+      "close_risk": "144x58"
+    },
+    "chip_area_increase": "about 1.55x",
+    "label_font": "11.2px",
+    "value_font": "22.0px",
+    "desktop_result": "chips are visibly larger, centered, and do not crop or overlap the Current Lens context text"
+  },
+  "kpi_svg_polish": {
+    "renderer": "native Power BI image visual bound to SVG Image URL measures",
+    "tableEx_visuals": 0,
+    "svg_canvas": "296x135",
+    "outer_rect": "x=1.2 y=1.2 width=293.6 height=132.6 rx=12",
+    "visual_shell": "disabled for KPI images so the SVG itself is the only visible card border/background",
+    "sparkline": "true SVG polyline with filled area, dashed reference line, start marker, and end marker",
+    "desktop_result": "KPI cards fill the visual container more tightly and no longer look like a smaller card sitting inside a larger outer box"
+  },
+  "qa_rounds": [
+    {
+      "round": 1,
+      "surface": "Power BI Desktop canvas screenshot",
+      "page": "Executive Summary",
+      "result": "pass",
+      "notes": "Full-page review shows KPI row aligned inside the report grid. No card is out of the right edge; card 1 aligns with chart left edge and card 4 ends at chart right edge."
+    },
+    {
+      "round": 2,
+      "surface": "Power BI Desktop canvas screenshot",
+      "page": "Executive Summary - Current Lens",
+      "result": "pass",
+      "notes": "Revenue var and Close risk chips are visibly larger, centered, and readable without clipping."
+    },
+    {
+      "round": 3,
+      "surface": "Power BI Desktop canvas screenshot after Escape/unselect",
+      "page": "Executive Summary - KPI row",
+      "result": "pass",
+      "notes": "KPI SVG cards fill the image containers more tightly; no scrollbar, white header, measure name, or nested visual-shell border is visible."
+    },
+    {
+      "round": 4,
+      "surface": "Power BI Desktop slicer interaction",
+      "page": "Executive Summary",
+      "result": "pass",
+      "notes": "Changing BU to Contract Logistics changed Revenue from about $9.7M to $2.5M, updated charts and Current Lens context, and rendered Close Risk zero-state as $0.0M without breaking the SVG card."
+    },
+    {
+      "round": 5,
+      "surface": "Power BI Desktop page navigation",
+      "page": "P&L Variance",
+      "result": "pass",
+      "notes": "KPI cards and Current Lens retained the same aligned grid and no crop/scrollbar/header leakage."
+    },
+    {
+      "round": 6,
+      "surface": "Power BI Desktop page navigation",
+      "page": "Controls & Storyboard",
+      "result": "pass",
+      "notes": "KPI cards and Current Lens retained the same aligned grid. Decision/Control Signals did not return and lower visuals remain clear."
+    }
+  ],
+  "validation": {
+    "python_compile": "python -m py_compile tools/build_native_pbix_assets.py passed",
+    "asset_build": "python tools/build_native_pbix_assets.py regenerated model/model.bim and build/native_report_layout_project13.json",
+    "model_push": "push_model_bim_to_desktop.ps1 passed against output/dashboard_final.pbix",
+    "powerbi_packager": "PowerBIPackager.Validate passed in apply_native_layout_to_pbix.ps1",
+    "pbi_tools_extract": "pbi-tools extract output/dashboard_final.pbix completed successfully after final repack",
+    "static_layout_check": {
+      "image_visuals": 15,
+      "kpi_image_visuals": 12,
+      "current_lens_image_visuals": 3,
+      "kpi_dimensions": "296x135",
+      "current_lens_dimensions": "568x78",
+      "tableEx_visuals": 0,
+      "visual_type_counts": {
+        "basicShape": 14,
+        "textbox": 16,
+        "slicer": 8,
+        "image": 15,
+        "lineClusteredColumnComboChart": 1,
+        "waterfallChart": 2,
+        "columnChart": 8,
+        "barChart": 1,
+        "donutChart": 1
+      }
+    },
+    "forbidden_string_scan": {
+      "targets": [
+        "build/native_report_layout_project13.json",
+        "model/model.bim",
+        "output/dashboard_final/Report",
+        "output/dashboard_final/Model"
+      ],
+      "patterns_checked": [
+        "visualType.:.tableEx",
+        "0.0MM",
+        "$0.0MM",
+        ",,MM",
+        "Decision Signals",
+        "Control Signals",
+        "width='308' height='150'",
+        "viewBox='0 0 308 150'",
+        "width='300' height='120'",
+        "viewBox='0 0 300 120'"
+      ],
+      "result": "pass_no_matches"
+    }
+  },
+  "files_updated": [
+    "output/dashboard_final.pbix",
+    "tools/build_native_pbix_assets.py",
+    "model/model.bim",
+    "build/native_report_layout_project13.json",
+    "output/dashboard_final/",
+    "qa/project13_enhancement_verification.json"
+  ],
+  "residual_notes": [
+    "Power BI Desktop can still show selection handles while a visual is selected; this was excluded from layout judgment by pressing Escape/unselecting before QA.",
+    "The final KPI width is 296 rather than 300 because 296 is the largest clean width that preserves a 16px equal gap and exact right-edge alignment inside the chart grid."
+  ]
+}

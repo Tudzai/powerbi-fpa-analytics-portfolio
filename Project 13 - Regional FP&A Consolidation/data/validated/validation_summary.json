@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "checked_at": "2026-06-15T02:01:15",
+  "checked_at": "2026-06-27T20:46:18",
   "row_counts": {
     "dim_date": 17,
     "dim_entity": 7,
@@ -32,6 +32,11 @@
       "check": "Foreign key integrity",
       "status": "pass",
       "detail": "0 bad FK rows"
+    },
+    {
+      "check": "Close exception BU slicer keys",
+      "status": "pass",
+      "detail": "0 missing BU fields; 0 exception FK rows outside Date/Entity/BU dimensions"
     },
     {
       "check": "Bridge tie-out to EBITDA variance",

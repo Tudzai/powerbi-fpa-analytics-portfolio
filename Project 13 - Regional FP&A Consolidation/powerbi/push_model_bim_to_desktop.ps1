@@ -13,7 +13,8 @@ New-Item -ItemType Directory -Force -Path $QaRoot | Out-Null
 
 function Get-PowerBiSessionForPbix([string]$Path) {
   $resolved = [IO.Path]::GetFullPath($Path)
-  $infoText = & "C:\Users\Win\AppData\Local\Programs\pbi-tools\current\pbi-tools.exe" info 2>&1 | Out-String
+  $pbiTools = (Get-Command pbi-tools -ErrorAction Stop).Source
+  $infoText = & $pbiTools info 2>&1 | Out-String
   $jsonStart = $infoText.IndexOf("{")
   if ($jsonStart -lt 0) { throw "pbi-tools info did not return JSON." }
   $info = $infoText.Substring($jsonStart) | ConvertFrom-Json

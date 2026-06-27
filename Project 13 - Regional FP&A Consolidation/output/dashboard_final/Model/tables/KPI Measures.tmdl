@@ -1,24 +1,24 @@
-﻿table 'KPI Measures'
+table 'KPI Measures'
 
 	/// Consolidated external revenue after excluding intercompany revenue.
 	measure 'Total Revenue' = SUM ( FactFinancialSummary[external_revenue_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// External plus intercompany revenue before elimination.
 	measure 'Gross Revenue' = SUM ( FactFinancialSummary[gross_revenue_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Intercompany revenue requiring elimination.
 	measure 'Intercompany Revenue' = SUM ( FactFinancialSummary[intercompany_revenue_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Net intercompany elimination impact.
 	measure 'Intercompany Elimination' = SUM ( FactFinancialSummary[intercompany_elimination_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Revenue minus cost of services.
 	measure 'Gross Profit' = SUM ( FactFinancialSummary[gross_profit_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Gross profit divided by consolidated external revenue.
 	measure 'Gross Margin %' = DIVIDE ( [Gross Profit], [Total Revenue] )
@@ -26,11 +26,11 @@
 
 	/// Personnel, facilities, sales and marketing, and G&A.
 	measure OPEX = SUM ( FactFinancialSummary[opex_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Gross profit plus OPEX after intercompany elimination.
 	measure EBITDA = SUM ( FactFinancialSummary[ebitda_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// EBITDA divided by consolidated external revenue.
 	measure 'EBITDA Margin %' = DIVIDE ( [EBITDA], [Total Revenue] )
@@ -38,35 +38,35 @@
 
 	/// EBITDA less depreciation.
 	measure 'Operating Income' = SUM ( FactFinancialSummary[operating_income_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Operating income less interest and tax.
 	measure 'Net Income' = SUM ( FactFinancialSummary[net_income_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Period-end cash position by entity and BU allocation.
 	measure 'Cash Position' = SUM ( FactFinancialSummary[cash_position_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Operating cash flow proxy tied to EBITDA conversion.
 	measure 'Operating Cash Flow' = SUM ( FactFinancialSummary[operating_cash_flow_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Working capital proxy for close review.
 	measure 'Working Capital' = SUM ( FactFinancialSummary[working_capital_usd] )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Actual consolidated revenue.
 	measure 'Actual Revenue' = CALCULATE ( [Total Revenue], DimScenario[scenario] = "Actual" )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Budget consolidated revenue.
 	measure 'Budget Revenue' = CALCULATE ( [Total Revenue], DimScenario[scenario] = "Budget" )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Actual revenue less budget revenue.
 	measure 'Revenue Var vs Budget' = [Actual Revenue] - [Budget Revenue]
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Revenue variance divided by budget revenue.
 	measure 'Revenue Var %' = DIVIDE ( [Revenue Var vs Budget], [Budget Revenue] )
@@ -74,15 +74,15 @@
 
 	/// Actual EBITDA.
 	measure 'Actual EBITDA' = CALCULATE ( [EBITDA], DimScenario[scenario] = "Actual" )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Budget EBITDA.
 	measure 'Budget EBITDA' = CALCULATE ( [EBITDA], DimScenario[scenario] = "Budget" )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Actual EBITDA less budget EBITDA.
 	measure 'EBITDA Var vs Budget' = [Actual EBITDA] - [Budget EBITDA]
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// EBITDA variance divided by budget EBITDA.
 	measure 'EBITDA Var %' = DIVIDE ( [EBITDA Var vs Budget], [Budget EBITDA] )
@@ -90,7 +90,7 @@
 
 	/// Forecast EBITDA.
 	measure 'Forecast EBITDA' = CALCULATE ( [EBITDA], DimScenario[scenario] = "Forecast" )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
 
 	/// Directional forecast accuracy for EBITDA.
 	measure 'Forecast Accuracy %' = 1 - ABS ( DIVIDE ( [Actual EBITDA] - [Forecast EBITDA], [Actual EBITDA] ) )
@@ -102,7 +102,1603 @@
 
 	/// Value attached to unresolved close exceptions.
 	measure 'Open Exception Value' = CALCULATE ( SUM ( FactCloseExceptions[amount_usd] ), FactCloseExceptions[status] <> "Closed" )
-		formatString: $#,0,,.0M
+		formatString: $#,0;($#,0);$0
+
+	/// Latest complete date within the selected date context, capped to the global closed period.
+	measure 'Selected Latest Complete Date' =
+			VAR GlobalLatestComplete =
+			    CALCULATE (
+			        MAX ( DimDate[date] ),
+			        REMOVEFILTERS ( DimDate ),
+			        DimDate[is_latest_complete] = TRUE ()
+			    )
+			VAR SelectedLatest =
+			    MAXX (
+			        FILTER ( ALLSELECTED ( DimDate ), DimDate[date] <= GlobalLatestComplete ),
+			        DimDate[date]
+			    )
+			RETURN
+			    COALESCE ( SelectedLatest, GlobalLatestComplete )
+		formatString: mmm yyyy
+
+	/// Display label for the selected latest complete month.
+	measure 'Selected Latest Complete Period Label' = FORMAT ( [Selected Latest Complete Date], "MMM yyyy" )
+
+	/// Variance-driver bridge amount with explicit aggregation for native Power BI visuals.
+	measure 'Bridge Amount' = SUM ( FactVarianceDriverBridge[amount_usd] )
+		formatString: $#,0;($#,0);$0
+
+	/// Variance-driver bridge amount at selected latest complete period.
+	measure 'Latest Bridge Amount' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Bridge Amount], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Close-exception exposure with explicit aggregation for native Power BI visuals.
+	measure 'Exception Amount' = SUM ( FactCloseExceptions[amount_usd] )
+		formatString: $#,0;($#,0);$0
+
+	/// Close-exception exposure at selected latest complete period.
+	measure 'Latest Exception Amount' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Exception Amount], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// P&L statement amount with explicit aggregation for native Power BI visuals.
+	measure 'Financial Amount' = SUM ( FactFinancials[amount_usd] )
+		formatString: $#,0;($#,0);$0
+
+	/// Actual revenue at selected latest complete period.
+	measure 'Latest Actual Revenue' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Actual Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Budget revenue at selected latest complete period.
+	measure 'Latest Budget Revenue' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Budget Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Revenue variance at selected latest complete period.
+	measure 'Latest Revenue Var vs Budget' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Revenue Var vs Budget], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Revenue variance percent at selected latest complete period.
+	measure 'Latest Revenue Var %' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Revenue Var %], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: 0.0%
+
+	/// Actual EBITDA at selected latest complete period.
+	measure 'Latest Actual EBITDA' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Actual EBITDA], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Budget EBITDA at selected latest complete period.
+	measure 'Latest Budget EBITDA' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Budget EBITDA], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// EBITDA variance at selected latest complete period.
+	measure 'Latest EBITDA Var vs Budget' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [EBITDA Var vs Budget], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// EBITDA variance percent at selected latest complete period.
+	measure 'Latest EBITDA Var %' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [EBITDA Var %], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: 0.0%
+
+	/// Gross revenue at selected latest complete period.
+	measure 'Latest Gross Revenue' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Gross Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Gross profit at selected latest complete period.
+	measure 'Latest Gross Profit' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Gross Profit], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Gross margin at selected latest complete period.
+	measure 'Latest Gross Margin %' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Gross Margin %], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: 0.0%
+
+	/// OPEX at selected latest complete period.
+	measure 'Latest OPEX' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [OPEX], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Net income at selected latest complete period.
+	measure 'Latest Net Income' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Net Income], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// EBITDA margin at selected latest complete period.
+	measure 'Latest EBITDA Margin %' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [EBITDA Margin %], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: 0.0%
+
+	/// Cash position at selected latest complete period.
+	measure 'Latest Cash Position' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Cash Position], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Operating cash flow at selected latest complete period.
+	measure 'Latest Operating Cash Flow' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Operating Cash Flow], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Forecast accuracy at selected latest complete period.
+	measure 'Latest Forecast Accuracy %' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Forecast Accuracy %], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: 0.0%
+
+	/// Intercompany revenue at selected latest complete period.
+	measure 'Latest Intercompany Revenue' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Intercompany Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Intercompany elimination impact at selected latest complete period.
+	measure 'Latest Intercompany Elimination' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Intercompany Elimination], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Open close-exception count at selected latest complete period.
+	measure 'Latest Open Exception Count' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Open Exception Count], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: #,0
+
+	/// Open close-exception exposure at selected latest complete period.
+	measure 'Latest Open Exception Value' =
+			VAR d = [Selected Latest Complete Date]
+			RETURN
+			    CALCULATE ( [Open Exception Value], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Text display for latest revenue KPI card.
+	measure 'Display Actual Revenue' = FORMAT ( DIVIDE ( [Latest Actual Revenue], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for latest EBITDA KPI card.
+	measure 'Display Actual EBITDA' = FORMAT ( DIVIDE ( [Latest Actual EBITDA], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for latest EBITDA margin KPI card.
+	measure 'Display EBITDA Margin %' = FORMAT ( [Latest EBITDA Margin %], "0.0%" )
+
+	/// Text display for latest gross revenue KPI card.
+	measure 'Display Gross Revenue' = FORMAT ( DIVIDE ( [Latest Gross Revenue], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for latest gross profit KPI card.
+	measure 'Display Gross Profit' = FORMAT ( DIVIDE ( [Latest Gross Profit], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for latest OPEX KPI card.
+	measure 'Display OPEX' = FORMAT ( DIVIDE ( [Latest OPEX], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for latest net income KPI card.
+	measure 'Display Net Income' = FORMAT ( DIVIDE ( [Latest Net Income], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for latest intercompany revenue KPI card.
+	measure 'Display Intercompany Revenue' = FORMAT ( DIVIDE ( [Latest Intercompany Revenue], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for latest intercompany elimination KPI card.
+	measure 'Display Intercompany Elimination' = FORMAT ( DIVIDE ( [Latest Intercompany Elimination], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for latest forecast accuracy KPI card.
+	measure 'Display Forecast Accuracy %' = FORMAT ( [Latest Forecast Accuracy %], "0.0%" )
+
+	/// Text display for latest close-risk KPI card.
+	measure 'Display Open Exception Value' = FORMAT ( DIVIDE ( [Latest Open Exception Value], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for latest close-exception count chip.
+	measure 'Display Open Exception Count' = FORMAT ( [Latest Open Exception Count], "#,0" )
+
+	/// Text display for prior-year revenue.
+	measure 'Display Revenue PY' = FORMAT ( DIVIDE ( [Revenue PY], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for prior-year EBITDA.
+	measure 'Display EBITDA PY' = FORMAT ( DIVIDE ( [EBITDA PY], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for prior-year open exception value.
+	measure 'Display Open Exception Value PY' = FORMAT ( DIVIDE ( [Open Exception Value PY], 1000000 ), "$0.0M;($0.0M);$0.0M" )
+
+	/// Text display for latest revenue variance percent.
+	measure 'Display Revenue Var %' = FORMAT ( [Latest Revenue Var %], "+0.0%;-0.0%;0.0%" )
+
+	/// Text display for latest EBITDA variance percent.
+	measure 'Display EBITDA Var %' = FORMAT ( [Latest EBITDA Var %], "+0.0%;-0.0%;0.0%" )
+
+	/// Text display for latest forecast accuracy footer.
+	measure 'Display Forecast Accuracy Delta' = FORMAT ( [Latest Forecast Accuracy %], "0.0%" )
+
+	/// First dynamic line for the Current Lens native panel.
+	measure 'Current Lens Line 1' =
+			VAR ScenarioRaw =
+			    IF ( ISFILTERED ( DimScenario[scenario] ), CONCATENATEX ( VALUES ( DimScenario[scenario] ), DimScenario[scenario], ", " ), "Actual lens" )
+			RETURN
+			    [Selected Latest Complete Period Label] & " | " & LEFT ( ScenarioRaw, 24 )
+
+	/// Second dynamic line for the Current Lens native panel.
+	measure 'Current Lens Line 2' =
+			VAR RegionRaw =
+			    IF ( ISFILTERED ( DimEntity[region] ), CONCATENATEX ( VALUES ( DimEntity[region] ), DimEntity[region], ", " ), "All regions" )
+			VAR BURaw =
+			    IF ( ISFILTERED ( DimBusinessUnit[business_unit] ), CONCATENATEX ( VALUES ( DimBusinessUnit[business_unit] ), DimBusinessUnit[business_unit], ", " ), "All BUs" )
+			RETURN
+			    LEFT ( BURaw, 28 ) & " | " & LEFT ( RegionRaw, 28 )
+
+	/// Actual revenue for the same month in the prior year.
+	measure 'Revenue PY' =
+			VAR d = EDATE ( [Selected Latest Complete Date], -12 )
+			RETURN
+			    CALCULATE ( [Actual Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Actual EBITDA for the same month in the prior year.
+	measure 'EBITDA PY' =
+			VAR d = EDATE ( [Selected Latest Complete Date], -12 )
+			RETURN
+			    CALCULATE ( [Actual EBITDA], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Gross margin for the same month in the prior year.
+	measure 'Gross Margin PY %' =
+			VAR d = EDATE ( [Selected Latest Complete Date], -12 )
+			RETURN
+			    CALCULATE ( [Gross Margin %], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: 0.0%
+
+	/// Cash position for the same month in the prior year.
+	measure 'Cash Position PY' =
+			VAR d = EDATE ( [Selected Latest Complete Date], -12 )
+			RETURN
+			    CALCULATE ( [Cash Position], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// Open exception value for the same month in the prior year.
+	measure 'Open Exception Value PY' =
+			VAR d = EDATE ( [Selected Latest Complete Date], -12 )
+			RETURN
+			    CALCULATE ( [Open Exception Value], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+		formatString: $#,0;($#,0);$0
+
+	/// SVG KPI card for revenue with latest value, PY delta, status chip, and sparkline.
+	measure 'Revenue KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [Actual Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [Actual Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = CALCULATE ( [Budget Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis >= 0.02, "%236F8552", IF ( StatusBasis >= -0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis >= 0.02, "ON TRACK", IF ( StatusBasis >= -0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue >= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [Actual Revenue] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232F5F9E'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232F5F9E' fill-opacity='0.22' stroke='%232F5F9E' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>Revenue</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232F5F9E' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232F5F9E' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// SVG KPI card for EBITDA with latest value, PY delta, status chip, and sparkline.
+	measure 'EBITDA KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [Actual EBITDA], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [Actual EBITDA], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = CALCULATE ( [Budget EBITDA], REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis >= 0.02, "%236F8552", IF ( StatusBasis >= -0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis >= 0.02, "ON TRACK", IF ( StatusBasis >= -0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue >= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [Actual EBITDA] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232B6F75'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232B6F75' fill-opacity='0.22' stroke='%232B6F75' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>EBITDA</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232B6F75' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232B6F75' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// SVG KPI card for EBITDA margin with prior-year point delta and sparkline.
+	measure 'Margin KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [EBITDA Margin %], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [EBITDA Margin %], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = BLANK ()
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis >= 0.02, "%236F8552", IF ( StatusBasis >= -0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis >= 0.02, "ON TRACK", IF ( StatusBasis >= -0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue >= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [EBITDA Margin %] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( CurrentValue, "0.0%" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( PriorValue, "0.0%" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DeltaPoints, "+0.0pt;-0.0pt;0.0pt" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%236F8552'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%236F8552' fill-opacity='0.22' stroke='%236F8552' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='13.0' fill='%23F7FAFC' letter-spacing='0'>EBITDA Margin</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%236F8552' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%236F8552' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// SVG KPI card for cash position with prior-year delta and sparkline.
+	measure 'Cash KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [Cash Position], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [Cash Position], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = BLANK ()
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis >= 0.02, "%236F8552", IF ( StatusBasis >= -0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis >= 0.02, "ON TRACK", IF ( StatusBasis >= -0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue >= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [Cash Position] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%23A8894B'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%23A8894B' fill-opacity='0.22' stroke='%23A8894B' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='13.0' fill='%23F7FAFC' letter-spacing='0'>Cash Position</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%23A8894B' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%23A8894B' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// SVG KPI card for gross revenue with prior-year delta and sparkline.
+	measure 'Gross Revenue KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [Gross Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [Gross Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = BLANK ()
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis >= 0.02, "%236F8552", IF ( StatusBasis >= -0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis >= 0.02, "ON TRACK", IF ( StatusBasis >= -0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue >= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [Gross Revenue] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232F5F9E'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232F5F9E' fill-opacity='0.22' stroke='%232F5F9E' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='13.0' fill='%23F7FAFC' letter-spacing='0'>Gross Revenue</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232F5F9E' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232F5F9E' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// SVG KPI card for gross profit with prior-year delta and sparkline.
+	measure 'Gross Profit KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [Gross Profit], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [Gross Profit], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = BLANK ()
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis >= 0.02, "%236F8552", IF ( StatusBasis >= -0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis >= 0.02, "ON TRACK", IF ( StatusBasis >= -0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue >= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [Gross Profit] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232B6F75'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232B6F75' fill-opacity='0.22' stroke='%232B6F75' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>Gross Profit</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232B6F75' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232B6F75' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// SVG KPI card for OPEX with lower-is-better status and sparkline.
+	measure 'OPEX KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [OPEX], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [OPEX], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = BLANK ()
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis <= -0.02, "%236F8552", IF ( StatusBasis <= 0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis <= -0.02, "ON TRACK", IF ( StatusBasis <= 0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue <= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [OPEX] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%23B85A72'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%23B85A72' fill-opacity='0.22' stroke='%23B85A72' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>OPEX</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%23B85A72' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%23B85A72' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// SVG KPI card for net income with prior-year delta and sparkline.
+	measure 'Net Income KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [Net Income], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [Net Income], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = BLANK ()
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis >= 0.02, "%236F8552", IF ( StatusBasis >= -0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis >= 0.02, "ON TRACK", IF ( StatusBasis >= -0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue >= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [Net Income] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%236F8552'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%236F8552' fill-opacity='0.22' stroke='%236F8552' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>Net Income</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%236F8552' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%236F8552' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// SVG KPI card for intercompany revenue with prior-year delta and sparkline.
+	measure 'IC Revenue KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [Intercompany Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [Intercompany Revenue], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = BLANK ()
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis <= -0.02, "%236F8552", IF ( StatusBasis <= 0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis <= -0.02, "ON TRACK", IF ( StatusBasis <= 0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue <= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [Intercompany Revenue] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232F5F9E'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232F5F9E' fill-opacity='0.22' stroke='%232F5F9E' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>IC Revenue</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232F5F9E' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232F5F9E' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// SVG KPI card for intercompany elimination impact with lower-is-better status and sparkline.
+	measure 'Intercompany Elimination KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [Intercompany Elimination], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [Intercompany Elimination], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = BLANK ()
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis <= -0.02, "%236F8552", IF ( StatusBasis <= 0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis <= -0.02, "ON TRACK", IF ( StatusBasis <= 0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue <= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [Intercompany Elimination] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%232B6F75'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%232B6F75' fill-opacity='0.22' stroke='%232B6F75' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='13.0' fill='%23F7FAFC' letter-spacing='0'>IC Elimination</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%232B6F75' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%232B6F75' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// SVG KPI card for open exception exposure with lower-is-better status and sparkline.
+	measure 'Close Exceptions KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [Open Exception Value], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [Open Exception Value], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = BLANK ()
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis <= -0.02, "%236F8552", IF ( StatusBasis <= 0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis <= -0.02, "ON TRACK", IF ( StatusBasis <= 0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue <= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [Open Exception Value] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( CurrentValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DIVIDE ( PriorValue, 1000000 ), "$0.0M;($0.0M);$0.0M" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( ChangePct, "+0.0%;-0.0%;0.0%" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%23B85A72'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%23B85A72' fill-opacity='0.22' stroke='%23B85A72' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='14.2' fill='%23F7FAFC' letter-spacing='0'>Close Risk</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%23B85A72' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%23B85A72' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// SVG KPI card for forecast accuracy with prior-year point delta and sparkline.
+	measure 'Forecast Accuracy KPI Card SVG' =
+			VAR d = [Selected Latest Complete Date]
+			VAR LatestIdx =
+			    CALCULATE ( MAX ( DimDate[month_index] ), REMOVEFILTERS ( DimDate ), DimDate[date] = d )
+			VAR CurrentValue =
+			    COALESCE ( CALCULATE ( [Forecast Accuracy %], REMOVEFILTERS ( DimDate ), DimDate[date] = d ), 0 )
+			VAR PriorDate = EDATE ( d, -12 )
+			VAR PriorValue =
+			    COALESCE ( CALCULATE ( [Forecast Accuracy %], REMOVEFILTERS ( DimDate ), DimDate[date] = PriorDate ), 0 )
+			VAR BudgetValue = BLANK ()
+			VAR ChangePct = DIVIDE ( CurrentValue - PriorValue, ABS ( PriorValue ) )
+			VAR DeltaPoints = ( CurrentValue - PriorValue ) * 100
+			VAR StatusBasis =
+			    IF (
+			        NOT ISBLANK ( BudgetValue ),
+			        DIVIDE ( CurrentValue - BudgetValue, ABS ( BudgetValue ) ),
+			        ChangePct
+			    )
+			VAR StatusColor =
+			    IF ( StatusBasis >= 0.02, "%236F8552", IF ( StatusBasis >= -0.02, "%23A8894B", "%23B85A72" ) )
+			VAR StatusText =
+			    IF ( StatusBasis >= 0.02, "ON TRACK", IF ( StatusBasis >= -0.02, "WATCH", "ACTION" ) )
+			VAR TrendColor =
+			    IF ( CurrentValue >= PriorValue, "%236F8552", "%23B85A72" )
+			VAR MonthTable =
+			    ADDCOLUMNS (
+			        FILTER (
+			            ALL ( DimDate ),
+			            DimDate[date] <= d
+			                && DimDate[month_index] >= LatestIdx - 11
+			        ),
+			        "__Value", CALCULATE ( [Forecast Accuracy %] )
+			    )
+			VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+			VAR RowCount = COUNTROWS ( CleanTable )
+			VAR MinValue = MINX ( CleanTable, [__Value] )
+			VAR MaxValue = MAXX ( CleanTable, [__Value] )
+			VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[date], ASC ), [__Value] )
+			VAR LastValue = MAXX ( TOPN ( 1, CleanTable, DimDate[date], DESC ), [__Value] )
+			VAR FirstY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LastY =
+			    IF (
+			        MaxValue = MinValue,
+			        70,
+			        96 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 52
+			    )
+			VAR LinePoints =
+			    CONCATENATEX (
+			        CleanTable,
+			        VAR RankValue = RANKX ( CleanTable, DimDate[date], , ASC, DENSE ) - 1
+			        VAR XValue = 172 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 102
+			        VAR YRatio =
+			            IF (
+			                MaxValue = MinValue,
+			                0.5,
+			                DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 )
+			            )
+			        VAR YValue = 96 - YRatio * 52
+			        RETURN FORMAT ( XValue, "0.0", "en-US" ) & "," & FORMAT ( YValue, "0.0", "en-US" ),
+			        " ",
+			        DimDate[date],
+			        ASC
+			    )
+			VAR AreaPoints = "172,106 " & LinePoints & " 274,106"
+			VAR ValueText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( CurrentValue, "0.0%" ), "%", "%25" ), "&", "and" )
+			VAR PyText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( PriorValue, "0.0%" ), "%", "%25" ), "&", "and" )
+			VAR DeltaText = SUBSTITUTE ( SUBSTITUTE ( FORMAT ( DeltaPoints, "+0.0pt;-0.0pt;0.0pt" ), "%", "%25" ), "&", "and" )
+			VAR Sparkline =
+			    IF (
+			        RowCount >= 2,
+			        "<g clip-path='url(%23sparkClip)'><polygon points='" & AreaPoints & "' fill='" & TrendColor & "' fill-opacity='0.26'/>"
+			            & "<polyline points='" & LinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='4.0' stroke-linecap='round' stroke-linejoin='round'/></g>"
+			            & "<circle cx='172' cy='" & FORMAT ( FirstY, "0.0", "en-US" ) & "' r='4.4' fill='%231F2630' stroke='%23B9C3CF' stroke-width='1.45'/>"
+			            & "<circle cx='274' cy='" & FORMAT ( LastY, "0.0", "en-US" ) & "' r='5.6' fill='" & TrendColor & "'/>",
+			        "<line x1='172' y1='70' x2='274' y2='70' stroke='%23313B48' stroke-width='4.0' stroke-linecap='round'/>"
+			    )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='296' height='135' viewBox='0 0 296 135'>"
+			    & "<defs><clipPath id='sparkClip'><rect x='170' y='43' width='106' height='64' rx='5'/></clipPath></defs>"
+			    & "<rect x='1.2' y='1.2' width='293.6' height='132.6' rx='12' fill='%23242B35' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<rect x='13' y='13' width='150' height='4.5' rx='2.25' fill='%23A8894B'/>"
+			    & "<rect x='13' y='31' width='16' height='16' rx='4.2' fill='%23A8894B' fill-opacity='0.22' stroke='%23A8894B' stroke-width='1.15'/>"
+			    & "<text x='38' y='45' font-family='Segoe UI Semibold' font-size='13.0' fill='%23F7FAFC' letter-spacing='0'>Forecast Accuracy</text>"
+			    & "<text x='13' y='98' font-family='Segoe UI Semibold' font-size='38' fill='%23A8894B' letter-spacing='0'>" & ValueText & "</text>"
+			    & "<rect x='162' y='32' width='120' height='82' rx='9' fill='%231F2630' stroke='%233A4655' stroke-width='1.0'/>"
+			    & "<rect x='170' y='43' width='106' height='64' rx='5.5' fill='%23A8894B' fill-opacity='0.13'/>"
+			    & "<line x1='170' y1='73' x2='276' y2='73' stroke='%23313B48' stroke-width='1.4' stroke-dasharray='4 5'/>"
+			    & Sparkline
+			    & "<rect x='13' y='110' width='94' height='20' rx='9' fill='%232C3440' stroke='%233A4655' stroke-width='0.75'/>"
+			    & "<text x='23' y='124' font-family='Segoe UI Semibold' font-size='10.5' fill='%23B9C3CF'>PY " & PyText & "</text>"
+			    & "<rect x='113' y='110' width='76' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.16' stroke='" & StatusColor & "' stroke-opacity='0.18'/>"
+			    & "<text x='151' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.5' fill='" & StatusColor & "'>" & DeltaText & "</text>"
+			    & "<rect x='195' y='110' width='87' height='20' rx='9' fill='" & StatusColor & "' fill-opacity='0.11'/>"
+			    & "<text x='238.5' y='124' text-anchor='middle' font-family='Segoe UI Semibold' font-size='10.2' fill='" & StatusColor & "'>" & StatusText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
+
+	/// Top-bar Current Lens SVG for selected period, region, BU, revenue variance, and close-risk exposure.
+	measure 'Lens Summary SVG' =
+			VAR PeriodText = [Selected Latest Complete Period Label]
+			VAR RegionRaw =
+			    IF ( ISFILTERED ( DimEntity[region] ), CONCATENATEX ( VALUES ( DimEntity[region] ), DimEntity[region], ", " ), "All regions" )
+			VAR BURaw =
+			    IF ( ISFILTERED ( DimBusinessUnit[business_unit] ), CONCATENATEX ( VALUES ( DimBusinessUnit[business_unit] ), DimBusinessUnit[business_unit], ", " ), "All BUs" )
+			VAR ScenarioRaw =
+			    IF ( ISFILTERED ( DimScenario[scenario] ), CONCATENATEX ( VALUES ( DimScenario[scenario] ), DimScenario[scenario], ", " ), "Actual lens" )
+			VAR ScenarioText = SUBSTITUTE ( LEFT ( ScenarioRaw, 20 ), "&", "and" )
+			VAR RegionText = SUBSTITUTE ( LEFT ( RegionRaw, 24 ), "&", "and" )
+			VAR BUText = SUBSTITUTE ( LEFT ( BURaw, 28 ), "&", "and" )
+			VAR RevVar = [Latest Revenue Var %]
+			VAR EbitdaVar = [Latest EBITDA Var %]
+			VAR RiskValue = COALESCE ( [Latest Open Exception Value], 0 )
+			VAR RevText = SUBSTITUTE ( FORMAT ( RevVar, "+0.0%;-0.0%;0.0%" ), "%", "%25" )
+			VAR StatusColor = IF ( EbitdaVar >= 0.02, "%232B6F75", IF ( EbitdaVar >= -0.02, "%23A8894B", "%23B85A72" ) )
+			VAR Line1 = SUBSTITUTE ( LEFT ( PeriodText & " | " & ScenarioText, 38 ), "&", "and" )
+			VAR Line2 = SUBSTITUTE ( LEFT ( BUText & " | " & RegionText, 48 ), "&", "and" )
+			VAR RiskText = "$" & FORMAT ( DIVIDE ( RiskValue, 1000000 ), "0.0M" )
+			VAR SVG =
+			    "<svg xmlns='http://www.w3.org/2000/svg' width='568' height='78' viewBox='0 0 568 78'>"
+			    & "<rect x='18' y='14' width='5' height='50' rx='2.5' fill='%232B6F75'/>"
+			    & "<circle cx='46' cy='27' r='7.4' fill='" & StatusColor & "'/>"
+			    & "<text x='64' y='28' font-family='Segoe UI Semibold' font-size='14.0' fill='%23F7FAFC'>CURRENT LENS</text>"
+			    & "<text x='64' y='50' font-family='Segoe UI Semibold' font-size='13.1' fill='%23F7FAFC'>" & Line1 & "</text>"
+			    & "<text x='64' y='66' font-family='Segoe UI' font-size='12.2' fill='%23C7D0DB'>" & Line2 & "</text>"
+			    & "<rect x='244' y='10' width='154' height='58' rx='11' fill='%231F2630' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<text x='321' y='30' text-anchor='middle' font-family='Segoe UI' font-size='11.2' fill='%23C7D0DB'>Revenue var</text>"
+			    & "<text x='321' y='57' text-anchor='middle' font-family='Segoe UI Semibold' font-size='22.0' fill='%232F5F9E'>" & RevText & "</text>"
+			    & "<rect x='410' y='10' width='144' height='58' rx='11' fill='%231F2630' stroke='%233A4655' stroke-width='1.05'/>"
+			    & "<text x='482' y='30' text-anchor='middle' font-family='Segoe UI' font-size='11.2' fill='%23C7D0DB'>Close risk</text>"
+			    & "<text x='482' y='57' text-anchor='middle' font-family='Segoe UI Semibold' font-size='22.0' fill='%23A8894B'>" & RiskText & "</text>"
+			    & "</svg>"
+			RETURN
+			    "data:image/svg+xml;utf8," & SVG
+		dataCategory: ImageUrl
 
 	column 'Measure Group'
 		dataType: string
@@ -117,4 +1713,3 @@
 				    Source = #table(type table [Measure Group = text], {{"Regional FP&A Consolidation"}})
 				in
 				    Source
-

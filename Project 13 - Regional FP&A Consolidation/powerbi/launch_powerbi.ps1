@@ -1,4 +1,5 @@
-$pbix = "C:\Users\Win\OneDrive\Codex\Portfolio\BI\Project 13 - Regional FP&A Consolidation\output\dashboard_final.pbix"
+﻿$ProjectRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
+$pbix = Join-Path $ProjectRoot "output\dashboard_final.pbix"
 $pbi = "C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe"
 if (-not (Test-Path $pbix)) {
   Write-Host "dashboard_final.pbix does not exist yet. Use this project as a Power BI-ready build package."

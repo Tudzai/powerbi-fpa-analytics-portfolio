@@ -1,4 +1,4 @@
-﻿table FactFinancials
+table FactFinancials
 
 	column date_id
 		dataType: string
@@ -59,7 +59,7 @@
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:/Users/Win/OneDrive/Codex/Portfolio/BI/Project 13 - Regional FP&A Consolidation/data/prepared/fact_financials.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Source = Csv.Document(File.Contents("<PROJECT_ROOT>/data/prepared/fact_financials.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    TypedColumns = Table.TransformColumnTypes(PromotedHeaders, {
 				        {"date_id", type text},
@@ -76,4 +76,3 @@
 				    }, "en-US")
 				in
 				    TypedColumns
-

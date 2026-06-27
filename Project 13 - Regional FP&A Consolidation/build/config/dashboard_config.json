@@ -27,7 +27,7 @@
       "placement": "top_filter_bar",
       "x": 188,
       "y": 84,
-      "width": 148,
+      "width": 132,
       "height": 42
     },
     {
@@ -36,9 +36,20 @@
       "field": "DimEntity[region]",
       "default": "All",
       "placement": "top_filter_bar",
-      "x": 348,
+      "x": 328,
       "y": 84,
-      "width": 148,
+      "width": 132,
+      "height": 42
+    },
+    {
+      "page": "Executive Summary",
+      "slicer": "Country",
+      "field": "DimEntity[country]",
+      "default": "All",
+      "placement": "top_filter_bar",
+      "x": 468,
+      "y": 84,
+      "width": 132,
       "height": 42
     },
     {
@@ -47,9 +58,20 @@
       "field": "DimBusinessUnit[business_unit]",
       "default": "All",
       "placement": "top_filter_bar",
-      "x": 508,
+      "x": 608,
       "y": 84,
-      "width": 166,
+      "width": 148,
+      "height": 42
+    },
+    {
+      "page": "Executive Summary",
+      "slicer": "Scenario",
+      "field": "DimScenario[scenario]",
+      "default": "Actual",
+      "placement": "top_filter_bar",
+      "x": 764,
+      "y": 84,
+      "width": 132,
       "height": 42
     },
     {
@@ -67,11 +89,44 @@
       "page": "P&L Variance",
       "slicer": "Scenario",
       "field": "DimScenario[scenario]",
-      "default": "All",
+      "default": "Actual",
       "placement": "top_filter_bar",
       "x": 380,
       "y": 84,
       "width": 180,
+      "height": 42
+    },
+    {
+      "page": "Controls & Storyboard",
+      "slicer": "Country",
+      "field": "DimEntity[country]",
+      "default": "All",
+      "placement": "top_filter_bar",
+      "x": 188,
+      "y": 84,
+      "width": 154,
+      "height": 42
+    },
+    {
+      "page": "Controls & Storyboard",
+      "slicer": "BU",
+      "field": "DimBusinessUnit[business_unit]",
+      "default": "All",
+      "placement": "top_filter_bar",
+      "x": 354,
+      "y": 84,
+      "width": 154,
+      "height": 42
+    },
+    {
+      "page": "Controls & Storyboard",
+      "slicer": "Scenario",
+      "field": "DimScenario[scenario]",
+      "default": "Actual",
+      "placement": "top_filter_bar",
+      "x": 520,
+      "y": 84,
+      "width": 154,
       "height": 42
     },
     {
@@ -108,5 +163,5 @@
       "height": 42
     }
   ],
-  "layout_upgrade": "2026-06-23 top filter bar; slicers moved above KPI strip on all native PBIX pages."
+  "layout_upgrade": "2026-06-27 top filter bar includes Period, Region, Country, BU, Scenario, and Entity lens controls."
 }

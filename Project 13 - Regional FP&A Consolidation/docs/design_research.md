@@ -9,4 +9,4 @@ Template research focused on finance/FP&A dashboards rather than generic BI layo
 - Qlik financial dashboard examples reinforce moving beyond monitoring into decision-oriented financial dashboards: https://www.qlik.com/us/dashboard-examples/financial-dashboards
 - Ecosire's Power BI financial reporting architecture emphasizes account mapping, P&L structure, cash flow/variance visuals, and audit transparency: https://ecosire.com/blog/power-bi-financial-reporting-dashboard
 
-Applied design decision: build a condensed 3-tab CFO command-center layout with a restrained light canvas, KPI strip first, variance bridge in the first viewport, a consolidated P&L variance page, and a combined controls/storyboard page for FX, intercompany, close exceptions, and board narrative.
+Applied design decision: build a CFO command-center layout with a restrained light canvas, KPI strip first, variance bridge in the first viewport, entity/BU detail pages, close exceptions as an action-oriented page, and a board-storyboard page using treemap, funnel, bullet pacing, and narrative callouts for layout variety.

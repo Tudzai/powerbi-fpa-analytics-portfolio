@@ -8,7 +8,7 @@ One row per legal entity / country. Key: `entity_id`. Fields: entity name, count
 
 ## DimBusinessUnit
 
-One row per business unit. Key: `business_unit_id`. Used to slice financials and variance drivers.
+One row per business unit. Key: `business_unit_id`. Used to slice financials, variance drivers, and close exceptions.
 
 ## DimAccount
 
@@ -32,7 +32,7 @@ Monthly entity-BU variance-driver grain. `amount_usd` ties to Actual EBITDA minu
 
 ## FactCloseExceptions
 
-Close exception register by issue. Tracks owner team, severity, status, amount at risk, due date, and management commentary.
+Close exception register by issue at month x entity x business unit grain. Tracks owner team, severity, status, amount at risk, due date, and management commentary.
 
 ## FactFXRate
 

@@ -7,5 +7,6 @@ Status: **pass**
 | Fact financials grain uniqueness | pass | 0 duplicate composite keys |
 | Critical field completeness | pass | 0 missing critical values |
 | Foreign key integrity | pass | 0 bad FK rows |
+| Close exception BU slicer keys | pass | 0 missing BU fields; 0 exception FK rows outside Date/Entity/BU dimensions |
 | Bridge tie-out to EBITDA variance | pass | 0 groups outside $1 tolerance; max abs diff $0.02 |
 | Synthetic seed recorded | pass | seed=13042 |

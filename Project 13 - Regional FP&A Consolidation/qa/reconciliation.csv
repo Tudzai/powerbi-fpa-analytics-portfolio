@@ -2,5 +2,6 @@ reconciliation,status,detail,tolerance
 Fact financials grain uniqueness,pass,0 duplicate composite keys,$1 where applicable
 Critical field completeness,pass,0 missing critical values,$1 where applicable
 Foreign key integrity,pass,0 bad FK rows,$1 where applicable
+Close exception BU slicer keys,pass,0 missing BU fields; 0 exception FK rows outside Date/Entity/BU dimensions,$1 where applicable
 Bridge tie-out to EBITDA variance,pass,0 groups outside $1 tolerance; max abs diff $0.02,$1 where applicable
 Synthetic seed recorded,pass,seed=13042,$1 where applicable

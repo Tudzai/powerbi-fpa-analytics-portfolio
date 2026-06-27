@@ -1,4 +1,4 @@
-﻿/// Your server name normally acterys.database.windows.net
+/// Your server name normally acterys.database.windows.net
 expression Server = "acterys.database.windows.net" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 
 	annotation PBI_ResultType = Text
@@ -29,4 +29,3 @@ expression 'Errors in Scorecard' =
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
-
