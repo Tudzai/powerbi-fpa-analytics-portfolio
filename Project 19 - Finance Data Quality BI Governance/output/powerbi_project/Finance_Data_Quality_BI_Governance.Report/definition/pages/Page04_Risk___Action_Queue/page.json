@@ -5,17 +5,19 @@
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
-  "visibility": "AlwaysVisible",
-  "filterConfig": {
-    "filters": []
-  },
   "objects": {
     "background": [
       {
         "properties": {
           "color": {
             "solid": {
-              "color": "#EEF3F5"
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#EEF3F5'"
+                  }
+                }
+              }
             }
           },
           "transparency": {
@@ -33,7 +35,13 @@
         "properties": {
           "color": {
             "solid": {
-              "color": "#EEF3F5"
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#EEF3F5'"
+                  }
+                }
+              }
             }
           },
           "transparency": {

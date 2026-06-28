@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "views_by_report",
   "position": {
-    "x": 204,
-    "y": 212,
+    "x": 205.6,
+    "y": 248,
     "z": 300,
-    "height": 278,
-    "width": 386,
+    "height": 190,
+    "width": 425.6,
     "tabOrder": 300
   },
   "visual": {
@@ -27,6 +27,7 @@
                 }
               },
               "queryRef": "DimReport.ReportName",
+              "active": true,
               "displayName": "ReportName"
             }
           ]
@@ -116,7 +117,13 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#13212B"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#13212B'"
+                    }
+                  }
+                }
               }
             },
             "fontSize": {
@@ -155,7 +162,13 @@
             },
             "color": {
               "solid": {
-                "color": "#FFFFFF"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
               }
             },
             "transparency": {
@@ -180,7 +193,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8E5E8"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D8E5E8'"
+                    }
+                  }
+                }
               }
             },
             "radius": {

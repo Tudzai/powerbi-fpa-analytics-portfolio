@@ -3,9 +3,9 @@
   "name": "incident_exception_table",
   "position": {
     "x": 204,
-    "y": 514,
+    "y": 458,
     "z": 303,
-    "height": 172,
+    "height": 234,
     "width": 652,
     "tabOrder": 303
   },
@@ -140,7 +140,13 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#13212B"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#13212B'"
+                    }
+                  }
+                }
               }
             },
             "fontSize": {
@@ -179,7 +185,13 @@
             },
             "color": {
               "solid": {
-                "color": "#FFFFFF"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
               }
             },
             "transparency": {
@@ -204,7 +216,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8E5E8"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D8E5E8'"
+                    }
+                  }
+                }
               }
             },
             "radius": {

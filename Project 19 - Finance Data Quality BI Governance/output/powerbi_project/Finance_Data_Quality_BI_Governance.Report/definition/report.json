@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
   "themeCollection": {
     "baseTheme": {
@@ -19,6 +19,28 @@
       },
       "type": "RegisteredResources"
     }
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
   },
   "resourcePackages": [
     {
@@ -44,38 +66,13 @@
       ]
     }
   ],
-  "filterConfig": {
-    "filters": []
-  },
-  "objects": {
-    "outspacePane": [
-      {
-        "properties": {
-          "visible": {
-            "expr": {
-              "Literal": {
-                "Value": "false"
-              }
-            }
-          },
-          "expanded": {
-            "expr": {
-              "Literal": {
-                "Value": "false"
-              }
-            }
-          }
-        }
-      }
-    ]
-  },
   "settings": {
     "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
     "defaultFilterActionIsDataFilter": true,
     "defaultDrillFilterOtherVisuals": true,
     "allowChangeFilterTypes": true,
-    "useEnhancedTooltips": true,
-    "exportDataMode": "AllowSummarized"
+    "useEnhancedTooltips": true
   },
   "annotations": [
     {
@@ -88,7 +85,7 @@
     },
     {
       "name": "enhancementVersion",
-      "value": "v5_20260623_project20_sparklines"
+      "value": "v10_20260629_kpi_sparkline_axis_spacing"
     }
   ]
 }

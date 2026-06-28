@@ -16,7 +16,7 @@ RNG = np.random.default_rng(SEED)
 AS_OF_DATE = pd.Timestamp("2026-06-15")
 LATEST_COMPLETE_MONTH = "May 2026"
 REPORT_NAME = "Finance_Data_Quality_BI_Governance"
-ENHANCEMENT_VERSION = "v5_20260623_project20_sparklines"
+ENHANCEMENT_VERSION = "v10_20260629_kpi_sparkline_axis_spacing"
 
 STYLE = {
     "canvas": "#EEF3F5",
@@ -27,6 +27,11 @@ STYLE = {
     "rail": "#102B3C",
     "rail_2": "#173E55",
     "rail_text": "#E8F4F6",
+    "rail_muted": "#A9C8D0",
+    "rail_card": "#FBFDFE",
+    "rail_card_text": "#17324A",
+    "rail_card_muted": "#55707D",
+    "rail_card_value": "#1F2D3A",
     "navy": "#1B4D89",
     "teal": "#2A9D8F",
     "amber": "#D99A2B",
@@ -69,6 +74,53 @@ PAGE_META = {
         "lens_text": "Lens: May 2026 | All departments",
         "decision_text": "WATCH: triage aging queues",
     },
+}
+
+KPI_CARD_SPECS = [
+    ("Data Quality Score", "DQ Score", STYLE["navy"], False),
+    ("Freshness SLA %", "Freshness SLA", STYLE["teal"], False),
+    ("Refresh Success %", "Refresh Success", STYLE["good"], False),
+    ("Open Incidents", "Open Incidents", STYLE["risk"], True),
+    ("Failed Refreshes", "Failed Refreshes", STYLE["risk"], True),
+    ("Completeness %", "Completeness", STYLE["teal"], False),
+    ("Reconciliation Pass %", "Recon Pass", STYLE["good"], False),
+    ("Avg MTTR Hours", "Avg MTTR", STYLE["amber"], True),
+    ("Report Views", "Report Views", STYLE["navy"], False),
+    ("Active Viewer Days", "Viewer Days", STYLE["teal"], False),
+    ("Access Risk Events", "Access Risk", STYLE["risk"], True),
+    ("Deployment Control Score", "Control Score", STYLE["good"], False),
+    ("Pending Access Reviews", "Pending Reviews", STYLE["amber"], True),
+    ("Abs Reconciliation Variance", "Recon Variance", STYLE["plum"], True),
+]
+
+KPI_CARD_SPEC_BY_MEASURE = {measure: (title, color, lower_is_better) for measure, title, color, lower_is_better in KPI_CARD_SPECS}
+
+DOMAIN_RISK_PROFILE = {
+    "Treasury": {"dq_penalty": 2.2, "freshness_risk": 0.10, "refresh_fail": 1.8, "rec_risk": 2.2, "issue_bias": 1.25},
+    "Tax": {"dq_penalty": 3.0, "freshness_risk": 0.08, "refresh_fail": 1.6, "rec_risk": 1.7, "issue_bias": 1.35},
+    "People Cost": {"dq_penalty": 2.6, "freshness_risk": 0.07, "refresh_fail": 1.5, "rec_risk": 1.6, "issue_bias": 1.30},
+    "Consolidation": {"dq_penalty": 1.9, "freshness_risk": 0.06, "refresh_fail": 1.2, "rec_risk": 1.5, "issue_bias": 1.15},
+    "Record to Report": {"dq_penalty": 1.4, "freshness_risk": 0.04, "refresh_fail": 1.0, "rec_risk": 1.3, "issue_bias": 1.05},
+    "Procure to Pay": {"dq_penalty": 1.6, "freshness_risk": 0.05, "refresh_fail": 1.1, "rec_risk": 1.2, "issue_bias": 1.10},
+    "Order to Cash": {"dq_penalty": 1.2, "freshness_risk": 0.04, "refresh_fail": 0.9, "rec_risk": 1.1, "issue_bias": 0.95},
+    "FP&A": {"dq_penalty": 1.1, "freshness_risk": 0.04, "refresh_fail": 0.8, "rec_risk": 1.0, "issue_bias": 0.90},
+    "Revenue": {"dq_penalty": 0.5, "freshness_risk": 0.03, "refresh_fail": 0.6, "rec_risk": 0.8, "issue_bias": 0.65},
+}
+
+DEFAULT_DOMAIN_PROFILE = {"dq_penalty": 1.0, "freshness_risk": 0.04, "refresh_fail": 0.9, "rec_risk": 1.0, "issue_bias": 1.0}
+
+DOMAIN_MONTH_SPIKES = {
+    ("Treasury", 4): 1.40,
+    ("Treasury", 13): 1.50,
+    ("Treasury", 16): 1.20,
+    ("Tax", 3): 1.65,
+    ("Tax", 15): 1.35,
+    ("People Cost", 1): 1.20,
+    ("People Cost", 12): 1.45,
+    ("Consolidation", 12): 1.25,
+    ("Consolidation", 15): 1.00,
+    ("Procure to Pay", 6): 0.95,
+    ("Record to Report", 9): 0.85,
 }
 
 DIRS = [
@@ -131,6 +183,26 @@ def date_key(ts: pd.Timestamp) -> int:
 
 def month_key(ts: pd.Timestamp) -> int:
     return int(ts.strftime("%Y%m"))
+
+
+def month_index(ts: pd.Timestamp) -> int:
+    return int((ts.year - 2025) * 12 + ts.month)
+
+
+def domain_profile(domain: str) -> dict[str, float]:
+    return DOMAIN_RISK_PROFILE.get(domain, DEFAULT_DOMAIN_PROFILE)
+
+
+def domain_month_risk(domain: str, ts: pd.Timestamp) -> float:
+    idx = month_index(ts)
+    quarter_close = 0.75 if ts.month in {3, 6, 9, 12} else (0.28 if ts.month in {1, 4, 7, 10} else 0.0)
+    latest_pressure = 0.65 if idx in {16, 17} else 0.0
+    remediation = -0.45 if idx in {8, 14} else 0.0
+    domain_spike = DOMAIN_MONTH_SPIKES.get((domain, idx), 0.0)
+    tax_calendar = 0.45 if domain == "Tax" and ts.month in {1, 3, 4} else 0.0
+    payroll_calendar = 0.40 if domain == "People Cost" and ts.month in {1, 12} else 0.0
+    wave = 0.34 * math.sin((idx + len(domain)) * 1.37)
+    return float(np.clip(0.42 + quarter_close + latest_pressure + remediation + domain_spike + tax_calendar + payroll_calendar + wave, 0.0, 3.6))
 
 
 def make_dimensions() -> dict[str, pd.DataFrame]:
@@ -225,23 +297,69 @@ def make_facts(dims: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame]:
     month_ends = pd.date_range("2025-01-31", "2026-05-31", freq="ME")
 
     dataset_rows = []
+    risk_event_pool = []
     for _, ds in datasets.iterrows():
-        base_score = 94 if ds["Criticality"] == "Tier 1" else 91
-        domain_penalty = {"Treasury": 1.5, "Tax": 2.4, "People Cost": 2.0}.get(ds["Domain"], 0.0)
+        profile = domain_profile(str(ds["Domain"]))
+        base_score = 96.0 if ds["Criticality"] == "Tier 1" else 93.5
+        domain_penalty = profile["dq_penalty"]
         for d in dates:
-            seasonal = 1.2 * math.sin((d.dayofyear / 365) * 2 * math.pi)
-            close_pressure = 2.2 if d.day <= 5 else 0.0
-            incident_noise = max(0, RNG.normal(0.7, 0.9))
+            risk_pulse = domain_month_risk(str(ds["Domain"]), d)
+            seasonal = 1.1 * math.sin((d.dayofyear / 365) * 2 * math.pi)
+            close_pressure = 0.85 if d.day <= 5 else 0.0
+            incident_noise = max(0, RNG.normal(0.35, 0.45))
             rows_expected = int(RNG.normal(380_000 if ds["Criticality"] == "Tier 1" else 120_000, 28_000))
-            completeness = float(np.clip(RNG.normal(0.992, 0.006) - close_pressure / 500 - domain_penalty / 800, 0.93, 1.0))
+            completeness = float(
+                np.clip(
+                    RNG.normal(0.996, 0.004)
+                    - risk_pulse * 0.0038
+                    - profile["freshness_risk"] * 0.070
+                    - close_pressure * 0.0015
+                    - (0.003 if ds["Certified"] == "N" else 0),
+                    0.88,
+                    1.0,
+                )
+            )
             rows_loaded = int(rows_expected * completeness)
-            nulls = int(max(0, RNG.normal(60 + domain_penalty * 18 + close_pressure * 20, 28)))
-            duplicates = int(max(0, RNG.normal(18 + domain_penalty * 9, 12)))
-            schema_drift = int(RNG.binomial(1, 0.015 + (0.008 if ds["Certified"] == "N" else 0)))
-            freshness_minutes = int(max(5, RNG.normal(ds["SLAHours"] * 43, ds["SLAHours"] * 12) + close_pressure * 9))
-            freshness_sla = 1 if freshness_minutes <= int(ds["SLAHours"]) * 60 else 0
-            dq_score = float(np.clip(base_score - domain_penalty - close_pressure - incident_noise - nulls / 220 - duplicates / 160 - schema_drift * 5 + seasonal, 72, 99.5))
-            rec_var = float(RNG.normal(0, 35_000 if ds["Criticality"] == "Tier 1" else 12_000) + (0 if dq_score > 88 else RNG.normal(60_000, 15_000)))
+            nulls = int(max(0, RNG.normal(42 + domain_penalty * 22 + risk_pulse * 34 + close_pressure * 24, 24)))
+            duplicates = int(max(0, RNG.normal(13 + domain_penalty * 8 + risk_pulse * 16, 10)))
+            schema_prob = min(0.22, 0.010 + risk_pulse * 0.022 + domain_penalty * 0.004 + (0.012 if ds["Certified"] == "N" else 0))
+            schema_drift = int(RNG.binomial(1, schema_prob))
+            freshness_probability = float(
+                np.clip(
+                    0.992
+                    - profile["freshness_risk"] * 0.50
+                    - risk_pulse * 0.040
+                    - close_pressure * 0.020
+                    - (0.025 if ds["Certified"] == "N" else 0),
+                    0.90,
+                    0.995,
+                )
+            )
+            freshness_sla = int(RNG.binomial(1, freshness_probability))
+            if freshness_sla:
+                freshness_minutes = int(max(5, RNG.normal(ds["SLAHours"] * 38, ds["SLAHours"] * 8)))
+            else:
+                freshness_minutes = int(max(int(ds["SLAHours"]) * 60 + 6, RNG.normal(ds["SLAHours"] * 68, ds["SLAHours"] * 9)))
+            dq_score = float(
+                np.clip(
+                    base_score
+                    - domain_penalty
+                    - risk_pulse * (1.15 + domain_penalty * 0.25)
+                    - close_pressure * 0.70
+                    - incident_noise
+                    - nulls / 235
+                    - duplicates / 170
+                    - schema_drift * 4.4
+                    + seasonal,
+                    70,
+                    99.5,
+                )
+            )
+            rec_var = float(
+                RNG.normal(0, (35_000 if ds["Criticality"] == "Tier 1" else 12_000) * (1 + risk_pulse * 0.24))
+                + (0 if dq_score > 88 else RNG.normal(65_000 * (1 + risk_pulse * 0.22), 18_000))
+            )
+            open_issue_count = int(max(0, (100 - dq_score) / 2.2 + risk_pulse * profile["issue_bias"] + RNG.normal(0.8, 0.9)))
             dataset_rows.append(
                 {
                     "DateKey": date_key(d),
@@ -256,22 +374,56 @@ def make_facts(dims: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame]:
                     "FreshnessWithinSLAFlag": freshness_sla,
                     "DataQualityScore": round(dq_score, 2),
                     "ReconciliationVarianceAmount": round(rec_var, 2),
-                    "OpenIssueCount": int(max(0, (100 - dq_score) / 4 + RNG.normal(0.8, 0.8))),
+                    "OpenIssueCount": open_issue_count,
                 }
             )
+            event_score = (
+                risk_pulse * profile["issue_bias"]
+                + max(0, 90 - dq_score) / 4.5
+                + (2.0 if freshness_sla == 0 else 0.0)
+                + schema_drift * 1.6
+                + max(0, open_issue_count - 4) / 3
+            )
+            if event_score >= 1.15:
+                if schema_drift:
+                    event_root = "Mapping break"
+                elif freshness_sla == 0:
+                    event_root = str(RNG.choice(["Late source extract", "Failed refresh"], p=[0.58, 0.42]))
+                elif duplicates > nulls * 0.42:
+                    event_root = "Duplicate key"
+                else:
+                    event_root = "Null critical field"
+                risk_event_pool.append(
+                    {
+                        "DatasetKey": ds["DatasetKey"],
+                        "Domain": ds["Domain"],
+                        "Date": pd.Timestamp(d),
+                        "RiskScore": float(event_score),
+                        "RootCause": event_root,
+                    }
+                )
 
     refresh_rows = []
     run_id = 1
     failure_categories = ["Source unavailable", "Gateway timeout", "Schema drift", "Credential expired", "Capacity throttling"]
     for _, ds in datasets.iterrows():
-        fail_rate = 0.025 + (0.018 if ds["Certified"] == "N" else 0) + (0.012 if ds["RefreshFrequency"] == "Intraday" else 0)
+        profile = domain_profile(str(ds["Domain"]))
         for d in dates:
+            risk_pulse = domain_month_risk(str(ds["Domain"]), d)
+            fail_rate = min(
+                0.34,
+                0.012
+                + (0.015 if ds["Certified"] == "N" else 0)
+                + (0.012 if ds["RefreshFrequency"] == "Intraday" else 0)
+                + profile["refresh_fail"] * 0.006
+                + risk_pulse * 0.024,
+            )
             status = "Success"
             failure_category = "None"
             if RNG.random() < fail_rate:
                 status = "Failed"
                 failure_category = str(RNG.choice(failure_categories, p=[0.24, 0.24, 0.18, 0.12, 0.22]))
-            duration = int(max(4, RNG.normal(34 if ds["Criticality"] == "Tier 1" else 22, 9)))
+            duration = int(max(4, RNG.normal(34 if ds["Criticality"] == "Tier 1" else 22, 9) + risk_pulse * 4.5))
             refresh_rows.append(
                 {
                     "RefreshRunKey": f"RR{run_id:06d}",
@@ -288,12 +440,16 @@ def make_facts(dims: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame]:
 
     rec_rows = []
     for _, ds in datasets.iterrows():
+        profile = domain_profile(str(ds["Domain"]))
         for m in month_ends:
+            risk_pulse = domain_month_risk(str(ds["Domain"]), m)
+            rec_factor = 1 + profile["rec_risk"] * risk_pulse
             for dept in departments.sample(3, random_state=int(month_key(m)) + len(ds["DatasetKey"])).itertuples():
                 ledger = float(RNG.normal(28_000_000 if ds["Criticality"] == "Tier 1" else 7_500_000, 2_400_000))
-                variance = float(RNG.normal(0, 60_000 if ds["Criticality"] == "Tier 1" else 24_000))
-                if RNG.random() < (0.06 if ds["Certified"] == "Y" else 0.12):
-                    variance += float(RNG.choice([-1, 1]) * RNG.normal(210_000, 75_000))
+                variance = float(RNG.normal(0, (60_000 if ds["Criticality"] == "Tier 1" else 24_000) * (1 + rec_factor * 0.28)))
+                exception_prob = min(0.52, (0.045 if ds["Certified"] == "Y" else 0.10) + rec_factor * 0.045)
+                if RNG.random() < exception_prob:
+                    variance += float(RNG.choice([-1, 1]) * RNG.normal(150_000 * (1 + rec_factor * 0.30), 52_000 * (1 + rec_factor * 0.18)))
                 subledger = ledger - variance
                 variance_pct = variance / ledger if ledger else 0
                 rec_rows.append(
@@ -359,26 +515,49 @@ def make_facts(dims: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame]:
     incident_rows = []
     root_causes = ["Late source extract", "Mapping break", "Duplicate key", "Null critical field", "RLS misconfiguration", "Report performance", "Failed refresh"]
     severities = ["Critical", "High", "Medium", "Low"]
-    for i in range(240):
-        ds = datasets.sample(1, random_state=SEED + i).iloc[0]
-        open_date = pd.Timestamp(RNG.choice(dates))
-        severity = str(RNG.choice(severities, p=[0.07, 0.25, 0.46, 0.22]))
-        mttr_base = {"Critical": 10, "High": 22, "Medium": 45, "Low": 72}[severity]
-        mttr = float(max(2, RNG.normal(mttr_base, mttr_base * 0.35)))
-        closed = RNG.random() > {"Critical": 0.08, "High": 0.13, "Medium": 0.22, "Low": 0.28}[severity]
+    latest_date = pd.Timestamp(dates.max())
+    candidate_events = list(risk_event_pool)
+    RNG.shuffle(candidate_events)
+    incident_id = 1
+    for event in candidate_events:
+        score = float(event["RiskScore"])
+        incident_prob = min(0.30, 0.008 + score * 0.026)
+        if RNG.random() > incident_prob:
+            continue
+        open_date = pd.Timestamp(event["Date"])
+        if score >= 4.8:
+            severity = str(RNG.choice(severities, p=[0.14, 0.34, 0.39, 0.13]))
+        elif score >= 3.0:
+            severity = str(RNG.choice(severities, p=[0.08, 0.28, 0.46, 0.18]))
+        else:
+            severity = str(RNG.choice(severities, p=[0.03, 0.18, 0.49, 0.30]))
+        duration_base = {"Critical": 5, "High": 10, "Medium": 24, "Low": 42}[severity]
+        duration_days = int(max(2, RNG.normal(duration_base + score * 2.0, duration_base * 0.25)))
+        close_date = open_date + pd.Timedelta(days=duration_days)
+        recent_open = open_date >= latest_date - pd.Timedelta(days=55)
+        force_open = recent_open and RNG.random() < min(0.38, 0.09 + score * 0.035)
+        closed = close_date <= latest_date and not force_open
+        close_month = month_index(close_date) if closed else 0
+        mttr = float(max(2, duration_days * 24 if closed else min(240, (latest_date - open_date).days * 9 + duration_base * 1.8)))
+        root_cause = str(event["RootCause"]) if event.get("RootCause") in root_causes else str(RNG.choice(root_causes))
         incident_rows.append(
             {
-                "IncidentKey": f"INC{i + 1:05d}",
+                "IncidentKey": f"INC{incident_id:05d}",
                 "DateKey": date_key(open_date),
-                "DatasetKey": ds["DatasetKey"],
+                "OpenMonthIndex": month_index(open_date),
+                "CloseMonthIndex": close_month,
+                "DatasetKey": event["DatasetKey"],
                 "Severity": severity,
                 "IncidentStatus": "Closed" if closed else "Open",
-                "RootCause": str(RNG.choice(root_causes)),
+                "RootCause": root_cause,
                 "MTTRHours": round(mttr if closed else mttr * 1.35, 1),
                 "SLAOverdueFlag": 1 if mttr > (24 if severity in ["Critical", "High"] else 72) else 0,
                 "BusinessImpact": str(RNG.choice(["Close delay", "Wrong KPI", "Access risk", "Manual rework", "Stakeholder trust"], p=[0.25, 0.21, 0.14, 0.28, 0.12])),
             }
         )
+        incident_id += 1
+        if incident_id > 440:
+            break
 
     return {
         "FactDatasetDaily": pd.DataFrame(dataset_rows),
@@ -494,6 +673,8 @@ TABLE_TYPES = {
     "FactIncidents": {
         "IncidentKey": "string",
         "DateKey": "int64",
+        "OpenMonthIndex": "int64",
+        "CloseMonthIndex": "int64",
         "DatasetKey": "string",
         "Severity": "string",
         "IncidentStatus": "string",
@@ -513,12 +694,305 @@ def pbi_path(path: Path) -> str:
     return str(path).replace("\\", "\\\\")
 
 
+def sparkline_svg_dax(measure_name: str, trend_color: str, lower_is_better: bool = False) -> str:
+    encoded_color = trend_color.replace("#", "%23")
+    favorable_test = "LastValue <= FirstValue" if lower_is_better else "LastValue >= FirstValue"
+    return f"""VAR LatestIndex = MAXX ( ALLSELECTED ( DimDate ), DimDate[MonthIndex] )
+VAR MonthTable =
+    ADDCOLUMNS (
+        FILTER (
+            ALL ( DimDate ),
+            DimDate[MonthIndex] <= LatestIndex
+                && DimDate[MonthIndex] > LatestIndex - 12
+        ),
+        "__Value", CALCULATE ( [{measure_name}] )
+    )
+VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [__Value] ) )
+VAR RowCount = COUNTROWS ( CleanTable )
+VAR MinValue = MINX ( CleanTable, [__Value] )
+VAR MaxValue = MAXX ( CleanTable, [__Value] )
+VAR FirstValue = MINX ( TOPN ( 1, CleanTable, DimDate[MonthIndex], ASC ), [__Value] )
+VAR LastValue = MINX ( TOPN ( 1, CleanTable, DimDate[MonthIndex], DESC ), [__Value] )
+VAR StartYValue = 38 - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * 30
+VAR EndYValue = 38 - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * 30
+VAR TrendColor = IF ( {favorable_test}, "{encoded_color}", "%23C94A4A" )
+VAR Points =
+    CONCATENATEX (
+        CleanTable,
+        VAR RankValue = RANKX ( CleanTable, DimDate[MonthIndex],, ASC, DENSE ) - 1
+        VAR XValue = 8 + DIVIDE ( RankValue, MAX ( 1, RowCount - 1 ), 0 ) * 184
+        VAR YValue = 38 - DIVIDE ( [__Value] - MinValue, MaxValue - MinValue, 0.5 ) * 30
+        RETURN FORMAT ( XValue, "0.0" ) & "," & FORMAT ( YValue, "0.0" ),
+        " ",
+        DimDate[MonthIndex],
+        ASC
+    )
+RETURN
+    IF (
+        RowCount < 2,
+        BLANK (),
+        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='44' viewBox='0 0 200 44'><rect x='0' y='0' width='200' height='44' rx='7' fill='%23F4FAFB'/><line x1='8' y1='25' x2='192' y2='25' stroke='%23D3E0E3' stroke-width='1' stroke-dasharray='4 5'/><polyline points='"
+            & Points
+            & "' fill='none' stroke='"
+            & TrendColor
+            & "' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/><circle cx='8' cy='"
+            & FORMAT ( StartYValue, "0.0" )
+            & "' r='3' fill='%23FFFFFF' stroke='%237D9197' stroke-width='1.4'/><circle cx='192' cy='"
+            & FORMAT ( EndYValue, "0.0" )
+            & "' r='4' fill='"
+            & TrendColor
+            & "' stroke='%23FFFFFF' stroke-width='1.4'/></svg>"
+    )"""
+
+
+def kpi_card_svg_measure_name(measure_name: str) -> str:
+    return f"{measure_name} KPI Card SVG"
+
+
+def rail_shell_svg_measure_name(ordinal: int) -> str:
+    return f"Rail Shell {ordinal + 1:02d} SVG"
+
+
+def svg_hex(color: str) -> str:
+    return color.replace("#", "%23")
+
+
+def svg_text(value: str) -> str:
+    return str(value).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def rail_shell_svg_dax(display: str, ordinal: int) -> str:
+    meta = PAGE_META[display]
+    rail = svg_hex(STYLE["rail"])
+    rail_2 = svg_hex(STYLE["rail_2"])
+    rail_text = svg_hex(STYLE["rail_text"])
+    rail_muted = svg_hex(STYLE["rail_muted"])
+    navy = svg_hex(STYLE["navy"])
+    nav_chunks = []
+    for nav_index, (page_name, nav_meta) in enumerate(PAGE_META.items()):
+        active = page_name == display
+        y = 108 + nav_index * 42
+        fill = navy if active else rail_2
+        stroke = "%238CB9C2" if active else "%23315B6B"
+        text_color = rail_text if active else "%23CFE3E7"
+        nav_chunks.append(
+            f"<rect x='6' y='{y}' width='162' height='34' rx='6' fill='{fill}' stroke='{stroke}' stroke-width='1'/>"
+            f"<text x='16' y='{y + 22}' font-family='Segoe UI' font-size='11.2' font-weight='700' fill='{text_color}'>{svg_text(nav_meta['short'])}</text>"
+        )
+    signature = svg_text(meta["signature"])
+    if len(signature) > 29:
+        signature_text = (
+            f"<text x='10' y='332' font-family='Segoe UI' font-size='12.1' font-weight='700' fill='{rail_text}'>{signature[:29]}</text>"
+            f"<text x='10' y='349' font-family='Segoe UI' font-size='12.1' font-weight='700' fill='{rail_text}'>{signature[29:58]}</text>"
+        )
+    else:
+        signature_text = f"<text x='10' y='332' font-family='Segoe UI' font-size='12.1' font-weight='700' fill='{rail_text}'>{signature}</text>"
+    return f"""VAR MonthLens = SELECTEDVALUE ( DimDate[MonthYear], "All months" )
+VAR DomainLens = SELECTEDVALUE ( DimDataset[Domain], "All domains" )
+VAR TierLens = SELECTEDVALUE ( DimDataset[Criticality], "All tiers" )
+VAR LensLineOne = LEFT ( MonthLens & " | " & DomainLens, 30 )
+VAR LensLineTwo = LEFT ( TierLens, 30 )
+VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='176' height='700' viewBox='0 0 176 700'>"
+        & "<rect x='0' y='0' width='176' height='700' rx='6' fill='{rail}'/>"
+        & "<text x='10' y='40' font-family='Segoe UI' font-size='23' font-weight='700' fill='{rail_text}'>Project 19</text>"
+        & "<text x='10' y='62' font-family='Segoe UI' font-size='11.5' font-weight='600' fill='{rail_muted}'>Finance DQ Governance</text>"
+        & "{''.join(nav_chunks)}"
+        & "<line x1='6' y1='282' x2='168' y2='282' stroke='%236D95A0' stroke-width='1' opacity='0.75'/>"
+        & "<text x='10' y='310' font-family='Segoe UI' font-size='9.2' font-weight='700' fill='{rail_muted}'>SIGNATURE</text>"
+        & "{signature_text}"
+        & "<text x='10' y='386' font-family='Segoe UI' font-size='10.5' font-weight='700' fill='{rail_muted}'>GLOBAL LENS</text>"
+        & "<rect x='6' y='562' width='166' height='78' rx='8' fill='{rail_2}' stroke='%233F7180' stroke-width='1'/>"
+        & "<text x='16' y='585' font-family='Segoe UI' font-size='10.5' font-weight='700' fill='{rail_muted}'>Current Lens</text>"
+        & "<text x='16' y='609' font-family='Segoe UI' font-size='10.4' font-weight='700' fill='{rail_text}'>" & LensLineOne & "</text>"
+        & "<text x='16' y='632' font-family='Segoe UI' font-size='10.4' font-weight='700' fill='{rail_text}'>" & LensLineTwo & "</text>"
+        & "<rect x='6' y='642' width='162' height='52' rx='7' fill='{rail_2}' stroke='%233F7180' stroke-width='1'/>"
+        & "<text x='16' y='665' font-family='Segoe UI' font-size='10' font-weight='700' fill='{rail_muted}'>LATEST COMPLETE</text>"
+        & "<text x='16' y='687' font-family='Segoe UI' font-size='13.6' font-weight='700' fill='{rail_text}'>{svg_text(LATEST_COMPLETE_MONTH)}</text>"
+        & "</svg>"
+RETURN
+    "data:image/svg+xml;utf8," & SVG"""
+
+
+def header_shell_svg_measure_name(ordinal: int) -> str:
+    return f"Header Shell {ordinal + 1} SVG"
+
+
+def header_shell_svg_dax(display: str) -> str:
+    meta = PAGE_META[display]
+    ink = svg_hex(STYLE["ink"])
+    muted = svg_hex(STYLE["muted"])
+    panel = svg_hex("#F9FCFD")
+    line = svg_hex(STYLE["line"])
+    top_line = svg_hex("#DDE8EB")
+    return f"""VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='1052' height='64' viewBox='0 0 1052 64'>"
+        & "<text x='0' y='29' font-family='Segoe UI' font-size='23' font-weight='750' fill='{ink}'>{svg_text(display)}</text>"
+        & "<text x='0' y='50' font-family='Segoe UI' font-size='10.8' font-weight='650' fill='{muted}'>{svg_text(meta['signature'])}</text>"
+        & "<rect x='296' y='0' width='544' height='58' rx='8' fill='{panel}' stroke='{line}' stroke-width='1'/>"
+        & "<text x='316' y='20' font-family='Segoe UI' font-size='9.5' font-weight='800' fill='{muted}'>Decision Chip</text>"
+        & "<text x='316' y='43' font-family='Segoe UI' font-size='12' font-weight='800' fill='{ink}'>{svg_text(meta['decision_text'])}</text>"
+        & "<line x1='0' y1='62' x2='1052' y2='62' stroke='{top_line}' stroke-width='2'/>"
+        & "</svg>"
+RETURN
+    "data:image/svg+xml;utf8," & SVG"""
+
+
+def kpi_card_svg_dax(title: str, measure_name: str, value_format: str, trend_color: str, lower_is_better: bool = False) -> str:
+    encoded_color = trend_color.replace("#", "%23")
+    favorable_test = "LastValue <= FirstValue" if lower_is_better else "LastValue >= FirstValue"
+    yoy_good_test = "ChangeValue <= 0" if lower_is_better else "ChangeValue >= 0"
+    if "%" in value_format:
+        delta_text = 'VAR YoYTextRaw = IF ( ISBLANK ( PriorValue ), "n/a", FORMAT ( ChangeValue * 100, "+0.0;-0.0;0.0" ) & "pt" )'
+    elif "$" in value_format:
+        delta_text = """VAR YoYTextRaw =
+    IF (
+        ISBLANK ( PriorValue ),
+        "n/a",
+        SWITCH (
+            TRUE (),
+            ABS ( ChangeValue ) >= 1000000, FORMAT ( DIVIDE ( ChangeValue, 1000000 ), "+$0.0M;-$0.0M;$0.0M" ),
+            ABS ( ChangeValue ) >= 1000, FORMAT ( DIVIDE ( ChangeValue, 1000 ), "+$0.0K;-$0.0K;$0.0K" ),
+            FORMAT ( ChangeValue, "+$#,0;-$#,0;$0" )
+        )
+    )"""
+    elif value_format == "#,0":
+        delta_text = 'VAR YoYTextRaw = IF ( ISBLANK ( PriorValue ), "n/a", FORMAT ( ChangeValue, "+#,0;-#,0;0" ) )'
+    else:
+        delta_text = 'VAR YoYTextRaw = IF ( ISBLANK ( PriorValue ), "n/a", FORMAT ( ChangeValue, "+0.0;-0.0;0.0" ) )'
+    return f"""VAR SelectedMonths = ALLSELECTED ( DimDate[MonthIndex] )
+VAR SelectedMonthCount = COUNTROWS ( SelectedMonths )
+VAR LatestIndex = MAXX ( SelectedMonths, DimDate[MonthIndex] )
+VAR MonthFilterActive =
+    ISFILTERED ( DimDate[MonthYear] )
+        || ISFILTERED ( DimDate[MonthIndex] )
+VAR UseSelectedMonths =
+    MonthFilterActive
+        && SelectedMonthCount > 1
+        && SelectedMonthCount <= 12
+VAR PriorIndex = LatestIndex - 12
+VAR RawCurrentValue =
+    CALCULATE (
+        [{measure_name}],
+        FILTER ( ALL ( DimDate ), DimDate[MonthIndex] = LatestIndex )
+    )
+VAR CurrentValue = COALESCE ( RawCurrentValue, 0 )
+VAR PriorValue =
+    CALCULATE (
+        [{measure_name}],
+        FILTER ( ALL ( DimDate ), DimDate[MonthIndex] = PriorIndex )
+    )
+VAR ChangeValue = CurrentValue - PriorValue
+VAR ValueTextRaw = FORMAT ( CurrentValue, "{value_format}" )
+VAR PYTextRaw = IF ( ISBLANK ( PriorValue ), "n/a", FORMAT ( PriorValue, "{value_format}" ) )
+{delta_text}
+VAR ValueText = SUBSTITUTE ( ValueTextRaw, "%", "%25" )
+VAR PYText = SUBSTITUTE ( PYTextRaw, "%", "%25" )
+VAR YoYText = SUBSTITUTE ( YoYTextRaw, "%", "%25" )
+VAR YoYColor =
+    IF (
+        ISBLANK ( PriorValue ),
+        "%2355707D",
+        IF ( {yoy_good_test}, "%23247A5A", "%23C44E52" )
+    )
+VAR SelectedAxisMonths =
+    SELECTCOLUMNS (
+        SelectedMonths,
+        "AxisMonthIndex", DimDate[MonthIndex]
+    )
+VAR TrailingAxisMonths =
+    SELECTCOLUMNS (
+        GENERATESERIES ( LatestIndex - 11, LatestIndex, 1 ),
+        "AxisMonthIndex", [Value]
+    )
+VAR AxisMonths =
+    DISTINCT (
+        UNION (
+            FILTER ( SelectedAxisMonths, UseSelectedMonths ),
+            FILTER ( TrailingAxisMonths, NOT UseSelectedMonths )
+        )
+    )
+VAR MonthTable =
+    ADDCOLUMNS (
+        AxisMonths,
+        "AxisValue",
+            VAR ThisMonthIndex = [AxisMonthIndex]
+            RETURN
+                CALCULATE (
+                    [{measure_name}],
+                    FILTER ( ALL ( DimDate ), DimDate[MonthIndex] = ThisMonthIndex )
+                )
+    )
+VAR CleanTable = FILTER ( MonthTable, NOT ISBLANK ( [AxisValue] ) )
+VAR RowCount = COUNTROWS ( CleanTable )
+VAR MinValue = COALESCE ( MINX ( CleanTable, [AxisValue] ), CurrentValue )
+VAR MaxValue = COALESCE ( MAXX ( CleanTable, [AxisValue] ), CurrentValue )
+VAR FirstValue = COALESCE ( MINX ( TOPN ( 1, CleanTable, [AxisMonthIndex], ASC ), [AxisValue] ), CurrentValue )
+VAR LastValue = COALESCE ( MINX ( TOPN ( 1, CleanTable, [AxisMonthIndex], DESC ), [AxisValue] ), CurrentValue )
+VAR MinAxisIndex = COALESCE ( MINX ( CleanTable, [AxisMonthIndex] ), LatestIndex )
+VAR MaxAxisIndex = COALESCE ( MAXX ( CleanTable, [AxisMonthIndex] ), LatestIndex )
+VAR SparkX0 = 132
+VAR SparkX1 = 236
+VAR SparkW = SparkX1 - SparkX0
+VAR SparkYTop = 44
+VAR SparkYBase = 88
+VAR SparkH = SparkYBase - SparkYTop
+VAR AverageValue = COALESCE ( AVERAGEX ( CleanTable, [AxisValue] ), CurrentValue )
+VAR StartYValue = SparkYBase - DIVIDE ( FirstValue - MinValue, MaxValue - MinValue, 0.5 ) * SparkH
+VAR EndYValue = SparkYBase - DIVIDE ( LastValue - MinValue, MaxValue - MinValue, 0.5 ) * SparkH
+VAR ReferenceYValue = SparkYBase - DIVIDE ( AverageValue - MinValue, MaxValue - MinValue, 0.5 ) * SparkH
+VAR TrendColor = IF ( {favorable_test}, "{encoded_color}", "%23C44E52" )
+VAR LinePoints =
+    CONCATENATEX (
+        CleanTable,
+        VAR XValue = SparkX0 + DIVIDE ( [AxisMonthIndex] - MinAxisIndex, MAX ( 1, MaxAxisIndex - MinAxisIndex ), 0 ) * SparkW
+        VAR YValue = SparkYBase - DIVIDE ( [AxisValue] - MinValue, MaxValue - MinValue, 0.5 ) * SparkH
+        RETURN FORMAT ( XValue, "0.0" ) & "," & FORMAT ( YValue, "0.0" ),
+        " ",
+        [AxisMonthIndex],
+        ASC
+    )
+VAR SafeLinePoints =
+    IF (
+        RowCount <= 1,
+        FORMAT ( SparkX0, "0.0" ) & "," & FORMAT ( EndYValue, "0.0" )
+            & " "
+            & FORMAT ( SparkX1, "0.0" ) & "," & FORMAT ( EndYValue, "0.0" ),
+        LinePoints
+    )
+VAR SVG =
+    "<svg xmlns='http://www.w3.org/2000/svg' width='226' height='150' viewBox='0 0 252 166'>"
+        & "<defs><clipPath id='sparkClip'><rect x='130' y='40' width='108' height='52' rx='7'/></clipPath></defs>"
+        & "<rect x='1' y='1' width='250' height='164' rx='12' fill='%23FBFDFE' stroke='%23D8E5E8' stroke-width='1.5'/>"
+        & "<rect x='14' y='12' width='224' height='4' rx='2' fill='{encoded_color}' opacity='0.9'/>"
+        & "<rect x='16' y='30' width='13' height='13' rx='3' fill='{encoded_color}' opacity='0.95'/>"
+        & "<circle cx='22.5' cy='36.5' r='2.1' fill='%23FFFFFF' opacity='0.9'/>"
+        & "<text x='36' y='42' font-family='Segoe UI' font-size='13' font-weight='750' fill='%2317324A'>{title}</text>"
+        & "<text x='16' y='82' font-family='Segoe UI' font-size='27' font-weight='750' fill='{encoded_color}'>" & ValueText & "</text>"
+        & "<rect x='128' y='36' width='112' height='60' rx='9' fill='%23F7FBFC' stroke='%23E5EFF2' stroke-width='1'/>"
+        & "<g clip-path='url(%23sparkClip)'>"
+        & "<line x1='132' y1='" & FORMAT ( ReferenceYValue, "0.0" ) & "' x2='236' y2='" & FORMAT ( ReferenceYValue, "0.0" ) & "' stroke='%23BFD0D5' stroke-width='1' stroke-dasharray='4 5' opacity='0.65'/>"
+        & "<polyline points='" & SafeLinePoints & "' fill='none' stroke='" & TrendColor & "' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/>"
+        & "<circle cx='132' cy='" & FORMAT ( StartYValue, "0.0" ) & "' r='2.4' fill='%23FFFFFF' stroke='" & TrendColor & "' stroke-width='1.15' opacity='0.78'/>"
+        & "<circle cx='236' cy='" & FORMAT ( EndYValue, "0.0" ) & "' r='4.0' fill='" & TrendColor & "' stroke='%23FFFFFF' stroke-width='1.65'/>"
+        & "</g>"
+        & "<rect x='16' y='108' width='100' height='42' rx='8' fill='%23F4FAFB' stroke='%23DDE8EB' stroke-width='1'/>"
+        & "<rect x='124' y='108' width='112' height='42' rx='8' fill='%23F4FAFB' stroke='%23DDE8EB' stroke-width='1'/>"
+        & "<text x='25' y='125' font-family='Segoe UI' font-size='11.8' font-weight='800' fill='%2317324A'>PY</text>"
+        & "<text x='25' y='146' font-family='Segoe UI' font-size='14' font-weight='650' fill='%2355707D'>" & PYText & "</text>"
+        & "<text x='134' y='125' font-family='Segoe UI' font-size='11.8' font-weight='800' fill='%2317324A'>YoY</text>"
+        & "<text x='134' y='146' font-family='Segoe UI' font-size='14' font-weight='800' fill='" & YoYColor & "'>" & YoYText & "</text>"
+        & "</svg>"
+RETURN
+    "data:image/svg+xml;utf8," & SVG"""
+
+
 def build_model(tables: dict[str, pd.DataFrame]) -> dict:
     model_tables = []
     for name, df in tables.items():
         type_map = TABLE_TYPES[name]
         transforms = ", ".join([f'{{"{col}", {m_type(dtype)}}}' for col, dtype in type_map.items()])
-        csv_path = PROJECT / "data" / "prepared" / f"{name.lower()}.csv"
+        csv_path = f"data/prepared/{name.lower()}.csv"
         columns = []
         for col, dtype in type_map.items():
             summarize = "none" if dtype in ["string", "dateTime"] or col.endswith("Key") else ("sum" if dtype in ["int64", "double"] else "none")
@@ -540,7 +1014,7 @@ def build_model(tables: dict[str, pd.DataFrame]) -> dict:
                             "type": "m",
                             "expression": [
                                 "let",
-                                f'    Source = Csv.Document(File.Contents("{pbi_path(csv_path)}"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
+                                f'    Source = Csv.Document(File.Contents("{csv_path}"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
                                 "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                                 f'    Typed = Table.TransformColumnTypes(PromotedHeaders, {{{transforms}}}, "en-US")',
                                 "in",
@@ -564,7 +1038,7 @@ def build_model(tables: dict[str, pd.DataFrame]) -> dict:
         ("Failed Refreshes", 'CALCULATE ( [Refresh Runs], FactRefreshRuns[Status] = "Failed" )', "#,0", "Reliability"),
         ("Avg Refresh Duration Min", "AVERAGE ( FactRefreshRuns[DurationMinutes] )", "0.0", "Reliability"),
         ("DQ Issue Count", "SUM ( FactDatasetDaily[NullCriticalCount] ) + SUM ( FactDatasetDaily[DuplicateKeyCount] ) + SUM ( FactDatasetDaily[SchemaDriftCount] )", "#,0", "Quality"),
-        ("Open Incidents", 'CALCULATE ( COUNTROWS ( FactIncidents ), FactIncidents[IncidentStatus] <> "Closed" )', "#,0", "Reliability"),
+        ("Open Incidents", 'VAR AsOfMonth = MAXX ( ALLSELECTED ( DimDate ), DimDate[MonthIndex] )\nRETURN\n    CALCULATE (\n        COUNTROWS ( FactIncidents ),\n        REMOVEFILTERS ( DimDate ),\n        KEEPFILTERS (\n            FILTER (\n                FactIncidents,\n                FactIncidents[OpenMonthIndex] <= AsOfMonth\n                    && ( FactIncidents[CloseMonthIndex] = 0 || FactIncidents[CloseMonthIndex] > AsOfMonth )\n            )\n        )\n    )', "#,0", "Reliability"),
         ("Avg MTTR Hours", "AVERAGE ( FactIncidents[MTTRHours] )", "0.0", "Reliability"),
         ("Reconciliation Variance", "SUM ( FactReconciliation[VarianceAmount] )", "$#,0", "Reconciliation"),
         ("Abs Reconciliation Variance", "SUMX ( FactReconciliation, ABS ( FactReconciliation[VarianceAmount] ) )", "$#,0", "Reconciliation"),
@@ -586,6 +1060,73 @@ def build_model(tables: dict[str, pd.DataFrame]) -> dict:
         ("Adoption Decision Chip", 'VAR LoadSec = [Avg Report Load Seconds]\nVAR AccessRisk = [Access Risk Events]\nVAR ControlScore = [Deployment Control Score]\nRETURN IF ( LoadSec <= 3.0 && AccessRisk <= 800 && ControlScore >= 92, "PASS: governed adoption healthy", IF ( AccessRisk > 950, "ESCALATE: access risk concentration", "WATCH: control follow-up needed" ) )', "", "Executive Lens"),
         ("Risk Action Decision Chip", 'VAR OpenIncidents = [Open Incidents]\nVAR AccessRisk = [Access Risk Events]\nVAR Pending = [Pending Access Reviews]\nRETURN IF ( OpenIncidents <= 30 && AccessRisk <= 800 && Pending <= 900, "PASS: action load inside guardrail", IF ( OpenIncidents > 45 || Pending > 1100, "ESCALATE: prioritize owner actions", "WATCH: triage aging queues" ) )', "", "Executive Lens"),
     ]
+    sparkline_specs = [
+        ("Data Quality Score Sparkline SVG", "Data Quality Score", STYLE["navy"], False),
+        ("Freshness SLA % Sparkline SVG", "Freshness SLA %", STYLE["teal"], False),
+        ("Refresh Success % Sparkline SVG", "Refresh Success %", STYLE["good"], False),
+        ("Open Incidents Sparkline SVG", "Open Incidents", STYLE["risk"], True),
+        ("Failed Refreshes Sparkline SVG", "Failed Refreshes", STYLE["risk"], True),
+        ("Completeness % Sparkline SVG", "Completeness %", STYLE["teal"], False),
+        ("Reconciliation Pass % Sparkline SVG", "Reconciliation Pass %", STYLE["good"], False),
+        ("Avg MTTR Hours Sparkline SVG", "Avg MTTR Hours", STYLE["amber"], True),
+        ("Report Views Sparkline SVG", "Report Views", STYLE["navy"], False),
+        ("Active Viewer Days Sparkline SVG", "Active Viewer Days", STYLE["teal"], False),
+        ("Access Risk Events Sparkline SVG", "Access Risk Events", STYLE["risk"], True),
+        ("Deployment Control Score Sparkline SVG", "Deployment Control Score", STYLE["good"], False),
+        ("Pending Access Reviews Sparkline SVG", "Pending Access Reviews", STYLE["amber"], True),
+        ("Abs Reconciliation Variance Sparkline SVG", "Abs Reconciliation Variance", STYLE["plum"], True),
+    ]
+    measure_objects = [
+        {"name": name, "expression": expr, "formatString": fmt, "displayFolder": folder}
+        for name, expr, fmt, folder in measures
+    ]
+    measure_format_map = {name: fmt for name, _, fmt, _ in measures}
+    measure_objects.extend(
+        {
+            "name": svg_name,
+            "expression": sparkline_svg_dax(base_measure, color, lower_is_better),
+            "formatString": "",
+            "displayFolder": "Sparkline SVG",
+            "dataCategory": "ImageUrl",
+        }
+        for svg_name, base_measure, color, lower_is_better in sparkline_specs
+    )
+    measure_objects.extend(
+        {
+            "name": kpi_card_svg_measure_name(base_measure),
+            "expression": kpi_card_svg_dax(
+                title,
+                base_measure,
+                measure_format_map.get(base_measure, "#,0") or "#,0",
+                color,
+                lower_is_better,
+            ),
+            "formatString": "",
+            "displayFolder": "KPI Card SVG",
+            "dataCategory": "ImageUrl",
+        }
+        for base_measure, title, color, lower_is_better in KPI_CARD_SPECS
+    )
+    measure_objects.extend(
+        {
+            "name": rail_shell_svg_measure_name(ordinal),
+            "expression": rail_shell_svg_dax(display, ordinal),
+            "formatString": "",
+            "displayFolder": "Rail Shell SVG",
+            "dataCategory": "ImageUrl",
+        }
+        for ordinal, display in enumerate(PAGE_META.keys())
+    )
+    measure_objects.extend(
+        {
+            "name": header_shell_svg_measure_name(ordinal),
+            "expression": header_shell_svg_dax(display),
+            "formatString": "",
+            "displayFolder": "Header Shell SVG",
+            "dataCategory": "ImageUrl",
+        }
+        for ordinal, display in enumerate(PAGE_META.keys())
+    )
     model_tables.append(
         {
             "name": "KPI Measures",
@@ -597,10 +1138,7 @@ def build_model(tables: dict[str, pd.DataFrame]) -> dict:
                     "source": {"type": "m", "expression": 'let Source = #table(type table [MeasureKey = text], {{"KPI"}}) in Source'},
                 }
             ],
-            "measures": [
-                {"name": name, "expression": expr, "formatString": fmt, "displayFolder": folder}
-                for name, expr, fmt, folder in measures
-            ],
+            "measures": measure_objects,
         }
     )
 
@@ -651,8 +1189,14 @@ def pbi_literal(value) -> dict:
     return {"expr": {"Literal": {"Value": f"'{escaped}'"}}}
 
 
+def page_internal_name(display: str) -> str:
+    ordinal = list(PAGE_META.keys()).index(display)
+    safe = "".join(ch if ch.isalnum() else "_" for ch in display)
+    return "Page" + str(ordinal + 1).zfill(2) + "_" + safe
+
+
 def solid(color: str) -> dict:
-    return {"solid": {"color": color}}
+    return {"solid": {"color": pbi_literal(color)}}
 
 
 def column_projection(table: str, column: str, display_name: str | None = None) -> dict:
@@ -737,6 +1281,7 @@ def hidden_chrome(background: str | None = None, border: str | None = None, radi
         ],
         "dropShadow": [{"properties": {"show": pbi_literal(False)}}],
         "visualHeader": [{"properties": {"show": pbi_literal(False)}}],
+        "visualTooltip": [{"properties": {"show": pbi_literal(False)}}],
     }
 
 
@@ -751,6 +1296,8 @@ def textbox(
     background: str | None = None,
     border: str | None = None,
     radius: int = 6,
+    link_target: str | None = None,
+    link_tooltip: str | None = None,
 ) -> dict:
     paragraphs = []
     for value, font_size, color, weight in lines:
@@ -769,6 +1316,9 @@ def textbox(
                 ]
             }
         )
+    vc_objects = hidden_chrome(background, border, radius)
+    if link_target:
+        vc_objects["visualLink"] = visual_link(link_target, link_tooltip or "Open page")
     return {
         "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
         "name": name,
@@ -776,7 +1326,7 @@ def textbox(
         "visual": {
             "visualType": "textbox",
             "objects": {"general": [{"properties": {"paragraphs": paragraphs}}]},
-            "visualContainerObjects": hidden_chrome(background, border, radius),
+            "visualContainerObjects": vc_objects,
             "drillFilterOtherVisuals": False,
         },
     }
@@ -799,6 +1349,74 @@ def shape_block(name: str, x: int, y: int, w: int, h: int, z: int, color: str, r
         },
     }
     return visual
+
+
+def image_measure_visual(name: str, measure_name: str, x: int | float, y: int | float, w: int | float, h: int | float, z: int) -> dict:
+    return {
+        "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+        "name": name,
+        "position": {"x": x, "y": y, "z": z, "height": h, "width": w, "tabOrder": z},
+        "visual": {
+            "visualType": "image",
+            "objects": {
+                "image": [
+                    {
+                        "properties": {
+                            "sourceType": pbi_literal("imageData"),
+                            "transparency": pbi_literal(0),
+                            "sourceField": {
+                                "expr": {
+                                    "Measure": {
+                                        "Expression": {"SourceRef": {"Entity": "KPI Measures"}},
+                                        "Property": measure_name,
+                                    }
+                                }
+                            },
+                            "effects": pbi_literal(False),
+                        }
+                    }
+                ]
+            },
+            "visualContainerObjects": hidden_chrome(None, None, 0),
+            "drillFilterOtherVisuals": False,
+        },
+    }
+
+
+def visual_link(target_section: str, tooltip: str) -> list[dict]:
+    return [
+        {
+            "properties": {
+                "show": pbi_literal(True),
+                "type": pbi_literal("PageNavigation"),
+                "navigationSection": pbi_literal(target_section),
+                "tooltip": pbi_literal(tooltip),
+                "showDefaultTooltip": pbi_literal(True),
+            }
+        }
+    ]
+
+
+def nav_action_button(name: str, x: int, y: int, w: int, h: int, z: int, target_section: str, tooltip: str) -> dict:
+    return {
+        "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+        "name": name,
+        "position": {"x": x, "y": y, "z": z, "height": h, "width": w, "tabOrder": z},
+        "visual": {
+            "visualType": "actionButton",
+            "objects": {
+                "icon": [{"properties": {"show": pbi_literal(False)}}],
+                "text": [{"properties": {"show": pbi_literal(False)}}],
+                "fill": [{"properties": {"show": pbi_literal(False)}}],
+                "outline": [{"properties": {"show": pbi_literal(False)}}],
+            },
+            "visualContainerObjects": {
+                **hidden_chrome(None, None, 0),
+                "visualLink": visual_link(target_section, tooltip),
+            },
+            "drillFilterOtherVisuals": False,
+        },
+    }
 
 
 def make_visual(name: str, visual_type: str, x: int, y: int, w: int, h: int, z: int, query_state: dict, title: str) -> dict:
@@ -824,11 +1442,116 @@ def slicer(name: str, title: str, table: str, column: str, x: int, y: int, w: in
         "data": [{"properties": {"mode": pbi_literal("Dropdown")}}],
         "selection": [{"properties": {"singleSelect": pbi_literal(False)}}],
         "header": [{"properties": {"show": pbi_literal(False)}}],
+        "items": [
+            {
+                "properties": {
+                    "fontFamily": pbi_literal("Segoe UI"),
+                    "fontSize": pbi_literal(10.5),
+                    "fontColor": solid(STYLE["rail_card_value"]),
+                    "alignment": pbi_literal("center"),
+                }
+            }
+        ],
+    }
+    return visual
+
+
+def measure_text_panel(
+    name: str,
+    title: str,
+    measure_name: str,
+    x: int | float,
+    y: int | float,
+    w: int | float,
+    h: int | float,
+    z: int,
+    background: str,
+    border: str,
+    title_color: str,
+    value_color: str,
+) -> dict:
+    visual = make_visual(
+        name,
+        "tableEx",
+        x,
+        y,
+        w,
+        h,
+        z,
+        {"Values": {"projections": [measure_projection(measure_name, title)]}},
+        title,
+    )
+    qref = f"KPI Measures.{measure_name}"
+    visual["visual"]["objects"] = {
+        "grid": [
+            {
+                "properties": {
+                    "gridHorizontal": pbi_literal(False),
+                    "gridVertical": pbi_literal(False),
+                    "outlineColor": solid(background),
+                    "outlineStyle": pbi_literal(0.0),
+                    "outlineWeight": pbi_literal(0),
+                    "rowPadding": pbi_literal(1),
+                }
+            }
+        ],
+        "columnHeaders": [
+            {
+                "properties": {
+                    "show": pbi_literal(False),
+                    "fontSize": pbi_literal(1.0),
+                    "fontColor": solid(background),
+                }
+            }
+        ],
+        "values": [
+            {
+                "properties": {
+                    "fontSize": pbi_literal(8.4),
+                    "fontColor": solid(value_color),
+                    "backColor": solid(background),
+                    "backColorPrimary": solid(background),
+                    "backColorSecondary": solid(background),
+                    "urlIcon": pbi_literal(False),
+                }
+            }
+        ],
+        "columnWidth": [
+            {
+                "properties": {"value": pbi_literal(float(w - 14))},
+                "selector": {"metadata": qref},
+            }
+        ],
+    }
+    visual["visual"]["visualContainerObjects"] = {
+        "general": [{"properties": {"altText": pbi_literal(f"{title} updates with the current slicer context.")}}],
+        "title": [
+            {
+                "properties": {
+                    "show": pbi_literal(True),
+                    "text": pbi_literal(title),
+                    "fontColor": solid(title_color),
+                    "fontSize": pbi_literal(7.2),
+                    "bold": pbi_literal(True),
+                    "titleWrap": pbi_literal(False),
+                }
+            }
+        ],
+        "background": [{"properties": {"show": pbi_literal(True), "color": solid(background), "transparency": pbi_literal(0)}}],
+        "border": [{"properties": {"show": pbi_literal(True), "color": solid(border), "radius": pbi_literal(8)}}],
+        "dropShadow": [{"properties": {"show": pbi_literal(False)}}],
+        "visualHeader": [{"properties": {"show": pbi_literal(False)}}],
+        "visualTooltip": [{"properties": {"show": pbi_literal(False)}}],
     }
     return visual
 
 
 def apply_default_sort(visual: dict) -> None:
+    if visual.get("name", "").startswith(("current_lens_", "decision_chip_")):
+        return
+    if visual.get("name", "").endswith("_sparkline"):
+        return
+
     query = visual.get("visual", {}).get("query", {})
     query_state = query.get("queryState", {})
     if "sortDefinition" in query:
@@ -904,16 +1627,121 @@ def sparkline_visual(name: str, title: str, measure_name: str, x: int, y: int, w
     visual["visual"]["visualContainerObjects"] = hidden_chrome("#F4FAFB", "#D8E5E8", 6)
     visual["visual"]["visualContainerObjects"]["general"] = [{"properties": {}}]
     visual["visual"]["objects"] = {
-        "categoryAxis": [{"properties": {"show": pbi_literal(False)}}],
-        "valueAxis": [{"properties": {"show": pbi_literal(False)}}],
-        "legend": [{"properties": {"show": pbi_literal(False)}}],
+        "valueAxis": [
+            {
+                "properties": {
+                    "show": pbi_literal(False),
+                    "showAxisTitle": pbi_literal(False),
+                    "gridlineShow": pbi_literal(False),
+                    "fontSize": pbi_literal(6.0),
+                }
+            }
+        ],
+        "categoryAxis": [
+            {
+                "properties": {
+                    "show": pbi_literal(False),
+                    "showAxisTitle": pbi_literal(False),
+                    "gridlineShow": pbi_literal(False),
+                    "concatenateLabels": pbi_literal(False),
+                    "fontSize": pbi_literal(6.0),
+                }
+            }
+        ],
+        "legend": [{"properties": {"show": pbi_literal(False), "showTitle": pbi_literal(False)}}],
         "labels": [{"properties": {"show": pbi_literal(False)}}],
         "markers": [{"properties": {"show": pbi_literal(False)}}],
-        "gridline": [{"properties": {"show": pbi_literal(False)}}],
+        "dataPoint": [
+            {
+                "properties": {"fill": solid(STYLE["navy"])},
+                "selector": {"metadata": f"KPI Measures.{measure_name}"},
+            }
+        ],
     }
     visual["visual"]["visualContainerObjects"]["general"][0]["properties"]["altText"] = pbi_literal(
         f"Sparkline trend for {title} across selected months."
     )
+    return visual
+
+
+def sparkline_svg_measure_name(measure_name: str) -> str:
+    return f"{measure_name} Sparkline SVG"
+
+
+def sparkline_image_visual(name: str, title: str, measure_name: str, x: int, y: int, w: int, h: int, z: int) -> dict:
+    background = "#F4FAFB"
+    visual = make_visual(
+        name,
+        "tableEx",
+        x,
+        y,
+        w,
+        h,
+        z,
+        {"Values": {"projections": [measure_projection(measure_name, " ")]}},
+        " ",
+    )
+    qref = f"KPI Measures.{measure_name}"
+    visual["visual"]["objects"] = {
+        "grid": [
+            {
+                "properties": {
+                    "gridHorizontal": pbi_literal(False),
+                    "gridVertical": pbi_literal(False),
+                    "outlineColor": solid(background),
+                    "outlineStyle": pbi_literal(0.0),
+                    "outlineWeight": pbi_literal(0),
+                    "rowPadding": pbi_literal(0),
+                }
+            }
+        ],
+        "columnHeaders": [
+            {
+                "properties": {
+                    "show": pbi_literal(False),
+                    "fontSize": pbi_literal(1.0),
+                    "fontColor": solid(background),
+                    "backColor": solid(background),
+                    "outlineColor": solid(background),
+                }
+            }
+        ],
+        "values": [
+            {
+                "properties": {
+                    "fontSize": pbi_literal(1.0),
+                    "fontColor": solid(background),
+                    "backColor": solid(background),
+                    "backColorPrimary": solid(background),
+                    "backColorSecondary": solid(background),
+                    "urlIcon": pbi_literal(False),
+                    "imageWidth": pbi_literal(int(w - 52)),
+                    "imageHeight": pbi_literal(int(h - 16)),
+                }
+            }
+        ],
+        "total": [{"properties": {"show": pbi_literal(False)}}],
+        "columnWidth": [
+            {
+                "properties": {"value": pbi_literal(float(w - 52))},
+                "selector": {"metadata": qref},
+            }
+        ],
+    }
+    visual["visual"]["visualContainerObjects"] = hidden_chrome(background, "#D8E5E8", 6)
+    visual["visual"]["visualContainerObjects"]["general"] = [
+        {"properties": {"altText": pbi_literal(f"Sparkline trend for {title} across selected months.")}}
+    ]
+    return visual
+
+
+def kpi_card_image_visual(name: str, title: str, base_measure_name: str, x: int | float, y: int | float, w: int | float, h: int | float, z: int) -> dict:
+    svg_measure = kpi_card_svg_measure_name(base_measure_name)
+    visual = image_measure_visual(name, svg_measure, x, y, w, h, z)
+    visual["visual"]["visualContainerObjects"]["general"] = [
+        {"properties": {"altText": pbi_literal(f"{title} KPI card with current value, prior-year context, YoY delta, and trend sparkline.")}}
+    ]
+    visual["visual"]["drillFilterOtherVisuals"] = False
     return visual
 
 
@@ -924,33 +1752,40 @@ KPI_KEEP = {
     "Risk & Action Queue": ["kpi_action_incidents", "kpi_action_access", "kpi_action_pending", "kpi_action_rec"],
 }
 
+KPI_CARD_SLOTS = [
+    (204.0, 76.0, 252.5, 158.0),
+    (470.5, 76.0, 252.5, 158.0),
+    (737.0, 76.0, 252.5, 158.0),
+    (1003.5, 76.0, 252.5, 158.0),
+]
+
 
 BODY_POSITIONS = {
-    "dq_trend": (204, 212, 540, 278),
-    "domain_quality": (762, 212, 236, 278),
-    "dataset_watchlist": (1016, 212, 240, 278),
-    "incident_root_causes": (204, 514, 540, 172),
-    "rec_status": (762, 514, 236, 172),
-    "governance_summary": (1016, 514, 240, 172),
-    "refresh_success_trend": (204, 212, 540, 278),
-    "failure_categories": (762, 212, 236, 278),
-    "rec_variance_domain": (1016, 212, 240, 278),
-    "incident_exception_table": (204, 514, 652, 172),
-    "aging_bucket": (876, 514, 380, 172),
-    "views_by_report": (204, 212, 386, 278),
-    "load_trend": (608, 212, 300, 278),
-    "access_by_dept": (926, 212, 330, 278),
-    "access_detail": (204, 514, 680, 172),
-    "export_events": (902, 514, 354, 172),
-    "action_risk_trend": (204, 212, 540, 244),
-    "action_risk_by_dept": (762, 212, 236, 244),
-    "action_rec_aging": (1016, 212, 240, 244),
-    "action_incident_queue": (204, 486, 540, 200),
-    "action_access_queue": (762, 486, 494, 200),
+    "dq_trend": (205.6, 248.0, 425.6, 190.0),
+    "domain_quality": (640.8, 248.0, 304.5, 190.0),
+    "dataset_watchlist": (966.0, 248.0, 293.3, 190.0),
+    "incident_root_causes": (204.0, 458.0, 426.0, 234.0),
+    "rec_status": (646.0, 458.0, 304.0, 234.0),
+    "governance_summary": (966.0, 458.0, 294.0, 234.0),
+    "refresh_success_trend": (205.6, 248.0, 425.6, 190.0),
+    "failure_categories": (640.8, 248.0, 304.5, 190.0),
+    "rec_variance_domain": (966.0, 248.0, 293.3, 190.0),
+    "incident_exception_table": (204.0, 458.0, 652.0, 234.0),
+    "aging_bucket": (876.0, 458.0, 380.0, 234.0),
+    "views_by_report": (205.6, 248.0, 425.6, 190.0),
+    "load_trend": (640.8, 248.0, 304.5, 190.0),
+    "access_by_dept": (966.0, 248.0, 293.3, 190.0),
+    "access_detail": (204.0, 458.0, 680.0, 234.0),
+    "export_events": (902.0, 458.0, 354.0, 234.0),
+    "action_risk_trend": (205.6, 248.0, 425.6, 190.0),
+    "action_risk_by_dept": (640.8, 248.0, 304.5, 190.0),
+    "action_rec_aging": (966.0, 248.0, 293.3, 190.0),
+    "action_incident_queue": (204.0, 458.0, 540.0, 234.0),
+    "action_access_queue": (762.0, 458.0, 494.0, 234.0),
 }
 
 
-def set_position(visual: dict, x: int, y: int, w: int, h: int, z: int | None = None) -> None:
+def set_position(visual: dict, x: int | float, y: int | float, w: int | float, h: int | float, z: int | None = None) -> None:
     position = visual["position"]
     position.update({"x": x, "y": y, "width": w, "height": h})
     if z is not None:
@@ -960,8 +1795,7 @@ def set_position(visual: dict, x: int, y: int, w: int, h: int, z: int | None = N
 
 def style_kpi_card(visual: dict, index: int) -> None:
     colors = [STYLE["navy"], STYLE["teal"], STYLE["good"], STYLE["risk"]]
-    x_positions = [204, 468, 732, 996]
-    set_position(visual, x_positions[index], 80, 240, 86, 120 + index)
+    set_position(visual, *KPI_CARD_SLOTS[index], 120 + index)
     objects = visual["visual"]["visualContainerObjects"]
     objects["title"][0]["properties"].update(
         {
@@ -987,132 +1821,72 @@ def style_body_visual(visual: dict, index: int) -> None:
 
 
 def style_rail_slicer(visual: dict, index: int) -> None:
-    set_position(visual, 16, 438 + index * 70, 150, 54, 1200 + index)
+    set_position(visual, 22, 424 + index * 66, 160, 58, 1200 + index)
     objects = visual["visual"]["visualContainerObjects"]
     objects["title"][0]["properties"].update(
         {
-            "fontColor": solid(STYLE["rail_text"]),
-            "fontSize": pbi_literal(8),
+            "fontColor": solid(STYLE["rail_card_text"]),
+            "fontSize": pbi_literal(8.6),
             "bold": pbi_literal(True),
             "titleWrap": pbi_literal(False),
         }
     )
-    objects["background"][0]["properties"].update({"color": solid(STYLE["rail_2"])})
-    objects["border"][0]["properties"].update({"color": solid("#3F7180"), "radius": pbi_literal(7)})
+    objects["background"][0]["properties"].update({"color": solid(STYLE["rail_card"])})
+    objects["border"][0]["properties"].update({"color": solid("#B8CCD2"), "radius": pbi_literal(7), "width": pbi_literal(0.8)})
+
+
+def lens_panel_lines(lens_text: str) -> list[tuple[str, str, str, str]]:
+    clean = lens_text.removeprefix("Lens:").strip()
+    parts = [part.strip() for part in clean.split("|") if part.strip()]
+    if len(parts) >= 3:
+        body_lines = [f"{parts[0]} | {parts[1]}", " | ".join(parts[2:])]
+    elif len(parts) == 2:
+        body_lines = [parts[0], parts[1]]
+    else:
+        body_lines = [clean, ""]
+    return [
+        ("Current Lens", "7.4pt", STYLE["rail_muted"], "700"),
+        (body_lines[0][:32], "7.2pt", STYLE["rail_text"], "700"),
+        (body_lines[1][:32], "7.2pt", STYLE["rail_text"], "700"),
+    ]
 
 
 def shell_visuals(display: str, ordinal: int) -> list[dict]:
     meta = PAGE_META[display]
     visuals = [
-        shape_block(f"shell_rail_bg_{ordinal+1}", 0, 0, 184, 720, 1, STYLE["rail"]),
-        shape_block(f"shell_content_topline_{ordinal+1}", 204, 70, 1052, 2, 3, "#DDE8EB"),
-        textbox(
-            f"shell_brand_{ordinal+1}",
-            [
-                ("Project 19", "14pt", STYLE["rail_text"], "700"),
-                ("Finance DQ Governance", "8pt", "#A9C8D0", "600"),
-            ],
-            16,
-            22,
-            150,
-            72,
-            1000,
+        image_measure_visual(
+            f"shell_rail_svg_{ordinal+1}",
+            rail_shell_svg_measure_name(ordinal),
+            14,
+            8,
+            176,
+            700,
+            2,
         ),
-        textbox(
-            f"page_title_{ordinal+1}",
-            [
-                (display, "17pt", STYLE["ink"], "700"),
-                (meta["signature"], "8pt", STYLE["muted"], "600"),
-            ],
+        image_measure_visual(
+            f"shell_header_svg_{ordinal+1}",
+            header_shell_svg_measure_name(ordinal),
             204,
-            18,
-            370,
-            48,
+            8,
+            1052,
+            64,
             1000,
-        ),
-        textbox(
-            f"current_lens_{ordinal+1}",
-            [
-                ("CURRENT LENS", "7pt", STYLE["muted"], "700"),
-                (meta["lens_text"], "9pt", STYLE["ink"], "700"),
-            ],
-            590,
-            18,
-            346,
-            46,
-            1001,
-            background="#F9FCFD",
-            border=STYLE["line"],
-        ),
-        textbox(
-            f"decision_chip_{ordinal+1}",
-            [
-                ("DECISION CHIP", "7pt", STYLE["muted"], "700"),
-                (meta["decision_text"], "9pt", STYLE["ink"], "700"),
-            ],
-            956,
-            18,
-            300,
-            46,
-            1002,
-            background="#F9FCFD",
-            border=STYLE["line"],
-        ),
-        textbox(
-            f"shell_lens_label_{ordinal+1}",
-            [("GLOBAL LENS", "8pt", "#A9C8D0", "700")],
-            16,
-            404,
-            150,
-            24,
-            1000,
-        ),
-        textbox(
-            f"shell_footer_{ordinal+1}",
-            [
-                ("LATEST COMPLETE", "7pt", STYLE["muted"], "700"),
-                (LATEST_COMPLETE_MONTH, "10pt", STYLE["ink"], "700"),
-            ],
-            16,
-            640,
-            150,
-            48,
-            1000,
-            background=STYLE["rail_2"],
-            border="#3F7180",
         ),
     ]
     for nav_index, (page_name, nav_meta) in enumerate(PAGE_META.items()):
-        active = page_name == display
+        nav_y = 116 + nav_index * 42
         visuals.append(
-            textbox(
-                f"shell_nav_{ordinal+1}_{nav_index+1}",
-                [(nav_meta["short"], "9pt", STYLE["navy"] if active else STYLE["rail_2"], "700" if active else "600")],
-                16,
-                116 + nav_index * 42,
-                150,
-                30,
-                1000 + nav_index,
-                background=STYLE["navy"] if active else STYLE["rail_2"],
-                border="#8CB9C2" if active else "#315B6B",
-                radius=6,
+            nav_action_button(
+                f"shell_nav_link_{ordinal+1}_{nav_index+1}",
+                20,
+                nav_y,
+                162,
+                34,
+                1400 + nav_index,
+                page_internal_name(page_name),
+                f"Go to {page_name}",
             )
         )
-    visuals.append(shape_block(f"shell_nav_rule_{ordinal+1}", 16, 292, 150, 2, 4, "#6D95A0"))
-    visuals.append(
-        textbox(
-            f"shell_signature_{ordinal+1}",
-            [
-                ("SIGNATURE", "7pt", "#A9C8D0", "700"),
-                (meta["signature"], "9pt", STYLE["rail_text"], "700"),
-            ],
-            16,
-            316,
-            150,
-            62,
-            1000,
-        )
-    )
     return visuals
 
 
@@ -1128,29 +1902,23 @@ def apply_project20_style_shell(pages: dict[str, list[dict]]) -> None:
         ]
         ordered_kpis = []
         for index, name in enumerate(keep_order):
-            visual = kept_kpis[name]
-            style_kpi_card(visual, index)
-            ordered_kpis.append(visual)
-        sparkline_panels = []
-        for index, visual in enumerate(ordered_kpis):
-            position = visual["position"]
-            sparkline_panels.append(
-                sparkline_visual(
-                    f"{visual['name']}_sparkline",
-                    f"{visual['visual']['visualContainerObjects']['title'][0]['properties']['text']['expr']['Literal']['Value'].strip(chr(39))} Trend",
-                    extract_primary_measure(visual),
-                    int(position["x"]),
-                    170,
-                    int(position["width"]),
-                    30,
-                    180 + index,
+            source_visual = kept_kpis[name]
+            primary_measure = extract_primary_measure(source_visual)
+            title = source_visual["visual"]["visualContainerObjects"]["title"][0]["properties"]["text"]["expr"]["Literal"]["Value"].strip("'")
+            ordered_kpis.append(
+                kpi_card_image_visual(
+                    f"kpi_card_{ordinal + 1}_{index + 1}",
+                    title,
+                    primary_measure,
+                    *KPI_CARD_SLOTS[index],
+                    120 + index,
                 )
             )
         for index, visual in enumerate(slicers):
             style_rail_slicer(visual, index)
         for index, visual in enumerate(body):
             style_body_visual(visual, index)
-        pages[display] = shell_visuals(display, ordinal) + ordered_kpis + sparkline_panels + slicers + body
+        pages[display] = shell_visuals(display, ordinal) + ordered_kpis + slicers + body
 
 
 def build_report_layout() -> dict:
@@ -1514,7 +2282,7 @@ def build_report_layout() -> dict:
         "layoutOptimization": 0,
     }
     for ordinal, (display, visuals) in enumerate(pages.items()):
-        safe = "Page" + str(ordinal + 1).zfill(2) + "_" + "".join(ch if ch.isalnum() else "_" for ch in display)
+        safe = page_internal_name(display)
         layout["sections"].append(
             {
                 "id": ordinal,
@@ -1877,7 +2645,7 @@ def write_configs(layout: dict) -> None:
             "latest_complete_month": LATEST_COMPLETE_MONTH,
             "synthetic_seed": SEED,
             "style_upgrade": "Project 20 quality benchmark applied with Project 19 navy/teal governance palette",
-            "native_shell": ["left navigation rail", "Current Lens textboxes", "Decision Chip textboxes", "rail slicers", "four-KPI page strips"],
+            "native_shell": ["left navigation rail", "PBIX-safe Current Lens panels", "PBIX-safe Decision Chip panels", "PageNavigation links on rail labels", "rail slicers", "four-KPI page strips with sparklines"],
         },
     )
     write_json(
@@ -1892,10 +2660,10 @@ def write_configs(layout: dict) -> None:
     write_json(
         PROJECT / "build" / "config" / "visual_map.json",
         {
-            "Governance Overview": ["4 KPI cards", "dynamic Current Lens", "decision chip", "quality/freshness line", "domain bar", "dataset table", "incident columns", "reconciliation donut"],
-            "Reliability & Quality": ["4 KPI cards", "dynamic Current Lens", "decision chip", "refresh/completeness line", "failure bar", "variance bar", "incident table", "aging columns"],
-            "Adoption & Controls": ["4 KPI cards", "dynamic Current Lens", "decision chip", "adoption bar", "performance line", "access columns", "access detail table", "export columns"],
-            "Risk & Action Queue": ["4 KPI cards", "dynamic Current Lens", "decision chip", "risk trend", "department risk bar", "aging bar", "incident queue", "access action queue"],
+            "Governance Overview": ["4 KPI cards", "sparkline row", "rail Current Lens", "decision chip", "clickable page navigation", "quality/freshness line", "domain bar", "dataset table", "incident columns", "reconciliation donut"],
+            "Reliability & Quality": ["4 KPI cards", "sparkline row", "rail Current Lens", "decision chip", "clickable page navigation", "refresh/completeness line", "failure bar", "variance bar", "incident table", "aging columns"],
+            "Adoption & Controls": ["4 KPI cards", "sparkline row", "rail Current Lens", "decision chip", "clickable page navigation", "adoption bar", "performance line", "access columns", "access detail table", "export columns"],
+            "Risk & Action Queue": ["4 KPI cards", "sparkline row", "rail Current Lens", "decision chip", "clickable page navigation", "risk trend", "department risk bar", "aging bar", "incident queue", "access action queue"],
         },
     )
     write_json(
@@ -1932,15 +2700,17 @@ Canvas: 1280 x 720, four tabs, native Power BI visuals.
 Design logic:
 
 1. Use a fixed left governance rail for page orientation, signature, and compact slicers.
-2. Put a four-card KPI strip at the top of every page with a dynamic Current Lens and Decision Chip above it.
-3. Place trend views left-to-right before diagnosis tables.
-4. Reserve detail tables for watchlists, exceptions, and access-review follow-up.
+2. Put a four-card KPI strip with sparkline panels at the top of every page.
+3. Keep Current Lens in the left rail and Decision Chip in the header as measure-bound panels.
+4. Make sidebar navigation click through to the corresponding report page.
+5. Place trend views left-to-right before diagnosis tables.
+6. Reserve detail tables for watchlists, exceptions, and access-review follow-up.
 """,
     )
     write_text(PROJECT / "report" / "page_plan.md", "\n".join([f"- {s['displayName']}: {len(s['visualContainers'])} visuals" for s in layout["sections"]]))
     write_text(PROJECT / "report" / "visual_inventory.md", "\n".join([f"- {s['displayName']}: " + ", ".join(v["name"] for v in s["visualContainers"]) for s in layout["sections"]]))
-    write_text(PROJECT / "report" / "filter_interaction_plan.md", "Rail slicers are generated as dropdown slicers with hidden headers and high z-order. They are page-scoped in PBIR and should cross-filter all data visuals on their page. Current Lens and Decision Chip card measures respond to the same filter context.")
-    write_text(PROJECT / "report" / "theme_notes.md", "Palette uses Project 19 finance-safe navy, teal, amber, plum, and slate accents on a cool governance canvas. Project 20 influenced the left rail, lens/chip, spacing, and KPI discipline only; the purple board-pack skin was intentionally not copied.")
+    write_text(PROJECT / "report" / "filter_interaction_plan.md", "Rail slicers are generated as dropdown slicers with hidden headers and high z-order. They are page-scoped in PBIR and should cross-filter all data visuals on their page. Current Lens and Decision Chip panels are static PBIX-safe context panels so the final PBIX can open without an offline DataModel mutation. Sidebar navigation uses PageNavigation links on the visible nav labels.")
+    write_text(PROJECT / "report" / "theme_notes.md", "Palette uses Project 19 finance-safe navy, teal, amber, plum, and slate accents on a cool governance canvas. Project 20 influenced the left rail, clickable navigation, Current Lens placement, decision chip, spacing, and KPI/sparkline discipline only; the purple board-pack skin was intentionally not copied.")
 
 
 def write_html_preview(tables: dict[str, pd.DataFrame]) -> None:
@@ -2654,16 +3424,16 @@ window.addEventListener("DOMContentLoaded", init);
     write_json(
         PROJECT / "qa" / f"final_dashboard_validation_{ENHANCEMENT_VERSION}.json",
         {
-            "status": "ready",
+            "status": "ready_static_preview",
             "final_dashboard_html": str(final_html),
             "enhancement_version": ENHANCEMENT_VERSION,
             "tabs": 4,
-            "filter_controls": ["Year", "Domain", "Criticality", "Workspace", "Sensitivity"],
+            "filter_controls": ["Domain", "Month", "Owner", "Criticality", "Workspace", "Sensitivity", "Department"],
             "current_lens": True,
-            "kpi_cards": 20,
-            "kpi_sparklines": 20,
-            "chart_panels": 21,
-            "table_panels": 7,
+            "kpi_cards": 16,
+            "kpi_sparklines": 16,
+            "chart_panels": 15,
+            "table_panels": 6,
             "source": "local prepared synthetic portfolio data",
             "latest_complete_month": LATEST_COMPLETE_MONTH,
         },
@@ -2757,10 +3527,10 @@ def write_agent_and_docs(layout: dict, tables: dict[str, pd.DataFrame]) -> None:
 """,
     )
     env_json = {
-        "pbidesktop_command": r"C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe",
+        "pbidesktop_command": "PBIDesktop.exe",
         "pbi_program_files": True,
         "pbi_store_app_detected": True,
-        "pbi_tools": r"C:\Users\Win\AppData\Local\Programs\pbi-tools\current\pbi-tools.exe",
+        "pbi_tools": "pbi-tools.exe",
         "pbi_tools_info": "Timed out during live session discovery because many older Desktop sessions are running.",
         "dotnet": "not found on PATH",
         "computer_use": "available; listed Power BI Desktop windows",
@@ -2773,7 +3543,7 @@ def write_agent_and_docs(layout: dict, tables: dict[str, pd.DataFrame]) -> None:
 
 | Check | Status | Evidence |
 |---|---|---|
-| Power BI Desktop EXE | Available | `C:\\Program Files\\Microsoft Power BI Desktop\\bin\\PBIDesktop.exe` |
+| Power BI Desktop EXE | Available | `PBIDesktop.exe` via PATH, Start menu, or installed Desktop location. |
 | Power BI Store app | Available | Start Apps lists Power BI Desktop Store app. |
 | pbi-tools | Available but session discovery unstable | `pbi-tools info` timed out with many old Desktop sessions running. |
 | dotnet | Missing from PATH | `dotnet` command not recognized. |
@@ -2867,11 +3637,11 @@ Applied choices:
         """
 # Rebuild Guide
 
-Use a Python environment with `pandas` and `numpy`. Verified local command:
+Use a Python environment with `pandas` and `numpy`.
 
 ```powershell
-cd "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 19 - Finance Data Quality BI Governance"
-& "C:\\Users\\Win\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe" build\\scripts\\build_project19.py
+cd "<project-root>"
+python build\\scripts\\build_project19.py
 ```
 
 Portable command, if your default Python has the required packages:
@@ -2891,13 +3661,13 @@ The script rebuilds synthetic CSV data, model docs, DAX measures, report layout,
         PROJECT / "powerbi" / "launch_powerbi.ps1",
         f"""
 $pbip = "{PROJECT}\\output\\powerbi_project\\{REPORT_NAME}.pbip"
-$pbi = "C:\\Program Files\\Microsoft Power BI Desktop\\bin\\PBIDesktop.exe"
-if (!(Test-Path -LiteralPath $pbip)) {{ throw "PBIP not found: $pbip" }}
-if (!(Test-Path -LiteralPath $pbi)) {{
-  $cmd = Get-Command PBIDesktop.exe -ErrorAction SilentlyContinue
-  if (!$cmd) {{ throw "Power BI Desktop executable not found." }}
+$cmd = Get-Command PBIDesktop.exe -ErrorAction SilentlyContinue
+if ($cmd) {{
   $pbi = $cmd.Source
+}} else {{
+  $pbi = "PBIDesktop.exe"
 }}
+if (!(Test-Path -LiteralPath $pbip)) {{ throw "PBIP not found: $pbip" }}
 Start-Process -FilePath $pbi -ArgumentList "`"$pbip`""
 Write-Host "Opened Project 19 PBIP. Save final PBIX to: {final_pbix}"
 """,
@@ -3000,7 +3770,8 @@ Write-Host "Opened Project 19 PBIP. Save final PBIX to: {final_pbix}"
             "visual_count": visual_count,
             "native_visuals": {
                 "kpi_cards": sum(len(v) for v in KPI_KEEP.values()),
-                "lens_and_decision_textboxes": page_count * 2,
+                "lens_and_decision_static_panels": page_count * 2,
+                "page_navigation_links": page_count * page_count,
                 "extra_cards": card_count - sum(len(v) for v in KPI_KEEP.values()),
                 "slicers": slicer_count,
                 "textboxes": textbox_count,
@@ -3009,9 +3780,11 @@ Write-Host "Opened Project 19 PBIP. Save final PBIX to: {final_pbix}"
             "checks": {
                 "left_navigation_rail": True,
                 "four_kpi_strip_per_page": True,
-                "current_lens_textbox_fit": True,
-                "decision_chip_textbox_fit": True,
-                "lens_and_decision_dax_measures_documented": True,
+                "native_kpi_sparklines": True,
+                "current_lens_static_panel_fit": True,
+                "decision_chip_static_panel_fit": True,
+                "page_navigation_links": True,
+                "pbix_safe_no_new_datamodel_measures_required": True,
                 "dropdown_slicer_objects": True,
                 "registered_theme": "FinanceGovernanceLight.json",
                 "native_layout_reflow": True,
@@ -3033,9 +3806,11 @@ Status: `pass_static_pbip_ready`
 - Pages: `{page_count}`.
 - Native visual containers: `{visual_count}`.
 - Four-KPI strip per page: pass.
-- Current Lens textboxes fit the top row: pass.
-- Decision Chip textboxes fit the top row: pass.
-- Lens and decision DAX measures documented for future dynamic binding: pass.
+- KPI sparkline panels use Project 20 v77-style slots: pass.
+- Current Lens static panels fit the left rail: pass.
+- Decision Chip static panels fit the header: pass.
+- Sidebar page navigation links target all report pages: pass.
+- Lens and decision panels avoid new PBIX DataModel dependencies: pass.
 - Rail dropdown slicers: pass.
 - Left navigation/signature rail: pass.
 - Registered theme: `FinanceGovernanceLight.json`.
@@ -3044,7 +3819,7 @@ Status: `pass_static_pbip_ready`
 
 - Open the Project 19 PBIP in Power BI Desktop.
 - Refresh, save as `output/dashboard_final.pbix`, reopen the exact Project 19 PBIX, and verify no visual errors.
-- Confirm rail text, slicer dropdowns, Current Lens, Decision Chip, and all four tabs render without overlap.
+- Confirm rail text, slicer dropdowns, Current Lens, Decision Chip, nav clicks, KPI sparklines, and all four tabs render without overlap.
 """,
     )
     write_text(
@@ -3057,12 +3832,13 @@ Upgrade source: `PROJECT_20_STYLE_UPGRADE_PROMPT.md`.
 Applied to Project 19 as a quality benchmark, not a visual clone. The final design keeps the finance governance palette and story while adopting Project 20's executive dashboard discipline:
 
 - Left governance rail with page orientation, signature, lens area, and slicers.
-- Four primary KPI cards per page.
-- Current Lens and Decision Chip textboxes sized for no clipping, with matching DAX measures documented for future dynamic binding.
+- Four primary KPI cards per page with native sparkline panels.
+- Current Lens and Decision Chip panels are PBIX-safe static context panels sized for no clipping.
+- Sidebar nav labels have PageNavigation links for click-through behavior.
 - Reflowed native PBIR layout with clear chart/table bands.
 - Theme cascade updated so textbox and shape shell visuals do not inherit unwanted titles or borders.
 
-Final PBIX route remains the controlled Desktop save/reopen route because this is a thick PBIP report with a semantic model. The v5 verified handoff includes a Desktop-saved PBIX plus screenshot evidence.
+Final PBIX route should be validated on `output/dashboard_final.pbix`. If dynamic lens/chip measures are reintroduced later, rebuild through Desktop from the PBIP so the semantic model is updated together with the report.
 """,
     )
     write_json(
@@ -3159,10 +3935,10 @@ Portfolio Power BI governance monitor for finance data quality, refresh reliabil
 
 ## Rebuild
 
-Use Python with `pandas` and `numpy`. Verified local command:
+Use Python with `pandas` and `numpy`.
 
 ```powershell
-& "C:\\Users\\Win\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe" build\\scripts\\build_project19.py
+python build\\scripts\\build_project19.py
 ```
 
 Portable command:

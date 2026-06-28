@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "load_trend",
   "position": {
-    "x": 608,
-    "y": 212,
+    "x": 640.8,
+    "y": 248,
     "z": 301,
-    "height": 278,
-    "width": 300,
+    "height": 190,
+    "width": 304.5,
     "tabOrder": 301
   },
   "visual": {
@@ -27,6 +27,7 @@
                 }
               },
               "queryRef": "DimDate.MonthYear",
+              "active": true,
               "displayName": "MonthYear"
             }
           ]
@@ -116,7 +117,13 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#13212B"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#13212B'"
+                    }
+                  }
+                }
               }
             },
             "fontSize": {
@@ -155,7 +162,13 @@
             },
             "color": {
               "solid": {
-                "color": "#FFFFFF"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
               }
             },
             "transparency": {
@@ -180,7 +193,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8E5E8"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D8E5E8'"
+                    }
+                  }
+                }
               }
             },
             "radius": {

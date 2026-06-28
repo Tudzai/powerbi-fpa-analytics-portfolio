@@ -1,0 +1,199 @@
+{
+  "validated_at": "2026-06-29T02:29:01+07:00",
+  "source_of_truth": "dashboard_final.pbix",
+  "desktop_ui_qa": true,
+  "computer_use_used": true,
+  "direct_pbix_zip_patch_used": false,
+  "pbix_opened_in_desktop": true,
+  "pbix_reopened_after_save": true,
+  "pbix_saved_via_desktop_save_as": true,
+  "pbip_opened_in_desktop": true,
+  "pbip_refreshed_in_desktop_before_save_as": true,
+  "desktop_version_used_for_pass": {
+    "edition": "Microsoft Store Power BI Desktop",
+    "version": "2.155.756.0 (26.06)",
+    "process": "Microsoft Store Power BI Desktop 2.155.756.0",
+    "desktop_window_title_after_reopen": "dashboard_final",
+    "desktop_title_saved_timestamp_after_reopen": "Last saved: Today at 2:15 AM"
+  },
+  "compatibility_note": {
+    "program_files_desktop_version": "2.154.1260.0 (26.05)",
+    "program_files_desktop_result": "fail",
+    "message": "The older Program Files installation reported: The queries were authored with a newer version of Power BI Desktop and might not work with your version.",
+    "resolution": "Reopened and QAed the exact output/dashboard_final.pbix in the newer Store Power BI Desktop 2.155.756.0."
+  },
+  "project": {
+    "path": "Project 19 - Finance Data Quality BI Governance",
+    "pbip_source": "Project 19 - Finance Data Quality BI Governance/output/powerbi_project/Finance_Data_Quality_BI_Governance.pbip",
+    "final_pbix": "Project 19 - Finance Data Quality BI Governance/output/dashboard_final.pbix",
+    "build_script": "Project 19 - Finance Data Quality BI Governance/build/scripts/build_project19.py"
+  },
+  "backup": {
+    "created_before_fix": true,
+    "path": "Project 19 - Finance Data Quality BI Governance/archive/dashboard_final_before_monthly_grain_fix_20260629_013914.pbix",
+    "size_bytes": 694843
+  },
+  "prompt_files_read_for_this_fix": [
+    "05-kpi-card-composition.md",
+    "06-sparkline-layout-collision.md",
+    "09-chart-card-visual-polish.md",
+    "11-visual-chrome-and-artifact-cleanup.md"
+  ],
+  "root_cause": {
+    "primary": "KPI sparkline SVG data was built from daily-grain DimDate rows. Multiple dates shared the same MonthIndex, so many SVG points received the same X coordinate and collapsed into vertical strokes.",
+    "secondary": "The prior RANKX-style point spacing did not guarantee one point per month in the image-card DAX.",
+    "not_broken": "The dashboard data itself was not static; the sparkline axis grain and point-spacing logic were wrong."
+  },
+  "fixes_applied": [
+    "Updated ENHANCEMENT_VERSION to v10_20260629_kpi_sparkline_axis_spacing.",
+    "Updated kpi_card_svg_dax() in build_project19.py.",
+    "Kept KPI cards as native image visuals.",
+    "Built AxisMonths as one row per MonthIndex using SELECTCOLUMNS, DISTINCT, selected-month logic, and trailing-12 fallback.",
+    "Calculated each sparkline value over the full month context with CALCULATE over ALL(DimDate) filtered by MonthIndex.",
+    "Computed X coordinates from MonthIndex range rather than daily rows or visual row rank.",
+    "Preserved the clean sparkline treatment: no decorative grey bars, no wedge area fill, no vertical stems, thin line, subtle reference line, tiny start marker, and stronger end marker.",
+    "Rebuilt PBIP with build_project19.py, opened PBIP in Power BI Desktop, refreshed data after the incomplete/no-data prompt, Save As to output/dashboard_final.pbix, then closed and reopened the exact PBIX."
+  ],
+  "final_pbix_file_evidence": {
+    "path": "Project 19 - Finance Data Quality BI Governance/output/dashboard_final.pbix",
+    "last_write_time": "2026-06-29T02:15:34+07:00",
+    "size_bytes": 694944,
+    "sha256": "C15D61D4A4D8EED8047829D1FB7426767E16E50B0BA7D2FC0AC9C99A377A91B0"
+  },
+  "counts": {
+    "page_count": 4,
+    "visual_count": 69,
+    "visual_count_by_page": {
+      "Governance Overview": 18,
+      "Reliability & Quality": 17,
+      "Adoption & Controls": 17,
+      "Risk & Action Queue": 17
+    },
+    "count_source": "PBIP report definition rebuilt by build_project19.py and then opened, refreshed, saved, closed, and reopened as the exact final PBIX in Power BI Desktop."
+  },
+  "screenshots": {
+    "before_user_reported_vertical_sparkline": "user-provided-before-screenshot: codex-clipboard-4b9028e0-2fc1-471c-b898-26c6afb763c7.png (not committed)",
+    "after_save_open_page1_governance": "Project 19 - Finance Data Quality BI Governance/qa/screenshots/pbix_kpi_monthly_grain_v10_open_after_save_20260629_0215.jpg",
+    "after_reopen_page1_governance": "Project 19 - Finance Data Quality BI Governance/qa/screenshots/pbix_kpi_monthly_grain_v10_reopen_page1_governance_20260629_0231.jpg",
+    "after_reopen_page2_reliability_quality": "Project 19 - Finance Data Quality BI Governance/qa/screenshots/pbix_kpi_monthly_grain_v10_reopen_page2_reliability_20260629_0231.jpg",
+    "after_reopen_page3_adoption_controls": "Project 19 - Finance Data Quality BI Governance/qa/screenshots/pbix_kpi_monthly_grain_v10_reopen_page3_adoption_20260629_0231.jpg",
+    "after_reopen_page4_risk_action_queue": "Project 19 - Finance Data Quality BI Governance/qa/screenshots/pbix_kpi_monthly_grain_v10_reopen_page4_risk_20260629_0231.jpg",
+    "slicer_test_01_revenue": "Project 19 - Finance Data Quality BI Governance/qa/screenshots/pbix_kpi_monthly_grain_v10_slicer_01_domain_revenue_20260629_0233.jpg",
+    "slicer_test_02_fpna": "Project 19 - Finance Data Quality BI Governance/qa/screenshots/pbix_kpi_monthly_grain_v10_slicer_02_domain_fpna_20260629_0234.jpg",
+    "slicer_test_03_order_to_cash": "Project 19 - Finance Data Quality BI Governance/qa/screenshots/pbix_kpi_monthly_grain_v10_slicer_03_order_to_cash_20260629_0235.jpg",
+    "slicer_test_04_people_cost": "Project 19 - Finance Data Quality BI Governance/qa/screenshots/pbix_kpi_monthly_grain_v10_slicer_04_people_cost_20260629_0235.jpg",
+    "slicer_test_05_procure_to_pay": "Project 19 - Finance Data Quality BI Governance/qa/screenshots/pbix_kpi_monthly_grain_v10_slicer_05_procure_to_pay_20260629_0235.jpg"
+  },
+  "slicer_interaction_tests": [
+    {
+      "combination": "Domain = Revenue",
+      "dq_score": "93.3",
+      "freshness_sla": "96.8%",
+      "refresh_success": "100.0%",
+      "open_incidents": "1",
+      "sparkline_result": "pass - KPI lines redraw left-to-right instead of vertical collapse",
+      "status": "pass"
+    },
+    {
+      "combination": "Domain = FP&A",
+      "dq_score": "90.4",
+      "freshness_sla": "93.5%",
+      "refresh_success": "93.5%",
+      "open_incidents": "1",
+      "sparkline_result": "pass - trend shape changes from Revenue",
+      "status": "pass"
+    },
+    {
+      "combination": "Domain = Order to Cash",
+      "dq_score": "93.1",
+      "freshness_sla": "90.3%",
+      "refresh_success": "100.0%",
+      "open_incidents": "0",
+      "sparkline_result": "pass - zero incident context renders without image placeholder or vertical stem collapse",
+      "status": "pass"
+    },
+    {
+      "combination": "Domain = People Cost",
+      "dq_score": "87.3",
+      "freshness_sla": "96.8%",
+      "refresh_success": "87.1%",
+      "open_incidents": "1",
+      "sparkline_result": "pass - KPI cards visibly change and risk coloring updates",
+      "status": "pass"
+    },
+    {
+      "combination": "Domain = Procure to Pay",
+      "dq_score": "92.9",
+      "freshness_sla": "96.8%",
+      "refresh_success": "96.8%",
+      "open_incidents": "0",
+      "sparkline_result": "pass - trend uses monthly spacing and no grey scrollbar/chrome appears",
+      "status": "pass"
+    }
+  ],
+  "mandatory_qa_passes": [
+    {
+      "name": "final PBIX opened in Power BI Desktop",
+      "status": "pass",
+      "evidence": "The exact output/dashboard_final.pbix opened in Microsoft Store Power BI Desktop 2.155.756.0 and rendered Governance Overview."
+    },
+    {
+      "name": "close and reopen exact final PBIX",
+      "status": "pass",
+      "evidence": "Closed Power BI Desktop, reopened the exact output/dashboard_final.pbix, verified window title dashboard_final and saved timestamp Today at 2:15 AM."
+    },
+    {
+      "name": "KPI row after reopen",
+      "status": "pass",
+      "evidence": "KPI row screenshot after reopen shows left-to-right 12-month microtrends for DQ Score, Freshness SLA, Refresh Success, and Open Incidents."
+    },
+    {
+      "name": "all 4 pages after reopen",
+      "status": "pass",
+      "evidence": "Captured reopened Desktop screenshots for Governance Overview, Reliability & Quality, Adoption & Controls, and Risk & Action Queue."
+    },
+    {
+      "name": "slicer interaction scan",
+      "status": "pass",
+      "evidence": "Five Domain slicer combinations visibly changed KPI values and sparkline shapes."
+    },
+    {
+      "name": "Escape/unselected visual chrome scan",
+      "status": "pass",
+      "evidence": "After Escape/unselected checks, KPI cards did not expose unwanted KPI scrollbars, white headers, image placeholders, or visual chrome."
+    }
+  ],
+  "defect_class_results": {
+    "05-kpi-card-composition": {
+      "pass": true,
+      "notes": "KPI structure remains title, current value, PY, YoY, and microtrend; PY/YoY are readable."
+    },
+    "06-sparkline-layout-collision": {
+      "pass": true,
+      "notes": "Sparkline now uses monthly grain and MonthIndex spacing; no vertical strokes, collision, scrollbar, or placeholder returned."
+    },
+    "09-chart-card-visual-polish": {
+      "pass": true,
+      "notes": "Sparkline reads as finance microtrend rather than bullet chart or collapsed axis artifact."
+    },
+    "11-visual-chrome-and-artifact-cleanup": {
+      "pass": true,
+      "notes": "KPI cards have no unwanted scrollbar/chrome in reopened Desktop screenshots; only legitimate long table visuals retain scrollbars."
+    }
+  },
+  "build_validation": {
+    "build_script_updated": true,
+    "python_compile_build_script": "pass",
+    "build_project19_py_ran_successfully": true,
+    "tables_generated": 10,
+    "pbip_rebuilt": true,
+    "final_pbix_saved_from_power_bi_desktop": true
+  },
+  "remaining_caveats": [
+    "The final PBIX requires the newer Microsoft Store Power BI Desktop 2.155.756.0 or later. The older Program Files installation 2.154.1260.0 cannot open it and shows a newer-version query warning.",
+    "Desktop authoring panes are visible in screenshots because QA was performed in Power BI Desktop as required.",
+    "Slicer test screenshots intentionally show the dropdown open so the selected Domain value is visible; baseline reopened screenshots show the report canvas without KPI scrollbars/chrome.",
+    "Only legitimate long detail tables retain internal scrollbars."
+  ],
+  "final_status": "pass_dashboard_final_pbix_opened_closed_reopened_in_store_desktop_and_kpi_sparkline_monthly_grain_verified"
+}

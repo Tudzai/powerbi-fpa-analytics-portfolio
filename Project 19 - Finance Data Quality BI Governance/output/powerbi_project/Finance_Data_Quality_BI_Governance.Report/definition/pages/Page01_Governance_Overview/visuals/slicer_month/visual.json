@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "slicer_month",
   "position": {
-    "x": 16,
-    "y": 508,
+    "x": 22,
+    "y": 490,
     "z": 1201,
-    "height": 54,
-    "width": 150,
+    "height": 58,
+    "width": 160,
     "tabOrder": 1201
   },
   "visual": {
@@ -27,11 +27,77 @@
                 }
               },
               "queryRef": "DimDate.MonthYear",
+              "active": true,
               "displayName": "Month"
             }
           ]
         }
       }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "selection": [
+        {
+          "properties": {
+            "singleSelect": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "items": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1F2D3A'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
       "general": [
@@ -66,13 +132,19 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#E8F4F6"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#17324A'"
+                    }
+                  }
+                }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8L"
+                  "Value": "8.6D"
                 }
               }
             },
@@ -105,7 +177,13 @@
             },
             "color": {
               "solid": {
-                "color": "#173E55"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FBFDFE'"
+                    }
+                  }
+                }
               }
             },
             "transparency": {
@@ -130,7 +208,13 @@
             },
             "color": {
               "solid": {
-                "color": "#3F7180"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B8CCD2'"
+                    }
+                  }
+                }
               }
             },
             "radius": {
@@ -139,52 +223,18 @@
                   "Value": "7L"
                 }
               }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.8D"
+                }
+              }
             }
           }
         }
       ],
       "visualHeader": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "objects": {
-      "data": [
-        {
-          "properties": {
-            "mode": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Dropdown'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "selection": [
-        {
-          "properties": {
-            "singleSelect": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "header": [
         {
           "properties": {
             "show": {

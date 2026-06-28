@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "governance_summary",
   "position": {
-    "x": 1016,
-    "y": 514,
+    "x": 966,
+    "y": 458,
     "z": 305,
-    "height": 172,
-    "width": 240,
+    "height": 234,
+    "width": 294,
     "tabOrder": 305
   },
   "visual": {
@@ -126,7 +126,13 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#13212B"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#13212B'"
+                    }
+                  }
+                }
               }
             },
             "fontSize": {
@@ -165,7 +171,13 @@
             },
             "color": {
               "solid": {
-                "color": "#FFFFFF"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
               }
             },
             "transparency": {
@@ -190,7 +202,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8E5E8"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D8E5E8'"
+                    }
+                  }
+                }
               }
             },
             "radius": {

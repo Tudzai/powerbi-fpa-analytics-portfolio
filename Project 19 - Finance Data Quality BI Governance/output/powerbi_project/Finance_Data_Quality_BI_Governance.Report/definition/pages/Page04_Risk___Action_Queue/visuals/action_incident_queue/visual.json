@@ -3,9 +3,9 @@
   "name": "action_incident_queue",
   "position": {
     "x": 204,
-    "y": 486,
+    "y": 458,
     "z": 303,
-    "height": 200,
+    "height": 234,
     "width": 540,
     "tabOrder": 303
   },
@@ -140,7 +140,13 @@
             },
             "fontColor": {
               "solid": {
-                "color": "#13212B"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#13212B'"
+                    }
+                  }
+                }
               }
             },
             "fontSize": {
@@ -179,7 +185,13 @@
             },
             "color": {
               "solid": {
-                "color": "#FFFFFF"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
               }
             },
             "transparency": {
@@ -204,7 +216,13 @@
             },
             "color": {
               "solid": {
-                "color": "#D8E5E8"
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D8E5E8'"
+                    }
+                  }
+                }
               }
             },
             "radius": {
