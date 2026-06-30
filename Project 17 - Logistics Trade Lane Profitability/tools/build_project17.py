@@ -1202,6 +1202,550 @@ window.__dashboardQa={{pages:3,kpis:6,lanes:d.lanes.length,actions:d.actions.len
 </script></body></html>"""
 
 
+def html_dashboard_v2(data: dict) -> str:
+    fact = data["fact_shipment_profitability"]
+    dates = sorted(data["dim_date"], key=lambda r: int(r["month_index"]))
+    lane_lookup = {r["lane_id"]: r for r in data["dim_trade_lane"]}
+    customer_lookup = {r["customer_id"]: r for r in data["dim_customer"]}
+    service_lookup = {r["service_id"]: r for r in data["dim_service"]}
+    office_lookup = {r["office_id"]: r for r in data["dim_office"]}
+    carrier_lookup = {r["carrier_id"]: r for r in data["dim_carrier"]}
+
+    def money(value: str | float) -> float:
+        return round(float(value), 2)
+
+    facts = []
+    for row in fact:
+        lane = lane_lookup[row["lane_id"]]
+        customer = customer_lookup[row["customer_id"]]
+        service = service_lookup[row["service_id"]]
+        office = office_lookup[row["office_id"]]
+        carrier = carrier_lookup[row["carrier_id"]]
+        revenue = money(row["net_revenue_usd"])
+        target_gp = round(revenue * float(row["target_margin_pct"]), 2)
+        facts.append(
+            {
+                "d": row["date_id"],
+                "c": customer["customer_name"],
+                "seg": customer["segment"],
+                "lane": lane["lane_name"],
+                "mode": lane["mode"],
+                "cluster": lane["lane_cluster"],
+                "service": service["service_family"],
+                "office": office["office"],
+                "carrier": carrier["carrier"],
+                "ship": int(row["shipment_count"]),
+                "teu": money(row["teu"]),
+                "rev": revenue,
+                "cost": money(row["total_cost_usd"]),
+                "gp": money(row["gross_profit_usd"]),
+                "target": target_gp,
+                "ontime": int(row["on_time_count"]),
+                "delayed": int(row["delayed_count"]),
+                "dem": money(row["demurrage_cost_usd"]),
+                "claims": money(row["claims_cost_usd"]),
+            }
+        )
+
+    actions = []
+    for row in data["fact_action_queue"]:
+        lane = lane_lookup[row["lane_id"]]
+        customer = customer_lookup[row["customer_id"]]
+        office = office_lookup[row["office_id"]]
+        actions.append(
+            {
+                "d": row["date_id"],
+                "c": customer["customer_name"],
+                "seg": customer["segment"],
+                "lane": lane["lane_name"],
+                "mode": lane["mode"],
+                "cluster": lane["lane_cluster"],
+                "office": office["office"],
+                "issue": row["issue_type"],
+                "priority": row["priority"],
+                "status": row["status"],
+                "owner": row["owner"],
+                "risk": money(row["risk_value_usd"]),
+                "recovery": money(row["target_margin_recovery_usd"]),
+                "action": row["recommended_action"],
+            }
+        )
+
+    bridge = []
+    for row in data["fact_cost_driver_bridge"]:
+        lane = lane_lookup[row["lane_id"]]
+        customer = customer_lookup[row["customer_id"]]
+        bridge.append(
+            {
+                "d": row["date_id"],
+                "c": customer["customer_name"],
+                "seg": customer["segment"],
+                "lane": lane["lane_name"],
+                "mode": lane["mode"],
+                "cluster": lane["lane_cluster"],
+                "driver": row["driver"],
+                "sort": int(row["driver_sort"]),
+                "amount": money(row["amount_usd"]),
+                "type": row["driver_type"],
+            }
+        )
+
+    payload = {
+        "latest": LATEST_PERIOD,
+        "seed": SEED,
+        "dates": [{"id": r["date_id"], "label": r["month_label"], "year": int(r["year"])} for r in dates],
+        "filters": {
+            "modes": sorted({r["mode"] for r in facts}),
+            "segments": sorted({r["seg"] for r in facts}),
+            "offices": sorted({r["office"] for r in facts}),
+        },
+        "facts": facts,
+        "actions": actions,
+        "bridge": bridge,
+    }
+
+    template = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project 17 - Logistics Trade Lane Profitability</title>
+<link rel="icon" href="data:,">
+<style>
+:root {
+  --bg:#F8FAFC;
+  --panel:#FFFFFF;
+  --panel2:#F1F5F9;
+  --border:#CBD5E1;
+  --grid:#E2E8F0;
+  --text:#0F172A;
+  --muted:#475569;
+  --dim:#64748B;
+  --blue:#2563EB;
+  --teal:#0F766E;
+  --green:#15803D;
+  --amber:#B45309;
+  --red:#DC2626;
+  --ink:#111827;
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+button,select { font:inherit; }
+.shell { width:min(1280px,100%); min-height:720px; margin:0 auto; padding:18px 24px 20px; }
+.report-header { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:18px; align-items:end; min-height:44px; border-bottom:2px solid #6FB8AF; }
+.title-block { min-width:0; padding-bottom:8px; border-left:4px solid #6FB8AF; padding-left:18px; }
+.kicker { margin:0 0 5px; color:var(--blue); font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; }
+h1 { margin:0; font-size:22px; line-height:1.12; letter-spacing:0; }
+.subtitle { margin:5px 0 0; color:var(--muted); font-size:12px; line-height:1.35; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.page-nav { display:flex; gap:2px; align-self:start; }
+.nav-btn { min-width:100px; min-height:30px; border:0; border-left:1px solid rgba(255,255,255,.65); background:#6FB8AF; color:#0B2F2A; font-size:10px; font-weight:800; cursor:pointer; }
+.nav-btn.active { background:#2F766F; color:#fff; }
+.filter-lens { display:grid; grid-template-columns:86px 98px 116px 116px minmax(230px,1fr) minmax(230px,1fr); gap:12px; align-items:stretch; margin-top:10px; }
+.filter { min-width:0; height:38px; border:1px solid var(--border); border-radius:6px; background:#fff; padding:4px 8px; }
+.filter span { display:block; color:var(--dim); font-size:9px; font-weight:800; text-transform:uppercase; }
+.filter select { width:100%; border:0; outline:0; background:transparent; color:var(--text); font-size:11px; font-weight:700; }
+.mini-card { min-width:0; height:58px; display:flex; flex-direction:column; justify-content:center; gap:4px; border:1px solid var(--border); border-radius:8px; background:#fff; box-shadow:0 1px 2px rgba(15,23,42,.08); padding:9px 14px 9px 18px; position:relative; overflow:hidden; }
+.mini-card:before { content:""; position:absolute; left:8px; top:10px; bottom:10px; width:4px; border-radius:3px; background:#6FB8AF; }
+.mini-card.decision:before { background:#C98E2B; }
+.mini-card span { margin-left:16px; color:var(--blue); font-size:10px; font-weight:800; letter-spacing:.04em; }
+.mini-card strong { margin-left:16px; color:var(--text); font-size:13px; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.mini-card em { margin-left:16px; color:var(--muted); font-style:normal; font-size:10px; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.page { display:none; }
+.page.active { display:block; }
+.kpi-row { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; margin-top:16px; }
+.kpi-card { min-width:0; height:152px; border:1px solid var(--border); border-radius:8px; background:#fff; box-shadow:0 8px 18px rgba(15,23,42,.16); padding:12px; display:grid; grid-template-columns:1fr 112px; grid-template-rows:auto 1fr auto; gap:6px 10px; position:relative; overflow:hidden; }
+.kpi-card:before { content:""; position:absolute; inset:7px; border:1px solid rgba(203,213,225,.9); border-radius:7px; box-shadow:0 1px 3px rgba(15,23,42,.12); pointer-events:none; }
+.kpi-title { position:relative; z-index:1; grid-column:1 / 2; color:var(--blue); font-size:11px; font-weight:800; text-transform:uppercase; line-height:1.2; }
+.kpi-value { position:relative; z-index:1; grid-column:1 / 2; align-self:center; color:var(--ink); font-size:28px; line-height:1; font-weight:850; overflow-wrap:anywhere; }
+.kpi-spark { position:relative; z-index:1; grid-column:2; grid-row:1 / 3; width:100%; height:72px; align-self:center; border:1px solid var(--grid); border-radius:7px; background:#F8FAFC; }
+.kpi-foot { position:relative; z-index:1; grid-column:1 / 3; display:grid; grid-template-columns:1fr 1fr 1.15fr; gap:6px; }
+.chip { min-width:0; min-height:22px; display:flex; align-items:center; justify-content:center; gap:4px; border:1px solid var(--border); border-radius:6px; background:#F8FAFC; color:var(--muted); font-size:10px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:2px 6px; }
+.chip.good { border-color:#9CC7A2; color:var(--green); background:#F6FBF5; }
+.chip.bad { border-color:#EF9992; color:var(--red); background:#FEF6F5; }
+.chip.neutral { color:var(--blue); }
+.main-row { display:grid; grid-template-columns:1.05fr .95fr .95fr; gap:12px; margin-top:16px; }
+.bottom-row { display:grid; grid-template-columns:1.08fr 1.02fr .9fr; gap:12px; margin-top:8px; }
+.chart-card { min-width:0; height:208px; border:1px solid var(--border); border-radius:6px; background:#fff; box-shadow:0 8px 18px rgba(15,23,42,.16); padding:10px 10px 8px; overflow:hidden; }
+.bottom-row .chart-card { height:194px; }
+.chart-card h3 { margin:0 0 6px; color:var(--blue); font-size:13px; line-height:1.2; font-weight:800; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.chart-card.good h3 { color:#3B7F44; }
+.chart-card.warn h3 { color:var(--red); }
+.chart-body { height:calc(100% - 22px); min-height:0; }
+.chart-body svg { width:100%; height:100%; display:block; overflow:visible; }
+.legend { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:3px; color:var(--muted); font-size:9px; font-weight:700; }
+.swatch { width:8px; height:8px; border-radius:2px; display:inline-block; margin-right:3px; }
+.donut-wrap { height:100%; display:grid; grid-template-columns:110px 1fr; gap:8px; align-items:center; }
+.donut { width:106px; height:106px; border-radius:50%; position:relative; background:conic-gradient(var(--teal) 0 40%, var(--blue) 40% 68%, var(--green) 68% 84%, var(--amber) 84% 100%); }
+.donut:after { content:""; position:absolute; inset:28px; border-radius:50%; background:#fff; box-shadow:inset 0 0 0 1px var(--grid); }
+.donut-legend { display:grid; gap:5px; color:var(--muted); font-size:10px; }
+.donut-legend div { display:grid; grid-template-columns:10px 1fr auto; gap:6px; align-items:center; }
+.action-table { width:100%; border-collapse:collapse; font-size:10px; }
+.action-table th,.action-table td { padding:6px 5px; border-bottom:1px solid var(--grid); text-align:left; vertical-align:top; }
+.action-table th { color:var(--dim); font-size:9px; text-transform:uppercase; }
+.status { display:inline-flex; border:1px solid var(--border); border-radius:999px; padding:2px 6px; font-weight:800; }
+.status.Open { color:var(--red); border-color:#EF9992; background:#FEF6F5; }
+.status.In { color:var(--amber); border-color:#D9B26E; background:#FFFBEB; }
+.status.Action { color:var(--green); border-color:#9CC7A2; background:#F6FBF5; }
+.qa-note { max-width:1280px; margin:10px auto 24px; padding:0 24px; color:var(--muted); font-size:11px; line-height:1.5; }
+@media (max-width:980px) {
+  .shell { padding:14px; }
+  .report-header,.filter-lens,.main-row,.bottom-row { grid-template-columns:1fr; }
+  .page-nav { width:100%; }
+  .nav-btn { flex:1; }
+  .kpi-row { grid-template-columns:1fr; }
+  .kpi-card { height:auto; min-height:148px; }
+  .chart-card,.bottom-row .chart-card { height:240px; }
+  .subtitle { white-space:normal; }
+  .qa-note { padding:0 14px; }
+}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="report-header">
+    <div class="title-block">
+      <p class="kicker">Project 17 / Logistics finance</p>
+      <h1 id="pageTitle">Executive Overview</h1>
+      <p class="subtitle" id="pageSubtitle">Margin status, volume, reprice value, and customer/lane concentration</p>
+    </div>
+    <nav class="page-nav" aria-label="Page navigation">
+      <button class="nav-btn active" type="button" data-page="overview">01 Overview</button>
+      <button class="nav-btn" type="button" data-page="lane">02 Lane</button>
+      <button class="nav-btn" type="button" data-page="action">03 Actions</button>
+    </nav>
+  </header>
+
+  <section class="filter-lens" aria-label="Dashboard filters">
+    <label class="filter"><span>Period</span><select id="periodFilter"></select></label>
+    <label class="filter"><span>Mode</span><select id="modeFilter"></select></label>
+    <label class="filter"><span>Segment</span><select id="segmentFilter"></select></label>
+    <label class="filter"><span>Office</span><select id="officeFilter"></select></label>
+    <article class="mini-card"><span>CURRENT LENS</span><strong id="lensPrimary"></strong><em id="lensSecondary"></em></article>
+    <article class="mini-card decision"><span>NEXT ACTION</span><strong id="decisionText"></strong><em id="decisionSubtext">Owner action queue updates with filters</em></article>
+  </section>
+
+  <section class="page active" id="overviewPage" data-page="overview">
+    <div class="kpi-row" id="overviewKpis"></div>
+    <div class="main-row">
+      <article class="chart-card"><h3>Revenue and GP Trend</h3><div class="chart-body" id="overviewTrend"></div></article>
+      <article class="chart-card good"><h3>Gross Profit by Lane Cluster</h3><div class="chart-body" id="overviewCluster"></div></article>
+      <article class="chart-card"><h3>Revenue Mix by Service</h3><div class="chart-body" id="overviewService"></div></article>
+    </div>
+    <div class="bottom-row">
+      <article class="chart-card"><h3>Reprice Opportunity by Customer</h3><div class="chart-body" id="overviewCustomer"></div></article>
+      <article class="chart-card warn"><h3>Margin Gap by Lane Cluster</h3><div class="chart-body" id="overviewGap"></div></article>
+      <article class="chart-card good"><h3>Action Risk by Owner</h3><div class="chart-body" id="overviewOwner"></div></article>
+    </div>
+  </section>
+
+  <section class="page" id="lanePage" data-page="lane">
+    <div class="kpi-row" id="laneKpis"></div>
+    <div class="main-row">
+      <article class="chart-card"><h3>GP Margin by Lane Cluster</h3><div class="chart-body" id="laneMargin"></div></article>
+      <article class="chart-card"><h3>Revenue and GP by Mode</h3><div class="chart-body" id="laneMode"></div></article>
+      <article class="chart-card warn"><h3>Margin Gap Driver Bridge</h3><div class="chart-body" id="laneBridge"></div></article>
+    </div>
+    <div class="bottom-row">
+      <article class="chart-card warn"><h3>Negative Margin by Customer</h3><div class="chart-body" id="laneNegative"></div></article>
+      <article class="chart-card"><h3>Total Cost by Carrier</h3><div class="chart-body" id="laneCarrier"></div></article>
+      <article class="chart-card good"><h3>Utilization Proxy by Cluster</h3><div class="chart-body" id="laneUtil"></div></article>
+    </div>
+  </section>
+
+  <section class="page" id="actionPage" data-page="action">
+    <div class="kpi-row" id="actionKpis"></div>
+    <div class="main-row">
+      <article class="chart-card warn"><h3>Cost Driver Waterfall</h3><div class="chart-body" id="actionWaterfall"></div></article>
+      <article class="chart-card"><h3>Total Cost by Carrier</h3><div class="chart-body" id="actionCarrier"></div></article>
+      <article class="chart-card warn"><h3>Risk by Issue Type</h3><div class="chart-body" id="actionIssue"></div></article>
+    </div>
+    <div class="bottom-row">
+      <article class="chart-card"><h3>Action Queue</h3><div class="chart-body" id="actionTable"></div></article>
+      <article class="chart-card good"><h3>Recovery by Issue Type</h3><div class="chart-body" id="actionRecovery"></div></article>
+      <article class="chart-card"><h3>Open Risk by Owner</h3><div class="chart-body" id="actionOwner"></div></article>
+    </div>
+  </section>
+</main>
+<footer class="qa-note"><strong>Static preview note:</strong> This HTML mirrors the latest PBIX layout rhythm using synthetic portfolio data: native-style page navigation, slicers, current lens chips, four SVG-style KPI cards per page, and chart rows with a 16 px KPI-to-chart breathing gap.</footer>
+<script id="data" type="application/json">__PAYLOAD__</script>
+<script>
+const DATA = JSON.parse(document.getElementById('data').textContent);
+const state = { page: 'overview', period: DATA.latest, mode: 'All', segment: 'All', office: 'All' };
+const pageMeta = {
+  overview: ['Executive Overview', 'Margin status, volume, reprice value, and customer/lane concentration'],
+  lane: ['Trade Lane Margin', 'Lane economics, service mix, utilization, and margin gap diagnosis'],
+  action: ['Cost Drivers & Action Queue', 'Cost recovery actions, risk exposure, owner queue, and claims/demurrage control']
+};
+const colors = ['#2563EB', '#0F766E', '#15803D', '#B45309', '#DC2626', '#111827'];
+const money = n => {
+  const sign = n < 0 ? '-' : '';
+  const v = Math.abs(n || 0);
+  if (v >= 1000000) return sign + '$' + (v / 1000000).toFixed(1) + 'M';
+  if (v >= 1000) return sign + '$' + (v / 1000).toFixed(1) + 'K';
+  return sign + '$' + Math.round(v).toLocaleString();
+};
+const pct = n => ((n || 0) * 100).toFixed(1) + '%';
+const num = n => Math.round(n || 0).toLocaleString();
+const clean = s => String(s || '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+function initSelect(id, values, current) {
+  const el = document.getElementById(id);
+  el.innerHTML = values.map(v => `<option value="${clean(v)}">${clean(v)}</option>`).join('');
+  el.value = current;
+  el.onchange = () => { state[id.replace('Filter','')] = el.value; render(); };
+}
+function initFilters() {
+  initSelect('periodFilter', DATA.dates.map(d => d.id), DATA.latest);
+  initSelect('modeFilter', ['All', ...DATA.filters.modes], 'All');
+  initSelect('segmentFilter', ['All', ...DATA.filters.segments], 'All');
+  initSelect('officeFilter', ['All', ...DATA.filters.offices], 'All');
+}
+function rowPass(row, includePeriod = true) {
+  return (!includePeriod || row.d === state.period)
+    && (state.mode === 'All' || row.mode === state.mode)
+    && (state.segment === 'All' || row.seg === state.segment)
+    && (state.office === 'All' || row.office === state.office);
+}
+function rows(includePeriod = true) { return DATA.facts.filter(r => rowPass(r, includePeriod)); }
+function actionRows() { return DATA.actions.filter(r => rowPass(r, true)); }
+function bridgeRows() { return DATA.bridge.filter(r => rowPass(r, true)); }
+function agg(list) {
+  return list.reduce((a, r) => {
+    a.rev += r.rev; a.cost += r.cost; a.gp += r.gp; a.target += r.target; a.ship += r.ship;
+    a.ontime += r.ontime; a.delayed += r.delayed; a.dem += r.dem; a.claims += r.claims;
+    if (r.gp < 0) { a.reprice += -r.gp; a.negShip += r.ship; }
+    return a;
+  }, {rev:0,cost:0,gp:0,target:0,ship:0,ontime:0,delayed:0,dem:0,claims:0,reprice:0,negShip:0});
+}
+function groupBy(list, keyFn, valueFn) {
+  const map = new Map();
+  list.forEach(r => {
+    const k = keyFn(r);
+    map.set(k, (map.get(k) || 0) + valueFn(r));
+  });
+  return [...map.entries()].map(([name,value]) => ({name, value})).sort((a,b) => Math.abs(b.value) - Math.abs(a.value));
+}
+function periodIndex(period) { return DATA.dates.findIndex(d => d.id === period); }
+function previousPeriod() { const i = periodIndex(state.period); return DATA.dates[Math.max(0, i - 1)]?.id || state.period; }
+function filteredForPeriod(period) { const old = state.period; state.period = period; const out = rows(true); state.period = old; return out; }
+function spark(metric) {
+  const series = DATA.dates.map(d => agg(filteredForPeriod(d.id))[metric] || 0);
+  return series;
+}
+function kpiConfig(page, a, prev) {
+  const actionA = actionRows().reduce((x,r) => { x.risk += r.risk; x.recovery += r.recovery; x.open += r.status === 'Open' ? 1 : 0; return x; }, {risk:0,recovery:0,open:0});
+  if (page === 'lane') {
+    return [
+      ['Revenue / Shipment', a.ship ? money(a.rev / a.ship) : '$0', 'revenue per shipment', a.ship ? money(prev.rev / Math.max(prev.ship,1)) : '$0', a.rev / Math.max(a.ship,1) - prev.rev / Math.max(prev.ship,1), spark('rev')],
+      ['Margin Gap', money(a.gp - a.target), 'gross profit vs target', money(prev.gp - prev.target), (a.gp - a.target) - (prev.gp - prev.target), spark('gp')],
+      ['Negative Margin', num(a.negShip), 'shipments below zero GP', num(prev.negShip), a.negShip - prev.negShip, spark('reprice')],
+      ['On-Time', pct(a.ontime / Math.max(a.ontime + a.delayed, 1)), 'delivery quality', pct(prev.ontime / Math.max(prev.ontime + prev.delayed, 1)), (a.ontime / Math.max(a.ontime + a.delayed,1)) - (prev.ontime / Math.max(prev.ontime + prev.delayed,1)), spark('ship')]
+    ];
+  }
+  if (page === 'action') {
+    return [
+      ['Open Actions', num(actionA.open), 'owner queue', num(DATA.actions.filter(r => r.d === previousPeriod() && r.status === 'Open').length), actionA.open - DATA.actions.filter(r => r.d === previousPeriod() && r.status === 'Open').length, spark('ship')],
+      ['Action Risk', money(actionA.risk), 'risk value', money(0), actionA.risk, spark('reprice')],
+      ['Recovery', money(actionA.recovery), 'target recovery', money(0), actionA.recovery, spark('gp')],
+      ['Demurrage', money(a.dem), 'cost leakage', money(prev.dem), a.dem - prev.dem, spark('cost')]
+    ];
+  }
+  return [
+    ['Net Revenue', money(a.rev), 'selected-period revenue', money(prev.rev), a.rev - prev.rev, spark('rev')],
+    ['Gross Profit', money(a.gp), 'selected-period GP', money(prev.gp), a.gp - prev.gp, spark('gp')],
+    ['GP Margin', pct(a.gp / Math.max(a.rev, 1)), 'gross profit margin', pct(prev.gp / Math.max(prev.rev,1)), (a.gp / Math.max(a.rev,1)) - (prev.gp / Math.max(prev.rev,1)), spark('gp')],
+    ['Reprice Opp.', money(a.reprice), 'negative-margin floor', money(prev.reprice), a.reprice - prev.reprice, spark('reprice')]
+  ];
+}
+function sparkSvg(series, favorable = true) {
+  const w = 104, h = 58, pad = 8;
+  const min = Math.min(...series), max = Math.max(...series);
+  const span = max - min || 1;
+  const pts = series.map((v,i) => {
+    const x = pad + i * ((w - pad * 2) / Math.max(series.length - 1, 1));
+    const y = h - pad - ((v - min) / span) * (h - pad * 2);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+  const last = series[series.length - 1] || 0;
+  const first = series[0] || 0;
+  const color = (last >= first) === favorable ? '#15803D' : '#DC2626';
+  return `<svg class="kpi-spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${pts.split(' ').pop().split(',')[0]}" cy="${pts.split(' ').pop().split(',')[1]}" r="3.5" fill="${color}"/></svg>`;
+}
+function renderKpis(id, configs) {
+  document.getElementById(id).innerHTML = configs.map(k => {
+    const delta = k[4];
+    const isPct = String(k[1]).includes('%');
+    const deltaText = isPct ? ((delta || 0) * 100).toFixed(1) + ' pt' : money(delta || 0);
+    const good = delta >= 0;
+    const status = good ? 'On track' : 'Watch';
+    return `<article class="kpi-card"><div class="kpi-title">${clean(k[0])}</div><div class="kpi-value">${clean(k[1])}</div>${sparkSvg(k[5] || [], k[0] !== 'Demurrage' && k[0] !== 'Action Risk')}<div class="kpi-foot"><span class="chip neutral">PY&nbsp; ${clean(k[3])}</span><span class="chip ${good ? 'good' : 'bad'}">${clean(deltaText)}</span><span class="chip ${good ? 'good' : 'bad'}">${status}</span></div></article>`;
+  }).join('');
+}
+function svgFrame(w = 360, h = 140) {
+  return {w,h,p:28, innerW:w-56, innerH:h-52};
+}
+function barsSvg(items, options = {}) {
+  const cfg = svgFrame(options.w || 360, options.h || 140);
+  const max = Math.max(...items.map(d => Math.abs(d.value)), 1);
+  const bw = cfg.innerW / Math.max(items.length, 1) - 6;
+  let out = `<svg viewBox="0 0 ${cfg.w} ${cfg.h}"><line x1="${cfg.p}" y1="${cfg.h-cfg.p}" x2="${cfg.w-cfg.p}" y2="${cfg.h-cfg.p}" stroke="#CBD5E1"/>`;
+  items.slice(0, options.limit || 12).forEach((d,i) => {
+    const x = cfg.p + i * (cfg.innerW / Math.max(items.length, 1));
+    const bh = Math.abs(d.value) / max * cfg.innerH;
+    const y = cfg.h - cfg.p - bh;
+    const color = d.value < 0 ? '#DC2626' : (options.color || colors[i % colors.length]);
+    out += `<rect x="${x}" y="${y}" width="${Math.max(bw,4)}" height="${bh}" rx="3" fill="${color}"><title>${clean(d.name)} ${money(d.value)}</title></rect>`;
+    out += `<text x="${x + Math.max(bw,4) / 2}" y="${cfg.h-8}" text-anchor="end" transform="rotate(-35 ${x + Math.max(bw,4) / 2} ${cfg.h-8})" fill="#64748B" font-size="8">${clean(String(d.name).slice(0,12))}</text>`;
+  });
+  return out + '</svg>';
+}
+function horizontalSvg(items, options = {}) {
+  const h = options.h || 140, w = options.w || 360, p = 22;
+  const rows = items.slice(0, options.limit || 7);
+  const max = Math.max(...rows.map(d => Math.abs(d.value)), 1);
+  let out = `<svg viewBox="0 0 ${w} ${h}">`;
+  rows.forEach((d,i) => {
+    const y = p + i * ((h - p - 8) / Math.max(rows.length,1));
+    const bw = Math.abs(d.value) / max * (w - 148);
+    const color = d.value < 0 ? '#DC2626' : (options.color || '#6FB8AF');
+    out += `<text x="6" y="${y+8}" fill="#475569" font-size="9">${clean(String(d.name).slice(0,20))}</text><rect x="132" y="${y}" width="${bw}" height="12" rx="2" fill="${color}"/><text x="${Math.min(132+bw+5,w-38)}" y="${y+9}" fill="#475569" font-size="8">${options.percent ? pct(d.value) : money(d.value)}</text>`;
+  });
+  return out + '</svg>';
+}
+function trendSvg(monthly) {
+  const w = 380, h = 142, p = 26;
+  const max = Math.max(...monthly.map(d => d.rev), 1);
+  const gpMax = Math.max(...monthly.map(d => d.gp), 1);
+  const bw = (w - p * 2) / monthly.length - 4;
+  let out = `<div class="legend"><span><i class="swatch" style="background:#2563EB"></i>Revenue</span><span><i class="swatch" style="background:#0F766E"></i>Gross Profit</span></div><svg viewBox="0 0 ${w} ${h}">`;
+  monthly.forEach((d,i) => {
+    const x = p + i * ((w - p * 2) / monthly.length);
+    const bh = d.rev / max * (h - 44);
+    out += `<rect x="${x}" y="${h-p-bh}" width="${bw}" height="${bh}" rx="2" fill="#2563EB" opacity=".86"/>`;
+  });
+  const pts = monthly.map((d,i) => {
+    const x = p + i * ((w - p * 2) / Math.max(monthly.length - 1, 1));
+    const y = h - p - d.gp / gpMax * (h - 44);
+    return `${x},${y}`;
+  }).join(' ');
+  out += `<polyline points="${pts}" fill="none" stroke="#0F766E" stroke-width="3" stroke-linecap="round"/>`;
+  return out + '</svg>';
+}
+function donutHtml(items) {
+  const total = items.reduce((a,b) => a + Math.max(b.value,0), 0) || 1;
+  let start = 0;
+  const stops = items.slice(0,5).map((d,i) => {
+    const pctVal = Math.max(d.value,0) / total * 100;
+    const part = `${colors[i % colors.length]} ${start.toFixed(1)}% ${(start + pctVal).toFixed(1)}%`;
+    start += pctVal;
+    return part;
+  }).join(', ');
+  return `<div class="donut-wrap"><div class="donut" style="background:conic-gradient(${stops})"></div><div class="donut-legend">${items.slice(0,5).map((d,i)=>`<div><span class="swatch" style="background:${colors[i % colors.length]}"></span><span>${clean(d.name)}</span><strong>${((d.value/total)*100).toFixed(1)}%</strong></div>`).join('')}</div></div>`;
+}
+function waterfallSvg(items) {
+  const w = 380, h = 142, p = 28;
+  const rows = items.slice(0,8);
+  const min = Math.min(0, ...rows.map(d => d.value));
+  const max = Math.max(0, ...rows.map(d => d.value));
+  const span = max - min || 1;
+  const zero = h - p - ((0 - min) / span) * (h - 44);
+  const bw = (w - p*2) / Math.max(rows.length,1) - 8;
+  let out = `<svg viewBox="0 0 ${w} ${h}"><line x1="${p}" y1="${zero}" x2="${w-p}" y2="${zero}" stroke="#CBD5E1"/>`;
+  rows.forEach((d,i) => {
+    const x = p + i * ((w - p*2) / rows.length);
+    const y = h - p - ((Math.max(d.value,0) - min) / span) * (h - 44);
+    const y0 = h - p - ((Math.min(d.value,0) - min) / span) * (h - 44);
+    const color = d.value < 0 ? '#DC2626' : '#6FB8AF';
+    out += `<rect x="${x}" y="${Math.min(y,zero)}" width="${bw}" height="${Math.abs(zero-y)}" rx="2" fill="${color}"><title>${clean(d.name)} ${money(d.value)}</title></rect>`;
+    if (d.value < 0) out += `<rect x="${x}" y="${zero}" width="${bw}" height="${Math.abs(y0-zero)}" rx="2" fill="${color}"/>`;
+    out += `<text x="${x+bw/2}" y="${h-8}" text-anchor="end" transform="rotate(-35 ${x+bw/2} ${h-8})" fill="#64748B" font-size="8">${clean(String(d.name).slice(0,12))}</text>`;
+  });
+  return out + '</svg>';
+}
+function tableHtml(items) {
+  const rows = items.slice(0,6).map(r => `<tr><td>${clean(r.owner)}</td><td>${clean(r.issue)}</td><td>${money(r.risk)}</td><td><span class="status ${clean(r.status.split(' ')[0])}">${clean(r.status)}</span></td></tr>`).join('');
+  return `<table class="action-table"><thead><tr><th>Owner</th><th>Issue</th><th>Risk</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+function monthlySeries() {
+  return DATA.dates.map(d => {
+    const saved = state.period; state.period = d.id;
+    const a = agg(rows(true));
+    state.period = saved;
+    return {name:d.label, rev:a.rev, gp:a.gp, value:a.rev};
+  });
+}
+function renderCharts(a) {
+  const current = rows(true);
+  const actions = actionRows();
+  const bridge = bridgeRows();
+  document.getElementById('overviewTrend').innerHTML = trendSvg(monthlySeries());
+  document.getElementById('overviewCluster').innerHTML = horizontalSvg(groupBy(current, r=>r.cluster, r=>r.gp), {limit:6});
+  document.getElementById('overviewService').innerHTML = donutHtml(groupBy(current, r=>r.service, r=>r.rev));
+  document.getElementById('overviewCustomer').innerHTML = barsSvg(groupBy(current.filter(r=>r.gp<0), r=>r.c, r=>-r.gp), {limit:10, color:'#6FB8AF'});
+  document.getElementById('overviewGap').innerHTML = barsSvg(groupBy(current, r=>r.cluster, r=>r.gp-r.target), {limit:8});
+  document.getElementById('overviewOwner').innerHTML = horizontalSvg(groupBy(actions, r=>r.owner, r=>r.risk), {limit:6});
+  document.getElementById('laneMargin').innerHTML = horizontalSvg(groupBy(current, r=>r.cluster, r=>r.rev ? r.gp/r.rev : 0), {limit:6, percent:true});
+  document.getElementById('laneMode').innerHTML = barsSvg(groupBy(current, r=>r.mode, r=>r.rev), {limit:7, color:'#2563EB'});
+  document.getElementById('laneBridge').innerHTML = waterfallSvg(groupBy(bridge, r=>r.driver, r=>r.amount));
+  document.getElementById('laneNegative').innerHTML = barsSvg(groupBy(current.filter(r=>r.gp<0), r=>r.c, r=>r.gp), {limit:10});
+  document.getElementById('laneCarrier').innerHTML = horizontalSvg(groupBy(current, r=>r.carrier, r=>r.cost), {limit:6});
+  document.getElementById('laneUtil').innerHTML = horizontalSvg(groupBy(current, r=>r.cluster, r=>r.teu / Math.max(r.ship,1)), {limit:6, color:'#0F766E'});
+  document.getElementById('actionWaterfall').innerHTML = waterfallSvg(groupBy(bridge, r=>r.driver, r=>r.amount));
+  document.getElementById('actionCarrier').innerHTML = horizontalSvg(groupBy(current, r=>r.carrier, r=>r.cost), {limit:6});
+  document.getElementById('actionIssue').innerHTML = donutHtml(groupBy(actions, r=>r.issue, r=>r.risk));
+  document.getElementById('actionTable').innerHTML = tableHtml(actions.sort((a,b)=>b.risk-a.risk));
+  document.getElementById('actionRecovery').innerHTML = horizontalSvg(groupBy(actions, r=>r.issue, r=>r.recovery), {limit:6, color:'#15803D'});
+  document.getElementById('actionOwner').innerHTML = horizontalSvg(groupBy(actions, r=>r.owner, r=>r.risk), {limit:6});
+}
+function renderLens(a) {
+  const date = DATA.dates.find(d => d.id === state.period);
+  const lensBits = [date ? date.label : state.period, state.mode === 'All' ? 'All modes' : state.mode, state.segment === 'All' ? 'All seg' : state.segment];
+  document.getElementById('lensPrimary').textContent = lensBits.join(' | ');
+  document.getElementById('lensSecondary').textContent = `${state.office === 'All' ? 'All offices' : state.office} | ${num(a.ship)} shipments | ${pct(a.gp / Math.max(a.rev,1))} GP margin`;
+  const gap = a.gp - a.target;
+  let decision = `Reprice lanes | Gap ${money(gap)}`;
+  if (state.page === 'lane') decision = `Margin reset | ${money(a.reprice)} reprice pool`;
+  if (state.page === 'action') decision = `Owner queue | ${num(actionRows().filter(r => r.status === 'Open').length)} open actions`;
+  document.getElementById('decisionText').textContent = decision;
+}
+function render() {
+  const current = rows(true);
+  const previous = filteredForPeriod(previousPeriod());
+  const a = agg(current), p = agg(previous);
+  document.getElementById('pageTitle').textContent = pageMeta[state.page][0];
+  document.getElementById('pageSubtitle').textContent = pageMeta[state.page][1];
+  renderLens(a);
+  renderKpis('overviewKpis', kpiConfig('overview', a, p));
+  renderKpis('laneKpis', kpiConfig('lane', a, p));
+  renderKpis('actionKpis', kpiConfig('action', a, p));
+  renderCharts(a);
+  window.__dashboardQa = {
+    pages: 3,
+    activePage: state.page,
+    filters: {...state},
+    kpiCardsPerPage: 4,
+    totalKpiCards: 12,
+    kpiToChartGapPx: 16,
+    nativeLikePageNavigation: true,
+    facts: DATA.facts.length,
+    actions: DATA.actions.length
+  };
+}
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.onclick = () => {
+    state.page = btn.dataset.page;
+    document.querySelectorAll('.nav-btn').forEach(x=>x.classList.toggle('active', x === btn));
+    document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active', x.dataset.page === state.page));
+    render();
+  };
+});
+initFilters();
+render();
+</script>
+</body>
+</html>"""
+    return template.replace("__PAYLOAD__", json.dumps(payload, separators=(",", ":")))
+
+
 def read_header(path: Path) -> list[str]:
     with path.open("r", encoding="utf-8-sig", newline="") as handle:
         return next(csv.reader(handle))
@@ -2810,7 +3354,7 @@ def main() -> None:
     validation = validate_data(data)
     write_model_docs(validation)
     write_power_query()
-    write_text("output/dashboard_final.html", html_dashboard(data))
+    write_text("output/dashboard_final.html", html_dashboard_v2(data))
     write_config_docs()
     write_docs(validation, env)
     write_json("model/model.bim", build_model_bim())
