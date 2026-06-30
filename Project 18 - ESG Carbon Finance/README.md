@@ -7,7 +7,9 @@ Executive-ready portfolio BI build connecting emissions, carbon cost exposure, s
 - Data/model/report source package: ready.
 - Supplemental HTML preview: `output/dashboard_preview.html`.
 - Final PBIX target: `output/dashboard_final.pbix`.
-- Final PBIX status: v3 source/layout package refreshed; run fresh Power BI Desktop open-check after PBIX patch.
+- Final PBIX status: v39 dynamic table-card release passed Power BI Desktop QA on 2026-06-30.
+- Final PBIX SHA256: `DDD78E1286BEB961AD744839C2356E8FB7D2AD20F187D68F9083AA6D964D3C0D`.
+- Release evidence: `qa/project18_visual_product_qa.md`, `qa/dynamic_table_cards_slicer_qa.json`, and `output/screenshots/project18_v39_dynamic_table_cards_full.png`.
 
 ## Dashboard Pages
 

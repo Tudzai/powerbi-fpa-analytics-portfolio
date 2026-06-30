@@ -1,14 +1,15 @@
-﻿{
+{
     "status":  "passed",
-    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_final.pbix",
+    "final_pbix":  "output\\dashboard_final.pbix",
     "final_pbix_created":  true,
-    "final_pbix_size":  4109354,
-    "layout_metadata_source":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_model_seed.pbix",
+    "final_pbix_size":  4060108,
+    "layout_metadata_source":  "output\\dashboard_final.pbix",
     "preserved_layout_keys":  [
                                   "resourcePackages",
                                   "sections",
                                   "config",
-                                  "layoutOptimization"
+                                  "layoutOptimization",
+                                  "activeSectionIndex"
                               ],
     "pages":  [
                   "ESG Finance Overview",
@@ -16,5 +17,5 @@
                   "Carbon Scenario \u0026 Abatement ROI",
                   "Risk \u0026 Action Control Tower"
               ],
-    "visual_containers":  79
+    "visual_containers":  106
 }

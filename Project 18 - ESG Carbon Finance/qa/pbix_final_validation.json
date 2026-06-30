@@ -1,8 +1,8 @@
 {
   "status": "desktop_open_check_passed",
   "pbix_exists": true,
-  "pbix_size_bytes": 4109354,
-  "sha256": "644011EB707D39FD8A9F13B8E4BCE32156E45E943AD3A7F69F4FDE1565A95923",
+  "pbix_size_bytes": 4060108,
+  "sha256": "DDD78E1286BEB961AD744839C2356E8FB7D2AD20F187D68F9083AA6D964D3C0D",
   "build_route": "SCRIPTED_DESKTOP_PBIX",
   "native_package_validation_status": "passed",
   "pages": [
@@ -11,18 +11,69 @@
     "Carbon Scenario & Abatement ROI",
     "Risk & Action Control Tower"
   ],
-  "visual_containers": 79,
+  "visual_containers": 106,
+  "layout_contract_pass": true,
+  "layout_contract_by_page": {
+    "ESG Finance Overview": {
+      "current_lens_in_header_pass": true,
+      "current_lens_large_header_pass": true,
+      "duplicate_current_lens_pass": true,
+      "top_slicer_viewport_pass": true,
+      "top_slicer_full_names_pass": true,
+      "nav_text_clickable_pass": true,
+      "kpi_cards_width_300_pass": true,
+      "kpi_cards_y160_h150_pass": true,
+      "chart_region_y_gte_315_pass": true,
+      "chart_region_y315_pass": true,
+      "bottom_table_or_action_y520_pass": true
+    },
+    "Emissions & Supplier Intensity": {
+      "current_lens_in_header_pass": true,
+      "current_lens_large_header_pass": true,
+      "duplicate_current_lens_pass": true,
+      "top_slicer_viewport_pass": true,
+      "top_slicer_full_names_pass": true,
+      "nav_text_clickable_pass": true,
+      "kpi_cards_width_300_pass": true,
+      "kpi_cards_y160_h150_pass": true,
+      "chart_region_y_gte_315_pass": true,
+      "chart_region_y315_pass": true,
+      "bottom_table_or_action_y520_pass": true
+    },
+    "Carbon Scenario & Abatement ROI": {
+      "current_lens_in_header_pass": true,
+      "current_lens_large_header_pass": true,
+      "duplicate_current_lens_pass": true,
+      "top_slicer_viewport_pass": true,
+      "top_slicer_full_names_pass": true,
+      "nav_text_clickable_pass": true,
+      "kpi_cards_width_300_pass": true,
+      "kpi_cards_y160_h150_pass": true,
+      "chart_region_y_gte_315_pass": true,
+      "chart_region_y315_pass": true,
+      "bottom_table_or_action_y520_pass": true
+    },
+    "Risk & Action Control Tower": {
+      "current_lens_in_header_pass": true,
+      "current_lens_large_header_pass": true,
+      "duplicate_current_lens_pass": true,
+      "top_slicer_viewport_pass": true,
+      "top_slicer_full_names_pass": true,
+      "nav_text_clickable_pass": true,
+      "kpi_cards_width_300_pass": true,
+      "kpi_cards_y160_h150_pass": true,
+      "chart_region_y_gte_315_pass": true,
+      "chart_region_y315_pass": true,
+      "bottom_table_or_action_y520_pass": true
+    }
+  },
   "desktop_open_check": "passed",
-  "desktop_checked_at": "2026-06-23T22:39:42.1630437+07:00",
+  "desktop_checked_at": "2026-06-30T19:02:14+07:00",
   "visual_error_count": 0,
   "screenshots": [
-    "output/screenshots/desktop_page1_overview.png",
-    "output/screenshots/desktop_page2_supplier.png",
-    "output/screenshots/desktop_page3_roi.png",
-    "output/screenshots/desktop_page4_risk.png",
-    "output/screenshots/desktop_qa_contact_sheet.png",
-    "output/screenshots/desktop_page3_roi_canvas_crop.png",
-    "output/screenshots/desktop_page4_risk_canvas_crop.png"
+    "output/screenshots/project18_v39_dynamic_table_cards_full.png",
+    "output/screenshots/project18_v39_dynamic_table_cards_canvas_crop.png",
+    "output/screenshots/project18_v39_dynamic_table_cards_bottom_crop.png"
   ],
   "known_gap": null
 }

@@ -6,14 +6,17 @@
     "Carbon Scenario & Abatement ROI",
     "Risk & Action Control Tower"
   ],
-  "visual_containers": 79,
+  "visual_containers": 106,
   "visual_type_counts": {
-    "textbox": 28,
+    "shape": 24,
+    "textbox": 24,
+    "tableEx": 24,
     "slicer": 20,
-    "cardVisual": 15,
     "lineChart": 1,
-    "barChart": 11,
-    "tableEx": 4
+    "barChart": 13
   },
-  "native_visual_containers": 51
+  "visual_link_count": 32,
+  "kpi_svg_visuals": 16,
+  "current_lens_visuals": 4,
+  "native_visual_containers": 82
 }

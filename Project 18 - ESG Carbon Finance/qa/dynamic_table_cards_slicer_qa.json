@@ -1,0 +1,612 @@
+﻿{
+    "status":  "passed",
+    "checked_at":  "2026-06-30T18:41:04+07:00",
+    "states_tested":  [
+                          {
+                              "state":  "default",
+                              "measures":  {
+                                               "Executive Detail Table SVG":  {
+                                                                                  "sha256":  "F572E2DDF681DEDE4575161C17A8C17ABADD72E07F47D6DDBA0926B9BC7D26A5",
+                                                                                  "length":  6230,
+                                                                                  "sample_text":  [
+                                                                                                      "Executive Detail",
+                                                                                                      "Dynamic carbon finance follow-up priorities",
+                                                                                                      "Top 4",
+                                                                                                      "Business Unit",
+                                                                                                      "Region",
+                                                                                                      "tCO2e",
+                                                                                                      "Cost",
+                                                                                                      "Action",
+                                                                                                      "Manufacturing",
+                                                                                                      "APAC",
+                                                                                                      "264.2K",
+                                                                                                      "$13.2M",
+                                                                                                      "Prioritize",
+                                                                                                      "Logistics",
+                                                                                                      "APAC",
+                                                                                                      "229.0K",
+                                                                                                      "$11.5M",
+                                                                                                      "Prioritize"
+                                                                                                  ]
+                                                                              },
+                                               "Supplier Risk Table SVG":  {
+                                                                               "sha256":  "BC89AF9EA78C692D2C17410612F0CACABCE82AAB831E573D4240D5C3C06A0045",
+                                                                               "length":  6424,
+                                                                               "sample_text":  [
+                                                                                                   "Supplier Risk Table",
+                                                                                                   "Dynamic supplier risk and spend-normalized intensity",
+                                                                                                   "Top 5",
+                                                                                                   "Supplier",
+                                                                                                   "Risk",
+                                                                                                   "Target",
+                                                                                                   "Intensity",
+                                                                                                   "Quantum Parts",
+                                                                                                   "High",
+                                                                                                   "No verified target",
+                                                                                                   "2058",
+                                                                                                   "Nova Textiles",
+                                                                                                   "High",
+                                                                                                   "Renewable PPA",
+                                                                                                   "1926",
+                                                                                                   "GreenPulse Freight",
+                                                                                                   "High",
+                                                                                                   "Supplier target"
+                                                                                               ]
+                                                                           },
+                                               "Abatement Action Queue SVG":  {
+                                                                                  "sha256":  "D3DF2C6DC1B8B730FF5A1C71CAEFB650FB4F9D487D2CF623C434E275E59C98FB",
+                                                                                  "length":  6319,
+                                                                                  "sample_text":  [
+                                                                                                      "Abatement Action Queue",
+                                                                                                      "Dynamic investment case by status, capex and ROI",
+                                                                                                      "Top 4",
+                                                                                                      "Initiative",
+                                                                                                      "Status",
+                                                                                                      "Scope",
+                                                                                                      "Capex",
+                                                                                                      "ROI",
+                                                                                                      "Green travel policy",
+                                                                                                      "Implemented",
+                                                                                                      "Scope 3",
+                                                                                                      "$0.6M",
+                                                                                                      "37.5%",
+                                                                                                      "LED and controls retrofit",
+                                                                                                      "Implemented",
+                                                                                                      "Scope 2",
+                                                                                                      "$1.1M",
+                                                                                                      "32.3%"
+                                                                                                  ]
+                                                                              },
+                                               "Risk Action Queue SVG":  {
+                                                                             "sha256":  "7EB00AB8B19F39A14B48073673AE9B972E277F97B9B277587F5C5664EA80E6D7",
+                                                                             "length":  6375,
+                                                                             "sample_text":  [
+                                                                                                 "Risk Action Queue",
+                                                                                                 "Dynamic supplier follow-up for CFO/ESG review",
+                                                                                                 "Top 5",
+                                                                                                 "Supplier",
+                                                                                                 "Risk",
+                                                                                                 "Target",
+                                                                                                 "Intensity",
+                                                                                                 "Quantum Parts",
+                                                                                                 "High",
+                                                                                                 "No verified target",
+                                                                                                 "2058",
+                                                                                                 "Nova Textiles",
+                                                                                                 "High",
+                                                                                                 "Renewable PPA",
+                                                                                                 "1926",
+                                                                                                 "GreenPulse Freight",
+                                                                                                 "High",
+                                                                                                 "Supplier target"
+                                                                                             ]
+                                                                         }
+                                           }
+                          },
+                          {
+                              "state":  "region_apac",
+                              "measures":  {
+                                               "Executive Detail Table SVG":  {
+                                                                                  "sha256":  "11DD3F96F73AE17D1E809C4723FEAD310AD645D332D5954544C985C702847BCC",
+                                                                                  "length":  3895,
+                                                                                  "sample_text":  [
+                                                                                                      "Executive Detail",
+                                                                                                      "Dynamic carbon finance follow-up priorities",
+                                                                                                      "Top 2",
+                                                                                                      "Business Unit",
+                                                                                                      "Region",
+                                                                                                      "tCO2e",
+                                                                                                      "Cost",
+                                                                                                      "Action",
+                                                                                                      "Manufacturing",
+                                                                                                      "APAC",
+                                                                                                      "264.2K",
+                                                                                                      "$13.2M",
+                                                                                                      "Prioritize",
+                                                                                                      "Logistics",
+                                                                                                      "APAC",
+                                                                                                      "229.0K",
+                                                                                                      "$11.5M",
+                                                                                                      "Prioritize"
+                                                                                                  ]
+                                                                              },
+                                               "Supplier Risk Table SVG":  {
+                                                                               "sha256":  "DFF838B39FC52C8903E0E4383F33596C68EAFD71CE697E19E239FF3BB65B7DBB",
+                                                                               "length":  6424,
+                                                                               "sample_text":  [
+                                                                                                   "Supplier Risk Table",
+                                                                                                   "Dynamic supplier risk and spend-normalized intensity",
+                                                                                                   "Top 5",
+                                                                                                   "Supplier",
+                                                                                                   "Risk",
+                                                                                                   "Target",
+                                                                                                   "Intensity",
+                                                                                                   "Quantum Parts",
+                                                                                                   "High",
+                                                                                                   "No verified target",
+                                                                                                   "2515",
+                                                                                                   "GreenPulse Freight",
+                                                                                                   "High",
+                                                                                                   "Supplier target",
+                                                                                                   "2416",
+                                                                                                   "Nova Textiles",
+                                                                                                   "High",
+                                                                                                   "Renewable PPA"
+                                                                                               ]
+                                                                           },
+                                               "Abatement Action Queue SVG":  {
+                                                                                  "sha256":  "D3DF2C6DC1B8B730FF5A1C71CAEFB650FB4F9D487D2CF623C434E275E59C98FB",
+                                                                                  "length":  6319,
+                                                                                  "sample_text":  [
+                                                                                                      "Abatement Action Queue",
+                                                                                                      "Dynamic investment case by status, capex and ROI",
+                                                                                                      "Top 4",
+                                                                                                      "Initiative",
+                                                                                                      "Status",
+                                                                                                      "Scope",
+                                                                                                      "Capex",
+                                                                                                      "ROI",
+                                                                                                      "Green travel policy",
+                                                                                                      "Implemented",
+                                                                                                      "Scope 3",
+                                                                                                      "$0.6M",
+                                                                                                      "37.5%",
+                                                                                                      "LED and controls retrofit",
+                                                                                                      "Implemented",
+                                                                                                      "Scope 2",
+                                                                                                      "$1.1M",
+                                                                                                      "32.3%"
+                                                                                                  ]
+                                                                              },
+                                               "Risk Action Queue SVG":  {
+                                                                             "sha256":  "7B6EE92FBBBDABF41F6A8544E0942C96810E315C82EDBD254B783D41B5CF9A1B",
+                                                                             "length":  6375,
+                                                                             "sample_text":  [
+                                                                                                 "Risk Action Queue",
+                                                                                                 "Dynamic supplier follow-up for CFO/ESG review",
+                                                                                                 "Top 5",
+                                                                                                 "Supplier",
+                                                                                                 "Risk",
+                                                                                                 "Target",
+                                                                                                 "Intensity",
+                                                                                                 "Quantum Parts",
+                                                                                                 "High",
+                                                                                                 "No verified target",
+                                                                                                 "2515",
+                                                                                                 "GreenPulse Freight",
+                                                                                                 "High",
+                                                                                                 "Supplier target",
+                                                                                                 "2416",
+                                                                                                 "Nova Textiles",
+                                                                                                 "High",
+                                                                                                 "Renewable PPA"
+                                                                                             ]
+                                                                         }
+                                           }
+                          },
+                          {
+                              "state":  "region_emea",
+                              "measures":  {
+                                               "Executive Detail Table SVG":  {
+                                                                                  "sha256":  "A99B3A6BA50D6E925792D08386605DD634FDAA8873452F0A0A1E3940AEF8354B",
+                                                                                  "length":  3887,
+                                                                                  "sample_text":  [
+                                                                                                      "Executive Detail",
+                                                                                                      "Dynamic carbon finance follow-up priorities",
+                                                                                                      "Top 2",
+                                                                                                      "Business Unit",
+                                                                                                      "Region",
+                                                                                                      "tCO2e",
+                                                                                                      "Cost",
+                                                                                                      "Action",
+                                                                                                      "Logistics",
+                                                                                                      "EMEA",
+                                                                                                      "128.4K",
+                                                                                                      "$6.4M",
+                                                                                                      "Prioritize",
+                                                                                                      "Corporate",
+                                                                                                      "EMEA",
+                                                                                                      "13.3K",
+                                                                                                      "$0.7M",
+                                                                                                      "Prioritize"
+                                                                                                  ]
+                                                                              },
+                                               "Supplier Risk Table SVG":  {
+                                                                               "sha256":  "8F9BEDA583EA4EE98B72A73244C7A8C88F7A6534AF70FC3A4A9BD842164F385C",
+                                                                               "length":  6430,
+                                                                               "sample_text":  [
+                                                                                                   "Supplier Risk Table",
+                                                                                                   "Dynamic supplier risk and spend-normalized intensity",
+                                                                                                   "Top 5",
+                                                                                                   "Supplier",
+                                                                                                   "Risk",
+                                                                                                   "Target",
+                                                                                                   "Intensity",
+                                                                                                   "Willow Office Supply",
+                                                                                                   "High",
+                                                                                                   "Renewable PPA",
+                                                                                                   "2136",
+                                                                                                   "Quantum Parts",
+                                                                                                   "High",
+                                                                                                   "No verified target",
+                                                                                                   "1681",
+                                                                                                   "GreenPulse Freight",
+                                                                                                   "High",
+                                                                                                   "Supplier target"
+                                                                                               ]
+                                                                           },
+                                               "Abatement Action Queue SVG":  {
+                                                                                  "sha256":  "D3DF2C6DC1B8B730FF5A1C71CAEFB650FB4F9D487D2CF623C434E275E59C98FB",
+                                                                                  "length":  6319,
+                                                                                  "sample_text":  [
+                                                                                                      "Abatement Action Queue",
+                                                                                                      "Dynamic investment case by status, capex and ROI",
+                                                                                                      "Top 4",
+                                                                                                      "Initiative",
+                                                                                                      "Status",
+                                                                                                      "Scope",
+                                                                                                      "Capex",
+                                                                                                      "ROI",
+                                                                                                      "Green travel policy",
+                                                                                                      "Implemented",
+                                                                                                      "Scope 3",
+                                                                                                      "$0.6M",
+                                                                                                      "37.5%",
+                                                                                                      "LED and controls retrofit",
+                                                                                                      "Implemented",
+                                                                                                      "Scope 2",
+                                                                                                      "$1.1M",
+                                                                                                      "32.3%"
+                                                                                                  ]
+                                                                              },
+                                               "Risk Action Queue SVG":  {
+                                                                             "sha256":  "574ED43754E4CAF7560A6ABC648317DA28CA84BE250A033D4FA7CAFB81857535",
+                                                                             "length":  6382,
+                                                                             "sample_text":  [
+                                                                                                 "Risk Action Queue",
+                                                                                                 "Dynamic supplier follow-up for CFO/ESG review",
+                                                                                                 "Top 5",
+                                                                                                 "Supplier",
+                                                                                                 "Risk",
+                                                                                                 "Target",
+                                                                                                 "Intensity",
+                                                                                                 "Willow Office Supply",
+                                                                                                 "High",
+                                                                                                 "Renewable PPA",
+                                                                                                 "2136",
+                                                                                                 "Quantum Parts",
+                                                                                                 "High",
+                                                                                                 "No verified target",
+                                                                                                 "1681",
+                                                                                                 "GreenPulse Freight",
+                                                                                                 "High",
+                                                                                                 "Supplier target"
+                                                                                             ]
+                                                                         }
+                                           }
+                          },
+                          {
+                              "state":  "scope_3",
+                              "measures":  {
+                                               "Executive Detail Table SVG":  {
+                                                                                  "sha256":  "8A77C63840EE09D708FA26DFEF6B24D35593AE39591E3097348C1E72274043DD",
+                                                                                  "length":  6227,
+                                                                                  "sample_text":  [
+                                                                                                      "Executive Detail",
+                                                                                                      "Dynamic carbon finance follow-up priorities",
+                                                                                                      "Top 4",
+                                                                                                      "Business Unit",
+                                                                                                      "Region",
+                                                                                                      "tCO2e",
+                                                                                                      "Cost",
+                                                                                                      "Action",
+                                                                                                      "Manufacturing",
+                                                                                                      "APAC",
+                                                                                                      "213.7K",
+                                                                                                      "$10.7M",
+                                                                                                      "Prioritize",
+                                                                                                      "Retail Operations",
+                                                                                                      "Americas",
+                                                                                                      "59.4K",
+                                                                                                      "$3.0M",
+                                                                                                      "Prioritize"
+                                                                                                  ]
+                                                                              },
+                                               "Supplier Risk Table SVG":  {
+                                                                               "sha256":  "96FCBCD4777A47F6BAA14B4F10348D936AB09F468D7FD940023DFB055B41F69C",
+                                                                               "length":  6425,
+                                                                               "sample_text":  [
+                                                                                                   "Supplier Risk Table",
+                                                                                                   "Dynamic supplier risk and spend-normalized intensity",
+                                                                                                   "Top 5",
+                                                                                                   "Supplier",
+                                                                                                   "Risk",
+                                                                                                   "Target",
+                                                                                                   "Intensity",
+                                                                                                   "Nova Textiles",
+                                                                                                   "High",
+                                                                                                   "Renewable PPA",
+                                                                                                   "1793",
+                                                                                                   "Quantum Parts",
+                                                                                                   "High",
+                                                                                                   "No verified target",
+                                                                                                   "1690",
+                                                                                                   "BlueRiver Logistics",
+                                                                                                   "High",
+                                                                                                   "No verified target"
+                                                                                               ]
+                                                                           },
+                                               "Abatement Action Queue SVG":  {
+                                                                                  "sha256":  "7DDAA300DF8CEC6BA1C79D4C95372BFBE8DE13B16B1ED3A52DE58DD7BB2788E9",
+                                                                                  "length":  6323,
+                                                                                  "sample_text":  [
+                                                                                                      "Abatement Action Queue",
+                                                                                                      "Dynamic investment case by status, capex and ROI",
+                                                                                                      "Top 4",
+                                                                                                      "Initiative",
+                                                                                                      "Status",
+                                                                                                      "Scope",
+                                                                                                      "Capex",
+                                                                                                      "ROI",
+                                                                                                      "Green travel policy",
+                                                                                                      "Implemented",
+                                                                                                      "Scope 3",
+                                                                                                      "$0.6M",
+                                                                                                      "37.5%",
+                                                                                                      "Packaging lightweighting",
+                                                                                                      "In flight",
+                                                                                                      "Scope 3",
+                                                                                                      "$2.5M",
+                                                                                                      "24.7%"
+                                                                                                  ]
+                                                                              },
+                                               "Risk Action Queue SVG":  {
+                                                                             "sha256":  "FB52B367B871A05FD29580B1B8E1E2B42F5C55E498CCAD2F6E91BA6B97215A3F",
+                                                                             "length":  6376,
+                                                                             "sample_text":  [
+                                                                                                 "Risk Action Queue",
+                                                                                                 "Dynamic supplier follow-up for CFO/ESG review",
+                                                                                                 "Top 5",
+                                                                                                 "Supplier",
+                                                                                                 "Risk",
+                                                                                                 "Target",
+                                                                                                 "Intensity",
+                                                                                                 "Nova Textiles",
+                                                                                                 "High",
+                                                                                                 "Renewable PPA",
+                                                                                                 "1793",
+                                                                                                 "Quantum Parts",
+                                                                                                 "High",
+                                                                                                 "No verified target",
+                                                                                                 "1690",
+                                                                                                 "BlueRiver Logistics",
+                                                                                                 "High",
+                                                                                                 "No verified target"
+                                                                                             ]
+                                                                         }
+                                           }
+                          },
+                          {
+                              "state":  "bu_logistics",
+                              "measures":  {
+                                               "Executive Detail Table SVG":  {
+                                                                                  "sha256":  "DA46DCEF621EA5F2D2D80824DE6B2F981AF67A4A494DFB380C6CA3D6A3EC6CD0",
+                                                                                  "length":  3890,
+                                                                                  "sample_text":  [
+                                                                                                      "Executive Detail",
+                                                                                                      "Dynamic carbon finance follow-up priorities",
+                                                                                                      "Top 2",
+                                                                                                      "Business Unit",
+                                                                                                      "Region",
+                                                                                                      "tCO2e",
+                                                                                                      "Cost",
+                                                                                                      "Action",
+                                                                                                      "Logistics",
+                                                                                                      "APAC",
+                                                                                                      "229.0K",
+                                                                                                      "$11.5M",
+                                                                                                      "Prioritize",
+                                                                                                      "Logistics",
+                                                                                                      "EMEA",
+                                                                                                      "128.4K",
+                                                                                                      "$6.4M",
+                                                                                                      "Prioritize"
+                                                                                                  ]
+                                                                              },
+                                               "Supplier Risk Table SVG":  {
+                                                                               "sha256":  "920CEDED1F51C1FA9D4CB75975A67BD8348BE9530B6AC72A75CF18D28D14F4EE",
+                                                                               "length":  6424,
+                                                                               "sample_text":  [
+                                                                                                   "Supplier Risk Table",
+                                                                                                   "Dynamic supplier risk and spend-normalized intensity",
+                                                                                                   "Top 5",
+                                                                                                   "Supplier",
+                                                                                                   "Risk",
+                                                                                                   "Target",
+                                                                                                   "Intensity",
+                                                                                                   "Quantum Parts",
+                                                                                                   "High",
+                                                                                                   "No verified target",
+                                                                                                   "1670",
+                                                                                                   "Nova Textiles",
+                                                                                                   "High",
+                                                                                                   "Renewable PPA",
+                                                                                                   "1479",
+                                                                                                   "Pacific Cold Chain",
+                                                                                                   "High",
+                                                                                                   "Renewable PPA"
+                                                                                               ]
+                                                                           },
+                                               "Abatement Action Queue SVG":  {
+                                                                                  "sha256":  "1E6F468849F3163F328A15F37EC793CC529E6810AF18F2337DC72CF0CAF33D8D",
+                                                                                  "length":  3942,
+                                                                                  "sample_text":  [
+                                                                                                      "Abatement Action Queue",
+                                                                                                      "Dynamic investment case by status, capex and ROI",
+                                                                                                      "Top 2",
+                                                                                                      "Initiative",
+                                                                                                      "Status",
+                                                                                                      "Scope",
+                                                                                                      "Capex",
+                                                                                                      "ROI",
+                                                                                                      "Modal shift to rail",
+                                                                                                      "Planned",
+                                                                                                      "Scope 3",
+                                                                                                      "$2.2M",
+                                                                                                      "19.1%",
+                                                                                                      "Fleet electrification phase 1",
+                                                                                                      "Planned",
+                                                                                                      "Scope 1",
+                                                                                                      "$7.6M",
+                                                                                                      "16.1%"
+                                                                                                  ]
+                                                                              },
+                                               "Risk Action Queue SVG":  {
+                                                                             "sha256":  "AC7E12B2B01593C06FB5284E5C9B9C059C21CC78D5256C06FDC7E7160611CF9C",
+                                                                             "length":  6375,
+                                                                             "sample_text":  [
+                                                                                                 "Risk Action Queue",
+                                                                                                 "Dynamic supplier follow-up for CFO/ESG review",
+                                                                                                 "Top 5",
+                                                                                                 "Supplier",
+                                                                                                 "Risk",
+                                                                                                 "Target",
+                                                                                                 "Intensity",
+                                                                                                 "Quantum Parts",
+                                                                                                 "High",
+                                                                                                 "No verified target",
+                                                                                                 "1670",
+                                                                                                 "Nova Textiles",
+                                                                                                 "High",
+                                                                                                 "Renewable PPA",
+                                                                                                 "1479",
+                                                                                                 "Pacific Cold Chain",
+                                                                                                 "High",
+                                                                                                 "Renewable PPA"
+                                                                                             ]
+                                                                         }
+                                           }
+                          },
+                          {
+                              "state":  "stress_price",
+                              "measures":  {
+                                               "Executive Detail Table SVG":  {
+                                                                                  "sha256":  "A710A6185B78C2575AF2CAC110E61F05CC61A3917C7001E471C43776490B68BE",
+                                                                                  "length":  6232,
+                                                                                  "sample_text":  [
+                                                                                                      "Executive Detail",
+                                                                                                      "Dynamic carbon finance follow-up priorities",
+                                                                                                      "Top 4",
+                                                                                                      "Business Unit",
+                                                                                                      "Region",
+                                                                                                      "tCO2e",
+                                                                                                      "Cost",
+                                                                                                      "Action",
+                                                                                                      "Manufacturing",
+                                                                                                      "APAC",
+                                                                                                      "264.2K",
+                                                                                                      "$37.0M",
+                                                                                                      "Prioritize",
+                                                                                                      "Logistics",
+                                                                                                      "APAC",
+                                                                                                      "229.0K",
+                                                                                                      "$32.1M",
+                                                                                                      "Prioritize"
+                                                                                                  ]
+                                                                              },
+                                               "Supplier Risk Table SVG":  {
+                                                                               "sha256":  "BC89AF9EA78C692D2C17410612F0CACABCE82AAB831E573D4240D5C3C06A0045",
+                                                                               "length":  6424,
+                                                                               "sample_text":  [
+                                                                                                   "Supplier Risk Table",
+                                                                                                   "Dynamic supplier risk and spend-normalized intensity",
+                                                                                                   "Top 5",
+                                                                                                   "Supplier",
+                                                                                                   "Risk",
+                                                                                                   "Target",
+                                                                                                   "Intensity",
+                                                                                                   "Quantum Parts",
+                                                                                                   "High",
+                                                                                                   "No verified target",
+                                                                                                   "2058",
+                                                                                                   "Nova Textiles",
+                                                                                                   "High",
+                                                                                                   "Renewable PPA",
+                                                                                                   "1926",
+                                                                                                   "GreenPulse Freight",
+                                                                                                   "High",
+                                                                                                   "Supplier target"
+                                                                                               ]
+                                                                           },
+                                               "Abatement Action Queue SVG":  {
+                                                                                  "sha256":  "8A58C214440AC99C9ACF0C37ADE3BE60237887A748AD717C6D3BBD82A442590D",
+                                                                                  "length":  6321,
+                                                                                  "sample_text":  [
+                                                                                                      "Abatement Action Queue",
+                                                                                                      "Dynamic investment case by status, capex and ROI",
+                                                                                                      "Top 4",
+                                                                                                      "Initiative",
+                                                                                                      "Status",
+                                                                                                      "Scope",
+                                                                                                      "Capex",
+                                                                                                      "ROI",
+                                                                                                      "Green travel policy",
+                                                                                                      "Implemented",
+                                                                                                      "Scope 3",
+                                                                                                      "$0.6M",
+                                                                                                      "54.2%",
+                                                                                                      "LED and controls retrofit",
+                                                                                                      "Implemented",
+                                                                                                      "Scope 2",
+                                                                                                      "$1.1M",
+                                                                                                      "52.7%"
+                                                                                                  ]
+                                                                              },
+                                               "Risk Action Queue SVG":  {
+                                                                             "sha256":  "7EB00AB8B19F39A14B48073673AE9B972E277F97B9B277587F5C5664EA80E6D7",
+                                                                             "length":  6375,
+                                                                             "sample_text":  [
+                                                                                                 "Risk Action Queue",
+                                                                                                 "Dynamic supplier follow-up for CFO/ESG review",
+                                                                                                 "Top 5",
+                                                                                                 "Supplier",
+                                                                                                 "Risk",
+                                                                                                 "Target",
+                                                                                                 "Intensity",
+                                                                                                 "Quantum Parts",
+                                                                                                 "High",
+                                                                                                 "No verified target",
+                                                                                                 "2058",
+                                                                                                 "Nova Textiles",
+                                                                                                 "High",
+                                                                                                 "Renewable PPA",
+                                                                                                 "1926",
+                                                                                                 "GreenPulse Freight",
+                                                                                                 "High",
+                                                                                                 "Supplier target"
+                                                                                             ]
+                                                                         }
+                                           }
+                          }
+                      ]
+}

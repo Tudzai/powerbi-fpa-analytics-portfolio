@@ -1,31 +1,30 @@
 {
   "status": "passed",
-  "checked_at": "2026-06-23T22:39:42.1630437+07:00",
-  "pbix_path": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 18 - ESG Carbon Finance\\output\\dashboard_final.pbix",
-  "pbix_sha256": "644011EB707D39FD8A9F13B8E4BCE32156E45E943AD3A7F69F4FDE1565A95923",
-  "power_bi_process_id": 40044,
-  "power_bi_window_title": "dashboard_final",
-  "pages_checked": [
-    "ESG Finance Overview",
-    "Emissions & Supplier Intensity",
-    "Carbon Scenario & Abatement ROI",
-    "Risk & Action Control Tower"
-  ],
-  "screenshots": [
-    "output/screenshots/desktop_page1_overview.png",
-    "output/screenshots/desktop_page2_supplier.png",
-    "output/screenshots/desktop_page3_roi.png",
-    "output/screenshots/desktop_page4_risk.png",
-    "output/screenshots/desktop_qa_contact_sheet.png",
-    "output/screenshots/desktop_page3_roi_canvas_crop.png",
-    "output/screenshots/desktop_page4_risk_canvas_crop.png"
-  ],
+  "checked_at": "2026-06-30T19:02:14+07:00",
+  "pbix": "output\\dashboard_final.pbix",
+  "pbix_sha256": "DDD78E1286BEB961AD744839C2356E8FB7D2AD20F187D68F9083AA6D964D3C0D",
   "visual_error_count": 0,
-  "ui_automation_error_text_hits": [],
+  "screenshots": [
+    "output/screenshots/project18_v39_dynamic_table_cards_full.png",
+    "output/screenshots/project18_v39_dynamic_table_cards_canvas_crop.png",
+    "output/screenshots/project18_v39_dynamic_table_cards_bottom_crop.png"
+  ],
+  "slicer_combinations_tested": [
+    "default_all_years_all_regions_all_bu_all_scopes_all_prices",
+    "region_apac",
+    "region_emea",
+    "scope_3",
+    "bu_logistics",
+    "stress_price"
+  ],
   "notes": [
-    "Power BI Desktop opened the final PBIX successfully.",
-    "All four report pages were selected by UI Automation and captured with PrintWindow.",
-    "Common Power BI visual error strings returned zero hits on all four pages.",
-    "Manual screenshot review confirmed slicer labels remain visible and no visual error cards are present."
+    "Power BI Desktop saved dashboard_final.pbix after the v39 dynamic table-card model update.",
+    "Executive Detail, Supplier Risk, Abatement Action Queue, and Risk Action Queue are dynamic SVG-backed TableEx cards, not static Python snapshot rows.",
+    "Dynamic DAX QA confirmed table-card SVG hashes change under Region, Scope, Business Unit, and Carbon price slicer states.",
+    "Table cards use header badges, rounded row surfaces, status pills, and numeric microbars for tCO2e/cost/intensity/ROI.",
+    "DWM full-screen screenshot was captured at 200% DPI scale so the full report canvas and bottom table/action row are visible.",
+    "No internal scrollbar is visible in the table card crop.",
+    "Current Lens still shows All BU | All Scopes | All Prices without overlap.",
+    "Slicer labels remain visible above their dropdowns and the 4 KPI cards remain intact."
   ]
 }

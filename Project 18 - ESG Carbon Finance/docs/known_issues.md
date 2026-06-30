@@ -1,3 +1,3 @@
-No open issues after the 2026-06-23 Desktop QA pass.
+No open issues after the 2026-06-30 v39 dynamic table-card QA pass.
 
-Validation evidence is stored in `qa/desktop_open_check.json`, `qa/pbix_final_validation.json`, and `output/screenshots/desktop_qa_contact_sheet.png`.
+Validation evidence is stored in `qa/desktop_open_check.json`, `qa/pbix_final_validation.json`, `qa/dynamic_table_cards_slicer_qa.json`, and `output/screenshots/project18_v39_dynamic_table_cards_full.png`.

@@ -11,7 +11,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File build/scripts/03_apply_nativ
 Then open Power BI Desktop and import the prepared CSVs from:
 
 ```text
-C:\Users\Win\OneDrive\Codex\Portfolio\BI\Project 18 - ESG Carbon Finance\data\prepared
+data\prepared
 ```
 
 The scripted route regenerates data/docs, model/layout source, then patches the native layout into `output/dashboard_final.pbix`. If building manually, create relationships according to `model/relationship_map.md`, add measures from `model/MEASURES.dax`, apply `build/config/theme.json`, and build the four pages in `report/report_spec.md`.
