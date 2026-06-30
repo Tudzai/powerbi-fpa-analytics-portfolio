@@ -1,28 +1,24 @@
-﻿{
-    "status":  "build_package_created",
-    "generated_at":  "2026-06-23T21:30:14",
-    "main_expected_artifact":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix",
-    "supplemental_html":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.html",
-    "validation":  "pass",
-    "row_counts":  {
-                       "dim_date":  17,
-                       "dim_customer":  18,
-                       "dim_trade_lane":  12,
-                       "dim_service":  5,
-                       "dim_office":  6,
-                       "dim_carrier":  6,
-                       "fact_shipment_profitability":  2618,
-                       "fact_cost_driver_bridge":  10843,
-                       "fact_action_queue":  84
-                   },
-    "pages":  [
-                  "Executive Overview",
-                  "Trade Lane Margin",
-                  "Cost Drivers \u0026 Action Queue"
-              ],
-    "visual_count":  92,
-    "final_pbix_bytes":  770575,
-    "package_validation":  "PowerBIPackager.Validate passed for output and final PBIX after final slicer-polish patch.",
-    "project20_style_patch_validation":  "Direct final PBIX /Report/Layout inspection confirmed 3 Current Lens textboxes, 3 Decision Chip textboxes, 18 KPI sparkline visuals, 9 top-row slicers at height 56, and 0 slicer container titles.",
-    "field_reference_validation":  "112 prototype refs checked against model/model.bim; 0 missing refs."
+{
+  "status": "build_package_created",
+  "generated_at": "2026-06-30T18:45:17",
+  "main_expected_artifact": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix",
+  "supplemental_html": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.html",
+  "validation": "pass",
+  "row_counts": {
+    "dim_date": 17,
+    "dim_customer": 18,
+    "dim_trade_lane": 12,
+    "dim_service": 5,
+    "dim_office": 6,
+    "dim_carrier": 6,
+    "fact_shipment_profitability": 2475,
+    "fact_cost_driver_bridge": 10241,
+    "fact_action_queue": 108
+  },
+  "pages": [
+    "Executive Overview",
+    "Trade Lane Margin",
+    "Cost Drivers & Action Queue"
+  ],
+  "visual_count": 102
 }

@@ -3,11 +3,13 @@
   "audience": "Commercial FP&A, country heads, pricing, procurement, and operations leadership",
   "business_goal": "Identify margin-destructive lanes/customers and prioritize repricing or cost-to-serve actions.",
   "slicer_placement": "Top filter row above the KPI strip on every report page.",
-  "project20_style_upgrades": [
-    "Current Lens",
-    "Decision Chip",
-    "top slicer row with extra dropdown clearance",
-    "KPI sparklines"
+  "visual_polish_upgrades": [
+    "larger TableEx SVG KPI cards with sparklines",
+    "inner TableEx SVG shader border",
+    "compact TableEx SVG Current Lens panels",
+    "compact TableEx SVG decision panels",
+    "restored compact page navigation",
+    "top slicer row with extra dropdown clearance"
   ],
   "page_count": 3,
   "final_pbix": "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix"

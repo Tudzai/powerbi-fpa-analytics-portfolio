@@ -1,27 +1,27 @@
 ﻿{
-    "generated_at":  "2026-06-23 21:30:52",
+    "generated_at":  "2026-06-30 18:46:07",
     "project_root":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability",
     "source_model_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_model_seed.pbix",
     "layout_json":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\build\\native_report_layout_project17.json",
-    "output_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_v01.pbix",
+    "output_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_visual_polish_repack.pbix",
     "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix",
-    "final_pbix_bytes":  770575,
+    "final_pbix_bytes":  745105,
     "pages":  [
                   "Executive Overview",
                   "Trade Lane Margin",
                   "Cost Drivers \u0026 Action Queue"
               ],
-    "visual_containers":  92,
+    "visual_containers":  102,
     "visual_type_counts":  {
-                               "tableEx":  5,
-                               "barChart":  3,
-                               "shape":  12,
+                               "tableEx":  18,
+                               "barChart":  2,
+                               "shape":  39,
                                "waterfallChart":  2,
-                               "textbox":  21,
+                               "textbox":  12,
                                "donutChart":  2,
                                "slicer":  9,
-                               "cardVisual":  18,
-                               "columnChart":  20
+                               "actionButton":  9,
+                               "columnChart":  9
                            },
     "validation":  "PowerBIPackager.Validate passed for output and final PBIX",
     "security_bindings_removed":  true

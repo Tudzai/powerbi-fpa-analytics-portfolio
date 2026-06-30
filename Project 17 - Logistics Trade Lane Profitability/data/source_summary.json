@@ -9,9 +9,9 @@
     "dim_service": 5,
     "dim_office": 6,
     "dim_carrier": 6,
-    "fact_shipment_profitability": 2618,
-    "fact_cost_driver_bridge": 10843,
-    "fact_action_queue": 84
+    "fact_shipment_profitability": 2475,
+    "fact_cost_driver_bridge": 10241,
+    "fact_action_queue": 108
   },
   "business_context": "Logistics trade lane profitability by customer, lane, service, office, carrier, and cost driver."
 }

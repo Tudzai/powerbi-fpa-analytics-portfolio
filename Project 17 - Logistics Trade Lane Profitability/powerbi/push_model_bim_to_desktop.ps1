@@ -75,6 +75,10 @@ $session = Get-PowerBiSessionForPbix $TargetPbix
 $server = New-Object Microsoft.AnalysisServices.Tabular.Server
 $server.Connect("localhost:$($session.Port)")
 $database = $server.Databases[0]
+if ($database.CompatibilityLevel -lt 1550) {
+  $database.CompatibilityLevel = 1550
+  $database.Update([Microsoft.AnalysisServices.UpdateOptions]::ExpandFull)
+}
 $model = $database.Model
 $model.Relationships.Clear()
 $model.Tables.Clear()
@@ -111,6 +115,9 @@ foreach ($tableDef in $modelDefinition.model.tables) {
       $measure.Expression = [string]($measureDef.expression)
       if ($measureDef.formatString) { $measure.FormatString = [string]$measureDef.formatString }
       if ($measureDef.description) { $measure.Description = [string]$measureDef.description }
+      if ($measureDef.dataCategory) {
+        try { $measure.DataCategory = [string]$measureDef.dataCategory } catch {}
+      }
       $table.Measures.Add($measure)
     }
   }

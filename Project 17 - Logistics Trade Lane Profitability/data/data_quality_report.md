@@ -7,6 +7,6 @@ Status: **pass**
 | Shipment profitability grain uniqueness | pass | 0 duplicate composite keys |
 | Critical fields populated | pass | 0 bad rows |
 | Date coverage | pass | 2025-01 to 2026-05 |
-| Negative margin population exists | pass | 1119 records below zero gross profit |
-| Cost driver bridge tie-out | pass | Max driver gap $0.03 |
-| Action queue risk value | pass | $1,299,254 in action risk |
+| Negative margin population exists | pass | 1504 records below zero gross profit |
+| Cost driver bridge tie-out | pass | Max driver gap $0.02 |
+| Action queue risk value | pass | $3,956,541 in action risk |

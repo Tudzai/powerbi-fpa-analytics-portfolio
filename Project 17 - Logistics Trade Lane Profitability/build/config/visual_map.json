@@ -1,31 +1,32 @@
 {
   "Executive Overview": [
-    "Current Lens",
-    "Decision Chip",
-    "6 KPI cards with sparklines",
+    "Native Current Lens cards",
+    "dynamic decision text",
+    "4 TableEx SVG KPI cards with sparklines",
     "Revenue/GP trend",
     "GP by lane cluster",
     "service mix donut",
-    "customer-lane watchlist",
-    "lane gap table"
+    "reprice by customer",
+    "margin gap by lane cluster"
   ],
   "Trade Lane Margin": [
-    "Current Lens",
-    "Decision Chip",
-    "6 KPI cards with sparklines",
-    "GP margin by lane",
+    "Native Current Lens cards",
+    "dynamic decision text",
+    "4 TableEx SVG KPI cards with sparklines",
+    "GP margin by lane cluster",
     "mode revenue/GP bars",
     "margin gap waterfall",
-    "lane-customer detail",
-    "service/carrier cost table"
+    "negative margin by customer",
+    "cost-to-serve by carrier"
   ],
   "Cost Drivers & Action Queue": [
-    "Current Lens",
-    "Decision Chip",
-    "6 KPI cards with sparklines",
+    "Native Current Lens cards",
+    "dynamic decision text",
+    "4 TableEx SVG KPI cards with sparklines",
     "cost driver waterfall",
     "cost by carrier",
     "risk by issue type donut",
-    "pricing/action queue"
+    "action risk by owner",
+    "recovery by issue type"
   ]
 }

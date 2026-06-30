@@ -1,55 +1,7 @@
-﻿{
-    "status":  "pass_file_level_desktop_render_not_rerun_after_latest_patch",
-    "generated_at":  "2026-06-23T21:44:41+07:00",
-    "final_output":  "output/dashboard_final.pbix",
-    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix",
-    "final_pbix_bytes":  770575,
-    "package_validation":  "PowerBIPackager.Validate passed via apply_native_layout_to_pbix.ps1",
-    "embedded_layout_matches_build_json":  true,
-    "embedded_layout_sha256":  "d0fb927fabed6c30138e18547ca9def2641c1fa9807f673017152b0e8c618c13",
-    "pages":  [
-                  "Executive Overview",
-                  "Trade Lane Margin",
-                  "Cost Drivers \u0026 Action Queue"
-              ],
-    "visual_containers":  92,
-    "visual_type_counts":  {
-                               "shape":  12,
-                               "textbox":  21,
-                               "slicer":  9,
-                               "cardVisual":  18,
-                               "columnChart":  20,
-                               "barChart":  3,
-                               "donutChart":  2,
-                               "tableEx":  5,
-                               "waterfallChart":  2
-                           },
-    "slicer_layout":  {
-                          "row_y":  82,
-                          "height":  56,
-                          "container_title_count":  0,
-                          "note":  "Slicers use slicer header only; visual container title is hidden to avoid duplicate labels and text clipping."
-                      },
-    "project20_style_patch":  {
-                                  "current_lens_count":  3,
-                                  "decision_chip_count":  3,
-                                  "kpi_sparkline_count":  18,
-                                  "sparkline_y":  206,
-                                  "sparkline_height":  18,
-                                  "current_lens_mode":  "static textbox callout",
-                                  "decision_chip_mode":  "static textbox callout"
-                              },
-    "field_reference_validation":  {
-                                       "prototype_refs_checked":  112,
-                                       "missing_ref_count":  0,
-                                       "model_tables":  10,
-                                       "model_columns":  85,
-                                       "model_measures":  25
-                                   },
-    "desktop_open_check":  {
-                               "earlier_final_build_opened_exact_file":  true,
-                               "latest_patch_render_recheck_note":  "Computer Use approval timed out while attempting live Power BI Desktop render check after the final slicer-polish patch. Package validation and direct embedded Report/Layout inspection passed.",
-                               "latest_patch_render_recheck":  false,
-                               "note":  "Live Desktop recheck after the latest slicer-polish patch was attempted with Computer Use and pbi-tools. Power BI Desktop exposed open windows named dashboard_model_seed and dashboard_final, but pbi-tools info showed the open dashboard_final session belonged to Project 18 and the seed session was not Project 17 final. No final-file Project 17 Desktop screenshot was accepted as evidence."
-                           }
+{
+  "status": "fail_pending_desktop_verification",
+  "opened_exact_file": false,
+  "desktop_reopened": false,
+  "visual_error_count": null,
+  "reason": "Project 18 fix prompt requires final PBIX Desktop open/save/reopen evidence before pass."
 }

@@ -19,17 +19,17 @@
     {
       "check": "Negative margin population exists",
       "status": "pass",
-      "detail": "1119 records below zero gross profit"
+      "detail": "1504 records below zero gross profit"
     },
     {
       "check": "Cost driver bridge tie-out",
       "status": "pass",
-      "detail": "Max driver gap $0.03"
+      "detail": "Max driver gap $0.02"
     },
     {
       "check": "Action queue risk value",
       "status": "pass",
-      "detail": "$1,299,254 in action risk"
+      "detail": "$3,956,541 in action risk"
     }
   ],
   "row_counts": {
@@ -39,9 +39,9 @@
     "dim_service": 5,
     "dim_office": 6,
     "dim_carrier": 6,
-    "fact_shipment_profitability": 2618,
-    "fact_cost_driver_bridge": 10843,
-    "fact_action_queue": 84
+    "fact_shipment_profitability": 2475,
+    "fact_cost_driver_bridge": 10241,
+    "fact_action_queue": 108
   },
   "latest_complete_period": "2026-05"
 }

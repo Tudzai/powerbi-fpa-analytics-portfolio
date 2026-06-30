@@ -1,30 +1,27 @@
-﻿{
-    "status":  "pass_file_level_desktop_render_not_rerun_after_latest_patch",
-    "final_output":  "output/dashboard_final.pbix",
-    "final_pbix":  "C:\\Users\\Win\\OneDrive\\Codex\\Portfolio\\BI\\Project 17 - Logistics Trade Lane Profitability\\output\\dashboard_final.pbix",
-    "route":  "SCRIPTED_DESKTOP_PBIX + native layout patch",
-    "generated_at":  "2026-06-23T21:45:56+07:00",
-    "package_validation":  "PowerBIPackager.Validate passed",
-    "embedded_layout_validation":  {
-                                       "matches_build_json":  true,
-                                       "sha256":  "d0fb927fabed6c30138e18547ca9def2641c1fa9807f673017152b0e8c618c13",
-                                       "visual_containers":  92
-                                   },
-    "project20_style_validation":  {
-                                       "slicers":  9,
-                                       "slicer_height":  56,
-                                       "slicer_container_title_count":  0,
-                                       "current_lens":  3,
-                                       "decision_chip":  3,
-                                       "kpi_sparklines":  18
-                                   },
-    "field_reference_validation":  {
-                                       "field_refs_checked":  112,
-                                       "missing_ref_count":  0
-                                   },
-    "desktop_open_check":  {
-                               "earlier_final_build_opened_exact_file":  true,
-                               "latest_patch_render_recheck":  false,
-                               "note":  "Live Desktop recheck after the latest slicer-polish patch was attempted with Computer Use and pbi-tools. Power BI Desktop exposed open windows named dashboard_model_seed and dashboard_final, but pbi-tools info showed the open dashboard_final session belonged to Project 18 and the seed session was not Project 17 final. No final-file Project 17 Desktop screenshot was accepted as evidence."
-                           }
+{
+  "status": "pending",
+  "final_output": "output/dashboard_final.pbix",
+  "route": "SCRIPTED_DESKTOP_PBIX",
+  "environment": {
+    "checked_at": "2026-06-30T18:45:17",
+    "power_bi_desktop_exe": "C:\\Program Files\\Microsoft Power BI Desktop\\bin\\PBIDesktop.exe",
+    "power_bi_desktop_program_files": true,
+    "power_bi_start_apps": [
+      {
+        "Name": "Power BI Desktop",
+        "AppID": "{6D809377-6AF0-444B-8957-A3773F02200E}\\Microsoft Power BI Desktop\\bin\\PBIDesktop.exe"
+      },
+      {
+        "Name": "Power BI Desktop",
+        "AppID": "Microsoft.MicrosoftPowerBIDesktop_8wekyb3d8bbwe!Microsoft.MicrosoftPowerBIDesktop"
+      }
+    ],
+    "pbi_tools": "C:\\Users\\Win\\AppData\\Local\\Programs\\pbi-tools\\current\\pbi-tools.exe",
+    "pbi_tools_info_excerpt": "pbi-tools | Copyright (C) Mathias Thierbach 2018-2025\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Affero General Public License as published\nby the Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\nSee <https://goto.pbi.tools/license> for full license details.\n\n\nAn unhandled exception occurred.\nSystem.InvalidOperationException: Cannot process request because the process (21204) has exited.\n   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)\n   at System.Diagnostics.NtProcessManager.GetModuleInfos(Int32 processId, Boolean firstModuleOnly)\n   at System.Diagnostics.NtProcessManager.GetFirstModuleInfo(Int32 processId)\n   at System.Diagnostics.Process.get_MainModule()\n   at PbiTools.Win32.ProcessExtensions.GetCommandLine(Process process) in X:\\pbi-tools\\BRANCHES\\1.2\\src\\PBI-Tools\\Win32\\ProcessExtensions.cs:line 81\n   at PbiTools.Utils.PowerBIProcesses.<EnumerateProcesses>d__1.MoveNext() in X:\\pbi-tools\\BRANCHES\\1.2\\src\\PBI-Tools\\Utils\\PowerBIProcesses.cs:line 44\n   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)\n   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)\n   at PbiTools.Cli.CmdLineActions.Info(Boolean checkDownloadVersion) in X:\\pbi-tools\\BRANCHES\\1.2\\src\\PBI-Tools\\Cli\\Info.cs:line 48\n--- End of stack trace from previous location where exception was thrown ---\n   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\n   at PowerArgs.ArgAction.Invoke()\n   at PbiTools.Program.Main(String[] args) in X:\\pbi-tools\\BRANCHES\\1.2\\src\\PBI-Tools\\Program.cs:line 139",
+    "dotnet": null,
+    "computer_use": {
+      "status": "pass",
+      "evidence": "Computer Use bootstrap and app listing succeeded in this run; Power BI Desktop was discoverable with existing dashboard_final windows."
+    }
+  }
 }

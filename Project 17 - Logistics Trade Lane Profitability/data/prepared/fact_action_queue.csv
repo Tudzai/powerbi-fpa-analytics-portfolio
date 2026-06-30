@@ -1,85 +1,109 @@
 action_id,date_id,customer_id,lane_id,office_id,issue_type,priority,status,owner,risk_value_usd,target_margin_recovery_usd,recommended_action,due_date,is_synthetic
-ACT001,2026-02,C001,L005,O002,Claims spike,Medium,In Review,Commercial,44850.78,34848.71,Review packaging and carrier claims recovery,2026-03-19,TRUE
-ACT002,2026-05,C009,L011,O001,Low utilization,High,Open,Commercial,26355.48,15502.98,Consolidate departures or shift to LCL/road alternative,2026-05-28,TRUE
-ACT003,2026-05,C013,L012,O001,Carrier rate gap,High,In Review,Customer Success,28584.66,19024.66,Tender backup carrier and re-benchmark lane,2026-05-29,TRUE
-ACT004,2026-04,C005,L005,O002,Claims spike,Medium,Closed,Commercial,33589.05,20759.07,Review packaging and carrier claims recovery,2026-05-20,TRUE
-ACT005,2026-02,C002,L011,O001,Claims spike,Low,Open,Operations,31699.92,19758.66,Review packaging and carrier claims recovery,2026-03-04,TRUE
-ACT006,2026-02,C010,L005,O002,Below target margin,Medium,Action Agreed,Finance BP,33953.99,19685.22,Reprice customer or reset minimum yield,2026-03-27,TRUE
-ACT007,2026-03,C002,L008,O006,Claims spike,High,Open,Commercial,21846.43,11893.73,Review packaging and carrier claims recovery,2026-04-16,TRUE
-ACT008,2026-01,C010,L009,O004,Below target margin,Medium,Open,Finance BP,20010.11,12551.92,Reprice customer or reset minimum yield,2026-02-09,TRUE
-ACT009,2026-05,C003,L005,O001,Demurrage exposure,High,Open,Finance BP,28106.31,19510.41,Renegotiate free time and tighten document cutoff,2026-06-10,TRUE
-ACT010,2026-03,C010,L011,O001,Below target margin,High,Open,Commercial,17013.99,8357.74,Reprice customer or reset minimum yield,2026-04-22,TRUE
-ACT011,2026-05,C007,L011,O001,Claims spike,High,In Review,Commercial,16983.61,9757.08,Review packaging and carrier claims recovery,2026-06-03,TRUE
-ACT012,2026-02,C002,L012,O001,Claims spike,High,In Review,Finance BP,19021.16,10125.66,Review packaging and carrier claims recovery,2026-03-08,TRUE
-ACT013,2026-04,C013,L009,O004,Low utilization,Medium,Open,Procurement,24560.24,17021.79,Consolidate departures or shift to LCL/road alternative,2026-04-26,TRUE
-ACT014,2026-05,C002,L004,O005,Carrier rate gap,Medium,Open,Customer Success,19526.01,9344.51,Tender backup carrier and re-benchmark lane,2026-06-05,TRUE
-ACT015,2026-04,C001,L009,O004,Demurrage exposure,Low,Action Agreed,Procurement,19950.57,15214.85,Renegotiate free time and tighten document cutoff,2026-05-07,TRUE
-ACT016,2026-02,C013,L005,O002,Claims spike,Medium,Action Agreed,Customer Success,15267.94,10522.15,Review packaging and carrier claims recovery,2026-02-26,TRUE
-ACT017,2026-05,C001,L005,O001,Low utilization,Medium,Open,Finance BP,19331.29,11171.93,Consolidate departures or shift to LCL/road alternative,2026-06-12,TRUE
-ACT018,2026-05,C002,L001,O001,Fuel leakage,High,Closed,Commercial,16136.34,12082.7,Update surcharge table and audit pass-through,2026-06-24,TRUE
-ACT019,2026-03,C002,L009,O004,Claims spike,Low,In Review,Finance BP,21090.86,13792.21,Review packaging and carrier claims recovery,2026-04-10,TRUE
-ACT020,2026-03,C010,L005,O001,Fuel leakage,Medium,Open,Finance BP,18961.04,13710.83,Update surcharge table and audit pass-through,2026-03-26,TRUE
-ACT021,2026-03,C001,L009,O004,Below target margin,Medium,In Review,Procurement,13387.02,7051.84,Reprice customer or reset minimum yield,2026-03-24,TRUE
-ACT022,2026-04,C003,L004,O005,Claims spike,Low,Open,Commercial,20123.71,9347.55,Review packaging and carrier claims recovery,2026-04-26,TRUE
-ACT023,2026-04,C013,L012,O001,Fuel leakage,Medium,Closed,Customer Success,12638.0,9308.33,Update surcharge table and audit pass-through,2026-05-17,TRUE
-ACT024,2026-01,C014,L005,O003,Below target margin,Medium,Closed,Customer Success,18215.93,11475.41,Reprice customer or reset minimum yield,2026-01-22,TRUE
-ACT025,2026-03,C001,L009,O004,Below target margin,High,Open,Customer Success,12409.45,6947.6,Reprice customer or reset minimum yield,2026-04-23,TRUE
-ACT026,2026-03,C001,L007,O001,Carrier rate gap,Medium,Open,Customer Success,16560.63,7802.18,Tender backup carrier and re-benchmark lane,2026-04-19,TRUE
-ACT027,2026-04,C013,L009,O004,Carrier rate gap,Medium,Open,Operations,16518.31,11938.65,Tender backup carrier and re-benchmark lane,2026-05-01,TRUE
-ACT028,2026-03,C002,L001,O001,Claims spike,High,Open,Customer Success,10509.97,7896.03,Review packaging and carrier claims recovery,2026-04-01,TRUE
-ACT029,2026-05,C005,L005,O001,Below target margin,Medium,Action Agreed,Customer Success,16784.86,12331.76,Reprice customer or reset minimum yield,2026-06-10,TRUE
-ACT030,2026-05,C002,L012,O001,Demurrage exposure,High,In Review,Commercial,19017.56,13903.58,Renegotiate free time and tighten document cutoff,2026-06-23,TRUE
-ACT031,2026-01,C001,L004,O005,Low utilization,Low,Closed,Finance BP,17767.16,13044.86,Consolidate departures or shift to LCL/road alternative,2026-01-25,TRUE
-ACT032,2026-02,C005,L011,O003,Demurrage exposure,Medium,In Review,Operations,9824.79,5995.38,Renegotiate free time and tighten document cutoff,2026-03-04,TRUE
-ACT033,2026-05,C005,L009,O004,Carrier rate gap,High,In Review,Finance BP,17199.12,11172.17,Tender backup carrier and re-benchmark lane,2026-06-19,TRUE
-ACT034,2026-04,C003,L005,O003,Below target margin,High,In Review,Procurement,12786.57,8644.92,Reprice customer or reset minimum yield,2026-05-18,TRUE
-ACT035,2026-05,C001,L004,O005,Below target margin,Medium,In Review,Customer Success,18386.94,8527.04,Reprice customer or reset minimum yield,2026-05-25,TRUE
-ACT036,2026-03,C007,L009,O004,Claims spike,Low,Action Agreed,Operations,17600.12,10511.28,Review packaging and carrier claims recovery,2026-03-29,TRUE
-ACT037,2026-04,C003,L009,O004,Low utilization,Medium,In Review,Procurement,14077.42,9030.29,Consolidate departures or shift to LCL/road alternative,2026-05-18,TRUE
-ACT038,2026-02,C001,L004,O005,Fuel leakage,Medium,Action Agreed,Customer Success,8610.7,5958.7,Update surcharge table and audit pass-through,2026-03-16,TRUE
-ACT039,2026-03,C003,L005,O001,Low utilization,High,In Review,Procurement,8816.27,6541.66,Consolidate departures or shift to LCL/road alternative,2026-04-14,TRUE
-ACT040,2026-02,C010,L011,O003,Carrier rate gap,Medium,Action Agreed,Commercial,16699.71,11751.68,Tender backup carrier and re-benchmark lane,2026-02-24,TRUE
-ACT041,2026-01,C010,L011,O001,Below target margin,High,Action Agreed,Commercial,17389.06,11249.65,Reprice customer or reset minimum yield,2026-01-26,TRUE
-ACT042,2026-05,C010,L012,O001,Below target margin,High,Action Agreed,Procurement,12669.68,8614.03,Reprice customer or reset minimum yield,2026-06-17,TRUE
-ACT043,2026-03,C005,L005,O002,Claims spike,Medium,In Review,Operations,18424.1,10498.7,Review packaging and carrier claims recovery,2026-04-09,TRUE
-ACT044,2026-03,C009,L005,O003,Demurrage exposure,Medium,Action Agreed,Finance BP,14937.93,8912.69,Renegotiate free time and tighten document cutoff,2026-04-09,TRUE
-ACT045,2026-01,C002,L005,O001,Carrier rate gap,High,Action Agreed,Customer Success,17699.59,8579.03,Tender backup carrier and re-benchmark lane,2026-02-02,TRUE
-ACT046,2026-03,C005,L009,O004,Claims spike,High,Open,Finance BP,11562.68,8063.42,Review packaging and carrier claims recovery,2026-04-24,TRUE
-ACT047,2026-01,C001,L003,O004,Demurrage exposure,High,Action Agreed,Procurement,14686.97,7142.19,Renegotiate free time and tighten document cutoff,2026-02-25,TRUE
-ACT048,2026-02,C001,L009,O004,Claims spike,High,Action Agreed,Operations,8606.62,5815.8,Review packaging and carrier claims recovery,2026-03-26,TRUE
-ACT049,2026-03,C004,L004,O005,Fuel leakage,High,In Review,Customer Success,8125.79,5685.82,Update surcharge table and audit pass-through,2026-04-23,TRUE
-ACT050,2026-04,C016,L009,O004,Claims spike,Medium,Closed,Commercial,9332.29,6216.78,Review packaging and carrier claims recovery,2026-05-23,TRUE
-ACT051,2026-01,C005,L011,O003,Fuel leakage,Medium,Action Agreed,Operations,8717.8,4558.48,Update surcharge table and audit pass-through,2026-02-05,TRUE
-ACT052,2026-05,C013,L007,O002,Claims spike,Medium,In Review,Finance BP,12973.2,6909.23,Review packaging and carrier claims recovery,2026-05-29,TRUE
-ACT053,2026-03,C001,L011,O002,Below target margin,High,Open,Customer Success,13924.85,7249.14,Reprice customer or reset minimum yield,2026-04-11,TRUE
-ACT054,2026-05,C002,L009,O004,Low utilization,High,Closed,Procurement,16132.28,12401.73,Consolidate departures or shift to LCL/road alternative,2026-05-24,TRUE
-ACT055,2026-05,C005,L009,O004,Demurrage exposure,Medium,Open,Procurement,9149.31,4644.96,Renegotiate free time and tighten document cutoff,2026-06-21,TRUE
-ACT056,2026-05,C007,L012,O001,Claims spike,High,In Review,Commercial,16394.49,8885.78,Review packaging and carrier claims recovery,2026-06-08,TRUE
-ACT057,2026-01,C003,L009,O004,Demurrage exposure,High,Open,Commercial,11265.42,7071.49,Renegotiate free time and tighten document cutoff,2026-02-24,TRUE
-ACT058,2026-05,C003,L009,O004,Carrier rate gap,Low,Action Agreed,Procurement,8844.06,6884.18,Tender backup carrier and re-benchmark lane,2026-06-24,TRUE
-ACT059,2026-02,C012,L004,O005,Below target margin,Medium,Action Agreed,Commercial,9165.69,4610.6,Reprice customer or reset minimum yield,2026-03-11,TRUE
-ACT060,2026-05,C001,L004,O005,Fuel leakage,Medium,In Review,Customer Success,15230.78,7336.88,Update surcharge table and audit pass-through,2026-06-19,TRUE
-ACT061,2026-02,C017,L005,O001,Claims spike,Medium,Open,Customer Success,10346.85,5577.55,Review packaging and carrier claims recovery,2026-03-09,TRUE
-ACT062,2026-02,C010,L009,O004,Claims spike,High,Action Agreed,Commercial,9940.31,6818.02,Review packaging and carrier claims recovery,2026-02-25,TRUE
-ACT063,2026-02,C012,L012,O001,Fuel leakage,High,Open,Commercial,9658.02,4673.64,Update surcharge table and audit pass-through,2026-02-24,TRUE
-ACT064,2026-04,C016,L005,O003,Low utilization,Medium,Action Agreed,Commercial,14274.52,8894.86,Consolidate departures or shift to LCL/road alternative,2026-04-24,TRUE
-ACT065,2026-02,C013,L002,O003,Fuel leakage,Low,Action Agreed,Finance BP,11091.53,5146.4,Update surcharge table and audit pass-through,2026-03-11,TRUE
-ACT066,2026-03,C013,L008,O006,Claims spike,Medium,Open,Finance BP,10727.88,5906.06,Review packaging and carrier claims recovery,2026-04-03,TRUE
-ACT067,2026-03,C011,L005,O001,Low utilization,Low,Closed,Operations,7291.01,4134.18,Consolidate departures or shift to LCL/road alternative,2026-04-25,TRUE
-ACT068,2026-05,C009,L008,O006,Fuel leakage,High,Closed,Procurement,13708.65,7415.92,Update surcharge table and audit pass-through,2026-06-11,TRUE
-ACT069,2026-03,C002,L008,O006,Low utilization,Low,Open,Customer Success,9400.94,4363.37,Consolidate departures or shift to LCL/road alternative,2026-04-23,TRUE
-ACT070,2026-03,C004,L011,O002,Carrier rate gap,Medium,Action Agreed,Procurement,9788.04,7112.96,Tender backup carrier and re-benchmark lane,2026-04-08,TRUE
-ACT071,2026-04,C009,L009,O004,Fuel leakage,Low,Open,Operations,10118.37,6880.22,Update surcharge table and audit pass-through,2026-04-28,TRUE
-ACT072,2026-04,C002,L005,O003,Below target margin,High,In Review,Operations,11187.31,6623.33,Reprice customer or reset minimum yield,2026-05-11,TRUE
-ACT073,2026-05,C001,L010,O001,Fuel leakage,Low,Open,Procurement,9393.6,6631.11,Update surcharge table and audit pass-through,2026-06-05,TRUE
-ACT074,2026-03,C012,L005,O002,Fuel leakage,High,Action Agreed,Commercial,12129.45,7139.67,Update surcharge table and audit pass-through,2026-04-25,TRUE
-ACT075,2026-02,C016,L005,O003,Below target margin,High,Open,Operations,13620.76,7082.64,Reprice customer or reset minimum yield,2026-03-12,TRUE
-ACT076,2026-05,C002,L006,O004,Below target margin,Medium,Open,Operations,14032.43,9560.62,Reprice customer or reset minimum yield,2026-06-09,TRUE
-ACT077,2026-02,C001,L003,O002,Fuel leakage,Low,Action Agreed,Commercial,11273.19,5415.09,Update surcharge table and audit pass-through,2026-03-08,TRUE
-ACT078,2026-04,C015,L009,O004,Below target margin,Medium,Open,Operations,8667.22,4811.04,Reprice customer or reset minimum yield,2026-05-12,TRUE
-ACT079,2026-02,C010,L007,O003,Below target margin,High,Open,Commercial,9605.92,4918.39,Reprice customer or reset minimum yield,2026-03-08,TRUE
-ACT080,2026-01,C016,L004,O005,Demurrage exposure,High,Action Agreed,Commercial,13217.5,7169.5,Renegotiate free time and tighten document cutoff,2026-01-31,TRUE
-ACT081,2026-05,C007,L004,O005,Fuel leakage,Medium,Open,Procurement,11100.19,6167.65,Update surcharge table and audit pass-through,2026-06-23,TRUE
-ACT082,2026-03,C003,L008,O006,Carrier rate gap,High,In Review,Commercial,13427.18,6845.81,Tender backup carrier and re-benchmark lane,2026-04-14,TRUE
-ACT083,2026-05,C002,L003,O002,Claims spike,Medium,Action Agreed,Procurement,13579.76,10155.7,Review packaging and carrier claims recovery,2026-06-22,TRUE
-ACT084,2026-02,C005,L006,O004,Below target margin,Low,Action Agreed,Operations,11667.2,6256.18,Reprice customer or reset minimum yield,2026-03-22,TRUE
+ACT001,2026-05,C002,L002,O002,Claims spike,High,Open,Customer Success,207319.83,94841.28,Review packaging and carrier claims recovery,2026-05-23,TRUE
+ACT002,2026-05,C002,L001,O001,Claims spike,High,Open,Procurement,295779.41,124789.56,Review packaging and carrier claims recovery,2026-06-04,TRUE
+ACT003,2026-02,C013,L002,O002,Demurrage exposure,High,In Review,Customer Success,166053.21,85586.99,Renegotiate free time and tighten document cutoff,2026-03-23,TRUE
+ACT004,2026-04,C010,L001,O003,Below target margin,Medium,Action Agreed,Finance BP,58662.06,49274.39,Reprice customer or reset minimum yield,2026-05-25,TRUE
+ACT005,2026-02,C001,L001,O002,Demurrage exposure,High,Open,Customer Success,97915.64,44034.43,Renegotiate free time and tighten document cutoff,2026-03-07,TRUE
+ACT006,2026-04,C010,L002,O003,Carrier rate gap,High,Action Agreed,Finance BP,88185.99,64581.28,Tender backup carrier and re-benchmark lane,2026-05-17,TRUE
+ACT007,2026-03,C010,L001,O002,Demurrage exposure,High,In Review,Operations,79368.99,49048.58,Renegotiate free time and tighten document cutoff,2026-03-24,TRUE
+ACT008,2026-05,C009,L002,O002,Claims spike,Medium,In Review,Commercial,96083.04,52745.56,Review packaging and carrier claims recovery,2026-05-26,TRUE
+ACT009,2026-03,C009,L001,O002,Below target margin,Medium,In Review,Commercial,84075.42,49175.58,Reprice customer or reset minimum yield,2026-04-21,TRUE
+ACT010,2026-04,C002,L001,O002,Carrier rate gap,High,Open,Finance BP,124065.01,62767.89,Tender backup carrier and re-benchmark lane,2026-04-29,TRUE
+ACT011,2026-03,C001,L008,O006,Carrier rate gap,High,In Review,Finance BP,85518.81,52793.26,Tender backup carrier and re-benchmark lane,2026-03-24,TRUE
+ACT012,2026-01,C002,L002,O003,Below target margin,High,Open,Commercial,147912.63,67146.36,Reprice customer or reset minimum yield,2026-02-15,TRUE
+ACT013,2026-02,C002,L001,O001,Below target margin,Medium,In Review,Procurement,34362.44,18850.16,Reprice customer or reset minimum yield,2026-03-01,TRUE
+ACT014,2026-02,C010,L002,O001,Below target margin,Medium,In Review,Finance BP,47398.45,24687.34,Reprice customer or reset minimum yield,2026-02-24,TRUE
+ACT015,2026-02,C009,L002,O002,Carrier rate gap,High,Open,Finance BP,76471.98,32694.31,Tender backup carrier and re-benchmark lane,2026-02-24,TRUE
+ACT016,2026-01,C001,L011,O003,Demurrage exposure,High,Open,Customer Success,79911.13,38870.27,Renegotiate free time and tighten document cutoff,2026-01-22,TRUE
+ACT017,2026-01,C002,L011,O002,Claims spike,Low,Open,Customer Success,16783.97,8496.26,Review packaging and carrier claims recovery,2026-02-08,TRUE
+ACT018,2026-05,C009,L008,O006,Below target margin,Medium,Open,Commercial,69314.54,35029.4,Reprice customer or reset minimum yield,2026-06-22,TRUE
+ACT019,2026-03,C002,L005,O001,Claims spike,High,In Review,Commercial,100549.61,54976.05,Review packaging and carrier claims recovery,2026-04-05,TRUE
+ACT020,2026-01,C010,L002,O001,Demurrage exposure,High,In Review,Customer Success,47022.88,27924.26,Renegotiate free time and tighten document cutoff,2026-02-15,TRUE
+ACT021,2026-02,C013,L008,O006,Carrier rate gap,High,Open,Finance BP,91335.11,39073.21,Tender backup carrier and re-benchmark lane,2026-03-14,TRUE
+ACT022,2026-05,C001,L008,O006,Fuel leakage,High,In Review,Finance BP,61151.15,35183.66,Update surcharge table and audit pass-through,2026-06-21,TRUE
+ACT023,2026-04,C003,L008,O006,Claims spike,Medium,Open,Procurement,31520.51,14965.48,Review packaging and carrier claims recovery,2026-05-25,TRUE
+ACT024,2026-03,C013,L005,O001,Below target margin,High,Open,Commercial,86363.88,37271.68,Reprice customer or reset minimum yield,2026-03-31,TRUE
+ACT025,2026-02,C010,L011,O002,Demurrage exposure,High,Closed,Customer Success,6903.81,6321.63,Renegotiate free time and tighten document cutoff,2026-03-11,TRUE
+ACT026,2026-05,C010,L008,O006,Below target margin,High,Action Agreed,Finance BP,22637.41,15276.35,Reprice customer or reset minimum yield,2026-06-12,TRUE
+ACT027,2026-02,C002,L002,O002,Below target margin,Low,Closed,Commercial,2871.78,2673.43,Reprice customer or reset minimum yield,2026-03-22,TRUE
+ACT028,2026-01,C009,L002,O003,Fuel leakage,Low,Action Agreed,Finance BP,11962.35,9663.37,Update surcharge table and audit pass-through,2026-01-22,TRUE
+ACT029,2026-04,C004,L001,O001,Claims spike,High,Open,Operations,82908.42,34606.6,Review packaging and carrier claims recovery,2026-05-18,TRUE
+ACT030,2026-02,C002,L008,O006,Claims spike,Medium,Action Agreed,Operations,24965.4,19090.24,Review packaging and carrier claims recovery,2026-03-16,TRUE
+ACT031,2026-03,C001,L005,O003,Below target margin,Medium,Open,Commercial,49257.13,25107.77,Reprice customer or reset minimum yield,2026-03-24,TRUE
+ACT032,2026-02,C010,L008,O006,Demurrage exposure,Medium,In Review,Customer Success,21887.88,12824.7,Renegotiate free time and tighten document cutoff,2026-03-22,TRUE
+ACT033,2026-03,C005,L011,O002,Fuel leakage,High,Open,Customer Success,35829.3,15343.71,Update surcharge table and audit pass-through,2026-04-02,TRUE
+ACT034,2026-03,C010,L002,O001,Claims spike,High,Closed,Customer Success,8461.11,7057.52,Review packaging and carrier claims recovery,2026-04-14,TRUE
+ACT035,2026-03,C002,L010,O001,Below target margin,Medium,Open,Commercial,40464.93,18298.23,Reprice customer or reset minimum yield,2026-04-07,TRUE
+ACT036,2026-01,C002,L008,O006,Claims spike,Medium,Action Agreed,Customer Success,20922.63,17617.59,Review packaging and carrier claims recovery,2026-02-13,TRUE
+ACT037,2026-03,C016,L001,O002,Demurrage exposure,High,Closed,Operations,8854.68,8184.41,Renegotiate free time and tighten document cutoff,2026-04-11,TRUE
+ACT038,2026-05,C005,L005,O001,Claims spike,Low,In Review,Commercial,15283.11,9912.25,Review packaging and carrier claims recovery,2026-06-18,TRUE
+ACT039,2026-01,C005,L011,O003,Fuel leakage,High,In Review,Operations,32759.59,16770.08,Update surcharge table and audit pass-through,2026-02-16,TRUE
+ACT040,2026-02,C009,L011,O002,Claims spike,Medium,Open,Operations,30176.42,12289.86,Review packaging and carrier claims recovery,2026-03-05,TRUE
+ACT041,2026-03,C001,L004,O005,Demurrage exposure,Medium,Action Agreed,Procurement,15324.49,12996.68,Renegotiate free time and tighten document cutoff,2026-03-22,TRUE
+ACT042,2026-02,C005,L008,O006,Fuel leakage,Medium,In Review,Operations,30291.16,16765.54,Update surcharge table and audit pass-through,2026-03-03,TRUE
+ACT043,2026-03,C005,L002,O002,Low utilization,High,Open,Operations,68087.89,30316.18,Consolidate departures or shift to LCL/road alternative,2026-04-06,TRUE
+ACT044,2026-01,C018,L001,O001,Fuel leakage,Medium,Action Agreed,Operations,11940.51,8623.32,Update surcharge table and audit pass-through,2026-01-28,TRUE
+ACT045,2026-05,C003,L005,O002,Fuel leakage,Medium,In Review,Operations,23014.64,12295.26,Update surcharge table and audit pass-through,2026-06-17,TRUE
+ACT046,2026-05,C002,L008,O006,Carrier rate gap,Low,Action Agreed,Commercial,6883.99,5492.56,Tender backup carrier and re-benchmark lane,2026-06-16,TRUE
+ACT047,2026-05,C003,L008,O006,Below target margin,Low,Action Agreed,Commercial,6802.82,5233.54,Reprice customer or reset minimum yield,2026-06-22,TRUE
+ACT048,2026-05,C001,L001,O001,Carrier rate gap,High,Open,Finance BP,36388.19,15072.72,Tender backup carrier and re-benchmark lane,2026-06-25,TRUE
+ACT049,2026-04,C013,L011,O001,Below target margin,Medium,Open,Commercial,39227.36,16743.39,Reprice customer or reset minimum yield,2026-05-09,TRUE
+ACT050,2026-04,C013,L004,O005,Low utilization,Medium,Open,Customer Success,21739.7,10765.7,Consolidate departures or shift to LCL/road alternative,2026-05-04,TRUE
+ACT051,2026-04,C002,L002,O003,Below target margin,Medium,Open,Finance BP,31595.0,15070.49,Reprice customer or reset minimum yield,2026-05-18,TRUE
+ACT052,2026-03,C016,L008,O006,Demurrage exposure,Medium,Open,Operations,17556.87,8648.46,Renegotiate free time and tighten document cutoff,2026-04-10,TRUE
+ACT053,2026-05,C003,L010,O001,Below target margin,Low,In Review,Commercial,14511.25,8682.81,Reprice customer or reset minimum yield,2026-05-22,TRUE
+ACT054,2026-03,C001,L007,O001,Carrier rate gap,Medium,In Review,Procurement,22264.99,13395.43,Tender backup carrier and re-benchmark lane,2026-04-07,TRUE
+ACT055,2026-03,C013,L004,O005,Demurrage exposure,Low,In Review,Operations,14223.35,8476.96,Renegotiate free time and tighten document cutoff,2026-04-11,TRUE
+ACT056,2026-04,C009,L011,O002,Low utilization,Low,In Review,Commercial,7764.52,4623.95,Consolidate departures or shift to LCL/road alternative,2026-04-27,TRUE
+ACT057,2026-05,C016,L008,O006,Carrier rate gap,Medium,In Review,Operations,25084.1,15325.95,Tender backup carrier and re-benchmark lane,2026-06-15,TRUE
+ACT058,2026-03,C002,L002,O003,Below target margin,Medium,Open,Commercial,27865.05,12688.19,Reprice customer or reset minimum yield,2026-04-04,TRUE
+ACT059,2026-05,C001,L007,O002,Low utilization,Medium,Open,Finance BP,28633.68,11949.04,Consolidate departures or shift to LCL/road alternative,2026-06-09,TRUE
+ACT060,2026-05,C001,L002,O003,Demurrage exposure,High,Open,Customer Success,46938.67,19330.55,Renegotiate free time and tighten document cutoff,2026-06-06,TRUE
+ACT061,2026-01,C002,L004,O005,Carrier rate gap,High,Action Agreed,Finance BP,24065.73,17743.11,Tender backup carrier and re-benchmark lane,2026-02-23,TRUE
+ACT062,2026-02,C001,L004,O005,Claims spike,Medium,Closed,Finance BP,3222.13,3069.55,Review packaging and carrier claims recovery,2026-02-24,TRUE
+ACT063,2026-05,C010,L009,O004,Carrier rate gap,High,In Review,Finance BP,26567.88,14323.41,Tender backup carrier and re-benchmark lane,2026-05-29,TRUE
+ACT064,2026-02,C002,L001,O001,Fuel leakage,Medium,In Review,Customer Success,12644.8,6779.12,Update surcharge table and audit pass-through,2026-03-06,TRUE
+ACT065,2026-02,C001,L002,O002,Claims spike,Medium,Action Agreed,Customer Success,15293.41,12900.75,Review packaging and carrier claims recovery,2026-02-27,TRUE
+ACT066,2026-05,C014,L008,O006,Claims spike,Medium,Action Agreed,Operations,12789.9,9413.83,Review packaging and carrier claims recovery,2026-05-26,TRUE
+ACT067,2026-03,C003,L011,O001,Below target margin,Medium,Open,Finance BP,28652.07,14269.26,Reprice customer or reset minimum yield,2026-04-16,TRUE
+ACT068,2026-02,C001,L005,O002,Carrier rate gap,Low,Closed,Finance BP,1043.2,868.26,Tender backup carrier and re-benchmark lane,2026-03-25,TRUE
+ACT069,2026-01,C005,L010,O001,Low utilization,Medium,In Review,Commercial,16066.07,8705.09,Consolidate departures or shift to LCL/road alternative,2026-01-30,TRUE
+ACT070,2026-02,C009,L002,O002,Low utilization,High,Open,Customer Success,20732.68,9291.98,Consolidate departures or shift to LCL/road alternative,2026-02-28,TRUE
+ACT071,2026-04,C001,L008,O006,Low utilization,Low,Action Agreed,Operations,7497.73,5567.37,Consolidate departures or shift to LCL/road alternative,2026-05-18,TRUE
+ACT072,2026-01,C005,L005,O001,Carrier rate gap,High,Open,Finance BP,33627.69,14113.16,Tender backup carrier and re-benchmark lane,2026-01-27,TRUE
+ACT073,2026-03,C009,L011,O003,Below target margin,High,Open,Commercial,63313.83,27154.79,Reprice customer or reset minimum yield,2026-04-18,TRUE
+ACT074,2026-05,C001,L010,O003,Fuel leakage,Medium,In Review,Finance BP,14411.05,7594.14,Update surcharge table and audit pass-through,2026-06-03,TRUE
+ACT075,2026-04,C009,L001,O002,Demurrage exposure,High,In Review,Customer Success,33234.22,17767.6,Renegotiate free time and tighten document cutoff,2026-05-15,TRUE
+ACT076,2026-02,C013,L002,O002,Fuel leakage,Medium,Closed,Operations,2082.2,1630.15,Update surcharge table and audit pass-through,2026-03-26,TRUE
+ACT077,2026-02,C007,L002,O002,Claims spike,Medium,In Review,Operations,20719.03,12284.36,Review packaging and carrier claims recovery,2026-03-25,TRUE
+ACT078,2026-03,C009,L005,O001,Fuel leakage,Medium,Open,Operations,18482.85,8277.96,Update surcharge table and audit pass-through,2026-04-08,TRUE
+ACT079,2026-02,C003,L008,O006,Low utilization,Medium,Open,Commercial,30399.77,12711.12,Consolidate departures or shift to LCL/road alternative,2026-03-18,TRUE
+ACT080,2026-01,C009,L010,O002,Low utilization,Low,Action Agreed,Commercial,4849.91,3506.3,Consolidate departures or shift to LCL/road alternative,2026-02-12,TRUE
+ACT081,2026-01,C012,L005,O003,Low utilization,Medium,In Review,Commercial,18359.27,11266.28,Consolidate departures or shift to LCL/road alternative,2026-01-22,TRUE
+ACT082,2026-05,C002,L011,O002,Demurrage exposure,Low,Closed,Customer Success,1486.59,1202.9,Renegotiate free time and tighten document cutoff,2026-06-23,TRUE
+ACT083,2026-01,C001,L002,O002,Fuel leakage,Medium,Open,Finance BP,12506.02,6057.29,Update surcharge table and audit pass-through,2026-01-23,TRUE
+ACT084,2026-05,C010,L007,O001,Demurrage exposure,Medium,Action Agreed,Customer Success,8053.63,5683.34,Renegotiate free time and tighten document cutoff,2026-05-27,TRUE
+ACT085,2026-03,C001,L006,O004,Demurrage exposure,Medium,Closed,Operations,2875.37,2750.28,Renegotiate free time and tighten document cutoff,2026-04-07,TRUE
+ACT086,2026-02,C010,L010,O003,Demurrage exposure,Low,Action Agreed,Customer Success,4460.91,2998.9,Renegotiate free time and tighten document cutoff,2026-03-22,TRUE
+ACT087,2026-03,C002,L004,O005,Demurrage exposure,Low,In Review,Operations,8414.69,5111.27,Renegotiate free time and tighten document cutoff,2026-04-16,TRUE
+ACT088,2026-03,C004,L011,O001,Claims spike,Medium,Action Agreed,Operations,12071.38,9635.03,Review packaging and carrier claims recovery,2026-04-09,TRUE
+ACT089,2026-02,C010,L009,O004,Carrier rate gap,High,Open,Finance BP,40474.24,18422.83,Tender backup carrier and re-benchmark lane,2026-03-25,TRUE
+ACT090,2026-01,C002,L005,O003,Claims spike,Medium,Action Agreed,Operations,12291.45,10134.25,Review packaging and carrier claims recovery,2026-02-01,TRUE
+ACT091,2026-02,C001,L009,O004,Demurrage exposure,High,In Review,Finance BP,31260.28,16725.95,Renegotiate free time and tighten document cutoff,2026-03-10,TRUE
+ACT092,2026-05,C001,L010,O003,Low utilization,Medium,Open,Commercial,24438.66,10203.87,Consolidate departures or shift to LCL/road alternative,2026-06-14,TRUE
+ACT093,2026-03,C009,L002,O001,Claims spike,Low,Action Agreed,Operations,5310.82,3607.58,Review packaging and carrier claims recovery,2026-04-14,TRUE
+ACT094,2026-04,C011,L011,O001,Claims spike,Medium,Action Agreed,Operations,11262.1,9584.15,Review packaging and carrier claims recovery,2026-05-12,TRUE
+ACT095,2026-03,C004,L001,O003,Claims spike,High,Open,Customer Success,17492.58,7934.84,Review packaging and carrier claims recovery,2026-03-26,TRUE
+ACT096,2026-04,C010,L010,O002,Fuel leakage,Medium,Open,Operations,21725.54,10301.54,Update surcharge table and audit pass-through,2026-05-05,TRUE
+ACT097,2026-01,C004,L011,O003,Claims spike,Medium,Action Agreed,Operations,9306.76,6851.21,Review packaging and carrier claims recovery,2026-02-21,TRUE
+ACT098,2026-05,C016,L005,O001,Low utilization,Medium,Action Agreed,Operations,6521.56,4492.94,Consolidate departures or shift to LCL/road alternative,2026-06-16,TRUE
+ACT099,2026-04,C002,L006,O004,Claims spike,High,In Review,Customer Success,22375.51,13655.39,Review packaging and carrier claims recovery,2026-05-23,TRUE
+ACT100,2026-04,C010,L009,O004,Low utilization,Low,In Review,Operations,6588.55,4102.42,Consolidate departures or shift to LCL/road alternative,2026-05-20,TRUE
+ACT101,2026-01,C018,L011,O003,Low utilization,Medium,In Review,Operations,11507.15,7372.37,Consolidate departures or shift to LCL/road alternative,2026-01-25,TRUE
+ACT102,2026-04,C016,L008,O006,Fuel leakage,Low,Action Agreed,Operations,5142.75,4238.41,Update surcharge table and audit pass-through,2026-05-13,TRUE
+ACT103,2026-02,C002,L011,O002,Claims spike,Medium,Action Agreed,Commercial,13739.66,10482.32,Review packaging and carrier claims recovery,2026-03-24,TRUE
+ACT104,2026-05,C001,L003,O004,Below target margin,Medium,In Review,Finance BP,8600.26,4525.52,Reprice customer or reset minimum yield,2026-05-23,TRUE
+ACT105,2026-05,C010,L011,O002,Below target margin,Medium,Open,Finance BP,19436.26,9792.94,Reprice customer or reset minimum yield,2026-05-28,TRUE
+ACT106,2026-05,C002,L001,O001,Claims spike,Medium,Closed,Customer Success,1808.54,1630.5,Review packaging and carrier claims recovery,2026-06-14,TRUE
+ACT107,2026-05,C013,L001,O003,Fuel leakage,Medium,In Review,Finance BP,15595.03,9209.09,Update surcharge table and audit pass-through,2026-05-31,TRUE
+ACT108,2026-05,C018,L002,O002,Below target margin,High,In Review,Finance BP,28329.91,16944.46,Reprice customer or reset minimum yield,2026-06-23,TRUE
